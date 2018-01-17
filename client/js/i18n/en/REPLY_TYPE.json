@@ -1,0 +1,10 @@
+{
+  "HEADER":"Reply to a jury summons",
+  "REPLY_QUESTION":"Are you replying for yourself or for someone else?",
+  "REPLY_SELF":"I am replying for myself",
+  "REPLY_SELF_INFO":"You can still ask a family member or a person you trust to help you understand or reply",
+  "NEED_HELP":"What if I need help replying?",
+  "NEED_HELP_TEXT":"You can ask a family member, friend or carer to help you. They can reply for you or help you to do it yourself. You may be able to get help with using a computer at your local library. If you need more help, just ring us.",
+  "REPLY_TP":"I am replying for someone else ",
+  "REPLY_TP_INFO":"You can reply for someone else if they have a disability or impairment that means they can't reply for themself. Or you can reply for a person who is away, or a person who has died."
+}

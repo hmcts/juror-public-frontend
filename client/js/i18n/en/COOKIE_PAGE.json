@@ -1,0 +1,57 @@
+{
+  "HEADING": "Cookies",
+  "SUMMARY": "Small files (known as 'cookies') are put onto your computer to collect information about how you browse the site.",
+
+  "LIST_HEADING": "Cookies are used to:",
+  "BULLET_ONE": "measure how you use the website so it can be updated and improved based on your needs",
+  "BULLET_TWO": "remember the notifications you've seen so that you're not shown them again",
+
+  "IDENTIFY": "GOV.UK cookies aren't used to identify you personally.",
+
+  "MESSAGE": "You'll normally see a message on the site before a cookie is stored on your computer.",
+
+  "MORE_INFO_START": "Find out more about ",
+  "MORE_INFO_END": "how to manage cookies",
+  "MORE_INFO_LINK": "http://www.aboutcookies.org/",
+
+  "COOKIE_USAGE": "How cookies are used",
+
+  "MEASURE_HEADING": "Measuring website usage (Google Analytics)",
+  "MEASURE_INFO": "We use Google Analytics to capture data about how our website is being used by the people who visit it. This includes information about how long you spend on each of the pages on our website and the activity you undertake while you are on there.",
+  "ANALYTICS": "Google Analytics can capture demographic information about your age, gender, location and language preferences.",
+  "ANALYTICS_REPORT": "The reports give us information on the device you are using to access the website, what browser you are using and the version of operating system you are running. This helps us to make sure the website works for everyone.",
+  "TRACKING": "We specifically track how many times our PDF content is downloaded, how many times users exit the site through external links and how many people access the ‘Find out more’ information that are listed against some questions on our website.",
+  "DATA_CAPTURE": "All data we capture is anonymous and there is no personally identifiable data available to us.",
+  "REASON": "We use this information to improve the service and performance as well as wider analysis",
+
+  "USED_COOKIES": "The following cookies are used:",
+  "NAME_TITLE": "Name",
+  "NAME_ONE": "_gat",
+  "NAME_TWO": "_ga",
+  "NAME_THREE": "sessionID",
+  "NAME_FOUR": "ApplicationGatewayAffinity",
+  "PURPOSE_TITLE": "Purpose",
+  "PURPOSE_ONE": "This helps us identify how you use GOV.UK so we can make the site better",
+  "PURPOSE_TWO": "This helps us identify unique users  of GOV.UK so we can make the site better",
+  "PURPOSE_THREE": "Keeps track of whether you're logged in or not",
+  "PURPOSE_FOUR": "Used to direct you to the same server for each request",
+  "EXPIRES_TITLE": "Expires",
+  "EXPIRES_ONE": "10 minutes",
+  "EXPIRES_TWO": "2 years",
+  "EXPIRES_THREE": "When you close your browser",
+  "EXPIRES_FOUR": "When you close your browser",
+  "OPT_OUT_START": "You can",
+  "OPT_OUT_END": "opt out of Google Analytics cookies",
+  "OPT_OUT_LINK": "https://tools.google.com/dlpage/gaoptout",
+
+  "SESSIONS": "Sessions",
+  "SESSION_SUMMARY": "A cookie is set to record your session activity.",
+  "FEEDBACK_SURVEY_HEADER": "Our feedback survey",
+  "FEEDBACK_SURVEY_SERVICE": "We use SmartSurvey to enable users of the service to provide feedback on their experience of using the service.",
+  "FEEDBACK_SURVEY_DETAILS": "Details about SmartSurveys security and privacy policy can be found at: ",
+  "FEEDBACK_SURVEY_LINK": "https://www.smartsurvey.co.uk/security",
+  "FEEDBACK_SURVEY_RESULTS": "We will use the results from completed survey responses to give us information from your experience of using the service, this will enable us to consider how we further improve the service.",
+  "FEEDBACK_SURVEY_DATA": "All data we capture is anonymous and there is no personally identifiable data available to us.",
+  "FEEDBACK_SURVEY_COOKIES": "If you take part, SmartSurvey will save extra cookies to your computer to track your progress through it. SmartSurvey is used to collect responses to the survey. If you take part, SmartSurvey will save extra cookies to your computer to track your progress through it.  Information on how SmartSurvey uses Cookies can be found at:",
+  "FEEDBACK_SURVEY_COOKIES_LINK": "https://www.smartsurvey.co.uk/how-we-use-cookies"
+}

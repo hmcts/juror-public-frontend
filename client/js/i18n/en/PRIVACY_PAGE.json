@@ -1,0 +1,96 @@
+{
+  "HEADING": "Terms and conditions and privacy policy",
+  "USE_THE_REPLY_TO_JURY_SERVICE": "Using the Reply to Jury Summons service means you agree to our privacy policy and to these terms and conditions. Please read them carefully.",
+  "TERMS_AND_CONDITIONS_HEADER": "Terms and conditions",
+
+  "GENERAL_HEADER": "General",
+  "GENERAL_TEXT_PARAGRAPH_ONE": "These terms and conditions affect your rights and liabilities under the law. They govern your use of, and relationship with, the Reply to Jury Summons service. They don’t apply to other services provided by the Ministry of Justice (MOJ), or to any other department or service linked to in this service.",
+  "GENERAL_TEXT_PARAGRAPH_TWO": "If you don't agree to these terms and conditions and the privacy policy, do not use this service. Instead, please complete the forms sent to you by post (the Juror summons letter pack) and return them to the Juror Central Summonsing Bureau 7 days from the date from which you received your juror summons letter.",
+
+  "APPLICABLE_LAW_HEADER": "Applicable law",
+  "APPLICABLE_LAW_TEXT": "Your use of this service and any dispute arising from its use will be governed by and construed in accordance with the laws of England and Wales, including but not limited to the:",
+  "APPLICABLE_LAW_LIST": {
+    "LIST_ITEM_ONE": "Juries Act 1974",
+    "LIST_ITEM_TWO": "Juries Act 1976",
+    "LIST_ITEM_THREE": "Juries Act 2003",
+    "LIST_ITEM_FOUR": "Criminal Justice Act 2003",
+    "LIST_ITEM_FIVE": "Mental Health Act 1983",
+    "LIST_ITEM_SIX": "Mental Capacity Act 2005",
+    "LIST_ITEM_SEVEN": "Coroners and Justice Act 2009",
+    "LIST_ITEM_EIGHT": "Armed Forces Act 2006",
+    "LIST_ITEM_NINE": "Computer Misuse Act 1990",
+    "LIST_ITEM_TEN": "Data Protection Act 1998",
+    "LIST_ITEM_ELEVEN": "Human Rights Act 1998",
+    "LIST_ITEM_TWELVE": "Freedom of Information Act 2000"
+  },
+
+  "USING_SERVICE_RESPONSIBLY_HEADER": "Using this service responsibly",
+  "USING_SERVICE_RESPONSIBLY_TEXT_PARAGRAPH_ONE": "The service is intended for use by jurors, or by others on their behalf and only with their consent.",
+  "USING_SERVICE_RESPONSIBLY_TEXT_PARAGRAPH_TWO": "There are risks in using a shared computer, such as in an internet café, to use this service. It’s your responsibility to be aware of these risks and to avoid using any computer which may leave your personal information accessible by others. You are responsible if you choose to leave a computer unprotected while in the process of responding to a juror summons letter.",
+  "USING_SERVICE_RESPONSIBLY_TEXT_PARAGRAPH_THREE": "We make every effort to check and test this service whenever we amend or update it. However, you must take your own precautions to ensure that the way you access this service does not expose you to the risk of viruses, malicious computer code or other forms of interference which may damage your own computer system.",
+  "USING_SERVICE_RESPONSIBLY_TEXT_PARAGRAPH_FOUR": "You must not misuse our service by knowingly introducing viruses, trojans, worms, logic bombs or other malicious or technologically harmful material. You must not attempt to gain unauthorised access to our service, the system on which our service is stored or any server, computer or database connected to our service. You must not attack our site via a denial-of-service attack or a distributed denial-of-service attack.",
+
+  "PRIVACY_POLICY_HEADER": "Privacy policy",
+
+  "INFORMATION_PROVIDED_SUBHEADER": "Information provided by this service",
+  "INFORMATION_PROVIDED_TEXT_PARAGRAPH_ONE": "We work hard to ensure that information within this Reply to Jury Summons service is accurate. However, we can’t guarantee the accuracy and completeness of any information at all times.",
+  "INFORMATION_PROVIDED_TEXT_PARAGRAPH_TWO": "While we make every effort to ensure this service is accessible at all times, we are not liable if it is unavailable for any period of time.",
+
+  "HOW_WE_USE_YOUR_INFORMATION_SUBHEADER": "How we use your information",
+  "HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_ONE": "The Juror Central Summoning Bureau and Crown courts use and retain personal data entered into the Reply to Jury Summons service for selection of jurors who will be asked to consider evidence presented to them at Crown Court and on occasion at Coroners Court or Tribunals.",
+  "HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_TWO": "Your information is securely stored within the HM Courts and Tribunals Service (HMCTS) Juror database. It will be removed and securely deleted when your Jury service has been completed and there is no reason to retain it further.",
+  "HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_THREE": "After submitting your response, you will not be able to see it anymore or amend it online." ,
+  "HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_FOUR": "If you want to make changes to your summons reply, or any other details, after making your reply online, contact the Jury Central Summoning Bureau by email or by post before the date of service quoting your Juror number.",
+  "HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_FIVE": "Anyone who believes their personal data is kept within the service has the right to submit a subject access request under the Data Protection Act 1998 to the MoJ",
+  "HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_SIX": "For further information regarding this process please click on link below;",
+  "HOW_WE_USE_YOUR_INFORMATION_LIST": {
+    "LIST_HEADER": "We will not share your information with any other organisation unless it is required for the purposes of:",
+    "LIST_ITEM_ONE": "prevention or detection of crime",
+    "LIST_ITEM_TWO": "apprehension or prosecution of offenders",
+    "LIST_ITEM_THREE": "preventing terrorism or national security"
+  },
+
+  "SHARE_INFORMATION_TEXT_PARAGRAPH_ONE": "We will also share your information where specific provision of law requires us to do so.",
+  "SHARE_INFORMATION_TEXT_PARAGRAPH_TWO": "Separately from the information entered by those using this service, we also collect site-usage information from this service, which allows us to see how the service is being used in order to allow us to improve it. This information does not contain any personal data.",
+  "SHARE_INFORMATION_TEXT_PARAGRAPH_THREE": "We’ll only ever collect information that will help us make the site work better for you; information that will let us contact you if you’ve asked us to, let us give you accurate information if you need it, and give us a sense of how people are using this service, so we can keep improving it.",
+  "SHARE_INFORMATION_LIST": {
+    "LIST_HEADER": "It includes:",
+    "LIST_ITEM_ONE": "questions, queries or feedback you leave, including your email address if you send a message via feedback",
+    "LIST_ITEM_TWO": "your truncated IP address (with the trailing octet removed), and details of which version of web browser you used",
+    "LIST_ITEM_THREE": "information on how you use the site, using cookies and page tagging techniques to help us improve the website"
+  },
+  "SHARE_INFORMATION_HELP_LIST": {
+    "LIST_HEADER": "This helps us to:",
+    "LIST_ITEM_ONE": "improve the site by monitoring how you use it",
+    "LIST_ITEM_TWO": "respond to any feedback you send us, if you’ve asked us to",
+    "LIST_ITEM_THREE": "provide you with information about local services if you want it"
+  },
+
+  "WE_CANNOT_IDENTIFY_TEXT": "We cannot identify you personally using your site usage data.",
+
+  "WHERE_IS_YOUR_DATA_STORED_HEADER": "Where is your data stored",
+  "WHERE_IS_YOUR_DATA_STORED_TEXT": "We store your data on our secure servers in the UK and the European Economic Area (EEA). By submitting your personal data, you agree to this.",
+
+  "KEEPING_DATA_SECURED_HEADER": "Keeping your data secure",
+  "KEEPING_DATA_SECURED_TEXT": "Transmitting information over the internet is generally not completely secure, and we can’t guarantee the security of your data. We do, however, use SSL (secure sockets layer) to encrypt all data transferred to, and received from, our server. We take data security very seriously and take every step to ensure that your data remains private and secure.",
+
+  "TRANSMIT_DATA_HEADER": "Transmit data at your own risk",
+  "TRANSMIT_DATA_TEXT_PARAGRAPH_ONE": "We have procedures and security features in place to try and keep your data secure once we receive it.",
+  "TRANSMIT_DATA_TEXT_PARAGRAPH_TWO": "We won’t share your information with any other organisations for marketing, market research or commercial purposes, and we don’t pass on your details to other websites.",
+
+  "DISCLOSING_INFORMATION_HEADER": "Disclosing your information",
+  "DISCLOSING_INFORMATION_TEXT": "We may pass on your personal information if we have a legal obligation to do so.",
+
+  "HOW_WE_MANAGE_SESSION_HEADER": "How we manage sessions",
+  "HOW_WE_MANAGE_SESSION_TEXT_PARAGRAPH_ONE": "This service is for replying to a Jury Summons letter. During this time, personal information about you may be visible to anyone with access to the computer (or other device) you are using.",
+  "HOW_WE_MANAGE_SESSION_TEXT_PARAGRAPH_TWO": "Your data is retrieved from the HMCTS Juror database for the “Your Details” page, and stored on your device until your session expires.",
+
+  "DATA_PROTECTION_HEADER": "Data Protection Act 1998",
+  "DATA_PROTECTION_TEXT_PARAGRAPH_ONE": "This service complies with all principles of the DPA 1998. Ministry of Justice (MOJ) is the 'data controller' for the purposes of the Act.  The information you enter into this service is used for the purposes of managing the jury summons process and is stored in a secure database for auditing purposes until your jury service has been completed. No personal data will be used in testing this service.",
+  "DATA_PROTECTION_TEXT_PARAGRAPH_TWO": "Our hosting provider, and MOJ staff responsible for supporting the service, will have access to the server in which all personal information entered into the site is stored.",
+  "DATA_PROTECTION_LINK": "https://www.gov.uk/government/publications/request-your-personal-data-from-moj",
+
+  "DISCLAIMER_HEADER": "Disclaimer",
+  "DISCLAIMER_TEXT_PARAGRAPH_ONE": "We do not accept liability for loss or damage incurred by users of this service, whether direct, indirect or consequential, whether caused by tort, breach of contract or otherwise. This includes loss of income or revenue, business, profits or contracts, anticipated savings, data, goodwill, tangible property or wasted time in connection with this service or any websites linked to it and any materials posted on it. This condition shall not prevent claims for loss of or damage to your tangible property or any other claims for direct financial loss that are not excluded by any of the categories set out above.",
+  "DISCLAIMER_TEXT_PARAGRAPH_TWO": "This does not affect our liability for death or personal injury arising from our negligence, nor our liability for fraudulent misrepresentation or misrepresentation as to a fundamental matter, nor any other liability which cannot be excluded or limited under applicable law."
+}

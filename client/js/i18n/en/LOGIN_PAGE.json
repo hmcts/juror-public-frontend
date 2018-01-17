@@ -1,0 +1,36 @@
+{
+  "HEADING": "Reply to a jury summons",
+  "HEADING_OB": "The juror details",
+
+  "SAMPLE_TITLE": "Your juror number can be found on your jury summons letter as shown in the image below",
+  "SAMPLE_IMAGE_ALT": "Image showing a jury summons letter and where you can find your Juror number. It is at the top of the first page of the letter.",
+
+  "FIELD_JUROR_NUMBER_TITLE": "9-digit juror number",
+
+  "GUIDANCE_TITLE": "I don't have a juror number",
+  "GUIDANCE_TITLE_OB": "I don't have a juror number for the person",
+  "GUIDANCE_INTRO": "If you don't have a juror number, please contact",
+  "GUIDANCE_INTRO_OB": "If you don't have a juror number for the person you are replying for, please contact",
+
+  "GUIDANCE_COMPANY_NAME": "Jury Central Summoning Bureau",
+  "GUIDANCE_EMAIL": "jurysummoning@hmcts.gsi.gov.uk",
+  "GUIDANCE_TELEPHONE_LABEL": "Telephone",
+  "GUIDANCE_TELEPHONE_NUMBER": "0300 456 1024",
+  "GUIDANCE_OPENING_TIMES": "Monday to Thursday 9am to 5pm",
+  "GUIDANCE_OPENING_TIMES_FRIDAY": "Friday 9am to 3pm",
+  "GUIDANCE_CALL_CHARGE_LABEL": "Find out about call charges",
+  "GUIDANCE_ADDRESS_LINE_1": "Jury Central Summoning Bureau",
+  "GUIDANCE_ADDRESS_LINE_2": "Pocock Street",
+  "GUIDANCE_ADDRESS_LINE_3": "London",
+  "GUIDANCE_ADDRESS_LINE_4": "SE1 0BJ",
+
+  "FIELD_LAST_NAME_TITLE": "Juror last name",
+  "FIELD_LAST_NAME_HINT": "Please enter your last name as it is printed on the jury summons letter, even if this might be incorrect. You can change it further on.",
+  "FIELD_LAST_NAME_HINT_OB": "Please enter the last name as it is printed on the jury summons letter, even if this might be incorrect. You can change it further on.",
+
+  "FIELD_POSTCODE_TITLE": "Juror postcode",
+  "FIELD_POSTCODE_HINT": "Please enter your postcode as it is printed on the jury summons letter, even if this might be incorrect. It can be changed further on.",
+  "FIELD_POSTCODE_HINT_OB": "Please enter the person's postcode as it is printed on the jury summons letter, even if this might be incorrect. You can change it further on.",
+
+  "FIELD_THIRD_PARTY_LABEL": "I'm replying on behalf of someone else"
+}

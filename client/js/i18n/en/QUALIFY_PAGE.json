@@ -1,0 +1,21 @@
+{
+  "HEADING": "Do you qualify for jury service?",
+  "HEADING_OB": "Does the person you're answering for qualify for jury service?",
+  "MAIN": "Your answers might mean you can't do jury service. But even if you think you can't, we still need you to fill in the rest of the online form. We need the rest of the information you give us so we can be sure whether you can do jury service or not.",
+  "MAIN_OB": "Your answers might mean the person can't do jury service. But even if you think they can't, we still need you to fill in the rest of the online form. We need the rest of the information you give us so we can be sure whether the person can do jury service or not.",
+  "QUESTION_1": "At any point since your 13th birthday, has there been a continuous 5-year period where you’ve lived in the UK, Channel Islands or the Isle of Man?",
+  "QUESTION_1_OB": "At any point since their 13th birthday, has there been a continuous 5-year period where the person has lived in the UK, Channel Islands or the Isle of Man?",
+  "ERROR_MISSING": "Please answer this question",
+  "QUESTION_2": "Are you detained (sectioned) or likely to be detained under the Mental Health Act 1983 or do you lack capacity as stated in the Mental Capacity Act 2005?",
+  "QUESTION_2_OB": "Is the person detained (sectioned) or likely to be detained under the Mental Health Act 1983 or do they lack capacity as stated in the Mental Capacity Act 2005?",
+  "QUESTION_3": "Are you currently on bail for a criminal offence?",
+  "QUESTION_3_OB": "Is the person on bail for a criminal offence?",
+  "QUESTION_4": "Have you been found guilty of a criminal offence and given a prison sentence, community order or suspended prison sentence?",
+  "QUESTION_4_OB": "Has the person been found guilty of a criminal offence and given a prison sentence, community order or suspended prison sentence?",
+  "UNSURE_PROMPT": "Not sure?",
+  "MORE_INFO_LINK": "Find out more",
+  "YES": "Yes",
+  "NO": "No",
+  "DETAILS": "Please provide details",
+  "MISSING": "Please answer this question"
+}

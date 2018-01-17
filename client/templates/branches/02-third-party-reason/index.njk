@@ -1,0 +1,73 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.ON_BEHALF.THIRD_PARTY_REASON.HEADER }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}3rd Party Reason{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <h1 class="heading-xlarge">{{ texts.ON_BEHALF.THIRD_PARTY_REASON.HEADER }}</h1>
+
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('branches.third.party.reason.post') }}" method="POST">
+
+      <div class="form-group {% if errors.items['thirdPartyReason'] %}error{% endif %}" id="thirdPartyReasonGroup">
+        <fieldset>
+
+          <legend>
+            <strong class="bold-small">
+              {{ texts.ON_BEHALF.THIRD_PARTY_REASON.INTRO }}
+            </strong>
+          </legend>
+
+          <br>
+
+          {% if errors.items['thirdPartyReason'] %}<span class="error-message">{{ errors.items['thirdPartyReason'][0].details }}</span>{% endif %}
+          <label class="block-label selection-button-radio" for="thirdPartyReasonNotHere">
+            <input type="radio" name="thirdPartyReason" id="thirdPartyReasonNotHere" value="nothere" {% if user.thirdPartyDetails.thirdPartyReason === 'nothere' %}checked{% endif %}>
+            {{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.NOT_HERE }}
+            <span class="form-hint">
+              {{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.NOT_HERE_HELP }}
+            </span>
+          </label>
+
+          <label class="block-label selection-button-radio" for="thirdPartyReasonAssistance">
+            <input type="radio" name="thirdPartyReason" id="thirdPartyReasonAssistance" value="assistance" {% if user.thirdPartyDetails.thirdPartyReason === 'assistance' %}checked{% endif %}>
+            {{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.REQUIRE_ASSISTANCE }}
+            <span class="form-hint">
+              {{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.REQUIRE_ASSISTANCE_HELP }}
+            </span>
+          </label>
+
+          <label class="block-label selection-button-radio"for="thirdPartyReasonDeceased">
+            <input type="radio" name="thirdPartyReason" id="thirdPartyReasonDeceased" value="deceased" {% if user.thirdPartyDetails.thirdPartyReason === 'deceased' %}checked{% endif %}>
+            {{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.DECEASED }}
+          </label>
+
+          <label class="block-label selection-button-radio" data-target="thirdPartyOtherReasonGroup" for="thirdPartyReasonOther">
+            <input type="radio" name="thirdPartyReason" id="thirdPartyReasonOther" value="other" {% if user.thirdPartyDetails.thirdPartyReason === 'other' %}checked{% endif %}>
+            {{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.OTHER }}
+          </label>
+          <div class="form-group panel panel-border-narrow {% if errors.items['thirdPartyOtherReason'] %} error {% endif %} {% if user.thirdPartyDetails.thirdPartyReason === 'other' %}{% else %}js-hidden{% endif %}" id="thirdPartyOtherReasonGroup">
+            <label class="form-label" for="thirdPartyOtherReason">{{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.OTHER_INFO }}</label>
+            {% if errors.items['thirdPartyOtherReason'] %}<span class="error-message">{{ errors.items['thirdPartyOtherReason'][0] }}</span>{% endif %}
+            <textarea class="form-control" name="thirdPartyOtherReason" id="thirdPartyOtherReason">{{ user.thirdPartyDetails.thirdPartyOtherReason }}</textarea>
+          </div>
+        </fieldset>
+      </div>
+
+
+      <div class="form-group">
+        <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+        <input type="hidden" name="_csrf" value="{{csrftoken}}">
+      </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

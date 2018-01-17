@@ -1,0 +1,20 @@
+{
+  "HEADER": "Have you ever worked for the Criminal Justice System?",
+  "HEADER_OB": "Has the person you're answering for ever worked for the Criminal Justice System?",
+  "QUESTION": "Now or in the last 5 years, have you worked for the Police Force, HM Prison Service, the National Crime Agency or any prosecuting authority?",
+  "QUESTION_OB": "Now or in the last 5 years, has the person worked for the Police Force, HM Prison Service, the National Crime Agency or any prosecuting authority?",
+  "SELECT_PROMPT": "Please choose any organisations you have worked for",
+  "SELECT_PROMPT_OB": "Please choose any organisations the person you're replying for has worked for",
+  "POLICE": "Police Force",
+  "HM": "HM Prison Service",
+  "NCA": "National Crime Agency",
+  "OTHER": "Other",
+  "MORE_INFO_LINK": "Why do we ask for this?",
+  "MORE_INFO_1": "Your job in the Criminal Justice System doesn't stop you doing jury service. But we may get in touch to find out more.",
+  "MORE_INFO_1_OB": "Working in the Criminal Justice system doesn't stop a person doing jury service. But we may get in touch to find out more.",
+  "YES": "Yes",
+  "NO": "No",
+  "DETAILS": "Which other part of the Criminal Justice System?",
+  "WHICH_FORCE": "Which Police Force?",
+  "WHICH_PRISON": "Which part of HM Prison Service?"
+}

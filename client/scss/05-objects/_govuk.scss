@@ -1,0 +1,45 @@
+.govuk-related-items {
+  border-top: 10px solid $govuk-blue;
+  margin-top: $gutter;
+  padding-top: 5px;
+
+  .heading-medium {
+    margin-bottom: 0.5em;
+    margin-top: 0.3em;
+  }
+
+  li {
+    list-style-type: none;
+    margin-bottom: 10px;
+  }
+}
+
+
+.service-feedback {
+  margin-top: 60px;
+}
+
+
+.govuk-box-highlight {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  .tick {
+    display: inline-block;
+    height: 25px;
+    margin-right: 10px;
+  }
+}
+
+// Sizing of circle around radio and check boxes
+.js-enabled .block-label.selection-button-radio::before {
+  box-sizing: content-box;
+}
+
+// Positioning of tick within check box
+.js-enabled .block-label.selection-button-checkbox::after {
+  height: 9px;
+  left: 8px;
+  top: 12px;
+  width: 19px;
+}

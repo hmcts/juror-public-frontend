@@ -1,0 +1,104 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}3rd Party Contact Details{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+  <fieldset class="column-two-thirds">
+    <h1 class="heading-xlarge">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.HEADER }}</h1>
+
+    {% include "../../includes/errors.njk" %}
+
+    <p class="lede">
+      {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.INTRO_PARAGRAPH }}
+    </p>
+
+    <form action="{{ url('branches.third.party.contact.details.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+
+      <fieldset>
+        <p class="lede">
+          <strong class="bold-medium">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT }}</strong>
+        </p>
+        {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT_PARAGRAPH }}
+
+        <p class="bold-small">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE }}</p>
+        {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_PARAGRAPH }}
+        {% if errors.items['useJurorPhoneDetails'] %}<span class="error-message" id="useJurorPhoneDetailsGroup">{{ errors.items['useJurorPhoneDetails'][0].details }}</span>{% endif %}
+
+        <div class="form-group {% if errors.items['useJurorPhoneDetails'] %}error{% endif %}">
+          <label class="block-label selection-button-radio" for="phoneNumber_existing">
+            <input id="phoneNumber_existing" type="radio" name="useJurorPhoneDetails" value="No" {% if user.useJurorPhoneDetails == 'No' %}checked="checked"{% endif %}>
+            {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_USE_PREVIOUS }}
+          </label>
+
+          <label class="block-label selection-button-radio" for="phoneNumber_new" data-target="newPhoneNumber">
+            <input id="phoneNumber_new" type="radio" name="useJurorPhoneDetails" value="Yes" {% if user.useJurorPhoneDetails == 'Yes' %}checked="checked"{% endif %}>
+            {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_GIVE_NEW }}
+          </label>
+          <div class="panel panel-border-narrow js-hidden" id="newPhoneNumber">
+            <div class="form-group {% if errors.items['primaryPhone'] %}error{% endif %}">
+              <label class="form-label" for="primaryPhone">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.MAIN_PHONE }}</label>
+              {% if errors.items['primaryPhone'] %}<span class="error-message" id="primaryPhoneGroup">{{ errors.items['primaryPhone'][0].details }}</span>{% endif %}
+              <input class="form-control" name="primaryPhone" type="text" id="primaryPhone" value="{{ user.primaryPhone }}">
+            </div>
+            <div class="form-group {% if errors.items['secondaryPhone'] %}error{% endif %}">
+              <label class="form-label" for="secondaryPhone">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.OTHER_PHONE }}</label>
+              {% if errors.items['secondaryPhone'] %}<span class="error-message" id="secondaryPhoneGroup">{{ errors.items['secondaryPhone'][0].details }}</span>{% endif %}
+              <input class="form-control" name="secondaryPhone" type="text" id="secondaryPhone" value="{{ user.secondaryPhone }}">
+            </div>
+          </div>
+        </div>
+
+        <p class="bold-small">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL }}</p>
+        {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_PARAGRAPH }}
+        {% if errors.items['useJurorEmailDetails'] %}<span class="error-message" id="useJurorEmailDetailsGroup">{{ errors.items['useJurorEmailDetails'][0].details }}</span>{% endif %}
+
+        <div class="form-group {% if errors.items['useJurorEmailDetails'] %}error{% endif %}">
+          <label class="block-label selection-button-radio" for="emailAddress_existing">
+            <input id="emailAddress_existing" type="radio" name="useJurorEmailDetails" value="No" {% if user.useJurorEmailDetails == 'No' %}checked="checked"{% endif %}>
+            {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_USE_PREVIOUS }}
+          </label>
+
+          <label class="block-label selection-button-radio" for="emailAddress_new" data-target="newEmailAddress">
+            <input id="emailAddress_new" type="radio" name="useJurorEmailDetails" value="Yes" {% if user.useJurorEmailDetails == 'Yes' %}checked="checked"{% endif %}>
+            {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_GIVE_NEW }}
+          </label>
+          <div class="panel panel-border-narrow js-hidden" id="newEmailAddress">
+            <div class="form-group {% if errors.items['emailAddress'] %}error{% endif %}">
+              <label class="form-label" for="emailAddress">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_ENTER }}</label>
+              {% if errors.items['emailAddress'] %}<span class="error-message" id="emailAddressGroup">{{ errors.items['emailAddress'][0].details }}</span>{% endif %}
+              <input class="form-control" type="email" id="emailAddress" name="emailAddress" value="{{ user.emailAddress }}">
+            </div>
+            <div class="form-group {% if errors.items['emailAddressConfirmation'] %}error{% endif %}">
+              <label class="form-label" for="emailAddressConfirmation">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_ENTER_CONFIRM }}</label>
+              {% if errors.items['emailAddressConfirmation'] %}<span class="error-message" id="emailAddressConfirmationGroup">{{ errors.items['emailAddressConfirmation'][0].details }}</span>{% endif %}
+              <input class="form-control" type="email" id="emailAddressConfirmation" name="emailAddressConfirmation" value="{{ user.emailAddressConfirmation }}">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <details>
+            <summary>{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_HELPER_TITLE }}</summary>
+            <div class="panel panel-border-narrow" id="details-content-1" aria-hidden="true">
+              <p>
+                {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_HELPER_TEXT }}
+              </p>
+            </div>
+          </details>
+        </div>
+      </fieldset>
+
+      {# Submit form #}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+  </div>
+</div>
+{% endblock %}

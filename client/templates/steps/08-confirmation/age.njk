@@ -1,0 +1,33 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+{{ texts.CONFIRMATION.TITLE }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Confirmation Age Disqualified{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+    {% include "./_hero.njk" %}
+
+    <br>
+    <p>{{ texts.CONFIRMATION.AGE.DOB_QUALIFICATION }}</p>
+
+    <h2 class="heading-medium">{{ texts.CONFIRMATION.NEXT_INFO }}</h2>
+
+    {% if user.thirdParty == 'Yes' %}
+    <p>{{ texts.CONFIRMATION.AGE.NO_SERVICE_REQUIRED_OB }}</p>
+    {% else %}
+    <p>{{ texts.CONFIRMATION.AGE.NO_SERVICE_REQUIRED }}</p>
+    {% endif %}
+    <p>{{ texts.CONFIRMATION.NO_ACTION }}</p>
+
+    {% include "../../includes/feedback.njk" %}
+  </div>
+
+</div>
+
+{% endblock %}

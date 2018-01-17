@@ -1,0 +1,102 @@
+{
+  "THIRD_PARTY_DETAILS": {
+    "HEADER": "Your details",
+
+    "NAME": {
+      "LEGEND": "Your name",
+      "LABEL_FIRST_NAME": "First name",
+      "LABEL_LAST_NAME": "Last name"
+    },
+
+    "RELATIONSHIP": {
+      "LEGEND": "Your relationship to the person",
+      "LABEL_RELATIONSHIP": "How do you know the person?"
+    },
+
+    "CONTACT": {
+      "LEGEND": "Your contact information",
+      "INFO_1": "How would you like us to get in touch, if we need to?",
+      "INFO_2": "Please choose at least one option",
+      "LABEL_BY_PHONE": "By phone",
+      "LABEL_BY_EMAIL": "By email",
+
+      "INFO_PHONE": "Please provide phone numbers that we can use to reach you between 9:00AM and 5:00PM, Monday to Friday.",
+      "LABEL_MAIN_PHONE": "Main phone",
+      "LABEL_OTHER_PHONE": "Another phone (optional)",
+      "LABEL_EMAIL": "Enter your email address",
+      "LABEL_EMAIL_CONFIRM": "Enter your email address again",
+
+      "DETAILS": {
+        "TITLE": "Why do we need your contact details?",
+        "INFO_1": "If we need to get in touch with you to check anything about your response for the other person, we'll use the email or phone number you give us."
+      }
+    }
+  },
+
+  "THIRD_PARTY_REASON": {
+    "HEADER": "Why are you replying?",
+    "INTRO": "Why  are you replying for the other person?",
+
+    "REASONS": {
+      "NOT_HERE": "The person isn’t here",
+      "NOT_HERE_HELP": "They might be travelling, in hospital or away for more than a few days for some other reason",
+
+      "REQUIRE_ASSISTANCE": "The person is unable to reply by themselves",
+      "REQUIRE_ASSISTANCE_HELP": "The person can't reply for themself. This might be because they have a disability or impairment",
+
+      "DECEASED": "The person has died",
+
+      "OTHER": "Other",
+      "OTHER_INFO": "Please provide the reason"
+    }
+  },
+
+  "THIRD_PARTY_PERSONAL_DETAILS": {
+    "HEADER": "More juror details",
+    "NAME_INTRO_PARAGRAPH": "Check that the name and address are correct for the person you're replying for",
+
+    "FORM_NAME_LABEL": "Name",
+    "FORM_ADDRESS_LABEL": "Address",
+    "HELPER_CHANGE_NAME_ADDRESS_TITLE": "What happens if the person I'm replying for has changed their name or address?",
+    "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_1": "If the person's name has changed and is different from the name on their jury summons letter, enter the correct name here. We'll get in touch later to check this. For instance, we might want to see a marriage certificate or deed poll certificate. Please carry on with the online form now.",
+    "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_2": "If the person's address has changed, we might be able to move their jury service to a court nearer to the new address. We'll get in touch later about this. Please carry on with the online form now.",
+
+    "DOB_INTRO_PARAGRAPH": "Please give the date of birth for the person you’re replying for",
+    "FORM_DOB_HELPER": "For example, 06 12 1982",
+    "FORM_DOB_DAY_LABEL": "Day",
+    "FORM_DOB_MONTH_LABEL": "Month",
+    "FORM_DOB_YEAR_LABEL": "Year",
+    "FORM_DOB_HELPER_TITLE": "Help with date of birth",
+    "FORM_DOB_HELPER_PARAGRAPH_1": "If you don’t know the person's exact date of birth, use the one they put on official documents like their passport or driving licence.",
+    "FORM_DOB_HELPER_PARAGRAPH_2": "If you can’t provide a date of birth you’ll have to send copies of identity documents through the post. You need to reply to the summons using the form we sent by post instead of online."
+  },
+
+  "THIRD_PARTY_CONTACT_DETAILS": {
+    "HEADER": "Contacting the juror",
+    "INTRO_PARAGRAPH": "We might need to get in touch with the person to ask them more questions or give them information about their jury service.",
+    "CONTACT": "How we get in touch",
+    "CONTACT_PARAGRAPH": "Please tell us how we can get in touch with the person you're replying for. Or we can use your contact information, if you're going to carry on acting for them.",
+    "PHONE": "Phone",
+    "PHONE_PARAGRAPH": "Please give phone numbers that we can use to call you or the juror between 9:00AM and 5:00PM, Monday to Friday.",
+    "MAIN_PHONE" :"Main phone number",
+    "OTHER_PHONE" :"Another phone number (optional)",
+    "PHONE_USE_PREVIOUS": "Use the phone number that you have already given to contact you",
+    "PHONE_GIVE_NEW": "Give a different phone number for the juror",
+
+    "EMAIL_USE_PREVIOUS": "Use the email address that you have already given to contact you",
+    "EMAIL_GIVE_NEW": "Give a different email address information for the juror",
+
+    "EMAIL": "Email",
+    "EMAIL_PARAGRAPH": "Please give an email address that we can use to contact you or the juror. It can be your email address or one that they use themselves.",
+    "EMAIL_ENTER": "Enter email address",
+    "EMAIL_ENTER_CONFIRM": "Enter your email address again",
+    "EMAIL_HELPER_TITLE": "Why do we need an email address?",
+    "EMAIL_HELPER_TEXT": "We'll use the email address to send information and reminders about this jury service."
+  },
+
+  "THIRD_PARTY_ELIGIBILITY": {
+    "HEADER": "Do you qualify for jury service?",
+    "PARAGRAPH_1": "The answers you have given so far mean that you might not be able to do jury service.",
+    "PARAGRAPH_2": "Please carry on with your summons reply. We need more information to check if you can do jury service or not."
+  }
+}

@@ -1,0 +1,122 @@
+{% extends "./layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.PRIVACY_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Privacy Policy{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <h1 class="heading-xlarge">{{ texts.PRIVACY_PAGE.HEADING }}</h1>
+
+    <p class="lede">{{ texts.PRIVACY_PAGE.USE_THE_REPLY_TO_JURY_SERVICE }}</p>
+
+    <h2 class="heading-large">{{ texts.PRIVACY_PAGE.TERMS_AND_CONDITIONS_HEADER }}</h2>
+
+    <h3 class="heading-medium">{{ texts.PRIVACY_PAGE.GENERAL_HEADER }}</h3>
+
+    <p>{{ texts.PRIVACY_PAGE.GENERAL_TEXT_PARAGRAPH_ONE }}</p>
+    <p>{{ texts.PRIVACY_PAGE.GENERAL_TEXT_PARAGRAPH_TWO }}</p>
+
+    <h3 class="heading-medium">{{ texts.PRIVACY_PAGE.APPLICABLE_LAW_HEADER}}</h3>
+
+    <p>{{ texts.PRIVACY_PAGE.APPLICABLE_LAW_TEXT }}</p>
+    <ul class="list list-bullet">
+      <li>{{ texts.PRIVACY_PAGE.APPLICABLE_LAW_LIST.LIST_ITEM_ONE }}</li>
+      <li>{{ texts.PRIVACY_PAGE.APPLICABLE_LAW_LIST.LIST_ITEM_TWO }}</li>
+      <li>{{ texts.PRIVACY_PAGE.APPLICABLE_LAW_LIST.LIST_ITEM_THREE }}</li>
+      <li>{{ texts.PRIVACY_PAGE.APPLICABLE_LAW_LIST.LIST_ITEM_FOUR }}</li>
+      <li>{{ texts.PRIVACY_PAGE.APPLICABLE_LAW_LIST.LIST_ITEM_FIVE }}</li>
+      <li>{{ texts.PRIVACY_PAGE.APPLICABLE_LAW_LIST.LIST_ITEM_SIX }}</li>
+      <li>{{ texts.PRIVACY_PAGE.APPLICABLE_LAW_LIST.LIST_ITEM_SEVEN }}</li>
+      <li>{{ texts.PRIVACY_PAGE.APPLICABLE_LAW_LIST.LIST_ITEM_EIGHT }}</li>
+      <li>{{ texts.PRIVACY_PAGE.APPLICABLE_LAW_LIST.LIST_ITEM_NINE }}</li>
+      <li>{{ texts.PRIVACY_PAGE.APPLICABLE_LAW_LIST.LIST_ITEM_TEN }}</li>
+      <li>{{ texts.PRIVACY_PAGE.APPLICABLE_LAW_LIST.LIST_ITEM_ELEVEN }}</li>
+      <li>{{ texts.PRIVACY_PAGE.APPLICABLE_LAW_LIST.LIST_ITEM_TWELVE }}</li>
+    </ul>
+
+    <h3 class="heading-medium">{{ texts.PRIVACY_PAGE.USING_SERVICE_RESPONSIBLY_HEADER }}</h3>
+    <p>{{ texts.PRIVACY_PAGE.USING_SERVICE_RESPONSIBLY_TEXT_PARAGRAPH_ONE }}</p>
+    <p>{{ texts.PRIVACY_PAGE.USING_SERVICE_RESPONSIBLY_TEXT_PARAGRAPH_TWO }}</p>
+    <p>{{ texts.PRIVACY_PAGE.USING_SERVICE_RESPONSIBLY_TEXT_PARAGRAPH_THREE }}</p>
+    <p>{{ texts.PRIVACY_PAGE.USING_SERVICE_RESPONSIBLY_TEXT_PARAGRAPH_FOUR }}</p>
+
+    <h2 class="heading-large">{{ texts.PRIVACY_PAGE.PRIVACY_POLICY_HEADER }}</h2>
+
+    <h3 class="heading-medium">{{ texts.PRIVACY_PAGE.INFORMATION_PROVIDED_SUBHEADER }}</h3>
+    <p>{{ texts.PRIVACY_PAGE.INFORMATION_PROVIDED_TEXT_PARAGRAPH_ONE }}</p>
+    <p>{{ texts.PRIVACY_PAGE.INFORMATION_PROVIDED_TEXT_PARAGRAPH_TWO }}</p>
+
+    <h3 class="heading-medium">{{ texts.PRIVACY_PAGE.HOW_WE_USE_YOUR_INFORMATION_SUBHEADER }}</h3>
+    <p>{{ texts.PRIVACY_PAGE.HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_ONE }}</p>
+    <p>{{ texts.PRIVACY_PAGE.HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_TWO }}</p>
+    <p>{{ texts.PRIVACY_PAGE.HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_THREE }}</p>
+    <p>{{ texts.PRIVACY_PAGE.HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_FOUR }}</p>
+    <p>{{ texts.PRIVACY_PAGE.HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_FIVE }}</p>
+    <p>{{ texts.PRIVACY_PAGE.HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_SIX }}</p>
+
+    <a href={{ texts.PRIVACY_PAGE.DATA_PROTECTION_LINK }}>{{ texts.PRIVACY_PAGE.DATA_PROTECTION_LINK }}</a>
+
+    <br/>
+    <br/>
+
+    <p>{{ texts.PRIVACY_PAGE.HOW_WE_USE_YOUR_INFORMATION_LIST.LIST_HEADER }}</p>
+    <ul class="list list-bullet">
+      <li>{{ texts.PRIVACY_PAGE.HOW_WE_USE_YOUR_INFORMATION_LIST.LIST_ITEM_ONE }}</li>
+      <li>{{ texts.PRIVACY_PAGE.HOW_WE_USE_YOUR_INFORMATION_LIST.LIST_ITEM_TWO }}</li>
+      <li>{{ texts.PRIVACY_PAGE.HOW_WE_USE_YOUR_INFORMATION_LIST.LIST_ITEM_THREE }}</li>
+    </ul>
+
+    <p>{{ texts.PRIVACY_PAGE.SHARE_INFORMATION_TEXT_PARAGRAPH_ONE }}</p>
+    <p>{{ texts.PRIVACY_PAGE.SHARE_INFORMATION_TEXT_PARAGRAPH_TWO }}</p>
+    <p>{{ texts.PRIVACY_PAGE.SHARE_INFORMATION_TEXT_PARAGRAPH_THREE }}</p>
+
+    <p>{{ texts.PRIVACY_PAGE.SHARE_INFORMATION_LIST.LIST_HEADER }}</p>
+    <ul class="list list-bullet">
+      <li> {{ texts.PRIVACY_PAGE.SHARE_INFORMATION_LIST.LIST_ITEM_ONE }} </li>
+      <li> {{ texts.PRIVACY_PAGE.SHARE_INFORMATION_LIST.LIST_ITEM_TWO }} </li>
+      <li> {{ texts.PRIVACY_PAGE.SHARE_INFORMATION_LIST.LIST_ITEM_THREE }} </li>
+    </ul>
+
+    <p>{{ texts.PRIVACY_PAGE.SHARE_INFORMATION_HELP_LIST.LIST_HEADER }}</p>
+    <ul class="list list-bullet">
+      <li> {{ texts.PRIVACY_PAGE.SHARE_INFORMATION_HELP_LIST.LIST_ITEM_ONE }} </li>
+      <li> {{ texts.PRIVACY_PAGE.SHARE_INFORMATION_HELP_LIST.LIST_ITEM_TWO }} </li>
+      <li> {{ texts.PRIVACY_PAGE.SHARE_INFORMATION_HELP_LIST.LIST_ITEM_THREE }} </li>
+    </ul>
+
+    <p>{{ texts.PRIVACY_PAGE.WE_CANNOT_IDENTIFY_TEXT }}</p>
+
+    <h3 class="heading-medium">{{ texts.PRIVACY_PAGE.WHERE_IS_YOUR_DATA_STORED_HEADER }}</h3>
+    <p>{{ texts.PRIVACY_PAGE.WHERE_IS_YOUR_DATA_STORED_TEXT }}</p>
+
+    <h3 class="heading-medium">{{ texts.PRIVACY_PAGE.KEEPING_DATA_SECURED_HEADER }}</h3>
+    <p>{{ texts.PRIVACY_PAGE.KEEPING_DATA_SECURED_TEXT }}</p>
+
+    <h3 class="heading-medium">{{ texts.PRIVACY_PAGE.TRANSMIT_DATA_HEADER }}</h3>
+    <p>{{ texts.PRIVACY_PAGE.TRANSMIT_DATA_TEXT_PARAGRAPH_ONE }}</p>
+    <p>{{ texts.PRIVACY_PAGE.TRANSMIT_DATA_TEXT_PARAGRAPH_TWO }}</p>
+
+    <h3 class="heading-medium">{{ texts.PRIVACY_PAGE.DISCLOSING_INFORMATION_HEADER }}</h3>
+    <p>{{ texts.PRIVACY_PAGE.DISCLOSING_INFORMATION_TEXT }}</p>
+
+    <h3 class="heading-medium">{{ texts.PRIVACY_PAGE.HOW_WE_MANAGE_SESSION_HEADER }}</h3>
+    <p>{{ texts.PRIVACY_PAGE.HOW_WE_MANAGE_SESSION_TEXT_PARAGRAPH_ONE }}</p>
+    <p>{{ texts.PRIVACY_PAGE.HOW_WE_MANAGE_SESSION_TEXT_PARAGRAPH_TWO }}</p>
+
+    <h3 class="heading-medium">{{ texts.PRIVACY_PAGE.DATA_PROTECTION_HEADER }}</h3>
+    <p>{{ texts.PRIVACY_PAGE.DATA_PROTECTION_TEXT_PARAGRAPH_ONE }}</p>
+    <p>{{ texts.PRIVACY_PAGE.DATA_PROTECTION_TEXT_PARAGRAPH_TWO }}</p>
+
+    <h3 class="heading-medium">{{ texts.PRIVACY_PAGE.DISCLAIMER_HEADER }}</h3>
+    <p> {{ texts.PRIVACY_PAGE.DISCLAIMER_TEXT_PARAGRAPH_ONE }} </p>
+    <p> {{ texts.PRIVACY_PAGE.DISCLAIMER_TEXT_PARAGRAPH_TWO }} </p>
+
+  </div>
+</div>
+
+{% endblock %}

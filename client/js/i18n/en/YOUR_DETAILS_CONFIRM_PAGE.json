@@ -1,0 +1,11 @@
+{
+  "HEADING": "Confirm your date of birth",
+  "HEADING_OB": "Confirm the date of birth for the person you're answering for",
+
+  "DOB_CURRENT_VALUE": "You said your date of birth was {{ formattedDob }}.",
+  "DOB_CURRENT_VALUE_OB": "You said the person's date of birth was {{ formattedDob }}.",
+  "DOB_CURRENT_AGE": "This makes you {{ currentAge }} years old.",
+  "DOB_CURRENT_AGE_OB": "That makes them {{ currentAge }} years old.",
+  "DOB_CONFIRM_MESSAGE": "Is your date of birth correct?",
+  "DOB_CONFIRM_MESSAGE_OB": "Is the date of birth correct?"
+}

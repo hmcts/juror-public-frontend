@@ -1,0 +1,84 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.DEFERRAL_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.DEFERRAL_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Deferral{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">
+      {% if user.thirdParty == 'Yes' %}
+      {{ texts.DEFERRAL_PAGE.HEADING_OB }}
+      {% else %}
+      {{ texts.DEFERRAL_PAGE.HEADING }}
+      {% endif %}
+    </h1>
+
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('steps.confirm.date.deferral.post') }}" method="post">
+
+      <div class="form-group {% if errors.items['deferralReason'] %}error{% endif %}" id="deferralReasonGroup">
+        <label class="form-label" for="deferralReason">
+          <strong class="bold-small">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.DEFERRAL_PAGE.REASON_FIELD_TITLE_OB }}
+            {% else %}
+            {{ texts.DEFERRAL_PAGE.REASON_FIELD_TITLE }}
+            {% endif %}
+          </strong>
+          <span class="form-hint">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.DEFERRAL_PAGE.REASON_FIELD_HINT_OB }}
+            {% else %}
+            {{ texts.DEFERRAL_PAGE.REASON_FIELD_HINT }}
+            {% endif %}
+          </span>
+          {% if errors.items['deferralReason'] %}<span class="error-message">
+            {{ errors.items['deferralReason'][0].details }}
+          </span>{% endif %}
+        </label>
+        <textarea class="form-control" name="deferralReason" id="deferralReason" cols="30" rows="4" maxlength="1000">{{ user.deferral.reason }}</textarea>
+      </div>
+
+      <div class="form-group">
+        <details>
+          <summary {% if trackingCode %}onclick="trackVirtualPageViews('What is an acceptable reason?')"{% endif %}>{{ texts.DEFERRAL_PAGE.ACCEPTABLE_SUMMARY }}</span></summary>
+          <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+            <p>
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.DEFERRAL_PAGE.ACCEPTABLE_INFO_OB }}
+              {% else %}
+              {{ texts.DEFERRAL_PAGE.ACCEPTABLE_INFO }}
+              {% endif %}
+            </p>
+
+            <ul class="list list-bullet">
+              <li>{{ texts.DEFERRAL_PAGE.ACCEPTABLE_LIST_ITEM_1 }}</li>
+              <li>{{ texts.DEFERRAL_PAGE.ACCEPTABLE_LIST_ITEM_2 }}</li>
+              <li>{{ texts.DEFERRAL_PAGE.ACCEPTABLE_LIST_ITEM_3 }}</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      {# Submit form #}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

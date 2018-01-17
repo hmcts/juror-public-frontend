@@ -1,0 +1,27 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.INFO_PAGE.RESIDENCY.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">{{ texts.INFO_PAGE.RESIDENCY.HEADING }}</h1>
+
+    {% if user.thirdParty == 'Yes' %}
+    <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_THIRD_PARTY }}</p>
+    <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_THIRD_PARTY }}</p>
+    {% else %}
+    <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_MAIN }}</p>
+    <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_MAIN }}</p>
+    {% endif %}
+
+  </div>
+
+</div>
+
+{% endblock %}

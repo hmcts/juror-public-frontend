@@ -1,0 +1,99 @@
+{% extends "./layouts/default.njk" %}
+
+{% block page_title %}
+  Configure Prototype - GOV.UK
+{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">Configure the prototype</h1>
+
+    <p class="lede">
+      Enter the details of the user to set up the prototype for usability testing.
+    </p>
+
+    <br>
+    <p>
+      <a href="/autoconfigure" class="populate-fields">Automatically populate fields</a>
+    </p>
+    <br>
+
+    <form action="{{ url('configure.post') }}" method="POST">
+
+      <div class="form-group">
+        <label class="form-label" for="jurorNumber"><strong class="bold-small">9-digit juror number</strong></label>
+        <input class="form-control" name="jurorNumber" id="jurorNumber" type="text" pattern="[0-9]*" minlength="9" maxlength="9">
+      </div>
+
+
+      <fieldset>
+        <legend class="bold-medium">Name</legend>
+        <br>
+
+        <div class="form-group" id="titleGroup">
+          <label class="form-label" for="title">Title</label>
+          <input type="text" class="form-control" name="title" id="title" value="{{ title }}" maxlength="10">
+        </div>
+
+        <div class="form-group" id="firstNameGroup">
+          <label class="form-label" for="firstName">First name</label>
+          <input type="text" class="form-control" name="firstName" id="firstName" value="{{ firstName }}">
+        </div>
+
+        <div class="form-group" id="lastNameGroup">
+          <label class="form-label" for="lastName">Last name</label>
+          <input type="text" class="form-control" name="lastName" id="lastName" value="{{ lastName }}">
+        </div>
+
+      </fieldset>
+
+
+      <fieldset>
+        <legend class="bold-medium">Address</legend>
+        <br>
+
+        <div class="form-group">
+          <label class="form-label" for="addressLineOne">Building and street</label>
+          <input class="form-control" name="addressLineOne" id="addressLineOne" type="text" value="{{ addressLineOne }}">
+        </div>
+
+        <div class="form-group">
+          <label for="addressLineTwo" class="visuallyhidden">Address Line Two</label>
+          <input class="form-control" name="addressLineTwo" id="addressLineTwo" type="text" value="{{ addressLineTwo }}">
+        </div>
+
+        <div class="form-group">
+          <label for="addressLineThree" class="visuallyhidden">Address Line Three</label>
+          <input class="form-control" name="addressLineThree" id="addressLineThree" type="text" value="{{ addressLineThree }}">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="addressTown">Town or city</label>
+          <input class="form-control" name="addressTown" id="addressTown" type="text" value="{{ addressTown }}">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="addressCounty">County</label>
+          <input class="form-control" name="addressCounty" id="addressCounty" type="text" value="{{ addressCounty }}">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="addressPostcode">Postcode</label>
+          <input class="form-control" name="addressPostcode" id="addressPostcode" type="text" value="{{ addressPostcode }}">
+        </div>
+      </fieldset>
+
+      <input class="button-configure" type="submit" value="Generate prototype">
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

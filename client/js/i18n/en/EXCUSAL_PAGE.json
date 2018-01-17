@@ -1,0 +1,11 @@
+{
+  "HEADING": "Request to be excused from jury service",
+  "PROMPT": "Please say why you cannot do jury service in the next 12 months",
+  "PROMPT_OB": "Please say why the person you're replying for cannot do jury service in the next 12 months",
+  "HINT": "We may get in touch to find out more or for proof of your reason.",
+  "HINT_OB": "We may get in touch to find out more or for proof of this reason.",
+  "ERROR": "Please say why you need to be excused",
+  "EVIDENCE_QUESTION": "What evidence will I need to provide?",
+  "EVIDENCE_ANSWER": "You may need to prove your reason if you can't do jury service during the next 12 months. For example, if you are too ill, we might ask to see a letter from your doctor.",
+  "EVIDENCE_ANSWER_OB": "You may need to prove the reason if the person you're answering for can't do jury service during the next 12 months. For example, if they are too ill, we might ask to see a letter from their doctor."
+}

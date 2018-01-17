@@ -1,0 +1,63 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.QUALIFY_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.QUALIFY_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Eligibility Bail{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">
+      {% if user.thirdParty == 'Yes' %}
+      {{ texts.QUALIFY_PAGE.HEADING_OB }}
+      {% else %}
+      {{ texts.QUALIFY_PAGE.HEADING }}
+      {% endif %}
+    </h1>
+
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('steps.qualify.bail.post') }}" method="post">
+      <div class="form-group inline {% if errors.items['onBail'] %}error{% endif %}" id="onBailGroup">
+          <span class="form-label-bold">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.QUALIFY_PAGE.QUESTION_3_OB }}
+            {% else %}
+            {{ texts.QUALIFY_PAGE.QUESTION_3 }}
+            {% endif %}
+          </span>
+          <span class="form-hint" id="onBailHint">{{ texts.QUALIFY_PAGE.UNSURE_PROMPT }} <a href="{{ url('steps.qualify.bail.info') }}">{{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}</a></span>
+          {% if errors.items['onBail'] %} <span class="error-message"> {{ texts.QUALIFY_PAGE.MISSING }} </span> {% endif %}
+        <label class="block-label selection-button-radio" for="onBail-Yes" data-target="onBailDetailsGroup">
+          <input id="onBail-Yes" type="radio" name="onBail" class="store-updated-information" value="Yes" {% if user.qualify.onBail.answer == 'Yes' %}checked="checked"{% endif %}>
+          {{ texts.QUALIFY_PAGE.YES }}
+        </label>
+        <label class="block-label selection-button-radio" for="onBail-No">
+          <input id="onBail-No" type="radio" name="onBail" class="store-updated-information" value="No" {% if user.qualify.onBail.answer == 'No' %}checked="checked"{% endif %}>
+          {{ texts.QUALIFY_PAGE.NO }}
+        </label>
+
+        <div class="panel panel-border-narrow {% if user.qualify.onBail.answer === 'Yes' %}{% else %}js-hidden{% endif %} {% if errors.items['onBailDetails'] %}error{% endif %}" id="onBailDetailsGroup">
+          <label class="form-label" for="onBailDetails">{{ texts.QUALIFY_PAGE.DETAILS }}</label>
+          <textarea class="form-control" name="onBailDetails" id="onBailDetails" maxlength="1000">{{ user.qualify.onBail.details }}</textarea>
+        </div>
+      </div>
+
+      {# Submit form #}
+      <input type="hidden" name="_csrf" id="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

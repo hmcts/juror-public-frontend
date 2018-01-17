@@ -1,0 +1,85 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Confirm your date of birth{% endblock %}
+
+{% block content %}
+
+  <h1 class="heading-xlarge">
+    {% if user.thirdParty == 'Yes' %}
+    {{ texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING_OB }}
+    {% else %}
+    {{ texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING }}
+    {% endif %}
+  </h1>
+
+  {% include "../../includes/errors.njk" %}
+
+  {% if user.thirdParty == 'Yes' %}
+  <p>{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE_OB' | translate(texts, { formattedDob: formattedDob }) }}</p>
+  <p>{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE_OB' | translate(texts, { currentAge: currentAge }) }}</p>
+  <p>{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE_OB }}</p>
+  {% else %}
+  <p>{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE' | translate(texts, { formattedDob: formattedDob }) }}</p>
+  <p>{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE' | translate(texts, { currentAge: currentAge }) }}</p>
+  <p>{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE }}</p>
+  {% endif %}
+
+  <form action="{{ url('steps.your.details.confirm.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+
+    <fieldset class="form-group inline-edit {% if errors.items['dateOfBirth'] %}error{% endif %}" id="dateOfBirthGroup">
+
+      <legend>
+        <strong class="bold-small">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_SUBTITLE }}</strong>
+      </legend>
+
+      <div class="inline-section {% if errors.items %}hide{% else %}show{% endif %}">
+        {{ formattedDob }}&nbsp;&nbsp;&nbsp;
+        <a href="#dateOfBirthGroup" class="inline-edit-toggle" id="changeDob">{{ texts.INTERFACE.FORM_CHANGE_LABEL }}</a>
+      </div>
+
+      <div class="inline-section {% if errors.items %}show{% else %}hide{% endif %}" id="dateOfBirthGroup">
+        <span class="form-hint" id="dob-hint">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER }}</span>
+        {% if errors.items['dateOfBirth'][0].fields %}
+          {% for errorField in errors.items['dateOfBirth'][0].fields %}
+          {% if errorField !== 'dateOfBirth' %}
+            <span class="error-message dateOfBirthErrorMessage" id="{{ errorField }}ErrorMessage">{{ errors.items['dateOfBirth'][0].details[loop.index0] }}</span>
+          {% endif %}
+          {% endfor %}
+        {% else %}
+          {% if errors.items['dateOfBirth'] %}<span class="error-message dateOfBirthErrorMessage" id="dateOfBirthErrorMessage">{{ errors.items['dateOfBirth'][0].details }}</span>{% endif %}
+        {% endif %}
+
+        <div class="form-date">
+          <div class="form-group form-group-day">
+            <label class="form-label" for="dobDay">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_DAY_LABEL }}</label>
+            <input class="form-control focus-select-all" id="dobDay" name="dobDay" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobDay }}" pattern="[0-9]*" min="1" max="31" minlength="1" maxlength="2" aria-describedby="dob-hint">
+          </div>
+          <div class="form-group form-group-month">
+            <label class="form-label" for="dobMonth">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_MONTH_LABEL }}</label>
+            <input class="form-control focus-select-all" id="dobMonth" name="dobMonth" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobMonth }}" pattern="[0-9]*" min="1" max="12" maxlength="2" aria-describedby="dob-hint">
+          </div>
+          <div class="form-group form-group-year">
+            <label class="form-label" for="dobYear">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_YEAR_LABEL }}</label>
+            <input class="form-control focus-select-all" id="dobYear" name="dobYear" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobYear }}" pattern="[0-9]*" maxlength="4" aria-describedby="dob-hint">
+          </div>
+        </div>
+      </div>
+
+    </fieldset>
+
+
+    {# Submit form #}
+    <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+    <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+  </form>
+
+
+{% endblock %}

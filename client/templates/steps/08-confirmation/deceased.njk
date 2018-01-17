@@ -1,0 +1,30 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+{{ texts.CONFIRMATION.TITLE }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Confirmation Deceased{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+    {% include "./_hero.njk" %}
+
+    <h2 class="heading-medium">{{ texts.CONFIRMATION.NEXT_INFO }}</h2>
+    <p>{{ texts.CONFIRMATION.NO_ACTION }}</p>
+
+    <h2 class="heading-medium">{{ texts.CONFIRMATION.DECEASED.APOLOGY }}</h2>
+    <p>
+      {{ texts.CONFIRMATION.DECEASED.APOLOGY_INFO }}
+    </p>
+
+    {% include "../../includes/feedback.njk" %}
+
+  </div>
+
+</div>
+
+{% endblock %}

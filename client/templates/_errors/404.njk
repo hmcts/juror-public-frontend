@@ -1,0 +1,13 @@
+{% extends "../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.ERRORS['404'] }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Not found{% endblock %}
+
+{% block content %}
+<h1 class="heading-xlarge">{{ texts.ERRORS.NOT_FOUND }}</h1>
+<p>{{ texts.ERRORS.CHECK_CORRECT }}</p>
+<p>{{ texts.INTERFACE.YOU_CAN }} <a href="/">{{ texts.INTERFACE.BROWSE_FROM_HOME }}</a> {{ texts.INTERFACE.FIND_INFO }}</p>
+{% endblock %}

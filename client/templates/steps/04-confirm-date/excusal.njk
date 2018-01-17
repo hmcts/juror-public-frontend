@@ -1,0 +1,70 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.EXCUSAL_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Excusal{% endblock %}
+
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">{{ texts.EXCUSAL_PAGE.HEADING }}</h1>
+
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('steps.confirm.date.excusal.post') }}" method="post">
+
+      <div class="form-group {% if errors.items['excusalReason'] %}error{% endif %} id="excusalReasonGroup"">
+        <label class="form-label" for="excusalReason">
+          <strong class="bold-small">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.EXCUSAL_PAGE.PROMPT_OB }}
+            {% else %}
+            {{ texts.EXCUSAL_PAGE.PROMPT }}
+            {% endif %}
+          </strong>
+          <span class="form-hint">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.EXCUSAL_PAGE.HINT_OB }}
+            {% else %}
+            {{ texts.EXCUSAL_PAGE.HINT }}
+            {% endif %}
+          </span>
+          {% if errors.items['excusalReason'] %}<span class="error-message">
+            {{ errors.items['excusalReason'][0].details }}
+          </span>{% endif %}
+        </label>
+        <textarea class="form-control" name="excusalReason" id="excusalReason" cols="30" rows="4" maxlength="1000">{{ user.excusal.reason }}</textarea>
+      </div>
+
+      <div class="form-group">
+        <details>
+          <summary {% if trackingCode %}onclick="trackVirtualPageViews('What evidence will I need to provide')"{% endif %}><span class="summary">{{ texts.EXCUSAL_PAGE.EVIDENCE_QUESTION }}</span></summary>
+          <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+            <p>
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.EXCUSAL_PAGE.EVIDENCE_ANSWER_OB }}
+              {% else %}
+              {{ texts.EXCUSAL_PAGE.EVIDENCE_ANSWER }}
+              {% endif %}
+            </p>
+          </div>
+        </details>
+      </div>
+
+
+      {# Submit form #}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

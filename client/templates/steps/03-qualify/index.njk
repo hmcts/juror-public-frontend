@@ -1,0 +1,42 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.QUALIFY_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.QUALIFY_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Eligibility{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">
+      {% if user.thirdParty == 'Yes' %}
+      {{ texts.QUALIFY_PAGE.HEADING_OB }}
+      {% else %}
+      {{ texts.QUALIFY_PAGE.HEADING }}
+      {% endif %}
+    </h1>
+
+    <p>
+      {% if user.thirdParty == 'Yes' %}
+        {{ texts.QUALIFY_PAGE.MAIN_OB }}
+      {% else %}
+        {{ texts.QUALIFY_PAGE.MAIN }}
+      {% endif %}
+    </p>
+
+    {% include "../../includes/errors.njk" %}
+
+    <a class="button" id="continue" href="{{ url('steps.qualify.residency.get') }}" role="button">{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}</a>
+  </div>
+
+</div>
+
+{% endblock %}

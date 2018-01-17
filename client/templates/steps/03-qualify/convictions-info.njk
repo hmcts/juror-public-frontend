@@ -1,0 +1,84 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.INFO_PAGE.CONVICTIONS.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">{{ texts.INFO_PAGE.CONVICTIONS.HEADING }}</h1>
+
+    {% if user.thirdParty == 'Yes' %}
+
+    <p>{{ texts.INFO_PAGE.CONVICTIONS.FIRST_THIRD_PARTY | safe }}</p>
+    <p>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_THIRD_PARTY | safe }}</p>
+    <ul class="list list-bullet">
+      <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_THIRD_PARTY.ITEM_1 }}</li>
+      <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_THIRD_PARTY.ITEM_2 }}</li>
+      <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_THIRD_PARTY.ITEM_3 }}</li>
+      <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_THIRD_PARTY.ITEM_4 }}</li>
+      <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_THIRD_PARTY.ITEM_5 }}</li>
+    </ul>
+
+    <p>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_LIST_THIRD_PARTY.TITLE | safe }}</p>
+    <ul class="list list-bullet">
+      <li>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_LIST_THIRD_PARTY.ITEM_1 }}</li>
+      <li>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_LIST_THIRD_PARTY.ITEM_2 }}</li>
+    </ul>
+
+    <p>{{ texts.INFO_PAGE.CONVICTIONS.THIRD_THIRD_PARTY | safe  }}</p>
+    <p>{{ texts.INFO_PAGE.CONVICTIONS.FOURTH_THIRD_PARTY | safe  }}</p>
+
+    <div class="notice">
+      <i class="icon icon-important">
+        <span class="visually-hidden">{{ texts.INTERFACE.LABEL_WARNING }}</span>
+      </i>
+      <p>
+        <strong class="bold-small">{{ texts.INFO_PAGE.CONVICTIONS.WARNING_THIRD_PARTY }}</strong>
+      </p>
+    </div>
+
+    <p>{{ texts.INFO_PAGE.CONVICTIONS.FIFTH_THIRD_PARTY }}</p>
+
+    {% else %}
+
+    <p>{{ texts.INFO_PAGE.CONVICTIONS.FIRST_MAIN | safe }}</p>
+    <p>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_MAIN | safe }}</p>
+    <ul class="list list-bullet">
+      <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_MAIN.ITEM_1 }}</li>
+      <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_MAIN.ITEM_2 }}</li>
+      <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_MAIN.ITEM_3 }}</li>
+      <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_MAIN.ITEM_4 }}</li>
+      <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_MAIN.ITEM_5 }}</li>
+    </ul>
+
+    <p>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_LIST_MAIN.TITLE | safe }}</p>
+    <ul class="list list-bullet">
+      <li>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_LIST_MAIN.ITEM_1 }}</li>
+      <li>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_LIST_MAIN.ITEM_2 }}</li>
+    </ul>
+
+    <p>{{ texts.INFO_PAGE.CONVICTIONS.THIRD_MAIN | safe }}</p>
+    <p>{{ texts.INFO_PAGE.CONVICTIONS.FOURTH_MAIN | safe  }}</p>
+
+    <div class="notice">
+      <i class="icon icon-important">
+        <span class="visually-hidden">{{ texts.INTERFACE.LABEL_WARNING }}</span>
+      </i>
+
+      <p>
+        <strong class="bold-small">{{ texts.INFO_PAGE.CONVICTIONS.WARNING_MAIN }}</strong>
+      </p>
+    </div>
+
+    {% endif %}
+
+  </div>
+
+</div>
+
+{% endblock %}

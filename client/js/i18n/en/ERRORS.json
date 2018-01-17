@@ -1,0 +1,8 @@
+{
+  "403": "403 Forbidden",
+  "404": "404 Page Not Found",
+  "FORBIDDEN": "Forbidden",
+  "NO_PERMISSION": "You do not have permission to access this content",
+  "NOT_FOUND": "Page not found",
+  "CHECK_CORRECT": "If you entered a web address please check it was correct."
+}

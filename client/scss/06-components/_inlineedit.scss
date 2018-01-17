@@ -1,0 +1,43 @@
+.inline-edit {
+
+  .inline-section {
+
+    &.primary {
+      display: none;
+    }
+
+    &.secondary {
+      display: block;
+    }
+
+    &.show {
+      display: block;
+    }
+
+    &.hide {
+      display: none;
+    }
+
+    &.open {
+      display: block;
+    }
+
+    &.closed {
+      display: none;
+    }
+
+  }
+
+  .inline-edit-toggle {
+    display: none;
+
+    &.show {
+      display: inline-block;
+    }
+  }
+
+  input,
+  textarea {
+    width: 100%;
+  }
+}

@@ -1,0 +1,155 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.REASONABLE_ADJUSTMENT_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.REASONABLE_ADJUSTMENT_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Reasonable Adjustments{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">
+      {% if user.thirdParty == 'Yes' %}
+      {{ texts.REASONABLE_ADJUSTMENT_PAGE.HEADING_OB }}
+      {% else %}
+      {{ texts.REASONABLE_ADJUSTMENT_PAGE.HEADING }}
+      {% endif %}
+    </h1>
+
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('steps.assistance.post') }}" method="post">
+
+      <div class="form-group inline {% if errors.items['assistanceNeeded'] %}error{% endif %}" id="assistanceNeededGroup">
+        <legend>
+          <span class="form-label-bold">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.REASONABLE_ADJUSTMENT_PAGE.INTRO_PARAGRAPH_OB }}
+            {% else %}
+            {{ texts.REASONABLE_ADJUSTMENT_PAGE.INTRO_PARAGRAPH }}
+            {% endif %}
+          </span>
+          {% if errors.items['assistanceNeeded'] %}<span class="error-message">{{ errors.items['assistanceNeeded'][0].details }}</span>{% endif %}
+        </legend>
+        <label class="block-label selection-button-radio" data-target="assistanceNeededExpanded" for="assistanceNeeded-Yes">
+          <input id="assistanceNeeded-Yes" type="radio" name="assistanceNeeded" value="Yes" {% if user.assistanceNeeded == 'Yes' %}checked="checked"{% endif %}>
+          {{ texts.INTERFACE.LABEL_YES }}
+        </label>
+        <label class="block-label selection-button-radio" for="assistanceNeeded-No">
+          <input id="assistanceNeeded-No" type="radio" name="assistanceNeeded" value="No" {% if user.assistanceNeeded == 'No' %}checked="checked"{% endif %}>
+          {{ texts.INTERFACE.LABEL_NO }}
+        </label>
+      </div>
+
+
+      <div class="panel panel-border-narrow {% if user.assistanceNeeded == 'Yes' %}{% else %}js-hidden{% endif %} {% if errors.items['assistanceType'] %}error{% endif %}" id="assistanceNeededExpanded">
+        <p>
+          <strong class="bold-small">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_DESCRIPTION_OB }}
+            {% else %}
+            {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_DESCRIPTION }}
+            {% endif %}
+          </strong>
+          {% if errors.items['assistanceType'] %}<span class="error-message">{{ errors.items['assistanceType'][0].details }}</span>{% endif %}
+        </p>
+
+        <div class="form-group">
+          <label class="block-label selection-button-checkbox" for="assistanceType-mobility">
+            <input type="checkbox" name="assistanceType" id="assistanceType-mobility" value="Limited mobility" {% if assistanceActive.mobility %}checked="checked"{% endif %}>
+            {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_ANSWER_MOBILITY }}
+          </label>
+
+          <label class="block-label selection-button-checkbox" for="assistanceType-hearing">
+            <input type="checkbox" name="assistanceType" id="assistanceType-hearing" value="Hearing impairment" {% if assistanceActive.hearing %}checked="checked"{% endif %}>
+            {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_ANSWER_HEARING }}
+          </label>
+
+          <label class="block-label selection-button-checkbox" for="assistanceType-diabetes">
+            <input type="checkbox" name="assistanceType" id="assistanceType-diabetes" value="Diabetes" {% if assistanceActive.diabetes %}checked="checked"{% endif %}>
+            {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_ANSWER_DIABETES }}
+          </label>
+
+          <label class="block-label selection-button-checkbox" for="assistanceType-sight">
+            <input type="checkbox" name="assistanceType" id="assistanceType-sight" value="Severe sight impairment" {% if assistanceActive.sight %}checked="checked"{% endif %}>
+            {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_ANSWER_SIGHT }}
+          </label>
+
+          <label class="block-label selection-button-checkbox" for="assistanceType-learningDisability">
+            <input type="checkbox" name="assistanceType" id="assistanceType-learningDisability" value="Learning disability" {% if assistanceActive.learningDisability %}checked="checked"{% endif %}>
+            {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_ANSWER_LEARNING_DISABILITY }}
+          </label>
+
+          <label class="block-label selection-button-checkbox toggle-reset" for="assistanceType-other" data-target="assistanceTypeOtherExpanded">
+            <input type="checkbox" name="assistanceType" id="assistanceType-other" value="Other" {% if assistanceActive.other %}checked="checked"{% endif %}>
+            {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_ANSWER_OTHER }}
+          </label>
+        </div>
+
+        <div class="form-group {% if assistanceActive.other %}{% else %}js-hidden{% endif %} {% if errors.items['assistanceTypeDetails'] %}error{% endif %}" id="assistanceTypeOtherExpanded">
+          <label class="form-label" for="assistanceTypeDetails">
+            <strong class="bold-small">
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_OTHER_DESCRIPTION_OB }}
+              {% else %}
+              {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_OTHER_DESCRIPTION }}
+              {% endif %}
+            </strong>
+          </label>
+          {% if errors.items['assistanceTypeDetails'] %}<span class="error-message">{{ errors.items['assistanceTypeDetails'][0].details }}</span>{% endif %}
+          <textarea class="form-control assistance-text-area" id="assistanceTypeDetails" name="assistanceTypeDetails">{{ user.assistanceTypeDetails }}</textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="assistanceSpecialArrangements">
+            <strong class="bold-small">
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_SPECIAL_DESCRIPTION_OB }}
+              {% else %}
+              {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_SPECIAL_DESCRIPTION }}
+              {% endif %}
+            </strong>
+          </label>
+          <textarea class="form-control assistance-text-area" id="assistanceSpecialArrangements" name="assistanceSpecialArrangements">{{ user.assistanceSpecialArrangements }}</textarea>
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+        <details>
+          <summary {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask for this - reasonable adjustment')"{% endif %}><span class="summary">{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_SUMMARY }}</span></summary>
+          <div id="details-content-0" aria-hidden="true">
+            {% if user.thirdParty == 'Yes' %}
+            <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_1_OB }}</p>
+            <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_2_OB }}</p>
+            <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_3_OB }}</p>
+            {% else %}
+            <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_1 }}</p>
+            <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_2 }}</p>
+            <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_3 }}</p>
+            {% endif %}
+
+          </div>
+        </details>
+      </div>
+
+
+      {# Submit form #}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

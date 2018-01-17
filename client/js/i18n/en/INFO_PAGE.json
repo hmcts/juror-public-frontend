@@ -1,0 +1,100 @@
+{
+  "RESIDENCY": {
+    "HEADING": "Residency - where you live",
+    "FIRST_MAIN": "To do Jury Service, you must have lived in the UK, the Channel Islands (Jersey, Guernsey, Alderney, Sark, Herm, Jethou and Brecqhou) or the Isle of Man for five or more years without any gaps. The five year period must be when you were 13 or older.",
+    "SECOND_MAIN": "If you've applied to UK Visas and Immigration and they haven’t yet made a decision about whether you can live in the UK, you might not be able to do Jury Service. Please check with us by phoning 0300 456 1024",
+    "FIRST_THIRD_PARTY": "To do Jury Service, a person must have lived in the UK, the Channel Islands (Jersey, Guernsey, Alderney, Sark, Herm, Jethou and Brecqhou) or the Isle of Man for five or more years without any gaps. The five year period must be when they were 13 or older.",
+    "SECOND_THIRD_PARTY": "If the person you're answering for has applied to UK Visas and Immigration and doesn't yet know whether they can live in the UK, they might not be able to do Jury Service. Please check with us by phoning 0300 456 1024"
+  },
+
+
+  "MENTAL_HEALTH": {
+    "HEADING": "Mental Health Act 1983 and Mental Capacity Act 2005",
+
+    "DISORDERS": {
+      "TITLE": "Mental disorders",
+
+      "FIRST_MAIN": "Under the Mental Health Act 1983, some people can’t do Jury Service.",
+      "SECOND_MAIN": "If you are detained (this is sometimes called being “sectioned”), in hospital, under a guardianship order or under a community treatment order because of a mental disorder, you can’t be on a jury.",
+      "THIRD_MAIN": "If you suffer from a mental disorder (including depression and anxiety) but you are not being detained, looked after or treated under the Mental Health Act, you can still be on a jury.",
+
+      "FIRST_THIRD_PARTY": "Under the Mental Health Act 1983, some people can’t do Jury Service.",
+      "SECOND_THIRD_PARTY": "If the person you are answering for is detained (this is sometimes called being “sectioned”), in hospital, under a guardianship order or under a community treatment order because of a mental disorder, they can’t be on a jury.",
+      "THIRD_THIRD_PARTY": "If the person suffers from a mental disorder (including depression and anxiety) but they are not being detained, looked after or treated under the Mental Health Act, they can still be on a jury."
+    },
+
+    "CAPACITY": {
+      "TITLE": "Mental capacity",
+
+      "FIRST_MAIN": "If you lack the mental capacity to serve as a juror, you can’t be on a jury. Mental capacity means being able to make a decision for yourself. People who cannot do this are said to lack capacity under the Mental Capacity Act 2005. The lack of capacity must be because of an impairment of or disturbance in the functioning of the mind or brain which may be due to illness, injury, learning disability, or mental health problems.",
+      "LIST_MAIN": {
+        "TITLE": "To be on a jury, a person must be able to:",
+        "ITEM_1": "Understand the information that relates to the decision they want to make.",
+        "ITEM_2": "Remember the information long enough to be able to make the decision.",
+        "ITEM_3": "Weigh up the information available to make the decision.",
+        "ITEM_4": "Communicate the decision by any means."
+      },
+      "SECOND_MAIN": "If you aren’t sure if you can do Jury Service because of a mental disorder or lack of mental capacity, you can phone us on 0300 456 1024 for advice.",
+
+
+      "FIRST_THIRD_PARTY": "If the person you're answering for lacks the mental capacity to serve as a juror, they can’t be on a jury. Mental capacity means a person must be able to make a decision for themself. People who cannot do this are said to lack capacity under the Mental Capacity Act 2005. The lack of capacity must be because of an impairment of or disturbance in the functioning of the mind or brain which may be due to illness, injury, learning disability, or mental health problems.",
+      "LIST_THIRD_PARTY": {
+        "TITLE": "To be on a jury, a person must be able to:",
+        "ITEM_1": "Understand the information that relates to the decision they want to make.",
+        "ITEM_2": "Remember the information long enough to be able to make the decision.",
+        "ITEM_3": "Weigh up the information available to make the decision.",
+        "ITEM_4": "Communicate the decision by any means."
+      },
+      "SECOND_THIRD_PARTY": "If you aren’t sure if the person you're answering for can do Jury Service because of a mental disorder or lack of mental capacity, you can phone us on 0300 456 1024 for advice."
+    }
+  },
+
+
+  "BAIL": {
+    "HEADING": "Bail",
+    "FIRST_MAIN": "If you’re on bail in criminal proceedings, you cannot do Jury Service.",
+    "FIRST_THIRD_PARTY": "If the person you're answering for is on bail in criminal proceedings, they cannot do Jury Service."
+  },
+
+  "CONVICTIONS": {
+    "HEADING": "Convictions",
+
+    "FIRST_MAIN": "You <strong class=\"bold-small\">CAN</strong> do jury service if you have points on your driving license, speeding fines or have been to a speed awareness course, as long as you haven't received any of the sentences below.",
+    "SECOND_MAIN": "You <strong class=\"bold-small\">CAN'T</strong> do jury service if you have ever had one of these criminal sentences in the United Kingdom, the Channel Islands or the Isle of Man. You also can't do jury service if you've had one of these criminal sentences for a service offence under the Armed Forces Act 2006 anywhere in the world. ",
+    "LIST_MAIN": {
+      "ITEM_1": "imprisonment or detention for 5 years or more",
+      "ITEM_2": "imprisonment for public protection or detention for public protection",
+      "ITEM_3": "imprisonment, custody or detention for life",
+      "ITEM_4": "an extended sentence under either of sections 226A, 226B, 227 or 228 of the Criminal Justice Act 2003, (including such a sentence imposed as a result of section 219A, 220, 221A or 222 of the Armed Forces Act 2006) or section 210A of the Criminal Procedure (Scotland) Act 1995;",
+      "ITEM_5": "detention at Her Majesty’s pleasure or during the pleasure of the Secretary of State"
+    },
+    "SECOND_LIST_MAIN": {
+      "TITLE": "You also <strong class=\"bold-small\">CAN'T</strong> do jury service if you have had one of these criminal sentences in the last 10 years:",
+      "ITEM_1": "served any part of a sentence of imprisonment or detention",
+      "ITEM_2": "received a suspended sentence of imprisonment or a suspended order for detention"
+    },
+    "THIRD_MAIN": "You also <strong class=\"bold-small\">CAN'T</strong> do jury service if in the last 10 years in England and Wales you have had a community order (including a community rehabilitation order, community punishment order, community punishment and rehabilitation order, drug treatment and testing order, or a drug abstinence order).",
+    "FOURTH_MAIN": "You also <strong class=\"bold-small\">CAN'T</strong> do jury service if in the last 10 years you have had any similar order under the law of Scotland, Northern Ireland, Isle of Man, any of the Channel Islands, or a community or overseas community order under the Armed Forces Act 2006.",
+    "WARNING_MAIN": "If you serve on a jury when you know you should not for these reasons, you may be committing an offence and may be fined up to £5,000.",
+
+
+    "FIRST_THIRD_PARTY": "A person <strong class=\"bold-small\">CAN</strong> do jury service if they have points on their driving license, speeding fines or have been to a speed awareness course, as long as they haven't received any of the sentences below.",
+    "SECOND_THIRD_PARTY": "A person <strong class=\"bold-small\">CAN'T</strong> do jury service if they have ever had one of these criminal sentences in the United Kingdom, the Channel Islands or the Isle of Man. They also can't do jury service if they've had one of these criminal sentences for a service offence under the Armed Forces Act 2006 anywhere in the world. ",
+    "LIST_THIRD_PARTY": {
+      "ITEM_1": "imprisonment or detention for 5 years or more",
+      "ITEM_2": "imprisonment for public protection or detention for public protection",
+      "ITEM_3": "imprisonment, custody or detention for life",
+      "ITEM_4": "an extended sentence under either of sections 226A, 226B, 227 or 228 of the Criminal Justice Act 2003, (including such a sentence imposed as a result of section 219A, 220, 221A or 222 of the Armed Forces Act 2006) or section 210A of the Criminal Procedure (Scotland) Act 1995;",
+      "ITEM_5": "detention at Her Majesty’s pleasure or during the pleasure of the Secretary of State"
+    },
+    "SECOND_LIST_THIRD_PARTY": {
+      "TITLE": "A person also  <strong class=\"bold-small\">CAN'T</strong> do jury service if they have had one of these criminal sentences in the last 10 years:",
+      "ITEM_1": "served any part of a sentence of imprisonment or detention",
+      "ITEM_2": "received a suspended sentence of imprisonment or a suspended order for detention"
+    },
+    "THIRD_THIRD_PARTY": "A person also CAN'T do jury service if in the last 10 years in England and Wales they have had a community order (including a community rehabilitation order, community punishment order, community punishment and rehabilitation order, drug treatment and testing order, or a drug abstinence order).",
+    "FOURTH_THIRD_PARTY": "A person also CAN'T do jury service if in the last 10 years they have had any similar order under the law of Scotland, Northern Ireland, the Isle of Man, any of the Channel Islands, or a community or overseas community order under the Armed Forces Act 2006.",
+    "FIFTH_THIRD_PARTY": "If you aren't sure about any of this for the person you're answering for, phone us on 0300 456 1024 for advice.",
+    "WARNING_THIRD_PARTY": "If a person serves on a jury when they know they should not for these reasons, they may be committing an offence and may be fined up to £5,000."
+  }
+}

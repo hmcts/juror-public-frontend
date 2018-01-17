@@ -1,0 +1,13 @@
+<div class="nav-wrapper">
+  <nav class="navigation-header-bar">
+    <ul>
+      {% for item in headerMenu %}
+      <li{% if item.active %} class="active"{% endif %}>
+        <a href="{{ item.path }}">
+          {{ item.title }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</div>

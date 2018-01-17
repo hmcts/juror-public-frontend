@@ -1,0 +1,16 @@
+// Mixins
+
+/// Take pixel unit of measurement and converts it to the target. em, rem or percentage based on the contextual font size
+/// @param  {integer} $target         Pixel size to convert into rem
+/// @param  {integer} $context: 16    Base font size, if using ems then this would be the font size of a parent element. Otherwise browsers usually default to 16
+/// @param            $unit: em       The unit to convert pixels to
+/// @return                           Font size in chosen unit
+@function convert($target, $context: 16, $unit: em) {
+  @if $unit == 'em' {
+    @return ($target / $context)///1em;
+  } @else if $unit == 'rem' {
+    @return ($target / $context)///1rem;
+  } @else if $unit == '%' {
+    @return percentage($target / $context);
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "HEADING": "Your details",
+  "INTRO_PARAGRAPH": "Check that your name and address are correct.",
+
+  "HELPER_CHANGE_NAME_ADDRESS_TITLE": "What happens if I have changed my name or address?",
+  "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_1": "If your name has changed and is different from the name on your jury summons letter, enter your correct name here. We'll get in touch with you later to check this. For instance, we might want to see a marriage certificate or deed poll certificate. Please carry on with the online form now.",
+  "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_2": "If your address has changed, we might be able to move your jury service to a court nearer to your new address. We'll get in touch with you later about this. Please carry on with the online form now.",
+
+  "FORM_SUB_HEADING_1": "Fill in the boxes below.",
+
+  "FORM_NAME_LABEL": "Name",
+
+  "FORM_ADDRESS_LABEL": "Address",
+
+  "FORM_DOB_SUBTITLE": "Date of birth",
+  "FORM_DOB_HELPER": "For example, 06 12 1982",
+  "FORM_DOB_DAY_LABEL": "Day",
+  "FORM_DOB_MONTH_LABEL": "Month",
+  "FORM_DOB_YEAR_LABEL": "Year",
+  "FORM_DOB_HELPER_TITLE": "Help with date of birth",
+  "FORM_DOB_HELPER_PARAGRAPH_1": "You need to tell us your date of birth so we can check you are a suitable age to be on a jury. ",  
+  "FORM_DOB_HELPER_PARAGRAPH_2": "If you don’t know your exact date of birth, use the one you put on official documents like your passport or driving licence.",
+  "FORM_DOB_HELPER_PARAGRAPH_3": "If you can’t provide a date of birth you’ll have to send copies of identity documents through the post. You need to reply to the summons using the form we sent by post instead of online. Ring us on 0300 456 1024 if you need advice about this.",
+
+  "FORM_PHONE_SUBTITLE": "Phone",
+  "FORM_PHONE_DESCRIPTION": "Please provide phone numbers that we can use to reach you between 9:00AM and 5:00PM, Monday to Friday.",
+  "FORM_PHONE_PRIMARY_LABEL": "Main phone",
+  "FORM_PHONE_SECONDARY_LABEL": "Another phone (optional)",
+
+  "FORM_EMAIL_SUBTITLE": "Email address",
+  "FORM_EMAIL_LABEL": "Enter your email address",
+  "FORM_EMAIL_CONFIRM_LABEL": "Enter your email address again",
+  "FORM_EMAIL_HELPER_TITLE": "Why do we need your email address?",
+  "FORM_EMAIL_HELPER_PARAGRAPH_1": "We'll use your email address to send you information and reminders about your jury service"
+}

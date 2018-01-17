@@ -1,0 +1,30 @@
+{
+  "HEADING": "Will you need help when you're at the court?",
+  "HEADING_OB": "Will the person you're replying for need help when they're at the court?",
+  "INTRO_PARAGRAPH": "Do you have a disability or impairment that means you’ll need extra support or facilities in the court building where you are doing your Jury Service?",
+  "INTRO_PARAGRAPH_OB": "Does the person have a disability or impairment that means they’ll need extra support or facilities in the court building where they are doing jury service?",
+
+  "ADJUSTMENT_DESCRIPTION": "Please describe your disability or impairment.",
+  "ADJUSTMENT_DESCRIPTION_OB": "Please describe the person's disability or impairment.",
+
+  "ADJUSTMENT_ANSWER_MOBILITY": "Limited mobility",
+  "ADJUSTMENT_ANSWER_HEARING": "Hearing impairment",
+  "ADJUSTMENT_ANSWER_DIABETES": "Diabetes",
+  "ADJUSTMENT_ANSWER_SIGHT": "Severe sight impairment",
+  "ADJUSTMENT_ANSWER_LEARNING_DISABILITY": "Learning disability",
+  "ADJUSTMENT_ANSWER_OTHER": "Other",
+
+  "ADJUSTMENT_OTHER_DESCRIPTION": "Please provide details",
+  "ADJUSTMENT_OTHER_DESCRIPTION_OB": "Please provide details",
+
+  "ADJUSTMENT_SPECIAL_DESCRIPTION": "Please tell us about any special arrangements or help you need while you're doing jury service. ",
+  "ADJUSTMENT_SPECIAL_DESCRIPTION_OB": "Please tell us about any special arrangements or help the person you're answering for needs while they're doing jury service.",
+
+  "GUIDANCE_SUMMARY": "Why do we ask for this?",
+  "GUIDANCE_PARAGRAPH_1": "If you tell us you have an impairment or disability, we'll do all we can to help you and meet your needs in the court building when you do jury service. Sometimes we arrange for you to visit the court beforehand to plan what help and facilities you need. We'll do our best to help with getting around the court, seeing, hearing or any other special help you need.",
+  "GUIDANCE_PARAGRAPH_1_OB": "If you tell us the person you're replying for has an impairment or disability, we'll do all we can to help them and meet their needs in the court building when they do jury service. Sometimes we arrange for a person to visit the court beforehand to plan what help and facilities they need. We'll do our best to help with getting around the court, seeing, hearing or any other special help the person you're answering for needs.",
+  "GUIDANCE_PARAGRAPH_2": "Some court buildings are old and harder to access. If you tell us about your disability or impairment now, we can check that the court where you are doing jury service is suitable for you.",
+  "GUIDANCE_PARAGRAPH_2_OB": "Some court buildings are old and harder to access. If you tell us about the person's disability or impairment now, we can check that the court where they are doing jury service is suitable for them.",
+  "GUIDANCE_PARAGRAPH_3": "If you're worried about anything else to do with jury service because of your impairment or disability, please get in touch with us. Or you can get someone else to phone us for you. Ring 0300 456 1024",
+  "GUIDANCE_PARAGRAPH_3_OB": "If you're worried about anything else to do with jury service because of an impairment or disability that the person you're answering for has, please get in touch with us. Ring 0300 456 1024"
+}

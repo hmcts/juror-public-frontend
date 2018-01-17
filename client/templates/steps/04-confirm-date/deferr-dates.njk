@@ -1,0 +1,247 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.DEFERRAL_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.DEFERRAL_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Deferral Dates{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">
+      {% if user.thirdParty == 'Yes' %}
+      {{ texts.DEFERRAL_PAGE.HEADING_OB }}
+      {% else %}
+      {{ texts.DEFERRAL_PAGE.HEADING }}
+      {% endif %}
+    </h1>
+
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('steps.confirm.date.deferral-dates.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+
+      <strong class="bold-small">
+        {% if user.thirdParty == 'Yes' %}
+        {{ texts.DEFERRAL_PAGE.DATE_FIELD_TITLE_OB }}
+        {% else %}
+        {{ texts.DEFERRAL_PAGE.DATE_FIELD_TITLE }}
+        {% endif %}
+      </strong>
+      <span class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_FIELD_HINT }}</span>
+
+      <br />
+
+      <div class="form-group">
+        <details>
+          <summary {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask this?')"{% endif %}>{{ texts.DEFERRAL_PAGE.WHY_ASK_SUMMARY }}</summary>
+          <div class="panel panel-border-narrow" id="details-content-1" aria-hidden="true">
+            <p>
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.DEFERRAL_PAGE.WHY_ASK_INFO_OB }}
+              {% else %}
+              {{ texts.DEFERRAL_PAGE.WHY_ASK_INFO }}
+              {% endif %}
+            </p>
+          </div>
+        </details>
+      </div>
+      <br />
+      <br />
+
+      <strong class="bold-small">
+        {% if user.thirdParty == 'Yes' %}
+        {{ texts.DEFERRAL_PAGE.DATE_INFO_OB }}
+        {% else %}
+        {{ texts.DEFERRAL_PAGE.DATE_INFO }}
+        {% endif %}
+      </strong>
+      <br />
+      <br />
+
+      {# Date 1 #}
+      <div class="form-group {% if errors.items['date1'] or errors.items['date1Error'] %}error{% endif %}" id="date1Group">
+        <fieldset>
+          <legend>
+            <span class="form-label-bold" id="date1-hint">{{ texts.DEFERRAL_PAGE.DATE1 }}</span>
+
+            {# {% if errors.items['dates'][0].fields %}
+              {% for errorField in errors.items['dates'][0].fields %}
+                {% if errorField == 'date1' %}
+                <span class="erorr-message date1ErrorMessage" id="{{errorField}}ErrorMessage}}">{{ errors.items['dates'][0].details[loop.index0] }}</span>
+                {% endif %}
+              {% endfor %} #}
+            {% if errors.items['date1'][0].fields %}
+              {% for errorField in errors.items['date1'][0].fields %}
+              <span class="error-message date1ErrorMessage" id="{{ errorField}}ErrorMessage">{{ errors.items['date1'][0].details[loop.index0] }}</span>
+              {% endfor %}
+            {% else %}
+              {% if errors.items['date1'] %}
+              <span class="error-message date1ErrorMessage" id="date1ErrorMessage">
+                {{ errors.items['date1'][0].details }}
+              </span>
+              {% endif %}
+            {# <span class="error-message" id="{{ errorField }}ErrorMessage">INVALID</span> #}
+            {% endif %}
+          </legend>
+
+          <div class="form-date">
+            <div class="form-group form-group-day">
+              <label class="form-label" for="date1Day">{{ texts.DEFERRAL_PAGE.DAY }}</label>
+              <input class="form-control focus-select-all" id="date1Day" name="date1Day"
+                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
+                value="{{ user.date1Day }}" pattern="[0-9]*" min="1" max="31"
+                minlength="1" maxlength="2" aria-describedby="date1-hint" />
+            </div>
+
+            <div class="form-group form-group-month">
+              <label class="form-label" for="date1Month">{{ texts.DEFERRAL_PAGE.MONTH }}</label>
+              <input class="form-control focus-select-all" id="date1Month" name="date1Month"
+                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
+                value="{{ user.date1Month }}" pattern="[0-9]*" min="1" max="12"
+                minlength="1" maxlength="2" aria-describedby="date1-hint" />
+            </div>
+
+            <div class="form-group form-group-year">
+              <label class="form-label" for="date1Year">{{ texts.DEFERRAL_PAGE.YEAR }}</label>
+              <input class="form-control focus-select-all" id="date1Year" name="date1Year"
+                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
+                value="{{ user.date1Year }}" pattern="[0-9]*" maxlength="4"
+                aria-describedby="date1-hint" />
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {# Date 2 #}
+      <div class="form-group {% if errors.items['date2'] or errors.items['date2Error'] %}error{% endif %}" id="date2Group">
+        <fieldset>
+          <legend>
+            <span class="form-label-bold" id="date2-hint">{{ texts.DEFERRAL_PAGE.DATE2 }}</span>
+
+            {%  if errors.items['dates'][0].fields %}
+              {% for errorField in errors.items['dates'][0].fields %}
+                {% if errorField == 'date2' %}
+                <span class="error-message date2ErrorMessage" id="{{ errorField }}ErrorMessage">{{ errors.items['dates'][0].details[loop.index0] }}</span>
+                {% endif %}
+              {% endfor %}
+            {% elif errors.items['date2'][0].fields %}
+              {% for errorField in errors.items['date2'][0].fields %}
+              <span class="error-message date2ErrorMessage" id="{{ errorField }}ErrorMessage">{{ errors.items['date2'][0].details[loop.index0] }}</span>
+              {% endfor %}
+            {% else %}
+              {% if errors.items['date2'] %}
+              <span class="error-message date2ErrorMessage" id="date2ErrorMessage">
+                {{ errors.items['date2'][0].details }}
+              </span>
+              {% endif %}
+            {# <span class="error-message" id="{{ errorField }}ErrorMessage">INVALID</span> #}
+            {% endif %}
+          </legend>
+
+          {# Error code here #}
+
+          <div class="form-date">
+            <div class="form-group form-group-day">
+              <label class="form-label" for="date2Day">{{ texts.DEFERRAL_PAGE.DAY }}</label>
+              <input class="form-control focus-select-all" id="date2Day" name="date2Day"
+                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
+                value="{{ user.date2Day }}" pattern="[0-9]*" min="1" max="31"
+                minlength="1" maxlength="2" aria-describedby="date2-hint" />
+            </div>
+
+            <div class="form-group form-group-month">
+              <label class="form-label" for="date2Month">{{ texts.DEFERRAL_PAGE.MONTH }}</label>
+              <input class="form-control focus-select-all" id="date2Month" name="date2Month"
+                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
+                value="{{ user.date2Month }}" pattern="[0-9]*" min="1" max="12"
+                minlength="1" maxlength="2" aria-describedby="date2-hint" />
+            </div>
+
+            <div class="form-group form-group-year">
+              <label class="form-label" for="date2Year">{{ texts.DEFERRAL_PAGE.YEAR }}</label>
+              <input class="form-control focus-select-all" id="date2Year" name="date2Year"
+                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
+                value="{{ user.date2Year }}" pattern="[0-9]*" maxlength="4"
+                aria-describedby="date2-hint" />
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {# Date 3 #}
+      <div class="form-group {% if errors.items['date3'] or errors.items['date3Error'] %}error{% endif %}" id="date3Group">
+        <fieldset>
+          <legend>
+            <span class="form-label-bold" id="date3-hint">{{ texts.DEFERRAL_PAGE.DATE3 }}</span>
+
+            {% if errors.items['dates'][0].fields %}
+              {% for errorField in errors.items['dates'][0].fields %}
+                {% if errorField == 'date3' %}
+                <span class="error-message date3ErrorMessage" id="{{ errorField }}ErrorMessage">{{ errors.items['dates'][0].details[loop.index0] }}</span>
+                {% endif %}
+              {% endfor %}
+            {% elif errors.items['date3'][0].fields %}
+              {% for errorField in errors.items['date3'][0].fields %}
+              <span class="error-message date3ErrorMessage" id="{{ errorField}}ErrorMessage">{{ errors.items['date3'][0].details[loop.index0] }}</span>
+              {% endfor %}
+            {% else %}
+              {% if errors.items['date3'] %}
+              <span class="error-message date3ErrorMessage" id="date3ErrorMessage">
+                {{ errors.items['date3'][0].details }}
+              </span>
+              {% endif %}
+            {# <span class="error-message" id="{{ errorField }}ErrorMessage">INVALID</span> #}
+            {% endif %}
+          </legend>
+
+          {# Error code here #}
+
+          <div class="form-date">
+            <div class="form-group form-group-day">
+              <label class="form-label" for="date3Day">{{ texts.DEFERRAL_PAGE.DAY }}</label>
+              <input class="form-control focus-select-all" id="date3Day" name="date3Day"
+                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
+                value="{{ user.date3Day }}" pattern="[0-9]*" min="1" max="31"
+                minlength="1" maxlength="2" aria-describedby="date3-hint" />
+            </div>
+
+            <div class="form-group form-group-month">
+              <label class="form-label" for="date3Month">{{ texts.DEFERRAL_PAGE.MONTH }}</label>
+              <input class="form-control focus-select-all" id="date3Month" name="date3Month"
+                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
+                value="{{ user.date3Month }}" pattern="[0-9]*" min="1" max="12"
+                minlength="1" maxlength="2" aria-describedby="date3-hint" />
+            </div>
+
+            <div class="form-group form-group-year">
+              <label class="form-label" for="date3Year">{{ texts.DEFERRAL_PAGE.YEAR }}</label>
+              <input class="form-control focus-select-all" id="date3Year" name="date3Year"
+                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
+                value="{{ user.date3Year }}" pattern="[0-9]*" maxlength="4"
+                aria-describedby="date3-hint" />
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <br />
+      <br />
+      <br />
+      {# Submit form #}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

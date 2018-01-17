@@ -1,0 +1,61 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.REPLY_TYPE.HEADER }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Responder Type{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">{{ texts.REPLY_TYPE.HEADER }}</h1>
+
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('steps.responder.type.post') }}" method="post">
+
+      <fieldset>
+        <legend class="bold-small">{{ texts.REPLY_TYPE.REPLY_QUESTION }}</legend>
+        <br>
+        <div class="form-group">
+          <label class="block-label selection-button-radio" for="thirdParty_No">
+            <input id="thirdParty_No" type="radio" name="thirdParty" value="No">
+            {{ texts.REPLY_TYPE.REPLY_SELF }}
+            <span class="form-hint">{{ texts.REPLY_TYPE.REPLY_SELF_INFO }}</>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <details>
+            <summary><span class="summary">{{texts.REPLY_TYPE.NEED_HELP}}</span></summary>
+            <div id="details-content-0" aria-hidden="true">
+            {{texts.REPLY_TYPE.NEED_HELP_TEXT}}
+            </div>
+          </details>
+        </div>
+
+        <div class="form-group">
+          <label class="block-label selection-button-radio" for="thirdParty_Yes">
+            <input id="thirdParty_Yes" type="radio" name="thirdParty" value="Yes">
+            {{ texts.REPLY_TYPE.REPLY_TP }}
+            <span class="form-hint">{{ texts.REPLY_TYPE.REPLY_TP_INFO }}</span>
+          </label>
+        </div>
+      </fieldset>
+
+
+      {#Submit form#}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,345 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Personal Details{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">
+      {% if user.thirdParty == 'Yes' %}
+      {{ texts.YOUR_DETAILS_PAGE.HEADING_OB }}
+      {% else %}
+      {{ texts.YOUR_DETAILS_PAGE.HEADING }}
+      {% endif %}
+    </h1>
+
+    {% include "../../includes/errors.njk" %}
+
+
+    <p class="lede">
+      {% if user.thirdParty == 'Yes' %}
+      {{ texts.YOUR_DETAILS_PAGE.INTRO_PARAGRAPH_OB }}
+      {% else %}
+      {{ texts.YOUR_DETAILS_PAGE.INTRO_PARAGRAPH }}
+      {% endif %}
+    </p>
+
+
+    <form action="{{ url('steps.your.details.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+
+      {# Name #}
+      <fieldset class="inline-edit" id="nameGroup">
+
+        <strong class="bold-small">
+          <legend>
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.YOUR_DETAILS_PAGE.FORM_NAME_LABEL_OB }}
+            {% else %}
+            {{ texts.YOUR_DETAILS_PAGE.FORM_NAME_LABEL }}
+            {% endif %}
+          </legend>
+        </strong>
+
+        <div class="grid-row inline-section primary {% if errors.nameError %}closed{% endif %}">
+          <div class="column-one-half">{{ user.nameRender }}</div>
+          <div class="column-one-half">
+            <a href="#nameGroup" class="inline-edit-toggle" id="changeName" {% if trackingCode %}onclick="trackVirtualPageViews('Change - name')"{% endif %}>{{ texts.INTERFACE.FORM_CHANGE_LABEL }}</a>
+          </div>
+        </div>
+
+        <div class="inline-section secondary {% if errors.nameError %}open{% endif %}">
+
+          <div class="form-group {% if errors.items['title'] %}error{% endif %}" id="titleGroup">
+            <label class="form-label" for="title">Title (optional)</label>
+            {% if errors.items['title'] %}<span class="error-message">{{ errors.items['title'][0].details }}</span>{% endif %}
+            <input type="text" class="form-control" name="title" id="title" value="{{ user.title }}" maxlength="11">
+          </div>
+
+          <div class="form-group {% if errors.items['firstName'] %}error{% endif %}" id="firstNameGroup">
+            <label class="form-label" for="firstName">First name</label>
+            {% if errors.items['firstName'] %}<span class="error-message">{{ errors.items['firstName'][0].details }}</span>{% endif %}
+            <input type="text" class="form-control" name="firstName" id="firstName" value="{{ user.firstName }}" maxlength="20">
+          </div>
+
+          <div class="form-group {% if errors.items['lastName'] %}error{% endif %}" id="lastNameGroup">
+            <label class="form-label" for="lastName">Last name</label>
+            {% if errors.items['lastName'] %}<span class="error-message" id="lastNameGroupError">{{ errors.items['lastName'][0].details }}</span>{% endif %}
+            <input type="text" class="form-control" name="lastName" id="lastName" value="{{ user.lastName }}" maxlength="20">
+          </div>
+
+        </div>
+
+      </fieldset>
+
+      <br><br>
+
+      {# Address #}
+      <fieldset class="inline-edit" id="addressGroup">
+
+        <strong class="bold-small">
+          <legend>
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LABEL_OB }}
+            {% else %}
+            {{ texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LABEL }}
+            {% endif %}
+          </legend>
+        </strong>
+
+        <div class="grid-row inline-section primary {% if errors.addressError %}closed{% endif %}">
+          <div class="column-one-half">
+            {{ user.addressRender | safe }}
+          </div>
+          <div class="column-one-half">
+            <a href="#addressGroup" class="inline-edit-toggle" id="changeAddress" {% if trackingCode %}onclick="trackVirtualPageViews('Change - address')"{% endif %}>{{ texts.INTERFACE.FORM_CHANGE_LABEL }}</a>
+          </div>
+        </div>
+
+        <div class="inline-section secondary {% if errors.addressError %}open{% endif %}" id="addressGroup">
+
+          <div class="form-group{% if errors.items['address'] %} error{% endif %}">
+            {% if errors.items['address'] %}<span class="error-message" id="addressGroupError">{{ errors.items['address'] }}</span>{% endif %}
+
+            <div class="form-group {% if errors.items['addressLineOne'] %}error{% elif errors.items['address'] %}error{% endif %}" id="addressLineOneGroup">
+              <label class="form-label" for="addressLineOne">Building and street</label>
+              {% if errors.items['addressLineOne'] %}<span class="error-message" id="addressLineOneGroupError">{{ errors.items['addressLineOne'][0].details }}</span>{% endif %}
+              <input type="text" class="form-control" name="addressLineOne" id="addressLineOne" value="{{ user.addressLineOne }}" maxlength="35">
+            </div>
+
+            <div class="form-group {% if errors.items['addressLineTwo'] %}error{% elif errors.items['address'] %}error{% endif %}" id="addressLineTwoGroup">
+              <label for="addressLineTwo" class="visuallyhidden">Street Address</label>
+              {% if errors.items['addressLineTwo'] %}<span class="error-message" id="addressLineTwoGroupError">{{ errors.items['addressLineTwo'][0].details }}</span>{% endif %}
+              <input type="text" class="form-control" name="addressLineTwo" id="addressLineTwo" value="{{ user.addressLineTwo }}" maxlength="35">
+            </div>
+
+            <div class="form-group {% if errors.items['addressLineThree'] %}error{% elif errors.items['address'] %}error{% endif %}" id="addressLineThreeGroup">
+              <label for="addressLineThree" class="visuallyhidden">Street Address</label>
+              {% if errors.items['addressLineThree'] %}<span class="error-message" id="addressLineThreeGroupError">{{ errors.items['addressLineThree'][0].details }}</span>{% endif %}
+              <input type="text" class="form-control" name="addressLineThree" id="addressLineThree" value="{{ user.addressLineThree }}" maxlength="35">
+            </div>
+          </div>
+
+          <div class="form-group {% if errors.items['addressTown'] %}error{% elif errors.items['address'] %}error{% endif %}" id="addressTownGroup">
+            <label class="form-label" for="addressTown">Town or city</label>
+            {% if errors.items['addressTown'] %}<span class="error-message" id="addressTownGroupError">{{ errors.items['addressTown'][0].details }}</span>{% endif %}
+            <input type="text" class="form-control" name="addressTown" id="addressTown" value="{{ user.addressTown }}" maxlength="35">
+          </div>
+
+          <div class="form-group {% if errors.items['addressCounty'] %}error{% elif errors.items['address'] %}error{% endif %}" id="addressCountyGroup">
+            <label class="form-label" for="addressCounty">County (optional)</label>
+            {% if errors.items['addressCounty'] %}<span class="error-message" id="addressCountyGroupError">{{ errors.items['addressCounty'][0].details }}</span>{% endif %}
+            <input type="text" class="form-control" name="addressCounty" id="addressCounty" value="{{ user.addressCounty }}" maxlength="35">
+          </div>
+
+          <div class="form-group {% if errors.items['addressPostcode'] %}error{% endif %}" id="addressPostcodeGroup">
+            <label class="form-label" for="addressPostcode">Postcode</label>
+            {% if errors.items['addressPostcode'] %}<span class="error-message" id="addressPostcodeGroupError">{{ errors.items['addressPostcode'][0].details }}</span>{% endif %}
+            <input type="text" class="form-control" name="addressPostcode" id="addressPostcode" value="{{ user.addressPostcode }}" maxlength="8">
+          </div>
+
+        </div>
+
+      </fieldset>
+
+
+      {# Info about change of name or address #}
+      <br>
+      <div class="form-group">
+        <details>
+          <summary>
+            <span class="summary" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my name or address?')"{% endif %}>
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_ADDRESS_TITLE_OB }}
+              {% else %}
+              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_ADDRESS_TITLE }}
+              {% endif %}
+
+            </span>
+          </summary>
+          <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+            <p>
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_1_OB }}
+              {% else %}
+              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_1 }}
+              {% endif %}
+            </p>
+            <p>
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_2_OB }}
+              {% else %}
+              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_2 }}
+              {% endif %}
+            </p>
+          </div>
+        </details>
+      </div>
+
+
+      <hr class="clearfix">
+
+
+      <h2 class="heading-medium">{{ texts.YOUR_DETAILS_PAGE.FORM_SUB_HEADING_1 }}</h2>
+
+
+      {# Date of birth #}
+      <div class="form-group {% if errors.items['dateOfBirth'] %}error{% endif %}" id="dateOfBirthGroup">
+        <fieldset>
+          <legend>
+            <span class="form-label-bold">
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.YOUR_DETAILS_PAGE.FORM_DOB_SUBTITLE_OB }}
+              {% else %}
+              {{ texts.YOUR_DETAILS_PAGE.FORM_DOB_SUBTITLE }}
+              {% endif %}
+            </span>
+            <span class="form-hint" id="dob-hint" >{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER }}</span>
+            {% if errors.items['dateOfBirth'][0].fields %}
+              {% for errorField in errors.items['dateOfBirth'][0].fields %}
+              {% if errorField !== 'dateOfBirth' %}
+                <span class="error-message dateOfBirthErrorMessage" id="{{ errorField }}ErrorMessage">{{ errors.items['dateOfBirth'][0].details[loop.index0] }}</span>
+              {% endif %}
+              {% endfor %}
+            {% else %}
+              {% if errors.items['dateOfBirth'] %}<span class="error-message dateOfBirthErrorMessage" id="dateOfBirthErrorMessage">{{ errors.items['dateOfBirth'][0].details }}</span>{% endif %}
+            {% endif %}
+          </legend>
+
+          <div class="form-date">
+            <div class="form-group form-group-day">
+              <label class="form-label" for="dobDay">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_DAY_LABEL }}</label>
+              <input class="form-control focus-select-all " id="dobDay" name="dobDay" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobDay }}" pattern="[0-9]*" min="1" max="31" minlength="1" maxlength="2" aria-describedby="dob-hint">
+            </div>
+            <div class="form-group form-group-month">
+              <label class="form-label" for="dobMonth">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_MONTH_LABEL }}</label>
+              <input class="form-control focus-select-all" id="dobMonth" name="dobMonth" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobMonth }}" pattern="[0-9]*" min="1" max="12" maxlength="2" aria-describedby="dob-hint">
+            </div>
+            <div class="form-group form-group-year">
+              <label class="form-label" for="dobYear">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_YEAR_LABEL }}</label>
+              <input class="form-control focus-select-all" id="dobYear" name="dobYear" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobYear }}" pattern="[0-9]*" maxlength="4" aria-describedby="dob-hint">
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <details>
+        <summary>
+          <span class="summary" {% if trackingCode %}onclick="trackVirtualPageViews('Help with date of birth')"{% endif %}>
+            {{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_TITLE }}
+          </span>
+        </summary>
+        <div class="panel panel-border-narrow" id="details-content-1" aria-hidden="true">
+          {% if user.thirdParty == 'Yes' %}
+          <p>{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_1_OB }}</p>
+          <p>{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_2_OB }}</p>
+          {% else %}
+          <p>{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_1 }}</p>
+          <p>{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_2 }}</p>
+          <p>{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_3 }}</p>
+          {% endif %}
+        </div>
+      </details>
+      <br>
+
+
+      {# Phone #}
+      <fieldset>
+        <legend><strong class="bold-small">{{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_SUBTITLE }}</strong></legend>
+
+        <p>
+          {% if user.thirdParty == 'Yes' %}
+          {{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_DESCRIPTION_OB }}
+          {% else %}
+          {{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_DESCRIPTION }}
+          {% endif %}
+        </p>
+
+        <div class="form-group {% if errors.items['primaryPhone'] %}error{% endif %}" id="primaryPhoneGroup">
+          <label class="form-label" for="primaryPhone">{{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_PRIMARY_LABEL }}</label>
+          {% if errors.items['primaryPhone'] %}<span class="error-message" id="primaryPhoneErrorMessage">{{ errors.items['primaryPhone'][0].details }}</span>{% endif %}
+          <input type="text" class="form-control" id="primaryPhone" name="primaryPhone" value="{{ user.primaryPhone }}" {% if IS_PRODUCTION %}maxlength="15"{% endif %}>
+        </div>
+
+        <div class="form-group {% if errors.items['secondaryPhone'] %}error{% endif %}" id="secondaryPhoneGroup">
+          <label class="form-label" for="secondaryPhone">{{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_SECONDARY_LABEL }}</label>
+          {% if errors.items['secondaryPhone'] %}<span class="error-message" id="secondaryPhoneErrorMessage">{{ errors.items['secondaryPhone'][0].details }}</span>{% endif %}
+          <input type="text" class="form-control" id="secondaryPhone" name="secondaryPhone" value="{{ user.secondaryPhone }}" {% if IS_PRODUCTION %}maxlength="15"{% endif %}>
+        </div>
+
+      </fieldset>
+
+
+      {# Email #}
+      <fieldset>
+        <legend><strong class="bold-small">{{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_SUBTITLE }}</strong></legend>
+
+        <div class="form-group {% if errors.items['emailAddress'] %}error{% endif %}" id="emailAddressGroup">
+          <label class="form-label" for="emailAddress">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_LABEL_OB }}
+            {% else %}
+            {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_LABEL }}
+            {% endif %}
+          </label>
+          {% if errors.items['emailAddress'][0] %}<span class="error-message" data-title="Email address">{{ errors.items['emailAddress'][0].details }}</span>{% endif %}
+          <input class="form-control" type="text" id="emailAddress" name="emailAddress" value="{{ user.emailAddress }}">
+        </div>
+
+        <div class="form-group {% if errors.items['emailAddressConfirmation'] %}error{% endif %}" id="emailAddressConfirmationGroup">
+          <label class="form-label" for="emailAddressConfirmation">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_CONFIRM_LABEL_OB }}
+            {% else %}
+            {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_CONFIRM_LABEL }}
+            {% endif %}
+          </label>
+          {% if errors.items['emailAddressConfirmation'] %}<span class="error-message" data-title="Email address confirmation">{{ errors.items['emailAddressConfirmation'][0].details }}</span>{% endif %}
+          <input class="form-control" type="text" id="emailAddressConfirmation" name="emailAddressConfirmation" value="{{ user.emailAddressConfirmation }}">
+        </div>
+
+        <div class="form-group">
+          <details>
+            <summary>
+              <span class="summary" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we need your email address?')"{% endif %}>
+                {% if user.thirdParty == 'Yes' %}
+                {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_HELPER_TITLE_OB }}
+                {% else %}
+                {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_HELPER_TITLE }}
+                {% endif %}
+              </span>
+            </summary>
+            <div class="panel panel-border-narrow" id="details-content-2" aria-hidden="true">
+              <p>
+                {% if user.thirdParty == 'Yes' %}
+                {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_HELPER_PARAGRAPH_1_OB }}
+                {% else %}
+                {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_HELPER_PARAGRAPH_1 }}
+                {% endif %}
+              </p>
+            </div>
+          </details>
+        </div>
+      </fieldset>
+
+
+      {# Submit form #}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

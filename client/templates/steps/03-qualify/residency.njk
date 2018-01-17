@@ -1,0 +1,64 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.QUALIFY_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.QUALIFY_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Eligibility Residency{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">
+      {% if user.thirdParty == 'Yes' %}
+      {{ texts.QUALIFY_PAGE.HEADING_OB }}
+      {% else %}
+      {{ texts.QUALIFY_PAGE.HEADING }}
+      {% endif %}
+    </h1>
+
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('steps.qualify.residency.post') }}" method="post">
+      <div class="form-group inline {% if errors.items['livedConsecutive'] %}error{% endif %}" id="livedConsecutiveGroup">
+          <span class="form-label-bold">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.QUALIFY_PAGE.QUESTION_1_OB }}
+            {% else %}
+            {{ texts.QUALIFY_PAGE.QUESTION_1 }}
+            {% endif %}
+          </span>
+          <span class="form-hint" id="livedConsecutiveHint">{{ texts.QUALIFY_PAGE.UNSURE_PROMPT }} <a href="{{ url('steps.qualify.residency.info') }}">{{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}</a></span>
+          {% if errors.items['livedConsecutive'] %} <span class="error-message"> {{ texts.QUALIFY_PAGE.MISSING }} </span> {% endif %}
+        <label class="block-label selection-button-radio" for="livedConsecutive-Yes">
+          <input id="livedConsecutive-Yes" type="radio" class="store-updated-information" name="livedConsecutive" value="Yes" {% if user.qualify.livedConsecutive.answer == 'Yes' %}checked="checked"{% endif %}>
+          {{ texts.QUALIFY_PAGE.YES }}
+        </label>
+        <label class="block-label selection-button-radio" for="livedConsecutive-No" data-target="livedConsecutiveDetailsGroup">
+          <input id="livedConsecutive-No" type="radio" class="store-updated-information" name="livedConsecutive" value="No" {% if user.qualify.livedConsecutive.answer == 'No' %}checked="checked"{% endif %}>
+          {{ texts.QUALIFY_PAGE.NO }}
+        </label>
+
+        <div class="panel panel-border-narrow {% if user.qualify.livedConsecutive.answer === 'No' %}{% else %}js-hidden{% endif %} {% if errors.items['livedConsecutiveDetails'] %}error{% endif %}" id="livedConsecutiveDetailsGroup">
+          <label class="form-label" for="livedConsecutiveDetails">{{ texts.QUALIFY_PAGE.DETAILS }}</label>
+          <textarea class="form-control" name="livedConsecutiveDetails" id="livedConsecutiveDetails" maxlength="1000">{{ user.qualify.livedConsecutive.details }}</textarea>
+        </div>
+      </div>
+
+     {# Submit form #}
+      <input type="hidden" name="_csrf" id="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

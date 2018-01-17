@@ -1,0 +1,25 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.INFO_PAGE.BAIL.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">{{ texts.INFO_PAGE.BAIL.HEADING }}</h1>
+
+    {% if user.thirdParty == 'Yes' %}
+    <p>{{ texts.INFO_PAGE.BAIL.FIRST_THIRD_PARTY }}</p>
+    {% else %}
+    <p>{{ texts.INFO_PAGE.BAIL.FIRST_MAIN }}</p>
+    {% endif %}
+
+  </div>
+
+</div>
+
+{% endblock %}

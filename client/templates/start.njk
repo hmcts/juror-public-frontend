@@ -1,0 +1,132 @@
+{% extends "./layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.START_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Landing{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <h1 class="heading-xlarge">{{ texts.START_PAGE.HEADING }}</h1>
+    <strong class="bold-medium">{{ texts.START_PAGE.SUBHEADING_1 }}</strong>
+    <ul class="list list-bullet">
+      <li>{{ texts.START_PAGE.LIST_1_ITEM_1 }}</li>
+      <li>{{ texts.START_PAGE.LIST_1_ITEM_2 }}</li>
+      <li>{{ texts.START_PAGE.LIST_1_ITEM_3 }}</li>
+      <li>{{ texts.START_PAGE.LIST_1_ITEM_4 }}</li>
+      <li>{{ texts.START_PAGE.LIST_1_ITEM_5 }}</li>
+    </ul>
+    <br/>
+    <p><span>{{ texts.START_PAGE.INFO }}</span></p>
+    <p class="lede">
+      <strong class="bold-medium">{{ texts.START_PAGE.SUBHEADING_2 }}</strong>
+    </p>
+    <p>
+      {{ texts.START_PAGE.FROM_LETTER }}
+    </p>
+    <ul class="list list-bullet">
+      <li>{{ texts.START_PAGE.LIST_2_ITEM_1 }}</li>
+      <li>{{ texts.START_PAGE.LIST_2_ITEM_2 }}</li>
+      <li>{{ texts.START_PAGE.LIST_2_ITEM_3 }}</li>
+    </ul>
+    <br>
+    <a class="button button-start" href="{{ url('steps.responder.type.get') }}" role="button">{{ texts.START_PAGE.BUTTON_TEXT }}</a>
+    <br/><br/><br/>
+    <div class="notice">
+      <i class="icon icon-important">
+        <span class="visuallyhidden">{{ text.START_PAGE.VISUALLY_HIDDEN_TEXT }}</span>
+      </i>
+      <strong class="bold-small">
+        {{ texts.START_PAGE.BOLD_INFO_TEXT }}
+      </strong>
+    </div>
+    <div class="notice">
+      <ul class="list list-bullet">
+        <li> <strong class="bold-small"> {{ texts.START_PAGE.BOLD_INFO_LIST_ITEM_1 }}</strong> </li>
+        <li> <strong class="bold-small"> {{ texts.START_PAGE.BOLD_INFO_LIST_ITEM_2 }}</strong> </li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <strong class="bold-medium"> {{ texts.START_PAGE.SUBHEADING_3 }} </strong>
+    <p>
+      {{ texts.START_PAGE.SUBHEADING_3_INFO_1 }}
+    </p>
+    <p>
+      {{ texts.START_PAGE.SUBHEADING_3_INFO_2 }}
+    </p>
+    <h3 class="heading-medium">{{ texts.START_PAGE.SUBHEADING_4 }}</h3>
+    <p>
+      {{ texts.START_PAGE.SUBHEADING_4_INFO }}
+    </p>
+    <h3 class="heading-medium">{{ texts.START_PAGE.SUBHEADING_5 }}</h3>
+    <p>
+      {{ texts.START_PAGE.SUBHEADING_5_INFO_1 }}
+      <a href="https://www.gov.uk/jury-service/taking-time-off-work" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/taking-time-off-work')"{% endif %}>{{ texts.START_PAGE.SUBHEADING_5_LINK }}</a>
+      {{ texts.START_PAGE.SUBHEADING_5_INFO_2 }}
+    </p>
+    <h3 class="heading-medium">{{ texts.START_PAGE.SUBHEADING_6 }}</h3>
+    <p>
+      {{ texts.START_PAGE.SUBHEADING_6_INFO_1 }} <a href="https://www.gov.uk/jury-service/what-you-can-claim" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/what-you-can-claim')"{% endif %}>{{ texts.START_PAGE.SUBHEADING_6_LINK }}</a> {{ texts.START_PAGE.SUBHEADING_6_INFO_2 }}
+    </p>
+    <br/>
+    <h3 class="bold-medium">{{ texts.START_PAGE.SUBHEADING_7 }}</h3>
+    <h3 class="heading-medium">{{ texts.START_PAGE.SUBHEADING_8 }}</h3>
+    <p>
+      {{ texts.START_PAGE.SUBHEADING_8_INFO_1 }}
+    </p>
+    <p>
+      {{ texts.START_PAGE.SUBHEADING_8_INFO_2 }}
+    </p>
+    <h3 class="heading-medium">{{ texts.START_PAGE.SUBHEADING_9 }}</h3>
+    <p>
+      {{ texts.START_PAGE.SUBHEADING_9_INFO_1 }}
+    </p>
+    <p>
+      {{ texts.START_PAGE.SUBHEADING_9_INFO_2 }}
+    </p>
+    <p>
+      {{ texts.START_PAGE.SUBHEADING_9_INFO_3 }}
+    </p>
+    <h3 class="heading-medium">{{ texts.START_PAGE.SUBHEADING_10 }}</h3>
+    <p>
+      <strong class="bold-small">{{ texts.START_PAGE.CONTACT_NAME }}</strong><br>
+      <a href="mailto:jurysummoning@hmcts.gsi.gov.uk">{{ texts.START_PAGE.CONTACT_EMAIL }}</a><br>
+      {{ texts.START_PAGE.CONTACT_TELEPHONE_LABEL }}<a href="tel:03004561024">{{ texts.START_PAGE.CONTACT_TELEPHONE }}</a><br>
+      {{ texts.START_PAGE.CONTACT_INFO_1 }}<br>
+      {{ texts.START_PAGE.CONTACT_INFO_2 }}<br>
+      <a href="https://www.gov.uk/call-charges">{{ texts.START_PAGE.CONTACT_LINK }}</a>
+    </p>
+    <p>
+      {{ texts.START_PAGE.ADDRESS_LINE_1 }}<br>
+      {{ texts.START_PAGE.ADDRESS_LINE_2 }}<br>
+      {{ texts.START_PAGE.ADDRESS_LINE_3 }}<br>
+      {{ texts.START_PAGE.ADDRESS_LINE_4 }}
+    </p>
+    <br/>
+    <a href="http://www.smartsurvey.co.uk/s/Summons_feedback/" class="grey-link">{{ texts.INTERFACE.REPORT_BROKEN }}</a>
+  </div>
+  <div class="column-third">
+    <aside class="govuk-related-items">
+      <h2 class="heading-medium" id="subsection-title">{{ texts.START_PAGE.NAV_HEADING }}</h2>
+      <nav aria-labelledby="subsection-title">
+        <ul class="font-xsmall">
+          <li><a href="https://www.gov.uk/jury-service/overview" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/overview')"{% endif %}>{{ texts.START_PAGE.NAV_1 }}</a></li>
+          <li><a href="https://www.gov.uk/browse/justice/courts-sentencing-tribunals" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/browse/justice/courts-sentencing-tribunals')"{% endif %}>{{ texts.START_PAGE.NAV_2 }}</a></li>
+        </ul>
+      </nav>
+      <br>
+      <h2 class="heading-medium" id="elsewhere-title">{{ texts.START_PAGE.NAV_HEADING_2 }}</h2>
+      <nav aria-labelledby="elsewhere-title">
+        <ul class="font-xsmall">
+          <li><a href="https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s" {% if trackingCode %}onclick="trackOutboundLink('https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s')"{% endif %}>{{ texts.START_PAGE.NAV_3 }}</a></li>
+        </ul>
+      </nav>
+    </aside>
+  </div>
+</div>
+
+{% endblock %}

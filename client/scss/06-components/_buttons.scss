@@ -1,0 +1,16 @@
+.button-configure {
+  @include button ($configure-btn-color);
+  @include box-sizing (border-box);
+  vertical-align: top;
+
+  @include media (mobile) {
+    width: 100%;
+  }
+}
+
+.button-start {
+  background-image: url("/img/icons/icon-pointer.png");
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  padding: 0.368421em 2.15789em 0.210526em 0.842105em;
+}

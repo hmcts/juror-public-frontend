@@ -1,0 +1,290 @@
+{
+  "ERROR_TITLE": "Please check the form",
+  "PROVIDE_DETAILS": "^Please provide details",
+  "GIVE_DETAILS": "Please give details",
+  "PLEASE_ANSWER": "Please answer this question",
+  "IFVALUEMATCH": "^Please check your {{ field }}, value is not as expected",
+
+  "PRESENCE": "^Please provide your {{ field }}",
+  "DATETIME": "^Please check your {{ field }}",
+  "DATETIME_OB": "^Please check the person's {{ field }}",
+  "DATETIME_PAST": "^Please check your {{ field }}",
+  "EQUALITY": "^Please check your {{ field }}",
+
+  "LENGTH_LONG": "^Please check your {{ field }}",
+  "LENGTH_SHORT": "^Please check your {{ field }}",
+  "LENGTH_WRONG_LENGTH": "^Please check your {{ field }}",
+  "LENGTH_INVALID": "^Please check your {{ field }}",
+
+  "PRESENCEIF": "^Please check your {{ field }}",
+  "ADDRESSGROUP": "^Please check your address",
+  "PHONE": "^Please check your {{ field }}",
+
+
+
+  "RESPONDER_TYPE": {
+    "MISSING": "Please select one of the options"
+  },
+
+  "LOGIN": {
+    "JUROR_NUMBER_CHECK_SUM": "Please check your juror number",
+    "JUROR_NUMBER_CHECK_SUM_OB": "Please check the juror number",
+    "JUROR_NUMBER_CHECK_DETAILS": "Please enter your 9-digit juror number. You can find it at the top of your jury summons letter",
+    "JUROR_NUMBER_CHECK_DETAILS_OB": "Please enter the 9-digit juror number. You can find it at the top of the jury summons letter",
+    "JUROR_CHECK_LAST_NAME_SUM": "Please check your last name",
+    "JUROR_CHECK_LAST_NAME_SUM_OB": "Please check the juror last name",
+    "JUROR_CHECK_LAST_NAME_DETAILS": "Please enter your last name",
+    "JUROR_CHECK_LAST_NAME_DETAILS_OB": "Please enter the last name of the person summoned",
+    "JUROR_CHECK_LAST_NAME_INVALID": "Please check that you have entered your last name. Type it exactly as it appears on the jury summons letter. If the name is wrong you can change it further on.",
+    "JUROR_CHECK_LAST_NAME_INVALID_OB": "Please enter the last name of the person summoned",
+    "JUROR_CHECK_POSTCODE_SUM": "Please check your postcode",
+    "JUROR_CHECK_POSTCODE_SUM_OB": "Please check the juror postcode",
+    "JUROR_CHECK_POSTCODE_DETAILS": "Please enter your postcode",
+    "JUROR_CHECK_POSTCODE_DETAILS_OB": "Please enter the postcode of the person summoned",
+    "JUROR_CHECK_POSTCODE_DETAILS_FORMAT": "Please enter the postcode of the person summoned. Type it exactly as it appears on the jury summons letter. If it's wrong, you can change it further on."
+  },
+
+  "YOUR_DETAILS": {
+    "TITLE_CHECK": "Please enter a valid title",
+    "TITLE_CHECK_INVALID": "Please enter a valid title",
+    "FIRST_NAME_CHECK": "Please check your first name",
+    "FIRST_NAME_CHECK_OB": "Please check the person's first name",
+    "FIRST_NAME_MISSING": "Please enter your first name",
+    "FIRST_NAME_MISSING_OB": "Please enter the person's first name",
+    "LAST_NAME_CHECK": "Please check your last name",
+    "LAST_NAME_CHECK_OB": "Please check the person's last name",
+    "LAST_NAME_MISSING": "Please enter your last name",
+    "LAST_NAME_MISSING_OB": "Please enter the person's last name",
+    "ADDRESS_LINE_ONE_CHECK": "Please check your address",
+    "ADDRESS_LINE_ONE_CHECK_OB": "Please check the address",
+    "ADDRESS_LINE_ONE_MISSING": "Please provide the first line of your address",
+    "ADDRESS_LINE_ONE_MISSING_OB": "Please provide the first line of the address",
+    "ADDRESS_LINE_TWO_CHECK": "Please enter your building and street",
+    "ADDRESS_TOWN_CHECK": "Please check your town or city",
+    "ADDRESS_TOWN_CHECK_OB": "Please check the town or city",
+    "ADDRESS_TOWN_MISSING": "Please provide the town or city you live in",
+    "ADDRESS_TOWN_MISSING_OB": "Please provide the town or city",
+    "ADDRESS_TOWN_INVALID": "Please check your town or city",
+    "ADDRESS_COUNTY_CHECK": "Please check your county",
+    "POSTCODE_MISSING": "Please enter your postcode",
+    "POSTCODE_MISSING_OB": "Please enter the postcode",
+    "POSTCODE_CHECK": "Please check your postcode",
+    "POSTCODE_CHECK_OB": "Please check the postcode",
+    "MAIN_PHONE_CHECK": "Please check your main phone",
+    "MAIN_PHONE_CHECK_OB": "Please check the main phone",
+    "MAIN_PHONE_MISSING": "Please give us the phone number you use the most. ",
+    "MAIN_PHONE_MISSING_OB": "Please give us the phone number you'd like us to use",
+    "OTHER_PHONE_CHECK": "Please check your other phone number",
+    "EMAIL_CHECK": "Please check your email address",
+    "EMAIL_CHECK_OB": "Please check the email address",
+    "EMAIL_CHECK_MISSING": "Please enter your email address",
+    "EMAIL_CHECK_MISSING_OB": "Please enter the email address we should use to get in touch",
+    "EMAIL_CHECK_INVALID": "Please check your email address",
+    "EMAIL_CHECK_INVALID_OB": "Please check the email address",
+    "EMAIL_CONFIRM_MISSING": "Please check your email address. It needs to match the one in the box above.",
+    "EMAIL_CONFIRM_MISSING_OB": "Please check the email address. It needs to match the one in the box above.",
+    "EMAIL_CHECK_EQUALITY": "The email address you entered doesn't match the email address in the box above.",
+    "EMAIL_CHECK_EQUALITY_OB": "The email address you entered doesn't match the email address in the box above.",
+    "DATETIME_CHECK": "Please check your date of birth",
+    "DATETIME_PAST_CHECK": "Please check your date of birth"
+  },
+
+  "YOUR_DETAILS_CONFIRM": {
+    "CHECK_DOB": "Please check your date of birth",
+    "CHECK_DOB_OB": "Please check the person's date of birth",
+    "DAY_MISSING": "Please enter the day you were born",
+    "DAY_INVALID": "Please enter the day you were born as a date. For example, 06",
+    "MONTH_MISSING": "Please enter the month you were born",
+    "MONTH_INVALID": "Please enter the month you were born as a number. For example, for December, enter 12",
+    "YEAR_MISSING": "Please enter the year you were born",
+    "YEAR_INVALID": "Please enter the year you were born as a four digit number. For example, 1982",
+    "DAY_MISSING_OB": "Please enter the day the person was born",
+    "DAY_INVALID_OB": "Please enter the day the person was born as a date. For example, 06",
+    "MONTH_MISSING_OB": "Please enter the month the person was born",
+    "MONTH_INVALID_OB": "Please enter the month the person was born as a number. For example, for December, enter 12",
+    "YEAR_MISSING_OB": "Please enter the year the person was born",
+    "YEAR_INVALID_OB": "Please enter the year the person was born as a four digit number. For example, 1982",
+    "INVALID_DATE": "Please check your date of birth",
+    "INVALID_DATE_OB": "Please check the person's date of birth"
+  },
+
+  "QUALIFY": {
+    "WHERE_YOU_LIVE": "^Please tell us about where you live or have lived",
+    "WHERE_YOU_LIVE_OB": "^Please tell us about where the person you're answering for lives or has lived.",
+    "WHERE_YOU_LIVE_DETAILS": "^Please give details about your residency",
+    "WHERE_YOU_LIVE_DETAILS_OB": "^Please give details about the person's residency",
+    "WHERE_YOU_LIVE_LENGTH": "Please ensure that your reason is not too long",
+    "MENTAL_HEALTH_CAPACITY": "^Please answer the question about the Mental Health and Capacity acts",
+    "MENTAL_HEALTH_CAPACITY_DETAILS": "^Please give details about the Mental Health and Capacity acts",
+    "MENTAL_HEALTH_CAPACITY_LENGTH": "Please ensure that your reason is not too long",
+    "ON_BAIL": "^Please tell us if you're on bail for a criminal offence",
+    "ON_BAIL_OB": "^Please tell us if the person you're answering for is on bail for a criminal offence",
+    "ON_BAIL_DETAILS": "^Please give details about your bail",
+    "ON_BAIL_DETAILS_OB": "^Please give details about the person's bail",
+    "ON_BAIL_LENGTH": "Please ensure that your reason is not too long",
+    "CONVICTION": "^Please tell us if you have been found guilty of a criminal offence with a prison sentence, community order or suspended prison sentence.",
+    "CONVICTION_OB": "^Please tell us if the person you're answering for has been found guilty of a criminal offence with a prison sentence, community order or suspended prison sentence.",
+    "CONVICTION_DETAILS": "^Please give details about your criminal offence",
+    "CONVICTION_DETAILS_OB": "^Please give details about the person's criminal offence",
+    "CONVICTION_LENGTH": "Please ensure that your reason is not too long"
+  },
+
+  "CONFIRM_DATE": {
+    "CONFIRM": "Please confirm the date of your jury service",
+    "CONFIRM_OB": "Please confirm the date of the person's jury service"
+  },
+
+  "CJS_EMPLOYED": {
+    "EMPLOYED": "Answer yes if you were employed directly by any of these organisations. If you worked as a third party subcontractor, answer no.",
+    "EMPLOYED_OB": "Answer yes if the person was employed directly by any of these organisations. If they worked as a third party subcontractor, answer no.",
+    "WORKED_FOR": "Tick any organisations you worked for directly (not as a third party or subcontractor)",
+    "WORKED_FOR_OB": "Tick any organisations the person worked for directly (not as a third party or subcontractor)",
+    "CHOOSE_ONE_OR_MORE": "Please choose one or more",
+    "POLICE": "Please give details of where and when you have worked for the police",
+    "POLICE_OB": "Please give details of where and when the person worked for the police",
+    "PRISON_SERVICE": "Please give details of where and when you have worked for HM Prison Service",
+    "PRISON_SERVICE_OB": "Please give details of where and when the person worked for HM Prison Service",
+    "OTHER": "Please give details of where and when you have worked for another Criminal Justice System employer",
+    "OTHER_OB": "Please give details of where and when the person has worked for another Criminal Justice System employer",
+    "CJS_EMPLOYED_LENGTH": "Please ensure that your response is not too long"
+  },
+
+  "CONFIRM_INFO": {
+    "CONFIRM_CORRECT": "Please confirm that your information is correct before sending your summons reply",
+    "CONFIRM_CORRECT_OB": "Please confirm that the information is true"
+  },
+
+  "DEFERRAL": {
+    "CHECK_REASON": "Please check your reason for requesting a later date for your jury service",
+    "CHECK_REASON_OB": "Please check the reason for asking for a later date for the person's jury service",
+    "CHECK_REASON_MISSING": "Please give a reason for asking for a later date for your jury service",
+    "CHECK_REASON_MISSING_OB": "Please give a reason for asking for a later date for the person's jury service",
+    "CHECK_DATES": "Please provide three dates you are available for your jury service",
+    "CHECK_DATES_OB": "Please provide three dates the person you're replying for is available for jury service",
+    "CHECK_DATE": "Please check the date entered",
+    "CHECK_DATE_FUTURE": "Please choose dates that are within 12 months of the original summons date",
+    "CHECK_DATES_MISSING": "Please tell us the dates when you can do jury service",
+    "CHECK_DATES_MISSING_OB": "Please tell us the dates when the person can do jury service",
+    "CHECK_REASON_LENGTH": "Please ensure that your reason is not too long",
+    "DATE": "Please ensure that your date is not too long",
+    "CHECK_UNIQUE": "Please provide three different dates"
+  },
+
+  "EXCUSAL": {
+    "CHECK_REASON": "Please check your reason for requesting to be excused",
+    "CHECK_REASON_OB": "Please check the reason for requesting to be excused",
+    "CHECK_REASON_MISSING": "Please say why you need to be excused",
+    "CHECK_REASON_MISSING_OB": "Please say why the person needs to be excused",
+    "LENGTH_REASON": "Please ensure that your reason is not too long"
+  },
+
+  "ASSISTANCE": {
+    "DISSABILITY_OR_IMPAIRMENT": "Please give us details of your disability or impairment",
+    "DISSABILITY_OR_IMPAIRMENT_OB": "Please give details of the disability or impairment for the person you're replying for"
+  },
+
+  "ON_BEHALF": {
+    "THIRD_PARTY_DETAILS": {
+      "FIRST_NAME_CHECK": "Please check your first name",
+      "FIRST_NAME_CHECK_MISSING": "Please enter your first name",
+      "FIRST_NAME_CHECK_INVALID": "Please check your first name",
+
+      "LAST_NAME_CHECK": "Please check your last name",
+      "LAST_NAME_CHECK_MISSING": "Please enter your last name",
+      "LAST_NAME_CHECK_INVALID": "Please check your last name",
+
+      "ADDRESS_TOWN_CHECK": "Please check the town or city",
+      "ADDRESS_TOWN_CHECK_INVALID": "Please provide the Town or City",
+
+      "RELATIONSHIP_CHECK": "Please check your relationship to person summoned",
+      "RELATIONSHIP_CHECK_MISSING": "Please enter your relationship to person summoned",
+      "RELATIONSHIP_CHECK_INVALID": "Please check your relationship to person summoned",
+
+      "CONTACT_CHECK": "Please choose which contact method to use",
+      "CONTACT_CHECK_MISSING": "Please choose a way to contact you",
+
+      "MAIN_PHONE_CHECK": "Please check your main phone number",
+      "MAIN_PHONE_CHECK_MISSING": "Please enter your main phone number",
+      "MAIN_PHONE_CHECK_INVALID": "Please check your main phone number",
+
+      "OTHER_PHONE_CHECK": "Please check your optional phone number",
+      "OTHER_PHONE_CHECK_INVALID": "Please check your optional phone number",
+
+      "EMAIL_CHECK": "Please check your email address",
+      "EMAIL_CHECK_MISSING": "Please enter your email address",
+      "EMAIL_CHECK_INVALID": "Please check your email address",
+
+      "EMAIL_CONFIRMATION_CHECK": "Please check your email address",
+      "EMAIL_CONFIRMATION_CHECK_MISSING": "Please check your email address. It needs to match the one in the box above.",
+      "EMAIL_CONFIRMATION_CHECK_INVALID": "The email address you entered doesn't match the email address in the box above."
+    },
+
+    "THIRD_PARTY_REASON": {
+      "REASON_CHECK": "Please tell us why you're replying for the person named on the jury summons",
+      "REASON_CHECK_MISSING": "Please tell us why you're replying for the person named on the jury summons"
+    },
+
+    "THIRD_PARTY_PERSONAL_DETAILS": {
+      "TITLE_CHECK": "Please check the person's title",
+      "TITLE_CHECK_INVALID": "Please enter a valid title",
+
+      "FIRST_NAME_CHECK": "Please check the person's first name",
+      "FIRST_NAME_CHECK_MISSING": "Please enter the person's first name",
+      "FIRST_NAME_CHECK_INVALID": "Please check the person's first name",
+
+      "LAST_NAME_CHECK": "Please check the person's last name",
+      "LAST_NAME_CHECK_MISSING": "Please enter the person's last name",
+      "LAST_NAME_CHECK_INVALID": "Please check the person's last name",
+
+      "ADDRESS_STREET_CHECK": "Please check the building and street",
+      "ADDRESS_STREET_CHECK_MISSING": "Please enter the building and street",
+      "ADDRESS_STREET_CHECK_INVALID": "Please check the building and street",
+
+      "ADDRESS_LINE_ONE_CHECK": "Please check the address",
+      "ADDRESS_LINE_ONE_CHECK_INVALID": "Please check the first line of the address",
+      "ADDRESS_LINE_ONE_MISSING": "Please provide the first line of the address",
+
+
+      "ADDRESS_LINE_TWO_CHECK": "Please check the second line of the address",
+      "ADDRESS_LINE_TWO_CHECK_INVALID": "Please check the second line of the address",
+
+      "ADDRESS_LINE_THREE_CHECK": "Please check the third line of the address",
+      "ADDRESS_LINE_THREE_CHECK_INVALID": "Please check the third line of the address",
+
+      "ADDRESS_TOWN_CHECK": "Please check the town or city",
+      "ADDRESS_TOWN_CHECK_INVALID": "Please check the town or city",
+
+      "ADDRESS_COUNTY_CHECK": "Please check the county",
+      "ADDRESS_COUNTY_CHECK_INVALID": "Please check the county",
+
+      "ADDRESS_POSTCODE_CHECK": "Please check the postcode",
+      "ADDRESS_POSTCODE_CHECK_MISSING": "Please enter the postcode",
+      "ADDRESS_POSTCODE_CHECK_INVALID": "Please check the postcode",
+
+      "DOB_CHECK": "Please check the date of birth",
+      "DOB_CHECK_INVALID": "Please check the date of birth"
+    },
+
+    "THIRD_PARTY_CONTACT": {
+      "CANNOT_USE_OWN_PHONE": "Please provide a contact number",
+      "CANNOT_USE_OWN_PHONE_INLINE": "You have not provided any phone number information. Please select the other option.",
+      "CANNOT_USE_OWN_EMAIL": "Please provide a contact email address",
+      "CANNOT_USE_OWN_EMAIL_INLINE": "You have not provided any email address information. Please select the other option.",
+
+      "USE_PHONE_CHECK": "Please provide a contact number",
+      "PHONE_NUMBER_CHECK": "Please check the main phone",
+      "PHONE_NUMBER_CHECK_MISSING": "Please enter the main phone number",
+      "PHONE_NUMBER_CHECK_INVALID": "Please check the main phone number",
+      "PHONE_NUMBER_OTHER_CHECK": "Please check the other phone number",
+      "PHONE_NUMBER_OTHER_CHECK_INVALID": "Please check the other phone number",
+
+      "USE_EMAIL_CHECK": "Please provide a contact email address",
+      "EMAIL_CHECK": "Please check the email address",
+      "EMAIL_CHECK_MISSING": "Please enter the email address we should use to get in touch.",
+      "EMAIL_CHECK_INVALID": "Please check the email address",
+      "EMAIL_CONFIRMATION_CHECK": "Please check the email address",
+      "EMAIL_CONFIRMATION_CHECK_MISSING": "Please check the email address. It needs to match the one in the box above.",
+      "EMAIL_CONFIRMATION_CHECK_INVALID": "Please check the email address. It needs to match the one in the box above."
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.filled-form-group {
+  background-color: $light-grey-1;
+  padding: 10px 20px;
+
+  p {
+    padding-left: 23px;
+  }
+}
+
+.assistance-text-area {
+  height:140px;
+  width:65%;
+}
+
+.grey-background-box {
+  background-color: $panel-colour;
+  padding: 5px 42px 0px 40px;
+}
+
+.pink-background-box {
+  background-color: $baby-pink;
+  padding: 5px 42px 0px 40px;
+}
+
+
+.form-group.error > .form-group.error {
+  border-left: 0;
+  padding-left: 0;
+}
+

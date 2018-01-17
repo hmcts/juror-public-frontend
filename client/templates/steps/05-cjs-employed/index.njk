@@ -1,0 +1,144 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.EMPLOYED_PAGE.HEADER_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.EMPLOYED_PAGE.HEADER }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Employment{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">
+      {% if user.thirdParty == 'Yes' %}
+      {{ texts.EMPLOYED_PAGE.HEADER_OB }}
+      {% else %}
+      {{ texts.EMPLOYED_PAGE.HEADER }}
+      {% endif %}
+    </h1>
+
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('steps.cjs.employed.post') }}" method="post">
+
+      <div class="form-group inline {% if errors.items['cjsEmployed'] %}error{% endif %}" id="cjsEmployedGroup">
+        <legend>
+          <span class="form-label-bold">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.EMPLOYED_PAGE.QUESTION_OB }}
+            {% else %}
+            {{ texts.EMPLOYED_PAGE.QUESTION }}
+            {% endif %}
+          </span>
+        </legend>
+        {% if errors.items['cjsEmployed'] %}<span class="error-message">{{ errors.items['cjsEmployed'][0].details }}</span>{% endif %}
+        <label class="block-label selection-button-radio" data-target="cjsEmployedExpanded" for="employedCjs-Yes">
+          <input id="employedCjs-Yes" type="radio" name="cjsEmployed" value="Yes" {% if user.cjsEmployed == 'Yes' %}checked="checked"{% endif %}>
+          {{ texts.EMPLOYED_PAGE.YES }}
+        </label>
+        <label class="block-label selection-button-radio" for="employedCjs-No">
+          <input id="employedCjs-No" type="radio" name="cjsEmployed" value="No" {% if user.cjsEmployed == 'No' %}checked="checked"{% endif %}>
+          {{ texts.EMPLOYED_PAGE.NO }}
+        </label>
+      </div>
+
+
+      <div class="panel panel-border-narrow {% if user.cjsEmployed == 'Yes' %}{% else %}js-hidden{% endif %} {% if errors.items['cjsEmployer'] %}error{% endif %}" id="cjsEmployedExpanded">
+
+        <strong class="bold-small">
+          {% if user.thirdParty == 'Yes' %}
+          {{ texts.EMPLOYED_PAGE.SELECT_PROMPT_OB }}
+          {% else %}
+          {{ texts.EMPLOYED_PAGE.SELECT_PROMPT }}
+          {% endif %}
+        </strong>
+        <div class="form-group">
+          {% if errors.items['cjsEmployer'] %}<span class="error-message">{{ errors.items['cjsEmployer'][0].details }}</span>{% endif %}
+
+          <label class="block-label selection-button-checkbox" for="cjsEmployer-police" data-target="cjsPoliceDetailsGroup">
+            <input type="checkbox" name="cjsEmployer" id="cjsEmployer-police" value="Police Force" {% if cjsActive.police %}checked="checked"{% endif %}>
+            {{ texts.EMPLOYED_PAGE.POLICE }}
+          </label>
+
+          <div class="form-group {% if cjsActive.policeForce %}{% else %}js-hidden{% endif %} {% if errors.items['cjsPoliceDetails'] %}error{% endif %}" id="cjsPoliceDetailsGroup">
+            <label class="form-label" for="cjsPoliceDetails">
+              <strong class="bold-small">
+                {{ texts.EMPLOYED_PAGE.WHICH_FORCE }}
+                {% if errors.items['cjsPoliceDetails'] %}<span class="error-message">{{ errors.items['cjsPoliceDetails'][0].details }}</span>{% endif %}
+              </strong>
+            </label>
+            <textarea class="form-control" id="cjsPoliceDetails" name="cjsPoliceDetails" maxlength="1000">{{ user.cjsPoliceDetails }}</textarea>
+          </div>
+
+          <label class="block-label selection-button-checkbox" for="cjsEmployer-prison" data-target="cjsPrisonDetailsGroup">
+            <input type="checkbox" name="cjsEmployer" id="cjsEmployer-prison" value="HM Prison Service" {% if cjsActive.prison %}checked="checked"{% endif %}>
+            {{ texts.EMPLOYED_PAGE.HM }}
+          </label>
+
+          <div class="form-group {% if cjsActive.prison %}{% else %}js-hidden{% endif %} {% if errors.items['cjsPrisonDetails'] %}error{% endif %}" id="cjsPrisonDetailsGroup">
+            <label class="form-label" for="cjsPrisonDetails">
+              <strong class="bold-small">
+                {{ texts.EMPLOYED_PAGE.WHICH_PRISON }}
+                {% if errors.items['cjsPrisonDetails'] %}<span class="error-message">{{ errors.items['cjsPrisonDetails'][0].details }}</span>{% endif %}
+              </strong>
+            </label>
+            <textarea class="form-control" id="cjsPrisonDetails" name="cjsPrisonDetails" maxlength="1000">{{ user.cjsPrisonDetails }}</textarea>
+          </div>
+
+          <label class="block-label selection-button-checkbox" for="cjsEmployer-nca">
+            <input type="checkbox" name="cjsEmployer" id="cjsEmployer-nca" value="National Crime Agency" {% if cjsActive.nca %}checked="checked"{% endif %}>
+            {{ texts.EMPLOYED_PAGE.NCA }}
+          </label>
+
+          <label class="block-label selection-button-checkbox" for="cjsEmployer-other" data-target="cjsEmployerDetailsGroup">
+            <input type="checkbox" name="cjsEmployer" id="cjsEmployer-other" value="Other" {% if cjsActive.other %}checked="checked"{% endif %}>
+            {{ texts.EMPLOYED_PAGE.OTHER }}
+          </label>
+
+          <div class="form-group {% if cjsActive.other %}{% else %}js-hidden{% endif %} {% if errors.items['cjsEmployerDetails'] %}error{% endif %}" id="cjsEmployerDetailsGroup">
+            <label class="form-label" for="cjsEmployerDetails">
+              <strong class="bold-small">
+                {{ texts.EMPLOYED_PAGE.DETAILS }}
+                {% if errors.items['cjsEmployerDetails'] %}<span class="error-message">{{ errors.items['cjsEmployerDetails'][0].details }}</span>{% endif %}
+              </strong>
+            </label>
+            <textarea class="form-control" id="cjsEmployerDetails" name="cjsEmployerDetails" maxlength="1000">{{ user.cjsEmployerDetails }}</textarea>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+        <details>
+          <summary {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask for this?')"{% endif %}><span class="summary">{{ texts.EMPLOYED_PAGE.MORE_INFO_LINK }}</span></summary>
+          <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+            <p>
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.EMPLOYED_PAGE.MORE_INFO_1_OB }}
+              {% else %}
+              {{ texts.EMPLOYED_PAGE.MORE_INFO_1 }}
+              {% endif %}
+            </p>
+          </div>
+        </details>
+      </div>
+
+
+      {# Submit form #}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

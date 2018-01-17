@@ -1,0 +1,20 @@
+{
+  "HEADING": "Confirm the date of your jury service",
+  "HEADING_OB": "Confirm the date of the person's jury service",
+  "INTRO_PARAGRAPH": "Jury service usually lasts up to 10 working days (Monday to Friday) but it can be longer. You might take part in more than one trial.",
+  "INTRO_PARAGRAPH_OB": "Jury service usually lasts up to 10 working days (Monday to Friday) but it can be longer. The juror might take part in more than one trial.",
+  "REQUIRED": "You are summoned to do jury service starting on:",
+  "REQUIRED_OB": "The person you are replying for is summoned to do jury service starting on:",
+  "DATE_CONFIRMATION_HEADING": "Confirm the date of your jury service",
+  "DATE_CONFIRMATION_HEADING_OB": "Confirm the date of the person's jury service",
+  "ANSWER_YES": "I can do jury service on the date shown",
+  "ANSWER_YES_OB": "The person I'm answering for can do jury service on the date shown",
+  "ANSWER_DEFERRAL": "I need to change the date of my jury service",
+  "ANSWER_DEFERRAL_OB": "I need to change the date of jury service for the person I'm answering for",
+  "ANSWER_DEFERRAL_HINT": "You can choose another date within the next 12 months. You can only change the date of your jury service once.",
+  "ANSWER_DEFERRAL_HINT_OB": "You can choose another date within the next 12 months. You can only change the date of the person's jury service once.",
+  "ANSWER_EXCUSAL": "I can't do jury service and would like to be excused",
+  "ANSWER_EXCUSAL_OB": "The person I'm answering for can't do jury service and would like to be excused",
+  "ANSWER_EXCUSAL_HINT": "You may not have to do jury service if there's a good reason why you can't do it in the next 12 months, or if you've done jury service in the last two years.",
+  "ANSWER_EXCUSAL_HINT_OB": "The person may not have to do jury service if there's a good reason why they can't do it in the next 12 months, or if they've done jury service in the last two years"
+}

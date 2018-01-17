@@ -1,0 +1,112 @@
+.nav-tabs {
+  background-color: $white;
+  padding: 0;
+  position: relative;
+  zoom: 1;
+
+  a {
+    border-top: 1px solid $grey-2;
+    display: block;
+    padding: 1em;
+    width: 100%;
+  }
+
+  &::after {
+    clear: both;
+    content: '.';
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+
+@include media(tablet) {
+  .nav-tabs {
+    ul {
+      float: left;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      z-index: 5;
+    }
+
+    li {
+      float: left;
+      font-family: nta, Arial, sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.14286;
+      margin: 0;
+      padding: 0;
+      text-transform: none;
+    }
+
+    a {
+      border: 1px solid $white;
+      border-bottom: 0;
+      display: inline;
+      float: left;
+      height: 2.25em;
+      line-height: 2.25em;
+      margin-bottom: -1px;
+      padding: 0 1em;
+      position: relative;
+      text-align: center;
+      top: 0;
+      width: auto;
+    }
+
+    .tabs-selected a {
+      background-color: $white;
+      border: 1px solid $grey-2;
+      border-bottom: solid 1px $white;
+      color: $black;
+      position: relative;
+      text-decoration: none;
+      z-index: 5;
+    }
+  }
+}
+
+
+
+.tab-content {
+
+  .heading-medium {
+    margin-top: 10px;
+  }
+
+  .tab-pane {
+    border-top: solid 1px $grey-2;
+    clear: both;
+    display: none;
+    padding: 1em 1em 0;
+    width: auto;
+  }
+
+  .tabs-panel-selected {
+    display: block;
+  }
+
+  .inner {
+    padding: 0 2.5em 1em;
+  }
+
+  p {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+
+  em {
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  nav {
+    margin: 1em -1.375em 0;
+  }
+
+}

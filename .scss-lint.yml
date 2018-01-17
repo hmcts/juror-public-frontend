@@ -1,0 +1,15 @@
+scss_files: 'app/scss/**/*.scss'
+
+linters:
+  LeadingZero:
+    enabled: true
+    style: include_zero
+
+  NestingDepth:
+    max_depth: 4
+
+  SelectorDepth:
+    max_depth: 4
+
+  HexLength:
+    style: long

@@ -1,0 +1,55 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.INFO_PAGE.MENTAL_HEALTH.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">{{ texts.INFO_PAGE.MENTAL_HEALTH.HEADING }}</h1>
+
+
+    <h3 class="heading-medium">{{ texts.INFO_PAGE.MENTAL_HEALTH.DISORDERS.TITLE }}</h3>
+    {% if user.thirdParty == 'Yes' %}
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.DISORDERS.FIRST_THIRD_PARTY }}</p>
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.DISORDERS.SECOND_THIRD_PARTY }}</p>
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.DISORDERS.THIRD_THIRD_PARTY }}</p>
+    {% else %}
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.DISORDERS.FIRST_MAIN }}</p>
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.DISORDERS.SECOND_MAIN }}</p>
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.DISORDERS.THIRD_MAIN }}</p>
+    {% endif %}
+
+
+    <h3 class="heading-medium">{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.TITLE }}</h3>
+    {% if user.thirdParty == 'Yes' %}
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.FIRST_THIRD_PARTY }}</p>
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.TITLE }}</p>
+    <ul class="list list-bullet">
+      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.ITEM_1 }}</li>
+      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.ITEM_2 }}</li>
+      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.ITEM_3 }}</li>
+      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.ITEM_4 }}</li>
+    </ul>
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.SECOND_THIRD_PARTY }}</p>
+    {% else %}
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.FIRST_MAIN }}</p>
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.TITLE }}</p>
+    <ul class="list list-bullet">
+      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.ITEM_1 }}</li>
+      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.ITEM_2 }}</li>
+      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.ITEM_3 }}</li>
+      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.ITEM_4 }}</li>
+    </ul>
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.SECOND_MAIN }}</p>
+    {% endif %}
+
+  </div>
+
+</div>
+
+{% endblock %}

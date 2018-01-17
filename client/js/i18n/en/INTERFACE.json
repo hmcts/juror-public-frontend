@@ -1,0 +1,28 @@
+{
+  "GOV": "GOV.UK",
+  "SERVICE_TITLE": "Reply to jury summons",
+  "FORM_CHANGE_LABEL": "Change",
+  "BUTTON_TEXT_CONTINUE": "Continue",
+  "BUTTON_TEXT_BACK": "Back",
+  "LABEL_YES": "Yes",
+  "LABEL_NO": "No",
+  "LABEL_WARNING": "Warning",
+  "REPORT_BROKEN": "Is there anything wrong with this page?",
+  "CONTENT_AVAILABLE_UNDER": "All content is available under the",
+  "OPEN_GOV_LICENCE": "Open Government Licence",
+  "OPEN_GOV_LICENCE_V": "v3.0",
+  "EXCEPT_OTHERWISE": "except where otherwise stated",
+  "HOME": "Home",
+  "CRIME_JUSTICE_LAW": "Crime, justice and the law",
+  "COURTS_SENTENCING_TRIBUNALS": "Courts, sentencing and tribunals",
+  "YOU_CAN": "You can",
+  "RETURN_HOME": "return to the homepage",
+  "BROWSE_FROM_HOME": "browse from the homepage",
+  "FIND_INFO": "to find the information you need.",
+  "COOKIE_MESSAGE": "GOV.UK uses cookies to make the site simpler. <a href=\"/help/cookies\">Find out more about cookies</a>",
+
+  "FOOTER_LINKS": {
+    "COOKIES": "Cookies",
+    "PRIVACY": "Privacy policy"
+  }
+}

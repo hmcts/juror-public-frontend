@@ -1,0 +1,142 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}3rd Party Details{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <h1 class="heading-xlarge">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.HEADER }}</h1>
+
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('branches.third.party.details.post') }}" method="POST" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+
+      <fieldset>
+        <legend class="bold-small">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.LEGEND }}</legend>
+        <br>
+
+        <div class="form-group {% if errors.items['firstName'] %}error{% endif %}" id="firstNameGroup">
+          <label class="form-label" for="firstName">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.LABEL_FIRST_NAME }}</label>
+          {% if errors.items['firstName'] %}<span class="error-message" id="firstNameErrorMessage">{{ errors.items['firstName'][0].details }}</span>{% endif %}
+          <input type="text" class="form-control" name="firstName" id="firstName" value="{{ user.thirdPartyDetails.firstName }}" minlength="1" maxlength="50">
+        </div>
+
+        <div class="form-group {% if errors.items['lastName'] %}error{% endif %}" id="lastNameGroup">
+          <label class="form-label" for="lastName">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.LABEL_LAST_NAME }}</label>
+          {% if errors.items['lastName'] %}<span class="error-message" id="lastNameErrorMessage">{{ errors.items['lastName'][0].details }}</span>{% endif %}
+          <input type="text" class="form-control" name="lastName" id="lastName" value="{{ user.thirdPartyDetails.lastName }}" minlength="1" maxlength="50">
+        </div>
+
+      </fieldset>
+
+
+      <fieldset>
+        <legend class="bold-small">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.RELATIONSHIP.LEGEND }}</legend>
+        <br>
+
+        <div class="form-group {% if errors.items['relationship'] %}error{% endif %}" id="relationshipGroup">
+          <label class="form-label" for="relationship">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.RELATIONSHIP.LABEL_RELATIONSHIP }}</label>
+          {% if errors.items['relationship'] %}<span class="error-message" id="relationshipErrorMessage">{{ errors.items['relationship'][0].details }}</span>{% endif %}
+          <input type="text" class="form-control" name="relationship" id="relationship" value="{{ user.thirdPartyDetails.relationship }}" minlength="1" maxlength="100">
+        </div>
+      </fieldset>
+
+
+      <fieldset>
+        <legend class="bold-small">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LEGEND }}</legend>
+
+        <p>
+          {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.INFO_1 }}<br>
+          {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.INFO_2 }}
+        </p>
+
+
+        <div class="form-group{% if errors.items['contactPhone'] %} error{% endif %}" id="contactPhoneGroup">
+          {# Phone #}
+
+          {% if errors.items['contactPhone'] %}<span class="error-message" id="contactPhoneErrorMessage">{{ errors.items['contactPhone'][0].details }}</span>{% endif %}
+
+          <label class="block-label toggle-reset" for="contactPhone" data-target="phoneGroup">
+            <input type="checkbox" name="contactPhone" id="contactPhone" value="By phone" {% if user.thirdPartyDetails.contactPhone == 'By phone' %}checked{% endif %}>
+            {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_BY_PHONE }}
+          </label>
+
+          <div class="panel panel-border-narrow {% if user.thirdPartyDetails.contactPhone == 'By phone' %}{% else %}js-hidden{% endif %}" id="phoneGroup">
+            <p>
+              {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.INFO_PHONE }}
+            </p>
+
+            <div class="form-group {% if errors.items['mainPhone'] %}error{% endif %}" id="mainPhoneGroup">
+              <label class="form-label" for="mainPhone">
+                {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_MAIN_PHONE }}
+              </label>
+              {% if errors.items['mainPhone'] %}<span class="error-message" id="mainPhoneErrorMessage">{{ errors.items['mainPhone'][0].details }}</span>{% endif %}
+              <input type="text" class="form-control" id="mainPhone" name="mainPhone" value="{{ user.thirdPartyDetails.mainPhone }}">
+            </div>
+
+            <div class="form-group {% if errors.items['otherPhone'] %}error{% endif %}" id="otherPhoneGroup">
+              <label class="form-label" for="otherPhone">
+                {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_OTHER_PHONE }}
+              </label>
+              {% if errors.items['otherPhone'] %}<span class="error-message" id="otherPhoneErrorMessage">{{ errors.items['otherPhone'][0].details }}</span>{% endif %}
+              <input type="text" class="form-control" id="otherPhone" name="otherPhone" value="{{ user.thirdPartyDetails.otherPhone }}">
+            </div>
+          </div>
+
+
+          {# Email address #}
+          <label class="block-label toggle-reset" for="contactEmail" data-target="emailGroup">
+            <input type="checkbox" name="contactEmail" id="contactEmail" value="By email" {% if user.thirdPartyDetails.contactEmail == 'By email' %}checked{% endif %}>
+            {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_BY_EMAIL }}
+          </label>
+
+          <div class="panel panel-border-narrow {% if user.thirdPartyDetails.contactEmail == 'By email' %}{% else %}js-hidden{% endif %}" id="emailGroup">
+            <div class="form-group {% if errors.items['emailAddress'] %}error{% endif %}" id="emailAddressGroup">
+              <label class="form-label" for="emailAddress">
+                {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_EMAIL }}
+              </label>
+              {% if errors.items['emailAddress'] %}<span class="error-message" id="emailAddressErrorMessage">{{ errors.items['emailAddress'][0].details }}</span>{% endif %}
+              <input type="email" class="form-control" id="emailAddress" name="emailAddress" value="{{ user.thirdPartyDetails.emailAddress }}">
+            </div>
+
+            <div class="form-group {% if errors.items['emailAddressConfirmation'] %}error{% endif %}" id="emailAddressConfirmationGroup">
+              <label class="form-label" for="emailAddressConfirmation">
+                {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_EMAIL_CONFIRM }}
+              </label>
+              {% if errors.items['emailAddressConfirmation'] %}<span class="error-message" id="emailAddressConfirmationErrorMessage">{{ errors.items['emailAddressConfirmation'][0].details }}</span>{% endif %}
+              <input type="email" class="form-control" id="emailAddressConfirmation" name="emailAddressConfirmation" value="{{ user.thirdPartyDetails.emailAddressConfirmation }}">
+            </div>
+          </div>
+        </div>
+
+      </fieldset>
+
+      <br>
+      <details>
+        <summary><span class="summary">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.TITLE }}</span></summary>
+        <div class="panel panel-border-narrow">
+          <p>{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.INFO_1 }}</p>
+        </div>
+      </details>
+
+
+      <br><br>
+      <div class="form-group">
+        <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}
