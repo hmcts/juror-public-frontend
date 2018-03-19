@@ -1,9 +1,10 @@
 {
-  "HEADING": "Reply to a jury summons",
+  "HEADING": "Your juror details",
   "HEADING_OB": "The juror details",
 
   "SAMPLE_TITLE": "Your juror number can be found on your jury summons letter as shown in the image below",
   "SAMPLE_IMAGE_ALT": "Image showing a jury summons letter and where you can find your Juror number. It is at the top of the first page of the letter.",
+  "IMAGE_TITLE": "Juror number can be found at the top of the summons letter",
 
   "FIELD_JUROR_NUMBER_TITLE": "9-digit juror number",
 
@@ -29,7 +30,7 @@
   "FIELD_LAST_NAME_HINT_OB": "Please enter the last name as it is printed on the jury summons letter, even if this might be incorrect. You can change it further on.",
 
   "FIELD_POSTCODE_TITLE": "Juror postcode",
-  "FIELD_POSTCODE_HINT": "Please enter your postcode as it is printed on the jury summons letter, even if this might be incorrect. It can be changed further on.",
+  "FIELD_POSTCODE_HINT": "Please enter your postcode as it is printed on the jury summons letter, even if this might be incorrect. You can change it further on.",
   "FIELD_POSTCODE_HINT_OB": "Please enter the person's postcode as it is printed on the jury summons letter, even if this might be incorrect. You can change it further on.",
 
   "FIELD_THIRD_PARTY_LABEL": "I'm replying on behalf of someone else"

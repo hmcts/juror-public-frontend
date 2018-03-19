@@ -552,12 +552,12 @@
         return res.redirect(app.namedRoutes.build('branches.third.party.reason.get'));
       }
 
-       // Cannot get passed branch 03 without completing
+      // Cannot get passed branch 03 without completing
       if (typeof req.session.user.dateOfBirth === 'undefined' && activeStep >= 4) {
         return res.redirect(app.namedRoutes.build('branches.third.party.personal.details.get'));
       }
 
-       // Cannot get passed branch 04 without completing
+      // Cannot get passed branch 04 without completing
       if (typeof req.session.user.dateOfBirth === 'undefined' && activeStep >= 5) {
         return res.redirect(app.namedRoutes.build('branches.third.party.personal.details.get'));
       }
@@ -660,21 +660,9 @@
 
   };
 
-  module.exports.calculateAgeAtHearing = function calculateAgeAtHearing(dobYear, dobMonth, dobDay, hearingDate) {
-
-    var courtDateSplit = hearingDate.split(' ')
-      , courtMonth = courtDateSplit[2]
-      , courtDay = courtDateSplit[1]
-      , courtYear = courtDateSplit[3]
-      , ageTimeOfHearing = courtYear - dobYear;
-
-    if (courtMonth < dobMonth){
-      ageTimeOfHearing--;
-    }
-
-    if (courtMonth === dobMonth && courtDay < dobDay){
-      ageTimeOfHearing--;
-    }
+  module.exports.calculateAgeAtHearing = function calculateAgeAtHearing(dateOfBirth, hearingDate) {
+    var hearingDateMoment = moment(hearingDate, 'ddd mmm YYYY')
+      , ageTimeOfHearing = hearingDateMoment.diff(dateOfBirth, 'years');
 
     return ageTimeOfHearing;
   };

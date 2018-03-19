@@ -14,8 +14,8 @@
   "YOU_CAN": "You can ",
   "YOU_CAN_OB": "You or the person you've replied for can",
   "WATCH_VIDEO": "watch a video about what happens when you're a juror",
-  "WHAT_TO_EXPECT": "so you know what to expect",
-  "WHAT_TO_EXPECT_OB": "so they know what to expect",
+  "WHAT_TO_EXPECT": "so you know what to expect.",
+  "WHAT_TO_EXPECT_OB": "so they know what to expect.",
   "LEARN_MORE": "Learn more about your jury service. Read the rules about",
   "LEARN_MORE_OB": "Learn more about jury service. Read the rules about",
   "DISCUSSING": "discussing the trial",
@@ -46,6 +46,7 @@
   },
   "AGE": {
     "DOB_QUALIFICATION": "By law, jurors must be aged 18 - 75. You don't have to do jury service because you are younger than 18 or older than 75.",
+    "DOB_QUALIFICATION_OB": "By law, jurors must be aged 18 - 75. The person you replied for doesn't have to do jury service because they are younger than 18 or older than 75.",
     "NO_SERVICE_REQUIRED": "We'll write to confirm that you don't have to do jury service.",
     "NO_SERVICE_REQUIRED_OB": "We'll write to the person you replied for to confirm that they don't have to do jury service."
 

@@ -14,7 +14,12 @@
     {% include "./_hero.njk" %}
 
     <br>
+    {% if user.thirdParty == 'Yes' %}
+    <p>{{ texts.CONFIRMATION.AGE.DOB_QUALIFICATION_OB }}</p>
+    {% else %}
     <p>{{ texts.CONFIRMATION.AGE.DOB_QUALIFICATION }}</p>
+    {% endif %}
+    
 
     <h2 class="heading-medium">{{ texts.CONFIRMATION.NEXT_INFO }}</h2>
 

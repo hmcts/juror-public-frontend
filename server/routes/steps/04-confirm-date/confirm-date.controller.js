@@ -24,6 +24,9 @@
       delete req.session.errors;
       delete req.session.formFields;
 
+      // JDB-2729: delete any deferral related choices if they exist, as back must have been pressed
+      delete req.session.user.deferral;
+
       return res.render('steps/04-confirm-date/index.njk', {
         user: mergedUser,
         errors: {

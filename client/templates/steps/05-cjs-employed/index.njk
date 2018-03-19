@@ -29,24 +29,26 @@
     <form action="{{ url('steps.cjs.employed.post') }}" method="post">
 
       <div class="form-group inline {% if errors.items['cjsEmployed'] %}error{% endif %}" id="cjsEmployedGroup">
-        <legend>
-          <span class="form-label-bold">
-            {% if user.thirdParty == 'Yes' %}
-            {{ texts.EMPLOYED_PAGE.QUESTION_OB }}
-            {% else %}
-            {{ texts.EMPLOYED_PAGE.QUESTION }}
-            {% endif %}
-          </span>
-        </legend>
-        {% if errors.items['cjsEmployed'] %}<span class="error-message">{{ errors.items['cjsEmployed'][0].details }}</span>{% endif %}
-        <label class="block-label selection-button-radio" data-target="cjsEmployedExpanded" for="employedCjs-Yes">
-          <input id="employedCjs-Yes" type="radio" name="cjsEmployed" value="Yes" {% if user.cjsEmployed == 'Yes' %}checked="checked"{% endif %}>
-          {{ texts.EMPLOYED_PAGE.YES }}
-        </label>
-        <label class="block-label selection-button-radio" for="employedCjs-No">
-          <input id="employedCjs-No" type="radio" name="cjsEmployed" value="No" {% if user.cjsEmployed == 'No' %}checked="checked"{% endif %}>
-          {{ texts.EMPLOYED_PAGE.NO }}
-        </label>
+        <fieldset>
+          <legend>
+            <span class="form-label-bold">
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.EMPLOYED_PAGE.QUESTION_OB }}
+              {% else %}
+              {{ texts.EMPLOYED_PAGE.QUESTION }}
+              {% endif %}
+            </span>
+          </legend>
+          {% if errors.items['cjsEmployed'] %}<span class="error-message">{{ errors.items['cjsEmployed'][0].details }}</span>{% endif %}
+          <label class="block-label selection-button-radio" data-target="cjsEmployedExpanded" for="employedCjs-Yes">
+            <input id="employedCjs-Yes" type="radio" name="cjsEmployed" value="Yes" {% if user.cjsEmployed == 'Yes' %}checked="checked"{% endif %}>
+            {{ texts.EMPLOYED_PAGE.YES }}
+          </label>
+          <label class="block-label selection-button-radio" for="employedCjs-No">
+            <input id="employedCjs-No" type="radio" name="cjsEmployed" value="No" {% if user.cjsEmployed == 'No' %}checked="checked"{% endif %}>
+            {{ texts.EMPLOYED_PAGE.NO }}
+          </label>
+        </fieldset>
       </div>
 
 

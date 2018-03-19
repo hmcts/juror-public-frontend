@@ -21,6 +21,9 @@
           value: 'other',
           message: filters.translate('VALIDATION.PROVIDE_DETAILS', texts),
         },
+        length: {
+          maximum: 100
+        }
       },
     };
   };

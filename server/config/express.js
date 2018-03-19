@@ -43,9 +43,10 @@
     app.use(helmet.contentSecurityPolicy({
       directives: {
         defaultSrc: ['\'self\''],
-        styleSrc: ['\'self\''],
-        scriptSrc: ['\'self\'', 'cdnjs.cloudflare.com', '\'unsafe-inline\''],
-        fontSrc: ['data:'],
+        styleSrc: ['\'self\'', '\'unsafe-inline\''],
+        scriptSrc: ['\'self\'', 'cdnjs.cloudflare.com', 'https://www.google-analytics.com', '\'unsafe-inline\''],
+        fontSrc: ['\'self\'', 'data:'],
+        imgSrc: ['\'self\'', 'https://www.google-analytics.com'],
         connectSrc: ['\'self\'', 'ws://localhost:*']
       }
     }));

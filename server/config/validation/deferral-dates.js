@@ -7,14 +7,12 @@
   module.exports = function(req) {
     return {
       date1: {
-        datetime: {
+        deferralDateValid: {
           message: {
-            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES'
-              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), texts),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts),
-          },
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES', texts),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts)
+          }
         },
-        deferralDateValid: req,
         dateFuture: {
           checkDate: req.session.user.hearingDateTimestamp,
           limit: {
@@ -25,17 +23,15 @@
             summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE', texts),
             details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts),
           }
-        },
+        }
       },
       date2: {
-        datetime: {
+        deferralDateValid: {
           message: {
-            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES'
-              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), texts),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts),
-          },
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES', texts),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts)
+          }
         },
-        deferralDateValid: req,
         dateFuture: {
           checkDate: req.session.user.hearingDateTimestamp,
           limit: {
@@ -46,17 +42,15 @@
             summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE', texts),
             details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts),
           }
-        },
+        }
       },
       date3: {
-        datetime: {
+        deferralDateValid: {
           message: {
-            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES'
-              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), texts),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts),
-          },
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES', texts),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts)
+          }
         },
-        deferralDateValid: req,
         dateFuture: {
           checkDate: req.session.user.hearingDateTimestamp,
           limit: {
@@ -67,7 +61,7 @@
             summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE', texts),
             details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts),
           }
-        },
+        }
       },
       dates: {
         datesDistinct: {

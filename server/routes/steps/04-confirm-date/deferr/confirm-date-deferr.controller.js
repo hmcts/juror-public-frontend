@@ -7,7 +7,6 @@
   'use strict';
 
   var _ = require('lodash')
-    , moment = require('moment')
     , validate = require('validate.js')
     , filters = require('../../../../components/filters')
     , texts = require('../../../../../client/js/i18n/en.json')
@@ -40,18 +39,13 @@
   module.exports.getDates = function() {
     return function(req, res) {
       var tmpErrors
-        , mergedUser
-        , tmpDates = {};
-
+        , tmpDates = {}
+        , mergedUser;
 
       if (req.session.user.deferral.dates) {
-        req.session.user.deferral.dates.split(', ')
+        req.session.user.deferral.dates.split(',')
           .forEach(function(dateStr, index) {
-            var splitDate = dateStr.split('/');
-
-            tmpDates['date' + (index + 1) + 'Day'] = splitDate[0];
-            tmpDates['date' + (index + 1) + 'Month'] = splitDate[1];
-            tmpDates['date' + (index + 1) + 'Year'] = splitDate[2];
+            tmpDates['date' + (index + 1)] = dateStr;
           });
       }
 
@@ -82,7 +76,6 @@
       // Reset error and saved field sessions
       delete req.session.errors;
       delete req.session.formFields;
-
 
       // Store new info
       req.session.user.deferral = {
@@ -120,25 +113,7 @@
       delete req.session.errors;
       delete req.session.formFields;
 
-      moments = [1, 2, 3].map(function(dateNum) {
-        return [
-          req.body['date' + dateNum + 'Day'],
-          req.body['date' + dateNum + 'Month'],
-          req.body['date' + dateNum + 'Year'],
-        ];
-      })
-      .map(function(dateParts) {
-        return dateParts.join('-');
-      })
-      .map(function(dateString) {
-        return moment(dateString, 'DD-MM-YYYY');
-      });
-
-      moments.forEach(function(val, i) {
-        req.session.user.deferral['date' + (i + 1)] = val;
-        req.body['date' + (i + 1)] = val;
-      });
-
+      moments = [req.body['date1'], req.body['date2'], req.body['date3']];
 
       // Validate form submission
       validatorResult = validate(req.body, require('../../../../config/validation/deferral-dates')(req));
@@ -162,9 +137,7 @@
         delete req.session.user.excusal;
       }
 
-      req.session.user.deferral.dates = moments.map(function(moment) {
-        return moment.format('DD/MM/YYYY');
-      }).join(', ');
+      req.session.user.deferral.dates = moments.join(', ');
 
       // Move on
       if (req.session.change === true) {

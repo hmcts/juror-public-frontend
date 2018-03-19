@@ -371,14 +371,14 @@
     }
 
     options.group.map(function(groupName) {
-      return attributes[groupName].format();
-    }).forEach(function(value, index, array) {
-      if (value === 'Invalid date') {
+      return attributes[groupName];
+    }).forEach(function(dateValue, index, array) {
+      if (dateValue.trim() === '') {
         // skip this validator on invalid date
         return null;
       }
 
-      if (!(array.indexOf(value) === index)) {
+      if (!(array.indexOf(dateValue) === index)) {
         message.fields.push('date' + (index + 1));
         message.details.push(
           filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts)
@@ -390,61 +390,19 @@
 
   };
 
-  validate.validators.deferralDateValid = function(value, req, key, attributes) {
-    var message = {
-      summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES', texts),
-      fields: [],
-      details: []
-    };
+  validate.validators.deferralDateValid = function(value, req) {
+    var dateRegex = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/
+      , asMoment = moment(value, 'DD/MM/YYYY');
 
-    if (attributes[key + 'Day'].length === 0) {
-      message.fields.push(key + 'Day');
-      message.details.push(
-        filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts)
-      );
-    } else if ((attributes[key + 'Day'] > 31 || attributes[key + 'Day'] < 1) || !/^[0-9]{1,2}$/.test(attributes[key + 'Day'])) {
-      message.fields.push(key + 'Day');
-      message.details.push(
-        filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts)
-      );
-    }
-
-    if (attributes[key + 'Month'].length === 0) {
-      message.fields.push(key + 'Month');
-      message.details.push(
-        filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts)
-      );
-    } else if ((attributes[key + 'Month'] > 12 || attributes[key + 'Month'] < 1) || !/^[0-9]{1,2}$/.test(attributes[key + 'Month'])) {
-      message.fields.push(key + 'Month');
-      message.details.push(
-        filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts)
-      );
-    }
-
-    if (attributes[key + 'Year'].length === 0) {
-      message.fields.push(key + 'Year');
-      message.details.push(
-        filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts)
-      );
-    } else if (!/^[0-9]{4}$/.test(attributes[key + 'Year'])) {
-      message.fields.push(key + 'Year');
-      message.details.push(
-        filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts)
-      );
-    }
-
-    // Feedback
-    if (message.details.length > 0) {
-      return message;
-    }
-
-    return null;
+    return dateRegex.test(value) && asMoment.isValid() ? null : req.message;
   };
 
   validate.validators.dateFuture = function(value, req) {
     var summonsDate = moment(req.checkDate)
-      , dateLimit = summonsDate.clone().add(req.limit.multiplier, req.limit.unit);
-    return value.isAfter(summonsDate) && value.isBefore(dateLimit) ? null : req.message;
+      , dateLimit = summonsDate.clone().add(req.limit.multiplier, req.limit.unit)
+      , checkValue = moment(value, 'DD/MM/YYYY');
+
+    return checkValue.isAfter(summonsDate) && checkValue.isBefore(dateLimit) ? null : req.message;
   };
 
 })();

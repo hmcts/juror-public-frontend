@@ -15,7 +15,7 @@
   "ACCEPTABLE_LIST_ITEM_3": "taking an exam",
 
   "DATE_FIELD_TITLE": "Please give us three dates you could start jury service during the next 12 months.",
-  "DATE_FIELD_TITLE_OB": "Please give us three dates the person you're replying for could start jury service during the next 12 months.",
+  "DATE_FIELD_TITLE_OB": "Please give us three dates the person you're replying for could do jury service during the next 12 months.",
   "DATE_FIELD_HINT": "Jury service usually lasts up to 10 working days but can be longer.",
 
   "WHY_ASK_SUMMARY": "Why do we ask this?",
@@ -31,8 +31,8 @@
   "MONTH": "Month",
   "YEAR": "Year",
 
-  "DATE_INFO": "I can start jury service for at least ten working days from",
-  "DATE_INFO_OB": "The person I'm replying for can start jury service for at least ten working days from: "
+  "DATE_INFO": "I can start jury service for at least ten working days from:",
+  "DATE_INFO_OB": "The person I'm replying for can start jury service for at least ten working days from"
 
 
 

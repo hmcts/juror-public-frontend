@@ -21,4 +21,3 @@ npm-debug.log
 .vscode/
 /.idea/
 package-lock.json
-*.iml

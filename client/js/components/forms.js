@@ -19,7 +19,6 @@
     });
   });
 
-
   function toggleClearFields(ctx) {
     var isSelected = ctx.parent().hasClass('selected')
       , dataTarget = ctx.parent().data('target');

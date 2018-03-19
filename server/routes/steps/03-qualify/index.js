@@ -2,8 +2,8 @@
   'use strict';
 
   var controller = require('./qualify.controller')
-      , auth = require('../../../components/auth')
-      , utils = require('../../../lib/utils');
+    , auth = require('../../../components/auth')
+    , utils = require('../../../lib/utils');
 
   module.exports = function(app) {
     app.get('/steps/03-qualify/residency/info', 'steps.qualify.residency.info', controller.getResidencyInfo(app));

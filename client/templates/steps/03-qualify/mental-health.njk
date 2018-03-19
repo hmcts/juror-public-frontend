@@ -2,9 +2,9 @@
 
 {% block page_title %}
   {% if user.thirdParty == 'Yes' %}
-  {{ texts.QUALIFY_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_TITLE_OB }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-  {{ texts.QUALIFY_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 
@@ -18,9 +18,9 @@
 
     <h1 class="heading-xlarge">
       {% if user.thirdParty == 'Yes' %}
-      {{ texts.QUALIFY_PAGE.HEADING_OB }}
+      {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_TITLE_OB }}
       {% else %}
-      {{ texts.QUALIFY_PAGE.HEADING }}
+      {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_TITLE }}
       {% endif %}
     </h1>
 
@@ -28,33 +28,38 @@
 
     <form action="{{ url('steps.qualify.mental.health.post') }}" method="post">
       <div class="form-group inline {% if errors.items['mentalHealthAct'] %}error{% endif %}" id="mentalHealthActGroup">
-          <span class="form-label-bold">
-            {% if user.thirdParty == 'Yes' %}
-            {{ texts.QUALIFY_PAGE.QUESTION_2_OB }}
-            {% else %}
-            {{ texts.QUALIFY_PAGE.QUESTION_2 }}
-            {% endif %}
-          </span>
+        <fieldset>
+          <legend>
+            <span class="form-label-bold">
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.QUALIFY_PAGE.QUESTION_2_OB }}
+              {% else %}
+              {{ texts.QUALIFY_PAGE.QUESTION_2 }}
+              {% endif %}
+            </span>
+          </legend>
           <span class="form-hint" id="mentalHealthActHint">{{ texts.QUALIFY_PAGE.UNSURE_PROMPT }} <a href="{{ url('steps.qualify.mental.health.info') }}">{{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}</a></span>
-          {% if errors.items['mentalHealthAct'] %} <span class="error-message"> {{ texts.QUALIFY_PAGE.MISSING }} </span> {% endif %}
-        <label class="block-label selection-button-radio" for="mentalHealthAct-Yes" data-target="mentalHealthActDetailsGroup">
-          <input id="mentalHealthAct-Yes" type="radio" name="mentalHealthAct" class="store-updated-information" value="Yes" {% if user.qualify.mentalHealthAct.answer == 'Yes' %}checked="checked"{% endif %}>
-          {{ texts.QUALIFY_PAGE.YES }}
-        </label>
-        <label class="block-label selection-button-radio" for="mentalHealthAct-No">
-          <input id="mentalHealthAct-No" type="radio" name="mentalHealthAct" class="store-updated-information" value="No" {% if user.qualify.mentalHealthAct.answer == 'No' %}checked="checked"{% endif %}>
-          {{ texts.QUALIFY_PAGE.NO }}
-        </label>
+            {% if errors.items['mentalHealthAct'] %} <span class="error-message"> {{ texts.QUALIFY_PAGE.MISSING }} </span> {% endif %}
+          <label class="block-label selection-button-radio" for="mentalHealthAct-Yes" data-target="mentalHealthActDetailsGroup">
+            <input id="mentalHealthAct-Yes" type="radio" name="mentalHealthAct" class="store-updated-information" value="Yes" {% if user.qualify.mentalHealthAct.answer == 'Yes' %}checked="checked"{% endif %}>
+            {{ texts.QUALIFY_PAGE.YES }}
+          </label>
+          <label class="block-label selection-button-radio" for="mentalHealthAct-No">
+            <input id="mentalHealthAct-No" type="radio" name="mentalHealthAct" class="store-updated-information" value="No" {% if user.qualify.mentalHealthAct.answer == 'No' %}checked="checked"{% endif %}>
+            {{ texts.QUALIFY_PAGE.NO }}
+          </label>
 
-        <div class="panel panel-border-narrow {% if user.qualify.mentalHealthAct.answer === 'Yes' %}{% else %}js-hidden{% endif %} {% if errors.items['mentalHealthActDetails'] %}error{% endif %}" id="mentalHealthActDetailsGroup">
-          <label class="form-label" for="mentalHealthActDetails">{{ texts.QUALIFY_PAGE.DETAILS }}</label>
-          <textarea class="form-control" name="mentalHealthActDetails" id="mentalHealthActDetails" maxlength="1000">{{ user.qualify.mentalHealthAct.details }}</textarea>
-        </div>
+          <div class="panel panel-border-narrow {% if user.qualify.mentalHealthAct.answer === 'Yes' %}{% else %}js-hidden{% endif %} {% if errors.items['mentalHealthActDetails'] %}error{% endif %}" id="mentalHealthActDetailsGroup">
+            <label class="form-label" for="mentalHealthActDetails">{{ texts.QUALIFY_PAGE.DETAILS }}</label>
+            <textarea class="form-control" name="mentalHealthActDetails" id="mentalHealthActDetails" maxlength="1000">{{ user.qualify.mentalHealthAct.details }}</textarea>
+          </div>
+        </fieldset>
       </div>
 
       {# Submit form #}
       <input type="hidden" name="_csrf" id="_csrf" value="{{ csrftoken }}">
-      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+      <input type="hidden" id="store_url" value="{{ url('steps.qualify.store') }}">
+      <input id="submitButton" class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
     </form>
 
   </div>

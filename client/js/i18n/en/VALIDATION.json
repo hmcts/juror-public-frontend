@@ -252,6 +252,7 @@
       "ADDRESS_LINE_THREE_CHECK_INVALID": "Please check the third line of the address",
 
       "ADDRESS_TOWN_CHECK": "Please check the town or city",
+      "ADDRESS_TOWN_CHECK_MISSING": "Please provide town or city",
       "ADDRESS_TOWN_CHECK_INVALID": "Please check the town or city",
 
       "ADDRESS_COUNTY_CHECK": "Please check the county",
@@ -272,7 +273,7 @@
       "CANNOT_USE_OWN_EMAIL_INLINE": "You have not provided any email address information. Please select the other option.",
 
       "USE_PHONE_CHECK": "Please provide a contact number",
-      "PHONE_NUMBER_CHECK": "Please check the main phone",
+      "PHONE_NUMBER_CHECK": "Please check the main phone number",
       "PHONE_NUMBER_CHECK_MISSING": "Please enter the main phone number",
       "PHONE_NUMBER_CHECK_INVALID": "Please check the main phone number",
       "PHONE_NUMBER_OTHER_CHECK": "Please check the other phone number",

@@ -77,13 +77,13 @@
     <p>
       {{ texts.CONFIRMATION.LEARN_MORE_OB }}
       <a target="_blank" href="https://www.gov.uk/jury-service/discussing-the-trial" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/discussing-the-trial')"{% endif %}>{{ texts.CONFIRMATION.DISCUSSING_OB }}</a>
-      {{ texts.CONFIRMATION.FIND_OUT_OB }} <a href="https://www.gov.uk/jury-service/how-to-claim-expenses" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/how-to-claim-expenses')"{% endif %}>{{ texts.CONFIRMATION.CLAIM_EXPENSES_OB }}</a>.
+      {{ texts.CONFIRMATION.FIND_OUT_OB }} <a target="_blank" href="https://www.gov.uk/jury-service/how-to-claim-expenses" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/how-to-claim-expenses')"{% endif %}>{{ texts.CONFIRMATION.CLAIM_EXPENSES_OB }}</a>.
     </p>
     {% else %}
     <p>
       {{ texts.CONFIRMATION.LEARN_MORE }}
       <a target="_blank" href="https://www.gov.uk/jury-service/discussing-the-trial" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/discussing-the-trial')"{% endif %}>{{ texts.CONFIRMATION.DISCUSSING }}</a>
-      {{ texts.CONFIRMATION.FIND_OUT }} <a href="https://www.gov.uk/jury-service/how-to-claim-expenses" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/how-to-claim-expenses')"{% endif %}>{{ texts.CONFIRMATION.CLAIM_EXPENSES }}</a>.
+      {{ texts.CONFIRMATION.FIND_OUT }} <a target="_blank" href="https://www.gov.uk/jury-service/how-to-claim-expenses" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/how-to-claim-expenses')"{% endif %}>{{ texts.CONFIRMATION.CLAIM_EXPENSES }}</a>.
     </p>
     {% endif %}
 

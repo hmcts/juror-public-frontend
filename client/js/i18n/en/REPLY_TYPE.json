@@ -1,6 +1,5 @@
 {
-  "HEADER":"Reply to a jury summons",
-  "REPLY_QUESTION":"Are you replying for yourself or for someone else?",
+  "HEADER":"Are you replying for yourself or for someone else?",
   "REPLY_SELF":"I am replying for myself",
   "REPLY_SELF_INFO":"You can still ask a family member or a person you trust to help you understand or reply",
   "NEED_HELP":"What if I need help replying?",

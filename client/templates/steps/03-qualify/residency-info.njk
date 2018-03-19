@@ -1,7 +1,11 @@
 {% extends "../../layouts/default.njk" %}
 
 {% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.INFO_PAGE.RESIDENCY.HEADING_THIRD_PARTY }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
   {{ texts.INFO_PAGE.RESIDENCY.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -10,7 +14,12 @@
 
   <div class="column-two-thirds">
 
+
+    {% if user.thirdParty == 'Yes' %}
+    <h1 class="heading-xlarge">{{ texts.INFO_PAGE.RESIDENCY.HEADING_THIRD_PARTY }}</h1>
+    {% else %}
     <h1 class="heading-xlarge">{{ texts.INFO_PAGE.RESIDENCY.HEADING }}</h1>
+    {% endif %}
 
     {% if user.thirdParty == 'Yes' %}
     <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_THIRD_PARTY }}</p>

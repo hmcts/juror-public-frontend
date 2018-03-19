@@ -13,9 +13,9 @@
     return function(req, res) {
       var getDetailsSuccess = function(response) {
           var nameError
-          , addressError
-          , tmpErrors
-          , mergedUser;
+            , addressError
+            , tmpErrors
+            , mergedUser;
 
           utils.setRespondantDetails(app, req, response);
 
@@ -128,9 +128,7 @@
         req.body['dateOfBirth'] = dobValue;
 
         req.body['ageTimeOfHearing'] = utils.calculateAgeAtHearing(
-          req.body['dobYear'],
-          req.body['dobMonth'],
-          req.body['dobDay'],
+          req.body['dateOfBirth'],
           req.session.user['hearingDate']
         );
       }
@@ -139,7 +137,7 @@
       // Validate form submission
       req.body.addressPostcode = req.body.addressPostcode.replace(/\s*$/, '');
       validatorResult = validate(req.body, require('../../../config/validation/your-details.js')(req));
-      
+
       if (typeof validatorResult !== 'undefined') {
         req.session.errors = validatorResult;
         req.session.formFields = req.body;

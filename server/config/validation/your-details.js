@@ -51,7 +51,6 @@
       lastName: {
         presence: {
           allowEmpty: false,
-          allowEmpty: false,
           message: {
             summary: filters.translate('VALIDATION.YOUR_DETAILS.LAST_NAME_CHECK', texts),
             details: filters.translate('VALIDATION.YOUR_DETAILS.LAST_NAME_MISSING', texts),

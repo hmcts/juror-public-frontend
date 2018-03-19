@@ -56,180 +56,168 @@
       <br />
       <br />
 
-      <strong class="bold-small">
-        {% if user.thirdParty == 'Yes' %}
-        {{ texts.DEFERRAL_PAGE.DATE_INFO_OB }}
-        {% else %}
-        {{ texts.DEFERRAL_PAGE.DATE_INFO }}
+      <div class="form-group box-grey {% if errors.items['deferralDates'] %}error{% endif %}" id="deferralDatesGroup">
+        <strong class="bold-small">
+          {% if user.thirdParty == 'Yes' %}
+          {{ texts.DEFERRAL_PAGE.DATE_INFO_OB }}
+          {% else %}
+          {{ texts.DEFERRAL_PAGE.DATE_INFO }}
+          {% endif %}
+        </strong>
+        <br />
+        <br />
+
+        {% if errors.items['deferralDates'] %}
+        <span class="error-message">
+          {{ errors.items['deferralDatres'][0].details }}
+        </span>
         {% endif %}
-      </strong>
-      <br />
-      <br />
+        <div class="grid-row">
 
-      {# Date 1 #}
-      <div class="form-group {% if errors.items['date1'] or errors.items['date1Error'] %}error{% endif %}" id="date1Group">
-        <fieldset>
-          <legend>
-            <span class="form-label-bold" id="date1-hint">{{ texts.DEFERRAL_PAGE.DATE1 }}</span>
+          <div class="column-one-third">
+            <div class="{% if errors.items['date1'] %}error{% endif %}">
+              <label class="form-label" for="date1">
+                <strong class="bold-small">
+                  {{ texts.DEFERRAL_PAGE.DATE1 }}
+                </strong>
+              </label>
+              <div>
+                <input class="form-control fill" name="date1" id="date1" type="text" value="{{ user.date1 }}" />
+                <button id="btn_date1" class="calendar-button noscript"><img src="{{ assetPath }}img/icons/icon-calendar.png" alt="open clendar" /></button>
 
-            {# {% if errors.items['dates'][0].fields %}
-              {% for errorField in errors.items['dates'][0].fields %}
-                {% if errorField == 'date1' %}
-                <span class="erorr-message date1ErrorMessage" id="{{errorField}}ErrorMessage}}">{{ errors.items['dates'][0].details[loop.index0] }}</span>
-                {% endif %}
-              {% endfor %} #}
-            {% if errors.items['date1'][0].fields %}
-              {% for errorField in errors.items['date1'][0].fields %}
-              <span class="error-message date1ErrorMessage" id="{{ errorField}}ErrorMessage">{{ errors.items['date1'][0].details[loop.index0] }}</span>
-              {% endfor %}
-            {% else %}
-              {% if errors.items['date1'] %}
-              <span class="error-message date1ErrorMessage" id="date1ErrorMessage">
-                {{ errors.items['date1'][0].details }}
-              </span>
-              {% endif %}
-            {# <span class="error-message" id="{{ errorField }}ErrorMessage">INVALID</span> #}
-            {% endif %}
-          </legend>
 
-          <div class="form-date">
-            <div class="form-group form-group-day">
-              <label class="form-label" for="date1Day">{{ texts.DEFERRAL_PAGE.DAY }}</label>
-              <input class="form-control focus-select-all" id="date1Day" name="date1Day"
-                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
-                value="{{ user.date1Day }}" pattern="[0-9]*" min="1" max="31"
-                minlength="1" maxlength="2" aria-describedby="date1-hint" />
-            </div>
+                <div id="dp1" class="datepicker" aria-hidden="true">
+                  <div id="month-wrap">
+                    <div id="bn_prev" role="button" aria-labelledby="bn_prev-label" tabindex="0">
+                      {# <img class="bn_img" src="prev.png" alt="<<"/> #}
+                      <span>&lt;</span>
+                    </div>
+                    <div id="month" role="heading" aria-live="assertive" aria-atomic="true"></div>
+                    <div id="bn_next" role="button" aria-labelledby="bn_next-label" tabindex="0">
+                      {# <img class="bn_img" src="next.png" alt=">>"/> #}
+                      <span>&gt;</span>
+                    </div>
+                  </div>
+                  <table id="cal" role="grid" aria-activedescendant="errMsg" aria-labelledby="month" tabindex="0">
+                    <thead>
+                        <tr id="weekdays">
+                          <th id="Sunday"><abbr title="Sunday">Su</abbr></th>
+                          <th id="Monday"><abbr title="Monday">Mo</abbr></th>
+                          <th id="Tuesday"><abbr title="Tuesday">Tu</abbr></th>
+                          <th id="Wednesday"><abbr title="Wednesday">We</abbr></th>
+                          <th id="Thursday"><abbr title="Thursday">Th</abbr></th>
+                          <th id="Friday"><abbr title="Friday">Fr</abbr></th>
+                          <th id="Saturday"><abbr title="Saturday">Sa</abbr></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td id="errMsg" colspan="7">Javascript must be enabled</td></tr>
+                    </tbody>
+                  </table>
+                  <div id="bn_prev-label" class="offscreen">Go to previous month</div>
+                  <div id="bn_next-label" class="offscreen">Go to next month</div>
+                </div>
 
-            <div class="form-group form-group-month">
-              <label class="form-label" for="date1Month">{{ texts.DEFERRAL_PAGE.MONTH }}</label>
-              <input class="form-control focus-select-all" id="date1Month" name="date1Month"
-                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
-                value="{{ user.date1Month }}" pattern="[0-9]*" min="1" max="12"
-                minlength="1" maxlength="2" aria-describedby="date1-hint" />
-            </div>
+              </div>
 
-            <div class="form-group form-group-year">
-              <label class="form-label" for="date1Year">{{ texts.DEFERRAL_PAGE.YEAR }}</label>
-              <input class="form-control focus-select-all" id="date1Year" name="date1Year"
-                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
-                value="{{ user.date1Year }}" pattern="[0-9]*" maxlength="4"
-                aria-describedby="date1-hint" />
+              <span class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</span>
             </div>
           </div>
-        </fieldset>
-      </div>
 
-      {# Date 2 #}
-      <div class="form-group {% if errors.items['date2'] or errors.items['date2Error'] %}error{% endif %}" id="date2Group">
-        <fieldset>
-          <legend>
-            <span class="form-label-bold" id="date2-hint">{{ texts.DEFERRAL_PAGE.DATE2 }}</span>
+          <div class="column-one-third">
+            <div class="{% if errors.items['date1'] %}error{% endif %}">
+              <label class="form-label" for="date2">
+                <strong class="bold-small">
+                  {{ texts.DEFERRAL_PAGE.DATE2 }}
+                </strong>
+              </label>
+              <input class="form-control fill" name="date2" id="date2" type="text" value="{{ user.date2 }}" />
+              <button id="btn_date2" class="calendar-button noscript"><img src="{{ assetPath }}img/icons/icon-calendar.png" alt="open clendar" /></button>
 
-            {%  if errors.items['dates'][0].fields %}
-              {% for errorField in errors.items['dates'][0].fields %}
-                {% if errorField == 'date2' %}
-                <span class="error-message date2ErrorMessage" id="{{ errorField }}ErrorMessage">{{ errors.items['dates'][0].details[loop.index0] }}</span>
-                {% endif %}
-              {% endfor %}
-            {% elif errors.items['date2'][0].fields %}
-              {% for errorField in errors.items['date2'][0].fields %}
-              <span class="error-message date2ErrorMessage" id="{{ errorField }}ErrorMessage">{{ errors.items['date2'][0].details[loop.index0] }}</span>
-              {% endfor %}
-            {% else %}
-              {% if errors.items['date2'] %}
-              <span class="error-message date2ErrorMessage" id="date2ErrorMessage">
-                {{ errors.items['date2'][0].details }}
-              </span>
-              {% endif %}
-            {# <span class="error-message" id="{{ errorField }}ErrorMessage">INVALID</span> #}
-            {% endif %}
-          </legend>
+              <div id="dp2" class="datepicker" aria-hidden="true">
+                <div id="month-wrap">
+                  <div id="bn_prev" role="button" aria-labelledby="bn_prev-label" tabindex="0">
+                    {# <img class="bn_img" src="prev.png" alt="<<"/> #}
+                    <span class="bn_img">&lt;</span>
+                  </div>
+                  <div id="month" role="heading" aria-live="assertive" aria-atomic="true"></div>
+                  <div id="bn_next" role="button" aria-labelledby="bn_next-label" tabindex="0">
+                    {# <img class="bn_img" src="next.png" alt=">>"/> #}
+                    <span class="bn_img">&gt;</span>
+                  </div>
+                </div>
+                <table id="cal" role="grid" aria-activedescendant="errMsg" aria-labelledby="month" tabindex="0">
+                  <thead>
+                      <tr id="weekdays">
+                        <th id="Sunday"><abbr title="Sunday">Su</abbr></th>
+                        <th id="Monday"><abbr title="Monday">Mo</abbr></th>
+                        <th id="Tuesday"><abbr title="Tuesday">Tu</abbr></th>
+                        <th id="Wednesday"><abbr title="Wednesday">We</abbr></th>
+                        <th id="Thursday"><abbr title="Thursday">Th</abbr></th>
+                        <th id="Friday"><abbr title="Friday">Fr</abbr></th>
+                        <th id="Saturday"><abbr title="Saturday">Sa</abbr></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr><td id="errMsg" colspan="7">Javascript must be enabled</td></tr>
+                  </tbody>
+                </table>
+                <div id="bn_prev-label" class="offscreen">Go to previous month</div>
+                <div id="bn_next-label" class="offscreen">Go to next month</div>
+              </div>
 
-          {# Error code here #}
-
-          <div class="form-date">
-            <div class="form-group form-group-day">
-              <label class="form-label" for="date2Day">{{ texts.DEFERRAL_PAGE.DAY }}</label>
-              <input class="form-control focus-select-all" id="date2Day" name="date2Day"
-                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
-                value="{{ user.date2Day }}" pattern="[0-9]*" min="1" max="31"
-                minlength="1" maxlength="2" aria-describedby="date2-hint" />
-            </div>
-
-            <div class="form-group form-group-month">
-              <label class="form-label" for="date2Month">{{ texts.DEFERRAL_PAGE.MONTH }}</label>
-              <input class="form-control focus-select-all" id="date2Month" name="date2Month"
-                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
-                value="{{ user.date2Month }}" pattern="[0-9]*" min="1" max="12"
-                minlength="1" maxlength="2" aria-describedby="date2-hint" />
-            </div>
-
-            <div class="form-group form-group-year">
-              <label class="form-label" for="date2Year">{{ texts.DEFERRAL_PAGE.YEAR }}</label>
-              <input class="form-control focus-select-all" id="date2Year" name="date2Year"
-                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
-                value="{{ user.date2Year }}" pattern="[0-9]*" maxlength="4"
-                aria-describedby="date2-hint" />
+              <span class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</span>
             </div>
           </div>
-        </fieldset>
-      </div>
 
-      {# Date 3 #}
-      <div class="form-group {% if errors.items['date3'] or errors.items['date3Error'] %}error{% endif %}" id="date3Group">
-        <fieldset>
-          <legend>
-            <span class="form-label-bold" id="date3-hint">{{ texts.DEFERRAL_PAGE.DATE3 }}</span>
+          <div class="column-one-third">
+            <div class="{% if errors.items['date1'] %}error{% endif %}">
+              <label class="form-label" for="date3">
+                <strong class="bold-small">
+                  {{ texts.DEFERRAL_PAGE.DATE3 }}
+                </strong>
+              </label>
+              <input class="form-control fill" name="date3" id="date3" type="text" value="{{ user.date3 }}" />
+              <button id="btn_date3" class="calendar-button noscript"><img src="{{ assetPath }}img/icons/icon-calendar.png" alt="open clendar" /></button>
 
-            {% if errors.items['dates'][0].fields %}
-              {% for errorField in errors.items['dates'][0].fields %}
-                {% if errorField == 'date3' %}
-                <span class="error-message date3ErrorMessage" id="{{ errorField }}ErrorMessage">{{ errors.items['dates'][0].details[loop.index0] }}</span>
-                {% endif %}
-              {% endfor %}
-            {% elif errors.items['date3'][0].fields %}
-              {% for errorField in errors.items['date3'][0].fields %}
-              <span class="error-message date3ErrorMessage" id="{{ errorField}}ErrorMessage">{{ errors.items['date3'][0].details[loop.index0] }}</span>
-              {% endfor %}
-            {% else %}
-              {% if errors.items['date3'] %}
-              <span class="error-message date3ErrorMessage" id="date3ErrorMessage">
-                {{ errors.items['date3'][0].details }}
-              </span>
-              {% endif %}
-            {# <span class="error-message" id="{{ errorField }}ErrorMessage">INVALID</span> #}
-            {% endif %}
-          </legend>
+              <div id="dp3" class="datepicker" aria-hidden="true">
+                <div id="month-wrap">
+                  <div id="bn_prev" role="button" aria-labelledby="bn_prev-label" tabindex="0">
+                    {# <img class="bn_img" src="prev.png" alt="<<"/> #}
+                    <span class="bn_img">&lt;</span>
+                  </div>
+                  <div id="month" role="heading" aria-live="assertive" aria-atomic="true"></div>
+                  <div id="bn_next" role="button" aria-labelledby="bn_next-label" tabindex="0">
+                    {# <img class="bn_img" src="next.png" alt=">>"/> #}
+                    <span class="bn_img">&gt;</span>
+                  </div>
+                </div>
+                <table id="cal" role="grid" aria-activedescendant="errMsg" aria-labelledby="month" tabindex="0">
+                  <thead>
+                      <tr id="weekdays">
+                        <th id="Sunday"><abbr title="Sunday">Su</abbr></th>
+                        <th id="Monday"><abbr title="Monday">Mo</abbr></th>
+                        <th id="Tuesday"><abbr title="Tuesday">Tu</abbr></th>
+                        <th id="Wednesday"><abbr title="Wednesday">We</abbr></th>
+                        <th id="Thursday"><abbr title="Thursday">Th</abbr></th>
+                        <th id="Friday"><abbr title="Friday">Fr</abbr></th>
+                        <th id="Saturday"><abbr title="Saturday">Sa</abbr></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr><td id="errMsg" colspan="7">Javascript must be enabled</td></tr>
+                  </tbody>
+                </table>
+                <div id="bn_prev-label" class="offscreen">Go to previous month</div>
+                <div id="bn_next-label" class="offscreen">Go to next month</div>
+              </div>
 
-          {# Error code here #}
-
-          <div class="form-date">
-            <div class="form-group form-group-day">
-              <label class="form-label" for="date3Day">{{ texts.DEFERRAL_PAGE.DAY }}</label>
-              <input class="form-control focus-select-all" id="date3Day" name="date3Day"
-                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
-                value="{{ user.date3Day }}" pattern="[0-9]*" min="1" max="31"
-                minlength="1" maxlength="2" aria-describedby="date3-hint" />
-            </div>
-
-            <div class="form-group form-group-month">
-              <label class="form-label" for="date3Month">{{ texts.DEFERRAL_PAGE.MONTH }}</label>
-              <input class="form-control focus-select-all" id="date3Month" name="date3Month"
-                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
-                value="{{ user.date3Month }}" pattern="[0-9]*" min="1" max="12"
-                minlength="1" maxlength="2" aria-describedby="date3-hint" />
-            </div>
-
-            <div class="form-group form-group-year">
-              <label class="form-label" for="date3Year">{{ texts.DEFERRAL_PAGE.YEAR }}</label>
-              <input class="form-control focus-select-all" id="date3Year" name="date3Year"
-                type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}"
-                value="{{ user.date3Year }}" pattern="[0-9]*" maxlength="4"
-                aria-describedby="date3-hint" />
+              <span class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</span>
             </div>
           </div>
-        </fieldset>
+
+        </div>
+
       </div>
 
       <br />
@@ -242,6 +230,53 @@
 
   </div>
 
+
 </div>
 
+
+{% endblock %}
+
+{% block body_end %}
+  {% include "../../includes/scripts.njk" %}
+  <script type="text/javascript" src="{{ assetPath }}js/datepicker.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var dp1 = new calendar.datepicker('dp1', 'date1', true);
+      var dp2 = new calendar.datepicker('dp2', 'date2', true);
+      var dp3 = new calendar.datepicker('dp3', 'date3', true);
+
+      $('#btn_date1').removeClass('noscript').click(function(e) {
+        dp1.showDlg();
+        e.stopPropagation();
+        return false;
+      });
+
+      $('#btn_date2').removeClass('noscript').click(function(e) {
+        dp2.showDlg();
+        e.stopPropagation();
+        return false;
+      });
+
+      $('#btn_date3').removeClass('noscript').click(function(e) {
+        dp3.showDlg();
+        e.stopPropagation();
+        return false;
+      });
+
+    });
+  </script>
+  {# <link rel="stylesheet" href="{{ assetPath }}css/bootstrap.min.css" media="screen">
+  <link rel="stylesheet" href="{{ assetPath }}css/datepicker.css" type="text/css">
+  <script type="text/javascript" src="{{ assetPath }}js/locales/en-GB.min.js"></script>
+  <script type="text/javascript" src="{{ assetPath }}js/datepicker.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#date1').datepicker({
+        theme: 'bootstrap',
+        inputFormat: ["dd/MM/yyyy"],
+        outputFormat: 'dd/MM/yyyy',
+      });
+    });
+
+  </script> #}
 {% endblock %}

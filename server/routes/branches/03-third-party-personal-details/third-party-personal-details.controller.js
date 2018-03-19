@@ -121,9 +121,7 @@
         // Add dobValue to req.body for validation
         req.body['dateOfBirth'] = dobValue;
         req.body['ageTimeOfHearing'] = utils.calculateAgeAtHearing(
-          req.body['dobYear'],
-          req.body['dobMonth'],
-          req.body['dobDay'],
+          req.body['dateOfBirth'],
           req.session.user['hearingDate']
         );
       }

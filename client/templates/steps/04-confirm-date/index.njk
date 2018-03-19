@@ -63,13 +63,15 @@
     <form action="{{ url('steps.confirm.date.post') }}" method="post">
       <fieldset>
         <input type="hidden" id="hearingDateTimestamp" value="{{ user.hearingDateTimestamp }}">
-        <p class="lede">
-          {% if user.thirdParty == 'Yes' %}
-          {{ texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HEADING_OB }}
-          {% else %}
-          {{ texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HEADING }}
-          {% endif %}
-        </p>
+        <legend>
+          <p class="lede">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HEADING_OB }}
+            {% else %}
+            {{ texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HEADING }}
+            {% endif %}
+          </p>
+        </legend>
         <div class="form-group {% if errors.items['confirmedDate'] %}error{% endif %}" id="confirmedDateGroup">
           {% if errors.items['confirmedDate'] %}<span class="error-message">{{ errors.items['confirmedDate'][0].details }}</span>{% endif %}
 

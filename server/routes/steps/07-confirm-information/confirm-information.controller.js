@@ -125,7 +125,7 @@
       // Format values to readable strings for third party reasons
       if (req.session.user.thirdParty === 'Yes') {
         switch (req.session.user.thirdPartyDetails.thirdPartyReason) {
-          // eslint-disable-next-line no-undefined
+        // eslint-disable-next-line no-undefined
         case undefined:
           break;
         case 'other':
@@ -200,26 +200,26 @@
           return sendToComplete(req, res, app);
         }
 
-      , createResponseFailure = function(err) {
-        if (err.statusCode === 409 || err.statusCode === 304) {
-          app.logger.info('Response submission detected a conflict, passing through to complete without saving', {
+        , createResponseFailure = function(err) {
+          if (err.statusCode === 409 || err.statusCode === 304) {
+            app.logger.info('Response submission detected a conflict, passing through to complete without saving', {
+              jurorNumber: req.session.user.jurorNumber,
+              jwt: req.session.authToken,
+              error: (typeof err.error !== 'undefined') ? err.error : err,
+            });
+
+            return sendToComplete(req, res, app);
+          }
+
+          // No conflicts found
+          app.logger.crit('Response submission failed with error ' + err.statusCode, {
             jurorNumber: req.session.user.jurorNumber,
             jwt: req.session.authToken,
             error: (typeof err.error !== 'undefined') ? err.error : err,
           });
 
-          return sendToComplete(req, res, app);
-        }
-
-        // No conflicts found
-        app.logger.crit('Response submission failed with error ' + err.statusCode, {
-          jurorNumber: req.session.user.jurorNumber,
-          jwt: req.session.authToken,
-          error: (typeof err.error !== 'undefined') ? err.error : err,
-        });
-
-        return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
-      };
+          return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
+        };
 
       // Reset error and saved field sessions
       delete req.session.errors;

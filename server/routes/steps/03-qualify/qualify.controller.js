@@ -7,7 +7,7 @@
     , texts = require('../../../../client/js/i18n/en.json')
     , utils = require('../../../lib/utils');
 
-// Landing page functions
+  // Landing page functions
   module.exports.index = function() {
     return function(req, res) {
       return res.render('steps/03-qualify/index.njk', {
@@ -96,26 +96,6 @@
     };
   };
 
-  module.exports.storeResidency = function() {
-    return function(req, res) {
-      if (typeof req.session.user.qualify === 'undefined') {
-        req.session.user.qualify = {};
-      }
-
-      if (typeof req.session.user.qualify[req.body['name'].replace('Details', '')] === 'undefined') {
-        req.session.user.qualify[req.body['name'].replace('Details', '')] = {};
-      }
-
-      if (req.body['name'].indexOf('Details') === -1) {
-        req.session.user.qualify[req.body['name']].answer = req.body['value'];
-      } else {
-        req.session.user.qualify[req.body['name'].replace('Details', '')].details = req.body['value'];
-      }
-      res.status(204).send();
-    };
-  };
-
-
   module.exports.changeResidency = function(app) {
     return function(req, res) {
       req.session.change = true;
@@ -167,6 +147,7 @@
         details: req.body['mentalHealthActDetails']
       };
 
+
       // Reset error and saved field sessions
       delete req.session.errors;
       delete req.session.formFields;
@@ -208,6 +189,7 @@
       var tmpErrors
         , mergedUser;
 
+
       // Merge and then delete form fields and errors, prevents retention after pressing back link
       mergedUser = _.merge(_.cloneDeep(req.session.user), _.cloneDeep(req.session.formFields));
       tmpErrors = _.cloneDeep(req.session.errors);
@@ -230,7 +212,6 @@
   module.exports.createBail = function(app) {
     return function(req, res) {
       var validatorResult;
-
 
       // Store new info
       // Has to be first to properly retain answers if feeding back errors

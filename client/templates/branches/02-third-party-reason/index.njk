@@ -56,7 +56,7 @@
           <div class="form-group panel panel-border-narrow {% if errors.items['thirdPartyOtherReason'] %} error {% endif %} {% if user.thirdPartyDetails.thirdPartyReason === 'other' %}{% else %}js-hidden{% endif %}" id="thirdPartyOtherReasonGroup">
             <label class="form-label" for="thirdPartyOtherReason">{{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.OTHER_INFO }}</label>
             {% if errors.items['thirdPartyOtherReason'] %}<span class="error-message">{{ errors.items['thirdPartyOtherReason'][0] }}</span>{% endif %}
-            <textarea class="form-control" name="thirdPartyOtherReason" id="thirdPartyOtherReason">{{ user.thirdPartyDetails.thirdPartyOtherReason }}</textarea>
+            <textarea class="form-control" name="thirdPartyOtherReason" id="thirdPartyOtherReason" maxLength="100">{{ user.thirdPartyDetails.thirdPartyOtherReason }}</textarea>
           </div>
         </fieldset>
       </div>

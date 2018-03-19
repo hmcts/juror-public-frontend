@@ -9,8 +9,20 @@
   "FORM_SUB_HEADING_1": "Fill in the boxes below.",
 
   "FORM_NAME_LABEL": "Name",
+  "FORM_TITLE_LABEL": "Title (optional)",
+  "FORM_FIRST_NAME_LABEL": "First name",
+  "FORM_LAST_NAME_LABEL": "Last name",
+
 
   "FORM_ADDRESS_LABEL": "Address",
+  "FORM_ADDRESS_LINE_ONE_LABEL": "Building and street",
+  "FORM_ADDRESS_LINE_TWO_LABEL": "Address line two",
+  "FORM_ADDRESS_LINE_THREE_LABEL": "Address line three",
+  "FORM_ADDRESS_TOWN_LABEL": "Town or city",
+  "FORM_ADDRESS_COUNTY_LABEL": "County (optional)",
+  "FORM_ADDRESS_POSTCODE_LABEL": "Postcode",
+
+
 
   "FORM_DOB_SUBTITLE": "Date of birth",
   "FORM_DOB_HELPER": "For example, 06 12 1982",
@@ -18,9 +30,9 @@
   "FORM_DOB_MONTH_LABEL": "Month",
   "FORM_DOB_YEAR_LABEL": "Year",
   "FORM_DOB_HELPER_TITLE": "Help with date of birth",
-  "FORM_DOB_HELPER_PARAGRAPH_1": "You need to tell us your date of birth so we can check you are a suitable age to be on a jury. ",  
+  "FORM_DOB_HELPER_PARAGRAPH_1": "You need to tell us your date of birth so we can check you are a suitable age to be on a jury. ",
   "FORM_DOB_HELPER_PARAGRAPH_2": "If you don’t know your exact date of birth, use the one you put on official documents like your passport or driving licence.",
-  "FORM_DOB_HELPER_PARAGRAPH_3": "If you can’t provide a date of birth you’ll have to send copies of identity documents through the post. You need to reply to the summons using the form we sent by post instead of online. Ring us on 0300 456 1024 if you need advice about this.",
+  "FORM_DOB_HELPER_PARAGRAPH_3": "If you can’t provide a date of birth, you’ll have to send us copies of identity documents through the post. You need to reply to the summons using the form we sent by post instead of online. Ring us on 0300 456 1024 if you need advice about this.",
 
   "FORM_PHONE_SUBTITLE": "Phone",
   "FORM_PHONE_DESCRIPTION": "Please provide phone numbers that we can use to reach you between 9:00AM and 5:00PM, Monday to Friday.",

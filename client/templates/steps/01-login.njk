@@ -1,7 +1,11 @@
 {% extends "../layouts/default.njk" %}
 
 {% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.LOGIN_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
   {{ texts.LOGIN_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
 {% endblock %}
 
 {% block page_identifier %}Login{% endblock %}
@@ -24,10 +28,10 @@
 
     <p>{{ texts.LOGIN_PAGE.SAMPLE_TITLE }}</p>
 
-    <img src="/img/example-juror-number.png" title="{{ texts.LOGIN_PAGE.SAMPLE_IMAGE_ALT }}">
+    <img src="/img/example-juror-number.png" alt="{{ texts.LOGIN_PAGE.SAMPLE_IMAGE_ALT }}" title="{{ texts.LOGIN_PAGE.IMAGE_TITLE }}">
     <br><br>
 
-    <form action="{{ url('steps.login.post') }}" method="POST" id="login-form">
+    <form action="{{ url('steps.login.post') }}" method="POST" id="login-form" {% if not IS_PRODUCTION %}novalidate{% endif %}>
       <div class="form-group {% if errors.items['jurorNumber'] %}error{% endif %}" id="authenticationGroup">
         <label class="form-label" for="jurorNumber">
           <strong class="bold-small">
@@ -86,7 +90,7 @@
           {% endif %}</span>
           {% if errors.items['jurorLastName'] %}<span class="error-message" id="jurorLastNameGroupError">{{ errors.items['jurorLastName'][0].details }}</span>{% endif %}
         </label>
-        <input class="form-control" name="jurorLastName" id="jurorLastName" type="text">
+        <input class="form-control" name="jurorLastName" id="jurorLastName" type="text" maxlength="20">
       </div>
 
       <div class="form-group {% if errors.items['jurorPostcode'] %}error{% endif %}">

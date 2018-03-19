@@ -21,9 +21,11 @@
     <form action="{{ url('branches.third.party.contact.details.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
       <fieldset>
-        <p class="lede">
-          <strong class="bold-medium">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT }}</strong>
-        </p>
+        <legend>
+          <p class="lede">
+            <strong class="bold-medium">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT }}</strong>
+          </p>
+        </legend>
         {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT_PARAGRAPH }}
 
         <p class="bold-small">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE }}</p>

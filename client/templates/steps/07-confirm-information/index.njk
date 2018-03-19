@@ -41,34 +41,34 @@
       </thead>
       <tbody>
         <tr>
-          <td class="question">{{ texts.CHECK_ANSWERS_PAGE.NAME_LABEL }}</td>
+          <td class="question" id="question-name">{{ texts.CHECK_ANSWERS_PAGE.NAME_LABEL }}</td>
           <td id="name">{{ user.nameRender }}</td>
-          <td class="change-answer"><a href="{{ personalDetailsChangeLink }}" id="changeName">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+          <td class="change-answer"><a href="{{ personalDetailsChangeLink }}" id="changeName" aria-describedby="question-name">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
         </tr>
         <tr>
-          <td class="question">{{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</td>
+          <td class="question" id="question-address">{{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</td>
           <td id="address">{{ user.addressRender | replace("<br>", ", ") }}</td>
-          <td class="change-answer"><a href="{{ personalDetailsChangeLink }}">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+          <td class="change-answer"><a href="{{ personalDetailsChangeLink }}" aria-describedby="question-address">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
         </tr>
         <tr>
-          <td class="question">{{ texts.CHECK_ANSWERS_PAGE.DOB_LABEL }}</td>
+          <td class="question" id="question-dob">{{ texts.CHECK_ANSWERS_PAGE.DOB_LABEL }}</td>
           <td id="dateOfBirth">{{ user.dobDay }} / {{ user.dobMonth }} / {{ user.dobYear }}</td>
-          <td class="change-answer"><a href="{{ personalDetailsChangeLink }}">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+          <td class="change-answer"><a href="{{ personalDetailsChangeLink }}" aria-describedby="question-dob">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
         </tr>
         <tr>
-          <td class="question">{{ texts.CHECK_ANSWERS_PAGE.PHONE_LABEL }}</td>
+          <td class="question" id="question-phoneprimary">{{ texts.CHECK_ANSWERS_PAGE.PHONE_LABEL }}</td>
           <td id="primaryPhone">{{ user.primaryPhone }}</td>
-          <td class="change-answer"><a href="{{ contactDetailsChangeLink }}" id="changePhone">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+          <td class="change-answer"><a href="{{ contactDetailsChangeLink }}" id="changePhone" aria-describedby="question-phoneprimary">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
         </tr>
         <tr>
-          <td class="question">{{ texts.CHECK_ANSWERS_PAGE.ALT_PHONE_LABEL }}</td>
+          <td class="question" id="question-phonesecondary">{{ texts.CHECK_ANSWERS_PAGE.ALT_PHONE_LABEL }}</td>
           <td id="secondaryPhone">{{ user.secondaryPhone }}</td>
-          <td class="change-answer"><a href="{{ contactDetailsChangeLink }}" id="changeSecondaryPhone">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+          <td class="change-answer"><a href="{{ contactDetailsChangeLink }}" id="changeSecondaryPhone" aria-describedby="question-phonesecondary">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
         </tr>
         <tr>
-          <td class="question">{{ texts.CHECK_ANSWERS_PAGE.EMAIL_LABEL }}</td>
+          <td class="question" id="question-email">{{ texts.CHECK_ANSWERS_PAGE.EMAIL_LABEL }}</td>
           <td id="emailAddress">{{ user.emailAddress }}</td>
-          <td class="change-answer"><a href="{{ contactDetailsChangeLink }}" id="changeEmailAddress">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+          <td class="change-answer"><a href="{{ contactDetailsChangeLink }}" id="changeEmailAddress" aria-describedby="question-email">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
         </tr>
       </tbody>
     </table>
@@ -84,41 +84,41 @@
       </thead>
       <tbody>
         <tr>
-          <td class="question">{{ texts.CHECK_ANSWERS_PAGE.OB_NAME_LABEL }}</td>
+          <td class="question" id="question-obname">{{ texts.CHECK_ANSWERS_PAGE.OB_NAME_LABEL }}</td>
           <td id="thirdPartyName">{{ user.thirdPartyDetails.nameRender }}</td>
-          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.get') }}" id="changeThirdPartyName">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.get') }}" id="changeThirdPartyName" aria-describedby="question-obname">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
         </tr>
 
         <tr>
-          <td class="question">{{ texts.CHECK_ANSWERS_PAGE.OB_RELATIONSHIP_LABEL }}</td>
+          <td class="question" id="question-obrelationship">{{ texts.CHECK_ANSWERS_PAGE.OB_RELATIONSHIP_LABEL }}</td>
           <td id="thirdPartyRelationship">{{ user.thirdPartyDetails.relationship }}</td>
-          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.get') }}" id="changeThirdPartyRelationship">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.get') }}" id="changeThirdPartyRelationship" aria-describedby="question-obrelationship">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
         </tr>
 
         <tr>
-          <td class="question">{{ texts.CHECK_ANSWERS_PAGE.OB_MAIN_PHONE_LABEL }}</td>
+          <td class="question" id="question-obphoneprimary">{{ texts.CHECK_ANSWERS_PAGE.OB_MAIN_PHONE_LABEL }}</td>
           <td id="thirdPartyMainPhone">{{ user.thirdPartyDetails.mainPhone }}</td>
-          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.get') }}" id="changeThirdPartyMainPhone">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.get') }}" id="changeThirdPartyMainPhone" aria-describedby="question-obphoneprimary">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
         </tr>
 
         <tr>
-          <td class="question">{{ texts.CHECK_ANSWERS_PAGE.OB_OTHER_PHONE_LABEL }}</td>
+          <td class="question" id="question-obphonesecondary">{{ texts.CHECK_ANSWERS_PAGE.OB_OTHER_PHONE_LABEL }}</td>
           <td id="thirdPartyOtherPhone">{{ user.thirdPartyDetails.otherPhone }}</td>
-          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.get') }}" id="changeThirdPartyOtherPhone">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.get') }}" id="changeThirdPartyOtherPhone" aria-describedby="question-obphonesecondary">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
         </tr>
 
         <tr>
-          <td class="question">{{ texts.CHECK_ANSWERS_PAGE.OB_EMAIL_ADDRESS_LABEL }}</td>
+          <td class="question" id="question-obemail">{{ texts.CHECK_ANSWERS_PAGE.OB_EMAIL_ADDRESS_LABEL }}</td>
           <td id="thirdPartyEmailAddress">{{ user.thirdPartyDetails.emailAddress }}</td>
-          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.get') }}" id="changeThirdPartyEmailAddress">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.get') }}" id="changeThirdPartyEmailAddress" aria-describedby="question-obemail">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
         </tr>
 
         <tr>
           <td colspan="2">
-            <p class="question question--full">{{ texts.CHECK_ANSWERS_PAGE.OB_WHY_QUESTION }}</p>
+            <p class="question question--full" id="question-obreason">{{ texts.CHECK_ANSWERS_PAGE.OB_WHY_QUESTION }}</p>
             <p id="thirdPartyReason">{{ user.thirdPartyDetails.reasonText }}</p>
           </td>
-          <td class="change-answer"><a href="{{ url('branches.third.party.reason.change.get') }}" id="changeReason">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+          <td class="change-answer"><a href="{{ url('branches.third.party.reason.change.get') }}" id="changeReason" aria-describedby="question-obreason">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
         </tr>
       </tbody>
     </table>
@@ -144,7 +144,7 @@
         <tbody>
           <tr>
             <td>
-              <p class="question question--full">
+              <p class="question question--full" id="question-livedconsecutive">
                 {% if user.thirdParty == 'Yes' %}
                 {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_LIVED_CONSECUTIVE }}
                 {% else %}
@@ -159,11 +159,11 @@
                 {% endif %}
               </p>
             </td>
-            <td class="change-answer"><a href="{{ url('steps.qualify.residency.change.get') }}" id="changeQualify">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+            <td class="change-answer"><a href="{{ url('steps.qualify.residency.change.get') }}" id="changeQualify" aria-describedby="question-livedconsecutive">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
           </tr>
           <tr>
             <td>
-              <p class="question question--full">
+              <p class="question question--full" id="question-mentalhealth">
                 {% if user.thirdParty == 'Yes' %}
                 {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH }}
                 {% else %}
@@ -172,17 +172,17 @@
               </p>
               <p>
                 {% if user.qualify.mentalHealthAct.details.length > 0 and user.qualify.mentalHealthAct.answer == 'Yes' %}
-                <pre>{{ user.qualify.mentalHealthAct.answer }} - {{ user.qualify.mentalHealthAct.details }}</pre>
+                <pre id="mentalHealthAnswer">{{ user.qualify.mentalHealthAct.answer }} - {{ user.qualify.mentalHealthAct.details }}</pre>
                 {% else %}
-                {{ user.qualify.mentalHealthAct.answer }}
+                <span id="mentalHealthAnswer">{{ user.qualify.mentalHealthAct.answer }}</span>
                 {% endif %}
               </p>
             </td>
-            <td class="change-answer"><a href="{{ url('steps.qualify.mental.health.change.get') }}">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+            <td class="change-answer"><a href="{{ url('steps.qualify.mental.health.change.get') }}" aria-describedby="question-mentalhealth">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
           </tr>
           <tr>
             <td>
-              <p class="question question--full">
+              <p class="question question--full" id="question-bail">
                 {% if user.thirdParty == 'Yes' %}
                 {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_BAIL }}
                 {% else %}
@@ -191,17 +191,17 @@
               </p>
               <p>
               {% if user.qualify.onBail.details.length > 0 and user.qualify.onBail.answer == 'Yes' %}
-              <pre>{{ user.qualify.onBail.answer }} - {{ user.qualify.onBail.details }}</pre>
+              <pre id="onBailAnswer">{{ user.qualify.onBail.answer }} - {{ user.qualify.onBail.details }}</pre>
               {% else %}
-              {{ user.qualify.onBail.answer }}
+              <span id="onBailAnswer">{{ user.qualify.onBail.answer }}</span>
               {% endif %}
               </p>
             </td>
-            <td class="change-answer"><a href="{{ url('steps.qualify.bail.change.get') }}">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+            <td class="change-answer"><a href="{{ url('steps.qualify.bail.change.get') }}" aria-describedby="question-bail">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
           </tr>
           <tr>
             <td>
-              <p class="question question--full">
+              <p class="question question--full" id="question-conviction">
                 {% if user.thirdParty == 'Yes' %}
                 {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_CONVICTED }}
                 {% else %}
@@ -210,13 +210,13 @@
               </p>
               <p>
                 {% if user.qualify.convicted.details.length > 0 and user.qualify.convicted.answer == 'Yes' %}
-                <pre>{{ user.qualify.convicted.answer }} - {{ user.qualify.convicted.details }}</pre>
+                <pre id="convictionAnswer">{{ user.qualify.convicted.answer }} - {{ user.qualify.convicted.details }}</pre>
                 {% else %}
-                {{ user.qualify.convicted.answer }}
+                <span id="convictionAnswer">{{ user.qualify.convicted.answer }}</span>
                 {% endif %}
               </p>
             </td>
-            <td class="change-answer"><a href="{{ url('steps.qualify.convictions.change.get') }}">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+            <td class="change-answer"><a href="{{ url('steps.qualify.convictions.change.get') }}" aria-describedby="question-conviction">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
           </tr>
         </tbody>
       </table>
@@ -238,7 +238,7 @@
         <tbody>
           <tr>
             <td>
-              <p class="question question--full">
+              <p class="question question--full" id="question-confirmdate">
                 {% if user.thirdParty == 'Yes' %}
                 {{ texts.CHECK_ANSWERS_PAGE.OB_CONFIRM_DATE_PROMPT }}
                 {% else %}
@@ -267,7 +267,7 @@
                 {% endif %}
               </p>
             </td>
-            <td class="change-answer"><a href="{{ url('steps.confirm.date.change.get') }}" id="changeConfirmDate">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+            <td class="change-answer"><a href="{{ url('steps.confirm.date.change.get') }}" id="changeConfirmDate" aria-describedby="question-confirmdate">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
           </tr>
         </tbody>
       </table>
@@ -291,7 +291,7 @@
         <tbody>
           <tr>
             <td>
-              <p class="question question--full">
+              <p class="question question--full" id="question-changedate-reason">
                 {% if user.thirdParty == 'Yes' %}
                 {{ texts.CHECK_ANSWERS_PAGE.OB_CHANGE_DATE_QUESTION_1 }}
                 {% else %}
@@ -300,11 +300,11 @@
               </p>
               <pre>{{ user.deferral.reason }}</pre>
             </td>
-            <td class="change-answer"><a href="{{ url('steps.confirm.date.deferral.change.get') }}" id="changeDeferral">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+            <td class="change-answer"><a href="{{ url('steps.confirm.date.deferral.change.get') }}" id="changeDeferral" aria-describedby="question-changedate-reason">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
           </tr>
           <tr>
             <td>
-              <p class="question question--full">
+              <p class="question question--full" id="question-changedate-dates">
                 {% if user.thirdParty == 'Yes' %}
                 {{ texts.CHECK_ANSWERS_PAGE.OB_CHANGE_DATE_QUESTION_2 }}
                 {% else %}
@@ -313,7 +313,7 @@
               </p>
               <pre>{{ user.deferral.dates }}</pre>
             </td>
-            <td class="change-answer"><a href="{{ url('steps.confirm.date.deferral-dates.change.get') }}">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+            <td class="change-answer"><a href="{{ url('steps.confirm.date.deferral-dates.change.get') }}" aria-describedby="question-changedate-dates">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
           </tr>
         </tbody>
       </table>
@@ -338,7 +338,7 @@
         <tbody>
           <tr>
             <td>
-              <p class="question question--full">
+              <p class="question question--full" id="question-excusal">
                 {% if user.thirdParty == 'Yes' %}
                 {{ texts.CHECK_ANSWERS_PAGE.OB_EXCUSAL_PROMPT }}
                 {% else %}
@@ -347,7 +347,7 @@
               </p>
               <pre>{{ user.excusal.reason }}</pre>
             </td>
-            <td class="change-answer"><a href="{{ url('steps.confirm.date.excusal.change.get') }}" id="changeExcusalReason">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+            <td class="change-answer"><a href="{{ url('steps.confirm.date.excusal.change.get') }}" id="changeExcusalReason" aria-describedby="question-excusal">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
           </tr>
         </tbody>
       </table>
@@ -370,7 +370,7 @@
         <tbody>
           <tr>
             <td>
-              <p class="question question--full">
+              <p class="question question--full" id="question-cjsemployed">
                 {% if user.thirdParty == 'Yes' %}
                 {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_QUESTION }}
                 {% else %}
@@ -400,7 +400,7 @@
                 {% endif %}
               </p>
             </td>
-            <td class="change-answer"><a href="{{ url('steps.cjs.employed.change.get') }}" id="changeCJS">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+            <td class="change-answer"><a href="{{ url('steps.cjs.employed.change.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
           </tr>
         </tbody>
       </table>
@@ -422,7 +422,7 @@
         <tbody>
           <tr>
             <td id="otherDetails">
-              <p class="question question--full">
+              <p class="question question--full" id="question-assistance1">
                 {% if user.thirdParty == 'Yes' %}
                 {{ texts.CHECK_ANSWERS_PAGE.OB_ASSISTANCE_QUESTION_1 }}
                 {% else %}
@@ -442,12 +442,12 @@
                 {% endif %}
               </p>
             </td>
-            <td class="change-answer"><a href="{{ url('steps.assistance.change.get') }}" id="changeAdjustments">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+            <td class="change-answer"><a href="{{ url('steps.assistance.change.get') }}" id="changeAdjustments" aria-describedby="question-assistance1">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
           </tr>
 
           <tr class="{% if user.assistanceNeeded == 'Yes' %}{% else %}js-hidden{% endif %}">
             <td>
-              <p class="question question--full">
+              <p class="question question--full" id="question-assistance2">
                 {% if user.thirdParty == 'Yes' %}
                 {{ texts.CHECK_ANSWERS_PAGE.OB_ASSISTANCE_QUESTION_2 }}
                 {% else %}
@@ -460,7 +460,7 @@
                 &nbsp;
                 {% endif %}
             </td>
-            <td class="change-answer"><a href="{{ url('steps.assistance.change.get') }}">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+            <td class="change-answer"><a href="{{ url('steps.assistance.change.get') }}" aria-describedby="question-assistance2">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
           </tr>
         </tbody>
       </table>
@@ -471,6 +471,10 @@
 
 
     <form action="{{ url('steps.confirm.information.post') }}" method="post">
+
+      <h2>{{ texts.VALIDATION.CONFIRM_INFO.CONFIRM_CORRECT }}</h2>
+
+      <br/>
 
       <div class="notice">
         <i class="icon icon-important">
