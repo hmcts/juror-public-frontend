@@ -1,0 +1,96 @@
+{
+  "HEADING": "Telerau ac amodau a pholisi preifatrwydd",
+  "USE_THE_REPLY_TO_JURY_SERVICE": "Drwy ddefnyddio’r gwasanaeth ar-lein Ymateb i’r Wŷs Rheithgor, rydych yn cytuno i’n polisi preifatrwydd a’r telerau ac amodau hyn.  Darllenwch nhw’n ofalus, os gwelwch yn dda.",
+  "TERMS_AND_CONDITIONS_HEADER": "Telerau ac Amodau",
+
+  "GENERAL_HEADER": "Cyffredinol",
+  "GENERAL_TEXT_PARAGRAPH_ONE": "Mae’r telerau ac amodau hyn yn effeithio ar eich hawliau a’ch rhwymedigaethau dan y gyfraith. Maent yn rheoli’r defnydd a wnewch o’r gwasanaeth ar-lein Ymateb i’r Wŷs Rheithgor a’ch perthynas â’r gwasanaeth hwnnw.  Nid ydynt yn berthnasol i wasanaethau eraill a ddarperir gan y Weinyddiaeth Cyfiawnder, nac i unrhyw adran neu wasanaeth arall sy’n gysylltiedig â’r gwasanaeth hwn.",
+  "GENERAL_TEXT_PARAGRAPH_TWO": "Os nad ydych yn cytuno â’r telerau ac amodau hyn a’r polisi preifatrwydd, peidiwch â defnyddio’r gwasanaeth hwn.  Yn hytrach, llenwch y ffurflenni a anfonwyd atoch yn y post (y pecyn gwŷs rheithgor) a’u dychwelyd i'r Swyddfa Ganolog Gwysio Rheithgor cyn pen 7 diwrnod i’r dyddiad y cawsoch eich llythyr gwŷs rheithgor.",
+
+  "APPLICABLE_LAW_HEADER": "Y Gyfraith sy’n Berthnasol",
+  "APPLICABLE_LAW_TEXT": "Bydd y defnydd a wnewch o’r gwasanaeth hwn ac unrhyw anghydfod sy’n codi o’i ddefnyddio yn cael eu rheoli a’u dehongli yn unol â chyfreithiau Cymru a Lloegr, yn cynnwys ond ddim yn gyfyngedig i:",
+  "APPLICABLE_LAW_LIST": {
+    "LIST_ITEM_ONE": "Deddf Rheithgorau 1974",
+    "LIST_ITEM_TWO": "Deddf Rheithgorau 1976",
+    "LIST_ITEM_THREE": "Deddf Rheithgorau 2003",
+    "LIST_ITEM_FOUR": "Deddf Cyfiawnder Troseddol 2003",
+    "LIST_ITEM_FIVE": "Deddf Iechyd Meddwl 1983",
+    "LIST_ITEM_SIX": "Deddf Galluedd Meddyliol 2005",
+    "LIST_ITEM_SEVEN": "Deddf Crwneriaid a Chyfiawnder 2009",
+    "LIST_ITEM_EIGHT": "Deddf Lluoedd Arfog 2006",
+    "LIST_ITEM_NINE": "Deddf Camddefnyddio Cyfrifiaduron 1990",
+    "LIST_ITEM_TEN": "Deddf Diogelu Data 1998",
+    "LIST_ITEM_ELEVEN": "Deddf Hawliau Dynol 1998",
+    "LIST_ITEM_TWELVE": "Deddf Rhyddid Gwybodaeth 2000"
+  },
+
+  "USING_SERVICE_RESPONSIBLY_HEADER": "Defnyddio’r gwasanaeth hwn yn gyfrifol",
+  "USING_SERVICE_RESPONSIBLY_TEXT_PARAGRAPH_ONE": "Mae'r gwasanaeth i'w ddefnyddio gan reithwyr, neu gan eraill ar eu rhan, a dim ond gyda’u caniatâd.",
+  "USING_SERVICE_RESPONSIBLY_TEXT_PARAGRAPH_TWO": "Mae peryglon wrth ddefnyddio cyfrifiadur sy'n cael ei rannu, megis mewn caffi rhyngrwyd, i ddefnyddio'r gwasanaeth hwn. Eich cyfrifoldeb chi yw bod yn ymwybodol o’r peryglon hyn ac osgoi defnyddio unrhyw gyfrifiadur lle mae posibilrwydd y gall eraill weld eich gwybodaeth bersonol. Chi sy’n gyfrifol os ydych yn dewis gadael cyfrifiadur heb ei ddiogelu tra’r ydych yn y broses o ymateb i wŷs rheithgor.",
+  "USING_SERVICE_RESPONSIBLY_TEXT_PARAGRAPH_THREE": "Byddwn yn gwneud pob ymdrech i wirio a phrofi’r gwasanaeth hwn pryd bynnag y byddwn yn ei ddiwygio neu ei ddiweddaru.  Fodd bynnag, mae’n rhaid i chi gymryd gofal eich hunan i sicrhau nad yw’r ffordd yr ydych yn cael mynediad at y gwasanaeth hwn yn eich gadael yn agored i’r perygl o feirysau, cod cyfrifiadur maleisus neu ymyrraeth o fath arall a allai achosi difrod i’ch system gyfrifiadurol eich hunan.",
+  "USING_SERVICE_RESPONSIBLY_TEXT_PARAGRAPH_FOUR": "Ni ddylech gamddefnyddio ein gwasanaeth drwy gyflwyno’n fwriadol feirysau, ymwelwyr diwahoddiad (trojans), mwydod (worms), bomiau rhesymeg (logic bombs) neu unrhyw ddeunydd arall maleisus neu niweidiol i dechnoleg. Ni ddylech geisio cael mynediad heb awdurdod at ein gwasanaeth, y system lle caiff ein gwasanaeth ei storio nac unrhyw weinydd, cyfrifiadur neu gronfa ddata sy’n gysylltiedig â’n gwasanaeth. Ni ddylech ymosod ar ein gwefan drwy ymosodiad gwrthod gwasanaeth neu ymosodiad gwrthod gwasanaeth a ddosbarthwyd.",
+
+  "PRIVACY_POLICY_HEADER": "Privacy policy",
+
+  "INFORMATION_PROVIDED_SUBHEADER": "Gwybodaeth a ddarperir gan y gwasanaeth hwn",
+  "INFORMATION_PROVIDED_TEXT_PARAGRAPH_ONE": "Rydym yn gweithio’n galed i sicrhau bod gwybodaeth o fewn y gwasanaeth ar-lein Ymateb i Wŷs Rheithgor hwn yn gywir. Fodd bynnag, ni allwn warantu bod unrhyw wybodaeth yn gywir ac yn gyflawn bob amser.",
+  "INFORMATION_PROVIDED_TEXT_PARAGRAPH_TWO": "Er y gwnawn bob ymdrech i sicrhau mynediad at y gwasanaeth hwn bob amser, nid ydym yn atebol os nad yw ar gael am unrhyw gyfnod.",
+
+  "HOW_WE_USE_YOUR_INFORMATION_SUBHEADER": "Sut rydym yn defnyddio eich gwybodaeth",
+  "HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_ONE": "Mae’r Swyddfa Ganolog Gwysio Rheithgor a’r llys y Goron yn defnyddio a chadw data personol a gofnodir yn y gwasanaeth Ymateb i Wŷs Rheithgor i ddethol rheithwyr a fydd yn cael eu gofyn i ystyried tystiolaeth a gyflwynir iddynt mewn Llys y Goron ac, o dro i dro, mewn Llys y Crwner neu Dribiwnlys.",
+  "HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_TWO": "Caiff eich gwybodaeth ei storio’n ddiogel yng nghronfa ddata rheithwyr Gwasanaeth Llysoedd a Thribiwnlysoedd EM (GLlTEM). Bydd yn cael ei ddileu’n ddiogel pan fyddwch wedi cwblhau eich gwasanaeth rheithgor ac nid oes rheswm i'w chadw.",
+  "HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_THREE": "Ar ôl cyflwyno eich ymateb, ni fyddwch yn gallu ei weld mwyach na’i ddiwygio ar-lein." ,
+  "HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_FOUR": "Os ydych eisiau gwneud newidiadau i’ch ymateb i’r wŷs rheithgor, neu unrhyw fanylion eraill, ar ôl cofnodi eich ymateb ar-lein, cysylltwch â’r Swyddfa Ganolog Gwysio Rheithgor drwy e-bost neu drwy'r post cyn dyddiad eich gwasanaeth rheithgor gan ddyfynnu eich Rhif rheithiwr.",
+  "HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_FIVE": "Mae gan unrhyw un sy’n credu bod ei ddata personol yn cael ei gadw o fewn y gwasanaeth hwn yr hawl i gyflwyno SAR (subect access request) i’r Weinyddiaeth Cyfiawnder dan Ddeddf Diogelu Data 1998.",
+  "HOW_WE_USE_YOUR_INFORMATION_TEXT_PARAGRAPH_SIX": "Cliciwch ar y ddolen isod i gael rhagor o wybodaeth am y broses hon:",
+  "HOW_WE_USE_YOUR_INFORMATION_LIST": {
+    "LIST_HEADER": "Ni fyddwn yn rhannu eich gwybodaeth gydag unrhyw asiantaeth arall oni bai fod hynny’n ofynnol at y dibenion canlynol:",
+    "LIST_ITEM_ONE": "atal neu ganfod trosedd",
+    "LIST_ITEM_TWO": "arestio neu erlyn troseddwyr",
+    "LIST_ITEM_THREE": "atal terfysgaeth neu warchod diogelwch gwladol"
+  },
+
+  "SHARE_INFORMATION_TEXT_PARAGRAPH_ONE": "Byddwn yn rhannu eich gwybodaeth ble fo gofyniad yn y gyfraith i ni wneud hynny.",
+  "SHARE_INFORMATION_TEXT_PARAGRAPH_TWO": "Ar wahân i’r wybodaeth bersonol y mae’r rhai sy’n defnyddio’r gwasanaeth yn ei chofnodi, rydym hefyd yn casglu gwybodaeth am ddefnydd o’r wefan sy’n ein galluogi i weld sut mae’r gwasanaeth yn cael ei ddefnyddio fel y gallwn ei wella. Nid yw’r wybodaeth hon yn cynnwys unrhyw ddata personol.",
+  "SHARE_INFORMATION_TEXT_PARAGRAPH_THREE": "Byddwn ond yn casglu gwybodaeth a fydd yn ein cynorthwyo i wella'r gwefan ar eich cyfer; gwybodaeth a fydd yn ein galluogi i gysylltu â chi os ydych wedi gofyn inni wneud hynny, ein galluogi i roi gwybodaeth gywir ichi os byddwch ei hangen, a rhoi syniad inni am sut mae pobl yn defnyddio’r gwasanaeth hwn, er mwyn i ni barhau i’w wella.",
+  "SHARE_INFORMATION_LIST": {
+    "LIST_HEADER": "Mae’n cynnwys:",
+    "LIST_ITEM_ONE": "Cwestiynau, ymholiadau neu adborth rydych yn ei roi, gan gynnwys eich cyfeiriad e-bost, os ydych yn anfon neges trwy'r swyddogaeth adborth",
+    "LIST_ITEM_TWO": "eich cyfeiriad IP, a manylion ynghylch pa fath o borwr y gwnaethoch ei ddefnyddio",
+    "LIST_ITEM_THREE": "gwybodaeth ynghylch sut rydych yn defnyddio’r wefan, gan ddefnyddio cwcis a thechnegau tagio tudalen er mwyn ein helpu i wella’r wefan"
+  },
+  "SHARE_INFORMATION_HELP_LIST": {
+    "LIST_HEADER": "Mae hyn yn ein helpu i:",
+    "LIST_ITEM_ONE": "wella’r wefan trwy fonitro sut rydych yn ei defnyddio",
+    "LIST_ITEM_TWO": "ymateb i unrhyw adborth rydych yn ei roi inni, os ydych wedi gofyn am ymateb",
+    "LIST_ITEM_THREE": "darparu gwybodaeth ichi am wasanaethau lleol os ydych eisiau’r wybodaeth"
+  },
+
+  "WE_CANNOT_IDENTIFY_TEXT": "Nid oes modd i ni eich adnabod trwy ddefnyddio eich data defnyddiwr safle.",
+
+  "WHERE_IS_YOUR_DATA_STORED_HEADER": "Ble mae eich data’n cael ei storio",
+  "WHERE_IS_YOUR_DATA_STORED_TEXT": "Rydym yn storio eich data ar ein gweinyddion diogel yn y DU a’r Ardal Economaidd Ewropeaidd (EEA).  Drwy gyflwyno eich data personol, rydych yn cytuno i hyn.",
+
+  "KEEPING_DATA_SECURED_HEADER": "Cadw eich data’n ddiogel",
+  "KEEPING_DATA_SECURED_TEXT": "Yn gyffredinol, nid yw trosglwyddo gwybodaeth dros y rhyngrwyd yn hollol ddiogel, ac ni allwn warantu y bydd eich data’n ddiogel. Fodd bynnag, rydym yn defnyddio SSL (haen socedi diogel) i amgryptio'r holl ddata sy'n cael ei drosglwyddo i'n gweinydd ac allan ohono. Rydym yn cymryd diogelu data o ddifrif ac yn cymryd pob cam posib i sicrhau bod eich data yn aros yn breifat a diogel.",
+
+  "TRANSMIT_DATA_HEADER": "Trosglwyddo data - ar eich risg chi",
+  "TRANSMIT_DATA_TEXT_PARAGRAPH_ONE": "Mae gennym weithdrefnau a nodweddion diogelwch mewn lle i geisio cadw’ch data’n ddiogel wedi iddo’n cyrraedd.",
+  "TRANSMIT_DATA_TEXT_PARAGRAPH_TWO": "Ni fyddwn yn rhannu eich gwybodaeth ag unrhyw sefydliad arall at ddibenion marchnata, ymchwil i’r farchnad na masnachol, ac nid ydym yn anfon eich manylion ymlaen i wefannau eraill.",
+
+  "DISCLOSING_INFORMATION_HEADER": "Datgelu eich gwybodaeth ",
+  "DISCLOSING_INFORMATION_TEXT": "Efallai y byddwn yn anfon eich gwybodaeth bersonol ymlaen os yw’n ddyletswydd gyfreithiol arnom i wneud hynny.",
+
+  "HOW_WE_MANAGE_SESSION_HEADER": "Sut rydym yn rheoli sesiynau",
+  "HOW_WE_MANAGE_SESSION_TEXT_PARAGRAPH_ONE": "Mae’r gwasanaeth hwn ar gyfer ymateb i lythyr Gwŷs Rheithgor Pan fyddwch yn gwneud hyn, efallai y bydd yn bosib i unrhyw un sydd â mynediad at y cyfrifiadur (neu ddyfais arall) rydych yn ei ddefnyddio weld gwybodaeth bersonol amdanoch chi.",
+  "HOW_WE_MANAGE_SESSION_TEXT_PARAGRAPH_TWO": "Mae’ch data yn cael ei godi o gronfa ddata Rheithwyr GLlTEM o’r dudalen “Eich Manylion”, ac yn cael ei storio ar eich dyfais nes bod eich sesiwn yn dod i ben.",
+
+  "DATA_PROTECTION_HEADER": "Deddf Diogelu Data 1998",
+  "DATA_PROTECTION_TEXT_PARAGRAPH_ONE": "Mae’r gwasanaeth hwn yn cydymffurfio â holl egwyddorion Deddf Diogelu Data 1998. Y Weinyddiaeth Cyfiawnder yw’r ‘rheolwr data’ at ddibenion y Ddeddf.  Defnyddir yr wybodaeth a roddwch i’r gwasanaeth at ddibenion rheoli’r broses gwysio rheithgor, ac mae’n cael ei storio mewn cronfa ddata ddiogel at bwrpasau archwilio nes eich bod wedi cwblhau eich gwasanaeth rheithgor. Ni fydd unrhyw ddata personol yn cael ei ddefnyddio wrth brofi’r gwasanaeth hwn.",
+  "DATA_PROTECTION_TEXT_PARAGRAPH_TWO": "Bydd gan ein gwesteiwr, a staff y Weinyddiaeth Cyfiawnder sy’n gyfrifol am gefnogi’r gwasanaeth hwn, fynediad at y gweinydd lle mae’r holl wybodaeth bersonol a gofnodir yn y gwasanaeth hwn yn cael ei storio.",
+  "DATA_PROTECTION_LINK": "https://www.gov.uk/government/publications/request-your-personal-data-from-moj",
+
+  "DISCLAIMER_HEADER": "Ymwrthodiad",
+  "DISCLAIMER_TEXT_PARAGRAPH_ONE": "Nid ydym yn derbyn atebolrwydd am golled neu ddifrod sy’n dod i ran defnyddwyr y gwasanaeth hwn, naill ai’n uniongyrchol, yn anuniongyrchol neu’n ganlyniadol, pa un ai a yw’n cael ei achosi drwy gamwedd, tor-cytundeb neu fel arall. Mae hyn yn cynnwys colli incwm neu refeniw, busnes, elw neu gytundebau, arbedion a ragwelwyd, data, ewyllys da, eiddo diriaethol neu wastraff amser sy’n gysylltiedig â’r gwasanaeth hwn neu unrhyw wefannau sy’n gysylltiedig ag ef ac unrhyw ddeunydd sy’n cael ei bostio arno. Ni fydd yr amod hwn yn atal hawliadau am golled neu ddifrod i’ch eiddo diriaethol nac unrhyw hawliadau eraill am golled ariannol uniongyrchol nad ydynt wedi’i heithrio gan unrhyw rai o’r categorïau uchod.",
+  "DISCLAIMER_TEXT_PARAGRAPH_TWO": "Nid yw hyn yn effeithio ar ein hatebolrwydd am farwolaeth neu anaf personol sy’n codi o’n hesgeuluster, nac ar ein hatebolrwydd am gamliwio twyllodrus neu gamliwio mewn perthynas â mater sylfaenol, nac unrhyw atebolrwydd arall na ellir ei eithrio neu ei gyfyngu dan y gyfraith berthnasol."
+}

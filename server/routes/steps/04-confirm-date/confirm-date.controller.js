@@ -9,7 +9,8 @@
   var _ = require('lodash')
     , validate = require('validate.js')
     , filters = require('../../../components/filters')
-    , texts = require('../../../../client/js/i18n/en.json')
+    , texts_en = require('../../../../client/js/i18n/en.json')
+    , texts_cy = require('../../../../client/js/i18n/cy.json')
     , utils = require('../../../lib/utils');
 
   module.exports.index = function() {
@@ -24,13 +25,11 @@
       delete req.session.errors;
       delete req.session.formFields;
 
-      // JDB-2729: delete any deferral related choices if they exist, as back must have been pressed
-      delete req.session.user.deferral;
 
       return res.render('steps/04-confirm-date/index.njk', {
         user: mergedUser,
         errors: {
-          title: filters.translate('VALIDATION.ERROR_TITLE', texts),
+          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           message: '',
           count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
           items: tmpErrors,
@@ -55,7 +54,7 @@
       if (typeof validatorResult !== 'undefined') {
         /*req.session.errors = {
           confirmedDate: [
-            filters.translate('VALIDATION.CONFIRMED_DATE', texts)
+            filters.translate('VALIDATION.CONFIRMED_DATE', (req.session.ulang === 'cy' ? texts_cy : texts_en))
           ],
         };*/
         req.session.errors = validatorResult;
@@ -67,19 +66,28 @@
       // Store new info
       req.session.user.confirmedDate = req.body['confirmedDate'];
 
+
       // Redirect as appropriate
       switch (req.body['confirmedDate']) {
       case 'Yes':
         if (req.session.change === true){
+          delete req.session.user.deferral;
           returnObj = res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
         } else {
+          delete req.session.user.deferral;
           returnObj = res.redirect(app.namedRoutes.build('steps.cjs.employed.get'));
         }
         break;
       case 'Change':
-        returnObj = res.redirect(app.namedRoutes.build('steps.confirm.date.deferral.get'));
+        if (req.session.change === true && req.session.user.deferral){
+          returnObj = res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
+        } else {
+          delete req.session.user.deferral;
+          returnObj = res.redirect(app.namedRoutes.build('steps.confirm.date.deferral.get'));
+        }
         break;
       default:
+        delete req.session.user.deferral;
         returnObj = res.redirect(app.namedRoutes.build('steps.confirm.date.excusal.get'));
         break;
       }

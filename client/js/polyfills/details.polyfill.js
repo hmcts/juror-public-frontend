@@ -11,6 +11,8 @@
   'use strict';
 
   var NATIVE_DETAILS = typeof document.createElement('details').open === 'boolean';
+  var KEY_ENTER = 13;
+  var KEY_SPACE = 32;
 
   // Add event construct for modern browsers or IE
   // which fires the callback with a pre-converted target reference
@@ -26,25 +28,50 @@
     }
   }
 
+  // Cross-browser character code / key pressed
+  function charCode(e) {
+    return (typeof e.which === 'number') ? e.which : e.keyCode;
+  }
+
+  // Cross-browser preventing default action
+  function preventDefault(e) {
+    if (e.preventDefault) {
+      e.preventDefault();
+    } else {
+      e.returnValue = false;
+    }
+  }
+
   // Handle cross-modal click events
   function addClickEvent(node, callback) {
-    // Prevent space(32) from scrolling the page
-    addEvent(node, 'keypress', function (e, target) {
-      if (target.nodeName === 'SUMMARY') {
-        if (e.keyCode === 32) {
-          if (e.preventDefault) {
-            e.preventDefault();
+    addEvent(node, 'keypress', function(e, target) {
+      // When the key gets pressed - check if it is enter or space
+      if (charCode(e) === KEY_ENTER || charCode(e) === KEY_SPACE) {
+        if (target.nodeName.toLowerCase() === 'summary') {
+          // Prevent space from scrolling the page
+          // and enter from submitting a form
+          preventDefault(e);
+          // Click to let the click event do all the necessary action
+          if (target.click) {
+            target.click();
           } else {
-            e.returnValue = false;
+            // except Safari 5.1 and under don't support .click() here
+            callback(e, target);
           }
         }
       }
     });
-    // When the key comes up - check if it is enter(13) or space(32)
-    addEvent(node, 'keyup', function (e, target) {
-      if (e.keyCode === 13 || e.keyCode === 32) { callback(e, target); }
+
+    // Prevent keyup to prevent clicking twice in Firefox when using space key
+    addEvent(node, 'keyup', function(e, target) {
+      if (charCode(e) === KEY_SPACE) {
+        if (target.nodeName === 'SUMMARY') {
+          preventDefault(e);
+        }
+      }
     });
-    addEvent(node, 'mouseup', function (e, target) {
+
+    addEvent(node, 'click', function(e, target) {
       callback(e, target);
     });
   }
@@ -55,7 +82,8 @@
       if (!node || node.nodeName.toLowerCase() === match) {
         break;
       }
-    } while (node = node.parentNode);
+      node = node.parentNode;
+    } while (node);
 
     return node;
   }
@@ -66,7 +94,6 @@
 
   // Initialisation function
   function addDetailsPolyfill(list) {
-
     // If this has already happened, just return
     // else set the flag so it doesn't happen again
     if (started) {
@@ -81,7 +108,8 @@
     }
 
     // else iterate through them to apply their initial state
-    var n = list.length, i = 0;
+    var n = list.length;
+    var i = 0;
     for (i; i < n; i++) {
       var details = list[i];
 
@@ -130,7 +158,6 @@
       // If this is not a native implementation, create an arrow
       // inside the summary
       if (!NATIVE_DETAILS) {
-
         var twisty = document.createElement('i');
 
         if (openAttr === true) {
@@ -143,14 +170,12 @@
 
         details.__summary.__twisty = details.__summary.insertBefore(twisty, details.__summary.firstChild);
         details.__summary.__twisty.setAttribute('aria-hidden', 'true');
-
       }
     }
 
     // Define a statechange function that updates aria-expanded and style.display
     // Also update the arrow position
     function statechange(summary) {
-
       var expanded = summary.__details.__summary.getAttribute('aria-expanded') === 'true';
       var hidden = summary.__details.__content.getAttribute('aria-hidden') === 'true';
 
@@ -177,7 +202,7 @@
     }
 
     // Bind a click event to handle summary elements
-    addClickEvent(document, function(e, summary) {
+    addClickEvent(document, function (e, summary) {
       if (!(summary = getAncestor(summary, 'summary'))) {
         return true;
       }
@@ -190,5 +215,4 @@
   // but if it's not supported then the second one will fire
   addEvent(document, 'DOMContentLoaded', addDetailsPolyfill);
   addEvent(window, 'load', addDetailsPolyfill);
-
 })();

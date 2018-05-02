@@ -9,7 +9,8 @@
   var _ = require('lodash')
     , validate = require('validate.js')
     , filters = require('../../../components/filters')
-    , texts = require('../../../../client/js/i18n/en.json')
+    , texts_en = require('../../../../client/js/i18n/en.json')
+    , texts_cy = require('../../../../client/js/i18n/cy.json')
     , utils = require('../../../lib/utils');
 
   module.exports.index = function() {
@@ -50,7 +51,7 @@
         user: mergedUser,
         cjsActive: cjsActive,
         errors: {
-          title: filters.translate('VALIDATION.ERROR_TITLE', texts),
+          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           message: '',
           count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
           items: tmpErrors,

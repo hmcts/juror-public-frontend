@@ -2,7 +2,8 @@
   'use strict';
 
   var filters = require('../../components/filters')
-    , texts = require('../../../client/js/i18n/en.json');
+    , texts_en = require('../../../client/js/i18n/en.json')
+    , texts_cy = require('../../../client/js/i18n/cy.json');
 
   module.exports = function(req) {
     return {
@@ -10,8 +11,8 @@
         presence: {
           allowEmpty: false,
           message: {
-            summary: filters.translate('VALIDATION.PLEASE_ANSWER', texts),
-            details: filters.translate('VALIDATION.PLEASE_ANSWER', texts),
+            summary: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         },
       },
@@ -19,10 +20,10 @@
       assistanceType: {
         presenceIf: {
           field: 'assistanceNeeded',
-          value: 'Yes',
+          value: (req.session.ulang === 'cy' ? texts_cy.REASONABLE_ADJUSTMENT_PAGE.YES : texts_en.REASONABLE_ADJUSTMENT_PAGE.YES),
           message: {
-            summary: filters.translate('VALIDATION.GIVE_DETAILS', texts),
-            details: filters.translate('VALIDATION.GIVE_DETAILS', texts),
+            summary: filters.translate('VALIDATION.GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         }
       },
@@ -33,9 +34,9 @@
           value: 'Other',
           message: {
             summary: filters.translate('VALIDATION.ASSISTANCE.DISSABILITY_OR_IMPAIRMENT'
-              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), texts),
+              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.ASSISTANCE.DISSABILITY_OR_IMPAIRMENT'
-              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), texts),
+              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         }
       }

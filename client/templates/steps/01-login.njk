@@ -32,15 +32,16 @@
     <br><br>
 
     <form action="{{ url('steps.login.post') }}" method="POST" id="login-form" {% if not IS_PRODUCTION %}novalidate{% endif %}>
-      <div class="form-group {% if errors.items['jurorNumber'] %}error{% endif %}" id="authenticationGroup">
-        <label class="form-label" for="jurorNumber">
-          <strong class="bold-small">
-            {{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_TITLE }}
-          </strong>
-        </label>
-        {% if errors.items['jurorNumber'] %}<span class="error-message" id="jurorNumberGroupError">{{ errors.items['jurorNumber'][0].details }}</span>{% endif %}
-        <input class="form-control" name="jurorNumber" id="jurorNumber" type="text" pattern="[0-9]*" minlength="9" maxlength="9" autofocus>
-      </div>
+      <div id="authenticationGroup">
+        <div class="form-group {% if errors.items['jurorNumber'] %}error{% endif %}" id="jurorNumberGroup">
+          <label class="form-label" for="jurorNumber">
+            <strong class="bold-small">
+              {{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_TITLE }}
+            </strong>
+          </label>
+          {% if errors.items['jurorNumber'] %}<span class="error-message" id="jurorNumberGroupError">{{ errors.items['jurorNumber'][0].details }}</span>{% endif %}
+          <input class="form-control" name="jurorNumber" id="jurorNumber" type="text" pattern="[0-9]*" minlength="9" maxlength="9" autofocus autocomplete="off">
+        </div>
 
         <div class="form-group">
           <details>
@@ -62,10 +63,10 @@
               <p>
                 <strong class="bold-small">{{ texts.LOGIN_PAGE.GUIDANCE_COMPANY_NAME }}</strong><br>
                 <a href="mailto:{{ texts.LOGIN_PAGE.GUIDANCE_EMAIL }}">{{ texts.LOGIN_PAGE.GUIDANCE_EMAIL }}</a><br>
-                {{ texts.LOGIN_PAGE.GUIDANCE_TELEPHONE_LABEL }}: <a href="tel:{{ texts.LOGIN_PAGE.GUIDANCE_TELEPHONE_NUMBER }}">{{ texts.LOGIN_PAGE.GUIDANCE_TELEPHONE_NUMBER }}</a><br>
+                {{ texts.LOGIN_PAGE.GUIDANCE_TELEPHONE_LABEL }}: <a href="tel:{{ texts.LOGIN_PAGE.GUIDANCE_TELEPHONE_NUMBER_NOSPACE }}">{{ texts.LOGIN_PAGE.GUIDANCE_TELEPHONE_NUMBER }}</a><br>
                 {{ texts.LOGIN_PAGE.GUIDANCE_OPENING_TIMES }}<br>
                 {{ texts.LOGIN_PAGE.GUIDANCE_OPENING_TIMES_FRIDAY }}<br>
-                <a href="https://www.gov.uk/call-charges">{{ texts.LOGIN_PAGE.GUIDANCE_CALL_CHARGE_LABEL }}</a>
+                <a href="{{ texts.LOGIN_PAGE.GUIDANCE_CALL_CHARGE_LINK }}">{{ texts.LOGIN_PAGE.GUIDANCE_CALL_CHARGE_LABEL }}</a>
               </p>
 
               <p>
@@ -78,34 +79,35 @@
           </details>
         </div>
 
-      <div class="form-group {% if errors.items['jurorLastName'] %}error{% endif %}">
-        <label class="form-label" for="jurorLastName">
-          <strong class="bold-small">
-            {{ texts.LOGIN_PAGE.FIELD_LAST_NAME_TITLE }}
-          </strong>
-          <span class="form-hint">{% if user.thirdParty == 'Yes' %}
-            {{ texts.LOGIN_PAGE.FIELD_LAST_NAME_HINT_OB }}
-            {% else %}
-            {{ texts.LOGIN_PAGE.FIELD_LAST_NAME_HINT }}
-          {% endif %}</span>
-          {% if errors.items['jurorLastName'] %}<span class="error-message" id="jurorLastNameGroupError">{{ errors.items['jurorLastName'][0].details }}</span>{% endif %}
-        </label>
-        <input class="form-control" name="jurorLastName" id="jurorLastName" type="text" maxlength="20">
-      </div>
+        <div class="form-group {% if errors.items['jurorLastName'] %}error{% endif %}" id="jurorLastNameGroup">
+          <label class="form-label" for="jurorLastName">
+            <strong class="bold-small">
+              {{ texts.LOGIN_PAGE.FIELD_LAST_NAME_TITLE }}
+            </strong>
+            <span class="form-hint">{% if user.thirdParty == 'Yes' %}
+              {{ texts.LOGIN_PAGE.FIELD_LAST_NAME_HINT_OB }}
+              {% else %}
+              {{ texts.LOGIN_PAGE.FIELD_LAST_NAME_HINT }}
+            {% endif %}</span>
+            {% if errors.items['jurorLastName'] %}<span class="error-message" id="jurorLastNameGroupError">{{ errors.items['jurorLastName'][0].details }}</span>{% endif %}
+          </label>
+          <input class="form-control" name="jurorLastName" id="jurorLastName" type="text" maxlength="20" autocomplete="off">
+        </div>
 
-      <div class="form-group {% if errors.items['jurorPostcode'] %}error{% endif %}">
-        <label class="form-label" for="jurorPostcode">
-          <strong class="bold-small">
-            {{ texts.LOGIN_PAGE.FIELD_POSTCODE_TITLE }}
-          </strong>
-          <span class="form-hint">{% if user.thirdParty == 'Yes' %}
-            {{ texts.LOGIN_PAGE.FIELD_POSTCODE_HINT_OB }}
-            {% else %}
-            {{ texts.LOGIN_PAGE.FIELD_POSTCODE_HINT }}
-          {% endif %}</span>
-          {% if errors.items['jurorPostcode'] %}<span class="error-message" id="jurorPostcodeGroupError">{{ errors.items['jurorPostcode'][0].details }}</span>{% endif %}
-        </label>
-        <input class="form-control" name="jurorPostcode" id="jurorPostcode" type="text">
+        <div class="form-group {% if errors.items['jurorPostcode'] %}error{% endif %}" id="jurorPostcodeGroup">
+          <label class="form-label" for="jurorPostcode">
+            <strong class="bold-small">
+              {{ texts.LOGIN_PAGE.FIELD_POSTCODE_TITLE }}
+            </strong>
+            <span class="form-hint">{% if user.thirdParty == 'Yes' %}
+              {{ texts.LOGIN_PAGE.FIELD_POSTCODE_HINT_OB }}
+              {% else %}
+              {{ texts.LOGIN_PAGE.FIELD_POSTCODE_HINT }}
+            {% endif %}</span>
+            {% if errors.items['jurorPostcode'] %}<span class="error-message" id="jurorPostcodeGroupError">{{ errors.items['jurorPostcode'][0].details }}</span>{% endif %}
+          </label>
+          <input class="form-control" name="jurorPostcode" id="jurorPostcode" type="text" autocomplete="off">
+        </div>
       </div>
 
       <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">

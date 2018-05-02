@@ -20,7 +20,8 @@
     , i18n = require('i18n-express')
 
     , filters = require('../components/filters')
-    , texts = require('../../client/js/i18n/en.json')
+    , texts_en = require('../../client/js/i18n/en.json')
+    , texts_cy = require('../../client/js/i18n/cy.json')
     , config = require('./environment')()
     , utils = require('../lib/utils.js')
     , menuBuilder = require(__dirname + '/../menubuilder')
@@ -146,11 +147,11 @@
       res.locals.trackingCode = config.trackingCode;
 
       // eslint-disable-next-line
-      res.locals.cookieText = filters.translate('INTERFACE.COOKIE_MESSAGE', texts);
+      res.locals.cookieText = filters.translate('INTERFACE.COOKIE_MESSAGE', (req.session.ulang === 'cy' ? texts_cy : texts_en));
 
       if (serviceTitleExcludedUrls.indexOf(req.originalUrl) === -1) {
         // res.locals.serviceName = config.serviceName;
-        res.locals.serviceName = filters.translate('INTERFACE.SERVICE_TITLE', texts)
+        res.locals.serviceName = filters.translate('INTERFACE.SERVICE_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en))
       }
 
       res.locals.IS_PRODUCTION = (config.env === 'production');
@@ -200,7 +201,7 @@
       res.locals.trackingCode = config.trackingCode;
 
       // eslint-disable-next-line
-      res.locals.cookieText = filters.translate('INTERFACE.COOKIE_MESSAGE', texts);
+      res.locals.cookieText = filters.translate('INTERFACE.COOKIE_MESSAGE', (req.session.ulang === 'cy' ? texts_cy : texts_en));
 
       // handle CSRF token errors here
       return res.render('_errors/403.njk');

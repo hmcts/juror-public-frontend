@@ -44,7 +44,7 @@
             </span>
           </label>
 
-          <label class="block-label selection-button-radio"for="thirdPartyReasonDeceased">
+          <label class="block-label selection-button-radio" for="thirdPartyReasonDeceased">
             <input type="radio" name="thirdPartyReason" id="thirdPartyReasonDeceased" value="deceased" {% if user.thirdPartyDetails.thirdPartyReason === 'deceased' %}checked{% endif %}>
             {{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.DECEASED }}
           </label>
@@ -63,7 +63,7 @@
 
 
       <div class="form-group">
-        <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+        <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}" id="continue">
         <input type="hidden" name="_csrf" value="{{csrftoken}}">
       </div>
 

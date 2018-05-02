@@ -1,7 +1,8 @@
 {
   "GOV": "GOV.UK",
-  "SERVICE_TITLE": "Reply to jury summons",
+  "SERVICE_TITLE": "Reply to a jury summons",
   "FORM_CHANGE_LABEL": "Change",
+  "BUTTON_TEXT_SUBMIT": "Submit",
   "BUTTON_TEXT_CONTINUE": "Continue",
   "BUTTON_TEXT_BACK": "Back",
   "LABEL_YES": "Yes",

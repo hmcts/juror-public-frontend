@@ -9,7 +9,8 @@
   var _ = require('lodash')
     , validate = require('validate.js')
     , filters = require('../../../components/filters')
-    , texts = require('../../../../client/js/i18n/en.json')
+    , texts_en = require('../../../../client/js/i18n/en.json')
+    , texts_cy = require('../../../../client/js/i18n/cy.json')
     , utils = require('../../../lib/utils');
 
   module.exports.index = function() {
@@ -32,7 +33,7 @@
       return res.render('branches/02-third-party-reason/index.njk', {
         user: mergedUser,
         errors: {
-          title: filters.translate('VALIDATION.ERROR_TITLE', texts),
+          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           message: '',
           count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
           items: tmpErrors,
@@ -65,7 +66,6 @@
         return res.redirect(app.namedRoutes.build('branches.third.party.reason.get'));
       }
 
-
       // Input validated, store information in session
       if (typeof req.session.user.thirdPartyDetails === 'undefined') {
         req.session.user.thirdPartyDetails = {};
@@ -76,10 +76,7 @@
 
       req.session.user.ineligibleDeceased = (req.session.user.thirdPartyDetails.thirdPartyReason === 'deceased');
 
-      if (
-        req.session.change === true ||
-        req.session.user.thirdPartyDetails.thirdPartyReason === 'deceased'
-      ) {
+      if (req.session.user.thirdPartyDetails.thirdPartyReason === 'deceased') {
         return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
       }
 

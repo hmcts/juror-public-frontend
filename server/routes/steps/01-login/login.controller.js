@@ -10,13 +10,17 @@
     , _ = require('lodash')
     , config = require('../../../config/environment')()
     , filters = require('../../../components/filters')
-    , texts = require('../../../../client/js/i18n/en.json')
+    , texts_en = require('../../../../client/js/i18n/en.json')
+    , texts_cy = require('../../../../client/js/i18n/cy.json')
     , authComponent = require('../../../components/auth')
-    , msgMappings = require('../../../components/errors/message-mapping')
+    , msgMappingsEn = require('../../../components/errors/message-mapping_en')
+    , msgMappingsCy = require('../../../components/errors/message-mapping_cy')
     , utils = require('../../../lib/utils');
 
   module.exports.index = function(app) {
     return function(req, res) {
+      var tmpErrors;
+
       // If already logged in, redirect to inbox
       if (typeof res.locals.authentication !== 'undefined') {
         return res.redirect(app.namedRoutes.build('steps.your.details.get'));
@@ -38,13 +42,17 @@
         thirdParty: req.session.user.thirdParty,
       }
 
+      // Merge and then delete errors, prevents retention after pressing back link
+      tmpErrors = _.cloneDeep(req.session.errors);
+      delete req.session.errors;
+
       return res.render('steps/01-login.njk', {
         user: req.session.user,
         errors: {
-          title: filters.translate('VALIDATION.ERROR_TITLE', texts),
+          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           message: '',
-          count: typeof req.session.errors !== 'undefined' ? Object.keys(req.session.errors).length : 0,
-          items: req.session.errors,
+          count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
+          items: tmpErrors,
         }
       });
     };
@@ -75,12 +83,12 @@
             // Regenerate the session
             req.session.authToken = tmpSession.authToken;
             req.session.authKey = tmpSession.authKey;
+            req.session.ulang = tmpSession.ulang;
             req.session.user = _.merge(tmpSession.user, {
               jurorNumber: req.body['jurorNumber'],
               jurorLastName: req.body['jurorLastName'],
               jurorPostcode: req.body['jurorPostcode'],
             });
-
             // redirect to confirmation of replying on behalf of someone`
             // if selected, otherwise move on to your details.
             if (req.session.user['thirdParty'] === 'Yes') {
@@ -103,7 +111,7 @@
           // Add error feedback
           req.session.errors = {
             authentication: [{
-              summary: msgMappings.logon[err.error],
+              summary: (req.session.ulang === 'cy' ? msgMappingsCy : msgMappingsEn).logon[err.error],
             }],
           };
 

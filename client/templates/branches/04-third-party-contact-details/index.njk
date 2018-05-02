@@ -9,7 +9,7 @@
 {% block content %}
 
 <div class="grid-row">
-  <fieldset class="column-two-thirds">
+  <div class="column-two-thirds">
     <h1 class="heading-xlarge">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.HEADER }}</h1>
 
     {% include "../../includes/errors.njk" %}
@@ -22,17 +22,21 @@
 
       <fieldset>
         <legend>
-          <p class="lede">
+          <span class="lede">
             <strong class="bold-medium">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT }}</strong>
-          </p>
+          </span>
         </legend>
-        {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT_PARAGRAPH }}
 
-        <p class="bold-small">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE }}</p>
+        <p>
+          {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT_PARAGRAPH }}
+        </p>
+
+        <div class="bold-small">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE }}</div>
         {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_PARAGRAPH }}
         {% if errors.items['useJurorPhoneDetails'] %}<span class="error-message" id="useJurorPhoneDetailsGroup">{{ errors.items['useJurorPhoneDetails'][0].details }}</span>{% endif %}
 
         <div class="form-group {% if errors.items['useJurorPhoneDetails'] %}error{% endif %}">
+          <br>
           <label class="block-label selection-button-radio" for="phoneNumber_existing">
             <input id="phoneNumber_existing" type="radio" name="useJurorPhoneDetails" value="No" {% if user.useJurorPhoneDetails == 'No' %}checked="checked"{% endif %}>
             {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_USE_PREVIOUS }}
@@ -46,21 +50,22 @@
             <div class="form-group {% if errors.items['primaryPhone'] %}error{% endif %}">
               <label class="form-label" for="primaryPhone">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.MAIN_PHONE }}</label>
               {% if errors.items['primaryPhone'] %}<span class="error-message" id="primaryPhoneGroup">{{ errors.items['primaryPhone'][0].details }}</span>{% endif %}
-              <input class="form-control" name="primaryPhone" type="text" id="primaryPhone" value="{{ user.primaryPhone }}">
+              <input class="form-control" name="primaryPhone" type="text" id="primaryPhone" value="{{ user.primaryPhone }}" autocomplete="off">
             </div>
             <div class="form-group {% if errors.items['secondaryPhone'] %}error{% endif %}">
               <label class="form-label" for="secondaryPhone">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.OTHER_PHONE }}</label>
               {% if errors.items['secondaryPhone'] %}<span class="error-message" id="secondaryPhoneGroup">{{ errors.items['secondaryPhone'][0].details }}</span>{% endif %}
-              <input class="form-control" name="secondaryPhone" type="text" id="secondaryPhone" value="{{ user.secondaryPhone }}">
+              <input class="form-control" name="secondaryPhone" type="text" id="secondaryPhone" value="{{ user.secondaryPhone }}" autocomplete="off">
             </div>
           </div>
         </div>
 
-        <p class="bold-small">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL }}</p>
+        <div class="bold-small">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL }}</div>
         {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_PARAGRAPH }}
         {% if errors.items['useJurorEmailDetails'] %}<span class="error-message" id="useJurorEmailDetailsGroup">{{ errors.items['useJurorEmailDetails'][0].details }}</span>{% endif %}
 
         <div class="form-group {% if errors.items['useJurorEmailDetails'] %}error{% endif %}">
+          <br>
           <label class="block-label selection-button-radio" for="emailAddress_existing">
             <input id="emailAddress_existing" type="radio" name="useJurorEmailDetails" value="No" {% if user.useJurorEmailDetails == 'No' %}checked="checked"{% endif %}>
             {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_USE_PREVIOUS }}
@@ -74,12 +79,12 @@
             <div class="form-group {% if errors.items['emailAddress'] %}error{% endif %}">
               <label class="form-label" for="emailAddress">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_ENTER }}</label>
               {% if errors.items['emailAddress'] %}<span class="error-message" id="emailAddressGroup">{{ errors.items['emailAddress'][0].details }}</span>{% endif %}
-              <input class="form-control" type="email" id="emailAddress" name="emailAddress" value="{{ user.emailAddress }}">
+              <input class="form-control" type="email" id="emailAddress" name="emailAddress" maxlength="254" value="{{ user.emailAddress }}" autocomplete="off">
             </div>
             <div class="form-group {% if errors.items['emailAddressConfirmation'] %}error{% endif %}">
               <label class="form-label" for="emailAddressConfirmation">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_ENTER_CONFIRM }}</label>
               {% if errors.items['emailAddressConfirmation'] %}<span class="error-message" id="emailAddressConfirmationGroup">{{ errors.items['emailAddressConfirmation'][0].details }}</span>{% endif %}
-              <input class="form-control" type="email" id="emailAddressConfirmation" name="emailAddressConfirmation" value="{{ user.emailAddressConfirmation }}">
+              <input class="form-control" type="email" id="emailAddressConfirmation" name="emailAddressConfirmation" maxlength="254" value="{{ user.emailAddressConfirmation }}" autocomplete="off">
             </div>
           </div>
         </div>

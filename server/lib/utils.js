@@ -4,16 +4,23 @@
   var fse = require('fs-extra')
     , _ = require('lodash')
     , moment = require('moment')
+    , texts_en = require('../../client/js/i18n/en.json')
+    , texts_cy = require('../../client/js/i18n/cy.json')
     , specialNeedsMappings = {
       'SEVERE SIGHT IMPAIRMENT': 'V',
+      'NAM DIFRIFOL AR EICH GOLWG': 'V',
       'WHEEL CHAIR ACCESS': 'W',
       'HEARING IMPAIRMENT': 'H',
+      'NAM AR Y CLYW': 'H',
       'OTHER': 'O',
       'DIABETES': 'I',
+      'CLEFYD SIWGR': 'I',
       'DIET': 'D',
       'PREGNANCY': 'P',
       'LEARNING DISABILITY': 'R',
-      'LIMITED MOBILITY': 'L'
+      'ANABLEDD DYSGU': 'R',
+      'LIMITED MOBILITY': 'L',
+      'SYMUDEDD CYFYNGEDIG': 'L'
     };
 
   /// Will require HTTP basic auth username and password
@@ -47,7 +54,7 @@
   };
 
 
-  /// Function to check for existence of a directory and will
+  /// Function to check for existence of a directory and wilHEARING IMPAIRMENTl
   /// create it if not present.
   ///
   /// @param {string}   dir   The directory path to be checked
@@ -79,7 +86,7 @@
   };
 
 
-  module.exports.transformSubmission = function(responseObject) {
+  module.exports.transformSubmission = function(responseObject, lang) {
     var fetchValue = function(data, field) {
         var fieldParts = field.split('.')
           , checkObj = data
@@ -109,25 +116,26 @@
       , postObj = _.cloneDeep(responseObject)
       , isThirdParty = false;
 
+    postObj['welsh'] = (lang === 'cy');
 
     // Qualify
     // -----------------------
     if (typeof responseObject.qualify !== 'undefined') {
       postObj.qualify = {
         'livedConsecutive': {
-          'answer': checkValue(responseObject, 'qualify.livedConsecutive.answer', 'Yes'),
+          'answer': checkValue(responseObject, 'qualify.livedConsecutive.answer', (lang === 'cy' ? texts_cy.QUALIFY_PAGE.YES : texts_en.QUALIFY_PAGE.YES)),
           'details': fetchValue(responseObject, 'qualify.livedConsecutive.details'),
         },
         'mentalHealthAct': {
-          'answer': checkValue(responseObject, 'qualify.mentalHealthAct.answer', 'Yes'),
+          'answer': checkValue(responseObject, 'qualify.mentalHealthAct.answer', (lang === 'cy' ? texts_cy.QUALIFY_PAGE.YES : texts_en.QUALIFY_PAGE.YES)),
           'details': fetchValue(responseObject, 'qualify.mentalHealthAct.details'),
         },
         'onBail': {
-          'answer': checkValue(responseObject, 'qualify.onBail.answer', 'Yes'),
+          'answer': checkValue(responseObject, 'qualify.onBail.answer', (lang === 'cy' ? texts_cy.QUALIFY_PAGE.YES : texts_en.QUALIFY_PAGE.YES)),
           'details': fetchValue(responseObject, 'qualify.onBail.details'),
         },
         'convicted': {
-          'answer': checkValue(responseObject, 'qualify.convicted.answer', 'Yes'),
+          'answer': checkValue(responseObject, 'qualify.convicted.answer', (lang === 'cy' ? texts_cy.QUALIFY_PAGE.YES : texts_en.QUALIFY_PAGE.YES)),
           'details': fetchValue(responseObject, 'qualify.convicted.details'),
         }
       };
@@ -153,6 +161,12 @@
       useJurorEmailDetails: fetchValue(responseObject, 'useJurorEmailDetails')==='No' ? false : true,
     };
 
+    // useJurorEmailDetails/useJurorPhoneDetails are not set if response is a deceased response, but should be false
+    if (fetchValue(responseObject, 'ineligibleDeceased')) {
+      postObj.thirdParty.useJurorEmailDetails = false;
+      postObj.thirdParty.useJurorPhoneDetails = false;
+    }
+
     if (isThirdParty === true) {
       if (postObj.thirdParty.useJurorPhoneDetails === false) {
         postObj.primaryPhone = postObj.thirdParty.mainPhone;
@@ -175,7 +189,7 @@
         responseObject.cjsEmployer = [responseObject.cjsEmployer];
       }
 
-      responseObject.cjsEmployer.forEach(function(employer) {
+      responseObject.cjsEmployer.forEach(function(employer){
         var employerName = employer
           , details = fetchValue(responseObject, 'cjsEmployerDetails');
 
@@ -201,7 +215,6 @@
         })
       });
     }
-
 
     // Special Needs
     // -----------------------
@@ -607,7 +620,9 @@
 
     // Extract the time value when the hearing datetime is coming from the Unique_Pool table
     if (moment(req.session.user['hearingTime']).isValid()) {
-      req.session.user['hearingTime'] = moment(req.session.user['hearingTime']).format('LT');
+      req.session.user['hearingTime'] = moment(req.session.user['hearingTime']).format('HH:mm a');
+    } else if (moment(req.session.user['hearingTime'], 'HH:mm').isValid()) {
+      req.session.user['hearingTime'] = moment(req.session.user['hearingTime'], 'HH:mm').format('HH:mm a');
     }
 
     // Join parts of address

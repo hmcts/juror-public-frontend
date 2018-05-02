@@ -10,7 +10,8 @@
     , validate = require('validate.js')
     , validatorRules = require('../../../../config/validation')
     , filters = require('../../../../components/filters')
-    , texts = require('../../../../../client/js/i18n/en.json')
+    , texts_en = require('../../../../../client/js/i18n/en.json')
+    , texts_cy = require('../../../../../client/js/i18n/cy.json')
     , utils = require('../../../../lib/utils');
 
   module.exports.index = function() {
@@ -18,7 +19,7 @@
       return res.render('steps/04-confirm-date/excusal.njk', {
         user: _.merge(req.session.user, req.session.formFields),
         errors: {
-          title: filters.translate('VALIDATION.ERROR_TITLE', texts),
+          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           message: '',
           count: typeof req.session.errors !== 'undefined' ? Object.keys(req.session.errors).length : 0,
           items: req.session.errors,
@@ -42,7 +43,6 @@
       req.session.user.excusal = {
         reason: req.body['excusalReason']
       };
-
 
       // Validate form submission
       validatorResult = validate(req.body, require('../../../../config/validation/excusal')(req));

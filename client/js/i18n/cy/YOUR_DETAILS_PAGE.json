@@ -1,0 +1,47 @@
+{
+  "HEADING": "Eich Manylion",
+  "INTRO_PARAGRAPH": "Gwiriwch fod eich enw a’r cyfeiriad yn gywir.",
+
+  "HELPER_CHANGE_NAME_ADDRESS_TITLE": "Beth sy’n digwydd os rwyf wedi newid fy enw neu gyfeiriad?",
+  "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_1": "Os yw eich enw wedi newid ac mae'n wahanol i'r enw ar ei llythyr gwŷs rheithgor, nodwch eich enw cywir yma. Byddwn yn cysylltu â chi hwyrach ymlaen i wirio hyn. Er enghraifft, efallai bydd angen i ni weld tystysgrif priodas neu dystysgrif newid enw. Ewch ymlaen gyda’r ffurflen ar-lein nawr.",
+  "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_2": "Os yw eich cyfeiriad wedi newid, efallai byddwn yn gallu symud eich gwasanaeth rheithgor i lys sy'n agosach at eich cyfeiriad newydd. Byddwn yn cysylltu â chi ynglŷn â hyn hwyrach ymlaen.  Ewch ymlaen gyda’r ffurflen ar-lein nawr.",
+
+  "FORM_SUB_HEADING_1": "Llenwch y bylchau isod.",
+
+  "FORM_NAME_LABEL": "Enw",
+  "FORM_TITLE_LABEL": "Teitl (dewisol)",
+  "FORM_FIRST_NAME_LABEL": "Enw cyntaf",
+  "FORM_LAST_NAME_LABEL": "Cyfenw",
+
+
+  "FORM_ADDRESS_LABEL": "Cyfeiriad",
+  "FORM_ADDRESS_LINE_ONE_LABEL": "Adeilad a’r stryd",
+  "FORM_ADDRESS_LINE_TWO_LABEL": "Cyfeiriad llinell 2",
+  "FORM_ADDRESS_LINE_THREE_LABEL": "Cyfeiriad llinell 3",
+  "FORM_ADDRESS_TOWN_LABEL": "Tref neu ddinas",
+  "FORM_ADDRESS_COUNTY_LABEL": "Sir (dewisol)",
+  "FORM_ADDRESS_POSTCODE_LABEL": "Cod post",
+
+
+
+  "FORM_DOB_SUBTITLE": "Dyddiad geni",
+  "FORM_DOB_HELPER": "Er enghraifft, 06 12 1982",
+  "FORM_DOB_DAY_LABEL": "Diwrnod",
+  "FORM_DOB_MONTH_LABEL": "Mis",
+  "FORM_DOB_YEAR_LABEL": "Blwyddyn",
+  "FORM_DOB_HELPER_TITLE": "Cymorth gyda’ch dyddiad geni",
+  "FORM_DOB_HELPER_PARAGRAPH_1": "Nodwch ddyddiad geni'r unigolyn er mwyn i ni wirio os ydynt o'r oedran priodol i wasanaethu ar reithgor.",
+  "FORM_DOB_HELPER_PARAGRAPH_2": "Os nad ydych yn gwybod eich union ddyddiad geni, defnyddiwch yr un byddwch yn ei nodi ar ddogfennau swyddogol megis eich pasport neu drwydded yrru.",
+  "FORM_DOB_HELPER_PARAGRAPH_3": "Os na allwch roi dyddiad geni, bydd rhaid ichi anfon copïau o ddogfennau adnabod drwy'r post. Bydd rhaid i chi ymateb i’r wŷs gan ddefnyddio'r ffurflen a anfonwyd yn y post yn hytrach nag ar ar-lein. Ffoniwch ni ar 0300 456 1024 os oes arnoch angen cyngor am hyn.",
+
+  "FORM_PHONE_SUBTITLE": "Ffôn",
+  "FORM_PHONE_DESCRIPTION": "Nodwch rifau ffôn y gallwn eu defnyddio i gysylltu â chi rhwng 9:00AM a 5:00PM, dydd Llun i ddydd Gwener.",
+  "FORM_PHONE_PRIMARY_LABEL": "Prif rif ffôn",
+  "FORM_PHONE_SECONDARY_LABEL": "Rhif ffôn arall (dewisol)",
+
+  "FORM_EMAIL_SUBTITLE": "Cyfeiriad e-bost",
+  "FORM_EMAIL_LABEL": "Nodwch eich cyfeiriad e-bost",
+  "FORM_EMAIL_CONFIRM_LABEL": "Nodwch eich cyfeiriad e-bost",
+  "FORM_EMAIL_HELPER_TITLE": "Pam fod arnom angen cyfeiriad e-bost?",
+  "FORM_EMAIL_HELPER_PARAGRAPH_1": "Byddwn yn defnyddio eich cyfeiriad e-bost i anfon gwybodaeth a nodiadau atgoffa am eich gwasanaeth rheithgor atoch."
+}

@@ -70,6 +70,7 @@
             {expand: true, src: ['server/**/*.js'], dest: 'dist'},
             {expand: true, src: ['package.json', 'Dockerfile', 'run.sh'], dest: 'dist'},
             {expand: true, cwd: 'client/js/', src: ['jquery.min.js', 'html5shiv.min.js', 'respond.min.js', 'datepicker.js'], dest: 'dist/client/js'},
+            { expand: true, cwd: 'client/fonts/', src: ['boldFont.ttf', 'lightFont.ttf'], dest: 'dist/client/fonts' },
 
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/javascripts/', src: ['**'], dest: 'dist/client/js'},
             {expand: true, cwd: 'govuk_modules/govuk_frontend_toolkit/javascripts/govuk/', src: ['**'], dest: 'dist/client/js'},
@@ -83,6 +84,7 @@
             {expand: true, src: ['server/**/*.js'], dest: 'dev'},
             {expand: true, src: ['package.json', 'Dockerfile', 'run.sh'], dest: 'dev'},
             { expand: true, cwd: 'client/js/', src: ['jquery.min.js', 'html5shiv.min.js', 'respond.min.js', 'datepicker.js'], dest: 'dev/client/js'},
+            { expand: true, cwd: 'client/fonts/', src: ['boldFont.ttf', 'lightFont.ttf'], dest: 'dev/client/fonts' },
 
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/javascripts/', src: ['**'], dest: 'dev/client/js'},
             {expand: true, cwd: 'govuk_modules/govuk_frontend_toolkit/javascripts/govuk/', src: ['**'], dest: 'dev/client/js'},
@@ -96,6 +98,7 @@
             {expand: true, src: ['server/**/*.js'], dest: 'test'},
             {expand: true, src: ['package.json', 'Dockerfile', 'run.sh'], dest: 'test'},
             { expand: true, cwd: 'client/js/', src: ['jquery.min.js', 'html5shiv.min.js', 'respond.min.js', 'datepicker.js'], dest: 'test/client/js'},
+            { expand: true, cwd: 'client/fonts/', src: ['boldFont.ttf', 'lightFont.ttf'], dest: 'test/client/fonts' },
 
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/javascripts/', src: ['**'], dest: 'test/client/js'},
             {expand: true, cwd: 'govuk_modules/govuk_frontend_toolkit/javascripts/govuk/', src: ['**'], dest: 'test/client/js'},

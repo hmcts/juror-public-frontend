@@ -18,7 +18,7 @@
   "DATE_FIELD_TITLE_OB": "Please give us three dates the person you're replying for could do jury service during the next 12 months.",
   "DATE_FIELD_HINT": "Jury service usually lasts up to 10 working days but can be longer.",
 
-  "WHY_ASK_SUMMARY": "Why do we ask this?",
+  "WHY_ASK_SUMMARY": "Why do we ask?",
   "WHY_ASK_INFO": "It may be possible to start your jury service on another more suitable date.",
   "WHY_ASK_INFO_OB": "It may be possible to start the person's jury service on another more suitable date. ",
 
@@ -32,8 +32,10 @@
   "YEAR": "Year",
 
   "DATE_INFO": "I can start jury service for at least ten working days from:",
-  "DATE_INFO_OB": "The person I'm replying for can start jury service for at least ten working days from"
+  "DATE_INFO_OB": "The person I'm replying for can start jury service for at least ten working days from:",
 
-
+  "DATEPICKER_ALT_1": "open date 1 calendar",
+  "DATEPICKER_ALT_2": "open date 2 calendar",
+  "DATEPICKER_ALT_3": "open date 3 calendar"
 
 }

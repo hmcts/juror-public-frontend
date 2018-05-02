@@ -20,32 +20,30 @@
 
       <fieldset>
         <legend class="bold-small">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.LEGEND }}</legend>
-        <br>
 
-        <div class="form-group {% if errors.items['firstName'] %}error{% endif %}" id="firstNameGroup">
+        <p class="form-group {% if errors.items['firstName'] %}error{% endif %}" id="firstNameGroup">
           <label class="form-label" for="firstName">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.LABEL_FIRST_NAME }}</label>
           {% if errors.items['firstName'] %}<span class="error-message" id="firstNameErrorMessage">{{ errors.items['firstName'][0].details }}</span>{% endif %}
-          <input type="text" class="form-control" name="firstName" id="firstName" value="{{ user.thirdPartyDetails.firstName }}" minlength="1" maxlength="50">
-        </div>
+          <input type="text" class="form-control" name="firstName" id="firstName" value="{{ user.thirdPartyDetails.firstName }}" minlength="1" maxlength="50" autocomplete="off">
+        </p>
 
-        <div class="form-group {% if errors.items['lastName'] %}error{% endif %}" id="lastNameGroup">
+        <p class="form-group {% if errors.items['lastName'] %}error{% endif %}" id="lastNameGroup">
           <label class="form-label" for="lastName">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.LABEL_LAST_NAME }}</label>
           {% if errors.items['lastName'] %}<span class="error-message" id="lastNameErrorMessage">{{ errors.items['lastName'][0].details }}</span>{% endif %}
-          <input type="text" class="form-control" name="lastName" id="lastName" value="{{ user.thirdPartyDetails.lastName }}" minlength="1" maxlength="50">
-        </div>
+          <input type="text" class="form-control" name="lastName" id="lastName" value="{{ user.thirdPartyDetails.lastName }}" minlength="1" maxlength="50" autocomplete="off">
+        </p>
 
       </fieldset>
 
 
       <fieldset>
         <legend class="bold-small">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.RELATIONSHIP.LEGEND }}</legend>
-        <br>
 
-        <div class="form-group {% if errors.items['relationship'] %}error{% endif %}" id="relationshipGroup">
+        <p class="form-group {% if errors.items['relationship'] %}error{% endif %}" id="relationshipGroup">
           <label class="form-label" for="relationship">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.RELATIONSHIP.LABEL_RELATIONSHIP }}</label>
           {% if errors.items['relationship'] %}<span class="error-message" id="relationshipErrorMessage">{{ errors.items['relationship'][0].details }}</span>{% endif %}
-          <input type="text" class="form-control" name="relationship" id="relationship" value="{{ user.thirdPartyDetails.relationship }}" minlength="1" maxlength="100">
-        </div>
+          <input type="text" class="form-control" name="relationship" id="relationship" value="{{ user.thirdPartyDetails.relationship }}" minlength="1" maxlength="100" autocomplete="off">
+        </p>
       </fieldset>
 
 
@@ -78,7 +76,7 @@
                 {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_MAIN_PHONE }}
               </label>
               {% if errors.items['mainPhone'] %}<span class="error-message" id="mainPhoneErrorMessage">{{ errors.items['mainPhone'][0].details }}</span>{% endif %}
-              <input type="text" class="form-control" id="mainPhone" name="mainPhone" value="{{ user.thirdPartyDetails.mainPhone }}">
+              <input type="text" class="form-control" id="mainPhone" name="mainPhone" value="{{ user.thirdPartyDetails.mainPhone }}" autocomplete="off">
             </div>
 
             <div class="form-group {% if errors.items['otherPhone'] %}error{% endif %}" id="otherPhoneGroup">
@@ -86,7 +84,7 @@
                 {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_OTHER_PHONE }}
               </label>
               {% if errors.items['otherPhone'] %}<span class="error-message" id="otherPhoneErrorMessage">{{ errors.items['otherPhone'][0].details }}</span>{% endif %}
-              <input type="text" class="form-control" id="otherPhone" name="otherPhone" value="{{ user.thirdPartyDetails.otherPhone }}">
+              <input type="text" class="form-control" id="otherPhone" name="otherPhone" value="{{ user.thirdPartyDetails.otherPhone }}" autocomplete="off">
             </div>
           </div>
 
@@ -103,7 +101,7 @@
                 {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_EMAIL }}
               </label>
               {% if errors.items['emailAddress'] %}<span class="error-message" id="emailAddressErrorMessage">{{ errors.items['emailAddress'][0].details }}</span>{% endif %}
-              <input type="email" class="form-control" id="emailAddress" name="emailAddress" value="{{ user.thirdPartyDetails.emailAddress }}">
+              <input type="email" class="form-control" id="emailAddress" name="emailAddress" maxlength="254" value="{{ user.thirdPartyDetails.emailAddress }}" autocomplete="off">
             </div>
 
             <div class="form-group {% if errors.items['emailAddressConfirmation'] %}error{% endif %}" id="emailAddressConfirmationGroup">
@@ -111,7 +109,7 @@
                 {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_EMAIL_CONFIRM }}
               </label>
               {% if errors.items['emailAddressConfirmation'] %}<span class="error-message" id="emailAddressConfirmationErrorMessage">{{ errors.items['emailAddressConfirmation'][0].details }}</span>{% endif %}
-              <input type="email" class="form-control" id="emailAddressConfirmation" name="emailAddressConfirmation" value="{{ user.thirdPartyDetails.emailAddressConfirmation }}">
+              <input type="email" class="form-control" id="emailAddressConfirmation" name="emailAddressConfirmation" maxlength="254" value="{{ user.thirdPartyDetails.emailAddressConfirmation }}" autocomplete="off">
             </div>
           </div>
         </div>

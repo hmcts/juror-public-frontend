@@ -1,0 +1,36 @@
+{
+  "HEADING": "Gwneud cais am ddyddiad arall ar gyfer eich gwasanaeth rheithgor",
+  "HEADING_OB": "Gofyn am ddyddiad gwasanaeth rheithgor arall ar gyfer yr unigolyn rydych yn ymateb ar ei ran",
+
+  "REASON_FIELD_TITLE": "Dywedwch pam eich bod angen dyddiad arall ar gyfer eich gwasanaeth rheithgor",
+  "REASON_FIELD_TITLE_OB": "Dywedwch pam bod yr unigolyn rydych yn ymateb ar ei ran angen dyddiad arall ar gyfer ei wasanaeth rheithgor",
+  "REASON_FIELD_HINT": "Dim ond unwaith y gallwch newid dyddiad eich gwasanaeth rheithgor",
+  "REASON_FIELD_HINT_OB": "Dim ond unwaith y gallwch newid dyddiad y gwasanaeth rheithgor",
+
+  "ACCEPTABLE_SUMMARY": "Beth yw rheswm derbyniol?",
+  "ACCEPTABLE_INFO": "Efallai bydd modd i ni newid dyddiad eich gwasanaeth rheithgor os oes gennych reswm da. Dyma ychydig o esiamplau - neu efallai bydd gennych reswm da arall:",
+  "ACCEPTABLE_INFO_OB": "Efallai bydd modd i ni newid dyddiad y gwasanaeth rheithgor os oes gan yr unigolyn rydych yn ymateb ar ei ran reswm da. Dyma enghreifftiau - neu efallai bydd ganddynt reswm da arall:",
+  "ACCEPTABLE_LIST_ITEM_1": "wedi bwcio gwyliau",
+  "ACCEPTABLE_LIST_ITEM_2": "cael llawdriniaeth",
+  "ACCEPTABLE_LIST_ITEM_3": "sefyll arholiad",
+
+  "DATE_FIELD_TITLE": "Nodwch dri dyddiad yn y 12 mis nesaf pan fyddwch ar gael i ddechrau gwasanaethu ar reithgor.",
+  "DATE_FIELD_TITLE_OB": "Nodwch dri dyddiad yn y 12 mis nesaf ble all yr unigolyn rydych yn ymateb ar ei ran wasanaethu ar reithgor.",
+  "DATE_FIELD_HINT": "Fel arfer bydd gwasanaeth rheithgor yn para am hyd at 10 diwrnod gwaith ond gall fod yn hirach.",
+
+  "WHY_ASK_SUMMARY": "Pam ein bod yn gofyn am hyn?",
+  "WHY_ASK_INFO": "Efallai bydd yn bosibl ichi gychwyn eich gwasanaeth rheithgor ar ddyddiad arall sy’n fwy addas.",
+  "WHY_ASK_INFO_OB": "It may be possible to start the person's jury service on another more suitable date. ",
+
+  "DATE1": "Dyddiad 1",
+  "DATE2": "Dyddiad 2",
+  "DATE3": "Dyddiad 3",
+  "DATE_EG": "eg 08/10/2017",
+
+  "DAY": "Diwrnod",
+  "MONTH": "Mis",
+  "YEAR": "Blwyddyn",
+
+  "DATE_INFO": "Gallaf ddechrau gwasanaethu ar reithgor am o leiaf deg diwrnod gwaith o:",
+  "DATE_INFO_OB": "Gallaf yr unigolyn rwy'n ymateb ar ei ran ddechrau gwasanaethu ar reithgor am o leiaf deg diwrnod gwaith o:"
+}

@@ -20,13 +20,21 @@
       <li>{{ texts.START_PAGE.LIST_1_ITEM_5 }}</li>
     </ul>
     <br/>
+
     <p><span>{{ texts.START_PAGE.INFO }}</span></p>
-    <p class="lede">
-      <strong class="bold-medium">{{ texts.START_PAGE.SUBHEADING_2 }}</strong>
-    </p>
-    <p>
-      {{ texts.START_PAGE.FROM_LETTER }}
-    </p>
+    <p><span>{{ texts.START_PAGE.PDF_DOWNLOAD }}</span></p>
+
+
+    <p>{{ texts.START_PAGE.INFO_INDENT }}
+    <a href="{{ texts.START_PAGE.CLANG_LINK }}">{{ texts.START_PAGE.INFO_INDENT_LINK }}</a></p>
+
+
+    <strong class="bold-medium">{{ texts.START_PAGE.SUBHEADING_2 }}</strong>
+    <br>
+    <br>
+
+    {{ texts.START_PAGE.FROM_LETTER }}
+
     <ul class="list list-bullet">
       <li>{{ texts.START_PAGE.LIST_2_ITEM_1 }}</li>
       <li>{{ texts.START_PAGE.LIST_2_ITEM_2 }}</li>
@@ -52,36 +60,38 @@
     <br>
     <br>
     <strong class="bold-medium"> {{ texts.START_PAGE.SUBHEADING_3 }} </strong>
+    <br>
+    <br>
     <p>
       {{ texts.START_PAGE.SUBHEADING_3_INFO_1 }}
     </p>
     <p>
       {{ texts.START_PAGE.SUBHEADING_3_INFO_2 }}
     </p>
-    <h3 class="heading-medium">{{ texts.START_PAGE.SUBHEADING_4 }}</h3>
+    <h4 class="heading-small">{{ texts.START_PAGE.SUBHEADING_4 }}</h4>
     <p>
       {{ texts.START_PAGE.SUBHEADING_4_INFO }}
     </p>
-    <h3 class="heading-medium">{{ texts.START_PAGE.SUBHEADING_5 }}</h3>
+    <h4 class="heading-small">{{ texts.START_PAGE.SUBHEADING_5 }}</h4>
     <p>
       {{ texts.START_PAGE.SUBHEADING_5_INFO_1 }}
       <a href="https://www.gov.uk/jury-service/taking-time-off-work" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/taking-time-off-work')"{% endif %}>{{ texts.START_PAGE.SUBHEADING_5_LINK }}</a>
       {{ texts.START_PAGE.SUBHEADING_5_INFO_2 }}
     </p>
-    <h3 class="heading-medium">{{ texts.START_PAGE.SUBHEADING_6 }}</h3>
+    <h4 class="heading-small">{{ texts.START_PAGE.SUBHEADING_6 }}</h4>
     <p>
       {{ texts.START_PAGE.SUBHEADING_6_INFO_1 }} <a href="https://www.gov.uk/jury-service/what-you-can-claim" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/what-you-can-claim')"{% endif %}>{{ texts.START_PAGE.SUBHEADING_6_LINK }}</a> {{ texts.START_PAGE.SUBHEADING_6_INFO_2 }}
     </p>
     <br/>
     <h3 class="bold-medium">{{ texts.START_PAGE.SUBHEADING_7 }}</h3>
-    <h3 class="heading-medium">{{ texts.START_PAGE.SUBHEADING_8 }}</h3>
+    <h4 class="heading-small">{{ texts.START_PAGE.SUBHEADING_8 }}</h4>
     <p>
       {{ texts.START_PAGE.SUBHEADING_8_INFO_1 }}
     </p>
     <p>
       {{ texts.START_PAGE.SUBHEADING_8_INFO_2 }}
     </p>
-    <h3 class="heading-medium">{{ texts.START_PAGE.SUBHEADING_9 }}</h3>
+    <h4 class="heading-small">{{ texts.START_PAGE.SUBHEADING_9 }}</h4>
     <p>
       {{ texts.START_PAGE.SUBHEADING_9_INFO_1 }}
     </p>
@@ -98,7 +108,7 @@
       {{ texts.START_PAGE.CONTACT_TELEPHONE_LABEL }}<a href="tel:03004561024">{{ texts.START_PAGE.CONTACT_TELEPHONE }}</a><br>
       {{ texts.START_PAGE.CONTACT_INFO_1 }}<br>
       {{ texts.START_PAGE.CONTACT_INFO_2 }}<br>
-      <a href="https://www.gov.uk/call-charges">{{ texts.START_PAGE.CONTACT_LINK }}</a>
+      <a href="{{ texts.START_PAGE.CONTACT_LINK }}">{{ texts.START_PAGE.CONTACT_LINK_TEXT }}</a>
     </p>
     <p>
       {{ texts.START_PAGE.ADDRESS_LINE_1 }}<br>

@@ -10,6 +10,6 @@ html {
   *,
   *::before,
   *::after {
-    box-sizing: inherit;
+    box-sizing: content-box;
   }
 }

@@ -1,0 +1,21 @@
+{
+  "HEADING": "Cadarnhewch ddyddiad eich gwasanaeth rheithgor",
+  "HEADING_OB": "Cadarnhewch ddyddiad gwasanaeth rheithgor yr unigolyn",
+  "INTRO_PARAGRAPH": "Fel arfer bydd gwasanaeth rheithgor yn para am hyd at 10 diwrnod gwaith (Dydd Llun i ddydd Gwener) ond gall fod yn hirach. Efallai byddwch yn cymryd rhan mewn mwy nag un treial.",
+  "INTRO_PARAGRAPH_OB": "Fel arfer bydd gwasanaeth rheithgor yn para am hyd at 10 diwrnod gwaith (Dydd Llun i ddydd Gwener) ond gall fod yn hirach. Efallai bydd y rheithiwr yn rhan o fwy nag un treial.",
+  "REQUIRED": "Rydych yn cael eich gwysio i wasanaethu ar reithgor, gan ddechrau ar:",
+  "REQUIRED_OB": "Mae’r unigolyn rydych yn ymateb ar ei ran yn cael ei wysio i wasanaethu ar reithgor gan ddechrau ar:",
+  "AT": "Yn:",
+  "DATE_CONFIRMATION_HEADING": "Cadarnhewch ddyddiad eich gwasanaeth rheithgor",
+  "DATE_CONFIRMATION_HEADING_OB": "Cadarnhewch ddyddiad gwasanaeth rheithgor yr unigolyn",
+  "ANSWER_YES": "Gallaf wasanaethu ar reithgor ar y dyddiad a nodir",
+  "ANSWER_YES_OB": "Mae’r unigolyn rwy’n ymateb ar ei ran yn gallu gwasanaethu ar reithgor ar y dyddiad a nodir",
+  "ANSWER_DEFERRAL": "Rwyf angen newid dyddiad fy ngwasanaeth rheithgor.",
+  "ANSWER_DEFERRAL_OB": "Rydw i angen newid dyddiad y gwasanaeth rheithgor ar gyfer yr unigolyn rwy’n ymateb ar ei ran",
+  "ANSWER_DEFERRAL_HINT": "Gallwch ddewis dyddiad gwahanol yn y 12 mis nesaf. Dim ond unwaith y gallwch newid dyddiad eich gwasanaeth rheithgor.",
+  "ANSWER_DEFERRAL_HINT_OB": "Gallwch ddewis dyddiad arall o fewn y 12 mis nesaf. Dim ond unwaith y gallwch newid dyddiad gwasanaeth rheithgor yr unigolyn.",
+  "ANSWER_EXCUSAL": "Na allaf wasanaethu ar reithgor a hoffwn gael fy esgusodi.",
+  "ANSWER_EXCUSAL_OB": "Nid yw’r unigolyn rwy’n ymateb ar ei ran yn gallu gwasanaethu ar reithgor a hoffai gael ei esgusodi",
+  "ANSWER_EXCUSAL_HINT": "Efallai na fydd rhaid i chi wasanaethu ar reithgor os oes rheswm da dros pam na allwch wneud hynny yn y 12 mis nesaf, neu os ydych wedi gwasanaethu ar reithgor yn y ddwy flynedd diwethaf.",
+  "ANSWER_EXCUSAL_HINT_OB": "Efallai na fydd rhaid i’r unigolyn wasanaethu ar reithgor os oes rheswm da dros pam na all wneud hynny yn y 12 mis nesaf, neu os ydynt wedi gwasanaethu ar reithgor yn y ddwy flynedd diwethaf"
+}

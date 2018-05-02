@@ -19,7 +19,7 @@
 
     <form action="{{ url('steps.confirm.date.excusal.post') }}" method="post">
 
-      <div class="form-group {% if errors.items['excusalReason'] %}error{% endif %} id="excusalReasonGroup"">
+      <div class="form-group {% if errors.items['excusalReason'] %}error{% endif %}" id="excusalReasonGroup">
         <label class="form-label" for="excusalReason">
           <strong class="bold-small">
             {% if user.thirdParty == 'Yes' %}

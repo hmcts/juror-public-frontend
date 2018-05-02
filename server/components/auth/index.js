@@ -6,7 +6,8 @@
     , config = require('../../config/environment')()
     , errors = require('../errors')
     , authObj = require('../../objects/auth').object
-    , msgMappings = require('../errors/message-mapping')
+    , msgMappingsEn = require('../errors/message-mapping_en')
+    , msgMappingsCy = require('../errors/message-mapping_cy')
 
     , createJWTToken = function(req, body, key) {
       // if user is found create a token
@@ -48,7 +49,7 @@
         , authFailure = function(err) {
           var errJson = { statusCode: err.statusCode, error: 'USER_NOT_FOUND', originalError: err }
             , identifiedErr
-            , logonMsgs = msgMappings.logon;
+            , logonMsgs = (req.session.ulang === 'cy' ? msgMappingsCy : msgMappingsEn).logon;
 
           // Map the provided error message to our identifiers
           Object.keys(logonMsgs).forEach(function(key) {
@@ -111,6 +112,14 @@
         // Without a authentication token, we show an error page
         return errors(req, res, 403, '/steps/00-responder-type');
       }
+    }
+
+    , completeCheck = function(req, res, next) {
+      if (req.session.user.completed) {
+        return res.redirect(req.app.namedRoutes.build(req.session.user.completed));
+      }
+
+      return next();
     };
 
 
@@ -119,5 +128,6 @@
   module.exports.authenticate = authenticate;
   module.exports.verify = verify;
   module.exports.getToken = getToken;
+  module.exports.completeCheck = completeCheck;
 
 })();

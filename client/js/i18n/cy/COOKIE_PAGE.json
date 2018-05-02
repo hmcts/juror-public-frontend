@@ -1,0 +1,57 @@
+{
+  "HEADING": "Cwcis",
+  "SUMMARY": "Mae ffeiliau bach (o’r enw ‘cwcis’) yn cael eu rhoi ar eich cyfrifiadur i gasglu gwybodaeth am y ffordd rydych chi’n pori’r wefan.",
+
+  "LIST_HEADING": "Mae cwcis yn cael eu defnyddio i:",
+  "BULLET_ONE": "fesur sut rydych chi’n defnyddio’r wefan er mwyn ei diweddaru a’i gwella yn seiliedig ar eich anghenion",
+  "BULLET_TWO": "cofio’r hysbysiadau rydych eisoes wedi’u gweld fel nad ydych yn eu gweld eto",
+
+  "IDENTIFY": "Nid yw cwcis GOV.UK yn cael eu defnyddio i’ch adnabod yn bersonol.",
+
+  "MESSAGE": "Fel arfer, byddwch chi’n gweld neges ar y wefan cyn i ni storio cwci ar eich cyfrifiadur.",
+
+  "MORE_INFO_START": "Ceir rhagor o wybodaeth yma ",
+  "MORE_INFO_END": "am ffyrdd o reoli cwcis.",
+  "MORE_INFO_LINK": "http://www.aboutcookies.org/",
+
+  "COOKIE_USAGE": "Sut mae cwcis yn cael eu defnyddio",
+
+  "MEASURE_HEADING": "Mesur defnydd o’r wefan (Google Analytics)",
+  "MEASURE_INFO": "Mae meddalwedd Google Analytics yn casglu gwybodaeth am sut byddwch yn defnyddio'r wefan. Rydym yn gwneud hyn i helpu sicrhau bod y wefan yn cwrdd ag anghenion y defnyddwyr ac i’n helpu ni i wneud gwelliannau.",
+  "ANALYTICS": "Mae Google Analytics yn gallu casglu gwybodaeth am eich demograffig, megis eich oedran, eich rhyw, eich lleoliad â’ch dewis iaith.",
+  "ANALYTICS_REPORT": "Mae’r adroddiadau yn rhoi gwybodaeth i ni am y ddyfais rydych yn ei ddefnyddio i gael mynediad at y wefan, pa borwr rydych yn ei ddefnyddio, a fersiwn y system weithredu sy'n cael ei defnyddio. Mae hyn yn ein cynorthwyo i sicrhau bod y wefan yn gweithio i bawb.",
+  "TRACKING": "Yn benodol, rydym yn cofnodi sawl gwaith y mae ein dogfennau PDF yn cael eu lawrlwytho, sawl gwaith y mae defnyddwyr yn gadael y wefan trwy glicio ar ddolenni allanol, a’r nifer o bobl sy’n clicio ar y dolenni  'Rhagor o wybodaeth' sydd wedi'u rhestru wrth ymyl rhai o’r cwestiynau ar ein gwefan.",
+  "DATA_CAPTURE": "Mae’r holl ddata rydym yn eu casglu yn ddienw, ac nid oes gennym fynediad at unrhyw ddata all eich adnabod yn bersonol.",
+  "REASON": "Rydym yn defnyddio’r wybodaeth hon i wella'r gwasanaeth a'n perfformiad yn ogystal â chynnal dadansoddi pellach",
+
+  "USED_COOKIES": "Mae’r cwcis canlynol yn cael eu defnyddio:",
+  "NAME_TITLE": "Enw",
+  "NAME_ONE": "_gat",
+  "NAME_TWO": "_ga",
+  "NAME_THREE": "sessionID",
+  "NAME_FOUR": "ApplicationGatewayAffinity",
+  "PURPOSE_TITLE": "Diben",
+  "PURPOSE_ONE": "Mae’r rhain yn ein helpu i weld sut yr ydych chi’n defnyddio GOV.UK er mwyn gwella’r wefan",
+  "PURPOSE_TWO": "Mae’r rhain yn ein helpu i weld sut yr ydych chi’n defnyddio GOV.UK er mwyn gwella’r wefan",
+  "PURPOSE_THREE": "Nodi p’un a ydych wedi mewngofnodi ai peidio",
+  "PURPOSE_FOUR": "Fe’i defnyddir i’ch cyfeirio’n ôl at yr un gweinyddwr ar gyfer pob cais",
+  "EXPIRES_TITLE": "Daw i ben",
+  "EXPIRES_ONE": "10 munud",
+  "EXPIRES_TWO": "2 flynedd",
+  "EXPIRES_THREE": "Pan fyddwch chi’n cau’ch porwr",
+  "EXPIRES_FOUR": "Pan fyddwch chi’n cau’ch porwr",
+  "OPT_OUT_START": "Gallwch chi",
+  "OPT_OUT_END": "ddewis peidio derbyn cwcis Google Analytics.",
+  "OPT_OUT_LINK": "https://tools.google.com/dlpage/gaoptout",
+
+  "SESSIONS": "Sesiynau",
+  "SESSION_SUMMARY": "Mae cwci yn cael ei osod i gofnodi eich gweithgaredd yn ystod y sesiwn.",
+  "FEEDBACK_SURVEY_HEADER": "Ein harolwg adborth",
+  "FEEDBACK_SURVEY_SERVICE": "Rydym yn defnyddio SmartSurvey i alluogi defnyddwyr y gwasanaeth i roi adborth am eu profiadau ar ddefnyddio’r gwasanaeth.",
+  "FEEDBACK_SURVEY_DETAILS": "Ceir rhagor o fanylion am bolisi diogelwch a chyfrinachedd SmartSurvey yn:",
+  "FEEDBACK_SURVEY_LINK": "https://www.smartsurvey.co.uk/security",
+  "FEEDBACK_SURVEY_RESULTS": "Byddwn yn defnyddio canlyniadau’r ymatebion i’r arolwg i roi gwybodaeth inni am eich profiad o ddefnyddio'r gwasanaeth, bydd hyn yn ein galluogi i ystyried sut allwn wella'r gwasanaeth ymhellach.",
+  "FEEDBACK_SURVEY_DATA": "Mae’r holl ddata rydym yn eu casglu yn ddienw, ac nid oes gennym fynediad at unrhyw ddata all eich adnabod yn bersonol.",
+  "FEEDBACK_SURVEY_COOKIES": "Os byddwch yn cymryd rhan, bydd SmartSurvey yn cadw rhagor o gwcis ar eich cyfrifiadur i ddilyn eich cynnydd trwy'r arolwg. Mae SmartSurvey yn cael ei ddefnyddio i gasglu’r ymatebion i’r arolwg. Os byddwch yn cymryd rhan, bydd SmartSurvey yn cadw rhagor o gwcis ar eich cyfrifiadur i ddilyn eich cynnydd trwy'r arolwg. Ceir gwybodaeth am sut mae SmartSurvey yn defnyddio Cwcis yn:",
+  "FEEDBACK_SURVEY_COOKIES_LINK": "https://www.smartsurvey.co.uk/how-we-use-cookies"
+}

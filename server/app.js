@@ -11,13 +11,15 @@
     , config = require('./config/environment')()
     , logger = require('./components/logger')(config)
     , http = require('http')
-
+    , ageSettingsObj = require('./objects/ageSettings').object
     , app = express()
     , server = http.createServer(app)
 
     , appTitle = require(path.resolve(__dirname, '../', 'package.json')).name
     , releaseVersion = require(path.resolve(__dirname, '../', 'package.json')).version
-    , versionStr = appTitle + ' v' + releaseVersion;
+    , versionStr = appTitle + ' v' + releaseVersion
+    , upperAgeLimit
+    , lowerAgeLimit;
 
   // Attach logger to app
   app.logger = logger;
@@ -39,6 +41,30 @@
 
   // Control server
   function startServer() {
+    ageSettingsObj.get(require('request-promise'))
+      .then(function(response) {
+
+        // upperAgeLimit = 76;
+        // lowerAgeLimit = 18;
+        response.forEach(function(res) {
+          if (res.setting === '100') {
+            upperAgeLimit = res.value;
+          } else if (res.setting === '101') {
+            lowerAgeLimit = res.value;
+          }
+        });
+        app.ageSettings = {
+          upperAgeLimit: upperAgeLimit,
+          lowerAgeLimit: lowerAgeLimit
+        };
+      })
+      .catch(function() {
+        app.ageSettings = {
+          upperAgeLimit: 76,
+          lowerAgeLimit: 18
+        };
+      });
+
     app.server = server.listen(config.port, config.ip, function() {
       if (config.logConsole !== false) {
         console.info('Express server listening on http://%s:%s', config.ip, config.port);

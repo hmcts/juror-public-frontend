@@ -9,12 +9,14 @@
   var _ = require('lodash')
     , validate = require('validate.js')
     , filters = require('../../../components/filters')
-    , texts = require('../../../../client/js/i18n/en.json')
+    , texts_en = require('../../../../client/js/i18n/en.json')
+    , texts_cy = require('../../../../client/js/i18n/cy.json')
 
   module.exports.index = function() {
     return function(req, res) {
       var assistanceActive
-        , merged;
+        , merged
+        , tmpErrors;
 
       // Get current value for assistanceType
       merged = _.merge(_.cloneDeep(req.session.user), req.session.formFields);
@@ -34,14 +36,18 @@
       // Check what is active based on merger between user stored values and form submitted values
       if (typeof merged !== 'undefined' && typeof merged.assistanceType !== 'undefined') {
         assistanceActive = {
-          mobility: (merged.assistanceType.indexOf('Limited mobility') !== -1),
-          hearing: (merged.assistanceType.indexOf('Hearing impairment') !== -1),
-          diabetes: (merged.assistanceType.indexOf('Diabetes') !== -1),
-          sight: (merged.assistanceType.indexOf('Severe sight impairment') !== -1),
-          learningDisability: (merged.assistanceType.indexOf('Learning disability') !== -1),
+          mobility: (merged.assistanceType.indexOf('Limited mobility') !== -1) || (merged.assistanceType.indexOf('Symudedd cyfyngedig') !== -1),
+          hearing: (merged.assistanceType.indexOf('Hearing impairment') !== -1) || (merged.assistanceType.indexOf('Nam ar y clyw') !== -1),
+          diabetes: (merged.assistanceType.indexOf('Diabetes') !== -1) || (merged.assistanceType.indexOf('Clefyd siwgr') !== -1),
+          sight: (merged.assistanceType.indexOf('Severe sight impairment') !== -1) || (merged.assistanceType.indexOf('Nam difrifol ar eich golwg') !== -1),
+          learningDisability: (merged.assistanceType.indexOf('Learning disability') !== -1) || (merged.assistanceType.indexOf('Anabledd dysgu') !== -1),
           other: (merged.assistanceType.indexOf('Other') !== -1)
         };
       }
+
+      // Merge and then delete errors, prevents retention after pressing back
+      tmpErrors = _.cloneDeep(req.session.errors);
+      delete req.session.errors;
 
       if (req.session.change === true){
         delete req.session.errors;
@@ -51,10 +57,10 @@
       return res.render('steps/06-assistance/index.njk', {
         user: _.merge(req.session.user, merged),
         errors: {
-          title: filters.translate('VALIDATION.ERROR_TITLE', texts),
+          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           message: '',
-          count: typeof req.session.errors !== 'undefined' ? Object.keys(req.session.errors).length : 0,
-          items: req.session.errors,
+          count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
+          items: tmpErrors,
         },
         assistanceActive: assistanceActive
       });
@@ -90,17 +96,11 @@
       req.session.user.assistanceNeeded = req.body['assistanceNeeded'];
 
       // Clear other values if they answered no to assistance required
-      req.session.user.assistanceType = (req.session.user.assistanceNeeded === 'Yes') ?
-        req.body['assistanceType'] :
-        '';
+      req.session.user.assistanceType = (req.session.user.assistanceNeeded === 'Yes' || req.session.user.assistanceNeeded === 'Do') ? req.body['assistanceType'] : '';
 
-      req.session.user.assistanceTypeDetails = (req.session.user.assistanceNeeded === 'Yes') ?
-        req.body['assistanceTypeDetails'] :
-        '';
+      req.session.user.assistanceTypeDetails = (req.session.user.assistanceNeeded === 'Yes' || req.session.user.assistanceNeeded === 'Do') ? req.body['assistanceTypeDetails'] : '';
 
-      req.session.user.assistanceSpecialArrangements = (req.session.user.assistanceNeeded === 'Yes') ?
-        req.body['assistanceSpecialArrangements'] :
-        '';
+      req.session.user.assistanceSpecialArrangements = (req.session.user.assistanceNeeded === 'Yes' || req.session.user.assistanceNeeded === 'Do') ? req.body['assistanceSpecialArrangements'] : '';
 
       // Redirect as appropriate
       return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));

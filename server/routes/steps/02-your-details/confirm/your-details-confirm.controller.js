@@ -10,7 +10,8 @@
     , _ = require('lodash')
     , validate = require('validate.js')
     , filters = require('../../../../components/filters')
-    , texts = require('../../../../../client/js/i18n/en.json')
+    , texts_en = require('../../../../../client/js/i18n/en.json')
+    , texts_cy = require('../../../../../client/js/i18n/cy.json')
     , utils = require('../../../../lib/utils');
 
   module.exports.index = function(app) {
@@ -28,7 +29,7 @@
 
       return res.render('steps/02-your-details/confirm.njk', {
         errors: {
-          title: filters.translate('VALIDATION.ERROR_TITLE', texts),
+          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           message: '',
           count: typeof req.session.errors !== 'undefined' ? Object.keys(req.session.errors).length : 0,
           items: req.session.errors,
@@ -89,9 +90,9 @@
       // reset ineligibleAge
       req.session.user['ineligibleAge'] = false;
 
-      // redirect to check your answers if under 18 or over 75 (< 18 && > 76)
+      // redirect to check your answers if if under lower age limit or above higher age limit
       // this would mean the person is ineligible
-      if (req.body['ageTimeOfHearing'] < 18 || req.body['ageTimeOfHearing'] > 75) {
+      if (req.body['ageTimeOfHearing'] < app.ageSettings.lowerAgeLimit || req.body['ageTimeOfHearing'] >= app.ageSettings.upperAgeLimit) {
         req.session.user['ineligibleAge'] = true;
         return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
       }

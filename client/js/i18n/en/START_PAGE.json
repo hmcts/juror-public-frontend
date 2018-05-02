@@ -7,6 +7,7 @@
   "LIST_1_ITEM_4": "Ask to be excused from jury service",
   "LIST_1_ITEM_5": "Tell us about any extra help you'll need if you serve on a jury",
   "INFO": "Replying to a summons takes around 10 minutes",
+  "PDF_DOWNLOAD": "You will be able to download and save a PDF of the answers you give us when you finish.",
   "INFO_INDENT": "This service is also available in",
   "INFO_INDENT_LINK": "Welsh (Cymraeg)",
   "SUBHEADING_2": "You will need",
@@ -46,7 +47,8 @@
   "CONTACT_TELEPHONE_LABEL": "Telephone: ",
   "CONTACT_INFO_1": "Monday to Thursday 9am to 5pm",
   "CONTACT_INFO_2": "Friday 9am to 3pm",
-  "CONTACT_LINK": "Find out about call charges",
+  "CONTACT_LINK_TEXT": "Find out about call charges",
+  "CONTACT_LINK": "https://www.gov.uk/call-charges",
   "ADDRESS_LINE_1": "Jury Central Summoning Bureau",
   "ADDRESS_LINE_2": "Pocock Street",
   "ADDRESS_LINE_3": "London",
@@ -57,5 +59,6 @@
   "NAV_HEADING_2": "Elsewhere on the web",
   "NAV_3": "Watch a video about your role as a juror",
   "BOTTOM_LINK": "Is there anything wrong with this page?",
-  "VISUALLY_HIDDEN_TEXT": "Warning"
+  "VISUALLY_HIDDEN_TEXT": "Warning",
+  "CLANG_LINK": "/?clang=cy"
 }

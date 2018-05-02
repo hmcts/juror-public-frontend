@@ -4,7 +4,8 @@
   var moment = require('moment')
     , validate = require('validate.js')
     , filters = require('../../components/filters')
-    , texts = require('../../../client/js/i18n/en.json')
+    , texts_en = require('../../../client/js/i18n/en.json')
+    , texts_cy = require('../../../client/js/i18n/cy.json');
 
   // Overrides to existing rules
   // ===================================
@@ -22,25 +23,25 @@
   validate.extend(validate.validators.length, {
     // tooLong: 'must be no more than %{count} characters',
     tooLong: function(value, attribute, options) {
-      return filters.translate('VALIDATION.LENGTH_LONG', texts, {
+      return filters.translate('VALIDATION.LENGTH_LONG', (req.session.ulang === 'cy' ? texts_cy : texts_en), {
         field: filters.prettify(attribute),
         count: options.maximum,
       });
     },
     tooShort: function(value, attribute, options) {
-      return filters.translate('VALIDATION.LENGTH_SHORT', texts, {
+      return filters.translate('VALIDATION.LENGTH_SHORT', (req.session.ulang === 'cy' ? texts_cy : texts_en), {
         field: filters.prettify(attribute),
         count: options.maximum,
       });
     },
     wrongLength: function(value, attribute, options) {
-      return filters.translate('VALIDATION.LENGTH_WRONG_LENGTH', texts, {
+      return filters.translate('VALIDATION.LENGTH_WRONG_LENGTH', (req.session.ulang === 'cy' ? texts_cy : texts_en), {
         field: filters.prettify(attribute),
         count: options.maximum,
       });
     },
     notValid: function(value, attribute, options) {
-      return filters.translate('VALIDATION.LENGTH_INVALID', texts, {
+      return filters.translate('VALIDATION.LENGTH_INVALID', (req.session.ulang === 'cy' ? texts_cy : texts_en), {
         field: filters.prettify(attribute),
         count: options.maximum,
       });
@@ -49,7 +50,7 @@
 
   validate.extend(validate.validators.presence, {
     message: function(value, attribute) {
-      return filters.translate('VALIDATION.PRESENCE', texts, {
+      return filters.translate('VALIDATION.PRESENCE', (req.session.ulang === 'cy' ? texts_cy : texts_en), {
         field: filters.prettify(attribute)
       });
     }
@@ -77,7 +78,7 @@
     } else if (typeof options.message === 'function') {
       message = options.message(value, key);
     } else {
-      message = filters.translate('VALIDATION.ADDRESSGROUP', texts);
+      message = filters.translate('VALIDATION.ADDRESSGROUP', options.texts);
     }
 
     options.group.forEach(function(addressField) {
@@ -100,7 +101,7 @@
     }
 
     if (validate.isNumber(parseInt(value, 10)) === false) {
-      return filters.translate('VALIDATION.PHONE', texts, {
+      return filters.translate('VALIDATION.PHONE', (req.session.ulang === 'cy' ? texts_cy : texts_en), {
         field: filters.prettify(key)
       });
     }
@@ -136,7 +137,36 @@
 
     // Check what our return message should be
     if (typeof options.message === 'undefined') {
-      message = filters.translate('VALIDATION.PRESENCEIF', texts, {
+      message = filters.translate('VALIDATION.PRESENCEIF', (req.session.ulang === 'cy' ? texts_cy : texts_en), {
+        field: filters.prettify(key)
+      });
+    } else if (typeof options.message === 'function') {
+      message = options.message(value, key);
+    } else {
+      message = options.message;
+    }
+
+    // If we have reached this point then we have failed validation
+    return message;
+  };
+
+  // Validates that a field has a value only if the linked field has a value set
+  validate.validators.presenceIfSet = function(value, options, key, attributes) {
+    var message;
+
+    // If our validated field has a value, everything is A-Ok
+    if (typeof value !== 'undefined' && value.length > 0) {
+      return null;
+    }
+
+    // if linked field isn't undefined, everything is A-Ok
+    if (typeof attributes[options.field] !== 'undefined') {
+      return null;
+    }
+
+    // Check what our return message should be
+    if (typeof options.message === 'undefined') {
+      message = filters.translate('VALIDATION.PRESENCEIF', (req.session.ulang === 'cy' ? texts_cy : texts_en), {
         field: filters.prettify(key)
       });
     } else if (typeof options.message === 'function') {
@@ -165,7 +195,7 @@
 
     // Check what our return message should be
     if (typeof options.message === 'undefined') {
-      message = filters.translate('VALIDATION.IFVALUEMATCH', texts, {
+      message = filters.translate('VALIDATION.IFVALUEMATCH', (req.session.ulang === 'cy' ? texts_cy : texts_en), {
         field: filters.prettify(key)
       });
     } else if (typeof options.message === 'function') {
@@ -207,7 +237,7 @@
     if (typeof value !== 'undefined' && value.length > 0) {
       // Valid email
       // eslint-disable-next-line max-len
-      emailRegex = /^[a-z0-9\u007F-\uffff!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9\u007F-\uffff!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/i;
+      emailRegex = /^[a-z0-9\u007F-\uffff!#$%&'*+\/=?^_`{}~-]+(?:\.[a-z0-9\u007F-\uffff!#$%&'*+\/=?^_`{}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/i;
       if (emailRegex.test(value)) {
         return null;
       }
@@ -215,7 +245,7 @@
 
     // Check what our return message should be
     if (typeof options.message === 'undefined') {
-      message = filters.translate('VALIDATION.PRESENCEIF', texts, {
+      message = filters.translate('VALIDATION.PRESENCEIF', (req.session.ulang === 'cy' ? texts_cy : texts_en), {
         field: filters.prettify(key)
       });
     } else if (typeof options.message === 'function') {
@@ -227,7 +257,6 @@
     // If we have reached this point then we have failed validation
     return message;
   };
-
 
   // Validates that a field has a valid email only if the linked
   // field has a pre-specified value.
@@ -254,7 +283,7 @@
 
     // Check what our return message should be
     if (typeof options.message === 'undefined') {
-      message = filters.translate('VALIDATION.PRESENCEIF', texts, {
+      message = filters.translate('VALIDATION.PRESENCEIF', (req.session.ulang === 'cy' ? texts_cy : texts_en), {
         field: filters.prettify(key)
       });
     } else if (typeof options.message === 'function') {
@@ -289,23 +318,25 @@
   validate.validators.dateOfBirth = function(value, req, key, attributes) {
     var message = {
         summary: filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.CHECK_DOB'
-          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), texts),
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
         fields: [],
         details: []
       }
-      , formattedDob;
+      , formattedDob
+      , dayMonthRegex = /^[0-9]{1,2}$/
+      , yearRegex = /^[0-9]{4}$/;
 
     if (attributes.dobDay.length === 0) {
       message.fields.push('dobDay');
       message.details.push(
         filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.DAY_MISSING'
-          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), texts)
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
       );
-    } else if ((attributes.dobDay > 31 || attributes.dobDay < 1) || isNaN(parseInt(attributes.dobDay, 10))) {
+    } else if ((attributes.dobDay > 31 || attributes.dobDay < 1) || !dayMonthRegex.test(attributes.dobDay)) {
       message.fields.push('dobDay');
       message.details.push(
         filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.DAY_INVALID'
-          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), texts)
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
       );
     }
 
@@ -313,13 +344,13 @@
       message.fields.push('dobMonth');
       message.details.push(
         filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.MONTH_MISSING'
-          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), texts)
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
       );
-    } else if ((attributes.dobMonth > 12 || attributes.dobMonth < 1) || isNaN(parseInt(attributes.dobMonth, 10))) {
+    } else if ((attributes.dobMonth > 12 || attributes.dobMonth < 1) || !dayMonthRegex.test(attributes.dobMonth)) {
       message.fields.push('dobMonth');
       message.details.push(
         filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.MONTH_INVALID'
-          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), texts)
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
       );
     }
 
@@ -327,13 +358,13 @@
       message.fields.push('dobYear');
       message.details.push(
         filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.YEAR_MISSING'
-          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), texts)
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
       );
-    } else if (attributes.dobYear.length !== 4 || isNaN(parseInt(attributes.dobYear, 10))) {
+    } else if (attributes.dobYear.length !== 4 || !yearRegex.test(attributes.dobYear)) {
       message.fields.push('dobYear');
       message.details.push(
         filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.YEAR_INVALID'
-          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), texts)
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
       );
     }
 
@@ -347,7 +378,7 @@
       message.fields.push('dateOfBirth');
       message.details.push(
         filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.INVALID_DATE'
-          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), texts)
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
       );
     }
 
@@ -361,7 +392,7 @@
 
   validate.validators.datesDistinct = function(value, options, key, attributes) {
     var message = {
-      summary: filters.translate('VALIDATION.DEFERRAL.CHECK_UNIQUE', texts),
+      summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_UNIQUE', options.texts),
       fields: [],
       details: []
     };
@@ -380,9 +411,7 @@
 
       if (!(array.indexOf(dateValue) === index)) {
         message.fields.push('date' + (index + 1));
-        message.details.push(
-          filters.translate('VALIDATION.DEFERRAL.CHECK_DATE', texts)
-        );
+        message.details = filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_UNIQUE_ERROR', options.texts);
       }
     });
 
@@ -391,18 +420,63 @@
   };
 
   validate.validators.deferralDateValid = function(value, req) {
-    var dateRegex = /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/
+    var dateRegex = /^[0-9]{1,2}\/[0-9]{1,2}(\/[0-9]{2}|\/[0-9]{4})$/
       , asMoment = moment(value, 'DD/MM/YYYY');
 
     return dateRegex.test(value) && asMoment.isValid() ? null : req.message;
   };
 
-  validate.validators.dateFuture = function(value, req) {
-    var summonsDate = moment(req.checkDate)
-      , dateLimit = summonsDate.clone().add(req.limit.multiplier, req.limit.unit)
+
+  validate.validators.dateFuture = function(value, options) {
+    var summonsDate = moment(options.checkDate)
+      , dateLimit = summonsDate.clone().add(options.limit.multiplier, options.limit.unit)
       , checkValue = moment(value, 'DD/MM/YYYY');
 
-    return checkValue.isAfter(summonsDate) && checkValue.isBefore(dateLimit) ? null : req.message;
+    if (checkValue.isBefore(summonsDate) || checkValue.isAfter(dateLimit)){
+      return options.message
+    }
+    return null;
+  };
+
+  validate.validators.presenceMainPhone = function(value, options, key, attributes) {
+    var message
+      , useJurorPhoneDetails = attributes['useJurorPhoneDetails']
+      , useJurorEmailDetails = attributes['useJurorEmailDetails']
+      , thirdPartyMainPhone = options.thirdPartyMainPhone
+      , thirdPartyEmail = options.thirdPartyEmail;
+
+    // If our validated field has a value, everything is A-Ok
+    if (typeof value !== 'undefined' && value.length > 0) {
+      return null;
+    }
+
+    // Check what our return message should be
+    if (typeof options.message === 'undefined') {
+      message = 'Please check your' + filters.prettify(key);
+    } else if (typeof options.message === 'function') {
+      message = options.message(value, key);
+    } else {
+      message = options.message;
+    }
+
+    // if there's no setting for useJurorEmailDetails, and useJurorPhoneDetails is true, we need a main phone
+    if (typeof useJurorEmailDetails === 'undefined' && useJurorPhoneDetails === 'Yes') {
+      return message;
+    }
+
+    // if 3rd party mainPhone and 3rdPartyEmail are empty/undefined, we need a main phone
+    if (thirdPartyMainPhone === '' || typeof thirdPartyMainPhone === 'undefined') {
+      if (thirdPartyEmail === '' || typeof thirdPartyEmail === 'undefined') {
+        return message;
+      }
+    }
+
+    // If we have reached this point then we have passed validation
+    return null;
+  };
+
+  validate.validators.mustBeTrue = function(value, options) {
+    return value !== 'true' ? options.message : null;
   };
 
 })();

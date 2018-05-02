@@ -43,9 +43,10 @@
     'no-unused-vars': 1,
     'no-use-before-define': [2, {"functions": false}],
 
+
     // Stylistic issues
     'brace-style': 2,
-    'camelcase': 2,
+    'camelcase': 0,
     'comma-spacing': [2, {'before': false, 'after': true}],
     'consistent-this': [2, 'self'],
     'eol-last': 2,

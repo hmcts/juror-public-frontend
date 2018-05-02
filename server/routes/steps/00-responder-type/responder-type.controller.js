@@ -7,14 +7,15 @@
   'use strict';
   var validate = require('validate.js')
     , filters = require('../../../components/filters')
-    , texts = require('../../../../client/js/i18n/en.json')
+    , texts_en = require('../../../../client/js/i18n/en.json')
+    , texts_cy = require('../../../../client/js/i18n/cy.json')
     , utils = require('../../../lib/utils');
 
   module.exports.index = function() {
     return function(req, res) {
       return res.render('steps/00-responder-type/index.njk', {
         errors: {
-          title: filters.translate('VALIDATION.ERROR_TITLE', texts),
+          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           message: '',
           count: typeof req.session.errors !== 'undefined' ? Object.keys(req.session.errors).length : 0,
           items: req.session.errors,

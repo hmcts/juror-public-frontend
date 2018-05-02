@@ -181,3 +181,14 @@ table#cal td.empty:hover {
 .datepicker[aria-hidden="true"] {
   display: none;
 }
+
+
+.notice ul {
+  display: block;
+  padding-left: 70px;
+}
+
+.notice ul li strong {
+  padding-left: 0;
+  margin-left: 15px;
+}

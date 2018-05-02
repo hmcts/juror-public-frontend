@@ -9,7 +9,8 @@
   var _ = require('lodash')
     , validate = require('validate.js')
     , filters = require('../../../../components/filters')
-    , texts = require('../../../../../client/js/i18n/en.json')
+    , texts_en = require('../../../../../client/js/i18n/en.json')
+    , texts_cy = require('../../../../../client/js/i18n/cy.json')
     , utils = require('../../../../lib/utils');
 
   module.exports.index = function() {
@@ -24,10 +25,11 @@
       delete req.session.errors;
       delete req.session.formFields;
 
+
       return res.render('steps/04-confirm-date/deferr.njk', {
         user: mergedUser,
         errors: {
-          title: filters.translate('VALIDATION.ERROR_TITLE', texts),
+          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           message: '',
           count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
           items: tmpErrors,
@@ -41,6 +43,8 @@
       var tmpErrors
         , tmpDates = {}
         , mergedUser;
+
+
 
       if (req.session.user.deferral.dates) {
         req.session.user.deferral.dates.split(',')
@@ -58,7 +62,7 @@
       return res.render('steps/04-confirm-date/deferr-dates.njk', {
         user: mergedUser,
         errors: {
-          title: filters.translate('VALIDATION.ERROR_TITLE', texts),
+          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           message: '',
           count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
           items: tmpErrors,
@@ -78,10 +82,15 @@
       delete req.session.formFields;
 
       // Store new info
-      req.session.user.deferral = {
-        reason: req.body['deferralReason'],
-      };
 
+
+      if (req.session.change === true && typeof(req.session.user.deferral) !== 'undefined') {
+        req.session.user.deferral['reason'] = req.body['deferralReason'];
+      } else {
+        req.session.user.deferral = {
+          reason: req.body['deferralReason']
+        };
+      }
 
       // Validate form submission
       validatorResult = validate(req.body, require('../../../../config/validation/deferral')(req));
@@ -97,6 +106,12 @@
         delete req.session.user.excusal;
       }
 
+      if (req.session.change === true && typeof(req.session.user.deferral.dates) === 'undefined') {
+        return res.redirect(app.namedRoutes.build('steps.confirm.date.deferral-dates.get'));
+      } else if (req.session.change === true) {
+        return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
+      }
+
       // Move on
       return res.redirect(app.namedRoutes.build('steps.confirm.date.deferral-dates.get'));
     };
@@ -107,7 +122,7 @@
 
       // Validate form submission
       var validatorResult
-        , moments;
+        , moments
 
       // Reset error and saved field sessions
       delete req.session.errors;
@@ -128,7 +143,6 @@
             });
           });
         }
-
         return res.redirect(app.namedRoutes.build('steps.confirm.date.deferral-dates.get'));
       }
 

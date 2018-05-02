@@ -13,25 +13,61 @@
   <div class="column-two-thirds">
     {% include "./_hero.njk" %}
 
+    <p class="bold-small">
+      {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_1 }}<a href="/steps/08-confirmation/download">{{ texts.CONFIRMATION.DOWNLOAD_A_COPY_2}}</a>
+      {% if user.thirdParty == 'Yes' %}
+        {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3_OB}}
+      {% else %}
+        {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3}}
+      {% endif %}
+    </p>
 
     <h2 class="heading-medium">{{ texts.CONFIRMATION.NEXT_INFO }}</h2>
     {% if user.assistanceNeeded == 'Yes' %}
-      {% if user.thirdParty == 'Yes' %}
-      <p>{{ texts.CONFIRMATION.ADJUSTMENT_OB }}</p>
-      <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_GUIDANCE_ADJUST_OB }}</p>
-      <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_LIST_HEADER_OB }}</p>
+      {% if user.qualify.livedConsecutive.details.length > 0 or user.qualify.mentalHealthAct.details.length > 0 or user.qualify.onBail.details.length > 0 or user.qualify.convicted.details.length > 0 %}
+        {% if user.thirdParty == 'Yes' %}
+        <p>{{ texts.CONFIRMATION.INELIGIBLE.NEXT_INFO_GUIDANCE_DEFERRAL_ADJUST_OB }}</p>
+        <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_LIST_HEADER_INELIGIBLE_OB }}</p>
+        {% else %}
+        <p>{{ texts.CONFIRMATION.INELIGIBLE.NEXT_INFO_GUIDANCE_DEFERRAL_ADJUST }}</p>
+        <p>{{ texts.CONFIRMATION.DEFERRAL.IF_YES }}</p>
+        {% endif %}
       {% else %}
-      <p>{{ texts.CONFIRMATION.ADJUSTMENT }}</p>
-      <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_GUIDANCE_ADJUST }}</p>
-      <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_LIST_HEADER }}</p>
+        {% if user.thirdParty == 'Yes' %}
+        <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_GUIDANCE_LINE_OB }}</p>
+        <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_GUIDANCE_ADJUST_OB }}</p>
+        <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_LIST_HEADER_OB }}</p>
+        {% else %}
+        <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_GUIDANCE_LINE }}</p>
+        <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_GUIDANCE_ADJUST}}</p>
+        <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_LIST_HEADER }}</p>
+        {% endif %}
       {% endif %}
-    {% elif user.thirdParty == 'Yes' %}
-      <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_GUIDANCE_OB }}</p>
-      <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_LIST_HEADER_OB }}</p>
-    {% else %}
-      <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_GUIDANCE }}</p>
-      <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_LIST_HEADER }}</p>
     {% endif %}
+
+    {% if user.assistanceNeeded == 'No' %}
+      {% if user.thirdParty == "Yes" %}
+        {% if user.qualify.livedConsecutive.details.length > 0 or user.qualify.mentalHealthAct.details.length > 0 or user.qualify.onBail.details.length > 0 or user.qualify.convicted.details.length > 0 %}
+        <p>{{ texts.CONFIRMATION.INELIGIBLE.NEXT_INFO_GUIDANCE_DEFERRAL_OB }}</p>
+        <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_LIST_HEADER_INELIGIBLE_OB }}</p>
+        {% else %}
+        <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_GUIDANCE_OB }}</p>
+        <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_LIST_HEADER_OB }}</p>
+        {% endif %}
+      {% elif user.thirdParty == "No"%}
+        {% if user.qualify.livedConsecutive.details.length > 0 or user.qualify.mentalHealthAct.details.length > 0 or user.qualify.onBail.details.length > 0 or user.qualify.convicted.details.length > 0 %}
+        <p>{{ texts.CONFIRMATION.INELIGIBLE.NEXT_INFO_GUIDANCE_DEFERRAL }}</p>
+        <p>{{ texts.CONFIRMATION.RECEIVE_LIST }}</p>
+        {% else %}
+        <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_GUIDANCE }}</p>
+        <p>{{ texts.CONFIRMATION.DEFERRAL.NEXT_INFO_LIST_HEADER }}</p>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+
+
+
+
 
     <ul class="list list-bullet">
       {% if user.thirdParty == 'Yes' %}
@@ -43,37 +79,35 @@
       {% endif %}
     </ul>
 
-    {% if user.thirdParty == 'Yes' %}
-    <h2 class="heading-medium">
-      {{ texts.CONFIRMATION.GETTING_READY_OB }}
-    </h2>
-    <p>
-      {{ texts.CONFIRMATION.YOU_CAN_OB }}
-      <a target="_blank" id="watch-video" href="https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s" {% if trackingCode %}onclick="trackOutboundLink('https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s')"{% endif %} rel="external">{{ texts.CONFIRMATION.WATCH_VIDEO }}</a>,
-      {{ texts.CONFIRMATION.WHAT_TO_EXPECT_OB }}
-    </p>
-    {% else %}
+
     <h2 class="heading-medium">
       {{ texts.CONFIRMATION.GETTING_READY }}
     </h2>
-    <p>
-      {{ texts.CONFIRMATION.YOU_CAN }}
-      <a target="_blank" id="watch-video" href="https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s" {% if trackingCode %}onclick="trackOutboundLink('https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s')"{% endif %} rel="external">{{ texts.CONFIRMATION.WATCH_VIDEO }}</a>,
-      {{ texts.CONFIRMATION.WHAT_TO_EXPECT }}
-    </p>
-    {% endif %}
+    {% if user.thirdParty == 'Yes' %}
+      <p>
+        {{ texts.CONFIRMATION.YOU_CAN_OB }}
+        <a target="_blank" id="watch-video" href="https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s" {% if trackingCode %}onclick="trackOutboundLink('https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s')"{% endif %} rel="external">{{ texts.CONFIRMATION.WATCH_VIDEO }}</a>
+        {{ texts.CONFIRMATION.WHAT_TO_EXPECT_OB }}
+      </p>
+      {% else %}
+      <p>
+        {{ texts.CONFIRMATION.YOU_CAN }}
+        <a target="_blank" id="watch-video" href="https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s" {% if trackingCode %}onclick="trackOutboundLink('https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s')"{% endif %} rel="external">{{ texts.CONFIRMATION.WATCH_VIDEO }}</a>
+        {{ texts.CONFIRMATION.WHAT_TO_EXPECT }}
+      </p>
+      {% endif %}
 
     {% if user.thirdParty == 'Yes' %}
     <p>
       {{ texts.CONFIRMATION.LEARN_MORE_OB }}
       <a target="_blank" href="https://www.gov.uk/jury-service/discussing-the-trial" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/discussing-the-trial')"{% endif %}>{{ texts.CONFIRMATION.DISCUSSING_OB }}</a>
-      {{ texts.CONFIRMATION.FIND_OUT_OB }} <a href="https://www.gov.uk/jury-service/how-to-claim-expenses" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/how-to-claim-expenses')"{% endif %}>{{ texts.CONFIRMATION.CLAIM_EXPENSES_OB }}</a>.
+      {{ texts.CONFIRMATION.FIND_OUT_OB }} <a target="_blank" href="https://www.gov.uk/jury-service/how-to-claim-expenses" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/how-to-claim-expenses')"{% endif %}>{{ texts.CONFIRMATION.CLAIM_EXPENSES_OB }}</a>.
     </p>
     {% else %}
     <p>
       {{ texts.CONFIRMATION.LEARN_MORE }}
       <a target="_blank" href="https://www.gov.uk/jury-service/discussing-the-trial" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/discussing-the-trial')"{% endif %}>{{ texts.CONFIRMATION.DISCUSSING }}</a>
-      {{ texts.CONFIRMATION.FIND_OUT }} <a href="https://www.gov.uk/jury-service/how-to-claim-expenses" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/how-to-claim-expenses')"{% endif %}>{{ texts.CONFIRMATION.CLAIM_EXPENSES }}</a>.
+      {{ texts.CONFIRMATION.FIND_OUT }} <a target="_blank" href="https://www.gov.uk/jury-service/how-to-claim-expenses" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/how-to-claim-expenses')"{% endif %}>{{ texts.CONFIRMATION.CLAIM_EXPENSES }}</a>.
     </p>
     {% endif %}
 
@@ -114,5 +148,3 @@
 </div>
 
 {% endblock %}
-
-

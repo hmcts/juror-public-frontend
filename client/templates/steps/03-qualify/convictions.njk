@@ -40,12 +40,13 @@
           </legend>
           <span class="form-hint" id="convictedHint">{{ texts.QUALIFY_PAGE.UNSURE_PROMPT }} <a href="{{ url('steps.qualify.convictions.info') }}">{{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}</a></span>
             {% if errors.items['convicted'] %} <span class="error-message"> {{ texts.QUALIFY_PAGE.MISSING }} </span> {% endif %}
+          <br>
           <label class="block-label selection-button-radio" for="convicted-Yes" data-target="convictedDetailsGroup">
-            <input id="convicted-Yes" type="radio" name="convicted" class="store-updated-information" value="Yes" {% if user.qualify.convicted.answer == 'Yes' %}checked="checked"{% endif %}>
+            <input id="convicted-Yes" type="radio" name="convicted" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.convicted.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
             {{ texts.QUALIFY_PAGE.YES }}
           </label>
           <label class="block-label selection-button-radio" for="convicted-No">
-            <input id="convicted-No" type="radio" name="convicted" class="store-updated-information" value="No" {% if user.qualify.convicted.answer == 'No' %}checked="checked"{% endif %}>
+            <input id="convicted-No" type="radio" name="convicted" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.convicted.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
             {{ texts.QUALIFY_PAGE.NO }}
           </label>
 

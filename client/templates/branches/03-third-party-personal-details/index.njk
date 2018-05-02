@@ -23,11 +23,11 @@
       {# Name #}
       <fieldset class="inline-edit" id="nameGroup">
 
-        <strong class="bold-small">
-          <legend>
+        <legend>
+          <strong class="bold-small">
             {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_NAME_LABEL }}
-          </legend>
-        </strong>
+          </strong>
+        </legend>
 
         <div class="grid-row inline-section primary {% if errors.nameError %}closed{% endif %}">
           <div class="column-one-half" id="name">{{ user.nameRender }}</div>
@@ -41,19 +41,19 @@
           <div class="form-group {% if errors.items['title'] %}error{% endif %}" id="titleGroup">
             <label class="form-label" for="title">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_TITLE_LABEL }}</label>
             {% if errors.items['title'] %}<span class="error-message" id="titleErrorMessage">{{ errors.items['title'][0].details }}</span>{% endif %}
-            <input type="text" class="form-control" name="title" id="title" value="{{ user.title }}" maxlength="10">
+            <input type="text" class="form-control" name="title" id="title" value="{{ user.title }}" maxlength="10" autocomplete="off">
           </div>
 
           <div class="form-group {% if errors.items['firstName'] %}error{% endif %}" id="firstNameGroup">
             <label class="form-label" for="firstName">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_FIRST_NAME_LABEL }}</label>
             {% if errors.items['firstName'] %}<span class="error-message" id="firstNameErrorMessage">{{ errors.items['firstName'][0].details }}</span>{% endif %}
-            <input type="text" class="form-control" name="firstName" id="firstName" value="{{ user.firstName }}" maxlength="20">
+            <input type="text" class="form-control" name="firstName" id="firstName" value="{{ user.firstName }}" maxlength="20" autocomplete="off">
           </div>
 
           <div class="form-group {% if errors.items['lastName'] %}error{% endif %}" id="lastNameGroup">
             <label class="form-label" for="lastName">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_LAST_NAME_LABEL }}</label>
             {% if errors.items['lastName'] %}<span class="error-message" id="lastNameErrorMessage">{{ errors.items['lastName'][0].details }}</span>{% endif %}
-            <input type="text" class="form-control" name="lastName" id="lastName" value="{{ user.lastName }}" maxlength="20">
+            <input type="text" class="form-control" name="lastName" id="lastName" value="{{ user.lastName }}" maxlength="20" autocomplete="off">
           </div>
 
         </div>
@@ -63,13 +63,13 @@
       <br><br>
 
       {# Address #}
-      <fieldset class="inline-edit" id="addressGroup">
+      <fieldset class="inline-edit" id="addressGroupSet">
 
-        <strong class="bold-small">
-          <legend>
+        <legend>
+          <strong class="bold-small">
             {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_LABEL }}
-          </legend>
-        </strong>
+          </strong>
+        </legend>
 
         <div class="grid-row inline-section primary {% if errors.addressError %}closed{% endif %}">
           <div class="column-one-half">
@@ -83,43 +83,42 @@
         <div class="inline-section secondary {% if errors.addressError %}open{% endif %}" id="addressGroup">
 
           <div class="form-group{% if errors.items['address'] %} error{% endif %}">
-            {% if errors.items['address'] %}<span class="error-message" id="addressErrorMessage">{{ errors.items['address'][0].details }}</span>{% endif %}
 
             <div class="form-group {% if errors.items['addressLineOne'] %}error{% elif errors.items['address'] %}error{% endif %}" id="addressLineOneGroup">
               <label class="form-label" for="addressLineOne">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_LINE_ONE_LABEL }}</label>
               {% if errors.items['addressLineOne'] %}<span class="error-message" id="addressLineOneErrorMessage">{{ errors.items['addressLineOne'][0].details }}</span>{% endif %}
-              <input type="text" class="form-control" name="addressLineOne" id="addressLineOne" value="{{ user.addressLineOne }}" maxlength="35">
+              <input type="text" class="form-control" name="addressLineOne" id="addressLineOne" value="{{ user.addressLineOne }}" maxlength="35" autocomplete="off">
             </div>
 
             <div class="form-group {% if errors.items['addressLineTwo'] %}error{% elif errors.items['address'] %}error{% endif %}" id="addressLineTwoGroup">
               <label for="addressLineTwo" class="visuallyhidden">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_LINE_TWO_LABEL }}</label>
               {% if errors.items['addressLineTwo'] %}<span class="error-message" id="addressLineTwoErrorMessage">{{ errors.items['addressLineTwo'][0].details }}</span>{% endif %}
-              <input type="text" class="form-control" name="addressLineTwo" id="addressLineTwo" value="{{ user.addressLineTwo }}" maxlength="35">
+              <input type="text" class="form-control" name="addressLineTwo" id="addressLineTwo" value="{{ user.addressLineTwo }}" maxlength="35" autocomplete="off">
             </div>
 
             <div class="form-group {% if errors.items['addressLineThree'] %}error{% elif errors.items['address'] %}error{% endif %}" id="addressLineThreeGroup">
               <label for="addressLineThree" class="visuallyhidden">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_LINE_THREE_LABEL }}</label>
               {% if errors.items['addressLineThree'] %}<span class="error-message" id="addressLineThreeErrorMessage">{{ errors.items['addressLineThree'][0].details }}</span>{% endif %}
-              <input type="text" class="form-control" name="addressLineThree" id="addressLineThree" value="{{ user.addressLineThree }}" maxlength="35">
+              <input type="text" class="form-control" name="addressLineThree" id="addressLineThree" value="{{ user.addressLineThree }}" maxlength="35" autocomplete="off">
             </div>
           </div>
 
           <div class="form-group {% if errors.items['addressTown'] %}error{% elif errors.items['address'] %}error{% endif %}" id="addressTownGroup">
             <label class="form-label" for="addressTown">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_TOWN_LABEL }}</label>
             {% if errors.items['addressTown'] %}<span class="error-message" id="addressTownErrorMessage">{{ errors.items['addressTown'][0].details }}</span>{% endif %}
-            <input type="text" class="form-control" name="addressTown" id="addressTown" value="{{ user.addressTown }}" maxlength="35">
+            <input type="text" class="form-control" name="addressTown" id="addressTown" value="{{ user.addressTown }}" maxlength="35" autocomplete="off">
           </div>
 
           <div class="form-group {% if errors.items['addressCounty'] %}error{% elif errors.items['address'] %}error{% endif %}" id="addressCountyGroup">
             <label class="form-label" for="addressCounty">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_COUNTY_LABEL }}</label>
             {% if errors.items['addressCounty'] %}<span class="error-message" id="addressCountyErrorMessage">{{ errors.items['addressCounty'][0].details }}</span>{% endif %}
-            <input type="text" class="form-control" name="addressCounty" id="addressCounty" value="{{ user.addressCounty }}" maxlength="35">
+            <input type="text" class="form-control" name="addressCounty" id="addressCounty" value="{{ user.addressCounty }}" maxlength="35" autocomplete="off">
           </div>
 
           <div class="form-group {% if errors.items['addressPostcode'] %}error{% endif %}" id="addressPostcodeGroup">
             <label class="form-label" for="addressPostcode">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_POSTCODE_LABEL }}</label>
             {% if errors.items['addressPostcode'] %}<span class="error-message" id="addressPostcodeErrorMessage">{{ errors.items['addressPostcode'][0].details }}</span>{% endif %}
-            <input type="text" class="form-control" name="addressPostcode" id="addressPostcode" value="{{ user.addressPostcode }}" maxlength="8">
+            <input type="text" class="form-control" name="addressPostcode" id="addressPostcode" value="{{ user.addressPostcode }}" maxlength="8" autocomplete="off">
           </div>
 
         </div>
@@ -175,15 +174,15 @@
           <div class="form-date">
             <div class="form-group form-group-day">
               <label class="form-label" for="dobDay">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_DAY_LABEL }}</label>
-              <input class="form-control focus-select-all " id="dobDay" name="dobDay" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobDay }}" pattern="[0-9]*" min="1" max="31" minlength="1" maxlength="2" aria-describedby="dob-hint">
+              <input class="form-control focus-select-all " id="dobDay" name="dobDay" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobDay }}" pattern="[0-9]*" min="1" max="31" minlength="1" maxlength="2" aria-describedby="dob-hint" autocomplete="off">
             </div>
             <div class="form-group form-group-month">
               <label class="form-label" for="dobMonth">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_MONTH_LABEL }}</label>
-              <input class="form-control focus-select-all" id="dobMonth" name="dobMonth" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobMonth }}" pattern="[0-9]*" min="1" max="12" maxlength="2" aria-describedby="dob-hint">
+              <input class="form-control focus-select-all" id="dobMonth" name="dobMonth" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobMonth }}" pattern="[0-9]*" min="1" max="12" maxlength="2" aria-describedby="dob-hint" autocomplete="off">
             </div>
             <div class="form-group form-group-year">
               <label class="form-label" for="dobYear">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_YEAR_LABEL }}</label>
-              <input class="form-control focus-select-all" id="dobYear" name="dobYear" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobYear }}" pattern="[0-9]*" maxlength="4" aria-describedby="dob-hint">
+              <input class="form-control focus-select-all" id="dobYear" name="dobYear" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobYear }}" pattern="[0-9]*" maxlength="4" aria-describedby="dob-hint" autocomplete="off">
             </div>
           </div>
         </fieldset>

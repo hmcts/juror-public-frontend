@@ -5,7 +5,8 @@
     , moment = require('moment')
     , validate = require('validate.js')
     , filters = require('../../../components/filters')
-    , texts = require('../../../../client/js/i18n/en.json')
+    , texts_en = require('../../../../client/js/i18n/en.json')
+    , texts_cy = require('../../../../client/js/i18n/cy.json')
     , jurorObj = require('../../../objects/juror').object
     , utils = require('../../../lib/utils');
 
@@ -54,7 +55,7 @@
           return res.render('steps/02-your-details/index.njk', {
             user: mergedUser,
             errors: {
-              title: filters.translate('VALIDATION.ERROR_TITLE', texts),
+              title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
               message: '',
               count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
               items: tmpErrors,
@@ -73,7 +74,6 @@
 
           res.redirect(app.namedRoutes.build('steps.login.get'));
         };
-
 
       jurorObj.get(require('request-promise'), app, req.session.user.jurorNumber, req.session.authToken)
         .then(getDetailsSuccess, getDetailsError)
@@ -174,8 +174,8 @@
       req.session.user['emailAddress'] = req.body['emailAddress'];
       req.session.user['emailAddressConfirmation'] = req.body['emailAddressConfirmation'];
 
-      // redirect to dob confirmation if under 18 or over 75 (< 18 && > 76)
-      if (req.body['ageTimeOfHearing'] < 18 || req.body['ageTimeOfHearing'] > 75) {
+      // redirect to dob confirmation if under lower age limit or above higher age limit
+      if (req.body['ageTimeOfHearing'] < app.ageSettings.lowerAgeLimit || req.body['ageTimeOfHearing'] >= app.ageSettings.upperAgeLimit) {
         return res.redirect(app.namedRoutes.build('steps.your.details.confirm.get'));
       }
 

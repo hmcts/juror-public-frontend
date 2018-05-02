@@ -1,0 +1,33 @@
+{
+  "HEADING": "A fyddech chi angen cymorth pan fyddwch yn y llys?",
+  "HEADING_OB": "A fydd yr unigolyn rydych yn gwneud cais ar ei ran angen help pan fydd yn y llys?",
+  "INTRO_PARAGRAPH": "A oes gennych anabledd neu nam sy’n golygu bydd angen cymorth neu gyfleusterau ychwanegol arnoch yn yr adeilad llys ble fyddwch yn cyflawni eich gwasanaeth rheithgor?",
+  "INTRO_PARAGRAPH_OB": "A oes gan yr unigolyn anabledd neu nam sy’n golygu bydd angen cymorth neu gyfleusterau ychwanegol arno yn yr adeilad llys lle fydd yn cyflawni’r gwasanaeth rheithgor?",
+
+  "ADJUSTMENT_DESCRIPTION": "Disgrifiwch eich anabledd neu nam.",
+  "ADJUSTMENT_DESCRIPTION_OB": "Disgrifiwch anabledd neu nam yr unigolyn.",
+
+  "ADJUSTMENT_ANSWER_MOBILITY": "Symudedd cyfyngedig",
+  "ADJUSTMENT_ANSWER_HEARING": "Nam ar y clyw",
+  "ADJUSTMENT_ANSWER_DIABETES": "Clefyd siwgr",
+  "ADJUSTMENT_ANSWER_SIGHT": "Nam difrifol ar eich golwg",
+  "ADJUSTMENT_ANSWER_LEARNING_DISABILITY": "Anabledd dysgu",
+  "ADJUSTMENT_ANSWER_OTHER": "Arall",
+
+  "ADJUSTMENT_OTHER_DESCRIPTION": "Rhowch fanylion os gwelwch yn dda",
+  "ADJUSTMENT_OTHER_DESCRIPTION_OB": "Rhowch fanylion os gwelwch yn dda",
+
+  "ADJUSTMENT_SPECIAL_DESCRIPTION": "Rhowch wybod inni am unrhyw drefniadau arbennig bydd arnoch angen wrth ichi wasanaethu ar reithgor. ",
+  "ADJUSTMENT_SPECIAL_DESCRIPTION_OB": "Rhowch wybod inni am unrhyw drefniadau arbennig neu gymorth bydd yr unigolyn rydych yn ymateb ar ei ran ei angen wrth iddo wasanaethu ar reithgor.",
+
+  "GUIDANCE_SUMMARY": "Pam ein bod yn gofyn am hyn?",
+  "GUIDANCE_PARAGRAPH_1": "Os ydych yn dweud wrthym fod gennych nam neu anabledd, byddwn yn gwneud popeth y gallwn i ddiwallu eich anghenion yn yr adeilad llys pan fyddwch yn cyflawni eich gwasanaeth rheithgor. Weithiau byddwn yn gwneud trefniadau i chi ymweld â’r llys ymlaen llaw i gynllunio pa gymorth a chyfleusterau byddwch eu hangen. Byddwn yn gwneud ein gorau i’ch helpu i symud o amgylch y llys, gweld neu glywed popeth, neu unrhyw gymorth arbennig arall bydd arnoch angen.",
+  "GUIDANCE_PARAGRAPH_1_OB": "Os byddwch yn dweud wrthym fod gan yr unigolyn rydych yn ymateb ar ei ran nam neu anabledd, byddwn yn gwneud popeth y gallwn i ddiwallu ei anghenion yn yr adeilad llys pan fydd yn cyflawni ei wasanaeth rheithgor. Weithiau byddwn yn gwneud trefniadau i unigolyn ymweld â’r llys ymlaen llaw i gynllunio pa gymorth a chyfleusterau byddant eu hangen. Byddwn yn gwneud ein gorau i helpu gyda symud o amgylch y llys, gweld neu glywed popeth, neu unrhyw gymorth arbennig arall bydd yr unigolyn rydych yn ymateb ar ei ran angen.",
+  "GUIDANCE_PARAGRAPH_2": "Mae rhai o’r adeiladau llys yn hen ac mae’n anoddach cael mynediad atynt. Os byddwch yn rhoi gwybod inni am eich anabledd neu nam nawr, gallwn wirio p’un a yw’r llys ble fyddwch yn gwasanaethu ar reithgor yn addas i chi neu beidio.",
+  "GUIDANCE_PARAGRAPH_2_OB": "Mae rhai o’r adeiladau llys yn hen ac mae’n anoddach i gael mynediad atynt. Os ydych chi’n dweud wrthym am anabledd neu nam yr unigolyn nawr, gallwn wirio p’un a yw’r llys ble fydd yn cyflawni ei wasanaeth rheithgor yn addas iddynt neu beidio.",
+  "GUIDANCE_PARAGRAPH_3": "Os ydych yn pryderu am unrhyw beth arall ynghylch y gwasanaeth rheithgor o ran eich nam neu anabledd, yna cysylltwch â ni. Neu gallwch ofyn i rywun arall ffonio ar eich rhan. Ffoniwch 0300 456 1024",
+  "GUIDANCE_PARAGRAPH_3_OB": "Os ydych yn pryderu am unrhyw beth arall ynghylch y gwasanaeth rheithgor o ran nam neu anabledd sydd gan yr unigolyn rydych yn ymateb ar ei ran, yna cysylltwch â ni. Ffoniwch 0300 456 1024.",
+
+  "YES": "Do",
+  "NO": "Naddo"
+}

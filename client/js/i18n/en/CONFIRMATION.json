@@ -3,14 +3,13 @@
   "NEXT_INFO": "What happens next?",
   "RECEIVE_LIST": "At least two weeks before your jury service starts, we'll send you",
   "RECEIVE_LIST_OB": "At least two weeks before jury service starts, we'll send the person you replied for",
-  "RECEIVE_LIST_ADJUSTMENT": "If you are able to do jury service, at least two weeks before it starts we'll send you",
+  "RECEIVE_LIST_ADJUSTMENT": "If you are able to do jury service, at least two weeks before it starts we'll send you:",
   "RECEIVE_LIST_ADJUSTMENT_OB": "If they are able to do jury service, at least two weeks before it starts we'll send the person you replied for",
   "RECEIVE_LIST_ITEM_1": "a letter confirming the date of your jury service",
   "RECEIVE_LIST_ITEM_1_OB": "a letter confirming the date of their jury service",
-  "RECEIVE_LIST_ITEM_2": "an information pack with information about being a juror and the court you're going to",
+  "RECEIVE_LIST_ITEM_2": "an information pack about being a juror and the court you're going to",
   "RECEIVE_LIST_ITEM_2_OB": "an information pack about being a juror and the court they're going to",
-  "GETTING_READY": "Get ready for your jury service",
-  "GETTING_READY_OB": "Getting ready for jury service",
+  "GETTING_READY": "Getting ready for jury service",
   "YOU_CAN": "You can ",
   "YOU_CAN_OB": "You or the person you've replied for can",
   "WATCH_VIDEO": "watch a video about what happens when you're a juror",
@@ -25,6 +24,10 @@
   "CLAIM_EXPENSES": "how to claim expenses",
   "CLAIM_EXPENSES_OB": "how to claim expenses",
   "DOWNLOAD_PDF": "Download PDF",
+  "DOWNLOAD_A_COPY_1": "You can ",
+  "DOWNLOAD_A_COPY_2": "download a copy",
+  "DOWNLOAD_A_COPY_3": " of your summons reply for your records.",
+  "DOWNLOAD_A_COPY_3_OB": " of the summons reply for your records.",
   "SERVICE_GUIDE": "Your Guide to Jury Service (PDF)",
   "JUROR_CHARTER": "The Juror Charter (PDF)",
   "SUPPORTING_YOU": "Supporting You Through Jury Service (PDF)",
@@ -41,7 +44,7 @@
     "GETTING_IN_TOUCH": "If we get in touch with you, you may need to give your juror number. It's also on the letter we sent you.",
     "GETTING_IN_TOUCH_OB": "If we get in touch, you may need to give this juror number. It's also on the letter we sent the person you replied for.",
     "EMAIL_SUMMONS": "We will send you an email to say you have replied to your jury summons. You'll get this email by the end of the next working day.",
-    "EMAIL_SUMMONS_OB": "We will send an email to the email address you gave, to say you have replied to this jury summons. The email will arrive by the end of the next working day.",
+    "EMAIL_SUMMONS_OB": "We will send an email to the email address you gave, to say you have replied to this jury summons on behalf of the other person. The email will arrive by the end of the next working day.",
     "EMAIL_SUMMONS_EXTRA_OB": "You don't need to do anything else. "
   },
   "AGE": {
@@ -52,34 +55,50 @@
 
   },
   "DECEASED": {
-    "REFERENCE": "This is the reference number for your reply.",
-    "GETTING_IN_TOUCH": "If we get in touch again, you may need to give this number. It's also on the letter we sent.",
-    "EMAIL_RESPONSE": "We will send an email to the email address you gave, to say you have replied to this jury summons. You'll get this email by the end of the next working day.",
+    "REFERENCE": "This is the juror number for the person you've replied for",
+    "GETTING_IN_TOUCH": "If we get in touch, you may need to give this juror number. It's also on the letter we sent the person you replied for.",
+    "EMAIL_RESPONSE": "We will send an email to the email address you gave, to say you have replied to this jury summons on behalf of the other person. You'll get this email by the end of the next working day.",
     "APOLOGY": "We're sorry for any distress",
-    "APOLOGY_INFO": "Jurors are selected at random from the electoral roll. This isn't always completely up to date. That's why we sent a jury summons to the deceased person you told us about. We do apologise for this and hope it hasn't caused too much distress."
+    "APOLOGY_INFO": "Jurors are selected at random from the electoral roll. This isn't always completely up to date. That's why we sent a jury summons to this person. We do apologise for this and hope it hasn't caused too much distress."
   },
   "DEFERRAL": {
+    "NEXT_INFO_GUIDANCE_LINE": "We may get in touch to talk about the help you need so you can do jury service.",
+    "NEXT_INFO_GUIDANCE_LINE_OB": "We may get in touch to talk about the help the person you replied for needs so they can do jury service.",
     "NEXT_INFO_GUIDANCE": "We'll write to you within the next 7 days to let you know if you can change the date of your jury service.",
-    "NEXT_INFO_GUIDANCE_OB": "We'll write to let the person you're replying for know if they can change the date of their jury service.",
+    "NEXT_INFO_GUIDANCE_OB": "We'll write to the person you're replying for within the next 7 days to let them know if they can change the date of their jury service.",
     "NEXT_INFO_GUIDANCE_ADJUST": "If you are able to do jury service, we'll write to you within the next 7 days to let you know if you can change the date.",
     "NEXT_INFO_GUIDANCE_ADJUST_OB": "If they are able to do jury service, we'll write to the person you replied for within the next 7 days to let you know if you can change the date.",
-    "NEXT_INFO_LIST_HEADER": "Then, at least two weeks before your jury service starts, we'll send you ",
-    "NEXT_INFO_LIST_HEADER_OB": "Then, at least two weeks before their jury service starts, we'll send the person you replied for "
+    "NEXT_INFO_LIST_HEADER": "Then, at least two weeks before your jury service starts, we'll send you:",
+    "NEXT_INFO_LIST_HEADER_OB": "Then, at least two weeks before their jury service starts, we'll send them:",
+    "NEXT_INFO_LIST_HEADER_INELIGIBLE_OB": "If the person is able to do jury service, at least two weeks before it starts we'll send them:",
+    "IF_YES": "If you are able to do jury service, at least two weeks before it starts we'll send you:",
+    "IF_YES_OB": "If the person is able to do jury service, at least two weeks before it starts we'll send them:"
   },
   "EXCUSAL": {
     "NEXT_INFO_GUIDANCE": "We'll write to you within the next 7 days to let know if you must do jury service or if you can be excused.",
     "NEXT_INFO_GUIDANCE_OB": "We'll write to the person you've replied for within the next 7 days to let them know if they must do jury service or if they can be excused.",
-    "NEXT_INFO_GUIDANCE_ADJUST": "We'll write to let you know if you must do jury service or if you can be excused. If you have asked to be excused because of a disability or impairment, we may get in touch to find out more.",
-    "NEXT_INFO_GUIDANCE_ADJUST_OB": "We'll write to let you know if the person you've replied for must do jury service or if they can be excused. If you have asked for them to be excused because of a disability or impairment, we may get in touch to find out more.",
-    "NEXT_INFO_LIST_HEADER": "If you must do jury service, at least two weeks before it starts we'll send you",
-    "NEXT_INFO_LIST_HEADER_OB": "If they must do jury service, at least two weeks before it starts we'll send the person you replied for",
+    "NEXT_INFO_GUIDANCE_ADJUST": "We'll write to you within the next 7 days to let you know if you must do jury service or if you can be excused. If you have asked to be excused because of a disability or impairment, we may get in touch to find out more.",
+    "NEXT_INFO_GUIDANCE_ADJUST_OB": "If you have asked for them to be excused because of a disability or impairment, we may get in touch to find out more.",
+    "NEXT_INFO_LIST_HEADER": "If you must do jury service, at least two weeks before it starts we'll send you:",
+    "NEXT_INFO_LIST_HEADER_OB": "If they must do jury service, at least two weeks before it starts we'll send them:",
+    "NEXT_INFO_LIST_HEADER_INELIGIBLE_OB": "If the person is able to do jury service, at least two weeks before it starts we'll send them:",
     "ADJUSTMENT": "If you must do jury service, we may get in touch to talk about the help you need to do it.",
     "ADJUSTMENT_OB": "If the person must do jury service, we may get in touch to talk about the help they need to do it."
   },
   "INELIGIBLE": {
     "NEXT_INFO_GUIDANCE": "Your answers mean that you might not be able to do jury service. We will now check your answers. Then we'll write to you in the next 7 days to let you know if you must or must not do jury service.",
     "NEXT_INFO_GUIDANCE_OB": "Your answers mean that the person you've replied for might not be able to do jury service. We will now check these answers. Then we'll write to the person in the next 7 days to let them know if they must or must not do jury service. ",
+    "NEXT_INFO_GUIDANCE_DEFERRAL": "Your answers mean that you might not be able to do jury service. We will now check your answers. We'll also consider whether you can change the date. We'll be in touch within the next 7 days. ",
+    "NEXT_INFO_GUIDANCE_DEFERRAL_OB": "Your answers mean that the person you've replied for might not be able to do jury service. We will now check these answers. We'll also consider whether the person can change the date. We'll write to the person in the next 7 days.",
+    "NEXT_INFO_GUIDANCE_EXCUSAL": "Your answers mean that you might not be able to do jury service. We will now check your answers. We'll also consider whether you can be excused. We'll be in touch within the next 7 days.",
+    "NEXT_INFO_GUIDANCE_EXCUSAL_OB": "Your answers mean that the person you've replied for might not be able to do jury service. We will now check these answers. We'll also consider whether the person can be excused. We'll write to the person in the next 7 days.",
+    "NEXT_INFO_GUIDANCE_DEFERRAL_ADJUST": "Your answers mean that you might not be able to do jury service. We will now check your answers. We may also get in touch to talk about the help you need so you can do jury service, and whether you are able to change the date. We'll be in touch within the next 7 days.",
+    "NEXT_INFO_GUIDANCE_DEFERRAL_ADJUST_OB": "Your answers mean that the person you've replied for might not be able to do jury service. We will now check these answers. We may also get in touch to talk about the help the person needs so they can do jury service, and whether they are able to change the date. We'll write to the person in the next 7 days.",
+    "NEXT_INFO_GUIDANCE_EXCUSAL_ADJUST": "Your answers mean that you might not be able to do jury service. We will now check your answers. We may also get in touch to talk about the help you need so you can do jury service, and whether you are able to be excused. We'll be in touch within the next 7 days.",
+    "NEXT_INFO_GUIDANCE_EXCUSAL_ADJUST_OB": "Your answers mean that the person you've replied for might not be able to do jury service. We will now check these answers. We may also get in touch to talk about the help the person needs so they can do jury service, and whether they can be excused. We'll write to the person in the next 7 days.",
+
     "IF_YES": "If you can do jury service, at least two weeks before it starts we’ll send you:",
     "IF_YES_OB": "If they can do jury service, at least two weeks before it starts we’ll send them:"
+
   }
 }

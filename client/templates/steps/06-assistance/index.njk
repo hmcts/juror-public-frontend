@@ -40,19 +40,21 @@
             </span>
             {% if errors.items['assistanceNeeded'] %}<span class="error-message">{{ errors.items['assistanceNeeded'][0].details }}</span>{% endif %}
           </legend>
-          <label class="block-label selection-button-radio" data-target="assistanceNeededExpanded" for="assistanceNeeded-Yes">
-            <input id="assistanceNeeded-Yes" type="radio" name="assistanceNeeded" value="Yes" {% if user.assistanceNeeded == 'Yes' %}checked="checked"{% endif %}>
+          <br>
+          <br>
+          <label class="block-label selection-button-radio" data-target="assistanceTypeGroup" for="assistanceNeeded-Yes">
+            <input id="assistanceNeeded-Yes" type="radio" name="assistanceNeeded" value="{{ texts.REASONABLE_ADJUSTMENT_PAGE.YES }}" {% if user.assistanceNeeded == texts.REASONABLE_ADJUSTMENT_PAGE.YES %}checked="checked"{% endif %}>
             {{ texts.INTERFACE.LABEL_YES }}
           </label>
           <label class="block-label selection-button-radio" for="assistanceNeeded-No">
-            <input id="assistanceNeeded-No" type="radio" name="assistanceNeeded" value="No" {% if user.assistanceNeeded == 'No' %}checked="checked"{% endif %}>
+            <input id="assistanceNeeded-No" type="radio" name="assistanceNeeded" value="{{ texts.REASONABLE_ADJUSTMENT_PAGE.NO }}" {% if user.assistanceNeeded == texts.REASONABLE_ADJUSTMENT_PAGE.NO %}checked="checked"{% endif %}>
             {{ texts.INTERFACE.LABEL_NO }}
           </label>
         </fieldset>
       </div>
 
 
-      <div class="panel panel-border-narrow {% if user.assistanceNeeded == 'Yes' %}{% else %}js-hidden{% endif %} {% if errors.items['assistanceType'] %}error{% endif %}" id="assistanceNeededExpanded">
+      <div class="panel panel-border-narrow {% if user.assistanceNeeded == texts.REASONABLE_ADJUSTMENT_PAGE.YES %}{% else %}js-hidden{% endif %} {% if errors.items['assistanceType'] %}error{% endif %}" id="assistanceTypeGroup">
         <p>
           <strong class="bold-small">
             {% if user.thirdParty == 'Yes' %}
@@ -66,39 +68,39 @@
 
         <div class="form-group">
           <label class="block-label selection-button-checkbox" for="assistanceType-mobility">
-            <input type="checkbox" name="assistanceType" id="assistanceType-mobility" value="Limited mobility" {% if assistanceActive.mobility %}checked="checked"{% endif %}>
+            <input type="checkbox" name="assistanceType" id="assistanceType-mobility" value="{{ texts.CHECK_ANSWERS_PAGE.MOBILITY }}" {% if assistanceActive.mobility %}checked="checked"{% endif %}>
             {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_ANSWER_MOBILITY }}
           </label>
 
           <label class="block-label selection-button-checkbox" for="assistanceType-hearing">
-            <input type="checkbox" name="assistanceType" id="assistanceType-hearing" value="Hearing impairment" {% if assistanceActive.hearing %}checked="checked"{% endif %}>
+            <input type="checkbox" name="assistanceType" id="assistanceType-hearing" value="{{ texts.CHECK_ANSWERS_PAGE.HEARING }}" {% if assistanceActive.hearing %}checked="checked"{% endif %}>
             {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_ANSWER_HEARING }}
           </label>
 
           <label class="block-label selection-button-checkbox" for="assistanceType-diabetes">
-            <input type="checkbox" name="assistanceType" id="assistanceType-diabetes" value="Diabetes" {% if assistanceActive.diabetes %}checked="checked"{% endif %}>
+            <input type="checkbox" name="assistanceType" id="assistanceType-diabetes" value="{{ texts.CHECK_ANSWERS_PAGE.DIABETES }}" {% if assistanceActive.diabetes %}checked="checked"{% endif %}>
             {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_ANSWER_DIABETES }}
           </label>
 
           <label class="block-label selection-button-checkbox" for="assistanceType-sight">
-            <input type="checkbox" name="assistanceType" id="assistanceType-sight" value="Severe sight impairment" {% if assistanceActive.sight %}checked="checked"{% endif %}>
+            <input type="checkbox" name="assistanceType" id="assistanceType-sight" value="{{ texts.CHECK_ANSWERS_PAGE.SIGHT_IMPAIRMENT }}" {% if assistanceActive.sight %}checked="checked"{% endif %}>
             {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_ANSWER_SIGHT }}
           </label>
 
           <label class="block-label selection-button-checkbox" for="assistanceType-learningDisability">
-            <input type="checkbox" name="assistanceType" id="assistanceType-learningDisability" value="Learning disability" {% if assistanceActive.learningDisability %}checked="checked"{% endif %}>
+            <input type="checkbox" name="assistanceType" id="assistanceType-learningDisability" value="{{ texts.CHECK_ANSWERS_PAGE.LEARNING_DISABILITY }}" {% if assistanceActive.learningDisability %}checked="checked"{% endif %}>
             {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_ANSWER_LEARNING_DISABILITY }}
           </label>
 
-          <label class="block-label selection-button-checkbox toggle-reset" for="assistanceType-other" data-target="assistanceTypeOtherExpanded">
+          <label class="block-label selection-button-checkbox toggle-reset" for="assistanceType-other" data-target="assistanceTypeDetailsGroup">
             <input type="checkbox" name="assistanceType" id="assistanceType-other" value="Other" {% if assistanceActive.other %}checked="checked"{% endif %}>
             {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_ANSWER_OTHER }}
           </label>
         </div>
 
-        <div class="form-group {% if assistanceActive.other %}{% else %}js-hidden{% endif %} {% if errors.items['assistanceTypeDetails'] %}error{% endif %}" id="assistanceTypeOtherExpanded">
+        <div class="form-group {% if assistanceActive.other %}{% else %}js-hidden{% endif %} {% if errors.items['assistanceTypeDetails'] %}error{% endif %}" id="assistanceTypeDetailsGroup">
           <label class="form-label" for="assistanceTypeDetails">
-            <strong class="bold-small">
+            <strong class="small panel panel-border-narrow">
               {% if user.thirdParty == 'Yes' %}
               {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_OTHER_DESCRIPTION_OB }}
               {% else %}
@@ -129,7 +131,7 @@
       <div class="form-group">
         <details>
           <summary {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask for this - reasonable adjustment')"{% endif %}><span class="summary">{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_SUMMARY }}</span></summary>
-          <div id="details-content-0" aria-hidden="true">
+          <div id="details-content-0" aria-hidden="true" class="panel panel-border-narrow">
             {% if user.thirdParty == 'Yes' %}
             <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_1_OB }}</p>
             <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_2_OB }}</p>

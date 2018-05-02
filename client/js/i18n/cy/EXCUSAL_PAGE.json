@@ -1,0 +1,11 @@
+{
+  "HEADING": "Cais i gael eich esgusodi rhag gwasanaethu ar reithgor",
+  "PROMPT": "Dywedwch pam na allwch wasanaethu ar reithgor yn y 12 mis nesaf",
+  "PROMPT_OB": "Dywedwch pam bod y person rydych yn ymateb ar ei ran yn methu gwasanaethu ar reithgor yn y 12 mis nesaf",
+  "HINT": "Efallai byddwn yn cysylltu â chi i ganfod mwy neu i gael tystiolaeth o’r rheswm hwn.",
+  "HINT_OB": "Efallai byddwn yn cysylltu i ganfod mwy neu i gael tystiolaeth o’r rheswm hwn.",
+  "ERROR": "Dywedwch pam eich bod angen cael eich esgusodi",
+  "EVIDENCE_QUESTION": "Pa dystiolaeth y bydd angen i mi ei darparu?",
+  "EVIDENCE_ANSWER": "Efallai bydd rhaid ichi brofi eich rheswm os nad ydych yn gallu gwasanaethu ar reithgor yn y 12 mis nesaf. Er enghraifft, os ydych yn wael, efallai byddwn yn gofyn i gael gweld llythyr gan eich meddyg.",
+  "EVIDENCE_ANSWER_OB": "Efallai y bydd yn rhaid ichi brofi’r rheswm pam nad yw’r unigolyn rydych yn ymateb ar ei ran yn gallu gwasanaethu ar reithgor yn y 12 mis nesaf. Er enghraifft, os ydynt yn wael iawn, efallai y byddwn yn gofyn i gael gweld llythyr gan eu meddyg."
+}

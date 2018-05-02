@@ -40,12 +40,13 @@
           </legend>
           <span class="form-hint" id="onBailHint">{{ texts.QUALIFY_PAGE.UNSURE_PROMPT }} <a href="{{ url('steps.qualify.bail.info') }}">{{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}</a></span>
             {% if errors.items['onBail'] %} <span class="error-message"> {{ texts.QUALIFY_PAGE.MISSING }} </span> {% endif %}
+          <br>
           <label class="block-label selection-button-radio" for="onBail-Yes" data-target="onBailDetailsGroup">
-            <input id="onBail-Yes" type="radio" name="onBail" class="store-updated-information" value="Yes" {% if user.qualify.onBail.answer == 'Yes' %}checked="checked"{% endif %}>
+            <input id="onBail-Yes" type="radio" name="onBail" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.onBail.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
             {{ texts.QUALIFY_PAGE.YES }}
           </label>
           <label class="block-label selection-button-radio" for="onBail-No">
-            <input id="onBail-No" type="radio" name="onBail" class="store-updated-information" value="No" {% if user.qualify.onBail.answer == 'No' %}checked="checked"{% endif %}>
+            <input id="onBail-No" type="radio" name="onBail" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.onBail.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
             {{ texts.QUALIFY_PAGE.NO }}
           </label>
 

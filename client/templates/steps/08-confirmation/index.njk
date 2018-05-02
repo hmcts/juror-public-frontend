@@ -13,17 +13,32 @@
   <div class="column-two-thirds">
     {% include "./_hero.njk" %}
 
+    <p class="bold-small">
+      {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_1 }}<a href="/steps/08-confirmation/download">{{ texts.CONFIRMATION.DOWNLOAD_A_COPY_2}}</a>
+      {% if user.thirdParty == 'Yes' %}
+        {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3_OB}}
+      {% else %}
+        {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3}}
+      {% endif %}
+    </p>
+
     <h2 class="heading-medium">{{ texts.CONFIRMATION.NEXT_INFO }}</h2>
     {% if user.qualify.livedConsecutive.answer == 'No' or user.qualify.mentalHealthAct.answer == 'Yes' or user.qualify.onBail.answer == 'Yes' or user.qualify.convicted.answer == 'Yes'  %}
       {% if user.thirdParty == 'Yes' %}
-      <p>{{ texts.CONFIRMATION.INELIGIBLE.NEXT_INFO_GUIDANCE_OB }}</p>
-            <p>{{ texts.CONFIRMATION.INELIGIBLE.IF_YES_OB}}</p>
-
+        <p>{{ texts.CONFIRMATION.INELIGIBLE.NEXT_INFO_GUIDANCE_OB }}</p>
+        <p>{{ texts.CONFIRMATION.INELIGIBLE.IF_YES_OB }}</p>
       {% else %}
-      <p>{{ texts.CONFIRMATION.INELIGIBLE.NEXT_INFO_GUIDANCE }}</p>
-            <p>{{ texts.CONFIRMATION.INELIGIBLE.IF_YES }}</p>
-
+        <p>{{ texts.CONFIRMATION.INELIGIBLE.NEXT_INFO_GUIDANCE }}</p>
+        <p>{{ texts.CONFIRMATION.INELIGIBLE.IF_YES }}</p>
       {% endif %}
+      {% else %}
+            {% if user.thirdParty == 'Yes' %}
+
+              <p>{{ texts.CONFIRMATION.RECEIVE_LIST_OB }}</p>
+      {% else %}
+                    <p>{{ texts.CONFIRMATION.RECEIVE_LIST }}</p>
+
+    {% endif %}
 
     {% endif %}
 
@@ -31,12 +46,9 @@
       {% if user.assistanceNeeded == 'Yes' and user.thirdParty == 'Yes' %}
       <p>{{ texts.CONFIRMATION.ADJUSTMENT_OB }}</p>
       <p>{{ texts.CONFIRMATION.RECEIVE_LIST_ADJUSTMENT_OB }}</p>
-            <p>{{ texts.CONFIRMATION.RECEIVE_LIST_OB }}</p>
-
       {% else %}
       <p>{{ texts.CONFIRMATION.ADJUSTMENT }}</p>
       <p>{{ texts.CONFIRMATION.RECEIVE_LIST_ADJUSTMENT }}</p>
-            <p>{{ texts.CONFIRMATION.RECEIVE_LIST }}</p>
 
       {% endif %}
 
@@ -51,24 +63,21 @@
       {% endif %}
     </ul>
 
-    {% if user.thirdParty == 'Yes' %}
-    <h2 class="heading-medium">
-      {{ texts.CONFIRMATION.GETTING_READY_OB }}
-    </h2>
-    <p>
-      {{ texts.CONFIRMATION.YOU_CAN_OB }}
-      <a target="_blank" id="watch-video" href="https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s" {% if trackingCode %}onclick="trackOutboundLink('https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s')"{% endif %}
- rel="external">{{ texts.CONFIRMATION.WATCH_VIDEO }}</a>,
-      {{ texts.CONFIRMATION.WHAT_TO_EXPECT_OB }}
-    </p>
-    {% else %}
     <h2 class="heading-medium">
       {{ texts.CONFIRMATION.GETTING_READY }}
     </h2>
+    {% if user.thirdParty == 'Yes' %}
+    <p>
+      {{ texts.CONFIRMATION.YOU_CAN_OB }}
+      <a target="_blank" id="watch-video" href="https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s" {% if trackingCode %}onclick="trackOutboundLink('https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s')"{% endif %}
+ rel="external">{{ texts.CONFIRMATION.WATCH_VIDEO }}</a>
+      {{ texts.CONFIRMATION.WHAT_TO_EXPECT_OB }}
+    </p>
+    {% else %}
     <p>
       {{ texts.CONFIRMATION.YOU_CAN }}
       <a target="_blank" id="watch-video" href="https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s" {% if trackingCode %}onclick="trackOutboundLink('https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s')"{% endif %}
- rel="external">{{ texts.CONFIRMATION.WATCH_VIDEO }}</a>,
+ rel="external">{{ texts.CONFIRMATION.WATCH_VIDEO }}</a>
       {{ texts.CONFIRMATION.WHAT_TO_EXPECT }}
     </p>
     {% endif %}

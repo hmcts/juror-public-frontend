@@ -19,5 +19,5 @@ govuk_modules/
 /.idea/
 npm-debug.log
 .vscode/
-/.idea/
 package-lock.json
+/juror-public-front-end.iml

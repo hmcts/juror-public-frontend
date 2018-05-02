@@ -23,12 +23,12 @@
   "OB_WHY_QUESTION": "Your reason for replying on behalf of the juror",
 
   "JUROR_QUALIFY_QUESTION": "You answered the qualifying questions",
-  "JUROR_QUALIFY_QUESTION_LIVED_CONSECUTIVE": "At any point since your 13th birthday, has there been a continuous 5-year period where you’ve lived in the UK, Channel Islands or the Isle of Man?",
+  "JUROR_QUALIFY_QUESTION_LIVED_CONSECUTIVE": "Have you lived in the UK, Channel Islands or Isle of Man for five consecutive years since your 13th birthday?",
   "JUROR_QUALIFY_QUESTION_MENTAL_HEALTH": "Are you currently or likely to be detained under the Mental Health Act 1983 or lack capacity as stated in the Mental Capacity Act 2005?",
   "JUROR_QUALIFY_QUESTION_BAIL": "Are you currently on bail for a criminal offence?",
   "JUROR_QUALIFY_QUESTION_CONVICTED": "Have you been convicted of a criminal offence and been given a sentence?",
   "OB_QUALIFY_QUESTION": "You answered the qualifying questions for the person you're replying for",
-  "OB_QUALIFY_QUESTION_LIVED_CONSECUTIVE": "Has the person lived in the UK, the Channel Islands or the Isle of Man for five consecutive years since their 13th birthday?",
+  "OB_QUALIFY_QUESTION_LIVED_CONSECUTIVE": "Has the person you're answering for lived in the UK, Channel Islands or Isle of Man for five consecutive years since their 13th birthday?",
   "OB_QUALIFY_QUESTION_MENTAL_HEALTH": "Is the person currently or likely to be detained under the Mental Health Act 1983 or lack capacity as stated in the Mental Capacity Act 2005?",
   "OB_QUALIFY_QUESTION_BAIL": "Is the person currently on bail for a criminal offence?",
   "OB_QUALIFY_QUESTION_CONVICTED": "Has the person been convicted of a criminal offence and been given a sentence?",
@@ -76,5 +76,14 @@
   "OB_UNDERSTAND_MUST_BE_TRUE": "I understand that the answers I have given may be checked and that I may be prosecuted if I have given false information on purpose.",
   "OTHER": "Other",
   "EMPLOYED_YES": "Yes",
-  "NCA": "National Crime Agency"
+  "NCA": "National Crime Agency",
+  "POLICE": "Police Force",
+  "PRISON_SERVICE": "HM Prison Service",
+  "MOBILITY": "Limited mobility",
+  "HEARING" : "Hearing impairment",
+  "DIABETES" : "Diabetes",
+  "SIGHT_IMPAIRMENT" : "Severe sight impairment",
+  "LEARNING_DISABILITY" : "Learning disability",
+  "YES_LABEL": "Yes",
+  "NO_LABEL": "No"
 }

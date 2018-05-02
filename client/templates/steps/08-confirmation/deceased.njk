@@ -13,6 +13,15 @@
   <div class="column-two-thirds">
     {% include "./_hero.njk" %}
 
+    <p class="bold-small">
+      {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_1 }}<a href="/steps/08-confirmation/download">{{ texts.CONFIRMATION.DOWNLOAD_A_COPY_2}}</a>
+      {% if user.thirdParty == 'Yes' %}
+        {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3_OB}}
+      {% else %}
+        {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3}}
+      {% endif %}
+    </p>
+
     <h2 class="heading-medium">{{ texts.CONFIRMATION.NEXT_INFO }}</h2>
     <p>{{ texts.CONFIRMATION.NO_ACTION }}</p>
 

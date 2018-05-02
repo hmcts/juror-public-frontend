@@ -17,43 +17,40 @@
     {% include "../../includes/errors.njk" %}
 
     <form action="{{ url('steps.responder.type.post') }}" method="post">
+      <div class="form-group inline {% if errors.items['thirdParty'] %}error{% endif %}" id="thirdPartyGroup">
+        <fieldset>
+          <div class="form-group">
+            <label class="block-label selection-button-radio" for="thirdParty_No">
+              <input id="thirdParty_No" type="radio" name="thirdParty" value="No">
+              {{ texts.REPLY_TYPE.REPLY_SELF }}
+              <span class="form-hint">{{ texts.REPLY_TYPE.REPLY_SELF_INFO }}</span>
+            </label>
+          </div>
 
-      <fieldset>
-        <div class="form-group">
-          <label class="block-label selection-button-radio" for="thirdParty_No">
-            <input id="thirdParty_No" type="radio" name="thirdParty" value="No">
-            {{ texts.REPLY_TYPE.REPLY_SELF }}
-            <span class="form-hint">{{ texts.REPLY_TYPE.REPLY_SELF_INFO }}</>
-          </label>
-        </div>
+          <div class="form-group">
+            <label class="block-label selection-button-radio" for="thirdParty_Yes">
+              <input id="thirdParty_Yes" type="radio" name="thirdParty" value="Yes">
+              {{ texts.REPLY_TYPE.REPLY_TP }}
+              <span class="form-hint">{{ texts.REPLY_TYPE.REPLY_TP_INFO }}</span>
+            </label>
+          </div>
+        </fieldset>
+      </div>
 
-        <div class="form-group">
-          <details>
-            <summary><span class="summary">{{texts.REPLY_TYPE.NEED_HELP}}</span></summary>
-            <div id="details-content-0" aria-hidden="true">
-            {{texts.REPLY_TYPE.NEED_HELP_TEXT}}
-            </div>
-          </details>
-        </div>
-
-        <div class="form-group">
-          <label class="block-label selection-button-radio" for="thirdParty_Yes">
-            <input id="thirdParty_Yes" type="radio" name="thirdParty" value="Yes">
-            {{ texts.REPLY_TYPE.REPLY_TP }}
-            <span class="form-hint">{{ texts.REPLY_TYPE.REPLY_TP_INFO }}</span>
-          </label>
-        </div>
-      </fieldset>
-
+      <div class="form-group">
+        <details>
+          <summary><span class="summary">{{texts.REPLY_TYPE.NEED_HELP}}</span></summary>
+          <div id="details-content-0" aria-hidden="true">
+          {{texts.REPLY_TYPE.NEED_HELP_TEXT}}
+          </div>
+        </details>
+      </div>
 
       {#Submit form#}
       <input type="hidden" name="_csrf" value="{{ csrftoken }}">
       <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
-
     </form>
-
   </div>
-
 </div>
 
 {% endblock %}

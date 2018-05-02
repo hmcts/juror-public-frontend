@@ -1,0 +1,11 @@
+{
+  "HEADING": "Cadarnhewch y dyddiad geni",
+  "HEADING_OB": "Cadarnhewch ddyddiad geni'r unigolyn yr ydych yn ymateb ar ei ran.",
+
+  "DOB_CURRENT_VALUE": "Bu ichi ddweud mai eich dyddiad geni oedd {{ formattedDob }}.",
+  "DOB_CURRENT_VALUE_OB": "Bu ichi ddweud mai dyddiad geni'r unigolyn oedd {{ formattedDob }}.",
+  "DOB_CURRENT_AGE": "Felly, rydych chi’n {{ currentAge }} oed.",
+  "DOB_CURRENT_AGE_OB": "Felly, maent yn {{ currentAge }} oed.",
+  "DOB_CONFIRM_MESSAGE": "A yw eich dyddiad geni yn gywir?",
+  "DOB_CONFIRM_MESSAGE_OB": "A yw’r dyddiad geni yn gywir?"
+}

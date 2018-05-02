@@ -51,7 +51,7 @@
       </p>
     </div>
 
-    <p class="lede">At:</p>
+    <p class="lede">{{ texts.CONFIRM_DATE_PAGE.AT }}</p>
 
     <div class="panel panel-border-wide text">
       <p class="bold-small">
@@ -61,17 +61,18 @@
 
 
     <form action="{{ url('steps.confirm.date.post') }}" method="post">
+
       <fieldset>
-        <input type="hidden" id="hearingDateTimestamp" value="{{ user.hearingDateTimestamp }}">
         <legend>
-          <p class="lede">
+          <span class="lede">
             {% if user.thirdParty == 'Yes' %}
             {{ texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HEADING_OB }}
             {% else %}
             {{ texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HEADING }}
             {% endif %}
-          </p>
+          </span>
         </legend>
+        <input type="hidden" id="hearingDateTimestamp" value="{{ user.hearingDateTimestamp }}">
         <div class="form-group {% if errors.items['confirmedDate'] %}error{% endif %}" id="confirmedDateGroup">
           {% if errors.items['confirmedDate'] %}<span class="error-message">{{ errors.items['confirmedDate'][0].details }}</span>{% endif %}
 
@@ -83,7 +84,7 @@
             {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES }}
             {% endif %}
           </label>
-
+          <br>
           <label class="block-label selection-button-radio" for="changeDates">
             <input id="changeDates" type="radio" name="confirmedDate" value="Change" {% if user.confirmedDate == 'Change' %}checked="checked"{% endif %}>
             {% if user.thirdParty == 'Yes' %}
@@ -99,7 +100,7 @@
               {% endif %}
             </span>
           </label>
-
+          <br>
           <label class="block-label selection-button-radio" for="declineDates">
             <input id="declineDates" type="radio" name="confirmedDate" value="No" {% if user.confirmedDate == 'No' %}checked="checked"{% endif %}>
             {% if user.thirdParty == 'Yes' %}
@@ -120,7 +121,7 @@
 
       </fieldset>
 
-
+      <br>
       {# Submit form #}
       <input type="hidden" name="_csrf" value="{{ csrftoken }}">
       <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
