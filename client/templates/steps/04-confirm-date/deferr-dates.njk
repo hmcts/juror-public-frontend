@@ -287,16 +287,6 @@
         return false;
       });
 
-      $('#datesGroup').click(function(e){
-        //Check for click in the container div and hide the date-picker dialogs
-        $(document).unbind('click mousedown mouseup mousemove mouseover');
-        $('#dp1').attr('aria-hidden', 'true');
-        $('#dp2').attr('aria-hidden', 'true');
-        $('#dp3').attr('aria-hidden', 'true');
-      });
-
     });
-
-
   </script>
 {% endblock %}

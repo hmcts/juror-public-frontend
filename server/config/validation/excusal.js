@@ -19,10 +19,7 @@
         },
         length: {
           maximum: 1000,
-          message: {
-            summary: filters.translate('VALIDATION.EXCUSAL.CHECK_REASON_LENGTH', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.EXCUSAL.CHECK_REASON_LENGTH_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-          }
+          message: filters.translate('VALIDATION.EXCUSAL.CHECK_REASON_LENGTH', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
         }
       },
     };

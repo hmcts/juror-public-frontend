@@ -1,11 +1,7 @@
 {% extends "../../layouts/default.njk" %}
 
 {% block page_title %}
-  {% if user.thirdParty == 'Yes' %}
-    {{ texts.EXCUSAL_PAGE.PROMPT_OB }}
-  {% else %}
-    {{ texts.EXCUSAL_PAGE.PROMPT }}
-  {% endif %}
+  {{ texts.EXCUSAL_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}Excusal{% endblock %}

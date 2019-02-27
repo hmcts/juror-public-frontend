@@ -44,22 +44,12 @@
           {% if errors.items['cjsEmployed'] %}<span class="error-message">{{ errors.items['cjsEmployed'][0].details }}</span>{% endif %}
           <br>
           <label class="block-label selection-button-radio" data-target="cjsEmployerGroup" for="employedCjs-Yes">
-              {% if user.thirdParty == 'Yes' %}
-                <input id="employedCjs-Yes" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.YES }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES %}checked="checked"{% endif %}>
-                {{ texts.EMPLOYED_PAGE.YES_OB }}
-              {% else %}
-                <input id="employedCjs-Yes" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.YES }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES %}checked="checked"{% endif %}>
-                {{ texts.EMPLOYED_PAGE.YES }}
-            {% endif %}
+            <input id="employedCjs-Yes" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.YES }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES %}checked="checked"{% endif %}>
+            {{ texts.EMPLOYED_PAGE.YES }}
           </label>
           <label class="block-label selection-button-radio" for="employedCjs-No">
-              {% if user.thirdParty == 'Yes' %}
-                <input id="employedCjs-No" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.NO }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.NO %}checked="checked"{% endif %}>
-                {{ texts.EMPLOYED_PAGE.NO_OB }}
-              {% else %}
-                <input id="employedCjs-No" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.NO }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.NO %}checked="checked"{% endif %}>
-                {{ texts.EMPLOYED_PAGE.NO }}
-              {% endif %}
+            <input id="employedCjs-No" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.NO }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.NO %}checked="checked"{% endif %}>
+            {{ texts.EMPLOYED_PAGE.NO }}
           </label>
         </fieldset>
       </div>

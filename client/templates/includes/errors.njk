@@ -1,13 +1,14 @@
 {% if errors.count > 0 %}
-<div class="error-summary" aria-labelledby="error-summary-heading" tabindex="-1">
+<div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1" aria-live="polite" aria-atomic="true">
+  <h2 class="heading-medium error-summary-heading" id="error-summary-heading">
+    {{ errors.title }}
+  </h2>
 
-  <ul class="error-summary-list" role="alert" aria-live="polite" aria-atomic="true">
-    <h2 class="heading-medium error-summary-heading" id="error-summary-heading">
-      {{ errors.title }}
-    </h2>
-    {% if errors.message.length > 0 %}
-    <p>{{ errors.message }}</p>
-    {% endif %}
+  {% if errors.message.length > 0 %}
+  <p>{{ errors.message }}</p>
+  {% endif %}
+
+  <ul class="error-summary-list">
     {% for key, messages in errors.items %}
     <li>
       {% if key in ['contactPhone','thirdPartyReason','dateOfBirth','useJurorPhoneDetails','useJurorEmailDetails','livedConsecutive','mentalHealthSectioned','mentalHealthCapacity','onBail','convicted','cjsEmployed','cjsEmployer','assistanceNeeded'] %}

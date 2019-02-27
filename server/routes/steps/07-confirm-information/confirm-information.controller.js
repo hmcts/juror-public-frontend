@@ -181,16 +181,15 @@
           return val;
         }).join('<br>');
         req.session.user['hearingDateTimestamp'] = response['hearingDate'];
-
-        if (req.session.user.ineligibleDeceased) {
-          req.session.user['nameRender'] = [
-            response['title'],
-            response['firstName'],
-            response['lastName']
-          ].filter(function(val){
-            return val;
-          }).join(' ');
-        }
+        /*
+        req.session.user['nameRender'] = [
+          response['title'],
+          response['firstName'],
+          response['lastName']
+        ].filter(function(val){
+          return val;
+        }).join(' ');
+        */
 
         //Try and parse date for hearing
         try {

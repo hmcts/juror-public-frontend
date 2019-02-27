@@ -79,8 +79,8 @@
 
           {% if errors.items['confirmedDate'] %}<span class="error-message">{{ errors.items['confirmedDate'][0].details }}</span>{% endif %}
 
-          <label class="block-label selection-button-radio" for="confirmedDate">
-            <input id="confirmedDate" type="radio" name="confirmedDate" value="Yes" {% if user.confirmedDate == 'Yes' %}checked="checked"{% endif %}>
+          <label class="block-label selection-button-radio" for="confirmedDates">
+            <input id="confirmedDates" type="radio" name="confirmedDate" value="Yes" {% if user.confirmedDate == 'Yes' %}checked="checked"{% endif %}>
             <div role="text">
               {% if user.thirdParty == 'Yes' %}
               {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES_OB }}

@@ -12,15 +12,14 @@
 
   <div class="column-two-thirds">
 
-    {% include "../../includes/errors.njk" %}
-
     <h1 class="heading-xlarge">{{ texts.REPLY_TYPE.HEADER }}</h1>
 
+    {% include "../../includes/errors.njk" %}
+
     <form action="{{ url('steps.responder.type.post') }}" method="post">
-      <div class="form-group inline {% if errors.items['thirdParty'] %}error{% endif %}" id="thirdParty">
+      <div class="form-group inline {% if errors.items['thirdParty'] %}error{% endif %}" id="thirdPartyGroup">
         <fieldset>
           <div class="form-group">
-          {% if errors.items['thirdParty'] %} <span class="error-message"> {{ errors.items['thirdParty'][0].details }} </span> {% endif %}
             <label class="block-label selection-button-radio" for="thirdParty_No">
               <input id="thirdParty_No" type="radio" name="thirdParty" value="No">
               {{ texts.REPLY_TYPE.REPLY_SELF }}

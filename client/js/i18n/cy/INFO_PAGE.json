@@ -6,7 +6,7 @@
     "SECOND_MAIN": "Os ydych chi wedi gwneud cais i Adran Fisâu a Mewnfudo’r DU ac nid ydynt eto wedi gwneud penderfyniad am p’un a ydych yn cael byw yn y DU neu beidio, efallai na fyddwch yn cael gwasanaethu ar reithgor. Gwiriwch hyn gyda ni trwy ffonio ",
     "FIRST_THIRD_PARTY": "I wasanaethu ar Reithgor, mae’n rhaid i unigolyn fod wedi byw yn y DU, Ynysoedd y Sianel (Jersey, Guernsey, Alderney, Sark, Herm, Jethou a Brecqhou) neu Ynys Manaw am gyfnod parhaus o bum mlynedd neu fwy. Rhaid i’r cyfnod o bum mlynedd fod pan oeddent yn 13 mlwydd oed neu’n hŷn.",
     "SECOND_THIRD_PARTY": "Os ydy’r unigolyn rydych yn ateb ar ei ran wedi gwneud cais i Adran Fisâu a Mewnfudo’r DU ac nid yw’n gwybod hyd yma p'un a ydyw’n cael byw yn y DU, efallai na fydd yn cael gwasanaethu ar reithgor. Gwiriwch hyn trwy ein ffonio ni ar ",
-    "CONTACT_TEL": "0300 303 5173"
+    "CONTACT_TEL": "0300 456 1024"
   },
 
 
@@ -48,8 +48,8 @@
         "ITEM_3": "Pwyso a mesur yr wybodaeth sydd ar gael i wneud y penderfyniad.",
         "ITEM_4": "Cyfathrebu'r penderfyniad drwy unrhyw fodd."
       },
-      "SECOND_THIRD_PARTY": "Os nad ydych yn sicr os yw'r unigolyn rydych yn ymateb ar ei ran yn gallu gwasanaethu ar reithgor oherwydd anhwylder meddyliol neu ddiffyg galluedd meddyliol, gallwch ein ffonio ar 0300 303 5173 i gael cyngor.",
-      "CONTACT_TEL": "0300 303 5173",
+      "SECOND_THIRD_PARTY": "Os nad ydych yn sicr os yw'r unigolyn rydych yn ymateb ar ei ran yn gallu gwasanaethu ar reithgor oherwydd anhwylder meddyliol neu ddiffyg galluedd meddyliol, gallwch ein ffonio ar ",
+      "CONTACT_TEL": "0300 456 1024",
       "SECOND_MAIN_END": " i gael cyngor."
     }
   },
@@ -64,14 +64,14 @@
   "CONVICTIONS": {
     "HEADING": "Euogfarnau",
 
-    "FIRST_MAIN": "Rydych chi <strong class=\"bold-small\">YN CAEL</strong> gwasanaethu ar reithgor os oes gennych bwyntiau ar eich trwydded yrru, dirwyon goryrru neu wedi bod ar gwrs ymwybyddiaeth cyflymder, cyn belled nad ydych wedi cael unrhyw un o'r dedfrydau isod.",
-    "SECOND_MAIN": "<strong class=\"bold-small\">NI ALLWCH</strong> wasanaethu ar reithgor os ydych wedi cael unrhyw un o'r dedfrydau troseddol hyn yn y Deyrnas Unedig, Ynysoedd y Sianel neu Ynys Manaw. Hefyd, ni allwch wasanaethu ar reithgor os ydych wedi cael unrhyw un o'r dedfrydau troseddol hyn am drosedd yn y fyddin dan Ddeddf Lluoedd Arfog 2006 unrhyw le yn y byd.",
+    "FIRST_MAIN": "Rydych chi <strong class=\"bold-small\">YN CAEL</strong> gwasanaethu ar reithgor os oes gennych bwyntiau ar eich trwydded yrru, dirwyon goryrru neu wedi bod ar gwrs ymwybyddiaeth cyflymder, cyn belled nad ydych wedi cael unrhyw un o’r dedfrydau isod.",
+    "SECOND_MAIN": "<strong class=\"bold-small\">NA ALLWCH</strong> wasanaethu ar reithgor os ydych wedi cael unrhyw un o’r dedfrydau troseddol hyn yn y Deyrnas Unedig, Ynysoedd y Sianel neu Ynys Manaw. Hefyd, ni allwch wasanaethu ar reithgor os ydych wedi cael unrhyw un o’r dedfrydau troseddol hyn am drosedd yn y fyddin dan Ddeddf Lluoedd Arfog 2006 unrhyw le yn y byd.",
     "LIST_MAIN": {
-      "ITEM_1": "carchar neu gael eich cadw'n gaethiwed am 5 mlynedd neu fwy",
-      "ITEM_2": "carchar er mwyn diogelu'r cyhoedd neu gael eich cadw'n gaethiwed er mwyn diogelu'r cyhoedd",
+      "ITEM_1": "carchar neu gael eich cadw’n gaethiwed am 5 mlynedd neu fwy",
+      "ITEM_2": "carchar er mwyn diogelu’n cyhoedd neu gael eich cadw’n gaethiwed er mwyn diogelu’r cyhoedd",
       "ITEM_3": "carchar, cadwraeth neu gael eich cadw'n gaethiwed am oes",
-      "ITEM_4": "dedfryd estynedig dan un ai adrannau 226A, 226B, 227 NEU 228 o Ddeddf Cyfiawnder Troseddol 2003, (gan gynnwys dedfryd o'r fath a orfodir o ganlyniad i adran 219A, 220, 221A neu 222 o Ddeddf Lluoedd Arfog 2006) neu adran 210A Deddf Trefniadaeth Droseddol (Yr Alban) 1995;",
-      "ITEM_5": "cael eich cadw'n gaethiwed yn ôl mympwy Ei Mawrhydi neu yn ôl mympwy'r Ysgrifennydd Gwladol"
+      "ITEM_4": "dedfryd estynedig dan un ai adrannau 226A, 226B, 227 NEU 228 o Ddeddf Cyfiawnder Troseddol 2003, (gan gynnwys dedfryd o’r fath a orfodir o ganlyniad i adran 219A, 220, 221A neu 222 o Ddeddf Lluoedd Arfog 2006) neu adran 210A Deddf Trefniadaeth Droseddol (Yr Alban) 1995;",
+      "ITEM_5": "cael eich cadw’n gaethiwed yn ôl mympwy Ei Mawrhydi neu yn ôl mympwy'r Ysgrifennydd Gwladol"
     },
     "SECOND_LIST_MAIN": {
       "TITLE": "Hefyd, <strong class=\"bold-small\">NI ALLWCH</strong> wasanaethu ar reithgor os ydych wedi cael un o'r dedfrydau troseddol canlynol yn y 10 mlynedd diwethaf:",

@@ -38,27 +38,27 @@
         {% endif %}
       </h1>
 
-      <p>
-        {% if user.thirdParty == 'Yes' %}
-        {{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_DESCRIPTION_OB }}
-        {% else %}
-        {{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_DESCRIPTION }}
-        {% endif %}
-      </p>
-
-        {# Phone #}
+      {# Phone #}
       <fieldset>
+
+        <p>
+          {% if user.thirdParty == 'Yes' %}
+          {{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_DESCRIPTION_OB }}
+          {% else %}
+          {{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_DESCRIPTION }}
+          {% endif %}
+        </p>
 
         <div class="form-group" id="primaryPhoneGroup">
           <label class="form-label" for="primaryPhone">{{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_PRIMARY_LABEL }}</label>
-          {% if errors.items['primaryPhone'] %}<legend><span class="error-message" id="primaryPhoneErrorMessage">{{ errors.items['primaryPhone'][0].details }}</span></legend>{% endif %}
-          <input type="text" inputmode="numeric" class="form-control" id="primaryPhone" name="primaryPhone" value="{{ user.primaryPhone }}" {% if errors.items['primaryPhone'] %}aria-describedby="primaryPhoneErrorMessage"{% endif %} {% if IS_PRODUCTION %}maxlength="15"{% endif %}  autocomplete="off">
+          {% if errors.items['primaryPhone'] %}<span class="error-message" id="primaryPhoneErrorMessage">{{ errors.items['primaryPhone'][0].details }}</span>{% endif %}
+          <input type="text" inputmode="numeric" class="form-control" id="primaryPhone" name="primaryPhone" value="{{ user.primaryPhone }}" {% if IS_PRODUCTION %}maxlength="15"{% endif %}  autocomplete="off">
         </div>
 
         <div class="form-group" id="secondaryPhoneGroup">
           <label class="form-label" for="secondaryPhone">{{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_SECONDARY_LABEL }}</label>
-          {% if errors.items['secondaryPhone'] %}<legend><span class="error-message" id="secondaryPhoneErrorMessage">{{ errors.items['secondaryPhone'][0].details }}</span>{% endif %}
-          <input type="text" inputmode="numeric" class="form-control" id="secondaryPhone" name="secondaryPhone" value="{{ user.secondaryPhone }}" {% if errors.items['secondaryPhone'] %}aria-describedby="secondaryPhoneErrorMessage"{% endif %} {% if IS_PRODUCTION %}maxlength="15"{% endif %} autocomplete="off">
+          {% if errors.items['secondaryPhone'] %}<span class="error-message" id="secondaryPhoneErrorMessage">{{ errors.items['secondaryPhone'][0].details }}</span>{% endif %}
+          <input type="text" inputmode="numeric" class="form-control" id="secondaryPhone" name="secondaryPhone" value="{{ user.secondaryPhone }}" {% if IS_PRODUCTION %}maxlength="15"{% endif %} autocomplete="off">
         </div>
 
       </fieldset>

@@ -2,7 +2,7 @@
   "HEADING": "Eich manylion rheithiwr",
   "HEADING_OB": "Manylion y rheithiwr",
 
-  "SAMPLE_TITLE": "Gellir dod o hyd i'ch rhif rheithiwr ar eich llythyr gwŷs rheithgor, fel y dangosir yn y ddelwedd isod.",
+  "SAMPLE_TITLE": "Gellir dod o hyd i'r rhif rheithiwr ar y llythyr gwŷs rheithgor, fel y dangosir yn y ddelwedd isod.",
   "SAMPLE_IMAGE_ALT": "Gellir dod o hyd i'r rhif rheithiwr ar frig y llythyr gwŷs",
   "IMAGE_TITLE": "Gellir dod o hyd i'r rhif rheithiwr ar frig y llythyr gwŷs",
 
@@ -16,7 +16,7 @@
   "GUIDANCE_COMPANY_NAME": "Swyddfa Ganolog Gwysio Rheithgor",
   "GUIDANCE_EMAIL": "jurysummoning@hmcts.gsi.gov.uk",
   "GUIDANCE_TELEPHONE_LABEL": "Rhif ffôn",
-  "GUIDANCE_TELEPHONE_NUMBER": "0300 303 5173",
+  "GUIDANCE_TELEPHONE_NUMBER": "0300 456 1024",
   "GUIDANCE_TELEPHONE_NUMBER_NOSPACE": "03004561024",
   "GUIDANCE_OPENING_TIMES": "Dydd Llun i Ddydd Iau 9am – 5pm",
   "GUIDANCE_OPENING_TIMES_FRIDAY": "Dydd Gwener 9am – 3pm",
@@ -28,11 +28,11 @@
   "GUIDANCE_ADDRESS_LINE_4": "SE1 0BJ",
 
   "FIELD_LAST_NAME_TITLE": "Cyfenw'r Rheithiwr",
-  "FIELD_LAST_NAME_HINT": "Nodwch eich cyfenw fel y mae'n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid bellach ymlaen.",
-  "FIELD_LAST_NAME_HINT_OB": "Cyfenw'r Rheithiwr Nodwch eich cyfenw fel y mae'n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid bellach ymlaen.",
+  "FIELD_LAST_NAME_HINT": "Cyfenw'r Rheithiwr Nodwch eich cyfenw fel y mae'n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid bellach ymlaen.",
+  "FIELD_LAST_NAME_HINT_OB": "Nodwch y cyfenw fel y mae'n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid yn hwyrach ymlaen.",
 
   "FIELD_POSTCODE_TITLE": "Cod post Rheithiwr",
-  "FIELD_POSTCODE_HINT": "Nodwch eich cod post fel y mae'n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid bellach ymlaen.",
+  "FIELD_POSTCODE_HINT": "Nodwch eich cyfenw fel y mae'n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid bellach ymlaen.",
   "FIELD_POSTCODE_HINT_OB": "Nodwch god post y rheithiwr fel y mae'n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid yn hwyrach ymlaen.",
 
   "FIELD_THIRD_PARTY_LABEL": "Rwy'n ymateb ar ran rhywun arall"

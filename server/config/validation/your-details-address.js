@@ -10,6 +10,16 @@
 
   module.exports = function(req) {
     return {
+      address: {
+        addressGroup: {
+          texts: req.session.ulang === 'cy' ? texts_cy : texts_en,
+          group: [
+            'addressLineOne',
+            'addressLineTwo',
+            'addressLineThree'
+          ],
+        },
+      },
       addressLineOne: {
         presence: {
           allowEmpty: false,
