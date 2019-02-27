@@ -21,6 +21,9 @@
   "BROWSE_FROM_HOME": "browse from the homepage",
   "FIND_INFO": "to find the information you need.",
   "COOKIE_MESSAGE": "GOV.UK uses cookies to make the site simpler. <a href=\"/help/cookies\">Find out more about cookies</a>",
+  "SKIP_TO_MAIN_CONTENT": "Skip to main content",
+  "LINK_OPENS_NEW_WINDOW": "Opens in a new window",
+  "HTML_LANG": "en",
 
   "FOOTER_LINKS": {
     "COOKIES": "Cookies",

@@ -16,27 +16,22 @@
 
   <div class="column-two-thirds">
 
-    <h1 class="heading-xlarge">
-      {% if user.thirdParty == 'Yes' %}
-      {{ texts.DEFERRAL_PAGE.HEADING_OB }}
-      {% else %}
-      {{ texts.DEFERRAL_PAGE.HEADING }}
-      {% endif %}
-    </h1>
-
+    {% include "../../includes/back-link.njk" %}
     {% include "../../includes/errors.njk" %}
 
     <form action="{{ url('steps.confirm.date.deferral.post') }}" method="post">
 
       <div class="form-group {% if errors.items['deferralReason'] %}error{% endif %}" id="deferralReasonGroup">
+        
+        <h1 class="heading-xlarge">
+          {% if user.thirdParty == 'Yes' %}
+          {{ texts.DEFERRAL_PAGE.REASON_HEADING_OB }}
+          {% else %}
+          {{ texts.DEFERRAL_PAGE.REASON_HEADING }}
+          {% endif %}
+        </h1>
+        
         <label class="form-label" for="deferralReason">
-          <strong class="bold-small">
-            {% if user.thirdParty == 'Yes' %}
-            {{ texts.DEFERRAL_PAGE.REASON_FIELD_TITLE_OB }}
-            {% else %}
-            {{ texts.DEFERRAL_PAGE.REASON_FIELD_TITLE }}
-            {% endif %}
-          </strong>
           <span class="form-hint">
             {% if user.thirdParty == 'Yes' %}
             {{ texts.DEFERRAL_PAGE.REASON_FIELD_HINT_OB }}
@@ -44,11 +39,12 @@
             {{ texts.DEFERRAL_PAGE.REASON_FIELD_HINT }}
             {% endif %}
           </span>
-          {% if errors.items['deferralReason'] %}<span class="error-message">
+          {% if errors.items['deferralReason'] %}<span class="error-message" id="deferralReasonErrorMessage">
             {{ errors.items['deferralReason'][0].details }}
           </span>{% endif %}
         </label>
-        <textarea class="form-control" name="deferralReason" id="deferralReason" cols="30" rows="4" maxlength="1000">{{ user.deferral.reason }}</textarea>
+        <textarea class="form-control" name="deferralReason" id="deferralReason" cols="30" rows="4" maxlength="1000" {% if errors.items['deferralReason'] %}aria-describedby="deferralReasonErrorMessage"{% endif %}>{{ user.deferral.reason }}</textarea>
+        <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
       </div>
 
       <div class="form-group">

@@ -16,7 +16,8 @@
 
   module.exports.index = function(app) {
     return function(req, res) {
-      var getUser;
+      var getUser
+        , backLinkUrl;
 
       // This page should not be accessed if we have not passed through the regular your details page and provided
       // a date of birth and a hearing date.
@@ -27,6 +28,13 @@
       // Merge session data with stored post data to calculate values
       getUser = _.merge(req.session.user, req.session.formFields);
 
+      // Set back link URL
+      if (req.session.user.thirdParty === 'Yes'){
+        backLinkUrl = 'branches.third.party.personal.details.date-of-birth.get';
+      } else {
+        backLinkUrl = 'steps.your.details.date-of-birth.get';
+      }
+
       return res.render('steps/02-your-details/confirm.njk', {
         errors: {
           title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
@@ -36,7 +44,8 @@
         },
         user: getUser,
         formattedDob: moment(getUser.dateOfBirth).format('DD/MM/YYYY'),
-        currentAge: moment().diff(moment(getUser.dateOfBirth), 'years')
+        currentAge: moment().diff(moment(getUser.dateOfBirth), 'years'),
+        backLinkUrl: backLinkUrl
       });
     };
   };
@@ -68,7 +77,7 @@
 
         req.body['ageTimeOfHearing'] = utils.calculateAgeAtHearing(
           req.body['dateOfBirth'],
-          req.session.user['hearingDate']
+          req.session.user['hearingDateTimestamp']
         );
       }
 
@@ -78,7 +87,7 @@
         req.session.errors = validatorResult;
         req.session.formFields = req.body;
 
-        return res.redirect(app.namedRoutes.build('steps.your.details.confirm.get'));
+        return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.your.details.confirm', req.session.user.thirdParty)));
       }
 
       // Update date
@@ -94,11 +103,11 @@
       // this would mean the person is ineligible
       if (req.body['ageTimeOfHearing'] < app.ageSettings.lowerAgeLimit || req.body['ageTimeOfHearing'] >= app.ageSettings.upperAgeLimit) {
         req.session.user['ineligibleAge'] = true;
-        return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
+        return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
       }
 
       if (req.session.change === true){
-        return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
+        return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
       }
 
       // If third party, redirect back onto third party route
@@ -106,7 +115,7 @@
         return res.redirect(app.namedRoutes.build('branches.third.party.contact.details.get'));
       }
 
-      return res.redirect(app.namedRoutes.build('steps.qualify.get'));
+      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.qualify.get', req.session.user.thirdParty)));
     };
   };
 

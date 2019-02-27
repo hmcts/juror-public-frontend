@@ -19,7 +19,8 @@
 
   module.exports.index = function(app) {
     return function(req, res) {
-      var tmpErrors;
+      var tmpErrors
+        , backLinkUrl;
 
       // If already logged in, redirect to inbox
       if (typeof res.locals.authentication !== 'undefined') {
@@ -46,6 +47,8 @@
       tmpErrors = _.cloneDeep(req.session.errors);
       delete req.session.errors;
 
+      backLinkUrl = 'steps.responder.type.get'
+
       return res.render('steps/01-login.njk', {
         user: req.session.user,
         errors: {
@@ -53,7 +56,8 @@
           message: '',
           count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
           items: tmpErrors,
-        }
+        },
+        backLinkUrl: backLinkUrl
       });
     };
   };
@@ -92,7 +96,7 @@
             // redirect to confirmation of replying on behalf of someone`
             // if selected, otherwise move on to your details.
             if (req.session.user['thirdParty'] === 'Yes') {
-              return res.redirect(app.namedRoutes.build('branches.third.party.details.get'));
+              return res.redirect(app.namedRoutes.build('branches.third.party.details.name.get'));
             }
             return res.redirect(app.namedRoutes.build('steps.your.details.get'));
           });
@@ -127,7 +131,7 @@
             }];
           }
 
-          return res.redirect(app.namedRoutes.build('steps.login.get'));
+          return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.login', req.session.user.thirdParty)));
         };
 
       // Reset error and saved field sessions
@@ -139,7 +143,7 @@
       validatorResult = validate(req.body, require('../../../config/validation/login')(req));
       if (typeof validatorResult !== 'undefined') {
         req.session.errors = validatorResult;
-        return res.redirect(app.namedRoutes.build('steps.login.get'));
+        return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.login', req.session.user.thirdParty)));
       }
 
       // Send login to backend, callbacks will return as required

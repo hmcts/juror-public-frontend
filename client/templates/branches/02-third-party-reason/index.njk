@@ -10,22 +10,17 @@
 
 <div class="grid-row">
   <div class="column-two-thirds">
-    <h1 class="heading-xlarge">{{ texts.ON_BEHALF.THIRD_PARTY_REASON.HEADER }}</h1>
 
+    {% include "../../includes/back-link.njk" %}
     {% include "../../includes/errors.njk" %}
 
     <form action="{{ url('branches.third.party.reason.post') }}" method="POST">
 
-      <div class="form-group {% if errors.items['thirdPartyReason'] %}error{% endif %}" id="thirdPartyReasonGroup">
+      <div class="form-group {% if errors.items['thirdPartyReason'] or errors.items['thirdPartyOtherReason'] %}error{% endif %}" id="thirdPartyReasonGroup">
+        
+        <h1 class="heading-xlarge">{{ texts.ON_BEHALF.THIRD_PARTY_REASON.HEADER }}</h1>
+
         <fieldset>
-
-          <legend>
-            <strong class="bold-small">
-              {{ texts.ON_BEHALF.THIRD_PARTY_REASON.INTRO }}
-            </strong>
-          </legend>
-
-          <br>
 
           {% if errors.items['thirdPartyReason'] %}<span class="error-message">{{ errors.items['thirdPartyReason'][0].details }}</span>{% endif %}
           <label class="block-label selection-button-radio" for="thirdPartyReasonNotHere">
@@ -53,10 +48,11 @@
             <input type="radio" name="thirdPartyReason" id="thirdPartyReasonOther" value="other" {% if user.thirdPartyDetails.thirdPartyReason === 'other' %}checked{% endif %}>
             {{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.OTHER }}
           </label>
-          <div class="form-group panel panel-border-narrow {% if errors.items['thirdPartyOtherReason'] %} error {% endif %} {% if user.thirdPartyDetails.thirdPartyReason === 'other' %}{% else %}js-hidden{% endif %}" id="thirdPartyOtherReasonGroup">
+          <div class="form-group panel panel-border-narrow {% if user.thirdPartyDetails.thirdPartyReason === 'other' %}{% else %}js-hidden{% endif %}" id="thirdPartyOtherReasonGroup">
             <label class="form-label" for="thirdPartyOtherReason">{{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.OTHER_INFO }}</label>
-            {% if errors.items['thirdPartyOtherReason'] %}<span class="error-message">{{ errors.items['thirdPartyOtherReason'][0] }}</span>{% endif %}
-            <textarea class="form-control" name="thirdPartyOtherReason" id="thirdPartyOtherReason" maxLength="100">{{ user.thirdPartyDetails.thirdPartyOtherReason }}</textarea>
+            {% if errors.items['thirdPartyOtherReason'] %}<span class="error-message" id="thirdPartyOtherReasonErrorMessage">{{ errors.items['thirdPartyOtherReason'][0] }}</span>{% endif %}
+            <textarea class="form-control" name="thirdPartyOtherReason" id="thirdPartyOtherReason" maxLength="100" {% if errors.items['thirdPartyOtherReason'] %}aria-describedby="thirdPartyOtherReasonErrorMessage"{% endif %}>{{ user.thirdPartyDetails.thirdPartyOtherReason }}</textarea>
+            <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS_HUNDRED }}</span>
           </div>
         </fieldset>
       </div>

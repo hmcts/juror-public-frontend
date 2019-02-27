@@ -22,7 +22,7 @@
 
 {% block footer_support_links %}
 <ul>
-  <li><a href="{{ url('cookie.get') }}" target="_blank" id="cookiesLink">{{ texts.INTERFACE.FOOTER_LINKS.COOKIES }}</a></li>
-  <li><a href="{{ url('privacy.get') }}" target="_blank" id="privacyPolicyLink">{{ texts.INTERFACE.FOOTER_LINKS.PRIVACY }}</a></li>
+  <li><a href="{{ url('cookie.get') }}" target="_blank" id="cookiesLink" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.INTERFACE.FOOTER_LINKS.COOKIES }}</a></li>
+  <li><a href="{{ url('privacy.get') }}" target="_blank" id="privacyPolicyLink" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.INTERFACE.FOOTER_LINKS.PRIVACY }}</a></li>
 </ul>
 {% endblock %}

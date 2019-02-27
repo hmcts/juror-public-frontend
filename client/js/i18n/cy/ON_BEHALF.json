@@ -1,30 +1,30 @@
 {
   "THIRD_PARTY_DETAILS": {
     "HEADER": "Eich Manylion",
+    "CAPTION": "Eich Manylion",
 
     "NAME": {
-      "LEGEND": "Eich enw",
+      "TITLE": "Beth yw eich enw?",
       "LABEL_FIRST_NAME": "Enw cyntaf",
       "LABEL_LAST_NAME": "Cyfenw"
     },
 
     "RELATIONSHIP": {
-      "LEGEND": "Eich perthynas â'r unigolyn",
+      "TITLE": "Eich perthynas â'r unigolyn",
       "LABEL_RELATIONSHIP": "Sut ydych chi'n adnabod yr unigolyn rydych yn ymateb ar ei ran?"
     },
 
     "CONTACT": {
-      "LEGEND": "Eich manylion cyswllt",
+      "TITLE": "Eich manylion cyswllt",
       "INFO_1": "Sut yr hoffech i ni gysylltu â chi, os bydd angen?",
-      "INFO_2": "Dewiswch o leiaf un opsiwn.",
-      "LABEL_BY_PHONE": "Ffôn:",
-      "LABEL_BY_EMAIL": "Trwy e-bost:",
+      "LABEL_BY_PHONE": "Ffôn",
+      "LABEL_BY_EMAIL": "Trwy e-bost",
 
-      "INFO_PHONE": "Nodwch rifau ffôn y gallwn eu defnyddio i gysylltu â chi rhwng 9:00AM a 5:00PM, dydd Llun i ddydd Gwener.",
+      "INFO_PHONE": "Nodwch rifau ffôn y gallwn eu defnyddio i gysylltu â chi neu'r rheithiwr rhwng 9:00AM a 5:00PM, dydd Llun i ddydd Gwener.",
       "LABEL_MAIN_PHONE": "Prif rif ffôn",
       "LABEL_OTHER_PHONE": "Rhif ffôn arall (dewisol)",
-      "LABEL_EMAIL": "Nodwch eich cyfeiriad e-bost",
-      "LABEL_EMAIL_CONFIRM": "Nodwch eich cyfeiriad e-bost eto",
+      "LABEL_EMAIL": "Nodwch gyfeiriad e-bost",
+      "LABEL_EMAIL_CONFIRM": "Nodwch gyfeiriad e-bost eto",
 
       "DETAILS": {
         "TITLE": "Pam fod arnom angen eich manylion cyswllt?",
@@ -34,17 +34,16 @@
   },
 
   "THIRD_PARTY_REASON": {
-    "HEADER": "Pam ydych chi'n ymateb?",
-    "INTRO": "Pam ydych chi'n ymateb ar ran yr unigolyn arall?",
+    "HEADER": "Pam ydych chi'n ymateb ar ran yr unigolyn arall?",
 
     "REASONS": {
-      "NOT_HERE": "Nid yw’r unigolyn yma",
-      "NOT_HERE_HELP": "Efallai ei fod yn teithio, yn yr ysbyty, neu i ffwrdd am ychydig ddyddiau am reswm arall",
+      "NOT_HERE": "Nid yw'r unigolyn yma",
+      "NOT_HERE_HELP": "Efallai ei fod yn teithio, yn yr ysbyty, neu i ffwrdd am fwy nag ychydig ddyddiau am reswm arall",
 
-      "REQUIRE_ASSISTANCE": "Nid yw’r unigolyn yn gallu ymateb dros eu hunain",
-      "REQUIRE_ASSISTANCE_HELP": "Nid yw'r unigolyn â'r gallu i ymateb drosto'i hun. Efallai bod hyn oherwydd bod ganddynt anabledd neu nam.",
+      "REQUIRE_ASSISTANCE": "Nid yw'r unigolyn yn gallu ymateb dros ei hun.",
+      "REQUIRE_ASSISTANCE_HELP": "Nid yw'r unigolyn â'r gallu i ymateb drosto'i hun. Efallai bod hyn oherwydd bod ganddo anabledd neu nam.",
 
-      "DECEASED": "Mae’r unigolyn wedi marw",
+      "DECEASED": "Mae'r unigolyn wedi marw",
 
       "OTHER": "Arall",
       "OTHER_INFO": "Rhowch reswm"
@@ -52,61 +51,70 @@
   },
 
   "THIRD_PARTY_PERSONAL_DETAILS": {
+    "CAPTION": "Manylion y Rheithiwr",
+
     "HEADER": "Mwy o fanylion am y rheithiwr",
     "NAME_INTRO_PARAGRAPH": "Gwiriwch fod enw a chyfeiriad yr unigolyn rydych yn ymateb ar ei ran yn gywir.",
 
+    "NAME_HEADER": "Gwiriwch fod enw'r person rydych chi'n ymateb ar ei ran yn gywir",
     "FORM_NAME_LABEL": "Enw",
     "FORM_TITLE_LABEL": "Teitl (dewisol)",
     "FORM_FIRST_NAME_LABEL": "Enw cyntaf",
     "FORM_LAST_NAME_LABEL": "Cyfenw",
-
+    "HELPER_CHANGE_NAME_TITLE": "Beth sy'n digwydd os yw'r unigolyn rwy'n ymateb ar ei ran wedi newid ei enw neu gyfeiriad?",
+    "HELPER_CHANGE_NAME_PARAGRAPH_1": "Os yw enw'r unigolyn wedi newid ac mae'n wahanol i'r enw ar ei lythyr gwŷs rheithgor, nodwch yr enw cywir yma. Byddwn yn cysylltu hwyrach ymlaen i wirio hyn. Er enghraifft, efallai y byddwn eisiau gweld tystysgrif briodas neu dystysgrif gweithred newid enw. Parhewch gyda'r ffurflen ar-lein yn awr.",
+    
+    "ADDRESS_HEADER": "Gwiriwch fod cyfeiriad yr unigolyn rydych chi'n ymateb ar ei ran yn gywir",
     "FORM_ADDRESS_LABEL": "Cyfeiriad",
-    "FORM_ADDRESS_LINE_ONE_LABEL": "Adeilad a’r stryd",
+    "FORM_ADDRESS_LINE_ONE_LABEL": "Adeilad a'r stryd",
     "FORM_ADDRESS_LINE_TWO_LABEL": "Cyfeiriad llinell 2",
     "FORM_ADDRESS_LINE_THREE_LABEL": "Cyfeiriad llinell 3",
     "FORM_ADDRESS_TOWN_LABEL": "Tref neu ddinas",
     "FORM_ADDRESS_COUNTY_LABEL": "Sir (dewisol)",
     "FORM_ADDRESS_POSTCODE_LABEL": "Cod post",
-
-    "HELPER_CHANGE_NAME_ADDRESS_TITLE": "Beth sy’n digwydd os ydy’r unigolyn rwy’n ymateb ar ei ran wedi newid ei enw neu gyfeiriad?",
-    "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_1": "Os ydy enw’r unigolyn wedi newid ac mae'n wahanol i'r enw ar ei lythyr gwŷs rheithgor, nodwch yr enw cywir yma. Byddwn yn cysylltu hwyrach ymlaen i wirio hyn. Er enghraifft, efallai y byddwn eisiau gweld tystysgrif briodas neu dystysgrif gweithred newid enw. Parhewch gyda’r ffurflen ar-lein yn awr.",
+    "HELPER_CHANGE_ADDRESS_TITLE": "Beth sy'n digwydd os yw'r unigolyn rwy'n ymateb ar ei ran wedi newid ei enw neu gyfeiriad?",
+    "HELPER_CHANGE_ADDRESS_PARAGRAPH_1": "Os yw cyfeiriad yr unigolyn wedi newid, efallai y bydd modd i ni symud y gwasanaeth rheithgor i lys sy'n agosach at y cyfeiriad newydd. Byddwn yn cysylltu ynglŷn â hyn hwyrach ymlaen. Parhewch gyda'r ffurflen ar-lein yn awr.",
+    
+    "HELPER_CHANGE_NAME_ADDRESS_TITLE": "Beth sy’n digwydd os yw’r unigolyn rwy’n ymateb ar ei ran wedi newid ei enw neu gyfeiriad?",
+    "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_1": "Os yw enw’r unigolyn wedi newid ac mae'n wahanol i'r enw ar ei lythyr gwŷs rheithgor, nodwch yr enw cywir yma. Byddwn yn cysylltu hwyrach ymlaen i wirio hyn. Er enghraifft, efallai y byddwn eisiau gweld tystysgrif briodas neu dystysgrif gweithred newid enw. Parhewch gyda’r ffurflen ar-lein yn awr.",
     "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_2": "Os ydy cyfeiriad yr unigolyn wedi newid, efallai y bydd modd i ni symud y gwasanaeth rheithgor i lys sy'n agosach at y cyfeiriad newydd. Byddwn yn cysylltu ynglŷn â hyn hwyrach ymlaen.  Parhewch gyda’r ffurflen ar-lein yn awr.",
 
-    "DOB_INTRO_PARAGRAPH": "Cadarnhewch ddyddiad geni'r unigolyn yr ydych yn ymateb ar ei ran",
+    "DOB_HEADER": "Nodwch ddyddiad geni'r unigolyn rydych chi'n ymateb ar ei ran",
     "FORM_DOB_HELPER": "Er enghraifft, 06 12 1982",
     "FORM_DOB_DAY_LABEL": "Diwrnod",
-    "FORM_DOB_MONTH_LABEL": "Mis",
+    "FORM_DOB_MONTH_LABEL": "Mis", 
     "FORM_DOB_YEAR_LABEL": "Blwyddyn",
-    "FORM_DOB_HELPER_TITLE": "Cymorth gyda’ch dyddiad geni",
+    "FORM_DOB_HELPER_TITLE": "Cymorth gyda'ch dyddiad geni",
     "FORM_DOB_HELPER_PARAGRAPH_1": "Nodwch ddyddiad geni'r unigolyn er mwyn i ni wirio os ydynt o'r oedran priodol i wasanaethu ar reithgor.",
     "FORM_DOB_HELPER_PARAGRAPH_2": "Os nad yw'r unigolyn yn gwybod ei union ddyddiad geni, defnyddiwch yr un maent yn ei nodi ar ddogfennau swyddogol megis pasbort neu drwydded yrru.",
-    "FORM_DOB_HELPER_PARAGRAPH_3": "Os na allwch roi dyddiad geni ar gyfer yr unigolyn, efallai y bydd yn rhaid ichi anfon copïau o ddogfennau adnabod drwy'r post. Bydd yn rhaid i chi ymateb i’r wŷs gan ddefnyddio'r ffurflen a anfonwyd drwy'r post yn hytrach nag ar-lein. Os oes arnoch angen cymorth, ffoniwch ni ar 0300 456 1024"
+    "FORM_DOB_HELPER_PARAGRAPH_3": "Os na allwch roi dyddiad geni ar gyfer yr unigolyn, efallai y bydd yn rhaid ichi anfon copïau o ddogfennau adnabod drwy'r post. Bydd yn rhaid i chi ymateb i'r wŷs gan ddefnyddio'r ffurflen a anfonwyd drwy'r post yn hytrach nag ar-lein. Os oes arnoch angen cymorth, ffoniwch ni ar 0300 456 1024"
   },
 
   "THIRD_PARTY_CONTACT_DETAILS": {
-    "HEADER": "Cysylltu â'r rheithiwr",
-    "INTRO_PARAGRAPH": "Efallai bydd yn rhaid inni gysylltu â'r unigolyn i ofyn rhagor o gwestiynau neu roi rhagor o wybodaeth iddynt am eu gwasanaeth rheithgor.",
+    "CAPTION": "Manylion y Rheithiwr",
+    "HEADER": "Efallai bydd yn rhaid inni gysylltu â'r unigolyn i ofyn rhagor o gwestiynau neu roi rhagor o wybodaeth iddynt am eu gwasanaeth rheithgor.",
+
     "CONTACT": "Sut y gallwn gysylltu â'r rheithiwr",
     "CONTACT_PARAGRAPH": "Dywedwch wrthym sut y gallwn gysylltu â'r unigolyn yr ydych yn ymateb ar ei ran. Neu gallwn ni ddefnyddio eich manylion cyswllt chi, os ydych am barhau i weithredu ar ran yr unigolyn.",
     "PHONE": "Ffôn",
-    "PHONE_PARAGRAPH": "Nodwch rifau ffôn y gallwn eu defnyddio i gysylltu â chi rhwng 9:00AM a 5:00PM, dydd Llun i ddydd Gwener.",
+    "PHONE_PARAGRAPH": "Nodwch rifau ffôn y gallwn eu defnyddio i gysylltu â chi neu'r rheithiwr rhwng 9:00AM a 5:00PM, dydd Llun i ddydd Gwener.",
     "MAIN_PHONE" :"Prif rif ffôn",
     "OTHER_PHONE" :"Rhif ffôn arall (dewisol)",
     "PHONE_USE_PREVIOUS": "Defnyddio'r rhif ffôn rydych eisoes wedi'i ddarparu i gysylltu â chi",
-    "PHONE_GIVE_NEW": "Rhowch rif ffôn gwahanol ar gyfer y rheithiwr",
+    "PHONE_GIVE_NEW": "Rhoi rhif ffôn gwahanol ar gyfer y rheithiwr",
 
     "EMAIL_USE_PREVIOUS": "Defnyddio'r cyfeiriad e-bost rydych eisoes wedi'i ddarparu i gysylltu â chi",
-    "EMAIL_GIVE_NEW": "Rhowch gyfeiriad e-bost gwahanol ar gyfer y rheithiwr",
+    "EMAIL_GIVE_NEW": "Rhoi gyfeiriad e-bost gwahanol ar gyfer y rheithiwr",
 
     "EMAIL": "Cyfeiriad e-bost",
     "EMAIL_PARAGRAPH": "Nodwch gyfeiriad e-bost er mwyn inni gysylltu â chi neu'r rheithiwr. Gallwch ddefnyddio cyfeiriad e-bost eich hun neu gyfeiriad e-bost maen nhw'n ei ddefnyddio",
-    "EMAIL_ENTER": "Nodwch eich cyfeiriad e-bost",
+    "EMAIL_ENTER": "Nodwch y cyfeiriad e-bost",
     "EMAIL_ENTER_CONFIRM": "Nodwch y cyfeiriad e-bost unwaith eto",
     "EMAIL_HELPER_TITLE": "Pam fod arnom angen cyfeiriad e-bost?",
     "EMAIL_HELPER_TEXT": "Byddwn yn defnyddio'r cyfeiriad e-bost i anfon gwybodaeth a nodiadau atgoffa am y gwasanaeth rheithgor."
   },
 
   "THIRD_PARTY_ELIGIBILITY": {
-    "HEADER": "A ydy’r unigolyn rydych chi’n ymateb ar ei ran yn gymwys i wasanaethu ar reithgor?"
+    "HEADER": "A yw'r unigolyn rydych chi’n ymateb ar ei ran yn gymwys i wasanaethu ar reithgor?"
   }
 }

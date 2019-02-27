@@ -15,13 +15,20 @@ Provides a front-end for responding to jury summons
 ### Installation
 We require NodeJS and NPM, the latest LTS releases should suffice.
 
-Something like [Node version manager](https://github.com/creationix/nvm) would be a good option for maintaining Node versions and ensuring everyone is running a consistent environment.
+Install [Node version manager](https://github.com/creationix/nvm) 
+
+Development Environment Currently uses 8.9.4
+
+```bash
+nvm install 8.9.4
+```
+
 
 #### Global Packages
 Once Node and NPM are working you must install the following packages globally using;
 
 ```bash
-npm install -g grunt-cli
+npm install -g grunt-cli node-gyp
 ```
 
 [Refer to this document if you get a permission issue](https://docs.npmjs.com/getting-started/fixing-npm-permissions)

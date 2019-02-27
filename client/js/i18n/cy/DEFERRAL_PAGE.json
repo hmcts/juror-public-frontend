@@ -1,6 +1,8 @@
 {
-  "HEADING": "Gwneud cais am ddyddiad arall ar gyfer eich gwasanaeth rheithgor",
-  "HEADING_OB": "Gofyn am ddyddiad gwasanaeth rheithgor arall ar gyfer yr unigolyn rydych yn ymateb ar ei ran",
+  "HEADING": "Nodwch dri dyddiad yn y 12 mis nesaf pan fyddwch ar gael i ddechrau gwasanaethu ar reithgor.",
+  "HEADING_OB": "Nodwch dri dyddiad yn y 12 mis nesaf ble all yr unigolyn rydych yn ymateb ar ei ran wasanaethu ar reithgor.",
+  "REASON_HEADING": "Dywedwch pam eich bod angen dyddiad arall ar gyfer eich gwasanaeth rheithgor",
+  "REASON_HEADING_OB": "Dywedwch pam bod yr unigolyn rydych yn ymateb ar ei ran angen dyddiad arall ar gyfer ei wasanaeth rheithgor",
 
   "REASON_FIELD_TITLE": "Dywedwch pam eich bod angen dyddiad arall ar gyfer eich gwasanaeth rheithgor",
   "REASON_FIELD_TITLE_OB": "Dywedwch pam bod yr unigolyn rydych yn ymateb ar ei ran angen dyddiad arall ar gyfer ei wasanaeth rheithgor",
@@ -14,13 +16,15 @@
   "ACCEPTABLE_LIST_ITEM_2": "cael llawdriniaeth",
   "ACCEPTABLE_LIST_ITEM_3": "sefyll arholiad",
 
-  "DATE_FIELD_TITLE": "Nodwch dri dyddiad yn y 12 mis nesaf pan fyddwch ar gael i ddechrau gwasanaethu ar reithgor.",
-  "DATE_FIELD_TITLE_OB": "Nodwch dri dyddiad yn y 12 mis nesaf ble all yr unigolyn rydych yn ymateb ar ei ran wasanaethu ar reithgor.",
-  "DATE_FIELD_HINT": "Fel arfer bydd gwasanaeth rheithgor yn para am hyd at 10 diwrnod gwaith ond gall fod yn hirach.",
+  "DATE_FIELD_TITLE": "Gan amlaf mae gwasanaeth rheithgor yn cychwyn ar ddydd Llun ac yn para hyd at 10 diwrnod gwaith, ond gall fod yn hirach. Nid yw gwasanaeth rheithgor yn cael ei gynnal ar wyliau banc",
+  "DATE_FIELD_TITLE_OB": "Gan amlaf mae gwasanaeth rheithgor yn cychwyn ar ddydd Llun ac yn para hyd at 10 diwrnod gwaith, ond gall fod yn hirach. Nid yw gwasanaeth rheithgor yn cael ei gynnal ar wyliau banc",
+  "DATE_FIELD_HINT": "Efallai bydd yn bosibl ichi gychwyn eich gwasanaeth rheithgor ar ddyddiad arall sy'n fwy addas.",
+  "DATE_FIELD_HINT_OB": "Efallai bydd yn bosibl i'r unigolyn gychwyn ei wasanaeth rheithgor ar ddyddiad arall sy'n fwy addas.",
 
   "WHY_ASK_SUMMARY": "Pam ein bod yn gofyn am hyn?",
-  "WHY_ASK_INFO": "Efallai bydd yn bosibl ichi gychwyn eich gwasanaeth rheithgor ar ddyddiad arall sy’n fwy addas.",
-  "WHY_ASK_INFO_OB": "It may be possible to start the person's jury service on another more suitable date. ",
+  "WHY_ASK_SUMMARY_OB": "Pam ydym ni'n gofyn?",
+  "WHY_ASK_INFO": "Efallai bydd yn bosibl ichi gychwyn eich gwasanaeth rheithgor ar ddyddiad arall sy'n fwy addas.",
+  "WHY_ASK_INFO_OB": "Efallai bydd yn bosibl i'r unigolyn gychwyn ei wasanaeth rheithgor ar ddyddiad arall sy'n fwy addas.",
 
   "DATE1": "Dyddiad 1",
   "DATE2": "Dyddiad 2",
@@ -32,5 +36,21 @@
   "YEAR": "Blwyddyn",
 
   "DATE_INFO": "Gallaf ddechrau gwasanaethu ar reithgor am o leiaf deg diwrnod gwaith o:",
-  "DATE_INFO_OB": "Gallaf yr unigolyn rwy'n ymateb ar ei ran ddechrau gwasanaethu ar reithgor am o leiaf deg diwrnod gwaith o:"
+  "DATE_INFO_OB": "Gall yr unigolyn rwy'n ymateb ar ei ran ddechrau gwasanaethu ar reithgor am o leiaf deg diwrnod gwaith o:",
+
+  "MONDAY": "Dydd Llun",
+  "TUESDAY": "Dydd Mawrth",
+  "WEDNESDAY": "Dydd Mercher",
+  "THURSDAY": "Dydd Iau",
+  "FRIDAY": "Dydd Gwener",
+  "SATURDAY": "Dydd Sadwrn",
+  "SUNDAY": "Dydd Sul",
+
+  "MO": "Ll",
+  "TU": "M",
+  "WE": "M",
+  "TH": "I",
+  "FR": "G",
+  "SA": "S",
+  "SU": "S"
 }

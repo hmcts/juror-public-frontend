@@ -1,10 +1,10 @@
 {
   "HEADING": "Eich manylion rheithiwr",
-  "HEADING_OB": "Eich manylion rheithiwr",
+  "HEADING_OB": "Manylion y rheithiwr",
 
-  "SAMPLE_TITLE": "Gellir dod o hyd i’ch rhif rheithiwr ar eich llythyr gwŷs rheithgor, fel y dangosir yn y ddelwedd isod.",
-  "SAMPLE_IMAGE_ALT": "Gellir dod o hyd i’r rhif rheithiwr ar frig y llythyr gwŷs",
-  "IMAGE_TITLE": "Gellir dod o hyd i’r rhif rheithiwr ar frig y llythyr gwŷs",
+  "SAMPLE_TITLE": "Gellir dod o hyd i'r rhif rheithiwr ar y llythyr gwŷs rheithgor, fel y dangosir yn y ddelwedd isod.",
+  "SAMPLE_IMAGE_ALT": "Gellir dod o hyd i'r rhif rheithiwr ar frig y llythyr gwŷs",
+  "IMAGE_TITLE": "Gellir dod o hyd i'r rhif rheithiwr ar frig y llythyr gwŷs",
 
   "FIELD_JUROR_NUMBER_TITLE": "Rhif rheithiwr – 9 digid",
 
@@ -15,7 +15,7 @@
 
   "GUIDANCE_COMPANY_NAME": "Swyddfa Ganolog Gwysio Rheithgor",
   "GUIDANCE_EMAIL": "jurysummoning@hmcts.gsi.gov.uk",
-  "GUIDANCE_TELEPHONE_LABEL": "Rhif ffôn: ",
+  "GUIDANCE_TELEPHONE_LABEL": "Rhif ffôn",
   "GUIDANCE_TELEPHONE_NUMBER": "0300 456 1024",
   "GUIDANCE_TELEPHONE_NUMBER_NOSPACE": "03004561024",
   "GUIDANCE_OPENING_TIMES": "Dydd Llun i Ddydd Iau 9am – 5pm",
@@ -24,16 +24,16 @@
   "GUIDANCE_CALL_CHARGE_LINK": "https://www.gov.uk/costau-galwadau",
   "GUIDANCE_ADDRESS_LINE_1": "Swyddfa Ganolog Gwysio Rheithgor",
   "GUIDANCE_ADDRESS_LINE_2": "Pocock Street",
-  "GUIDANCE_ADDRESS_LINE_3": "London",
+  "GUIDANCE_ADDRESS_LINE_3": "Llundain",
   "GUIDANCE_ADDRESS_LINE_4": "SE1 0BJ",
 
-  "FIELD_LAST_NAME_TITLE": "Cyfenw’r Rheithiwr",
-  "FIELD_LAST_NAME_HINT": "Nodwch eich cyfenw fel y mae’n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid bellach ymlaen.",
-  "FIELD_LAST_NAME_HINT_OB": "Nodwch y cyfenw fel y mae’n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid yn hwyrach ymlaen.",
+  "FIELD_LAST_NAME_TITLE": "Cyfenw'r Rheithiwr",
+  "FIELD_LAST_NAME_HINT": "Cyfenw'r Rheithiwr Nodwch eich cyfenw fel y mae'n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid bellach ymlaen.",
+  "FIELD_LAST_NAME_HINT_OB": "Nodwch y cyfenw fel y mae'n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid yn hwyrach ymlaen.",
 
   "FIELD_POSTCODE_TITLE": "Cod post Rheithiwr",
-  "FIELD_POSTCODE_HINT": "Nodwch eich cyfenw fel y mae’n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid bellach ymlaen.",
-  "FIELD_POSTCODE_HINT_OB": "Nodwch god post y rheithiwr fel y mae’n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid yn hwyrach ymlaen.",
+  "FIELD_POSTCODE_HINT": "Nodwch eich cyfenw fel y mae'n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid bellach ymlaen.",
+  "FIELD_POSTCODE_HINT_OB": "Nodwch god post y rheithiwr fel y mae'n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid yn hwyrach ymlaen.",
 
   "FIELD_THIRD_PARTY_LABEL": "Rwy'n ymateb ar ran rhywun arall"
 }

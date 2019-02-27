@@ -1,10 +1,22 @@
 {
   "HEADING": "Your details",
   "INTRO_PARAGRAPH": "Check that your name and address are correct.",
+  
+  "CAPTION": "Your details",
+  "HEADING_NAME": "Check that your name is correct",
+  "HEADING_ADDRESS": "Check that your address is correct",
+  "HEADING_DATE_OF_BIRTH": "What is your date of birth?",
+  "HEADING_PHONE": "What is your phone number?",
+  "HEADING_EMAIL": "What is your email address?",
 
   "HELPER_CHANGE_NAME_ADDRESS_TITLE": "What happens if I have changed my name or address?",
   "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_1": "If your name has changed and is different from the name on your jury summons letter, enter your correct name here. We'll get in touch with you later to check this. For instance, we might want to see a marriage certificate or deed poll certificate. Please carry on with the online form now.",
   "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_2": "If your address has changed, we might be able to move your jury service to a court nearer to your new address. We'll get in touch with you later about this. Please carry on with the online form now.",
+
+  "HELPER_CHANGE_NAME_TITLE": "What happens if I have changed my name?",
+  "HELPER_CHANGE_NAME_PARAGRAPH_1": "If your name has changed and is different from the name on your jury summons letter, enter your correct name here. We'll get in touch with you later to check this. For instance, we might want to see a marriage certificate or deed poll certificate. Please carry on with the online form now.",
+  "HELPER_CHANGE_ADDRESS_TITLE": "What happens if I have changed my address?",
+  "HELPER_CHANGE_ADDRESS_PARAGRAPH_1": "If your address has changed, we might be able to move your jury service to a court nearer to your new address. We'll get in touch with you later about this. Please carry on with the online form now.",
 
   "FORM_SUB_HEADING_1": "Fill in the boxes below.",
 

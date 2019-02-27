@@ -10,7 +10,7 @@
       date1: {
         deferralDateValid: {
           message: {
-            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         },
@@ -24,13 +24,26 @@
           message: {
             summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+          }
+        },
+        ageDeferredDate: {
+          texts: req.session.ulang === 'cy' ? texts_cy : texts_en,
+          jurorDOB: req.session.user.dateOfBirth,
+          limit: {
+            unit: 'years',
+            multiplier: 76,
+          },
+          message: {
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE'
+              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         }
       },
       date2: {
         deferralDateValid: {
           message: {
-            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         },
@@ -44,13 +57,26 @@
           message: {
             summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+          }
+        },
+        ageDeferredDate: {
+          texts: req.session.ulang === 'cy' ? texts_cy : texts_en,
+          jurorDOB: req.session.user.dateOfBirth,
+          limit: {
+            unit: 'years',
+            multiplier: 76,
+          },
+          message: {
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE'
+              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         }
       },
       date3: {
         deferralDateValid: {
           message: {
-            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         },
@@ -64,6 +90,19 @@
           message: {
             summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+          },
+        },
+        ageDeferredDate: {
+          texts: req.session.ulang === 'cy' ? texts_cy : texts_en,
+          jurorDOB: req.session.user.dateOfBirth,
+          limit: {
+            unit: 'years',
+            multiplier: 76,
+          },
+          message: {
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE'
+              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         }
       },

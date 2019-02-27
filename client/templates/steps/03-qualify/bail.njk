@@ -16,43 +16,55 @@
 
   <div class="column-two-thirds">
 
-    <h1 class="heading-xlarge">
-      {% if user.thirdParty == 'Yes' %}
-      {{ texts.QUALIFY_PAGE.BAIL_TITLE_OB }}
-      {% else %}
-      {{ texts.QUALIFY_PAGE.BAIL_TITLE }}
-      {% endif %}
-    </h1>
-
+    {% include "../../includes/back-link.njk" %}
     {% include "../../includes/errors.njk" %}
 
     <form action="{{ url('steps.qualify.bail.post') }}" method="post">
-      <div class="form-group inline {% if errors.items['onBail'] %}error{% endif %}" id="onBailGroup">
+      <div class="form-group inline {% if (errors.items['onBail']) or (errors.items['onBailDetails']) %}error{% endif %}" id="onBailGroup">
+
+        <h1 class="heading-xlarge">
+          <div class="heading-secondary">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.QUALIFY_PAGE.CAPTION_OB }}
+            {% else %}
+            {{ texts.QUALIFY_PAGE.CAPTION }}
+            {% endif %}
+          </div>
+          {% if user.thirdParty == 'Yes' %}
+          {{ texts.QUALIFY_PAGE.BAIL_TITLE_OB }}
+          {% else %}
+          {{ texts.QUALIFY_PAGE.BAIL_TITLE }}
+          {% endif %}
+        </h1>
+
         <fieldset>
-          <legend>
-            <span class="form-label-bold">
-              {% if user.thirdParty == 'Yes' %}
-              {{ texts.QUALIFY_PAGE.QUESTION_3_OB }}
-              {% else %}
-              {{ texts.QUALIFY_PAGE.QUESTION_3 }}
-              {% endif %}
-            </span>
-          </legend>
           <span class="form-hint" id="onBailHint">{{ texts.QUALIFY_PAGE.UNSURE_PROMPT }} <a href="{{ url('steps.qualify.bail.info') }}">{{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}</a></span>
-            {% if errors.items['onBail'] %} <span class="error-message"> {{ texts.QUALIFY_PAGE.MISSING }} </span> {% endif %}
+            {% if errors.items['onBail'] %} <span class="error-message"> {{ errors.items['onBail'][0].details }} </span> {% endif %}
           <br>
           <label class="block-label selection-button-radio" for="onBail-Yes" data-target="onBailDetailsGroup">
-            <input id="onBail-Yes" type="radio" name="onBail" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.onBail.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
-            {{ texts.QUALIFY_PAGE.YES }}
+            {% if user.thirdParty == 'Yes' %}
+              <input id="onBail-Yes" type="radio" name="onBail" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.onBail.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
+              {{ texts.QUALIFY_PAGE.BAIL_YES_OB }}
+            {% else %}
+              <input id="onBail-Yes" type="radio" name="onBail" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.onBail.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
+              {{ texts.QUALIFY_PAGE.BAIL_YES }}
+            {% endif %}
           </label>
           <label class="block-label selection-button-radio" for="onBail-No">
-            <input id="onBail-No" type="radio" name="onBail" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.onBail.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
-            {{ texts.QUALIFY_PAGE.NO }}
+            {% if user.thirdParty == 'Yes' %}
+              <input id="onBail-No" type="radio" name="onBail" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.onBail.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
+              {{ texts.QUALIFY_PAGE.BAIL_NO_OB }}
+            {% else %}
+              <input id="onBail-No" type="radio" name="onBail" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.onBail.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
+              {{ texts.QUALIFY_PAGE.BAIL_NO }}
+            {% endif %}
           </label>
 
-          <div class="panel panel-border-narrow {% if user.qualify.onBail.answer === 'Yes' %}{% else %}js-hidden{% endif %} {% if errors.items['onBailDetails'] %}error{% endif %}" id="onBailDetailsGroup">
+          <div class="panel panel-border-narrow {% if user.qualify.onBail.answer === texts.QUALIFY_PAGE.YES %}{% else %}js-hidden{% endif %}" id="onBailDetailsGroup">
             <label class="form-label" for="onBailDetails">{{ texts.QUALIFY_PAGE.DETAILS }}</label>
-            <textarea class="form-control" name="onBailDetails" id="onBailDetails" maxlength="1000">{{ user.qualify.onBail.details }}</textarea>
+            {% if errors.items['onBailDetails'] %}<span class="error-message" id="onBailDetailsErrorMessage">{{ errors.items['onBailDetails'][0].details }}</span>{% endif %}
+            <textarea class="form-control" name="onBailDetails" id="onBailDetails" maxlength="1000" {% if errors.items['onBailDetails'] %}aria-describedby="onBailDetailsErrorMessage"{% endif %}>{{ user.qualify.onBail.details }}</textarea>
+            <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
         </fieldset>
       </div>

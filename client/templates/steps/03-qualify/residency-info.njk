@@ -14,6 +14,7 @@
 
   <div class="column-two-thirds">
 
+    {% include "../../includes/back-link.njk" %}
 
     {% if user.thirdParty == 'Yes' %}
     <h1 class="heading-xlarge">{{ texts.INFO_PAGE.RESIDENCY.HEADING_THIRD_PARTY }}</h1>
@@ -23,10 +24,10 @@
 
     {% if user.thirdParty == 'Yes' %}
     <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_THIRD_PARTY }}</p>
-    <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_THIRD_PARTY }}</p>
+    <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_THIRD_PARTY }}<a href="tel:{{ texts.INFO_PAGE.RESIDENCY.CONTACT_TEL}}">{{ texts.INFO_PAGE.RESIDENCY.CONTACT_TEL}}</a>.</p>
     {% else %}
     <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_MAIN }}</p>
-    <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_MAIN }}</p>
+    <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_MAIN }}<a href="tel:{{ texts.INFO_PAGE.RESIDENCY.CONTACT_TEL}}">{{ texts.INFO_PAGE.RESIDENCY.CONTACT_TEL}}</a>.</p>
     {% endif %}
 
   </div>

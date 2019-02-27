@@ -1,0 +1,264 @@
+main {
+    font-size: 1.6rem;}
+    @media (min-width: 641px) {
+      main {
+        font-size: 1.9rem; } }
+
+.font-xxlarge {
+    font-size: 5.3rem; }
+    @media (min-width: 641px) {
+      .font-xxlarge {
+        font-size: 8rem; } }
+
+.font-xlarge {
+  font-size: 3.2rem; }
+  @media (min-width: 641px) {
+    .font-xlarge {
+      font-size: 4.8rem;} }
+
+.font-large {
+  font-size: 2.4rem;}
+  @media (min-width: 641px) {
+    .font-large {
+      font-size: 3.6rem; } }
+
+.font-medium {
+    font-size: 1.8rem; }
+    @media (min-width: 641px) {
+        .font-medium {
+        font-size: 2.4rem; } }
+
+.font-small {
+  font-size: 1.6rem;}
+  @media (min-width: 641px) {
+    .font-small {
+      font-size: 1.9rem; } }
+
+.font-xsmall {
+  font-size: 1.4rem; }
+  @media (min-width: 641px) {
+    .font-xsmall {
+      font-size: 1.6rem; } }
+
+.bold-xxlarge {
+  font-size: 5.3rem; }
+  @media (min-width: 641px) {
+    .bold-xxlarge {
+      font-size: 8rem; } }
+
+.bold-xlarge {
+  font-size: 3.2rem; }
+  @media (min-width: 641px) {
+    .bold-xlarge {
+      font-size: 4.8rem; } }
+
+.bold-large {
+  font-size: 2.4rem; }
+  @media (min-width: 641px) {
+    .bold-large {
+      font-size: 3.6rem; } }
+
+.bold-medium {
+  font-size: 1.8rem; }
+  @media (min-width: 641px) {
+    .bold-medium {
+      font-size: 2.4rem; } }
+
+.bold-small {
+  font-size: 1.6rem;}
+  @media (min-width: 641px) {
+    .bold-small {
+      font-size: 1.9rem; } }
+
+.bold-xsmall {
+  font-size: 1.4rem;}
+  @media (min-width: 641px) {
+    .bold-xsmall {
+      font-size: 1.6rem;} }
+
+.heading-xlarge {
+  font-size: 3.2rem;}
+  @media (min-width: 641px) {
+    .heading-xlarge {
+      font-size: 4.8rem; } }
+
+.heading-xlarge .heading-secondary {
+    font-size: 2rem; }
+    @media (min-width: 641px) {
+      .heading-xlarge .heading-secondary {
+        font-size: 2.7rem; } }
+
+.heading-large {
+  font-size: 2.4rem; }
+  @media (min-width: 641px) {
+    .heading-large {
+      font-size: 3.6rem; } }
+
+  .heading-large .heading-secondary {
+    font-size: 1.8rem;}
+    @media (min-width: 641px) {
+      .heading-large .heading-secondary {
+        font-size: 2.4rem; } }
+
+.heading-medium {
+  font-size: 1.8rem; }
+  @media (min-width: 641px) {
+    .heading-medium {
+      font-size: 2.4rem; } }
+
+.heading-small {
+  font-size: 1.6rem; }
+  @media (min-width: 641px) {
+    .heading-small {
+      font-size: 1.9rem; } }
+
+.lede {
+  font-size: 1.8rem; }
+  @media (min-width: 641px) {
+    .lede {
+      font-size: 2.4rem; } }
+
+.link-back {
+  font-size: 1.4rem; }
+  @media (min-width: 641px) {
+    .link-back {
+      font-size: 1.6rem; } }
+
+.code {
+  font-size: 1.4rem }
+
+.button {
+  font-size: 1em; }
+
+.button-start,
+.button-get-started {
+  font-size: 1.8rem; }
+  @media (min-width: 641px) {
+    .button-start,
+    .button-get-started {
+      font-size: 2.4rem; } }
+
+.circle {
+  font-size: 1.2rem; }
+
+.circle-step-large {
+  font-size: 1.9rem; }
+
+table td {
+    font-size: 1.6rem; }
+    @media (min-width: 641px) {
+      table th,
+      table td {
+        font-size: 1.9rem; } }
+
+table td.numeric {
+    font-size: 1.4rem;}
+    @media (min-width: 641px) {
+      table td.numeric {
+        font-size: 1.6rem; } }
+
+.table-font-xsmall th {
+  font-size: 1.4rem; }
+  @media (min-width: 641px) {
+    .table-font-xsmall th {
+      font-size: 1.6rem; } }
+
+.table-font-xsmall td {
+  font-size: 1.4rem; }
+  @media (min-width: 641px) {
+    .table-font-xsmall td {
+      font-size: 1.6rem; } }
+
+.form-label {
+  font-size: 1.6rem; }
+  @media (min-width: 641px) {
+    .form-label {
+      font-size: 1.9rem; } }
+
+.form-label-bold {
+  font-size: 1.6rem; }
+  @media (min-width: 641px) {
+    .form-label-bold {
+      font-size: 1.9rem;} }
+
+.form-hint {
+  font-size: 1.6rem; }
+  @media (min-width: 641px) {
+    .form-hint {
+      font-size: 1.9rem;} }
+
+.form-control {
+  font-size: 1.6rem;}
+  @media (min-width: 641px) {
+    .form-control {
+      font-size: 1.9rem;} }
+
+.error-message {
+  font-size: 1.6rem; }
+  @media (min-width: 641px) {
+    .error-message {
+      font-size: 1.9rem; } }
+
+
+.breadcrumbs li {
+    font-size: 1.4rem;}
+    @media (min-width: 641px) {
+      .breadcrumbs li {
+        font-size: 1.6rem; } }
+
+.phase-banner p {
+    font-size: 1.4rem; }
+    @media (min-width: 641px) {
+      .phase-banner p {
+        font-size: 1.6rem; } }
+
+.phase-banner .phase-tag {
+    font-size: 1.4rem; }
+    @media (min-width: 641px) {
+      .phase-banner .phase-tag {
+        font-size: 1.6rem; } }
+
+.phase-banner-beta p {
+    font-size: 1.4rem;}
+    @media (min-width: 641px) {
+      .phase-banner-alpha p,
+      .phase-banner-beta p {
+        font-size: 1.6rem; } }
+
+  .phase-banner-alpha .phase-tag,
+  .phase-banner-beta .phase-tag {
+    font-size: 1.4rem; }
+    @media (min-width: 641px) {
+      .phase-banner-alpha .phase-tag,
+      .phase-banner-beta .phase-tag {
+        font-size: 1.6rem; } }
+
+.check-your-answers thead th:first-child {
+  font-size: 1.8rem; }
+  @media (min-width: 641px) {
+    .check-your-answers thead th:first-child {
+      font-size: 2.4rem; } }
+
+.check-your-answers thead th:last-child {
+  font-size: 1.6rem; }
+  @media (min-width: 641px) {
+    .check-your-answers thead th:last-child {
+      font-size: 1.9rem;} }
+
+.check-your-answers td {
+  font-size: 1.6rem; }
+  @media (min-width: 641px) {
+    .check-your-answers td {
+      font-size: 1.9rem; } }
+
+.nav-tabs li {
+    @media (min-width: 641px) {
+        font-size: 1.7rem; }}
+
+.button-configure {
+  font-size: 1em;
+}
+
+table#cal {
+    font-size: 1.2em;
+}

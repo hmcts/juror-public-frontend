@@ -16,6 +16,9 @@
 
   <div class="column-two-thirds">
 
+    {% include "../includes/back-link.njk" %}
+    {% include "../includes/errors.njk" %}
+
     <h1 class="heading-xlarge">
       {% if user.thirdParty == 'Yes' %}
       {{ texts.LOGIN_PAGE.HEADING_OB }}
@@ -23,8 +26,6 @@
       {{ texts.LOGIN_PAGE.HEADING }}
       {% endif %}
     </h1>
-
-    {% include "../includes/errors.njk" %}
 
     <p>{{ texts.LOGIN_PAGE.SAMPLE_TITLE }}</p>
 
@@ -40,7 +41,7 @@
             </strong>
           </label>
           {% if errors.items['jurorNumber'] %}<span class="error-message" id="jurorNumberGroupError">{{ errors.items['jurorNumber'][0].details }}</span>{% endif %}
-          <input class="form-control" name="jurorNumber" id="jurorNumber" type="text" pattern="[0-9]*" minlength="9" maxlength="9" autofocus autocomplete="off">
+          <input class="form-control" name="jurorNumber" id="jurorNumber" type="number" pattern="[0-9]*" inputmode="numeric" minlength="9" maxlength="9" autofocus autocomplete="off" {% if errors.items['jurorNumber'] %}aria-describedby="jurorNumberGroupError"{% endif %}>
         </div>
 
         <div class="form-group">
@@ -91,7 +92,7 @@
             {% endif %}</span>
             {% if errors.items['jurorLastName'] %}<span class="error-message" id="jurorLastNameGroupError">{{ errors.items['jurorLastName'][0].details }}</span>{% endif %}
           </label>
-          <input class="form-control" name="jurorLastName" id="jurorLastName" type="text" maxlength="20" autocomplete="off">
+          <input class="form-control" name="jurorLastName" id="jurorLastName" type="text" maxlength="20" autocomplete="off" {% if errors.items['jurorLastName'] %}aria-describedby="jurorLastNameGroupError"{% endif %}>
         </div>
 
         <div class="form-group {% if errors.items['jurorPostcode'] %}error{% endif %}" id="jurorPostcodeGroup">
@@ -106,7 +107,7 @@
             {% endif %}</span>
             {% if errors.items['jurorPostcode'] %}<span class="error-message" id="jurorPostcodeGroupError">{{ errors.items['jurorPostcode'][0].details }}</span>{% endif %}
           </label>
-          <input class="form-control" name="jurorPostcode" id="jurorPostcode" type="text" autocomplete="off">
+          <input class="form-control" name="jurorPostcode" id="jurorPostcode" type="text" autocomplete="off" {% if errors.items['jurorPostcode'] %}aria-describedby="jurorPostcodeGroupError"{% endif %}>
         </div>
       </div>
 

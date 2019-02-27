@@ -1,5 +1,5 @@
 {
-  "ERROR_TITLE": "Gwiriwch y ffurflen",
+  "ERROR_TITLE": "Mae problem",
   "PROVIDE_DETAILS": "^Rhowch fanylion",
   "GIVE_DETAILS": "Rhowch fanylion",
   "PLEASE_ANSWER": "Atebwch y cwestiwn hwn os gwelwch yn dda",
@@ -19,7 +19,8 @@
   "ADDRESSGROUP": "^Gwiriwch eich cyfeiriad",
   "PHONE": "^Gwiriwch eich {{ field }}",
 
-
+  "MAX_TEXT_CHARS": "Gall eich ateb gynnwys hyd at 1000 o nodau.",
+  "MAX_TEXT_CHARS_HUNDRED": "Gall eich ateb gynnwys hyd at 100 o nodau.",
 
   "RESPONDER_TYPE": {
     "MISSING": "Dewiswch un o’r opsiynau canlynol"
@@ -46,7 +47,7 @@
   "YOUR_DETAILS": {
     "FIRST_NAME_CHECK": "Gwiriwch eich enw cyntaf",
     "FIRST_NAME_CHECK_OB": "Gwiriwch enw cyntaf yr unigolyn",
-    "FIRST_NAME_MISSING": "Please enter your first name",
+    "FIRST_NAME_MISSING": "Nodwch eich enw cyntaf",
     "FIRST_NAME_MISSING_OB": "Nodwch enw cyntaf yr unigolyn",
     "LAST_NAME_CHECK": "Gwiriwch eich cyfenw",
     "LAST_NAME_CHECK_OB": "Gwiriwch enw cyntaf yr unigolyn",
@@ -59,7 +60,7 @@
     "ADDRESS_TOWN_CHECK": "Gwiriwch eich tref neu ddinas",
     "ADDRESS_TOWN_CHECK_OB": "Gwiriwch y dref neu'r ddinas",
     "ADDRESS_TOWN_MISSING": "Nodwch y dref neu’r ddinas lle rydych yn byw",
-    "ADDRESS_TOWN_MISSING_OB": "Nodwch y dref neu’r ddinas lle rydych yn byw",
+    "ADDRESS_TOWN_MISSING_OB": "Gwiriwch y dref neu'r ddinas",
     "ADDRESS_TOWN_INVALID": "Gwiriwch eich tref neu ddinas",
     "ADDRESS_COUNTY_CHECK": "Gwiriwch eich gwlad",
     "POSTCODE_MISSING": "Nodwch eich cod post",
@@ -76,8 +77,8 @@
     "EMAIL_CHECK_MISSING_OB": "Nodwch gyfeiriad e-bost er mwyn i ni gysylltu â chi",
     "EMAIL_CHECK_INVALID": "Gwiriwch eich cyfeiriad e-bost",
     "EMAIL_CHECK_INVALID_OB": "Gwiriwch y cyfeiriad e-bost",
-    "EMAIL_CONFIRM_MISSING": "Gwiriwch eich cyfeiriad e-bost. Mae'n rhaid iddo fod yr un fath â'r un yn y blwch uchod.",
-    "EMAIL_CONFIRM_MISSING_OB": "Gwiriwch y cyfeiriad e-bost. Mae'n rhaid iddo fod yr un fath a'r un yn y blwch uchod.",
+    "EMAIL_CONFIRM_MISSING": "Nid yw'r cyfeiriad e-bost rydych wedi ei chofnodi yn cyfateb â'r cyfeiriad e-bost yn y blwch uchod.",
+    "EMAIL_CONFIRM_MISSING_OB": "Nid yw'r cyfeiriad e-bost rydych wedi ei chofnodi yn cyfateb â'r cyfeiriad e-bost yn y blwch uchod.",
     "EMAIL_CHECK_EQUALITY": "Nid yw'r cyfeiriad e-bost rydych wedi ei chofnodi yn cyfateb â'r cyfeiriad e-bost yn y blwch uchod.",
     "EMAIL_CHECK_EQUALITY_OB": "Nid yw'r cyfeiriad e-bost rydych wedi ei chofnodi yn cyfateb â'r cyfeiriad e-bost yn y blwch uchod.",
     "DATETIME_CHECK": "Gwiriwch eich dyddiad geni",
@@ -104,24 +105,34 @@
   },
 
   "QUALIFY": {
-    "WHERE_YOU_LIVE": "^Rhowch wybod i ni lle’r ydych yn byw neu wedi byw",
-    "WHERE_YOU_LIVE_OB": "^Dywedwch wrthym am le mae’r unigolyn yr ydych yn ymateb ar ei ran yn byw neu wedi byw.",
-    "WHERE_YOU_LIVE_DETAILS": "^Rhowch fanylion am eich cartref",
-    "WHERE_YOU_LIVE_DETAILS_OB": "^Rhowch fanylion am gartref yr unigolyn",
-    "WHERE_YOU_LIVE_LENGTH": "(MISSING)Please ensure that your reason is not too long",
-    "MENTAL_HEALTH_CAPACITY": "^Atebwch y cwestiwn ynghylch y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
-    "MENTAL_HEALTH_CAPACITY_DETAILS": "^Rhowch fanylion am y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
-    "MENTAL_HEALTH_CAPACITY_LENGTH": "(MISSING)Please ensure that your reason is not too long",
-    "ON_BAIL": "^Rhowch wybod inni os ydych ar fechnïaeth am gyflawni trosedd",
-    "ON_BAIL_OB": "^Rhowch wybod inni os yw’r unigolyn rydych yn ymateb ar ei ran ar fechnïaeth am gyflawni trosedd",
-    "ON_BAIL_DETAILS": "^Rhowch fanylion am eich mechnïaeth",
-    "ON_BAIL_DETAILS_OB": "^Rhowch fanylion am fechnïaeth yr unigolyn",
-    "ON_BAIL_LENGTH": "(MISSING)Please ensure that your reason is not too long",
-    "CONVICTION": "^Rhowch wybod inni os ydych wedi’ch cael yn euog o drosedd ac wedi cael dedfryd o garchar, gorchymyn cymunedol neu ddedfryd o garchar wedi'i gohirio.",
-    "CONVICTION_OB": "^Rhowch wybod inni os ydy'r unigolyn rydych yn ymateb ar ei ran wedi'i gael yn euog o drosedd ac wedi cael dedfryd o garchar, gorchymyn cymunedol neu ddedfryd o garchar wedi'i gohirio.",
-    "CONVICTION_DETAILS": "^Rhowch fanylion am eich trosedd",
-    "CONVICTION_DETAILS_OB": "^Rhowch fanylion am drosedd yr unigolyn",
-    "CONVICTION_LENGTH": "(MISSING)Please ensure that your reason is not too long"
+    "WHERE_YOU_LIVE": "Rhowch wybod i ni lle'r ydych yn byw neu wedi byw",
+    "WHERE_YOU_LIVE_OB": "Dywedwch wrthym am le mae'r unigolyn yr ydych yn ymateb ar ei ran yn byw neu wedi byw.",
+    "WHERE_YOU_LIVE_DETAILS": "Rhowch fanylion am eich cartref",
+    "WHERE_YOU_LIVE_DETAILS_OB": "Rhowch fanylion am gartref yr unigolyn",
+    "WHERE_YOU_LIVE_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
+    "WHERE_YOU_LIVE_LENGTH_ERROR": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
+    "MENTAL_HEALTH_CAPACITY": "Atebwch y cwestiwn ynghylch y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
+    "MENTAL_HEALTH_CAPACITY_OB": "Atebwch y cwestiwn ynghylch y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
+    "MENTAL_HEALTH_CAPACITY_DETAILS": "Rhowch fanylion am y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
+    "MENTAL_HEALTH_CAPACITY_DETAILS_OB": "Rhowch fanylion am y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
+    "MENTAL_HEALTH_CAPACITY_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
+    "MENTAL_HEALTH_CAPACITY_LENGTH_ERROR": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
+    "MENTAL_HEALTH_SECTIONED": "Atebwch y cwestiwn ynghylch y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
+    "MENTAL_HEALTH_SECTIONED_OB": "Atebwch y cwestiwn ynghylch y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
+    "MENTAL_HEALTH_SECTIONED_DETAILS": "Rhowch fanylion am y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
+    "MENTAL_HEALTH_SECTIONED_DETAILS_OB": "Rhowch fanylion am y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
+    "MENTAL_HEALTH_SECTIONED_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
+    "MENTAL_HEALTH_SECTIONED_LENGTH_ERROR": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
+    "ON_BAIL": "Rhowch wybod inni os ydych ar fechnïaeth am gyflawni trosedd",
+    "ON_BAIL_OB": "Rhowch wybod inni os yw'r unigolyn rydych yn ymateb ar ei ran ar fechnïaeth am gyflawni trosedd",
+    "ON_BAIL_DETAILS": "Rhowch fanylion am eich mechnïaeth",
+    "ON_BAIL_DETAILS_OB": "Rhowch fanylion am fechnïaeth yr unigolyn",
+    "ON_BAIL_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
+    "CONVICTION": "Rhowch wybod inni os ydych wedi'ch cael yn euog o drosedd ac wedi cael dedfryd o garchar, gorchymyn cymunedol neu ddedfryd o garchar wedi'i gohirio.",
+    "CONVICTION_OB": "Rhowch wybod inni os ydy'r unigolyn rydych yn ymateb ar ei ran wedi'i gael yn euog o drosedd ac wedi cael dedfryd o garchar, gorchymyn cymunedol neu ddedfryd o garchar wedi'i gohirio.",
+    "CONVICTION_DETAILS": "Rhowch fanylion am eich trosedd",
+    "CONVICTION_DETAILS_OB": "Rhowch fanylion am drosedd yr unigolyn",
+    "CONVICTION_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm"
   },
 
   "CONFIRM_DATE": {
@@ -141,7 +152,8 @@
     "PRISON_SERVICE_OB": "Rhowch fanylion am ble a phryd roedd yr unigolyn yn gweithio i Wasanaeth Carchardai EM",
     "OTHER": "Rhowch fanylion am ble a phryd roeddech yn gweithio i gyflogwr arall y System Cyfiawnder Troseddol",
     "OTHER_OB": "Rhowch fanylion am ble a phryd roedd yr unigolyn yn gweithio i gyflogwr arall y System Cyfiawnder Troseddol",
-    "CJS_EMPLOYED_LENGTH": "(MISSING)Please ensure that your response is not too long"
+    "CJS_EMPLOYED_LENGTH": "(MISSING)Please ensure that your response is not too long",
+    "CJS_GIVE_DETAILS": "Rhowch fanylion os gwelwch yn dda"
   },
 
   "CONFIRM_INFO": {
@@ -156,11 +168,19 @@
     "CHECK_REASON_MISSING_OB": "Rhowch reswm dros ofyn am ddyddiad diweddarach ar gyfer gwasanaeth rheithgor yr unigolyn",
     "CHECK_DATES": "Nodwch dri dyddiad pan fyddwch ar gael i gyflawni eich gwasanaeth rheithgor",
     "CHECK_DATES_OB": "Nodwch dri dyddiad pan fydd yr unigolyn rydych yn ymateb ar ei ran ar gael i wasanaethu ar reithgor ",
+    "CHECK_DATES_ERROR": "Dewiswch dri dyddiad",
+    "CHECK_DATES_UNIQUE": "Nodwch dri dyddiad gwahanol",
+    "CHECK_DATES_UNIQUE_OB": "Nodwch dri dyddiad gwahanol",
+    "CHECK_DATES_UNIQUE_ERROR": "Dewiswch dri dyddiad gwahanol",
     "CHECK_DATE_FUTURE": "Dewiswch ddyddiadau sydd o fewn 12 mis o ddyddiad yr wŷs wreiddiol",
+    "CHECK_DATE_FUTURE_OB": "Dewiswch ddyddiadau sydd o fewn 12 mis o ddyddiad yr wŷs wreiddiol",
     "CHECK_DATES_MISSING": "Nodwch dri dyddiad pan fyddwch ar gael i gyflawni eich gwasanaeth rheithgor",
     "CHECK_DATES_MISSING_OB": "Nodwch dri dyddiad pan fydd yr unigolyn rydych yn ymateb ar ei ran ar gael i wasanaethu ar reithgor ",
-    "CHECK_REASON_LENGTH": "(MISSING)Please ensure that your reason is not too long",
-    "CHECK_UNIQUE": "Dewiswch dri dyddiad gwahanol"
+    "CHECK_REASON_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
+    "CHECK_REASON_LENGTH_ERROR": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
+    "CHECK_DATE_AGE": "Os gwelwch yn dda, rhowch ddyddiad arall.  Mi fyddwch yn hŷn na 76 ar y dyddiad hwn ac ni fyddwch yn gymwys ar gyfer gwasanaeth rheithgor",
+    "CHECK_DATE_AGE_OB": "Os gwelwch yn dda, rhowch ddyddiad arall. Bydd y Rheithiwr yn hŷn na 76 ar y dyddiad hwn ac ni fyddwch yn gymwys ar gyfer gwasanaeth rheithgor.",
+    "CHECK_DATE_AGE_ERROR": "Os gwelwch yn dda, rhowch ddyddiad arall"
   },
 
   "EXCUSAL": {
@@ -173,7 +193,8 @@
 
   "ASSISTANCE": {
     "DISSABILITY_OR_IMPAIRMENT": "Rhowch fanylion am eich anabledd neu nam",
-    "DISSABILITY_OR_IMPAIRMENT_OB": "Rhowch fanylion am anabledd neu nam yr unigolyn rydych yn ymateb ar ei ran."
+    "DISSABILITY_OR_IMPAIRMENT_OB": "Rhowch fanylion am anabledd neu nam yr unigolyn rydych yn ymateb ar ei ran.",
+    "ASSISTANCE_GIVE_DETAILS": "Rhowch fanylion os gwelwch yn dda"
   },
 
   "ON_BEHALF": {
@@ -187,7 +208,7 @@
       "LAST_NAME_CHECK_INVALID": "Gwiriwch eich cyfenw",
 
       "ADDRESS_TOWN_CHECK": "Gwiriwch y dref neu'r ddinas",
-      "ADDRESS_TOWN_CHECK_INVALID": "Nodwch y dref neu’r ddinas lle rydych yn byw",
+      "ADDRESS_TOWN_CHECK_INVALID": "Gwiriwch y dref neu'r ddinas",
 
       "RELATIONSHIP_CHECK": "Gwiriwch eich perthynas â'r unigolyn",
       "RELATIONSHIP_CHECK_MISSING": "Nodwch eich perthynas â'r unigolyn",
@@ -209,7 +230,7 @@
 
       "EMAIL_CONFIRMATION_CHECK": "Gwiriwch eich cyfeiriad e-bost",
       "EMAIL_CONFIRMATION_CHECK_MISSING": "Gwiriwch eich cyfeiriad e-bost. Mae'n rhaid iddo fod yr un fath â'r un yn y blwch uchod.",
-      "EMAIL_CONFIRMATION_CHECK_INVALID": "Nid yw’r cyfeiriad e-bost a nodwyd gennych yr un fath â’r cyfeiriad e-bost yn y blwch uchod."
+      "EMAIL_CONFIRMATION_CHECK_INVALID": "Nid yw'r cyfeiriad e-bost a nodwyd gennych yr un fath â'r cyfeiriad e-bost yn y blwch uchod."
     },
 
     "THIRD_PARTY_REASON": {
@@ -231,7 +252,7 @@
       "ADDRESS_LINE_ONE_MISSING": "Nodwch linell gyntaf eich cyfeiriad",
 
       "ADDRESS_TOWN_CHECK": "Gwiriwch y dref neu'r ddinas",
-      "ADDRESS_TOWN_CHECK_MISSING": "Nodwch y dref neu’r ddinas lle rydych yn byw",
+      "ADDRESS_TOWN_CHECK_MISSING": "Nodwch y dref neu'r ddinas lle rydych yn byw",
       "ADDRESS_TOWN_CHECK_INVALID": "Gwiriwch y dref neu'r ddinas",
 
       "ADDRESS_COUNTY_CHECK": "Gwiriwch y sir",
@@ -252,9 +273,11 @@
       "CANNOT_USE_OWN_EMAIL_INLINE": "Nid ydych wedi darparu cyfeiriad e-bost. Dewiswch yr opsiwn arall.",
 
       "USE_PHONE_CHECK": "Nodwch rif ffôn cyswllt",
-      "PHONE_NUMBER_CHECK": "Gwiriwch y prif rif ffôn",
+      "PHONE_NUMBER_CHECK": "Nodwch rif ffôn cyswllt",
       "PHONE_NUMBER_CHECK_MISSING": "Nodwch y prif rif ffôn",
       "PHONE_NUMBER_CHECK_INVALID": "Gwiriwch y prif rif ffôn",
+      "PHONE_NUMBER_OTHER_CHECK": "Gwiriwch y rhif ffôn arall",
+      "PHONE_NUMBER_OTHER_CHECK_INVALID": "Gwiriwch y rhif ffôn arall",
 
       "USE_EMAIL_CHECK": "Nodwch gyfeiriad e-bost cyswllt",
       "EMAIL_CHECK": "Gwiriwch y cyfeiriad e-bost",

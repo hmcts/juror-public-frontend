@@ -9,7 +9,7 @@ var moment = require('moment');
       pageOrientation: 'portrait',
       pageMargins: [40, 150, 40, 40],
       defaultStyle: {
-        font: 'Roboto'
+        font: 'OpenSans'
       },
       header: {
         layout: 'noBorders',
@@ -552,6 +552,7 @@ var moment = require('moment');
           }],
           marginBottom: juror.ineligible === 'Yes' ? 20 : 0
         },
+        //Qualify - Header
         {
           text: texts.jurorPDF.qualifyQuestionsHeader,
           style: 'smallBold',
@@ -570,13 +571,14 @@ var moment = require('moment');
           }],
           marginBottom: 10
         },
+        //Qualify - Residency
         {
           text: texts.jurorPDF.residencyQuestion,
           style: 'smallDull',
           marginBottom: 10
         },
         {
-          text: juror.qualify.livedConsecutive.details ? texts.sharedText.no : texts.sharedText.yes,
+          text: juror.qualify.livedConsecutive.details ? texts.jurorPDF.residencyNo : texts.jurorPDF.residencyYes,
           style: 'textReg',
           marginBottom: 10
         },
@@ -597,18 +599,19 @@ var moment = require('moment');
           }],
           marginBottom: 10
         },
+        //Qualify - Mental Health Sectioned
         {
-          text: texts.jurorPDF.mentalHealthQuestion,
+          text: texts.jurorPDF.mentalHealthSectioned,
           style: 'smallDull',
           marginBottom: 10
         },
         {
-          text: juror.qualify.mentalHealthAct.details ? texts.sharedText.yes : texts.sharedText.no,
+          text: juror.qualify.mentalHealthSectioned.details ? texts.jurorPDF.mentalHealthSectionedYes : texts.jurorPDF.mentalHealthSectionedNo,
           style: 'textReg',
           marginBottom: 10
         },
         {
-          text: juror.qualify.mentalHealthAct.details ? juror.qualify.mentalHealthAct.details : '',
+          text: juror.qualify.mentalHealthSectioned.details ? juror.qualify.mentalHealthSectioned.details : '',
           style: 'textReg',
           marginBottom: 5
         },
@@ -624,13 +627,42 @@ var moment = require('moment');
           }],
           marginBottom: 10
         },
+        //Qualify - Mental Health Capacity
+        {
+          text: texts.jurorPDF.mentalHealthCapacity,
+          style: 'smallDull',
+          marginBottom: 10
+        },
+        {
+          text: juror.qualify.mentalHealthCapacity.details ? texts.jurorPDF.mentalHealthCapacityYes : texts.jurorPDF.mentalHealthCapacityNo,
+          style: 'textReg',
+          marginBottom: 10
+        },
+        {
+          text: juror.qualify.mentalHealthCapacity.details ? juror.qualify.mentalHealthCapacity.details : '',
+          style: 'textReg',
+          marginBottom: 5
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 10
+        },
+        //Qualify - Bail
         {
           text: texts.jurorPDF.bailQuestion,
           style: 'smallDull',
           marginBottom: 10
         },
         {
-          text: juror.qualify.onBail.details ? texts.sharedText.yes : texts.sharedText.no,
+          text: juror.qualify.onBail.details ? texts.jurorPDF.bailYes : texts.jurorPDF.bailNo,
           style: 'textReg',
           marginBottom: 10
         },
@@ -651,13 +683,14 @@ var moment = require('moment');
           }],
           marginBottom: 10
         },
+        //Qualify - Convictions
         {
           text: texts.jurorPDF.convictionsQuestion,
           style: 'smallDull',
           marginBottom: 10
         },
         {
-          text: juror.qualify.convicted.details ? texts.sharedText.yes : texts.sharedText.no,
+          text: juror.qualify.convicted.details ? texts.jurorPDF.convictionsYes : texts.jurorPDF.convictionsNo,
           style: 'textReg',
           marginBottom: 10
         },
@@ -819,12 +852,12 @@ var moment = require('moment');
           marginBottom: 10
         },
         {
-          text: texts.jurorPDF.employmentDetails,
+          text: texts.jurorPDF.employmentQuestion,
           style: 'smallDull',
           marginBottom: 10
         },
         {
-          text: juror.cjsEmployerDetails ? texts.sharedText.yes : texts.sharedText.no,
+          text: juror.cjsEmployed === texts.jurorPDF.employmentQuestionYes ? texts.jurorPDF.employmentQuestionYes : texts.jurorPDF.employmentQuestionNo,
           style: 'textReg',
           marginBottom: 5
         },
@@ -898,7 +931,7 @@ var moment = require('moment');
           marginBottom: 10
         },
         {
-          text: juror.assistanceTypeOutput ? texts.sharedText.yes : texts.sharedText.no,
+          text: juror.assistanceTypeOutput ? texts.jurorPDF.helpDetailsYes : texts.jurorPDF.helpDetailsNo,
           style: 'textReg',
           marginBottom: 5
         },
@@ -949,7 +982,7 @@ var moment = require('moment');
             lineColor: juror.assistanceSpecialArrangements ? '#ccc' : '#fff'
           }],
           marginBottom: 20,
-          pageBreak: 'after'
+          // pageBreak: 'after'
         },
         //////////////////////////////////////////////////////
         // Section 4
@@ -1064,7 +1097,7 @@ var moment = require('moment');
       pageOrientation: 'portrait',
       pageMargins: [40, 150, 40, 40],
       defaultStyle: {
-        font: 'Roboto'
+        font: 'OpenSans'
       },
       header: {
         layout: 'noBorders',
@@ -1780,6 +1813,7 @@ var moment = require('moment');
           }],
           marginBottom: 20
         },
+        //Qualify - Header
         {
           text: texts.thirdPartyPDF.qualifyHeader,
           style: 'smallBold',
@@ -1797,18 +1831,19 @@ var moment = require('moment');
           }],
           marginBottom: 10
         },
+        //Qualify - Residency
         {
-          text: texts.thirdPartyPDF.qualifyQuestionOne,
+          text: texts.thirdPartyPDF.residencyQuestion,
           style: 'smallDull',
           marginBottom: 10
         },
         {
-          text: juror.qualify.livedConsecutive.answer,
+          text: juror.qualify.livedConsecutive.details ? texts.thirdPartyPDF.residencyNo : texts.thirdPartyPDF.residencyYes,
           style: 'textReg',
           marginBottom: 10
         },
         {
-          text: juror.qualify.livedConsecutive.details || '',
+          text: juror.qualify.livedConsecutive.details ? juror.qualify.livedConsecutive.details : '',
           style: 'textReg',
           marginBottom: 5
         },
@@ -1824,18 +1859,19 @@ var moment = require('moment');
           }],
           marginBottom: 10
         },
+        //Qualify - Mental Health Sectioned
         {
-          text: texts.thirdPartyPDF.qualifyQuestionTwo,
+          text: texts.thirdPartyPDF.mentalHealthSectioned,
           style: 'smallDull',
           marginBottom: 10
         },
         {
-          text: juror.qualify.mentalHealthAct.answer,
+          text: juror.qualify.mentalHealthSectioned.details ? texts.thirdPartyPDF.mentalHealthSectionedYes : texts.thirdPartyPDF.mentalHealthSectionedNo,
           style: 'textReg',
           marginBottom: 10
         },
         {
-          text: juror.qualify.mentalHealthAct.details || '',
+          text: juror.qualify.mentalHealthSectioned.details ? juror.qualify.mentalHealthSectioned.details : '',
           style: 'textReg',
           marginBottom: 5
         },
@@ -1851,18 +1887,19 @@ var moment = require('moment');
           }],
           marginBottom: 10
         },
+        //Qualify - Mental Health Capacity
         {
-          text: texts.thirdPartyPDF.qualifyQuestionThree,
+          text: texts.thirdPartyPDF.mentalHealthCapacity,
           style: 'smallDull',
           marginBottom: 10
         },
         {
-          text: juror.qualify.onBail.answer,
+          text: juror.qualify.mentalHealthCapacity.details ? texts.thirdPartyPDF.mentalHealthCapacityYes : texts.thirdPartyPDF.mentalHealthCapacityNo,
           style: 'textReg',
           marginBottom: 10
         },
         {
-          text: juror.qualify.onBail.details || '',
+          text: juror.qualify.mentalHealthCapacity.details ? juror.qualify.mentalHealthCapacity.details : '',
           style: 'textReg',
           marginBottom: 5
         },
@@ -1878,18 +1915,47 @@ var moment = require('moment');
           }],
           marginBottom: 10
         },
+        //Qualify - Bail
         {
-          text: texts.thirdPartyPDF.qualifyQuestionFour,
+          text: texts.thirdPartyPDF.bailQuestion,
           style: 'smallDull',
           marginBottom: 10
         },
         {
-          text: juror.qualify.convicted.answer,
+          text: juror.qualify.onBail.details ? texts.thirdPartyPDF.bailYes : texts.thirdPartyPDF.bailNo,
           style: 'textReg',
           marginBottom: 10
         },
         {
-          text: juror.qualify.convicted.details || '',
+          text: juror.qualify.onBail.details ? juror.qualify.onBail.details : '',
+          style: 'textReg',
+          marginBottom: 5
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 10
+        },
+        //Qualify - Convictions
+        {
+          text: texts.thirdPartyPDF.convictionsQuestion,
+          style: 'smallDull',
+          marginBottom: 10
+        },
+        {
+          text: juror.qualify.convicted.details ? texts.thirdPartyPDF.convictionsYes : texts.thirdPartyPDF.convictionsNo,
+          style: 'textReg',
+          marginBottom: 10
+        },
+        {
+          text: juror.qualify.convicted.details ? juror.qualify.convicted.details : '',
           style: 'textReg',
           marginBottom: 5
         },
@@ -2044,13 +2110,14 @@ var moment = require('moment');
           }],
           marginBottom: 10
         },
+        //CJS Employed
         {
           text: texts.thirdPartyPDF.employmentQuestion,
           style: 'smallDull',
           marginBottom: 10
         },
         {
-          text: juror.cjsEmployed,
+          text: juror.cjsEmployed === texts.thirdPartyPDF.employmentQuestionYes ? texts.thirdPartyPDF.employmentQuestionYes : texts.thirdPartyPDF.employmentQuestionNo,
           style: 'textReg',
           marginBottom: 5
         },
@@ -2118,6 +2185,7 @@ var moment = require('moment');
           }],
           marginBottom: juror.assistanceTypeOutput ? 20 : 0
         },
+        //Assistance
         {
           text: texts.thirdPartyPDF.assistanceHeader,
           style: 'smallBold',
@@ -2136,11 +2204,11 @@ var moment = require('moment');
           marginBottom: 10
         },
         {
-          text: texts.thirdPartyPDF.disabilityQuesion,
+          text: texts.thirdPartyPDF.disabilityQuestion,
           style: 'smallDull',
         },
         {
-          text: juror.assistanceNeeded,
+          text: juror.assistanceTypeOutput ? texts.thirdPartyPDF.disabilityQuestionYes : texts.thirdPartyPDF.disabilityQuestionNo,
           style: 'textReg',
           marginBottom: 5
         },
@@ -2308,7 +2376,7 @@ var moment = require('moment');
       pageOrientation: 'portrait',
       pageMargins: [40, 150, 40, 40],
       defaultStyle: {
-        font: 'Roboto'
+        font: 'OpenSans'
       },
       header: {
         layout: 'noBorders',
@@ -2462,12 +2530,12 @@ var moment = require('moment');
           marginBottom: 20
         },
         {
-          text: texts.deceasedPDF.distressApology,
+          text: texts.deceasedPDF.distressTitle,
           style: 'bigBold',
           marginBottom: 10
         },
         {
-          text: texts.deceasedPDF.distressLineOne + texts.deceasedPDF.distressLineTwo + texts.deceasedPDF.distressLineThree + texts.deceasedPDF.distressLineFour,
+          text: texts.deceasedPDF.distressApology,
           marginBotton: 20
         },
         {
@@ -2525,7 +2593,7 @@ var moment = require('moment');
       pageOrientation: 'portrait',
       pageMargins: [40, 150, 40, 40],
       defaultStyle: {
-        font: 'Roboto'
+        font: 'OpenSans'
       },
       header: {
         layout: 'noBorders',
@@ -2669,6 +2737,7 @@ var moment = require('moment');
           }],
           marginBottom: 20
         },
+        // What Happens Next
         {
           text: texts.whatHappensNext.header,
           style: 'bigBold',
@@ -2696,8 +2765,195 @@ var moment = require('moment');
             lineWidth: 1.5
           }],
           marginBottom: 20,
-          pageBreak: juror.thirdParty === 'Yes' ? 'after' : ''
+          //pageBreak: juror.thirdParty === 'Yes' ? 'after' : ''
+          pageBreak: 'after'
         },
+        {
+          text: texts.sharedText.howYouReplied,
+          style: 'bigBold'
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 3
+          }],
+          marginBottom: 20
+        },
+        //
+        // Juror Details
+        //
+        {
+          text: juror.thirdParty === 'Yes' ? texts.thirdPartyPDF.jurorDetailsHeader : texts.jurorPDF.jurorDetails,
+          style: 'smallBold',
+          marginBottom: 10
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 10
+        },
+        {
+          columns: [{
+            text: texts.jurorPDF.nameHeader,
+            width: '20%',
+            style: 'smallDull'
+          },
+          {
+            text: juror.nameRender,
+            width: '*'
+          }
+          ],
+          marginBottom: 5
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 10
+        },
+        {
+          columns: [{
+            text: texts.jurorPDF.addressHeader,
+            width: '20%',
+            style: 'smallDull'
+          },
+          {
+            text: juror.addressRender.replace(/\<br\>/g, ', '),
+            width: '*'
+          }
+          ],
+          marginBottom: 5
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 10
+        },
+        {
+          columns: [{
+            text: texts.jurorPDF.dobHeader,
+            width: '20%',
+            style: 'smallDull'
+          },
+          {
+            text: moment(juror.dateOfBirth).format('DD/MM/YYYY'),
+            width: '*'
+          }
+          ],
+          marginBottom: 5
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 10
+        },
+        {
+          columns: [{
+            text: texts.jurorPDF.mainPhoneHeader,
+            width: '20%',
+            style: 'smallDull'
+          },
+          {
+            text: juror.primaryPhone,
+            width: '*'
+          }
+          ],
+          marginBottom: 5
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 10
+        },
+        {
+          columns: [{
+            text: texts.jurorPDF.otherPhoneHeader,
+            width: '20%',
+            style: 'smallDull'
+          },
+          {
+            text: '\n' + (juror.secondaryPhone || ''),
+            width: '*'
+          }
+          ],
+          marginBottom: 5
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 10
+        },
+        {
+          columns: [{
+            text: texts.jurorPDF.emailHeader,
+            width: '20%',
+            style: 'smallDull'
+          },
+          {
+            text: juror.emailAddress,
+            width: '*'
+          }
+          ],
+          marginBottom: 5
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 20
+        },
+        // Third Party Details
         {
           text: juror.thirdParty === 'Yes' ? texts.thirdPartyPDF.thirdPartyDetailsHeader : '',
           style: 'smallBold',

@@ -1,5 +1,5 @@
 {% if errors.count > 0 %}
-<div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
+<div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1" aria-live="polite" aria-atomic="true">
   <h2 class="heading-medium error-summary-heading" id="error-summary-heading">
     {{ errors.title }}
   </h2>
@@ -11,7 +11,11 @@
   <ul class="error-summary-list">
     {% for key, messages in errors.items %}
     <li>
-      <a href="#{{ key }}Group">
+      {% if key in ['contactPhone','thirdPartyReason','dateOfBirth','useJurorPhoneDetails','useJurorEmailDetails','livedConsecutive','mentalHealthSectioned','mentalHealthCapacity','onBail','convicted','cjsEmployed','cjsEmployer','assistanceNeeded'] %}
+        <a href="#{{ key }}Group">
+      {% else %}
+        <a href="#{{ key }}">
+      {% endif %}
         {% if messages[0]|isString %}
         {{ messages[0] }}
         {% else %}

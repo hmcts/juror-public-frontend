@@ -1,0 +1,117 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}3rd Party Personal Details Address{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+
+    {% include "../../includes/back-link.njk" %}
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('branches.third.party.personal.details.address.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+
+      <div class="form-group {% if errors.items['address'] or errors.items['addressLineOne'] or errors.items['addressLineTwo'] or errors.items['addressLineThree'] or errors.items['addressTown'] or errors.items['addressCounty'] or errors.items['addressPostcode'] %}error{% endif %}">
+
+        <h1 class="heading-xlarge">
+          <div class="heading-secondary">
+            {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.CAPTION }}
+          </div>
+          {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.ADDRESS_HEADER }}
+        </h1>
+
+        {# Address #}
+        <fieldset class="inline-edit" id="addressGroupSet">
+
+          <legend>
+            <strong class="bold-small">
+              {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_LABEL }}
+            </strong>
+          </legend>
+
+          <div class="grid-row inline-section primary {% if errors.addressError %}closed{% endif %}">
+            <div class="column-one-half">
+              {{ user.addressRender | safe }}
+            </div>
+            <div class="column-one-half">
+              <a href="#addressGroup" id="addressChangeLink" class="inline-edit-toggle">{{ texts.INTERFACE.FORM_CHANGE_LABEL }}</a>
+            </div>
+          </div>
+
+          <div class="inline-section secondary {% if errors.addressError %}open{% endif %}" id="addressGroup">
+
+            <div class="form-group">
+
+              <div class="form-group" id="addressLineOneGroup">
+                <label class="form-label" for="addressLineOne">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_LINE_ONE_LABEL }}</label>
+                {% if errors.items['addressLineOne'] %}<span class="error-message" id="addressLineOneErrorMessage">{{ errors.items['addressLineOne'][0].details }}</span>{% endif %}
+                <input type="text" class="form-control" name="addressLineOne" id="addressLineOne" value="{{ user.addressLineOne }}" maxlength="35" autocomplete="off" {% if errors.items['addressLineOne'] %}aria-describedby="addressLineOneErrorMessage"{% endif %}>
+              </div>
+
+              <div class="form-group" id="addressLineTwoGroup">
+                <label for="addressLineTwo" class="visuallyhidden">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_LINE_TWO_LABEL }}</label>
+                {% if errors.items['addressLineTwo'] %}<span class="error-message" id="addressLineTwoErrorMessage">{{ errors.items['addressLineTwo'][0].details }}</span>{% endif %}
+                <input type="text" class="form-control" name="addressLineTwo" id="addressLineTwo" value="{{ user.addressLineTwo }}" maxlength="35" autocomplete="off" {% if errors.items['addressLineTwo'] %}aria-describedby="addressLineTwoErrorMessage"{% endif %}>
+              </div>
+
+              <div class="form-group" id="addressLineThreeGroup">
+                <label for="addressLineThree" class="visuallyhidden">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_LINE_THREE_LABEL }}</label>
+                {% if errors.items['addressLineThree'] %}<span class="error-message" id="addressLineThreeErrorMessage">{{ errors.items['addressLineThree'][0].details }}</span>{% endif %}
+                <input type="text" class="form-control" name="addressLineThree" id="addressLineThree" value="{{ user.addressLineThree }}" maxlength="35" autocomplete="off" {% if errors.items['addressLineThree'] %}aria-describedby="addressLineThreeErrorMessage"{% endif %}>
+              </div>
+            </div>
+
+            <div class="form-group" id="addressTownGroup">
+              <label class="form-label" for="addressTown">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_TOWN_LABEL }}</label>
+              {% if errors.items['addressTown'] %}<span class="error-message" id="addressTownErrorMessage">{{ errors.items['addressTown'][0].details }}</span>{% endif %}
+              <input type="text" class="form-control" name="addressTown" id="addressTown" value="{{ user.addressTown }}" maxlength="35" autocomplete="off" {% if errors.items['addressTown'] %}aria-describedby="addressTownErrorMessage"{% endif %}>
+            </div>
+
+            <div class="form-group" id="addressCountyGroup">
+              <label class="form-label" for="addressCounty">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_COUNTY_LABEL }}</label>
+              {% if errors.items['addressCounty'] %}<span class="error-message" id="addressCountyErrorMessage">{{ errors.items['addressCounty'][0].details }}</span>{% endif %}
+              <input type="text" class="form-control" name="addressCounty" id="addressCounty" value="{{ user.addressCounty }}" maxlength="35" autocomplete="off" {% if errors.items['addressCounty'] %}aria-describedby="addressCountyErrorMessage"{% endif %}>
+            </div>
+
+            <div class="form-group" id="addressPostcodeGroup">
+              <label class="form-label" for="addressPostcode">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_POSTCODE_LABEL }}</label>
+              {% if errors.items['addressPostcode'] %}<span class="error-message" id="addressPostcodeErrorMessage">{{ errors.items['addressPostcode'][0].details }}</span>{% endif %}
+              <input type="text" class="form-control" name="addressPostcode" id="addressPostcode" value="{{ user.addressPostcode }}" maxlength="8" autocomplete="off" {% if errors.items['addressPostcode'] %}aria-describedby="addressPostcodeErrorMessage"{% endif %}>
+            </div>
+
+          </div>
+
+        </fieldset>
+
+      </div>
+
+      {# Info about change of address #}
+      <br>
+      <div class="form-group">
+        <details>
+          <summary>
+            <span class="summary">
+              {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.HELPER_CHANGE_ADDRESS_TITLE }}
+            </span>
+          </summary>
+          <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+            <p>
+              {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.HELPER_CHANGE_ADDRESS_PARAGRAPH_1 }}
+            </p>
+          </div>
+        </details>
+      </div>
+
+      {# Submit form #}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+
+    </form>
+  </div>
+</div>
+{% endblock %}

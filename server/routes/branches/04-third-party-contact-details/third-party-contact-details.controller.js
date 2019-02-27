@@ -16,7 +16,8 @@
   module.exports.index = function() {
     return function(req, res) {
       var tmpErrors
-        , mergedUser;
+        , mergedUser
+        , backLinkUrl;
 
       // Make sure the user session exists
       if (typeof req.session.user === 'undefined') {
@@ -30,6 +31,13 @@
       delete req.session.errors;
       delete req.session.formFields;
 
+      // Set back link URL
+      if (req.session.change === true){
+        backLinkUrl = 'steps.confirm.information.tp.get';
+      } else {
+        backLinkUrl = 'branches.third.party.personal.details.date-of-birth.get';
+      }
+
       return res.render('branches/04-third-party-contact-details/index.njk', {
         user: mergedUser,
         errors: {
@@ -37,7 +45,8 @@
           message: '',
           count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
           items: tmpErrors,
-        }
+        },
+        backLinkUrl: backLinkUrl
       });
     };
   };
@@ -76,10 +85,10 @@
 
 
       if (req.session.change === true) {
-        return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
+        return res.redirect(app.namedRoutes.build('steps.confirm.information.tp.get'));
       }
 
-      return res.redirect(app.namedRoutes.build('steps.qualify.get'));
+      return res.redirect(app.namedRoutes.build('steps.qualify.tp.get'));
     };
   };
 

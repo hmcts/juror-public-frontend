@@ -1,0 +1,51 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}3rd Party Details{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    {% include "../../includes/back-link.njk" %}
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('branches.third.party.details.relationship.post') }}" method="POST" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+
+      <div class="form-group {% if errors.items['relationship'] %}error{% endif %}">
+    
+        <h1 class="heading-xlarge">
+          <div class="heading-secondary">
+            {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CAPTION }}
+          </div>
+          {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.RELATIONSHIP.TITLE }}
+        </h1>
+
+        <fieldset>
+          <p class="form-group" id="relationshipGroup">
+            <label class="form-label" for="relationship">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.RELATIONSHIP.LABEL_RELATIONSHIP }}</label>
+            {% if errors.items['relationship'] %}<span class="error-message" id="relationshipErrorMessage">{{ errors.items['relationship'][0].details }}</span>{% endif %}
+            <input type="text" class="form-control" name="relationship" id="relationship" value="{{ user.thirdPartyDetails.relationship }}" minlength="1" maxlength="100" autocomplete="off" {% if errors.items['relationship'] %}aria-describedby="relationshipErrorMessage"{% endif %}>
+          </p>
+        </fieldset>
+
+      </div>
+
+      <br><br>
+      <div class="form-group">
+        <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

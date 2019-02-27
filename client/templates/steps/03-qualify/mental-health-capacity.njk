@@ -1,0 +1,82 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_TITLE_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_TITLE }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Eligibility Mental Health Capacity{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    {% include "../../includes/back-link.njk" %}
+    {% include "../../includes/errors.njk" %}
+    
+    <form action="{{ url('steps.qualify.mental.health.capacity.post') }}" method="post">
+        <div class="form-group inline {% if (errors.items['mentalHealthCapacity']) or (errors.items['mentalHealthCapacityDetails']) %}error{% endif %}" id="mentalHealthCapacityGroup">
+
+            <h1 class="heading-xlarge">
+            <div class="heading-secondary">
+                {% if user.thirdParty == 'Yes' %}
+                {{ texts.QUALIFY_PAGE.CAPTION_OB }}
+                {% else %}
+                {{ texts.QUALIFY_PAGE.CAPTION }}
+                {% endif %}
+            </div>
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_TITLE_OB }}
+            {% else %}
+            {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_TITLE }}
+            {% endif %}
+            </h1>
+
+            <fieldset>
+            <span class="form-hint" id="mentalHealthCapacityHint">{{ texts.QUALIFY_PAGE.UNSURE_PROMPT }} <a href="{{ url('steps.qualify.mental.health.capacity.info') }}">{{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}</a></span>
+                {% if errors.items['mentalHealthCapacity'] %} <span class="error-message"> {{ errors.items['mentalHealthCapacity'][0].details }} </span> {% endif %}
+            <br>
+            <label class="block-label selection-button-radio" for="mentalHealthCapacity-Yes" data-target="mentalHealthCapacityDetailsGroup">
+                {% if user.thirdParty == 'Yes' %}
+                <input id="mentalHealthCapacity-Yes" type="radio" name="mentalHealthCapacity" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.mentalHealthCapacity.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
+                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES_OB }}
+                {% else %}
+                <input id="mentalHealthCapacity-Yes" type="radio" name="mentalHealthCapacity" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.mentalHealthCapacity.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
+                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES }}
+                {% endif %}
+            </label>
+            <label class="block-label selection-button-radio" for="mentalHealthCapacity-No">
+                {% if user.thirdParty == 'Yes' %}
+                <input id="mentalHealthCapacity-No" type="radio" name="mentalHealthCapacity" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.mentalHealthCapacity.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
+                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO_OB }}
+                {% else %}
+                <input id="mentalHealthCapacity-No" type="radio" name="mentalHealthCapacity" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.mentalHealthCapacity.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
+                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO }}
+                {% endif %}
+            </label>
+
+            <div class="panel panel-border-narrow {% if user.qualify.mentalHealthCapacity.answer === texts.QUALIFY_PAGE.YES %}{% else %}js-hidden{% endif %}" id="mentalHealthCapacityDetailsGroup">
+                <label class="form-label" for="mentalHealthCapacityDetails">{{ texts.QUALIFY_PAGE.DETAILS }}</label>
+                {% if errors.items['mentalHealthCapacityDetails'] %}<span class="error-message" id="mhCapacityDetailsErrorMessage">{{ errors.items['mentalHealthCapacityDetails'][0].details }}</span>{% endif %}
+                <textarea class="form-control" name="mentalHealthCapacityDetails" id="mentalHealthCapacityDetails" maxlength="1000" {% if errors.items['mentalHealthCapacityDetails'] %}aria-describedby="mhCapacityDetailsErrorMessage"{% endif %}>{{ user.qualify.mentalHealthCapacity.details }}</textarea>
+                <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
+            </div>
+
+            </fieldset>
+        </div>
+
+        {# Submit form #}
+        <input type="hidden" name="_csrf" id="_csrf" value="{{ csrftoken }}">
+        <input type="hidden" id="store_url" value="{{ url('steps.qualify.store') }}">
+        <input id="submitButton" class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+   
+  </div>
+</div>
+
+{% endblock %}

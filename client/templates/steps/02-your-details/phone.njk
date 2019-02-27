@@ -1,0 +1,79 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Personal Details Phone{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    {% include "../../includes/back-link.njk" %}
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('steps.your.details.phone.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+      
+      <div class="form-group {% if (errors.items['primaryPhone']) or (errors.items['secondaryPhone']) %}error{% endif %}" id="titleGroup">
+
+      <h1 class="heading-xlarge">
+        <div class="heading-secondary">
+          {% if user.thirdParty == 'Yes' %}
+          {{- texts.YOUR_DETAILS_PAGE.CAPTION_OB -}}
+          {% else %}
+          {{- texts.YOUR_DETAILS_PAGE.CAPTION -}}
+          {% endif %}
+        </div>
+        {% if user.thirdParty == 'Yes' %}
+          {{- texts.YOUR_DETAILS_PAGE.HEADING_PHONE_OB -}}
+          {% else %}
+          {{- texts.YOUR_DETAILS_PAGE.HEADING_PHONE -}}
+        {% endif %}
+      </h1>
+
+      {# Phone #}
+      <fieldset>
+
+        <p>
+          {% if user.thirdParty == 'Yes' %}
+          {{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_DESCRIPTION_OB }}
+          {% else %}
+          {{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_DESCRIPTION }}
+          {% endif %}
+        </p>
+
+        <div class="form-group" id="primaryPhoneGroup">
+          <label class="form-label" for="primaryPhone">{{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_PRIMARY_LABEL }}</label>
+          {% if errors.items['primaryPhone'] %}<span class="error-message" id="primaryPhoneErrorMessage">{{ errors.items['primaryPhone'][0].details }}</span>{% endif %}
+          <input type="text" inputmode="numeric" class="form-control" id="primaryPhone" name="primaryPhone" value="{{ user.primaryPhone }}" {% if IS_PRODUCTION %}maxlength="15"{% endif %}  autocomplete="off">
+        </div>
+
+        <div class="form-group" id="secondaryPhoneGroup">
+          <label class="form-label" for="secondaryPhone">{{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_SECONDARY_LABEL }}</label>
+          {% if errors.items['secondaryPhone'] %}<span class="error-message" id="secondaryPhoneErrorMessage">{{ errors.items['secondaryPhone'][0].details }}</span>{% endif %}
+          <input type="text" inputmode="numeric" class="form-control" id="secondaryPhone" name="secondaryPhone" value="{{ user.secondaryPhone }}" {% if IS_PRODUCTION %}maxlength="15"{% endif %} autocomplete="off">
+        </div>
+
+      </fieldset>
+
+      </div>
+
+      <br/>
+
+      {# Submit form #}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+    
+  </div>
+
+</div>
+
+{% endblock %}

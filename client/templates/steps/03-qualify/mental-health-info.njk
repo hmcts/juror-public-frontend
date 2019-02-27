@@ -10,8 +10,9 @@
 
   <div class="column-two-thirds">
 
-    <h1 class="heading-xlarge">{{ texts.INFO_PAGE.MENTAL_HEALTH.HEADING }}</h1>
+    {% include "../../includes/back-link.njk" %}
 
+    <h1 class="heading-xlarge">{{ texts.INFO_PAGE.MENTAL_HEALTH.HEADING }}</h1>
 
     <h3 class="heading-medium">{{ texts.INFO_PAGE.MENTAL_HEALTH.DISORDERS.TITLE }}</h3>
     {% if user.thirdParty == 'Yes' %}

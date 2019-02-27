@@ -6,28 +6,28 @@
 
 {% block page_identifier %}Excusal{% endblock %}
 
-
 {% block content %}
 
 <div class="grid-row">
 
   <div class="column-two-thirds">
 
-    <h1 class="heading-xlarge">{{ texts.EXCUSAL_PAGE.HEADING }}</h1>
-
+    {% include "../../includes/back-link.njk" %}
     {% include "../../includes/errors.njk" %}
 
     <form action="{{ url('steps.confirm.date.excusal.post') }}" method="post">
 
       <div class="form-group {% if errors.items['excusalReason'] %}error{% endif %}" id="excusalReasonGroup">
+
+        <h1 class="heading-xlarge">
+          {% if user.thirdParty == 'Yes' %}
+          {{ texts.EXCUSAL_PAGE.PROMPT_OB }}
+          {% else %}
+          {{ texts.EXCUSAL_PAGE.PROMPT }}
+          {% endif %}
+        </h1>
+
         <label class="form-label" for="excusalReason">
-          <strong class="bold-small">
-            {% if user.thirdParty == 'Yes' %}
-            {{ texts.EXCUSAL_PAGE.PROMPT_OB }}
-            {% else %}
-            {{ texts.EXCUSAL_PAGE.PROMPT }}
-            {% endif %}
-          </strong>
           <span class="form-hint">
             {% if user.thirdParty == 'Yes' %}
             {{ texts.EXCUSAL_PAGE.HINT_OB }}
@@ -35,16 +35,23 @@
             {{ texts.EXCUSAL_PAGE.HINT }}
             {% endif %}
           </span>
-          {% if errors.items['excusalReason'] %}<span class="error-message">
+          {% if errors.items['excusalReason'] %}<span class="error-message" id="excusalReasonErrorMessage">
             {{ errors.items['excusalReason'][0].details }}
           </span>{% endif %}
         </label>
-        <textarea class="form-control" name="excusalReason" id="excusalReason" cols="30" rows="4" maxlength="1000">{{ user.excusal.reason }}</textarea>
+        <textarea class="form-control" name="excusalReason" id="excusalReason" cols="30" rows="4" maxlength="1000" {% if errors.items['excusalReason'] %}aria-describedby="excusalReasonErrorMessage"{% endif %}>{{ user.excusal.reason }}</textarea>
+        <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
       </div>
 
       <div class="form-group">
         <details>
-          <summary {% if trackingCode %}onclick="trackVirtualPageViews('What evidence will I need to provide')"{% endif %}><span class="summary">{{ texts.EXCUSAL_PAGE.EVIDENCE_QUESTION }}</span></summary>
+          <summary {% if trackingCode %}onclick="trackVirtualPageViews('What evidence will I need to provide')"{% endif %}><span class="summary">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.EXCUSAL_PAGE.EVIDENCE_QUESTION_OB }}
+            {% else %}
+            {{ texts.EXCUSAL_PAGE.EVIDENCE_QUESTION }}
+            {% endif %}</span>
+          </summary>
           <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
             <p>
               {% if user.thirdParty == 'Yes' %}

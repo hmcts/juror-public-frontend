@@ -3,16 +3,17 @@
     "HEADING": "Residency - where you live",
     "HEADING_THIRD_PARTY": "Residency - where the juror lives",
     "FIRST_MAIN": "To do Jury Service, you must have lived in the UK, the Channel Islands (Jersey, Guernsey, Alderney, Sark, Herm, Jethou and Brecqhou) or the Isle of Man for five or more years without any gaps. The five year period must be when you were 13 or older.",
-    "SECOND_MAIN": "If you've applied to UK Visas and Immigration and they haven’t yet made a decision about whether you can live in the UK, you might not be able to do Jury Service. Please check with us by phoning 0300 456 1024.",
+    "SECOND_MAIN": "If you've applied to UK Visas and Immigration and they haven’t yet made a decision about whether you can live in the UK, you might not be able to do Jury Service. Please check with us by phoning ",
     "FIRST_THIRD_PARTY": "To do Jury Service, a person must have lived in the UK, the Channel Islands (Jersey, Guernsey, Alderney, Sark, Herm, Jethou and Brecqhou) or the Isle of Man for five or more years without any gaps. The five year period must be when they were 13 or older.",
-    "SECOND_THIRD_PARTY": "If the person you're answering for has applied to UK Visas and Immigration and doesn't yet know whether they can live in the UK, they might not be able to do Jury Service. Please check with us by phoning 0300 456 1024."
+    "SECOND_THIRD_PARTY": "If the person you're answering for has applied to UK Visas and Immigration and doesn't yet know whether they can live in the UK, they might not be able to do Jury Service. Please check with us by phoning ",
+    "CONTACT_TEL": "0300 456 1024"
   },
 
 
   "MENTAL_HEALTH": {
-    "HEADING": "Mental Health Act 1983 and Mental Capacity Act 2005",
 
-    "DISORDERS": {
+    "SECTIONED": {
+      "HEADING": "Mental Health Act 1983",
       "TITLE": "Mental disorders",
 
       "FIRST_MAIN": "Under the Mental Health Act 1983, some people can’t do Jury Service.",
@@ -25,6 +26,7 @@
     },
 
     "CAPACITY": {
+      "HEADING": "Mental Capacity Act 2005",
       "TITLE": "Mental capacity",
 
       "FIRST_MAIN": "If you lack the mental capacity to serve as a juror, you can’t be on a jury. Mental capacity means being able to make a decision for yourself. People who cannot do this are said to lack capacity under the Mental Capacity Act 2005. The lack of capacity must be because of an impairment of or disturbance in the functioning of the mind or brain which may be due to illness, injury, learning disability, or mental health problems.",
@@ -35,7 +37,7 @@
         "ITEM_3": "Weigh up the information available to make the decision.",
         "ITEM_4": "Communicate the decision by any means."
       },
-      "SECOND_MAIN": "If you aren’t sure if you can do Jury Service because of a mental disorder or lack of mental capacity, you can phone us on 0300 456 1024 for advice.",
+      "SECOND_MAIN": "If you aren’t sure if you can do Jury Service because of a mental disorder or lack of mental capacity, you can phone us on ",
 
 
       "FIRST_THIRD_PARTY": "If the person you're answering for lacks the mental capacity to serve as a juror, they can’t be on a jury. Mental capacity means a person must be able to make a decision for themself. People who cannot do this are said to lack capacity under the Mental Capacity Act 2005. The lack of capacity must be because of an impairment of or disturbance in the functioning of the mind or brain which may be due to illness, injury, learning disability, or mental health problems.",
@@ -46,7 +48,9 @@
         "ITEM_3": "Weigh up the information available to make the decision.",
         "ITEM_4": "Communicate the decision by any means."
       },
-      "SECOND_THIRD_PARTY": "If you aren’t sure if the person you're answering for can do Jury Service because of a mental disorder or lack of mental capacity, you can phone us on 0300 456 1024 for advice."
+      "SECOND_THIRD_PARTY": "If you aren’t sure if the person you're answering for can do Jury Service because of a mental disorder or lack of mental capacity, you can phone us on 0300 456 1024 for advice.",
+      "CONTACT_TEL": "0300 456 1024",
+      "SECOND_MAIN_END": " for advice."
     }
   },
 

@@ -1,6 +1,9 @@
 {
-  "HEADING": "Ask for another date for your jury service",
-  "HEADING_OB": "Ask for another date for jury service for the person you're replying for",
+  "HEADING": "Please give us three dates you could start jury service during the next 12 months.",
+  "HEADING_OB": "Please give us three dates the person you're replying for could do jury service during the next 12 months",
+  "REASON_HEADING": "Please say why you need another date for your jury service",
+  "REASON_HEADING_OB": "Please say why the person you're answering for needs another date for their jury service",
+
 
   "REASON_FIELD_TITLE": "Please say why you need another date for your jury service",
   "REASON_FIELD_TITLE_OB": "Please say why the person you're answering for needs another date for their jury service",
@@ -14,11 +17,13 @@
   "ACCEPTABLE_LIST_ITEM_2": "having an operation",
   "ACCEPTABLE_LIST_ITEM_3": "taking an exam",
 
-  "DATE_FIELD_TITLE": "Please give us three dates you could start jury service during the next 12 months.",
-  "DATE_FIELD_TITLE_OB": "Please give us three dates the person you're replying for could do jury service during the next 12 months.",
-  "DATE_FIELD_HINT": "Jury service usually lasts up to 10 working days but can be longer.",
+  "DATE_FIELD_TITLE": "Jury service usually starts on a Monday and lasts up to 10 working days but can be longer. Jury service does not take place on bank holidays.",
+  "DATE_FIELD_TITLE_OB": "Jury service usually starts on a Monday and lasts up to 10 working days but can be longer. Jury service does not take place on bank holidays.",
+  "DATE_FIELD_HINT": "It may be possible to start your jury service on another more suitable date.",
+  "DATE_FIELD_HINT_OB": "It may be possible to start the person's jury service on another more suitable date.",
 
-  "WHY_ASK_SUMMARY": "Why do we ask?",
+  "WHY_ASK_SUMMARY": "Why do we ask this?",
+  "WHY_ASK_SUMMARY_OB": "Why do we ask?",
   "WHY_ASK_INFO": "It may be possible to start your jury service on another more suitable date.",
   "WHY_ASK_INFO_OB": "It may be possible to start the person's jury service on another more suitable date. ",
 
@@ -36,6 +41,22 @@
 
   "DATEPICKER_ALT_1": "open date 1 calendar",
   "DATEPICKER_ALT_2": "open date 2 calendar",
-  "DATEPICKER_ALT_3": "open date 3 calendar"
+  "DATEPICKER_ALT_3": "open date 3 calendar",
+
+  "MONDAY": "Monday",
+  "TUESDAY": "Tuesday",
+  "WEDNESDAY": "Wednesday",
+  "THURSDAY": "Thursday",
+  "FRIDAY": "Friday",
+  "SATURDAY": "Saturday",
+  "SUNDAY": "Sunday",
+
+  "MO": "MO",
+  "TU": "TU",
+  "WE": "WE",
+  "TH": "TH",
+  "FR": "FR",
+  "SA": "SA",
+  "SU": "SU"
 
 }

@@ -7,13 +7,25 @@
 
   module.exports = function(app) {
     // eslint-disable-next-line max-len
-    app.get('/branches/03-third-party-personal-details', 'branches.third.party.personal.details.get', auth.verify, utils.checkBranchAccess(app, 3), controller.index(app));
+    app.get('/branches/03-third-party-personal-details/name', 'branches.third.party.personal.details.name.get', auth.verify, utils.checkBranchAccess(app, 3), controller.getName(app));
+    // eslint-disable-next-line max-len
+    app.get('/branches/03-third-party-personal-details/address', 'branches.third.party.personal.details.address.get', auth.verify, utils.checkBranchAccess(app, 3), controller.getAddress(app));
+    // eslint-disable-next-line max-len
+    app.get('/branches/03-third-party-personal-details/date-of-birth', 'branches.third.party.personal.details.date-of-birth.get', auth.verify, utils.checkBranchAccess(app, 3), controller.getDateOfBirth(app));
 
     // eslint-disable-next-line max-len
-    app.post('/branches/03-third-party-personal-details', 'branches.third.party.personal.details.post', auth.verify, controller.create(app));
+    app.post('/branches/03-third-party-personal-details/name', 'branches.third.party.personal.details.name.post', auth.verify, controller.createName(app));
+    // eslint-disable-next-line max-len
+    app.post('/branches/03-third-party-personal-details/address', 'branches.third.party.personal.details.address.post', auth.verify, controller.createAddress(app));
+    // eslint-disable-next-line max-len
+    app.post('/branches/03-third-party-personal-details/date-of-birth', 'branches.third.party.personal.details.date-of-birth.post', auth.verify, controller.createDateOfBirth(app));
 
     // eslint-disable-next-line max-len
-    app.get('/branches/03-third-party-personal-details/change', 'branches.third.party.personal.details.change.get', auth.verify, controller.change(app));
+    app.get('/branches/03-third-party-personal-details/name/change', 'branches.third.party.personal.details.name.change.get', auth.verify, controller.changeName(app));
+    // eslint-disable-next-line max-len
+    app.get('/branches/03-third-party-personal-details/address/change', 'branches.third.party.personal.details.address.change.get', auth.verify, controller.changeAddress(app));
+    // eslint-disable-next-line max-len
+    app.get('/branches/03-third-party-personal-details/date-of-birth/change', 'branches.third.party.personal.details.date-of-birth.change.get', auth.verify, controller.changeDateOfBirth(app));
 
   };
 

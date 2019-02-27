@@ -438,6 +438,17 @@
     return null;
   };
 
+  validate.validators.ageDeferredDate = function(value, options) {
+    var jurorDOB = moment(options.jurorDOB)
+      , dateLimit = jurorDOB.clone().add(options.limit.multiplier, options.limit.unit)
+      , checkValue = moment(value, 'DD/MM/YYYY');
+
+    if ((checkValue === dateLimit) || (checkValue.isSameOrAfter(dateLimit))){
+      return options.message
+    }
+    return null;
+  };
+
   validate.validators.presenceMainPhone = function(value, options, key, attributes) {
     var message
       , useJurorPhoneDetails = attributes['useJurorPhoneDetails']

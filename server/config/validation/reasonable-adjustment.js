@@ -20,10 +20,10 @@
       assistanceType: {
         presenceIf: {
           field: 'assistanceNeeded',
-          value: (req.session.ulang === 'cy' ? texts_cy.REASONABLE_ADJUSTMENT_PAGE.YES : texts_en.REASONABLE_ADJUSTMENT_PAGE.YES),
+          value: 'Yes',
           message: {
-            summary: filters.translate('VALIDATION.GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.ASSISTANCE.ASSISTANCE_GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.ASSISTANCE.ASSISTANCE_GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         }
       },

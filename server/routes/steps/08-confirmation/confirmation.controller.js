@@ -4,7 +4,8 @@ var _ = require('lodash')
   , fs = require('fs')
   , pdfExport = require('../../../lib/pdfExport')
   , englishLanguageText = require('../../../../client/js/i18n/en.json')
-  , welshLanguageText = require('../../../../client/js/i18n/cy.json');
+  , welshLanguageText = require('../../../../client/js/i18n/cy.json')
+  , utils = require('../../../lib/utils');
 
 
 ;(function(){
@@ -34,7 +35,7 @@ var _ = require('lodash')
     return function(req, res) {
       var template = 'index.njk';
 
-      req.session.user.completed = 'steps.confirmation.straight.get';
+      req.session.user.completed = utils.getRedirectUrl('steps.confirmation.straight', req.session.user.thirdParty);
 
       return res.render('steps/08-confirmation/' + template, {
         user: req.session.user
@@ -47,7 +48,7 @@ var _ = require('lodash')
     return function(req, res) {
       var template = 'excusal.njk';
 
-      req.session.user.completed = 'steps.confirmation.excusal.get';
+      req.session.user.completed = utils.getRedirectUrl('steps.confirmation.excusal', req.session.user.thirdParty);
 
       return res.render('steps/08-confirmation/' + template, {
         user: req.session.user
@@ -59,7 +60,7 @@ var _ = require('lodash')
     return function(req, res) {
       var template = 'deferral.njk';
 
-      req.session.user.completed = 'steps.confirmation.deferral.get';
+      req.session.user.completed = utils.getRedirectUrl('steps.confirmation.deferral.get', req.session.user.thirdParty);
 
       return res.render('steps/08-confirmation/' + template, {
         user: req.session.user
@@ -72,7 +73,7 @@ var _ = require('lodash')
     return function(req, res) {
       var template = 'age.njk';
 
-      req.session.user.completed = 'steps.confirmation.age.get';
+      req.session.user.completed = utils.getRedirectUrl('steps.confirmation.age', req.session.user.thirdParty);
 
       return res.render('steps/08-confirmation/' + template, {
         user: req.session.user
@@ -85,7 +86,7 @@ var _ = require('lodash')
     return function(req, res) {
       var template = 'deceased.njk';
 
-      req.session.user.completed = 'steps.confirmation.deceased.get';
+      req.session.user.completed = utils.getRedirectUrl('steps.confirmation.deceased', req.session.user.thirdParty);
 
       return res.render('steps/08-confirmation/' + template, {
         user: req.session.user
@@ -98,17 +99,17 @@ var _ = require('lodash')
     return function(req, res) {
       var pdfDoc
         , fonts = {
-          Roboto: {
-            normal: './client/fonts/lightFont.ttf',
-            bold: './client/fonts/boldFont.ttf'
+          OpenSans: {
+            normal: './client/fonts/OpenSans-Regular.ttf',
+            bold: './client/fonts/OpenSans-Bold.ttf'
           }
         }
         , chunks = []
         , result
         , docDef;
 
-      printer = new pdfMake(fonts);
 
+      printer = new pdfMake(fonts);
 
 
       if (req.session.user.ineligibleDeceased) {
