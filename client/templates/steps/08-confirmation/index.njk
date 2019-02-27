@@ -26,33 +26,51 @@
     {% if user.qualify.livedConsecutive.answer == 'No' or user.qualify.mentalHealthAct.answer == 'Yes' or user.qualify.onBail.answer == 'Yes' or user.qualify.convicted.answer == 'Yes'  %}
       {% if user.thirdParty == 'Yes' %}
         <p>{{ texts.CONFIRMATION.INELIGIBLE.NEXT_INFO_GUIDANCE_OB }}</p>
-        <p>{{ texts.CONFIRMATION.INELIGIBLE.IF_YES_OB }}</p>
+        {% if user.assistanceNeeded != 'Yes' %}
+          <p>{{ texts.CONFIRMATION.INELIGIBLE.IF_YES_OB }}</p>
+        {% endif %}
       {% else %}
         <p>{{ texts.CONFIRMATION.INELIGIBLE.NEXT_INFO_GUIDANCE }}</p>
-        <p>{{ texts.CONFIRMATION.INELIGIBLE.IF_YES }}</p>
+        {% if user.assistanceNeeded != 'Yes' %}
+          <p>{{ texts.CONFIRMATION.INELIGIBLE.IF_YES }}</p>
+        {% endif %}
       {% endif %}
-      {% else %}
-            {% if user.thirdParty == 'Yes' %}
-
-              <p>{{ texts.CONFIRMATION.RECEIVE_LIST_OB }}</p>
-      {% else %}
-                    <p>{{ texts.CONFIRMATION.RECEIVE_LIST }}</p>
-
+    {% else %}
+      {% if user.assistanceNeeded == 'No' %}
+        {% if user.thirdParty == 'Yes' %}
+          <p>{{ texts.CONFIRMATION.RECEIVE_LIST_OB }}</p>
+        {% else %}
+          <p>{{ texts.CONFIRMATION.RECEIVE_LIST }}</p>
+        {% endif %}
+      {% endif %}
     {% endif %}
 
-    {% endif %}
+    {% if user.qualify.livedConsecutive.answer == 'No' or user.qualify.mentalHealthAct.answer == 'Yes' or user.qualify.onBail.answer == 'Yes' or user.qualify.convicted.answer == 'Yes'  %}
+      
+      {% if user.assistanceNeeded == 'Yes' %}
+        {% if user.thirdParty == 'Yes' %}
+          <p>{{ texts.CONFIRMATION.ADJUSTMENT_ALSO_OB }}</p>
+          <p>{{ texts.CONFIRMATION.RECEIVE_LIST_ADJUSTMENT_OB }}</p>
+        {% else %}
+          <p>{{ texts.CONFIRMATION.ADJUSTMENT_ALSO }}</p>
+          <p>{{ texts.CONFIRMATION.RECEIVE_LIST_ADJUSTMENT }}</p>
+        {% endif %}
+      {% endif %}
 
-    {% if user.assistanceNeeded == 'Yes' %}
-      {% if user.assistanceNeeded == 'Yes' and user.thirdParty == 'Yes' %}
-      <p>{{ texts.CONFIRMATION.ADJUSTMENT_OB }}</p>
-      <p>{{ texts.CONFIRMATION.RECEIVE_LIST_ADJUSTMENT_OB }}</p>
-      {% else %}
-      <p>{{ texts.CONFIRMATION.ADJUSTMENT }}</p>
-      <p>{{ texts.CONFIRMATION.RECEIVE_LIST_ADJUSTMENT }}</p>
+    {% else %}
 
+      {% if user.assistanceNeeded == 'Yes' %}
+        {% if user.thirdParty == 'Yes' %}
+          <p>{{ texts.CONFIRMATION.ADJUSTMENT_OB }}</p>
+          <p>{{ texts.CONFIRMATION.RECEIVE_LIST_ADJUSTMENT_OB }}</p>
+        {% else %}
+          <p>{{ texts.CONFIRMATION.ADJUSTMENT }}</p>
+          <p>{{ texts.CONFIRMATION.RECEIVE_LIST_ADJUSTMENT }}</p>
+        {% endif %}
       {% endif %}
 
     {% endif %}
+
     <ul class="list list-bullet">
       {% if user.thirdParty == 'Yes' %}
       <li>{{ texts.CONFIRMATION.RECEIVE_LIST_ITEM_1_OB }}</li>
@@ -70,29 +88,29 @@
     <p>
       {{ texts.CONFIRMATION.YOU_CAN_OB }}
       <a target="_blank" id="watch-video" href="https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s" {% if trackingCode %}onclick="trackOutboundLink('https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s')"{% endif %}
- rel="external">{{ texts.CONFIRMATION.WATCH_VIDEO }}</a>
-      {{ texts.CONFIRMATION.WHAT_TO_EXPECT_OB }}
+ rel="external" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.WATCH_VIDEO_OB }}</a>
+      {{- texts.CONFIRMATION.WHAT_TO_EXPECT_OB }}
     </p>
     {% else %}
     <p>
       {{ texts.CONFIRMATION.YOU_CAN }}
       <a target="_blank" id="watch-video" href="https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s" {% if trackingCode %}onclick="trackOutboundLink('https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s')"{% endif %}
- rel="external">{{ texts.CONFIRMATION.WATCH_VIDEO }}</a>
-      {{ texts.CONFIRMATION.WHAT_TO_EXPECT }}
+ rel="external" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.WATCH_VIDEO }}</a>
+      {{- texts.CONFIRMATION.WHAT_TO_EXPECT }}
     </p>
     {% endif %}
 
     {% if user.thirdParty == 'Yes' %}
     <p>
       {{ texts.CONFIRMATION.LEARN_MORE_OB }}
-      <a target="_blank" href="https://www.gov.uk/jury-service/discussing-the-trial" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/discussing-the-trial')"{% endif %}>{{ texts.CONFIRMATION.DISCUSSING_OB }}</a>
-      {{ texts.CONFIRMATION.FIND_OUT_OB }} <a target="_blank" href="https://www.gov.uk/jury-service/how-to-claim-expenses" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/how-to-claim-expenses')"{% endif %}>{{ texts.CONFIRMATION.CLAIM_EXPENSES_OB }}</a>.
+      <a target="_blank" href="https://www.gov.uk/jury-service/discussing-the-trial" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/discussing-the-trial')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.DISCUSSING_OB }}</a>
+      {{ texts.CONFIRMATION.FIND_OUT_OB }} <a target="_blank" href="https://www.gov.uk/jury-service/how-to-claim-expenses" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/how-to-claim-expenses')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.CLAIM_EXPENSES_OB }}</a>
     </p>
     {% else %}
     <p>
       {{ texts.CONFIRMATION.LEARN_MORE }}
-      <a target="_blank" href="https://www.gov.uk/jury-service/discussing-the-trial" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/discussing-the-trial')"{% endif %}>{{ texts.CONFIRMATION.DISCUSSING }}</a>
-      {{ texts.CONFIRMATION.FIND_OUT }} <a target="_blank" href="https://www.gov.uk/jury-service/how-to-claim-expenses" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/how-to-claim-expenses')"{% endif %}>{{ texts.CONFIRMATION.CLAIM_EXPENSES }}</a>.
+      <a target="_blank" href="https://www.gov.uk/jury-service/discussing-the-trial" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/discussing-the-trial')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.DISCUSSING }}</a>
+      {{ texts.CONFIRMATION.FIND_OUT }} <a target="_blank" href="https://www.gov.uk/jury-service/how-to-claim-expenses" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/how-to-claim-expenses')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.CLAIM_EXPENSES }}</a>
     </p>
     {% endif %}
 
@@ -102,7 +120,7 @@
         <span class="visuallyhidden">{{ texts.CONFIRMATION.DOWNLOAD_PDF }}</span>
       </i>
       <strong class="bold-small">
-        <a target="_blank" id="service-guide" href="https://formfinder.hmctsformfinder.justice.gov.uk/jury-summons-guide-eng.pdf"{% if trackingCode %}onclick="trackEvent('PDF guide', 'Download', 'Guide to Jury Service')"{% endif %}>{{ texts.CONFIRMATION.SERVICE_GUIDE }}</a>
+        <a target="_blank" id="service-guide" href="https://formfinder.hmctsformfinder.justice.gov.uk/jury-summons-guide-eng.pdf"{% if trackingCode %}onclick="trackEvent('PDF guide', 'Download', 'Guide to Jury Service')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.SERVICE_GUIDE }}</a>
       </strong>
     </div>
 
@@ -112,7 +130,7 @@
         <span class="visuallyhidden">{{ texts.CONFIRMATION.DOWNLOAD_PDF }}</span>
       </i>
       <strong class="bold-small">
-        <a target="_blank" id="juror-charter" href="https://formfinder.hmctsformfinder.justice.gov.uk/juror-charter-eng.pdf"{% if trackingCode %}onclick="trackEvent('PDF charter', 'Download', 'The Juror Charter')"{% endif %}>{{ texts.CONFIRMATION.JUROR_CHARTER }}</a>
+        <a target="_blank" id="juror-charter" href="https://formfinder.hmctsformfinder.justice.gov.uk/juror-charter-eng.pdf"{% if trackingCode %}onclick="trackEvent('PDF charter', 'Download', 'The Juror Charter')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.JUROR_CHARTER }}</a>
       </strong>
     </div>
 
@@ -122,7 +140,7 @@
         <span class="visuallyhidden">{{ texts.CONFIRMATION.DOWNLOAD_PDF }}</span>
       </i>
       <strong class="bold-small">
-        <a target="_blank" id="support-pdf" href="https://formfinder.hmctsformfinder.justice.gov.uk/5222a-eng.pdf"{% if trackingCode %}onclick="trackEvent('PDF support', 'Download', 'Supporting you through jury service')"{% endif %}>{{ texts.CONFIRMATION.SUPPORTING_YOU }}</a>
+        <a target="_blank" id="support-pdf" href="https://formfinder.hmctsformfinder.justice.gov.uk/5222a-eng.pdf"{% if trackingCode %}onclick="trackEvent('PDF support', 'Download', 'Supporting you through jury service')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.SUPPORTING_YOU }}</a>
       </strong>
     </div>
 

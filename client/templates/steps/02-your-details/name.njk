@@ -1,0 +1,116 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Personal Details Name{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    {% include "../../includes/back-link.njk" %}
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('steps.your.details.name.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+
+      <div class="form-group {% if errors.nameError %}error{% endif %}" id="titleGroup">
+
+        <h1 class="heading-xlarge">
+          <div class="heading-secondary">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.YOUR_DETAILS_PAGE.CAPTION_OB }}
+            {% else %}
+            {{ texts.YOUR_DETAILS_PAGE.CAPTION }}
+            {% endif %}
+          </div>
+          {% if user.thirdParty == 'Yes' %}
+            {{ texts.YOUR_DETAILS_PAGE.HEADING_NAME_OB }}
+            {% else %}
+            {{ texts.YOUR_DETAILS_PAGE.HEADING_NAME }}
+          {% endif %}
+        </h1>
+
+        {# Name #}
+        <fieldset class="inline-edit" id="nameGroup">
+
+          <div class="grid-row inline-section primary {% if errors.nameError %}closed{% endif %}">
+            <div class="column-one-half">{{ user.nameRender }}</div>
+            <div class="column-one-half">
+              <a href="#nameGroup" class="inline-edit-toggle" id="changeName" {% if trackingCode %}onclick="trackVirtualPageViews('Change - name')"{% endif %}>{{ texts.INTERFACE.FORM_CHANGE_LABEL }}</a>
+            </div>
+          </div>
+
+          <div class="inline-section secondary {% if errors.nameError %}open{% endif %}">
+
+            <div class="form-group" id="titleGroup">
+              <label class="form-label" for="title">{{ texts.YOUR_DETAILS_PAGE.FORM_TITLE_LABEL }}</label>
+              {% if errors.items['title'] %}<span class="error-message" id="titleGroupError">{{ errors.items['title'][0].details }}</span>{% endif %}
+              <input type="text" class="form-control" name="title" id="title" value="{{ user.title }}" maxlength="11" autocomplete="off" {% if errors.items['title'] %}aria-describedby="titleGroupError"{% endif %}>
+            </div>
+
+            <div class="form-group" id="firstNameGroup">
+              <label class="form-label" for="firstName">{{ texts.YOUR_DETAILS_PAGE.FORM_FIRST_NAME_LABEL }}</label>
+              {% if errors.items['firstName'] %}<span class="error-message" id="firstNameGroupError">{{ errors.items['firstName'][0].details }}</span>{% endif %}
+              <input type="text" class="form-control" name="firstName" id="firstName" value="{{ user.firstName }}" maxlength="20" autocomplete="off" {% if errors.items['firstName'] %}aria-describedby="firstNameGroupError"{% endif %}>
+            </div>
+
+            <div class="form-group" id="lastNameGroup">
+              <label class="form-label" for="lastName">{{ texts.YOUR_DETAILS_PAGE.FORM_LAST_NAME_LABEL }}</label>
+              {% if errors.items['lastName'] %}<span class="error-message" id="lastNameGroupError">{{ errors.items['lastName'][0].details }}</span>{% endif %}
+              <input type="text" class="form-control" name="lastName" id="lastName" value="{{ user.lastName }}" maxlength="20" autocomplete="off" {% if errors.items['lastName'] %}aria-describedby="lastNameGroupError"{% endif %}>
+            </div>
+
+          </div>
+
+        </fieldset>
+
+        <br/>
+
+      </div>
+
+      {# Info about change of name #}
+      <br>
+      <div class="form-group">
+        <details>
+          <summary>
+            <span class="summary" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my name?')"{% endif %}>
+              {% if user.thirdParty == 'Yes' %}
+              {{- texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_TITLE_OB -}}
+              {% else %}
+              {{- texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_TITLE -}}
+              {% endif %}
+
+            </span>
+          </summary>
+          <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+            <p>
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_PARAGRAPH_1_OB }}
+              {% else %}
+              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_PARAGRAPH_1 }}
+              {% endif %}
+            </p>
+          </div>
+        </details>
+      </div>
+
+      
+
+      {# Submit form #}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+    
+  </div>
+
+</div>
+
+{% endblock %}

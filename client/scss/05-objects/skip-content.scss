@@ -1,0 +1,17 @@
+//Override gov.uk classes
+#skiplink-container {
+    text-align: center;
+    background: #0b0c0c; }
+    #skiplink-container div {
+      text-align: left;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+    #skiplink-container .skiplink {
+      display: inline-block;
+      width: 100%;
+      padding: 10px 15px;
+      margin: 0px; }
+    #skiplink-container .skiplink:focus{
+      position: static;
+    }

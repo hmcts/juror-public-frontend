@@ -1,0 +1,104 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Personal Details Date Of Birth{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    {% include "../../includes/back-link.njk" %}
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('steps.your.details.date-of-birth.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+
+      <div class="form-group {% if errors.items['dateOfBirth'] %}error{% endif %}" id="dateOfBirthGroup">
+    
+        <h1 class="heading-xlarge">
+          <div class="heading-secondary">
+            {% if user.thirdParty == 'Yes' %}
+            {{- texts.YOUR_DETAILS_PAGE.CAPTION_OB -}}
+            {% else %}
+            {{- texts.YOUR_DETAILS_PAGE.CAPTION -}}
+            {% endif %}
+          </div>
+          {% if user.thirdParty == 'Yes' %}
+            {{- texts.YOUR_DETAILS_PAGE.HEADING_DATE_OF_BIRTH_OB -}}
+            {% else %}
+            {{- texts.YOUR_DETAILS_PAGE.HEADING_DATE_OF_BIRTH -}}
+          {% endif %}
+        </h1>
+
+        {# Date of birth #}
+        <fieldset>
+
+            <span class="form-hint" id="dob-hint" >{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER }}</span>
+            {% if errors.items['dateOfBirth'][0].fields %}
+              {% for errorField in errors.items['dateOfBirth'][0].fields %}
+              {% if errorField !== 'dateOfBirth' %}
+                <span class="error-message dateOfBirthErrorMessage" id="{{ errorField }}ErrorMessage">{{ errors.items['dateOfBirth'][0].details[loop.index0] }}</span>
+              {% endif %}
+              {% endfor %}
+            {% else %}
+              {% if errors.items['dateOfBirth'] %}<span class="error-message dateOfBirthErrorMessage" id="dateOfBirthErrorMessage">{{ errors.items['dateOfBirth'][0].details }}</span>{% endif %}
+            {% endif %}
+
+          <div class="form-date">
+            <div class="form-group form-group-day">
+              <label class="form-label" for="dobDay">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_DAY_LABEL }}</label>
+              <input class="form-control focus-select-all " id="dobDay" name="dobDay" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobDay }}" pattern="[0-9]*" min="1" max="31" minlength="1" maxlength="2" aria-describedby="dob-hint" autocomplete="off">
+            </div>
+            <div class="form-group form-group-month">
+              <label class="form-label" for="dobMonth">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_MONTH_LABEL }}</label>
+              <input class="form-control focus-select-all" id="dobMonth" name="dobMonth" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobMonth }}" pattern="[0-9]*" min="1" max="12" maxlength="2" aria-describedby="dob-hint" autocomplete="off">
+            </div>
+            <div class="form-group form-group-year">
+              <label class="form-label" for="dobYear">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_YEAR_LABEL }}</label>
+              <input class="form-control focus-select-all" id="dobYear" name="dobYear" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobYear }}" pattern="[0-9]*" maxlength="4" aria-describedby="dob-hint" autocomplete="off">
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <br/>
+
+      <details>
+        <summary>
+          <span class="summary" {% if trackingCode %}onclick="trackVirtualPageViews('Help with date of birth')"{% endif %}>
+            {{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_TITLE }}
+          </span>
+        </summary>
+        <div class="panel panel-border-narrow" id="details-content-1" aria-hidden="true" aria-live="polite" role="text">
+          {% if user.thirdParty == 'Yes' %}
+          <p>{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_1_OB }}</p>
+          <p>{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_2_OB }}</p>
+          {% else %}
+          <p>{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_1 }}</p>
+          <p>{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_2 }}</p>
+          <p>{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_3 }}</p>
+          {% endif %}
+        </div>
+      </details>
+
+      <br/>
+
+      {# Submit form #}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

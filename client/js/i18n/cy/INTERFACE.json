@@ -4,8 +4,9 @@
   "FORM_CHANGE_LABEL": "Newid",
   "BUTTON_TEXT_SUBMIT": "Cyflwyno",
   "BUTTON_TEXT_CONTINUE": "Parhau",
-  "LABEL_YES": "Do",
-  "LABEL_NO": "Naddo",
+  "BUTTON_TEXT_BACK": "Cliciwch i fynd yn ôl",
+  "LABEL_YES": "Oes",
+  "LABEL_NO": "Nac oes",
   "REPORT_BROKEN": "A oes unrhyw beth yn bod gyda’r dudalen hon?",
   "CONTENT_AVAILABLE_UNDER": "All content is available under the",
   "OPEN_GOV_LICENCE": "Open Government Licence",
@@ -17,6 +18,9 @@
   "BROWSE_FROM_HOME": "browse from the homepage",
   "FIND_INFO": "to find the information you need.",
   "COOKIE_MESSAGE": "GOV.UK uses cookies to make the site simpler. <a href=\"/help/cookies\">Find out more about cookies</a>",
+  "SKIP_TO_MAIN_CONTENT": "Ymlaen i'r prif gynnwys",
+  "LINK_OPENS_NEW_WINDOW": "Agor mewn ffenestr newydd",
+  "HTML_LANG": "cy",
 
   "FOOTER_LINKS": {
     "COOKIES": "Cwcis",

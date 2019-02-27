@@ -1,0 +1,117 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}3rd Party Details{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    {% include "../../includes/back-link.njk" %}
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('branches.third.party.details.contact.post') }}" method="POST" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+
+      <div class="form-group {% if errors.items['contactPhone'] or errors.items['mainPhone'] or errors.items['otherPhone'] or errors.items['emailAddress'] or errors.items['emailAddressConfirmation'] %}error{% endif %}">
+
+        <h1 class="heading-xlarge">
+          <div class="heading-secondary">
+            {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CAPTION }}
+          </div>
+          {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.TITLE }}
+        </h1>
+
+        <fieldset>
+ 
+          <p>
+            {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.INFO_1 }}<br>
+          </p>
+
+          <div class="form-group" id="contactPhoneGroup">
+            {# Phone #}
+
+            {% if errors.items['contactPhone'] %}<span class="error-message" id="contactPhoneErrorMessage">{{ errors.items['contactPhone'][0].details }}</span>{% endif %}
+
+            <label class="block-label toggle-reset" for="contactPhone" data-target="phoneGroup">
+              <input type="checkbox" name="contactPhone" id="contactPhone" value="By phone" {% if user.thirdPartyDetails.contactPhone == 'By phone' %}checked{% endif %} {% if errors.items['contactPhone'] %}aria-describedby="contactPhoneErrorMessage"{% endif %}>
+              {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_BY_PHONE }}
+            </label>
+
+            <div class="panel panel-border-narrow {% if user.thirdPartyDetails.contactPhone == 'By phone' %}{% else %}js-hidden{% endif %}" id="phoneGroup">
+              <p>
+                {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.INFO_PHONE }}
+              </p>
+
+              <div class="form-group" id="mainPhoneGroup">
+                <label class="form-label" for="mainPhone">
+                  {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_MAIN_PHONE }}
+                </label>
+                {% if errors.items['mainPhone'] %}<span class="error-message" id="mainPhoneErrorMessage">{{ errors.items['mainPhone'][0].details }}</span>{% endif %}
+                <input type="text" class="form-control" id="mainPhone" name="mainPhone" value="{{ user.thirdPartyDetails.mainPhone }}" autocomplete="off" {% if errors.items['mainPhone'] %}aria-describedby="mainPhoneErrorMessage"{% endif %}>
+              </div>
+
+              <div class="form-group" id="otherPhoneGroup">
+                <label class="form-label" for="otherPhone">
+                  {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_OTHER_PHONE }}
+                </label>
+                {% if errors.items['otherPhone'] %}<span class="error-message" id="otherPhoneErrorMessage">{{ errors.items['otherPhone'][0].details }}</span>{% endif %}
+                <input type="text" class="form-control" id="otherPhone" name="otherPhone" value="{{ user.thirdPartyDetails.otherPhone }}" autocomplete="off" {% if errors.items['otherPhone'] %}aria-describedby="otherPhoneErrorMessage"{% endif %}>
+              </div>
+            </div>
+
+
+            {# Email address #}
+            <label class="block-label toggle-reset" for="contactEmail" data-target="emailGroup">
+              <input type="checkbox" name="contactEmail" id="contactEmail" value="By email" {% if user.thirdPartyDetails.contactEmail == 'By email' %}checked{% endif %}>
+              {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_BY_EMAIL }}
+            </label>
+
+            <div class="panel panel-border-narrow {% if user.thirdPartyDetails.contactEmail == 'By email' %}{% else %}js-hidden{% endif %}" id="emailGroup">
+              <div class="form-group" id="emailAddressGroup">
+                <label class="form-label" for="emailAddress">
+                  {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_EMAIL }}
+                </label>
+                {% if errors.items['emailAddress'] %}<span class="error-message" id="emailAddressErrorMessage">{{ errors.items['emailAddress'][0].details }}</span>{% endif %}
+                <input type="email" class="form-control" id="emailAddress" name="emailAddress" maxlength="254" value="{{ user.thirdPartyDetails.emailAddress }}" autocomplete="off" {% if errors.items['emailAddress'] %}aria-describedby="emailAddressErrorMessage"{% endif %}>
+              </div>
+
+              <div class="form-group" id="emailAddressConfirmationGroup">
+                <label class="form-label" for="emailAddressConfirmation">
+                  {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_EMAIL_CONFIRM }}
+                </label>
+                {% if errors.items['emailAddressConfirmation'] %}<span class="error-message" id="emailAddressConfirmationErrorMessage">{{ errors.items['emailAddressConfirmation'][0].details }}</span>{% endif %}
+                <input type="email" class="form-control" id="emailAddressConfirmation" name="emailAddressConfirmation" maxlength="254" value="{{ user.thirdPartyDetails.emailAddressConfirmation }}" autocomplete="off" {% if errors.items['emailAddressConfirmation'] %}aria-describedby="emailAddressConfirmationErrorMessage"{% endif %}>
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+
+        <br>
+        <details>
+          <summary><span class="summary">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.TITLE }}</span></summary>
+          <div class="panel panel-border-narrow">
+            <p>{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.INFO_1 }}</p>
+          </div>
+        </details>
+
+      </div>
+
+      <br><br>
+      <div class="form-group">
+        <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

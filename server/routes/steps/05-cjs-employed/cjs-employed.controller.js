@@ -17,7 +17,8 @@
     return function(req, res) {
       var cjsActive
         , mergedUser
-        , tmpErrors;
+        , tmpErrors
+        , backLinkUrl;
 
       // Get current value for cjsEmployer
       mergedUser = _.merge(_.cloneDeep(req.session.user), req.session.formFields);
@@ -47,6 +48,24 @@
       delete req.session.errors;
       delete req.session.formFields;
 
+      // Set back link URL
+      if (req.session.change === true){
+        backLinkUrl = utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty);
+      } else {
+        switch (req.session.user.confirmedDate){
+        case 'Change':
+          //Deferral
+          backLinkUrl = utils.getRedirectUrl('steps.confirm.date.deferral-dates', req.session.user.thirdParty);
+          break;
+        case 'No':
+          //Excusal
+          backLinkUrl = utils.getRedirectUrl('steps.confirm.date.excusal', req.session.user.thirdParty);
+          break;
+        default:
+          backLinkUrl = utils.getRedirectUrl('steps.confirm.date', req.session.user.thirdParty);
+        }
+      }
+
       return res.render('steps/05-cjs-employed/index.njk', {
         user: mergedUser,
         cjsActive: cjsActive,
@@ -56,6 +75,7 @@
           count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
           items: tmpErrors,
         },
+        backLinkUrl: backLinkUrl
       });
     };
   };
@@ -67,7 +87,8 @@
       var validatorResult
         , validatorResultTmp
         , validatorRules
-        , validatorKey;
+        , validatorKey,
+        redirectUrl;
 
       // Reset error and saved field sessions
       delete req.session.errors;
@@ -85,7 +106,8 @@
         req.session.errors = validatorResult;
         req.session.formFields = req.body;
 
-        return res.redirect(app.namedRoutes.build('steps.cjs.employed.get'));
+        //return res.redirect(app.namedRoutes.build('steps.cjs.employed.get'));
+        return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.cjs.employed', req.session.user.thirdParty, null)));
       }
 
       // Store new info
@@ -97,16 +119,19 @@
 
       // Redirect as appropriate
       if (req.session.change === true){
-        return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
+        redirectUrl = utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty);
+      } else {
+        redirectUrl = utils.getRedirectUrl('steps.assistance', req.session.user.thirdParty);
       }
-      return res.redirect(app.namedRoutes.build('steps.assistance.get'));
+      return res.redirect(app.namedRoutes.build(redirectUrl));
+
     };
   };
 
   module.exports.change = function(app){
     return function(req, res){
       req.session.change = true;
-      res.redirect(app.namedRoutes.build('steps.cjs.employed.get'));
+      res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.cjs.employed', req.session.user.thirdParty)));
     };
   };
 })();

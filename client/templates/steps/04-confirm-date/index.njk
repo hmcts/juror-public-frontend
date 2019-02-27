@@ -16,110 +16,119 @@
 
   <div class="column-two-thirds">
 
-    <h1 class="heading-xlarge">
-      {% if user.thirdParty == 'Yes' %}
-      {{ texts.CONFIRM_DATE_PAGE.HEADING_OB }}
-      {% else %}
-      {{ texts.CONFIRM_DATE_PAGE.HEADING }}
-      {% endif %}
-    </h1>
-
+    {% include "../../includes/back-link.njk" %}
     {% include "../../includes/errors.njk" %}
-
-    <p class="lede">
-      {% if user.thirdParty == 'Yes' %}
-      {{ texts.CONFIRM_DATE_PAGE.INTRO_PARAGRAPH_OB  }}
-      {% else %}
-      {{ texts.CONFIRM_DATE_PAGE.INTRO_PARAGRAPH }}
-      {% endif %}
-    </p>
-
-    <p class="lede">
-      {% if user.thirdParty == 'Yes' %}
-      {{ texts.CONFIRM_DATE_PAGE.REQUIRED_OB }}
-      {% else %}
-      {{ texts.CONFIRM_DATE_PAGE.REQUIRED }}
-      {% endif %}
-    </p>
-
-    <div class="panel panel-border-wide text">
-      <p class="bold-small">
-
-        <span id="hearingDate">{{ user.hearingDate }}</span>
-        at
-        <span id="hearingTime">{{ user.hearingTime }}</span>
-      </p>
-    </div>
-
-    <p class="lede">{{ texts.CONFIRM_DATE_PAGE.AT }}</p>
-
-    <div class="panel panel-border-wide text">
-      <p class="bold-small">
-        {{ user.courtAddress | safe }}
-      </p>
-    </div>
-
-
+    
     <form action="{{ url('steps.confirm.date.post') }}" method="post">
 
-      <fieldset>
-        <legend>
-          <span class="lede">
-            {% if user.thirdParty == 'Yes' %}
-            {{ texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HEADING_OB }}
-            {% else %}
-            {{ texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HEADING }}
-            {% endif %}
-          </span>
-        </legend>
-        <input type="hidden" id="hearingDateTimestamp" value="{{ user.hearingDateTimestamp }}">
-        <div class="form-group {% if errors.items['confirmedDate'] %}error{% endif %}" id="confirmedDateGroup">
+      <div class="form-group {% if errors.items['confirmedDate'] %}error{% endif %}" id="confirmedDateGroup">
+
+        <h1 class="heading-xlarge">
+        {% if user.thirdParty == 'Yes' %}
+        {{ texts.CONFIRM_DATE_PAGE.HEADING_OB }}
+        {% else %}
+        {{ texts.CONFIRM_DATE_PAGE.HEADING }}
+        {% endif %}
+        </h1>
+
+        <p class="lede">
+          {% if user.thirdParty == 'Yes' %}
+          {{ texts.CONFIRM_DATE_PAGE.INTRO_PARAGRAPH_OB  }}
+          {% else %}
+          {{ texts.CONFIRM_DATE_PAGE.INTRO_PARAGRAPH }}
+          {% endif %}
+        </p>
+
+        <p class="lede">
+          {% if user.thirdParty == 'Yes' %}
+          {{ texts.CONFIRM_DATE_PAGE.REQUIRED_OB }}
+          {% else %}
+          {{ texts.CONFIRM_DATE_PAGE.REQUIRED }}
+          {% endif %}
+        </p>
+
+        <div class="panel panel-border-wide text">
+          <p class="bold-small">
+
+            <span id="hearingDate">{{ user.hearingDate }}</span>
+            at
+            <span id="hearingTime">{{ user.hearingTime }}</span>
+          </p>
+        </div>
+
+        <p class="lede">{{ texts.CONFIRM_DATE_PAGE.AT }}</p>
+
+        <div class="panel panel-border-wide text">
+          <p class="bold-small">
+            {{ user.courtAddress | safe }}
+          </p>
+        </div>
+
+        <fieldset>
+          <legend>
+            <span class="lede">
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HEADING_OB }}
+              {% else %}
+              {{ texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HEADING }}
+              {% endif %}
+            </span>
+          </legend>
+
+          <input type="hidden" id="hearingDateTimestamp" value="{{ user.hearingDateTimestamp }}">
+
           {% if errors.items['confirmedDate'] %}<span class="error-message">{{ errors.items['confirmedDate'][0].details }}</span>{% endif %}
 
-          <label class="block-label selection-button-radio" for="confirmedDates">
-            <input id="confirmedDates" type="radio" name="confirmedDate" value="Yes" {% if user.confirmedDate == 'Yes' %}checked="checked"{% endif %}>
-            {% if user.thirdParty == 'Yes' %}
-            {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES_OB }}
-            {% else %}
-            {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES }}
-            {% endif %}
+          <label class="block-label selection-button-radio" for="confirmedDate">
+            <input id="confirmedDate" type="radio" name="confirmedDate" value="Yes" {% if user.confirmedDate == 'Yes' %}checked="checked"{% endif %}>
+            <div role="text">
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES_OB }}
+              {% else %}
+              {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES }}
+              {% endif %}
+            </div>
           </label>
           <br>
           <label class="block-label selection-button-radio" for="changeDates">
             <input id="changeDates" type="radio" name="confirmedDate" value="Change" {% if user.confirmedDate == 'Change' %}checked="checked"{% endif %}>
-            {% if user.thirdParty == 'Yes' %}
-            {{ texts.CONFIRM_DATE_PAGE.ANSWER_DEFERRAL_OB }}
-            {% else %}
-            {{ texts.CONFIRM_DATE_PAGE.ANSWER_DEFERRAL }}
-            {% endif %}
-            <span class="form-hint">
+            <div role="text">
               {% if user.thirdParty == 'Yes' %}
-              {{ texts.CONFIRM_DATE_PAGE.ANSWER_DEFERRAL_HINT_OB }}
+              {{ texts.CONFIRM_DATE_PAGE.ANSWER_DEFERRAL_OB }}
               {% else %}
-              {{ texts.CONFIRM_DATE_PAGE.ANSWER_DEFERRAL_HINT }}
+              {{ texts.CONFIRM_DATE_PAGE.ANSWER_DEFERRAL }}
               {% endif %}
-            </span>
+              <span class="form-hint">
+                {% if user.thirdParty == 'Yes' %}
+                {{ texts.CONFIRM_DATE_PAGE.ANSWER_DEFERRAL_HINT_OB }}
+                {% else %}
+                {{ texts.CONFIRM_DATE_PAGE.ANSWER_DEFERRAL_HINT }}
+                {% endif %}
+              </span>
+            </div>
           </label>
           <br>
           <label class="block-label selection-button-radio" for="declineDates">
             <input id="declineDates" type="radio" name="confirmedDate" value="No" {% if user.confirmedDate == 'No' %}checked="checked"{% endif %}>
-            {% if user.thirdParty == 'Yes' %}
-            {{ texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL_OB }}
-            {% else %}
-            {{ texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL }}
-            {% endif %}
-            <span class="form-hint">
+            <div role="text">
               {% if user.thirdParty == 'Yes' %}
-              {{ texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL_HINT_OB }}
+              {{ texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL_OB }}
               {% else %}
-              {{ texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL_HINT }}
+              {{ texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL }}
               {% endif %}
-            </span>
+              <span class="form-hint">
+                {% if user.thirdParty == 'Yes' %}
+                {{ texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL_HINT_OB }}
+                {% else %}
+                {{ texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL_HINT }}
+                {% endif %}
+              </span>
+            </div>
           </label>
 
-        </div>
+        </fieldset>
 
-      </fieldset>
+      </div>
 
       <br>
       {# Submit form #}

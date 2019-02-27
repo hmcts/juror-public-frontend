@@ -42,18 +42,29 @@
             {% if errors.items['mentalHealthAct'] %} <span class="error-message"> {{ texts.QUALIFY_PAGE.MISSING }} </span> {% endif %}
           <br>
           <label class="block-label selection-button-radio" for="mentalHealthAct-Yes" data-target="mentalHealthActDetailsGroup">
-            <input id="mentalHealthAct-Yes" type="radio" name="mentalHealthAct" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.mentalHealthAct.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
-            {{ texts.QUALIFY_PAGE.YES }}
+            {% if user.thirdParty == 'Yes' %}
+              <input id="mentalHealthAct-Yes" type="radio" name="mentalHealthAct" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.mentalHealthAct.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
+              {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES_OB }}
+            {% else %}
+              <input id="mentalHealthAct-Yes" type="radio" name="mentalHealthAct" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.mentalHealthAct.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
+              {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES }}
+            {% endif %}
           </label>
           <label class="block-label selection-button-radio" for="mentalHealthAct-No">
-            <input id="mentalHealthAct-No" type="radio" name="mentalHealthAct" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.mentalHealthAct.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
-            {{ texts.QUALIFY_PAGE.NO }}
+            {% if user.thirdParty == 'Yes' %}
+              <input id="mentalHealthAct-No" type="radio" name="mentalHealthAct" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.mentalHealthAct.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
+              {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO_OB }}
+            {% else %}
+              <input id="mentalHealthAct-No" type="radio" name="mentalHealthAct" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.mentalHealthAct.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
+              {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO }}
+            {% endif %}
           </label>
 
           <div class="panel panel-border-narrow {% if user.qualify.mentalHealthAct.answer === texts.QUALIFY_PAGE.YES %}{% else %}js-hidden{% endif %} {% if errors.items['mentalHealthActDetails'] %}error{% endif %}" id="mentalHealthActDetailsGroup">
             <label class="form-label" for="mentalHealthActDetails">{{ texts.QUALIFY_PAGE.DETAILS }}</label>
             <textarea class="form-control" name="mentalHealthActDetails" id="mentalHealthActDetails" maxlength="1000">{{ user.qualify.mentalHealthAct.details }}</textarea>
           </div>
+
         </fieldset>
       </div>
 

@@ -6,6 +6,7 @@
 
   module.exports = function(app) {
     app.get('/steps/01-login', 'steps.login.get', utils.checkPageAccess(app, 2), controller.index(app));
+    app.get('/steps/01-login/tp', 'steps.login.tp.get', utils.checkPageAccess(app, 2), controller.index(app));
     app.post('/steps/01-login', 'steps.login.post', controller.create(app));
   };
 

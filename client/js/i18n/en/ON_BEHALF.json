@@ -1,22 +1,22 @@
 {
   "THIRD_PARTY_DETAILS": {
-    "HEADER": "Your details",
+    "HEADER": "Your Details",
+    "CAPTION": "Your Details",
 
     "NAME": {
-      "LEGEND": "Your name",
+      "TITLE": "What is your name?",
       "LABEL_FIRST_NAME": "First name",
       "LABEL_LAST_NAME": "Last name"
     },
 
     "RELATIONSHIP": {
-      "LEGEND": "Your relationship to the person",
+      "TITLE": "Your relationship to the person",
       "LABEL_RELATIONSHIP": "How do you know the person you're replying for?"
     },
 
     "CONTACT": {
-      "LEGEND": "Your contact information",
+      "TITLE": "Your contact information",
       "INFO_1": "How would you like us to get in touch, if we need to?",
-      "INFO_2": "Please choose at least one option",
       "LABEL_BY_PHONE": "By phone",
       "LABEL_BY_EMAIL": "By email",
 
@@ -34,8 +34,7 @@
   },
 
   "THIRD_PARTY_REASON": {
-    "HEADER": "Why are you replying?",
-    "INTRO": "Why  are you replying for the other person?",
+    "HEADER": "Why are you replying for the other person?",
 
     "REASONS": {
       "NOT_HERE": "The person isn’t here",
@@ -52,14 +51,20 @@
   },
 
   "THIRD_PARTY_PERSONAL_DETAILS": {
+    "CAPTION": "Juror Details",
+
     "HEADER": "More juror details",
     "NAME_INTRO_PARAGRAPH": "Check that the name and address are correct for the person you're replying for",
 
+    "NAME_HEADER": "Check that the name is correct for the person you're replying for",
     "FORM_NAME_LABEL": "Name",
     "FORM_TITLE_LABEL": "Title (optional)",
     "FORM_FIRST_NAME_LABEL": "First name",
     "FORM_LAST_NAME_LABEL": "Last name",
-
+    "HELPER_CHANGE_NAME_TITLE": "What happens if the person I'm replying for has changed their name?",
+    "HELPER_CHANGE_NAME_PARAGRAPH_1": "If the person's name has changed and is different from the name on their jury summons letter, enter the correct name here. We'll get in touch later to check this. For instance, we might want to see a marriage certificate or deed poll certificate. Please carry on with the online form now.",
+    
+    "ADDRESS_HEADER": "Check that the address is correct for the person you're replying for",
     "FORM_ADDRESS_LABEL": "Address",
     "FORM_ADDRESS_LINE_ONE_LABEL": "Building and street",
     "FORM_ADDRESS_LINE_TWO_LABEL": "Address line two",
@@ -67,12 +72,14 @@
     "FORM_ADDRESS_TOWN_LABEL": "Town or city",
     "FORM_ADDRESS_COUNTY_LABEL": "County (optional)",
     "FORM_ADDRESS_POSTCODE_LABEL": "Postcode",
-
+    "HELPER_CHANGE_ADDRESS_TITLE": "What happens if the person I'm replying for has changed their address?",
+    "HELPER_CHANGE_ADDRESS_PARAGRAPH_1": "If the person's address has changed, we might be able to move their jury service to a court nearer to the new address. We'll get in touch later about this. Please carry on with the online form now.",
+    
     "HELPER_CHANGE_NAME_ADDRESS_TITLE": "What happens if the person I'm replying for has changed their name or address?",
     "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_1": "If the person's name has changed and is different from the name on their jury summons letter, enter the correct name here. We'll get in touch later to check this. For instance, we might want to see a marriage certificate or deed poll certificate. Please carry on with the online form now.",
     "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_2": "If the person's address has changed, we might be able to move their jury service to a court nearer to the new address. We'll get in touch later about this. Please carry on with the online form now.",
 
-    "DOB_INTRO_PARAGRAPH": "Please give the date of birth for the person you’re replying for",
+    "DOB_HEADER": "Please give the date of birth for the person you're replying for",
     "FORM_DOB_HELPER": "For example, 06 12 1982",
     "FORM_DOB_DAY_LABEL": "Day",
     "FORM_DOB_MONTH_LABEL": "Month",
@@ -81,12 +88,12 @@
     "FORM_DOB_HELPER_PARAGRAPH_1": "You need to tell us the person's date of birth so we can check they are a suitable age to be on a jury.",
     "FORM_DOB_HELPER_PARAGRAPH_2": "If the person doesn't know their exact date of birth, use the one they put on official documents like their passport or driving licence.",
     "FORM_DOB_HELPER_PARAGRAPH_3": "If you can’t provide a date of birth for the person, you’ll have to send us copies of identity documents through the post. You need to reply to the summons using the form we sent by post instead of online. Ring us on 0300 456 1024 if you need advice about this."
-
   },
 
   "THIRD_PARTY_CONTACT_DETAILS": {
-    "HEADER": "Contacting the juror",
-    "INTRO_PARAGRAPH": "We might need to get in touch with the person to ask them more questions or give them information about their jury service.",
+    "CAPTION": "Juror Details",
+    "HEADER": "We might need to get in touch with the person to ask them more questions or give them information about their jury service.",
+  
     "CONTACT": "How we get in touch",
     "CONTACT_PARAGRAPH": "Please tell us how we can get in touch with the person you're replying for. Or we can use your contact information, if you're going to carry on acting for them.",
     "PHONE": "Phone",
@@ -102,7 +109,7 @@
     "EMAIL": "Email",
     "EMAIL_PARAGRAPH": "Please give an email address that we can use to contact you or the juror. It can be your email address or one that they use themselves.",
     "EMAIL_ENTER": "Enter email address",
-    "EMAIL_ENTER_CONFIRM": "Enter your email address again",
+    "EMAIL_ENTER_CONFIRM": "Enter the email address again",
     "EMAIL_HELPER_TITLE": "Why do we need an email address?",
     "EMAIL_HELPER_TEXT": "We'll use the email address to send information and reminders about this jury service."
   },

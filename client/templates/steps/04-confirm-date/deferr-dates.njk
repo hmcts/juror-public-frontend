@@ -12,36 +12,228 @@
 
 {% block content %}
 
+<input type="hidden" name="_lang" id="_lang" value="{{ ulang }}">
+
 <div class="grid-row">
 
   <div class="column-two-thirds">
 
-    <h1 class="heading-xlarge">
-      {% if user.thirdParty == 'Yes' %}
-      {{ texts.DEFERRAL_PAGE.HEADING_OB }}
-      {% else %}
-      {{ texts.DEFERRAL_PAGE.HEADING }}
-      {% endif %}
-    </h1>
-
+    {% include "../../includes/back-link.njk" %}
     {% include "../../includes/errors.njk" %}
 
     <form action="{{ url('steps.confirm.date.deferral-dates.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+      <div class="form-group {% if errors.items['dates'] or errors.items['date1'] or errors.items['date1Error'] or errors.items['date2'] or errors.items['date2Error'] or errors.items['date3'] or errors.items['date3Error']%}error{% endif %}">
+        
+        <h1 class="heading-xlarge">
+          {% if user.thirdParty == 'Yes' %}
+          {{ texts.DEFERRAL_PAGE.HEADING_OB }}
+          {% else %}
+          {{ texts.DEFERRAL_PAGE.HEADING }}
+          {% endif %}
+        </h1>
 
-      <strong class="bold-small">
-        {% if user.thirdParty == 'Yes' %}
-        {{ texts.DEFERRAL_PAGE.DATE_FIELD_TITLE_OB }}
-        {% else %}
-        {{ texts.DEFERRAL_PAGE.DATE_FIELD_TITLE }}
-        {% endif %}
-      </strong>
-      <span class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_FIELD_HINT }}</span>
+        <strong class="bold-small">
+          {% if user.thirdParty == 'Yes' %}
+          {{ texts.DEFERRAL_PAGE.DATE_FIELD_TITLE_OB }}
+          {% else %}
+          {{ texts.DEFERRAL_PAGE.DATE_FIELD_TITLE }}
+          {% endif %}
+        </strong>
+        <span class="form-hint">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.DEFERRAL_PAGE.DATE_FIELD_HINT_OB }}
+            {% else %}
+              {{ texts.DEFERRAL_PAGE.DATE_FIELD_HINT }}
+            {% endif %}
+        </span>
 
-      <br />
+        <br />
+      
 
-      <div class="form-group">
-        <details>
-          <summary {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask this?')"{% endif %}>{{ texts.DEFERRAL_PAGE.WHY_ASK_SUMMARY }}</summary>
+  
+        <div class="form-group box-grey {% if errors.items['dates'] %}error{% endif %}" id="datesGroup">
+          <strong class="bold-small">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.DEFERRAL_PAGE.DATE_INFO_OB }}
+            {% else %}
+            {{ texts.DEFERRAL_PAGE.DATE_INFO }}
+            {% endif %}
+          </strong>
+          <br />
+          {% if errors.items['dates'] %}
+          <div class="error-message">
+            {{ errors.items['dates'][0].details }}
+          </div>
+          {% elif errors.items['date1'] or errors.items['date2'] or errors.items['date3'] %}
+
+          {% endif %}
+          <br />
+          
+            <div class="grid-row">
+              <div class="error-message" id="date1ErrorMessage">
+                {{ errors.items['date1'][0].details }}{% if errors.items['date1'] %}<br>{% endif %}
+              </div>
+              <div class="column-one-third" id="date1Group">
+                <div class="{% if errors.items['date1'] or errors.items['date1Error'] %}error{% endif %}">
+                  <label class="form-label" for="date1">
+                    <strong class="bold-small">
+                      {{ texts.DEFERRAL_PAGE.DATE1 }}
+                    </strong>
+                  </label>
+                  <input class="form-control fill" name="date1" id="date1" type="text" value="{{ user.date1 }}" autocomplete="off" {% if errors.items['date1'] or errors.items['date1Error'] %}aria-describedby="date1ErrorMessage"{% endif %} />
+                  <button id="btn_date1" class="calendar-button noscript" aria-hidden="true"><img src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_1 }}" /></button>
+
+                  <div id="dp1" class="datepicker" aria-hidden="true">
+                    <div id="month-wrap">
+                      <div id="bn_prev" role="button" aria-labelledby="bn_prev-label" tabindex="0">
+                        {# <img class="bn_img" src="prev.png" alt="<<"/> #}
+                        <span>&lt;</span>
+                      </div>
+                      <div id="month" role="heading" aria-live="assertive" aria-atomic="true"></div>
+                      <div id="bn_next" role="button" aria-labelledby="bn_next-label" tabindex="0">
+                        {# <img class="bn_img" src="next.png" alt=">>"/> #}
+                        <span>&gt;</span>
+                      </div>
+                    </div>
+                    <table id="cal" role="grid" aria-activedescendant="errMsg" aria-labelledby="month" tabindex="0">
+                      <thead>
+                          <tr id="weekdays">
+                            <th id="Sunday"><abbr title="{{ texts.DEFERRAL_PAGE.SUNDAY }}">{{ texts.DEFERRAL_PAGE.SU }}</abbr></th>
+                            <th id="Monday"><abbr title="{{ texts.DEFERRAL_PAGE.MONDAY }}">{{ texts.DEFERRAL_PAGE.MO }}</abbr></th>
+                            <th id="Tuesday"><abbr title="{{ texts.DEFERRAL_PAGE.TUESDAY }}">{{ texts.DEFERRAL_PAGE.TU }}</abbr></th>
+                            <th id="Wednesday"><abbr title="{{ texts.DEFERRAL_PAGE.WEDNESDAY }}">{{ texts.DEFERRAL_PAGE.WE }}</abbr></th>
+                            <th id="Thursday"><abbr title="{{ texts.DEFERRAL_PAGE.THURSDAY }}">{{ texts.DEFERRAL_PAGE.TH }}</abbr></th>
+                            <th id="Friday"><abbr title="{{ texts.DEFERRAL_PAGE.FRIDAY }}">{{ texts.DEFERRAL_PAGE.FR }}</abbr></th>
+                            <th id="Saturday"><abbr title="{{ texts.DEFERRAL_PAGE.SATURDAY }}">{{ texts.DEFERRAL_PAGE.SA }}</abbr></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr><td id="errMsg" colspan="7">Javascript must be enabled</td></tr>
+                      </tbody>
+                    </table>
+                    <div id="bn_prev-label" class="offscreen">Go to previous month</div>
+                    <div id="bn_next-label" class="offscreen">Go to next month</div>
+                  </div>
+
+                  <span class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-row">
+              <div class="error-message" id="date2ErrorMessage">
+                {{ errors.items['date2'][0].details }}{% if errors.items['date2'] %}<br>{% endif %}
+              </div>
+              <div class="column-one-third" id="date2Group">
+                <div class="{% if errors.items['date2'] or errors.items['date2Error'] %}error{% endif %}">
+                  <label class="form-label" for="date2">
+                    <strong class="bold-small">
+                      {{ texts.DEFERRAL_PAGE.DATE2 }}
+                    </strong>
+                  </label>
+                  <input class="form-control fill" name="date2" id="date2" type="text" value="{{ user.date2 }}" autocomplete="off" {% if errors.items['date2'] or errors.items['date2Error'] %}aria-describedby="date2ErrorMessage"{% endif %} />
+                  <button id="btn_date2" class="calendar-button noscript" aria-hidden="true"><img src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_2 }}" /></button>
+
+                  <div id="dp2" class="datepicker" aria-hidden="true">
+                    <div id="month-wrap">
+                      <div id="bn_prev" role="button" aria-labelledby="bn_prev-label" tabindex="0">
+                        {# <img class="bn_img" src="prev.png" alt="<<"/> #}
+                        <span class="bn_img">&lt;</span>
+                      </div>
+                      <div id="month" role="heading" aria-live="assertive" aria-atomic="true"></div>
+                      <div id="bn_next" role="button" aria-labelledby="bn_next-label" tabindex="0">
+                        {# <img class="bn_img" src="next.png" alt=">>"/> #}
+                        <span class="bn_img">&gt;</span>
+                      </div>
+                    </div>
+                    <table id="cal" role="grid" aria-activedescendant="errMsg" aria-labelledby="month" tabindex="0">
+                      <thead>
+                          <tr id="weekdays">
+                            <th id="Sunday"><abbr title="{{ texts.DEFERRAL_PAGE.SUNDAY }}">{{ texts.DEFERRAL_PAGE.SU }}</abbr></th>
+                            <th id="Monday"><abbr title="{{ texts.DEFERRAL_PAGE.MONDAY }}">{{ texts.DEFERRAL_PAGE.MO }}</abbr></th>
+                            <th id="Tuesday"><abbr title="{{ texts.DEFERRAL_PAGE.TUESDAY }}">{{ texts.DEFERRAL_PAGE.TU }}</abbr></th>
+                            <th id="Wednesday"><abbr title="{{ texts.DEFERRAL_PAGE.WEDNESDAY }}">{{ texts.DEFERRAL_PAGE.WE }}</abbr></th>
+                            <th id="Thursday"><abbr title="{{ texts.DEFERRAL_PAGE.THURSDAY }}">{{ texts.DEFERRAL_PAGE.TH }}</abbr></th>
+                            <th id="Friday"><abbr title="{{ texts.DEFERRAL_PAGE.FRIDAY }}">{{ texts.DEFERRAL_PAGE.FR }}</abbr></th>
+                            <th id="Saturday"><abbr title="{{ texts.DEFERRAL_PAGE.SATURDAY }}">{{ texts.DEFERRAL_PAGE.SA }}</abbr></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr><td id="errMsg" colspan="7">Javascript must be enabled</td></tr>
+                      </tbody>
+                    </table>
+                    <div id="bn_prev-label" class="offscreen">Go to previous month</div>
+                    <div id="bn_next-label" class="offscreen">Go to next month</div>
+                  </div>
+
+                  <span class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-row">
+              <div class="error-message" id="date3ErrorMessage">
+                {{ errors.items['date3'][0].details }}{% if errors.items['date3'] %}<br>{% endif %}
+              </div>
+              <div class="column-one-third" id="date3Group">
+                <div class="{% if errors.items['date3'] or errors.items['date3Error'] %}error{% endif %}">
+                  <label class="form-label" for="date3">
+                    <strong class="bold-small">
+                      {{ texts.DEFERRAL_PAGE.DATE3 }}
+                    </strong>
+                  </label>
+                  <input class="form-control fill" name="date3" id="date3" type="text" value="{{ user.date3 }}" autocomplete="off" {% if errors.items['date3'] or errors.items['date3Error'] %}aria-describedby="date3ErrorMessage"{% endif %} />
+                  <button id="btn_date3" class="calendar-button noscript" aria-hidden="true"><img src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_3 }}" /></button>
+
+                  <div id="dp3" class="datepicker" aria-hidden="true">
+                    <div id="month-wrap">
+                      <div id="bn_prev" role="button" aria-labelledby="bn_prev-label" tabindex="0">
+                        {# <img class="bn_img" src="prev.png" alt="<<"/> #}
+                        <span class="bn_img">&lt;</span>
+                      </div>
+                      <div id="month" role="heading" aria-live="assertive" aria-atomic="true"></div>
+                      <div id="bn_next" role="button" aria-labelledby="bn_next-label" tabindex="0">
+                        {# <img class="bn_img" src="next.png" alt=">>"/> #}
+                        <span class="bn_img">&gt;</span>
+                      </div>
+                    </div>
+                    <table id="cal" role="grid" aria-activedescendant="errMsg" aria-labelledby="month" tabindex="0">
+                      <thead>
+                          <tr id="weekdays">
+                            <th id="Sunday"><abbr title="{{ texts.DEFERRAL_PAGE.SUNDAY }}">{{ texts.DEFERRAL_PAGE.SU }}</abbr></th>
+                            <th id="Monday"><abbr title="{{ texts.DEFERRAL_PAGE.MONDAY }}">{{ texts.DEFERRAL_PAGE.MO }}</abbr></th>
+                            <th id="Tuesday"><abbr title="{{ texts.DEFERRAL_PAGE.TUESDAY }}">{{ texts.DEFERRAL_PAGE.TU }}</abbr></th>
+                            <th id="Wednesday"><abbr title="{{ texts.DEFERRAL_PAGE.WEDNESDAY }}">{{ texts.DEFERRAL_PAGE.WE }}</abbr></th>
+                            <th id="Thursday"><abbr title="{{ texts.DEFERRAL_PAGE.THURSDAY }}">{{ texts.DEFERRAL_PAGE.TH }}</abbr></th>
+                            <th id="Friday"><abbr title="{{ texts.DEFERRAL_PAGE.FRIDAY }}">{{ texts.DEFERRAL_PAGE.FR }}</abbr></th>
+                            <th id="Saturday"><abbr title="{{ texts.DEFERRAL_PAGE.SATURDAY }}">{{ texts.DEFERRAL_PAGE.SA }}</abbr></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr><td id="errMsg" colspan="7">Javascript must be enabled</td></tr>
+                      </tbody>
+                    </table>
+                    <div id="bn_prev-label" class="offscreen">Go to previous month</div>
+                    <div id="bn_next-label" class="offscreen">Go to next month</div>
+                  </div>
+
+                  <span class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</span>
+                </div>
+              </div>
+            </div>
+
+        
+
+        </div>
+
+      </div>
+      
+      <details>
+          {% if user.thirdParty == 'Yes' %}
+            <summary {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask this?')"{% endif %}>{{ texts.DEFERRAL_PAGE.WHY_ASK_SUMMARY_OB }}</summary>
+          {% else %}
+            <summary {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask this?')"{% endif %}>{{ texts.DEFERRAL_PAGE.WHY_ASK_SUMMARY }}</summary>
+          {% endif %}
           <div class="panel panel-border-narrow" id="details-content-1" aria-hidden="true">
             <p>
               {% if user.thirdParty == 'Yes' %}
@@ -51,181 +243,8 @@
               {% endif %}
             </p>
           </div>
-        </details>
-      </div>
-      <br />
-      <br />
+      </details>
 
-      
-
-      <div class="form-group box-grey {% if errors.items['dates'] %}error{% endif %}" id="datesGroup">
-        <strong class="bold-small">
-          {% if user.thirdParty == 'Yes' %}
-          {{ texts.DEFERRAL_PAGE.DATE_INFO_OB }}
-          {% else %}
-          {{ texts.DEFERRAL_PAGE.DATE_INFO }}
-          {% endif %}
-        </strong>
-        <br />
-        {% if errors.items['dates'] %}
-        <div class="error-message">
-          {{ errors.items['dates'][0].details }}
-        </div>
-        {% elif errors.items['date1'] or errors.items['date2'] or errors.items['date3'] %}
-        <div class="error-message">
-          {{ errors.items['date1'][0].details }}{% if errors.items['date1'] %}<br>{% endif %}
-          {{ errors.items['date2'][0].details }}{% if errors.items['date2'] %}<br>{% endif %}
-          {{ errors.items['date3'][0].details }}{% if errors.items['date3'] %}<br>{% endif %}
-        </div>
-        {% endif %}
-        <br />
-        
-        <div class="grid-row">
-          
-          <div class="column-one-third" id="date1Group">
-            <div class="{% if errors.items['date1'] or errors.items['date1Error'] %}error{% endif %}">
-              <label class="form-label" for="date1">
-                <strong class="bold-small">
-                  {{ texts.DEFERRAL_PAGE.DATE1 }}
-                </strong>
-              </label>
-              <input class="form-control fill" name="date1" id="date1" type="text" value="{{ user.date1 }}" autocomplete="off" />
-              <button id="btn_date1" class="calendar-button noscript" aria-hidden="true"><img src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_1 }}" /></button>
-
-
-              <div id="dp1" class="datepicker" aria-hidden="true">
-                <div id="month-wrap">
-                  <div id="bn_prev" role="button" aria-labelledby="bn_prev-label" tabindex="0">
-                    {# <img class="bn_img" src="prev.png" alt="<<"/> #}
-                    <span>&lt;</span>
-                  </div>
-                  <div id="month" role="heading" aria-live="assertive" aria-atomic="true"></div>
-                  <div id="bn_next" role="button" aria-labelledby="bn_next-label" tabindex="0">
-                    {# <img class="bn_img" src="next.png" alt=">>"/> #}
-                    <span>&gt;</span>
-                  </div>
-                </div>
-                <table id="cal" role="grid" aria-activedescendant="errMsg" aria-labelledby="month" tabindex="0">
-                  <thead>
-                      <tr id="weekdays">
-                        <th id="Sunday"><abbr title="Sunday">Su</abbr></th>
-                        <th id="Monday"><abbr title="Monday">Mo</abbr></th>
-                        <th id="Tuesday"><abbr title="Tuesday">Tu</abbr></th>
-                        <th id="Wednesday"><abbr title="Wednesday">We</abbr></th>
-                        <th id="Thursday"><abbr title="Thursday">Th</abbr></th>
-                        <th id="Friday"><abbr title="Friday">Fr</abbr></th>
-                        <th id="Saturday"><abbr title="Saturday">Sa</abbr></th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr><td id="errMsg" colspan="7">Javascript must be enabled</td></tr>
-                  </tbody>
-                </table>
-                <div id="bn_prev-label" class="offscreen">Go to previous month</div>
-                <div id="bn_next-label" class="offscreen">Go to next month</div>
-              </div>
-
-              <span class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</span>
-            </div>
-          </div>
-
-          <div class="column-one-third" id="date2Group">
-            <div class="{% if errors.items['date2'] or errors.items['date2Error'] %}error{% endif %}">
-              <label class="form-label" for="date2">
-                <strong class="bold-small">
-                  {{ texts.DEFERRAL_PAGE.DATE2 }}
-                </strong>
-              </label>
-              <input class="form-control fill" name="date2" id="date2" type="text" value="{{ user.date2 }}" autocomplete="off" />
-              <button id="btn_date2" class="calendar-button noscript" aria-hidden="true"><img src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_2 }}" /></button>
-
-              <div id="dp2" class="datepicker" aria-hidden="true">
-                <div id="month-wrap">
-                  <div id="bn_prev" role="button" aria-labelledby="bn_prev-label" tabindex="0">
-                    {# <img class="bn_img" src="prev.png" alt="<<"/> #}
-                    <span class="bn_img">&lt;</span>
-                  </div>
-                  <div id="month" role="heading" aria-live="assertive" aria-atomic="true"></div>
-                  <div id="bn_next" role="button" aria-labelledby="bn_next-label" tabindex="0">
-                    {# <img class="bn_img" src="next.png" alt=">>"/> #}
-                    <span class="bn_img">&gt;</span>
-                  </div>
-                </div>
-                <table id="cal" role="grid" aria-activedescendant="errMsg" aria-labelledby="month" tabindex="0">
-                  <thead>
-                      <tr id="weekdays">
-                        <th id="Sunday"><abbr title="Sunday">Su</abbr></th>
-                        <th id="Monday"><abbr title="Monday">Mo</abbr></th>
-                        <th id="Tuesday"><abbr title="Tuesday">Tu</abbr></th>
-                        <th id="Wednesday"><abbr title="Wednesday">We</abbr></th>
-                        <th id="Thursday"><abbr title="Thursday">Th</abbr></th>
-                        <th id="Friday"><abbr title="Friday">Fr</abbr></th>
-                        <th id="Saturday"><abbr title="Saturday">Sa</abbr></th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr><td id="errMsg" colspan="7">Javascript must be enabled</td></tr>
-                  </tbody>
-                </table>
-                <div id="bn_prev-label" class="offscreen">Go to previous month</div>
-                <div id="bn_next-label" class="offscreen">Go to next month</div>
-              </div>
-
-              <span class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</span>
-            </div>
-          </div>
-
-          <div class="column-one-third" id="date3Group">
-            <div class="{% if errors.items['date3'] or errors.items['date3Error'] %}error{% endif %}">
-              <label class="form-label" for="date3">
-                <strong class="bold-small">
-                  {{ texts.DEFERRAL_PAGE.DATE3 }}
-                </strong>
-              </label>
-              <input class="form-control fill" name="date3" id="date3" type="text" value="{{ user.date3 }}" autocomplete="off" />
-              <button id="btn_date3" class="calendar-button noscript" aria-hidden="true"><img src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_3 }}" /></button>
-
-              <div id="dp3" class="datepicker" aria-hidden="true">
-                <div id="month-wrap">
-                  <div id="bn_prev" role="button" aria-labelledby="bn_prev-label" tabindex="0">
-                    {# <img class="bn_img" src="prev.png" alt="<<"/> #}
-                    <span class="bn_img">&lt;</span>
-                  </div>
-                  <div id="month" role="heading" aria-live="assertive" aria-atomic="true"></div>
-                  <div id="bn_next" role="button" aria-labelledby="bn_next-label" tabindex="0">
-                    {# <img class="bn_img" src="next.png" alt=">>"/> #}
-                    <span class="bn_img">&gt;</span>
-                  </div>
-                </div>
-                <table id="cal" role="grid" aria-activedescendant="errMsg" aria-labelledby="month" tabindex="0">
-                  <thead>
-                      <tr id="weekdays">
-                        <th id="Sunday"><abbr title="Sunday">Su</abbr></th>
-                        <th id="Monday"><abbr title="Monday">Mo</abbr></th>
-                        <th id="Tuesday"><abbr title="Tuesday">Tu</abbr></th>
-                        <th id="Wednesday"><abbr title="Wednesday">We</abbr></th>
-                        <th id="Thursday"><abbr title="Thursday">Th</abbr></th>
-                        <th id="Friday"><abbr title="Friday">Fr</abbr></th>
-                        <th id="Saturday"><abbr title="Saturday">Sa</abbr></th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr><td id="errMsg" colspan="7">Javascript must be enabled</td></tr>
-                  </tbody>
-                </table>
-                <div id="bn_prev-label" class="offscreen">Go to previous month</div>
-                <div id="bn_next-label" class="offscreen">Go to next month</div>
-              </div>
-
-              <span class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</span>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-      <br />
       <br />
       <br />
       {# Submit form #}
@@ -268,6 +287,16 @@
         return false;
       });
 
+      $('#datesGroup').click(function(e){
+        //Check for click in the container div and hide the date-picker dialogs
+        $(document).unbind('click mousedown mouseup mousemove mouseover');
+        $('#dp1').attr('aria-hidden', 'true');
+        $('#dp2').attr('aria-hidden', 'true');
+        $('#dp3').attr('aria-hidden', 'true');
+      });
+
     });
+
+
   </script>
 {% endblock %}

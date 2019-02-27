@@ -12,9 +12,14 @@ var calendar = (function() {
     this.$grid = this.$id.find('#cal');
     this.$target = $('#' + target); // div or text box that will receive the selected date string and focus (if modal)
     this.bModal = modal; // true if datepicker should appear in a modal dialog box.
+    this.lang = $('#_lang');
 
-    this.monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'];
+    if (this.lang.val() === 'cy'){
+      this.monthNames = ['Ionawr', 'Chwefror', 'Mawrth', 'Ebrill', 'Mai', 'Mehefin', 'Gorffennaf', 'Awst', 'Medi', 'Hydref', 'Tachwedd', 'Rhagfyr'];
+    } else {
+      this.monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    };
+
 
     this.dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 

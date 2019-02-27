@@ -1,6 +1,9 @@
 {
   "HEADING": "Confirm your date of birth",
   "HEADING_OB": "Confirm the date of birth for the person you're answering for",
+  
+  "CAPTION": "Qualifying for jury service",
+  "CAPTION_OB": "Qualifying for jury service",
 
   "DOB_CURRENT_VALUE": "You said your date of birth was {{ formattedDob }}.",
   "DOB_CURRENT_VALUE_OB": "You said the person's date of birth was {{ formattedDob }}.",

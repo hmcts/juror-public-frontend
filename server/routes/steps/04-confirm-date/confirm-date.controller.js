@@ -16,7 +16,8 @@
   module.exports.index = function() {
     return function(req, res) {
       var tmpErrors
-        , mergedUser;
+        , mergedUser
+        , backLinkUrl;
 
       // Merge and then delete form fields and errors, prevents retention after pressing back link
       mergedUser = _.merge(_.cloneDeep(req.session.user), _.cloneDeep(req.session.formFields));
@@ -25,6 +26,12 @@
       delete req.session.errors;
       delete req.session.formFields;
 
+      // Set back link URL
+      if (req.session.change === true){
+        backLinkUrl = utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty);
+      } else {
+        backLinkUrl = utils.getRedirectUrl('steps.qualify.convictions', req.session.user.thirdParty);
+      }
 
       return res.render('steps/04-confirm-date/index.njk', {
         user: mergedUser,
@@ -34,6 +41,7 @@
           count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
           items: tmpErrors,
         },
+        backLinkUrl: backLinkUrl
       });
     };
   };
@@ -60,35 +68,49 @@
         req.session.errors = validatorResult;
         req.session.formFields = req.body;
 
-        return res.redirect(app.namedRoutes.build('steps.confirm.date.get'));
+        return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.date', req.session.user.thirdParty)));
       }
 
       // Store new info
       req.session.user.confirmedDate = req.body['confirmedDate'];
 
+      if (typeof req.session.lastValidConfirmedDate === 'undefined'){
+        req.session.lastValidConfirmedDate = {selection: null};
+      }
 
       // Redirect as appropriate
       switch (req.body['confirmedDate']) {
       case 'Yes':
+        req.session.lastValidConfirmedDate.selection = req.body['confirmedDate'];
+        req.session.lastValidConfirmedDate.data = null;
         if (req.session.change === true){
           delete req.session.user.deferral;
-          returnObj = res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
+          delete req.session.user.excusal;
+          returnObj = res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
         } else {
           delete req.session.user.deferral;
-          returnObj = res.redirect(app.namedRoutes.build('steps.cjs.employed.get'));
+          returnObj = res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.cjs.employed', req.session.user.thirdParty)));
         }
         break;
       case 'Change':
         if (req.session.change === true && req.session.user.deferral){
-          returnObj = res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
+          if (req.session.lastValidConfirmedDate.selection === req.body['confirmedDate']){
+            returnObj = res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
+          } else {
+            returnObj = res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.date.deferral', req.session.user.thirdParty)));
+          }
         } else {
           delete req.session.user.deferral;
-          returnObj = res.redirect(app.namedRoutes.build('steps.confirm.date.deferral.get'));
+          returnObj = res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.date.deferral', req.session.user.thirdParty)));
         }
         break;
       default:
         delete req.session.user.deferral;
-        returnObj = res.redirect(app.namedRoutes.build('steps.confirm.date.excusal.get'));
+        if (req.session.lastValidConfirmedDate.selection === req.body['confirmedDate']){
+          returnObj = res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
+        } else {
+          returnObj = res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.date.excusal', req.session.user.thirdParty)));
+        }
         break;
       }
 
@@ -99,7 +121,7 @@
   module.exports.change = function(app){
     return function(req, res){
       req.session.change = true;
-      res.redirect(app.namedRoutes.build('steps.confirm.date.get'));
+      res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.date', req.session.user.thirdParty)));
     };
   };
 

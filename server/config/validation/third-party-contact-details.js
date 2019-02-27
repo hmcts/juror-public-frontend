@@ -29,6 +29,14 @@
       },
 
       primaryPhone: {
+        presenceIf: {
+          field: 'useJurorPhoneDetails',
+          value: 'Yes',
+          message: {
+            summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.PHONE_NUMBER_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.PHONE_NUMBER_CHECK_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+          },
+        },
         presenceMainPhone: {
           thirdPartyMainPhone: req.session.user.thirdPartyDetails.mainPhone,
           thirdPartyEmail: req.session.user.thirdPartyDetails.emailAddress,
@@ -55,8 +63,6 @@
         },
       },
 
-
-
       useJurorEmailDetails: {
         ifValueMatch: {
           ifValue: 'No',
@@ -71,6 +77,13 @@
           field: 'useJurorPhoneDetails',
           message: {
             summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.USE_EMAIL_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+          },
+        },
+        presence: {
+          allowEmpty: false,
+          message: {
+            summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.USE_EMAIL_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.USE_EMAIL_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en))
           },
         },
       },

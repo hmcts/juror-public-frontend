@@ -1,0 +1,85 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}3rd Party Personal Details Date Of Birth{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+
+    {% include "../../includes/back-link.njk" %}
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('branches.third.party.personal.details.date-of-birth.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+
+      <div class="form-group {% if errors.items['dateOfBirth'] or errors.items['firstName'] or errors.items['lastName'] %}error{% endif %}">
+
+        <h1 class="heading-xlarge">
+          <div class="heading-secondary">
+            {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.CAPTION }}
+          </div>
+          {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.DOB_HEADER }}
+        </h1>
+
+        {# Date of birth #}
+        <div class="form-group {% if errors.items['dateOfBirth'] %}error{% endif %}" id="dateOfBirthGroup">
+          <fieldset>
+            <legend>
+              <span class="form-hint" id="dob-hint">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_HELPER }}</span>
+            </legend>
+
+            {% if errors.items['dateOfBirth'][0].fields %}
+              {% for errorField in errors.items['dateOfBirth'][0].fields %}
+              {% if errorField !== 'dateOfBirth' %}
+                <span class="error-message dateOfBirthErrorMessage" id="{{ errorField }}ErrorMessage">{{ errors.items['dateOfBirth'][0].details[loop.index0] }}</span>
+              {% endif %}
+              {% endfor %}
+            {% else %}
+              {% if errors.items['dateOfBirth'] %}<span class="error-message dateOfBirthErrorMessage" id="dateOfBirthErrorMessage">{{ errors.items['dateOfBirth'][0].details }}</span>{% endif %}
+            {% endif %}
+
+            <div class="form-date">
+              <div class="form-group form-group-day">
+                <label class="form-label" for="dobDay">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_DAY_LABEL }}</label>
+                <input class="form-control focus-select-all " id="dobDay" name="dobDay" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobDay }}" pattern="[0-9]*" min="1" max="31" minlength="1" maxlength="2" aria-describedby="dob-hint" autocomplete="off">
+              </div>
+              <div class="form-group form-group-month">
+                <label class="form-label" for="dobMonth">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_MONTH_LABEL }}</label>
+                <input class="form-control focus-select-all" id="dobMonth" name="dobMonth" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobMonth }}" pattern="[0-9]*" min="1" max="12" maxlength="2" aria-describedby="dob-hint" autocomplete="off">
+              </div>
+              <div class="form-group form-group-year">
+                <label class="form-label" for="dobYear">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_YEAR_LABEL }}</label>
+                <input class="form-control focus-select-all" id="dobYear" name="dobYear" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobYear }}" pattern="[0-9]*" maxlength="4" aria-describedby="dob-hint" autocomplete="off">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+      </div>
+
+      <details>
+        <summary>
+          <span class="summary">
+            {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_HELPER_TITLE }}
+          </span>
+        </summary>
+        <div class="panel panel-border-narrow" id="details-content-1" aria-hidden="true">
+          <p>{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_HELPER_PARAGRAPH_1 }}</p>
+          <p>{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_HELPER_PARAGRAPH_2 }}</p>
+          <p>{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_HELPER_PARAGRAPH_3 }}</p>
+        </div>
+      </details>
+      <br>
+
+      {# Submit form #}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+
+    </form>
+  </div>
+</div>
+{% endblock %}

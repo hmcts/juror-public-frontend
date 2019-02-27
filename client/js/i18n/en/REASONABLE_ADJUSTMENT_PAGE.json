@@ -11,6 +11,7 @@
   "ADJUSTMENT_ANSWER_HEARING": "Hearing impairment",
   "ADJUSTMENT_ANSWER_DIABETES": "Diabetes",
   "ADJUSTMENT_ANSWER_SIGHT": "Severe sight impairment",
+  "ADJUSTMENT_ANSWER_SIGHT_OB": "Severe sight impairment",
   "ADJUSTMENT_ANSWER_LEARNING_DISABILITY": "Learning disability",
   "ADJUSTMENT_ANSWER_OTHER": "Other",
 
@@ -25,8 +26,9 @@
   "GUIDANCE_PARAGRAPH_1_OB": "If you tell us the person you're replying for has an impairment or disability, we'll do all we can to help them and meet their needs in the court building when they do jury service. Sometimes we arrange for a person to visit the court beforehand to plan what help and facilities they need. We'll do our best to help with getting around the court, seeing, hearing or any other special help the person you're answering for needs.",
   "GUIDANCE_PARAGRAPH_2": "Some court buildings are old and harder to access. If you tell us about your disability or impairment now, we can check that the court where you are doing jury service is suitable for you.",
   "GUIDANCE_PARAGRAPH_2_OB": "Some court buildings are old and harder to access. If you tell us about the person's disability or impairment now, we can check that the court where they are doing jury service is suitable for them.",
-  "GUIDANCE_PARAGRAPH_3": "If you're worried about anything else to do with jury service because of your impairment or disability, please get in touch with us. Or you can get someone else to phone us for you. Ring 0300 456 1024",
-  "GUIDANCE_PARAGRAPH_3_OB": "If you're worried about anything else to do with jury service because of an impairment or disability that the person you're answering for has, please get in touch with us. Ring 0300 456 1024",
+  "GUIDANCE_PARAGRAPH_3": "If you're worried about anything else to do with jury service because of your impairment or disability, please get in touch with us. Or you can get someone else to phone us for you. Ring ",
+  "GUIDANCE_PARAGRAPH_3_OB": "If you're worried about anything else to do with jury service because of an impairment or disability that the person you're answering for has, please get in touch with us. Ring ",
+  "CONTACT_TEL": "0300 303 5173",
 
   "YES": "Yes",
   "NO": "No"

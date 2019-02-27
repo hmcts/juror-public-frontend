@@ -1,0 +1,137 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Personal Details Address{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    {% include "../../includes/back-link.njk" %}
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('steps.your.details.address.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+
+      <div class="form-group {% if errors.addressError %}error{% endif %}" id="titleGroup">
+
+        <h1 class="heading-xlarge">
+          <div class="heading-secondary">
+            {% if user.thirdParty == 'Yes' %}
+            {{- texts.YOUR_DETAILS_PAGE.CAPTION_OB -}}
+            {% else %}
+            {{- texts.YOUR_DETAILS_PAGE.CAPTION -}}
+            {% endif %}
+          </div>
+          {% if user.thirdParty == 'Yes' %}
+            {{- texts.YOUR_DETAILS_PAGE.HEADING_ADDRESS_OB -}}
+            {% else %}
+            {{- texts.YOUR_DETAILS_PAGE.HEADING_ADDRESS -}}
+          {% endif %}
+        </h1>
+
+        {# Address #}
+        <fieldset class="inline-edit" id="addressGroup">
+
+          <div class="grid-row inline-section primary {% if errors.addressError %}closed{% endif %}">
+            <div class="column-one-half">
+              {{ user.addressRender | safe }}
+            </div>
+            <div class="column-one-half">
+              <a href="#addressGroup" class="inline-edit-toggle" id="changeAddress" {% if trackingCode %}onclick="trackVirtualPageViews('Change - address')"{% endif %}>{{ texts.INTERFACE.FORM_CHANGE_LABEL }}</a>
+            </div>
+          </div>
+
+          <div class="inline-section secondary {% if errors.addressError %}open{% endif %}">
+
+            <div class="form-group{% if errors.items['address'] %} error{% endif %}">
+
+              <div class="form-group" id="addressLineOneGroup">
+                <label class="form-label" for="addressLineOne">{{ texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_ONE_LABEL }}</label>
+                {% if errors.items['addressLineOne'] %}<span class="error-message" id="addressLineOneGroupError">{{ errors.items['addressLineOne'][0].details }}</span>{% endif %}
+                <input type="text" class="form-control" name="addressLineOne" id="addressLineOne" value="{{ user.addressLineOne }}" maxlength="35" autocomplete="off" {% if errors.items['addressLineOne'] %}aria-describedby="addressLineOneGroupError"{% endif %}>
+              </div>
+
+              <div class="form-group" id="addressLineTwoGroup">
+                <label for="addressLineTwo" class="visuallyhidden">{{ texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_TWO_LABEL }}</label>
+                {% if errors.items['addressLineTwo'] %}<span class="error-message" id="addressLineTwoGroupError">{{ errors.items['addressLineTwo'][0].details }}</span>{% endif %}
+                <input type="text" class="form-control" name="addressLineTwo" id="addressLineTwo" value="{{ user.addressLineTwo }}" maxlength="35" autocomplete="off" {% if errors.items['addressLineTwo'] %}aria-describedby="addressLineTwoGroupError"{% endif %}>
+              </div>
+
+              <div class="form-group" id="addressLineThreeGroup">
+                <label for="addressLineThree" class="visuallyhidden">{{ texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_THREE_LABEL }}</label>
+                {% if errors.items['addressLineThree'] %}<span class="error-message" id="addressLineThreeGroupError">{{ errors.items['addressLineThree'][0].details }}</span>{% endif %}
+                <input type="text" class="form-control" name="addressLineThree" id="addressLineThree" value="{{ user.addressLineThree }}" maxlength="35" autocomplete="off" {% if errors.items['addressLineThree'] %}aria-describedby="addressLineThreeGroupError"{% endif %}>
+              </div>
+            </div>
+
+            <div class="form-group" id="addressTownGroup">
+              <label class="form-label" for="addressTown">{{ texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_TOWN_LABEL }}</label>
+              {% if errors.items['addressTown'] %}<span class="error-message" id="addressTownGroupError">{{ errors.items['addressTown'][0].details }}</span>{% endif %}
+              <input type="text" class="form-control" name="addressTown" id="addressTown" value="{{ user.addressTown }}" maxlength="35" autocomplete="off" {% if errors.items['addressTown'] %}aria-describedby="addressTownGroupError"{% endif %}>
+            </div>
+
+            <div class="form-group" id="addressCountyGroup">
+              <label class="form-label" for="addressCounty">{{ texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_COUNTY_LABEL }}</label>
+              {% if errors.items['addressCounty'] %}<span class="error-message" id="addressCountyGroupError">{{ errors.items['addressCounty'][0].details }}</span>{% endif %}
+              <input type="text" class="form-control" name="addressCounty" id="addressCounty" value="{{ user.addressCounty }}" maxlength="35" autocomplete="off" {% if errors.items['addressCounty'] %}aria-describedby="addressCountyGroupError"{% endif %}>
+            </div>
+
+            <div class="form-group" id="addressPostcodeGroup">
+              <label class="form-label" for="addressPostcode">{{ texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_POSTCODE_LABEL }}</label>
+              {% if errors.items['addressPostcode'] %}<span class="error-message" id="addressPostcodeGroupError">{{ errors.items['addressPostcode'][0].details }}</span>{% endif %}
+              <input type="text" class="form-control" name="addressPostcode" id="addressPostcode" value="{{ user.addressPostcode }}" maxlength="8" autocomplete="off" {% if errors.items['addressPostcode'] %}aria-describedby="addressPostcodeGroupError"{% endif %}>
+            </div>
+
+          </div>
+
+        </fieldset>
+
+      </div>
+
+      <br/>
+
+      {# Info about change of address #}
+      <br>
+      <div class="form-group">
+        <details>
+          <summary>
+            <span class="summary" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my address?')"{% endif %}>
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_ADDRESS_TITLE_OB }}
+              {% else %}
+              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_ADDRESS_TITLE }}
+              {% endif %}
+
+            </span>
+          </summary>
+          <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+            <p>
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_ADDRESS_PARAGRAPH_1_OB }}
+              {% else %}
+              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_ADDRESS_PARAGRAPH_1 }}
+              {% endif %}
+            </p>
+          </div>
+        </details>
+      </div>
+
+      {# Submit form #}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+  </div>
+  </div>
+
+</div>
+
+{% endblock %}

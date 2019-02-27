@@ -1,0 +1,56 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}3rd Party Details Name{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    {% include "../../includes/back-link.njk" %}
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('branches.third.party.details.name.post') }}" method="POST" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+    
+      <div class="form-group {% if errors.items['firstName'] or errors.items['lastName'] %}error{% endif %}">
+    
+        <h1 class="heading-xlarge">
+          <div class="heading-secondary">
+            {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CAPTION }}
+          </div>
+          {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.TITLE }}
+        </h1>
+
+        <fieldset>
+          <p class="form-group" id="firstNameGroup">
+            <label class="form-label" for="firstName">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.LABEL_FIRST_NAME }}</label>
+            {% if errors.items['firstName'] %}<span class="error-message" id="firstNameErrorMessage">{{ errors.items['firstName'][0].details }}</span>{% endif %}
+            <input type="text" class="form-control" name="firstName" id="firstName" value="{{ user.thirdPartyDetails.firstName }}" minlength="1" maxlength="50" autocomplete="off" {% if errors.items['firstName'] %}aria-describedby="firstNameErrorMessage"{% endif %}>
+          </p>
+
+          <p class="form-group" id="lastNameGroup">
+            <label class="form-label" for="lastName">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.LABEL_LAST_NAME }}</label>
+            {% if errors.items['lastName'] %}<span class="error-message" id="lastNameErrorMessage">{{ errors.items['lastName'][0].details }}</span>{% endif %}
+            <input type="text" class="form-control" name="lastName" id="lastName" value="{{ user.thirdPartyDetails.lastName }}" minlength="1" maxlength="50" autocomplete="off" {% if errors.items['lastName'] %}aria-describedby="lastNameErrorMessage"{% endif %}>
+          </p>
+        </fieldset>
+
+      </div>
+      <br><br>
+      <div class="form-group">
+        <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

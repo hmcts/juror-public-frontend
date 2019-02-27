@@ -16,7 +16,8 @@
   module.exports.index = function() {
     return function(req, res) {
       var tmpErrors
-        , mergedUser;
+        , mergedUser
+        , backLinkUrl;
 
       // Make sure the user session exists
       if (typeof req.session.user === 'undefined') {
@@ -30,6 +31,13 @@
       delete req.session.errors;
       delete req.session.formFields;
 
+      // Set back link URL
+      if (req.session.change === true){
+        backLinkUrl = 'steps.confirm.information.tp.get';
+      } else {
+        backLinkUrl = 'branches.third.party.details.contact.get';
+      }
+
       return res.render('branches/02-third-party-reason/index.njk', {
         user: mergedUser,
         errors: {
@@ -37,7 +45,8 @@
           message: '',
           count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
           items: tmpErrors,
-        }
+        },
+        backLinkUrl: backLinkUrl
       });
     };
   };
@@ -77,10 +86,10 @@
       req.session.user.ineligibleDeceased = (req.session.user.thirdPartyDetails.thirdPartyReason === 'deceased');
 
       if (req.session.user.thirdPartyDetails.thirdPartyReason === 'deceased') {
-        return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
+        return res.redirect(app.namedRoutes.build('steps.confirm.information.tp.get'));
       }
 
-      return res.redirect(app.namedRoutes.build('branches.third.party.personal.details.get'));
+      return res.redirect(app.namedRoutes.build('branches.third.party.personal.details.name.get'));
     };
   };
 

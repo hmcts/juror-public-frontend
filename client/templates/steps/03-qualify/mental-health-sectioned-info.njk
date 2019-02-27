@@ -1,0 +1,32 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    {% include "../../includes/back-link.njk" %}
+
+    <h1 class="heading-xlarge">{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.HEADING }}</h1>
+
+    <h3 class="heading-medium">{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.TITLE }}</h3>
+    {% if user.thirdParty == 'Yes' %}
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.FIRST_THIRD_PARTY }}</p>
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.SECOND_THIRD_PARTY }}</p>
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.THIRD_THIRD_PARTY }}</p>
+    {% else %}
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.FIRST_MAIN }}</p>
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.SECOND_MAIN }}</p>
+    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.THIRD_MAIN }}</p>
+    {% endif %}
+
+  </div>
+
+</div>
+
+{% endblock %}

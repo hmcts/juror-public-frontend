@@ -139,7 +139,7 @@
 
       // Normal change will forward us to the confirmation page
       if (req.session.change === true) {
-        return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
+        return res.redirect(app.namedRoutes.build('steps.confirm.information.tp.get'));
       }
 
       // If not a change, just go to next step in flow
@@ -153,4 +153,294 @@
       res.redirect(app.namedRoutes.build('branches.third.party.details.get'));
     };
   };
+
+  //
+  // Name functions
+  //
+  module.exports.getName = function() {
+    return function(req, res) {
+      var tmpErrors
+        , mergedUser
+        , backLinkUrl;
+
+      // Make sure the user session exists
+      if (typeof req.session.user === 'undefined') {
+        req.session.user = {};
+      }
+
+      // Merge and then delete form fields and errors, prevents retention after pressing back link
+      mergedUser = _.merge(_.cloneDeep(req.session.user), _.cloneDeep(req.session.formFields));
+      tmpErrors = _.cloneDeep(req.session.errors);
+
+      delete req.session.errors;
+      delete req.session.formFields;
+
+      // Set back link URL
+      if (req.session.change === true){
+        backLinkUrl = 'steps.confirm.information.tp.get';
+      } else {
+        backLinkUrl = 'steps.login.tp.get';
+      }
+
+      return res.render('branches/01-third-party-details/name.njk', {
+        user: mergedUser,
+        errors: {
+          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+          message: '',
+          count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
+          items: tmpErrors,
+        },
+        backLinkUrl: backLinkUrl
+      });
+    };
+  };
+
+
+  module.exports.createName = function(app) {
+    return function(req, res) {
+      var validatorResult
+
+      // Reset error and saved field sessions
+      delete req.session.errors;
+      delete req.session.formFields;
+
+      // Manipulate body to match user session for feedback
+      req.body.thirdPartyDetails = {};
+      req.body.thirdPartyDetails.firstName = req.body.firstName;
+      req.body.thirdPartyDetails.lastName = req.body.lastName;
+
+      // Validate form submission
+      validatorResult = validate(req.body, require('../../../config/validation/third-party-details-name')(req));
+      if (typeof validatorResult !== 'undefined') {
+        req.session.errors = validatorResult;
+        req.session.formFields = req.body;
+
+        return res.redirect(app.namedRoutes.build('branches.third.party.details.name.get'));
+      }
+
+      if (typeof req.session.user.thirdPartyDetails === 'undefined') {
+        req.session.user.thirdPartyDetails = {};
+      }
+
+      req.session.user.thirdPartyDetails.firstName = req.body.firstName;
+      req.session.user.thirdPartyDetails.lastName = req.body.lastName;
+
+      // Normal change will forward us to the confirmation page
+      if (req.session.change === true) {
+        return res.redirect(app.namedRoutes.build('steps.confirm.information.tp.get'));
+      }
+
+      // If not a change, just go to next step in flow
+      return res.redirect(app.namedRoutes.build('branches.third.party.details.relationship.get'));
+    };
+  };
+
+  module.exports.changeName = function(app){
+    return function(req, res){
+      req.session.change = true;
+      res.redirect(app.namedRoutes.build('branches.third.party.details.name.get'));
+    };
+  };
+
+
+  //
+  // Relationship functions
+  //
+  module.exports.getRelationship = function() {
+    return function(req, res) {
+      var tmpErrors
+        , mergedUser
+        , backLinkUrl;
+
+      // Make sure the user session exists
+      if (typeof req.session.user === 'undefined') {
+        req.session.user = {};
+      }
+
+      // Merge and then delete form fields and errors, prevents retention after pressing back link
+      mergedUser = _.merge(_.cloneDeep(req.session.user), _.cloneDeep(req.session.formFields));
+      tmpErrors = _.cloneDeep(req.session.errors);
+
+      delete req.session.errors;
+      delete req.session.formFields;
+
+      // Set back link URL
+      if (req.session.change === true){
+        backLinkUrl = 'steps.confirm.information.tp.get';
+      } else {
+        backLinkUrl = 'branches.third.party.details.name.get';
+      }
+
+      return res.render('branches/01-third-party-details/relationship.njk', {
+        user: mergedUser,
+        errors: {
+          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+          message: '',
+          count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
+          items: tmpErrors,
+        },
+        backLinkUrl: backLinkUrl
+      });
+    };
+  };
+
+
+  module.exports.createRelationship = function(app) {
+    return function(req, res) {
+      var validatorResult
+
+      // Reset error and saved field sessions
+      delete req.session.errors;
+      delete req.session.formFields;
+
+      // Manipulate body to match user session for feedback
+      req.body.thirdPartyDetails = {};
+      req.body.thirdPartyDetails.relationship = req.body.relationship;
+
+      // Validate form submission
+      validatorResult = validate(req.body, require('../../../config/validation/third-party-details-relationship')(req));
+      if (typeof validatorResult !== 'undefined') {
+        req.session.errors = validatorResult;
+        req.session.formFields = req.body;
+
+        return res.redirect(app.namedRoutes.build('branches.third.party.details.relationship.get'));
+      }
+
+      if (typeof req.session.user.thirdPartyDetails === 'undefined') {
+        req.session.user.thirdPartyDetails = {};
+      }
+
+      req.session.user.thirdPartyDetails.relationship = req.body.relationship;
+
+      // Normal change will forward us to the confirmation page
+      if (req.session.change === true) {
+        return res.redirect(app.namedRoutes.build('steps.confirm.information.tp.get'));
+      }
+
+      // If not a change, just go to next step in flow
+      return res.redirect(app.namedRoutes.build('branches.third.party.details.contact.get'));
+    };
+  };
+
+  module.exports.changeRelationship = function(app){
+    return function(req, res){
+      req.session.change = true;
+      res.redirect(app.namedRoutes.build('branches.third.party.details.relationship.get'));
+    };
+  };
+
+
+  //
+  // Contact functions
+  //
+  module.exports.getContact = function() {
+    return function(req, res) {
+      var tmpErrors
+        , mergedUser
+        , backLinkUrl;
+
+      // Make sure the user session exists
+      if (typeof req.session.user === 'undefined') {
+        req.session.user = {};
+      }
+
+      // Merge and then delete form fields and errors, prevents retention after pressing back link
+      mergedUser = _.merge(_.cloneDeep(req.session.user), _.cloneDeep(req.session.formFields));
+      tmpErrors = _.cloneDeep(req.session.errors);
+
+      delete req.session.errors;
+      delete req.session.formFields;
+
+      // Set back link URL
+      if (req.session.change === true){
+        backLinkUrl = 'steps.confirm.information.tp.get';
+      } else {
+        backLinkUrl = 'branches.third.party.details.relationship.get';
+      }
+
+      return res.render('branches/01-third-party-details/contact.njk', {
+        user: mergedUser,
+        errors: {
+          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+          message: '',
+          count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
+          items: tmpErrors,
+        },
+        backLinkUrl: backLinkUrl
+      });
+    };
+  };
+
+
+  module.exports.createContact = function(app) {
+    return function(req, res) {
+      var validatorResult
+
+      // Reset error and saved field sessions
+      delete req.session.errors;
+      delete req.session.formFields;
+
+      // Manipulate body to match user session for feedback
+      req.body.thirdPartyDetails = {};
+      req.body.thirdPartyDetails.contactPhone = req.body.contactPhone;
+      req.body.thirdPartyDetails.contactEmail = req.body.contactEmail;
+      req.body.thirdPartyDetails.mainPhone = req.body.mainPhone;
+      req.body.thirdPartyDetails.otherPhone = req.body.otherPhone;
+      req.body.thirdPartyDetails.emailAddress = req.body.emailAddress;
+      req.body.thirdPartyDetails.emailAddressConfirmation = req.body.emailAddressConfirmation;
+
+
+      // Validate form submission
+      validatorResult = validate(req.body, require('../../../config/validation/third-party-details-contact')(req));
+      if (typeof validatorResult !== 'undefined') {
+        req.session.errors = validatorResult;
+        req.session.formFields = req.body;
+
+        return res.redirect(app.namedRoutes.build('branches.third.party.details.contact.get'));
+      }
+
+      // Input validated, store information in session
+      if (req.body.hasOwnProperty('contactPhone') === false || req.body.contactPhone !== 'By phone') {
+        req.body.mainPhone = '';
+        req.body.otherPhone = '';
+      }
+
+      if (req.body.hasOwnProperty('contactEmail') === false || req.body.contactEmail !== 'By email') {
+        req.body.emailAddress = '';
+        req.body.emailAddressConfirmation = '';
+      }
+
+      if (typeof req.session.user.thirdPartyDetails === 'undefined') {
+        req.session.user.thirdPartyDetails = {};
+      }
+
+      req.session.user.thirdPartyDetails.contactPhone = req.body.contactPhone;
+      req.session.user.thirdPartyDetails.contactEmail = req.body.contactEmail;
+      req.session.user.thirdPartyDetails.mainPhone = req.body.mainPhone;
+      req.session.user.thirdPartyDetails.otherPhone = req.body.otherPhone;
+      req.session.user.thirdPartyDetails.emailAddress = req.body.emailAddress;
+      req.session.user.thirdPartyDetails.emailAddressConfirmation = req.body.emailAddressConfirmation;
+
+      // Normal change will forward us to the confirmation page
+      if (req.session.change === true) {
+        return res.redirect(app.namedRoutes.build('steps.confirm.information.tp.get'));
+      }
+
+      // If not a change, just go to next step in flow
+      return res.redirect(app.namedRoutes.build('branches.third.party.reason.get'));
+    };
+  };
+
+  module.exports.changeContact = function(app){
+    return function(req, res){
+      req.session.change = true;
+      res.redirect(app.namedRoutes.build('branches.third.party.details.contact.get'));
+    };
+  };
+
+
+
+
+
+
 })();

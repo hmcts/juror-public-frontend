@@ -1,0 +1,82 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_TITLE_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_TITLE }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Eligibility Mental Health Sectioned{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    {% include "../../includes/back-link.njk" %}
+    {% include "../../includes/errors.njk" %}
+    
+    <form action="{{ url('steps.qualify.mental.health.sectioned.post') }}" method="post">
+        <div class="form-group inline {% if (errors.items['mentalHealthSectioned']) or (errors.items['mentalHealthSectionedDetails']) %}error{% endif %}" id="mentalHealthSectionedGroup">
+
+            <h1 class="heading-xlarge">
+            <div class="heading-secondary">
+                {% if user.thirdParty == 'Yes' %}
+                {{ texts.QUALIFY_PAGE.CAPTION_OB }}
+                {% else %}
+                {{ texts.QUALIFY_PAGE.CAPTION }}
+                {% endif %}
+            </div>
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_TITLE_OB }}
+            {% else %}
+            {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_TITLE }}
+            {% endif %}
+            </h1>
+
+            <fieldset>
+            <span class="form-hint" id="mentalHealthSectionedHint">{{ texts.QUALIFY_PAGE.UNSURE_PROMPT }} <a href="{{ url('steps.qualify.mental.health.sectioned.info') }}">{{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}</a></span>
+                {% if errors.items['mentalHealthSectioned'] %} <span class="error-message"> {{ errors.items['mentalHealthSectioned'][0].details }} </span> {% endif %}
+            <br>
+            <label class="block-label selection-button-radio" for="mentalHealthSectioned-Yes" data-target="mentalHealthSectionedDetailsGroup">
+                {% if user.thirdParty == 'Yes' %}
+                <input id="mentalHealthSectioned-Yes" type="radio" name="mentalHealthSectioned" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.mentalHealthSectioned.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
+                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES_OB }}
+                {% else %}
+                <input id="mentalHealthSectioned-Yes" type="radio" name="mentalHealthSectioned" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.mentalHealthSectioned.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
+                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES }}
+                {% endif %}
+            </label>
+            <label class="block-label selection-button-radio" for="mentalHealthSectioned-No">
+                {% if user.thirdParty == 'Yes' %}
+                <input id="mentalHealthSectioned-No" type="radio" name="mentalHealthSectioned" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.mentalHealthSectioned.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
+                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO_OB }}
+                {% else %}
+                <input id="mentalHealthSectioned-No" type="radio" name="mentalHealthSectioned" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.mentalHealthSectioned.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
+                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO }}
+                {% endif %}
+            </label>
+
+            <div class="panel panel-border-narrow {% if user.qualify.mentalHealthSectioned.answer === texts.QUALIFY_PAGE.YES %}{% else %}js-hidden{% endif %}" id="mentalHealthSectionedDetailsGroup">
+                <label class="form-label" for="mentalHealthSectionedDetails">{{ texts.QUALIFY_PAGE.DETAILS }}</label>
+                {% if errors.items['mentalHealthSectionedDetails'] %}<span class="error-message" id="mhSectionedDetailsErrorMessage">{{ errors.items['mentalHealthSectionedDetails'][0].details }}</span>{% endif %}
+                <textarea class="form-control" name="mentalHealthSectionedDetails" id="mentalHealthSectionedDetails" maxlength="1000" {% if errors.items['mentalHealthSectionedDetails'] %}aria-describedby="mhSectionedDetailsErrorMessage"{% endif %}>{{ user.qualify.mentalHealthSectioned.details }}</textarea>
+                <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
+            </div>
+
+            </fieldset>
+        </div>
+
+        {# Submit form #}
+        <input type="hidden" name="_csrf" id="_csrf" value="{{ csrftoken }}">
+        <input type="hidden" id="store_url" value="{{ url('steps.qualify.store') }}">
+        <input id="submitButton" class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+   
+  </div>
+</div>
+
+{% endblock %}

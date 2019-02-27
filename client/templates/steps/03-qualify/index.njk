@@ -16,11 +16,13 @@
 
   <div class="column-two-thirds">
 
+    {% include "../../includes/back-link.njk" %}
+    
     <h1 class="heading-xlarge">
       {% if user.thirdParty == 'Yes' %}
-      {{ texts.QUALIFY_PAGE.HEADING_OB }}
+        {{ texts.QUALIFY_PAGE.HEADING_OB }}
       {% else %}
-      {{ texts.QUALIFY_PAGE.HEADING }}
+        {{ texts.QUALIFY_PAGE.HEADING }}
       {% endif %}
     </h1>
 
@@ -34,8 +36,11 @@
 
     {% include "../../includes/errors.njk" %}
 <br>
-    <a class="button" id="continue" href="{{ url('steps.qualify.residency.get') }}" role="button">{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}</a>
-
+    {% if user.thirdParty == 'Yes' %}
+      <a class="button" id="continue" href="{{ url('steps.qualify.residency.tp.get') }}" role="button">{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}</a>
+    {% else %}
+      <a class="button" id="continue" href="{{ url('steps.qualify.residency.get') }}" role="button">{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}</a>
+    {% endif %}
   </div>
 
 </div>

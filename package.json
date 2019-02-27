@@ -1,6 +1,6 @@
 {
   "name": "juror-public-front-end",
-  "version": "1.0.0",
+  "version": "2.10.243",
   "description": "A front-end for responding to jury summons",
   "main": "server/index.js",
   "scripts": {
@@ -8,6 +8,7 @@
     "test": "NODE_ENV=test grunt test",
     "serve": "NODE_ENV=production USE_AUTH=false USE_HTTPS=false node server/index.js",
     "test:e2e": "./node_modules/.bin/chimp tests/e2e/chimp.conf.js",
+    "test:tag": "./node_modules/.bin/chimp tests/e2e/chimp-tag.conf.js",
     "test:e2e-debug": "./node_modules/.bin/chimp tests/e2e/chimp.conf.js --debugCucumber",
     "test:e2e-watch": "./node_modules/.bin/chimp tests/e2e/chimp.conf.js --watch",
     "generate-report": "node tests/e2e/support/generateReport.js",
@@ -38,6 +39,7 @@
     "fs-extra": "^4.0.3",
     "helmet": "^3.9.0",
     "i18n-express": "^1.0.4",
+    "imagemin": "^6.0.0",
     "ip": "^1.1.5",
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.13.1",
@@ -45,6 +47,7 @@
     "moment": "^2.19.3",
     "named-routes": "^2.0.6",
     "nunjucks": "^3.0.1",
+    "optipng-bin": "^4.0.0",
     "pdfmake": "^0.1.34",
     "referrer-policy": "^1.0.0",
     "request": "^2.79.0",
@@ -106,7 +109,7 @@
     "mochawesome": "^3.0.0",
     "nsp": "^3.1.0",
     "open": "0.0.5",
-    "oracledb": "^1.13.1",
+    "oracledb": "^2.3.0",
     "sinon": "^4.1.2",
     "sinon-chai": "^2.8.0",
     "time-grunt": "^1.4.0"

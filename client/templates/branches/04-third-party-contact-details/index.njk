@@ -10,15 +10,20 @@
 
 <div class="grid-row">
   <div class="column-two-thirds">
-    <h1 class="heading-xlarge">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.HEADER }}</h1>
 
+    {% include "../../includes/back-link.njk" %}
     {% include "../../includes/errors.njk" %}
 
-    <p class="lede">
-      {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.INTRO_PARAGRAPH }}
-    </p>
-
     <form action="{{ url('branches.third.party.contact.details.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+
+      <div class="form-group {% if errors.items['primaryPhone'] or errors.items['secondaryPhone'] or errors.items['useJurorPhoneDetails'] or errors.items['useJurorEmailDetails'] or errors.items['emailAddress'] or errors.items['emailAddressConfirmation'] %}error{% endif %}" id="thirdPartyReasonGroup">
+
+      <h1 class="heading-xlarge">
+        <div class="heading-secondary">
+          {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CAPTION }}
+        </div>
+        {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.HEADER }}
+      </h1>
 
       <fieldset>
         <legend>
@@ -35,7 +40,7 @@
         {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_PARAGRAPH }}
         {% if errors.items['useJurorPhoneDetails'] %}<span class="error-message" id="useJurorPhoneDetailsGroup">{{ errors.items['useJurorPhoneDetails'][0].details }}</span>{% endif %}
 
-        <div class="form-group {% if errors.items['useJurorPhoneDetails'] %}error{% endif %}">
+        <div class="form-group">
           <br>
           <label class="block-label selection-button-radio" for="phoneNumber_existing">
             <input id="phoneNumber_existing" type="radio" name="useJurorPhoneDetails" value="No" {% if user.useJurorPhoneDetails == 'No' %}checked="checked"{% endif %}>
@@ -47,15 +52,15 @@
             {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_GIVE_NEW }}
           </label>
           <div class="panel panel-border-narrow js-hidden" id="newPhoneNumber">
-            <div class="form-group {% if errors.items['primaryPhone'] %}error{% endif %}">
+            <div class="form-group">
               <label class="form-label" for="primaryPhone">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.MAIN_PHONE }}</label>
-              {% if errors.items['primaryPhone'] %}<span class="error-message" id="primaryPhoneGroup">{{ errors.items['primaryPhone'][0].details }}</span>{% endif %}
-              <input class="form-control" name="primaryPhone" type="text" id="primaryPhone" value="{{ user.primaryPhone }}" autocomplete="off">
+              {% if errors.items['primaryPhone'] %}<span class="error-message" id="primaryPhoneErrorMessage">{{ errors.items['primaryPhone'][0].details }}</span>{% endif %}
+              <input class="form-control" name="primaryPhone" type="text" inputmode="numeric" id="primaryPhone" value="{{ user.primaryPhone }}" autocomplete="off" {% if errors.items['primaryPhone'] %}aria-describedby="primaryPhoneErrorMessage"{% endif %}>
             </div>
-            <div class="form-group {% if errors.items['secondaryPhone'] %}error{% endif %}">
+            <div class="form-group">
               <label class="form-label" for="secondaryPhone">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.OTHER_PHONE }}</label>
-              {% if errors.items['secondaryPhone'] %}<span class="error-message" id="secondaryPhoneGroup">{{ errors.items['secondaryPhone'][0].details }}</span>{% endif %}
-              <input class="form-control" name="secondaryPhone" type="text" id="secondaryPhone" value="{{ user.secondaryPhone }}" autocomplete="off">
+              {% if errors.items['secondaryPhone'] %}<span class="error-message" id="secondaryPhoneErrorMessage">{{ errors.items['secondaryPhone'][0].details }}</span>{% endif %}
+              <input class="form-control" name="secondaryPhone" type="text" inputmode="numeric" id="secondaryPhone" value="{{ user.secondaryPhone }}" autocomplete="off" {% if errors.items['secondaryPhone'] %}aria-describedby="secondaryPhoneErrorMessage"{% endif %}>
             </div>
           </div>
         </div>
@@ -64,7 +69,7 @@
         {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_PARAGRAPH }}
         {% if errors.items['useJurorEmailDetails'] %}<span class="error-message" id="useJurorEmailDetailsGroup">{{ errors.items['useJurorEmailDetails'][0].details }}</span>{% endif %}
 
-        <div class="form-group {% if errors.items['useJurorEmailDetails'] %}error{% endif %}">
+        <div class="form-group">
           <br>
           <label class="block-label selection-button-radio" for="emailAddress_existing">
             <input id="emailAddress_existing" type="radio" name="useJurorEmailDetails" value="No" {% if user.useJurorEmailDetails == 'No' %}checked="checked"{% endif %}>
@@ -76,15 +81,15 @@
             {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_GIVE_NEW }}
           </label>
           <div class="panel panel-border-narrow js-hidden" id="newEmailAddress">
-            <div class="form-group {% if errors.items['emailAddress'] %}error{% endif %}">
+            <div class="form-group">
               <label class="form-label" for="emailAddress">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_ENTER }}</label>
-              {% if errors.items['emailAddress'] %}<span class="error-message" id="emailAddressGroup">{{ errors.items['emailAddress'][0].details }}</span>{% endif %}
-              <input class="form-control" type="email" id="emailAddress" name="emailAddress" maxlength="254" value="{{ user.emailAddress }}" autocomplete="off">
+              {% if errors.items['emailAddress'] %}<span class="error-message" id="emailAddressErrorMessage">{{ errors.items['emailAddress'][0].details }}</span>{% endif %}
+              <input class="form-control" type="email" id="emailAddress" name="emailAddress" maxlength="254" value="{{ user.emailAddress }}" autocomplete="off" {% if errors.items['emailAddress'] %}aria-describedby="emailAddressErrorMessage"{% endif %}>
             </div>
-            <div class="form-group {% if errors.items['emailAddressConfirmation'] %}error{% endif %}">
+            <div class="form-group">
               <label class="form-label" for="emailAddressConfirmation">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_ENTER_CONFIRM }}</label>
-              {% if errors.items['emailAddressConfirmation'] %}<span class="error-message" id="emailAddressConfirmationGroup">{{ errors.items['emailAddressConfirmation'][0].details }}</span>{% endif %}
-              <input class="form-control" type="email" id="emailAddressConfirmation" name="emailAddressConfirmation" maxlength="254" value="{{ user.emailAddressConfirmation }}" autocomplete="off">
+              {% if errors.items['emailAddressConfirmation'] %}<span class="error-message" id="emailAddressConfirmationErrorMessage">{{ errors.items['emailAddressConfirmation'][0].details }}</span>{% endif %}
+              <input class="form-control" type="email" id="emailAddressConfirmation" name="emailAddressConfirmation" maxlength="254" value="{{ user.emailAddressConfirmation }}" autocomplete="off" {% if errors.items['emailAddressConfirmation'] %}aria-describedby="emailAddressConfirmationErrorMessage"{% endif %}>
             </div>
           </div>
         </div>

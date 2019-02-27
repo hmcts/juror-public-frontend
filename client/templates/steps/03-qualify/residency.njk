@@ -16,44 +16,57 @@
 
   <div class="column-two-thirds">
 
-    <h1 class="heading-xlarge">
-      {% if user.thirdParty == 'Yes' %}
-      {{ texts.QUALIFY_PAGE.RESIDENCY_TITLE_OB }}
-      {% else %}
-      {{ texts.QUALIFY_PAGE.RESIDENCY_TITLE }}
-      {% endif %}
-    </h1>
-
+    {% include "../../includes/back-link.njk" %}
     {% include "../../includes/errors.njk" %}
 
     <form action="{{ url('steps.qualify.residency.post') }}" method="post">
-      <div class="form-group inline {% if errors.items['livedConsecutive'] %}error{% endif %}" id="livedConsecutiveGroup">
+      <div class="form-group inline {% if (errors.items['livedConsecutiveDetails']) or (errors.items['livedConsecutive']) %}error{% endif %}" id="livedConsecutiveGroup">
+
+        <h1 class="heading-xlarge">
+          <div class="heading-secondary">
+            {% if user.thirdParty == 'Yes' %}
+            {{ texts.QUALIFY_PAGE.CAPTION_OB }}
+            {% else %}
+            {{ texts.QUALIFY_PAGE.CAPTION }}
+            {% endif %}
+          </div>
+          {% if user.thirdParty == 'Yes' %}
+          {{ texts.QUALIFY_PAGE.RESIDENCY_TITLE_OB }}
+          {% else %}
+          {{ texts.QUALIFY_PAGE.RESIDENCY_TITLE }}
+          {% endif %}
+        </h1>
+
         <fieldset>
-          <legend>
-            <span class="form-label-bold">
-              {% if user.thirdParty == 'Yes' %}
-              {{ texts.QUALIFY_PAGE.QUESTION_1_OB }}
-              {% else %}
-              {{ texts.QUALIFY_PAGE.QUESTION_1 }}
-              {% endif %}
-            </span>
-          </legend>
           <span class="form-hint" id="livedConsecutiveHint">{{ texts.QUALIFY_PAGE.UNSURE_PROMPT }} <a href="{{ url('steps.qualify.residency.info') }}">{{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}</a></span>
-            {% if errors.items['livedConsecutive'] %} <span class="error-message"> {{ texts.QUALIFY_PAGE.MISSING }} </span> {% endif %}
+            {% if errors.items['livedConsecutive'] %} <span class="error-message"> {{ errors.items['livedConsecutive'][0].details }} </span> {% endif %}
           <br>
           <label class="block-label selection-button-radio" for="livedConsecutive-Yes">
-            <input id="livedConsecutive-Yes" type="radio" class="store-updated-information" name="livedConsecutive" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.livedConsecutive.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
-            {{ texts.QUALIFY_PAGE.YES }}
+            {% if user.thirdParty == 'Yes' %}
+              <input id="livedConsecutive-Yes" type="radio" class="store-updated-information" name="livedConsecutive" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.livedConsecutive.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
+              {{ texts.QUALIFY_PAGE.RESIDENCY_YES_OB }}
+            {% else %}
+              <input id="livedConsecutive-Yes" type="radio" class="store-updated-information" name="livedConsecutive" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.livedConsecutive.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
+              {{ texts.QUALIFY_PAGE.RESIDENCY_YES }}
+            {% endif %}
           </label>
           <label class="block-label selection-button-radio" for="livedConsecutive-No" data-target="livedConsecutiveDetailsGroup">
-            <input id="livedConsecutive-No" type="radio" class="store-updated-information" name="livedConsecutive" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.livedConsecutive.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
-            {{ texts.QUALIFY_PAGE.NO }}
+            {% if user.thirdParty == 'Yes' %}
+              <input id="livedConsecutive-No" type="radio" class="store-updated-information" name="livedConsecutive" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.livedConsecutive.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
+              {{ texts.QUALIFY_PAGE.RESIDENCY_NO_OB }}
+            {% else %}
+              <input id="livedConsecutive-No" type="radio" class="store-updated-information" name="livedConsecutive" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.livedConsecutive.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
+              {{ texts.QUALIFY_PAGE.RESIDENCY_NO }}
+            {% endif %}
           </label>
 
-          <div class="panel panel-border-narrow {% if user.qualify.livedConsecutive.answer === texts.QUALIFY_PAGE.NO %}{% else %}js-hidden{% endif %} {% if errors.items['livedConsecutiveDetails'] %}error{% endif %}" id="livedConsecutiveDetailsGroup">
+          <div class="panel panel-border-narrow {% if user.qualify.livedConsecutive.answer === texts.QUALIFY_PAGE.NO %}{% else %}js-hidden{% endif %}" id="livedConsecutiveDetailsGroup">
             <label class="form-label" for="livedConsecutiveDetails">{{ texts.QUALIFY_PAGE.DETAILS }}</label>
-            <textarea class="form-control" name="livedConsecutiveDetails" id="livedConsecutiveDetails" maxlength="1000">{{ user.qualify.livedConsecutive.details }}</textarea>
+            {% if errors.items['livedConsecutiveDetails'] %}<span class="error-message" id="livedConsecutiveDetailsErrorMessage">{{ errors.items['livedConsecutiveDetails'][0].details }}</span>{% endif %}
+            <textarea class="form-control" name="livedConsecutiveDetails" id="livedConsecutiveDetails" maxlength="1000" {% if errors.items['livedConsecutiveDetails'] %}aria-describedby="livedConsecutiveDetailsErrorMessage"{% endif %}>{{ user.qualify.livedConsecutive.details }}</textarea>
+            <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
+
         </fieldset>
       </div>
 

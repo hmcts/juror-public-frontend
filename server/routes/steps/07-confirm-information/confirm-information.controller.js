@@ -19,24 +19,24 @@
   function sendToComplete(req, res, app) {
     // If juror does not meet the age requirements, redirect to confirmation page with ineligable
     if (req.session.user.ineligibleAge === true) {
-      return res.redirect(app.namedRoutes.build('steps.confirmation.age.get'));
+      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirmation.age', req.session.user.thirdParty)));
     }
 
     if (req.session.user.ineligibleDeceased === true) {
-      return res.redirect(app.namedRoutes.build('steps.confirmation.deceased.get'));
+      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirmation.deceased', req.session.user.thirdParty)));
     }
 
     // If juror has asked to change date, redirect to confirmation page with excusal variant
     if (req.session.user.confirmedDate === 'No') {
-      return res.redirect(app.namedRoutes.build('steps.confirmation.excusal.get'));
+      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirmation.excusal', req.session.user.thirdParty)));
     }
 
     // If juror has asked to change date, redirect to confirmation page with deferral variant
     if (req.session.user.confirmedDate === 'Change') {
-      return res.redirect(app.namedRoutes.build('steps.confirmation.deferral.get'));
+      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirmation.deferral', req.session.user.thirdParty)));
     }
 
-    return res.redirect(app.namedRoutes.build('steps.confirmation.straight.get'));
+    return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirmation.straight', req.session.user.thirdParty)));
   }
 
   module.exports.index = function(app) {
@@ -46,8 +46,13 @@
         , cjsTmpArr
         , tmpArr
         , assistanceTmp
-        , personalDetailsChangeLink
-        , contactDetailsChangeLink
+        // , personalDetailsChangeLink
+        , personalDetailsChangeNameLink
+        , personalDetailsChangeAddressLink
+        , personalDetailsChangeDateOfBirthLink
+        // , contactDetailsChangeLink
+        , contactDetailsChangePhoneLink
+        , contactDetailsChangeEmailLink
         , _ = require('lodash')
         , thirdPartyMapping = {
           nothere: filters.translate('ON_BEHALF.THIRD_PARTY_REASON.REASONS.NOT_HERE', (req.session.ulang === 'cy' ? texts_cy : texts_en))
@@ -176,13 +181,16 @@
           return val;
         }).join('<br>');
         req.session.user['hearingDateTimestamp'] = response['hearingDate'];
-        req.session.user['nameRender'] = [
-          response['title'],
-          response['firstName'],
-          response['lastName']
-        ].filter(function(val){
-          return val;
-        }).join(' ');
+
+        if (req.session.user.ineligibleDeceased) {
+          req.session.user['nameRender'] = [
+            response['title'],
+            response['firstName'],
+            response['lastName']
+          ].filter(function(val){
+            return val;
+          }).join(' ');
+        }
 
         //Try and parse date for hearing
         try {
@@ -224,19 +232,82 @@
 
         //adds court details to session
         jurorObj.get(require('request-promise'), app, req.session.user.jurorNumber, req.session.authToken)
-        .then(getDetailsSuccess, getDetailsError)
-        .catch(getDetailsError);
+          .then(getDetailsSuccess, getDetailsError)
+          .catch(getDetailsError);
       }
 
       // Get correct link for changing personal details
       // of summoned juror
       if (req.session.user.thirdParty === 'Yes') {
-        personalDetailsChangeLink = app.namedRoutes.build('branches.third.party.personal.details.change.get');
-        contactDetailsChangeLink = app.namedRoutes.build('branches.third.party.contact.details.change.get');
+        //personalDetailsChangeLink = app.namedRoutes.build('branches.third.party.personal.details.change.get');
+        personalDetailsChangeNameLink = app.namedRoutes.build('branches.third.party.personal.details.name.change.get');
+        personalDetailsChangeAddressLink =app.namedRoutes.build('branches.third.party.personal.details.address.change.get');
+        personalDetailsChangeDateOfBirthLink = app.namedRoutes.build('branches.third.party.personal.details.date-of-birth.change.get');
+        //contactDetailsChangeLink = app.namedRoutes.build('branches.third.party.contact.details.change.get');
+        contactDetailsChangePhoneLink = app.namedRoutes.build('branches.third.party.contact.details.change.get');
+        contactDetailsChangeEmailLink = app.namedRoutes.build('branches.third.party.contact.details.change.get');
       } else {
-        personalDetailsChangeLink = app.namedRoutes.build('steps.your.details.change.get');
-        contactDetailsChangeLink = app.namedRoutes.build('steps.your.details.change.get');
+        personalDetailsChangeNameLink = app.namedRoutes.build('steps.your.details.name.change.get');
+        personalDetailsChangeAddressLink = app.namedRoutes.build('steps.your.details.address.change.get');
+        personalDetailsChangeDateOfBirthLink = app.namedRoutes.build('steps.your.details.date-of-birth.change.get');
+        contactDetailsChangePhoneLink = app.namedRoutes.build('steps.your.details.phone.change.get');
+        contactDetailsChangeEmailLink = app.namedRoutes.build('steps.your.details.email.change.get');
       }
+
+
+      //Final checks for Excusal
+      if (req.session.user.confirmedDate === 'No'){
+
+        if (typeof req.session.errors !== 'undefined'){
+          delete req.session.errors.excusalReason;
+        }
+
+        if (req.session.lastValidConfirmedDate.selection !== 'No'){
+
+          if (req.session.lastValidConfirmedDate.selection === 'Yes'){
+            delete req.session.user.deferral;
+            delete req.session.user.excusal;
+            req.session.user.confirmedDate = 'Yes';
+          }
+
+          if (req.session.lastValidConfirmedDate.selection === 'Change'){
+            delete req.session.user.excusal;
+            req.session.user.confirmedDate = 'Change';
+            req.session.user.deferral = req.session.lastValidConfirmedDate.data;
+          }
+        }
+
+        req.session.user.excusal = req.session.lastValidConfirmedDate.data;
+
+      }
+
+      //Final checks for Deferral
+      if (req.session.user.confirmedDate === 'Change'){
+
+        if (typeof req.session.errors !== 'undefined'){
+          delete req.session.errors.deferralReason;
+        }
+
+        if (req.session.lastValidConfirmedDate.selection !== 'Change'){
+
+          if (req.session.lastValidConfirmedDate.selection === 'Yes'){
+            delete req.session.user.deferral;
+            delete req.session.user.excusal;
+            req.session.user.confirmedDate = 'Yes';
+          }
+
+          if (req.session.lastValidConfirmedDate.selection === 'No'){
+            delete req.session.user.deferral;
+            req.session.user.confirmedDate = 'No';
+            req.session.user.excusal = req.session.lastValidConfirmedDate.data;
+          }
+        }
+
+        req.session.user.deferral = req.session.lastValidConfirmedDate.data;
+
+      }
+
+
 
       // Merge and then delete form fields and errors, prevents retention after pressing back link
       tmpErrors = _.cloneDeep(req.session.errors);
@@ -244,7 +315,7 @@
       delete req.session.errors;
       delete req.session.formFields;
       if (req.session.user.qualify) {
-        if (req.session.user.qualify.livedConsecutive.details || req.session.user.qualify.mentalHealthAct.details || req.session.user.qualify.onBail.details || req.session.user.qualify.convicted.details) {
+        if (req.session.user.qualify.livedConsecutive.details || req.session.user.qualify.mentalHealthSectioned.details || req.session.user.qualify.mentalHealthCapacity.details || req.session.user.qualify.onBail.details || req.session.user.qualify.convicted.details) {
           req.session.user['ineligible'] = 'Yes';
         }
         else {
@@ -255,8 +326,13 @@
 
       return res.render('steps/07-confirm-information/index.njk', {
         user: mergedUser,
-        personalDetailsChangeLink: personalDetailsChangeLink,
-        contactDetailsChangeLink: contactDetailsChangeLink,
+        //personalDetailsChangeLink: personalDetailsChangeLink,
+        personalDetailsChangeNameLink: personalDetailsChangeNameLink,
+        personalDetailsChangeAddressLink: personalDetailsChangeAddressLink,
+        personalDetailsChangeDateOfBirthLink: personalDetailsChangeDateOfBirthLink,
+        // contactDetailsChangeLink: contactDetailsChangeLink,
+        contactDetailsChangePhoneLink: contactDetailsChangePhoneLink,
+        contactDetailsChangeEmailLink: contactDetailsChangeEmailLink,
         errors: {
           title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           message: '',

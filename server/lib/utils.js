@@ -9,6 +9,7 @@
     , specialNeedsMappings = {
       'SEVERE SIGHT IMPAIRMENT': 'V',
       'NAM DIFRIFOL AR EICH GOLWG': 'V',
+      'NAM DIFRIFOL AR EI OLWG': 'V',
       'WHEEL CHAIR ACCESS': 'W',
       'HEARING IMPAIRMENT': 'H',
       'NAM AR Y CLYW': 'H',
@@ -379,6 +380,56 @@
     return true;
   }
 
+  function checkQualifyCompletedMentalHealthSectioned(userData) {
+    if (typeof userData.qualify === 'undefined') {
+      return false;
+    }
+
+    // Check that question has been answered
+
+    if (typeof userData.qualify.mentalHealthSectioned === 'undefined') {
+      return false;
+    }
+
+    // If question has been answered check if it needs details
+
+    if (
+      userData.qualify.mentalHealthSectioned.answer === 'Yes' && (
+        typeof userData.qualify.mentalHealthSectioned.details === 'undefined' ||
+        userData.qualify.mentalHealthSectioned.details.length === 0
+    )) {
+      return false;
+    }
+
+    // Else all is good.
+    return true;
+  }
+
+  function checkQualifyCompletedMentalHealthCapacity(userData) {
+    if (typeof userData.qualify === 'undefined') {
+      return false;
+    }
+
+    // Check that question has been answered
+
+    if (typeof userData.qualify.mentalHealthCapacity === 'undefined') {
+      return false;
+    }
+
+    // If question has been answered check if it needs details
+
+    if (
+      userData.qualify.mentalHealthCapacity.answer === 'Yes' && (
+        typeof userData.qualify.mentalHealthCapacity.details === 'undefined' ||
+        userData.qualify.mentalHealthCapacity.details.length === 0
+    )) {
+      return false;
+    }
+
+    // Else all is good.
+    return true;
+  }
+
   function checkQualifyCompletedBail(userData) {
     if (typeof userData.qualify === 'undefined') {
       return false;
@@ -502,11 +553,15 @@
             return res.redirect(app.namedRoutes.build('steps.qualify.residency.get'));
           }
 
-          if (checkQualifyCompletedMentalHealth(req.session.user) === false && activeStep >= 3.2) {
-            return res.redirect(app.namedRoutes.build('steps.qualify.mental.health.get'));
+          if (checkQualifyCompletedMentalHealthSectioned(req.session.user) === false && activeStep >= 3.2) {
+            return res.redirect(app.namedRoutes.build('steps.qualify.mental.health.sectioned.get'));
           }
 
-          if (checkQualifyCompletedBail(req.session.user) === false && activeStep >= 3.3) {
+          if (checkQualifyCompletedMentalHealthCapacity(req.session.user) === false && activeStep >= 3.3) {
+            return res.redirect(app.namedRoutes.build('steps.qualify.mental.health.capacity.get'));
+          }
+
+          if (checkQualifyCompletedBail(req.session.user) === false && activeStep >= 3.4) {
             return res.redirect(app.namedRoutes.build('steps.qualify.bail.get'));
           }
 
@@ -675,11 +730,27 @@
 
   };
 
-  module.exports.calculateAgeAtHearing = function calculateAgeAtHearing(dateOfBirth, hearingDate) {
-    var hearingDateMoment = moment(hearingDate, 'ddd mmm YYYY')
+  module.exports.calculateAgeAtHearing = function calculateAgeAtHearing(dateOfBirth, hearingDateTimestamp) {
+    //JDB-3418: Modified to use hearingDateTimestamp
+    var hearingDateMoment = moment(hearingDateTimestamp, 'x')
       , ageTimeOfHearing = hearingDateMoment.diff(dateOfBirth, 'years');
 
     return ageTimeOfHearing;
+  };
+
+  module.exports.getRedirectUrl = function(url, isThirdParty, isChange=false, requestMethod='get') {
+    var redirectUrl = url;
+
+    if (isChange === true){
+      redirectUrl = redirectUrl + '.change';
+    }
+    if (isThirdParty === 'Yes'){
+      redirectUrl = redirectUrl + '.tp';
+    }
+
+    redirectUrl = redirectUrl + '.' + requestMethod; // 'get' or 'post'
+
+    return redirectUrl;
   };
 
 })();

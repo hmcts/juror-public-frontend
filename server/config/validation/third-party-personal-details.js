@@ -104,7 +104,7 @@
         presence: {
           allowEmpty: false,
           message: {
-            summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.ADDRESS_TOWN_CHECK_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.ADDRESS_TOWN_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.ADDRESS_TOWN_CHECK_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         },

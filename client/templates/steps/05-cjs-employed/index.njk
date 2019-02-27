@@ -16,19 +16,21 @@
 
   <div class="column-two-thirds">
 
-    <h1 class="heading-xlarge">
-      {% if user.thirdParty == 'Yes' %}
-      {{ texts.EMPLOYED_PAGE.HEADER_OB }}
-      {% else %}
-      {{ texts.EMPLOYED_PAGE.HEADER }}
-      {% endif %}
-    </h1>
-
+    {% include "../../includes/back-link.njk" %}
     {% include "../../includes/errors.njk" %}
 
     <form action="{{ url('steps.cjs.employed.post') }}" method="post">
 
       <div class="form-group inline {% if errors.items['cjsEmployed'] %}error{% endif %}" id="cjsEmployedGroup">
+        
+        <h1 class="heading-xlarge">
+          {% if user.thirdParty == 'Yes' %}
+          {{ texts.EMPLOYED_PAGE.HEADER_OB }}
+          {% else %}
+          {{ texts.EMPLOYED_PAGE.HEADER }}
+          {% endif %}
+        </h1>
+        
         <fieldset>
           <legend>
             <span class="form-label-bold">
@@ -42,12 +44,22 @@
           {% if errors.items['cjsEmployed'] %}<span class="error-message">{{ errors.items['cjsEmployed'][0].details }}</span>{% endif %}
           <br>
           <label class="block-label selection-button-radio" data-target="cjsEmployerGroup" for="employedCjs-Yes">
-            <input id="employedCjs-Yes" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.YES }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES %}checked="checked"{% endif %}>
-            {{ texts.EMPLOYED_PAGE.YES }}
+              {% if user.thirdParty == 'Yes' %}
+                <input id="employedCjs-Yes" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.YES }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES %}checked="checked"{% endif %}>
+                {{ texts.EMPLOYED_PAGE.YES_OB }}
+              {% else %}
+                <input id="employedCjs-Yes" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.YES }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES %}checked="checked"{% endif %}>
+                {{ texts.EMPLOYED_PAGE.YES }}
+            {% endif %}
           </label>
           <label class="block-label selection-button-radio" for="employedCjs-No">
-            <input id="employedCjs-No" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.NO }}" {% if user.cjsEmployed == 'No' %}checked="checked"{% endif %}>
-            {{ texts.EMPLOYED_PAGE.NO }}
+              {% if user.thirdParty == 'Yes' %}
+                <input id="employedCjs-No" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.NO }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.NO %}checked="checked"{% endif %}>
+                {{ texts.EMPLOYED_PAGE.NO_OB }}
+              {% else %}
+                <input id="employedCjs-No" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.NO }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.NO %}checked="checked"{% endif %}>
+                {{ texts.EMPLOYED_PAGE.NO }}
+              {% endif %}
           </label>
         </fieldset>
       </div>
@@ -77,10 +89,11 @@
             <label class="form-label" for="cjsPoliceDetails">
               <strong class="small panel panel-border-narrow">
                 {{ texts.EMPLOYED_PAGE.WHICH_FORCE }}
-                {% if errors.items['cjsPoliceDetails'] %}<span class="error-message">{{ errors.items['cjsPoliceDetails'][0].details }}</span>{% endif %}
+                {% if errors.items['cjsPoliceDetails'] %}<span class="error-message" id="cjsPoliceDetailsErrorMessage">{{ errors.items['cjsPoliceDetails'][0].details }}</span>{% endif %}
               </strong>
             </label>
-            <textarea class="form-control" id="cjsPoliceDetails" name="cjsPoliceDetails" maxlength="1000">{{ user.cjsPoliceDetails }}</textarea>
+            <textarea class="form-control" id="cjsPoliceDetails" name="cjsPoliceDetails" maxlength="1000" {% if errors.items['cjsPoliceDetails'] %}aria-describedby="cjsPoliceDetailsErrorMessage"{% endif %}>{{ user.cjsPoliceDetails }}</textarea>
+            <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
 
           <label class="block-label selection-button-checkbox" for="cjsEmployer-prison" data-target="cjsPrisonDetailsGroup">
@@ -92,10 +105,11 @@
             <label class="form-label" for="cjsPrisonDetails">
               <strong class="small panel panel-border-narrow">
                 {{ texts.EMPLOYED_PAGE.WHICH_PRISON }}
-                {% if errors.items['cjsPrisonDetails'] %}<span class="error-message">{{ errors.items['cjsPrisonDetails'][0].details }}</span>{% endif %}
+                {% if errors.items['cjsPrisonDetails'] %}<span class="error-message" id="cjsPrisonDetailsErrorMessage">{{ errors.items['cjsPrisonDetails'][0].details }}</span>{% endif %}
               </strong>
             </label>
-            <textarea class="form-control" id="cjsPrisonDetails" name="cjsPrisonDetails" maxlength="1000">{{ user.cjsPrisonDetails }}</textarea>
+            <textarea class="form-control" id="cjsPrisonDetails" name="cjsPrisonDetails" maxlength="1000" {% if errors.items['cjsPrisonDetails'] %}aria-describedby="cjsPrisonDetailsErrorMessage"{% endif %}>{{ user.cjsPrisonDetails }}</textarea>
+            <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
 
           <label class="block-label selection-button-checkbox" for="cjsEmployer-nca">
@@ -112,10 +126,11 @@
             <label class="form-label" for="cjsEmployerDetails">
               <strong class="small panel panel-border-narrow">
                 {{ texts.EMPLOYED_PAGE.DETAILS }}
-                {% if errors.items['cjsEmployerDetails'] %}<span class="error-message">{{ errors.items['cjsEmployerDetails'][0].details }}</span>{% endif %}
+                {% if errors.items['cjsEmployerDetails'] %}<span class="error-message" id="cjsEmployerDetailsErrorMessage">{{ errors.items['cjsEmployerDetails'][0].details }}</span>{% endif %}
               </strong>
             </label>
-            <textarea class="form-control" id="cjsEmployerDetails" name="cjsEmployerDetails" maxlength="1000">{{ user.cjsEmployerDetails }}</textarea>
+            <textarea class="form-control" id="cjsEmployerDetails" name="cjsEmployerDetails" maxlength="1000" {% if errors.items['cjsEmployerDetails'] %}aria-describedby="cjsEmployerDetailsErrorMessage"{% endif %}>{{ user.cjsEmployerDetails }}</textarea>
+            <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
         </div>
 

@@ -46,7 +46,7 @@
 
       req.session.user['thirdParty'] = req.body['thirdParty'];
 
-      return res.redirect(app.namedRoutes.build('steps.login.get'));
+      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.login', req.session.user.thirdParty)));
 
     };
   };

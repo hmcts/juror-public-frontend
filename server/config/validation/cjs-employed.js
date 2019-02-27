@@ -15,7 +15,7 @@
       cjsEmployer: {
         presenceIf: {
           field: 'cjsEmployed',
-          value: (req.session.ulang === 'cy' ? texts_cy.QUALIFY_PAGE.YES : texts_en.QUALIFY_PAGE.YES),
+          value: (req.session.ulang === 'cy' ? texts_cy.EMPLOYED_PAGE.YES : texts_en.EMPLOYED_PAGE.YES),
           message: {
             summary: filters.translate('VALIDATION.CJS_EMPLOYED.WORKED_FOR'
               + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
@@ -30,7 +30,7 @@
           message: {
             summary: filters.translate('VALIDATION.CJS_EMPLOYED.POLICE'
               + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.CJS_EMPLOYED.CJS_GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         },
         length: {
@@ -48,7 +48,7 @@
           message: {
             summary: filters.translate('VALIDATION.CJS_EMPLOYED.PRISON_SERVICE'
               + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.CJS_EMPLOYED.CJS_GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         },
         length: {
@@ -76,7 +76,7 @@
           message: {
             summary: filters.translate('VALIDATION.CJS_EMPLOYED.OTHER'
               + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.CJS_EMPLOYED.CJS_GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         },
         length: {

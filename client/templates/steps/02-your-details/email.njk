@@ -1,0 +1,99 @@
+{% extends "../../layouts/default.njk" %}
+
+{% block page_title %}
+  {% if user.thirdParty == 'Yes' %}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Personal Details Email{% endblock %}
+
+{% block content %}
+
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    {% include "../../includes/back-link.njk" %}
+    {% include "../../includes/errors.njk" %}
+
+    <form action="{{ url('steps.your.details.email.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+      <div class="form-group {% if (errors.items['emailAddress']) or (errors.items['emailAddressConfirmation']) %}error{% endif %}" id="dateOfBirthGroup">
+        <h1 class="heading-xlarge">
+          <div class="heading-secondary">
+            {% if user.thirdParty == 'Yes' %}
+            {{- texts.YOUR_DETAILS_PAGE.CAPTION_OB -}}
+            {% else %}
+            {{- texts.YOUR_DETAILS_PAGE.CAPTION -}}
+            {% endif %}
+          </div>
+          {% if user.thirdParty == 'Yes' %}
+            {{- texts.YOUR_DETAILS_PAGE.HEADING_EMAIL_OB -}}
+            {% else %}
+            {{- texts.YOUR_DETAILS_PAGE.HEADING_EMAIL -}}
+          {% endif %}
+        </h1>
+
+        {# Email #}
+        <fieldset>
+  
+          <div class="form-group" id="emailAddressGroup">
+            <label class="form-label" for="emailAddress">
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_LABEL_OB }}
+              {% else %}
+              {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_LABEL }}
+              {% endif %}
+            </label>
+            {% if errors.items['emailAddress'][0] %}<span class="error-message" id="emailAddressErrorMessage" data-title="Email address">{{ errors.items['emailAddress'][0].details }}</span>{% endif %}
+            <input class="form-control" type="text" id="emailAddress" name="emailAddress" maxlength="254" value="{{ user.emailAddress }}" autocomplete="off" {% if errors.items['emailAddress'][0] %}aria-describedby="emailAddressErrorMessage"{% endif %}>
+          </div>
+
+          <div class="form-group" id="emailAddressConfirmationGroup">
+            <label class="form-label" for="emailAddressConfirmation">
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_CONFIRM_LABEL_OB }}
+              {% else %}
+              {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_CONFIRM_LABEL }}
+              {% endif %}
+            </label>
+            {% if errors.items['emailAddressConfirmation'] %}<span class="error-message" id="emailAddressConfirmErrorMessage" data-title="Email address confirmation">{{ errors.items['emailAddressConfirmation'][0].details }}</span>{% endif %}
+            <input class="form-control" type="text" id="emailAddressConfirmation" name="emailAddressConfirmation" maxlength="254" value="{{ user.emailAddressConfirmation }}" autocomplete="off" {% if errors.items['emailAddress'][0] %}aria-describedby="emailAddressConfirmErrorMessage"{% endif %}>
+          </div>
+
+          <div class="form-group">
+            <details>
+              <summary>
+                <span class="summary" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we need your email address?')"{% endif %}>
+                  {% if user.thirdParty == 'Yes' %}
+                  {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_HELPER_TITLE_OB }}
+                  {% else %}
+                  {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_HELPER_TITLE }}
+                  {% endif %}
+                </span>
+              </summary>
+              <div class="panel panel-border-narrow" id="details-content-2" aria-hidden="true">
+                <p>
+                  {% if user.thirdParty == 'Yes' %}
+                  {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_HELPER_PARAGRAPH_1_OB }}
+                  {% else %}
+                  {{ texts.YOUR_DETAILS_PAGE.FORM_EMAIL_HELPER_PARAGRAPH_1 }}
+                  {% endif %}
+                </p>
+              </div>
+            </details>
+          </div>
+        </fieldset>
+      </div>
+      {# Submit form #}
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock %}

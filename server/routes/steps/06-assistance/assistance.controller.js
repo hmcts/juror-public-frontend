@@ -11,12 +11,14 @@
     , filters = require('../../../components/filters')
     , texts_en = require('../../../../client/js/i18n/en.json')
     , texts_cy = require('../../../../client/js/i18n/cy.json')
+    , utils = require('../../../lib/utils');
 
   module.exports.index = function() {
     return function(req, res) {
       var assistanceActive
         , merged
-        , tmpErrors;
+        , tmpErrors
+        , backLinkUrl;
 
       // Get current value for assistanceType
       merged = _.merge(_.cloneDeep(req.session.user), req.session.formFields);
@@ -33,13 +35,20 @@
         delete merged.assistanceType;
       }
 
+      // Set back link URL
+      if (req.session.change === true){
+        backLinkUrl = utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty);
+      } else {
+        backLinkUrl = utils.getRedirectUrl('steps.cjs.employed', req.session.user.thirdParty);
+      }
+
       // Check what is active based on merger between user stored values and form submitted values
       if (typeof merged !== 'undefined' && typeof merged.assistanceType !== 'undefined') {
         assistanceActive = {
           mobility: (merged.assistanceType.indexOf('Limited mobility') !== -1) || (merged.assistanceType.indexOf('Symudedd cyfyngedig') !== -1),
           hearing: (merged.assistanceType.indexOf('Hearing impairment') !== -1) || (merged.assistanceType.indexOf('Nam ar y clyw') !== -1),
           diabetes: (merged.assistanceType.indexOf('Diabetes') !== -1) || (merged.assistanceType.indexOf('Clefyd siwgr') !== -1),
-          sight: (merged.assistanceType.indexOf('Severe sight impairment') !== -1) || (merged.assistanceType.indexOf('Nam difrifol ar eich golwg') !== -1),
+          sight: (merged.assistanceType.indexOf('Severe sight impairment') !== -1) || (merged.assistanceType.indexOf('Nam difrifol ar eich golwg') !== -1) || (merged.assistanceType.indexOf('Nam difrifol ar ei olwg') !== -1),
           learningDisability: (merged.assistanceType.indexOf('Learning disability') !== -1) || (merged.assistanceType.indexOf('Anabledd dysgu') !== -1),
           other: (merged.assistanceType.indexOf('Other') !== -1)
         };
@@ -62,7 +71,8 @@
           count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
           items: tmpErrors,
         },
-        assistanceActive: assistanceActive
+        assistanceActive: assistanceActive,
+        backLinkUrl: backLinkUrl
       });
     };
   };
@@ -88,7 +98,7 @@
         req.session.errors = validatorResult;
         req.session.formFields = req.body;
 
-        return res.redirect(app.namedRoutes.build('steps.assistance.get'));
+        return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.assistance', req.session.user.thirdParty)));
       }
 
 
@@ -96,14 +106,14 @@
       req.session.user.assistanceNeeded = req.body['assistanceNeeded'];
 
       // Clear other values if they answered no to assistance required
-      req.session.user.assistanceType = (req.session.user.assistanceNeeded === 'Yes' || req.session.user.assistanceNeeded === 'Do') ? req.body['assistanceType'] : '';
+      req.session.user.assistanceType = (req.session.user.assistanceNeeded === 'Yes' || req.session.user.assistanceNeeded === texts_cy.REASONABLE_ADJUSTMENT_PAGE.YES) ? req.body['assistanceType'] : '';
 
-      req.session.user.assistanceTypeDetails = (req.session.user.assistanceNeeded === 'Yes' || req.session.user.assistanceNeeded === 'Do') ? req.body['assistanceTypeDetails'] : '';
+      req.session.user.assistanceTypeDetails = (req.session.user.assistanceNeeded === 'Yes' || req.session.user.assistanceNeeded === texts_cy.REASONABLE_ADJUSTMENT_PAGE.YES) ? req.body['assistanceTypeDetails'] : '';
 
-      req.session.user.assistanceSpecialArrangements = (req.session.user.assistanceNeeded === 'Yes' || req.session.user.assistanceNeeded === 'Do') ? req.body['assistanceSpecialArrangements'] : '';
+      req.session.user.assistanceSpecialArrangements = (req.session.user.assistanceNeeded === 'Yes' || req.session.user.assistanceNeeded === texts_cy.REASONABLE_ADJUSTMENT_PAGE.YES) ? req.body['assistanceSpecialArrangements'] : '';
 
       // Redirect as appropriate
-      return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
+      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
 
     };
   };
@@ -111,7 +121,7 @@
   module.exports.change = function(app){
     return function(req, res){
       req.session.change = true;
-      res.redirect(app.namedRoutes.build('steps.assistance.get'));
+      res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.assistance', req.session.user.thirdParty)));
     }
   }
 })();
