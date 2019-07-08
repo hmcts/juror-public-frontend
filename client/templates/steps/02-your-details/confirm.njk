@@ -1,6 +1,7 @@
 {% extends "../../layouts/default.njk" %}
 
 {% block page_title %}
+  {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
   {{ texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
   {% else %}

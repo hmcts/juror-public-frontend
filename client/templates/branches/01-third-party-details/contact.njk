@@ -1,6 +1,7 @@
 {% extends "../../layouts/default.njk" %}
 
 {% block page_title %}
+  {% include "../../includes/title-error.njk" %}
   {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
@@ -94,9 +95,18 @@
 
         <br>
         <details>
-          <summary><span class="summary">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.TITLE }}</span></summary>
+          <summary><span class="summary">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.TITLE_1 }}</span></summary>
           <div class="panel panel-border-narrow">
             <p>{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.INFO_1 }}</p>
+          </div>
+          <br>
+        </details>
+
+        <br>
+        <details>
+          <summary><span class="summary">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.TITLE_2 }}</span></summary>
+          <div class="panel panel-border-narrow">
+            <p>{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.INFO_2 }}</p>
           </div>
         </details>
 

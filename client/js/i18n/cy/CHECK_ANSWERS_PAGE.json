@@ -1,6 +1,7 @@
 {
   "HEADING": "Gwiriwch eich ymatebion nawr",
   "ERROR_PROMPT": "Gwiriwch y ffurflen",
+
   "JUROR_INFO": "Mae’n bwysig eich bod yn gwirio bod yr holl wybodaeth yn gywir cyn i chi anfon eich ymateb. ",
   "OB_INFO": "Mae’n bwysig eich bod yn gwirio bod yr holl wybodaeth yn gywir cyn ichi anfon yr ymateb hwn ar ran yr unigolyn a gafodd wŷs i wasanaethu ar reithgor.",
   "DETAILS_HEADER_OB": "Bu ichi roi’r manylion a ganlyn am yr unigolyn rydych yn ymateb ar ei ran",
@@ -35,9 +36,9 @@
   "OB_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY": "A oes gan yr unigolyn ddiffyg galluedd meddyliol fel y nodir yn Neddf Galluedd Meddyliol 2005?",
   "OB_QUALIFY_QUESTION_BAIL": "A yw’r unigolyn ar fechnïaeth am gyflawni trosedd ar hyn o bryd?",
   "OB_QUALIFY_QUESTION_CONVICTED": "A yw'r unigolyn wedi'i gael yn euog o gyflawni trosedd?",
-  "JUROR_CONFIRM_DATE_HEADER": "Bu ichi ymateb i’r dyddiad arfaethedig ar gyfer y gwasanaeth rheithgor",
+  "JUROR_CONFIRM_DATE_HEADER": "Bu ichi ymateb i’r dyddiad arfaethedig ar gyfer eich gwasanaeth rheithgor",
   "OB_CONFIRM_DATE_HEADER": "Bu ichi ymateb i’r dyddiad arfaethedig ar gyfer y gwasanaeth rheithgor",
-  "JUROR_CONFIRM_DATE_PROMPT": "Cadarnhewch ddyddiad y gwasanaeth rheithgor",
+  "JUROR_CONFIRM_DATE_PROMPT": "Cadarnhewch ddyddiad eich gwasanaeth rheithgor",
   "OB_CONFIRM_DATE_PROMPT": "Cadarnhewch ddyddiad ei wasanaeth rheithgor",
   "JUROR_CONFIRM_DATE": "Gallaf wasanaethu ar reithgor ar y dyddiad a nodir",
   "OB_CONFIRM_DATE": "Mae’r unigolyn rwy’n ymateb ar ei ran yn gallu gwasanaethu ar reithgor ar y dyddiad a nodir",
@@ -68,6 +69,7 @@
   "OB_ASSISTANCE_QUESTION_2": "Rhowch wybod inni am unrhyw drefniadau arbennig neu gymorth bydd yr unigolyn rydych yn ymateb ar ei ran ei angen wrth iddynt wasanaethu ar reithgor.",
   "YES_ASSISTANCE": "Oes",
   "NO_ASSISTANCE": "Nac oes",
+
   "WARNING_TEXT_1": "Mae’n drosedd, ac os cewch yn euog, efallai bydd rhaid i chi dalu dirwy o hyd at £1,000, os:",
   "JUROR_WARNING_TEXT_2": "rydych yn gwrthod rhoi gwybodaeth i bennu p’un a ydych yn gymwys i fod yn rheithiwr, neu",
   "JUROR_WARNING_TEXT_3": "os ydych chi neu rywun sy’n gweithredu ar eich rhan yn rhoi gwybodaeth anwir i osgoi gwasanaethu ar reithgor.",
@@ -79,6 +81,9 @@
   "OB_UNDERSTAND_MUST_BE_TRUE": "Rwy’n deall efallai y bydd yr atebion a roddais yn cael eu gwirio a gellir fy erlyn os wyf wedi rhoi unrhyw wybodaeth y gwn ei bod yn anwir.",
   "OTHER": "Arall",
   "EMPLOYED_YES": "Ydw",
+  "OB_EMPLOYED_YES": "Do",
+  "EMPLOYED_NO": "Nac ydw",
+  "OB_EMPLOYED_NO": "Naddo",
   "NCA": "Yr Asiantaeth Troseddu Cenedlaethol",
   "POLICE": "Heddlu",
   "PRISON_SERVICE": "Gwasanaeth Carchardai EM",

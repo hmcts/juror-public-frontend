@@ -87,8 +87,9 @@
       var validatorResult
         , validatorResultTmp
         , validatorRules
-        , validatorKey,
-        redirectUrl;
+        , validatorKey
+        , cjsTmpArr
+        , redirectUrl;
 
       // Reset error and saved field sessions
       delete req.session.errors;
@@ -113,9 +114,30 @@
       // Store new info
       req.session.user.cjsEmployed = req.body['cjsEmployed'];
       req.session.user.cjsEmployer = req.body['cjsEmployer'];
-      req.session.user.cjsEmployerDetails = req.body['cjsEmployerDetails'];
-      req.session.user.cjsPrisonDetails = req.body['cjsPrisonDetails'];
-      req.session.user.cjsPoliceDetails = req.body['cjsPoliceDetails'];
+      
+      if (typeof req.session.user.cjsEmployer !== 'undefined') {
+        cjsTmpArr = _.clone(
+          (_.isArray(req.session.user.cjsEmployer)) ?
+            req.session.user.cjsEmployer :
+            [req.session.user.cjsEmployer]);
+
+        // Clear down any non-selected item details
+        if (cjsTmpArr.indexOf('Police Force') > -1){
+          req.session.user.cjsPoliceDetails = req.body['cjsPoliceDetails'];
+        } else {
+          req.session.user.cjsPoliceDetails = '';
+        }
+        if (cjsTmpArr.indexOf('HM Prison Service') > -1){
+          req.session.user.cjsPrisonDetails = req.body['cjsPrisonDetails'];
+        } else {
+          req.session.user.cjsPrisonDetails = '';
+        }
+        if (cjsTmpArr.indexOf('Other') > -1){
+          req.session.user.cjsEmployerDetails = req.body['cjsEmployerDetails'];
+        } else {
+          req.session.user.cjsEmployerDetails = '';
+        }
+      }
 
       // Redirect as appropriate
       if (req.session.change === true){

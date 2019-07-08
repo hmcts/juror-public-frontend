@@ -3,7 +3,7 @@
   "PROMPT": "Why do you need to be excused from jury service?",
   "PROMPT_OB": "Why does the person you're replying for need to be excused from jury service?",
   "HINT": "Please provide a brief reason why you cannot do jury service in the next 12 months. If we need further information or proof, we will get in touch with you. There is no need to send any additional information at this stage.",
-  "HINT_OB": "Please provide a brief reason why the person you're answering for can't do jury service in the next 12 months. If we need further information or proof, we will get in touch with you. There is no need to end any additional information at this stage.",
+  "HINT_OB": "Please provide a brief reason why the person you're answering for can't do jury service in the next 12 months. If we need further information or proof, we will get in touch with you. There is no need to send any additional information at this stage.",
   "ERROR": "Please say why you need to be excused",
   "EVIDENCE_QUESTION": "What proof will I need to provide?",
   "EVIDENCE_QUESTION_OB": "What proof might I need to provide?",

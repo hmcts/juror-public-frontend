@@ -1,6 +1,8 @@
 {
   "sharedText": {
     "mainHeader": "Copy of your jury summons reply",
+    "logo": "./client/img/pdflogo.jpg",
+    "pageNumber": " of ",
     "detailsHeader": "Your jury summons details",
     "court": "Court",
     "date": "Date",
@@ -27,7 +29,10 @@
     "govPointFour": "How to claim expenses",
     "govPointFive": "Questions about jury service",
     "contactingHeader": "Contacting the Jury Central Summoning Bureau",
-    "contactingInfo": "If you have any questions about your jury service, call the Jury Central Summoning Bureau on 0300 456 1024 or email jurysummoning@hmcts.gsi.gov.uk",
+    "contactingInfoOne": "If you have any questions about your jury service, call the Jury Central Summoning Bureau on 0300 456 1024 or email jurysummoning@hmcts.gsi.gov.uk",
+    "contactingInfoTwo": "",
+    "contactingInfoThree": "",
+    "contactingInfoFour": "",
     "name": "Name:",
     "address": "Address:",
     "dob": "Date of Birth:",
@@ -41,6 +46,7 @@
     "nameHeader": "Name",
     "replyDateHeader": "Date of reply",
     "excusalOne": "You have said that you need to ",
+    "excusalThree": "You have said that you need to ",
     "confirmOne": "You have said that you ",
     "can": "CAN",
     "cannot": "CAN'T",
@@ -141,7 +147,11 @@
     "distressTitle": "We're sorry for any distress",
     "distressApology": "Jurors are selected at random from the electoral roll. This isn't always completely up to date. That's why we sent a jury summons to this person. We do apologise for this and hope it hasn't caused too much distress.",
     "summoningBureau": "Contacting the Jury Central Summoning Bureau",
-    "contactDetails": "If you have any questions about this, call the Jury Central Summoning Bureau on 0300 456 1024 or email jurysummoning@hmcts.gsi.gov.uk"
+    "contactDetailsOne": "If you have any questions about this, call the Jury Central Summoning Bureau on 0300 456 1024 or email jurysummoning@hmcts.gsi.gov.uk",
+    "contactDetailsTwo": "",
+    "contactDetailsThree": "",
+    "contactDetailsFour": ""
+
   },
   "ageIneligiblePDF": {
     "ageIneligibleInfo": "Your age makes you ineligible to do jury service.",
@@ -149,7 +159,10 @@
     "pointTwo": "We'll write to confirm that you don't have to do jury service. ",
     "pointThree": "You don't need to do anything else.",
     "summoningBureau": "Contacting the Jury Central Summoning Bureau",
-    "anyQuestions": "If you have any questions about this, call the Jury Central Summoning Bureau on 0300 456 1024 or email jurysummoning@hmcts.gsi.gov.uk"
+    "anyQuestionsOne": "If you have any questions about this, call the Jury Central Summoning Bureau on 0300 456 1024 or email jurysummoning@hmcts.gsi.gov.uk",
+    "anyQuestionsTwo": "",
+    "anyQuestionsThree": "",
+    "anyQuestionsFour": ""
   },
   "whatHappensNext": {
     "header": "What happens next?",
@@ -170,7 +183,7 @@
     "ifMustLastLine": "If you must do jury service, at least two weeks before it starts we'll send you:",
     "inTouchInSevenDays": "We'll be in touch within the next 7 days.",
     "straightThroughEligibleNoAdjustment": "At least two weeks before your jury service starts, we'll send you:",
-    "straightThroughIneligibleLineOne": "Your answers mean that you might not be able to do jury service.",
+    "straightThroughIneligibleLineOne": "Your answers mean that you might not be able to do jury service. We will now check your answers.",
     "straightThroughIneligibleLineThree": "If you can do jury service, at least two weeks before it starts we’ll send you:",
     "straightThroughIneligibleLineTwo": "We will now check your answers. Then we'll write to you in the next 7 days to let you know if you must or must not do jury service.",
     "straightThroughIneligibleWithAdjustmentLineThree": "We may also get in touch to talk about the help you need so you can do jury service.",

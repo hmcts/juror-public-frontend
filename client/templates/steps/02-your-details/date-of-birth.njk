@@ -1,6 +1,7 @@
 {% extends "../../layouts/default.njk" %}
 
 {% block page_title %}
+  {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
   {{ texts.YOUR_DETAILS_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
   {% else %}
@@ -84,7 +85,21 @@
           {% else %}
           <p>{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_1 }}</p>
           <p>{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_2 }}</p>
-          <p>{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_3 }}</p>
+          <p>
+            {{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_3 }}
+            {% if texts.INTERFACE.HTML_LANG === "cy" %}
+              <br>
+              {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+                {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+              {% endif %}
+              <br>
+              {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+                {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+              {% endif %}
+              <br>
+              {{ texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_PARAGRAPH_4 }}
+            {% endif %}
+          </p>
           {% endif %}
         </div>
       </details>

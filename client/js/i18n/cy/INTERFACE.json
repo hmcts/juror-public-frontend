@@ -21,6 +21,12 @@
   "SKIP_TO_MAIN_CONTENT": "Ymlaen i'r prif gynnwys",
   "LINK_OPENS_NEW_WINDOW": "Agor mewn ffenestr newydd",
   "HTML_LANG": "cy",
+  "CONTACT_TELEPHONE_LABEL_1": "Rhif ffôn: ",
+  "CONTACT_TELEPHONE_1": "0300 456 1024",
+  "CONTACT_TELEPHONE_LINK_1": "tel:03004561024",
+  "CONTACT_TELEPHONE_LABEL_2": "Llinell Gymraeg: ",
+  "CONTACT_TELEPHONE_2": "0300 303 5173",
+  "CONTACT_TELEPHONE_LINK_2": "tel:03003035173",
 
   "FOOTER_LINKS": {
     "COOKIES": "Cwcis",

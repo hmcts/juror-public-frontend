@@ -1,6 +1,7 @@
 {% extends "../../layouts/default.njk" %}
 
 {% block page_title %}
+  {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
   {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_TITLE_OB }} - {{ texts.INTERFACE.GOV }}
   {% else %}
@@ -44,19 +45,19 @@
             <label class="block-label selection-button-radio" for="mentalHealthCapacity-Yes" data-target="mentalHealthCapacityDetailsGroup">
                 {% if user.thirdParty == 'Yes' %}
                 <input id="mentalHealthCapacity-Yes" type="radio" name="mentalHealthCapacity" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.mentalHealthCapacity.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
-                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES_OB }}
+                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_YES_OB }}
                 {% else %}
                 <input id="mentalHealthCapacity-Yes" type="radio" name="mentalHealthCapacity" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.mentalHealthCapacity.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
-                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES }}
+                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_YES }}
                 {% endif %}
             </label>
             <label class="block-label selection-button-radio" for="mentalHealthCapacity-No">
                 {% if user.thirdParty == 'Yes' %}
                 <input id="mentalHealthCapacity-No" type="radio" name="mentalHealthCapacity" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.mentalHealthCapacity.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
-                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO_OB }}
+                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_NO_OB }}
                 {% else %}
                 <input id="mentalHealthCapacity-No" type="radio" name="mentalHealthCapacity" class="store-updated-information" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.mentalHealthCapacity.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
-                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO }}
+                {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_NO }}
                 {% endif %}
             </label>
 

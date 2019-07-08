@@ -15,7 +15,7 @@
       cjsEmployer: {
         presenceIf: {
           field: 'cjsEmployed',
-          value: (req.session.ulang === 'cy' ? texts_cy.EMPLOYED_PAGE.YES : texts_en.EMPLOYED_PAGE.YES),
+          value: (req.session.ulang === 'cy' ? (req.session.user.thirdParty === 'Yes' ? texts_cy.EMPLOYED_PAGE.YES_OB : texts_cy.EMPLOYED_PAGE.YES) : texts_en.EMPLOYED_PAGE.YES),
           message: {
             summary: filters.translate('VALIDATION.CJS_EMPLOYED.WORKED_FOR'
               + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),

@@ -1,6 +1,7 @@
 {% extends "../../layouts/default.njk" %}
 
 {% block page_title %}
+  {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
   {{ texts.EMPLOYED_PAGE.HEADER_OB }} - {{ texts.INTERFACE.GOV }}
   {% else %}
@@ -44,12 +45,22 @@
           {% if errors.items['cjsEmployed'] %}<span class="error-message">{{ errors.items['cjsEmployed'][0].details }}</span>{% endif %}
           <br>
           <label class="block-label selection-button-radio" data-target="cjsEmployerGroup" for="employedCjs-Yes">
-            <input id="employedCjs-Yes" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.YES }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES %}checked="checked"{% endif %}>
-            {{ texts.EMPLOYED_PAGE.YES }}
+              {% if user.thirdParty == 'Yes' %}
+                <input id="employedCjs-Yes" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.YES_OB }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES_OB %}checked="checked"{% endif %}>
+                {{ texts.EMPLOYED_PAGE.YES_OB }}
+              {% else %}
+                <input id="employedCjs-Yes" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.YES }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES %}checked="checked"{% endif %}>
+                {{ texts.EMPLOYED_PAGE.YES }}
+            {% endif %}
           </label>
           <label class="block-label selection-button-radio" for="employedCjs-No">
-            <input id="employedCjs-No" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.NO }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.NO %}checked="checked"{% endif %}>
-            {{ texts.EMPLOYED_PAGE.NO }}
+              {% if user.thirdParty == 'Yes' %}
+                <input id="employedCjs-No" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.NO_OB }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.NO_OB %}checked="checked"{% endif %}>
+                {{ texts.EMPLOYED_PAGE.NO_OB }}
+              {% else %}
+                <input id="employedCjs-No" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.NO }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.NO %}checked="checked"{% endif %}>
+                {{ texts.EMPLOYED_PAGE.NO }}
+              {% endif %}
           </label>
         </fieldset>
       </div>
@@ -69,6 +80,8 @@
         <br>
 
         <div class="form-group">
+
+          <!-- Police -->
           {% if errors.items['cjsEmployer'] %}<span class="error-message">{{ errors.items['cjsEmployer'][0].details }}</span>{% endif %}
           <label class="block-label selection-button-checkbox" for="cjsEmployer-police" data-target="cjsPoliceDetailsGroup">
             <input type="checkbox" name="cjsEmployer" id="cjsEmployer-police" value="Police Force" {% if cjsActive.police %}checked="checked"{% endif %}>
@@ -86,6 +99,7 @@
             <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
 
+          <!-- Prison -->
           <label class="block-label selection-button-checkbox" for="cjsEmployer-prison" data-target="cjsPrisonDetailsGroup">
             <input type="checkbox" name="cjsEmployer" id="cjsEmployer-prison" value="HM Prison Service" {% if cjsActive.prison %}checked="checked"{% endif %}>
             {{ texts.EMPLOYED_PAGE.HM }}
@@ -102,11 +116,13 @@
             <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
 
+          <!-- NCA -->
           <label class="block-label selection-button-checkbox" for="cjsEmployer-nca">
             <input type="checkbox" name="cjsEmployer" id="cjsEmployer-nca" value="National Crime Agency" {% if cjsActive.nca %}checked="checked"{% endif %}>
             {{ texts.EMPLOYED_PAGE.NCA }}
           </label>
 
+          <!-- Other -->
           <label class="block-label selection-button-checkbox" for="cjsEmployer-other" data-target="cjsEmployerDetailsGroup">
             <input type="checkbox" name="cjsEmployer" id="cjsEmployer-other" value="Other" {% if cjsActive.other %}checked="checked"{% endif %}>
             {{ texts.EMPLOYED_PAGE.OTHER }}

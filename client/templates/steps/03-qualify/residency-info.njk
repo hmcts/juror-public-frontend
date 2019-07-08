@@ -23,11 +23,35 @@
     {% endif %}
 
     {% if user.thirdParty == 'Yes' %}
-    <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_THIRD_PARTY }}</p>
-    <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_THIRD_PARTY }}<a href="tel:{{ texts.INFO_PAGE.RESIDENCY.CONTACT_TEL}}">{{ texts.INFO_PAGE.RESIDENCY.CONTACT_TEL}}</a>.</p>
+      <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_THIRD_PARTY }}</p>
+      <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_THIRD_PARTY }}
+      {% if texts.INTERFACE.HTML_LANG === "cy" %}
+        <br>
+        {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+          {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+        {% endif %}
+        <br>
+        {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+          {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+        {% endif %}
+      {% else %}
+        <a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+      {% endif %}
     {% else %}
-    <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_MAIN }}</p>
-    <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_MAIN }}<a href="tel:{{ texts.INFO_PAGE.RESIDENCY.CONTACT_TEL}}">{{ texts.INFO_PAGE.RESIDENCY.CONTACT_TEL}}</a>.</p>
+      <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_MAIN }}</p>
+      <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_MAIN }}
+      {% if texts.INTERFACE.HTML_LANG === "cy" %}
+        <br>
+        {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+          {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+        {% endif %}
+        <br>
+        {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+          {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+        {% endif %}
+      {% else %}
+        <a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+      {% endif %}
     {% endif %}
 
   </div>

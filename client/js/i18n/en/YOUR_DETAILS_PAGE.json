@@ -37,7 +37,7 @@
 
 
   "FORM_DOB_SUBTITLE": "Date of birth",
-  "FORM_DOB_HELPER": "For example, 06 12 1982",
+  "FORM_DOB_HELPER": "For example, 15 03 1982",
   "FORM_DOB_DAY_LABEL": "Day",
   "FORM_DOB_MONTH_LABEL": "Month",
   "FORM_DOB_YEAR_LABEL": "Year",
@@ -45,9 +45,10 @@
   "FORM_DOB_HELPER_PARAGRAPH_1": "You need to tell us your date of birth so we can check you are a suitable age to be on a jury. ",
   "FORM_DOB_HELPER_PARAGRAPH_2": "If you don’t know your exact date of birth, use the one you put on official documents like your passport or driving licence.",
   "FORM_DOB_HELPER_PARAGRAPH_3": "If you can’t provide a date of birth, you’ll have to send us copies of identity documents through the post. You need to reply to the summons using the form we sent by post instead of online. Ring us on 0300 456 1024 if you need advice about this.",
+  "FORM_DOB_HELPER_PARAGRAPH_4": "",
 
   "FORM_PHONE_SUBTITLE": "Phone",
-  "FORM_PHONE_DESCRIPTION": "Please provide phone numbers that we can use to reach you between 9:00AM and 5:00PM, Monday to Friday.",
+  "FORM_PHONE_DESCRIPTION": "Please provide a UK phone number that we can use to reach you between 9:00AM and 5:00PM, Monday to Friday.",
   "FORM_PHONE_PRIMARY_LABEL": "Main phone",
   "FORM_PHONE_SECONDARY_LABEL": "Another phone (optional)",
 
