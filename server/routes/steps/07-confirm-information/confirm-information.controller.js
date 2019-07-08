@@ -39,6 +39,16 @@
     return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirmation.straight', req.session.user.thirdParty)));
   }
 
+  function modifyPhoneNumber(phoneNumber){
+    var newPhoneNumber;
+
+    // Remove unwanted characters ("+") from phone number strings
+    newPhoneNumber = phoneNumber.replace(/\+/g, '');
+
+    return newPhoneNumber;
+  };
+
+
   module.exports.index = function(app) {
     return function(req, res) {
       var mergedUser
@@ -380,6 +390,22 @@
       // Reset error and saved field sessions
       delete req.session.errors;
       delete req.session.formFields;
+
+      // Remove "+" characters from telephone numbers
+      if (req.session.user.primaryPhone){
+        req.session.user.primaryPhone = modifyPhoneNumber(req.session.user.primaryPhone);
+      }
+      if (req.session.user.secondaryPhone) {
+        req.session.user.secondaryPhone = modifyPhoneNumber(req.session.user.secondaryPhone);
+      }
+      if (req.session.user.thirdPartyDetails){
+        if (req.session.user.thirdPartyDetails.mainPhone){
+          req.session.user.thirdPartyDetails.mainPhone = modifyPhoneNumber(req.session.user.thirdPartyDetails.mainPhone);
+        }
+        if (req.session.user.thirdPartyDetails.otherPhone) {
+          req.session.user.thirdPartyDetails.otherPhone = modifyPhoneNumber(req.session.user.thirdPartyDetails.otherPhone);
+        }
+      }
 
       // Validate form submission
       validatorResult = validate(req.body, require('../../../config/validation/confirm-information')(req));
