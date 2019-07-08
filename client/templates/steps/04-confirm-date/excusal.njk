@@ -1,7 +1,12 @@
 {% extends "../../layouts/default.njk" %}
 
 {% block page_title %}
-  {{ texts.EXCUSAL_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% include "../../includes/title-error.njk" %}
+  {% if user.thirdParty == 'Yes' %}
+    {{ texts.EXCUSAL_PAGE.PROMPT_OB }}
+  {% else %}
+    {{ texts.EXCUSAL_PAGE.PROMPT }}
+  {% endif %}
 {% endblock %}
 
 {% block page_identifier %}Excusal{% endblock %}

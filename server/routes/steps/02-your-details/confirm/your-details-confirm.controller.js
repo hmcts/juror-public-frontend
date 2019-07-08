@@ -115,7 +115,7 @@
         return res.redirect(app.namedRoutes.build('branches.third.party.contact.details.get'));
       }
 
-      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.qualify.get', req.session.user.thirdParty)));
+      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.qualify', req.session.user.thirdParty)));
     };
   };
 

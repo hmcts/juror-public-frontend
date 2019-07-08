@@ -17,18 +17,20 @@
     "CONTACT": {
       "TITLE": "Your contact information",
       "INFO_1": "How would you like us to get in touch, if we need to?",
-      "LABEL_BY_PHONE": "By phone",
+      "LABEL_BY_PHONE": "By phone (UK Numbers only)",
       "LABEL_BY_EMAIL": "By email",
 
-      "INFO_PHONE": "Please provide phone numbers that we can use to reach you between 9:00AM and 5:00PM, Monday to Friday.",
+      "INFO_PHONE": "Please provide a UK phone number that we can use to reach you between 9:00AM and 5:00PM, Monday to Friday.",
       "LABEL_MAIN_PHONE": "Main phone",
       "LABEL_OTHER_PHONE": "Another phone (optional)",
       "LABEL_EMAIL": "Enter your email address",
       "LABEL_EMAIL_CONFIRM": "Enter your email address again",
 
       "DETAILS": {
-        "TITLE": "Why do we need your contact details?",
-        "INFO_1": "If we need to get in touch with you to check anything about your response for the other person, we'll use the email or phone number you give us."
+        "TITLE_1": "Why do we need your contact details?",
+        "INFO_1": "If we need to get in touch with you to check anything about your response for the other person, we'll use the email or phone number you give us.",
+        "TITLE_2": "If you are living abroad",
+        "INFO_2": "If you are currently living abroad and don't have a UK telephone number, we will need to contact you using an email address."
       }
     }
   },
@@ -80,7 +82,7 @@
     "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_2": "If the person's address has changed, we might be able to move their jury service to a court nearer to the new address. We'll get in touch later about this. Please carry on with the online form now.",
 
     "DOB_HEADER": "Please give the date of birth for the person you're replying for",
-    "FORM_DOB_HELPER": "For example, 06 12 1982",
+    "FORM_DOB_HELPER": "For example, 15 03 1982",
     "FORM_DOB_DAY_LABEL": "Day",
     "FORM_DOB_MONTH_LABEL": "Month",
     "FORM_DOB_YEAR_LABEL": "Year",

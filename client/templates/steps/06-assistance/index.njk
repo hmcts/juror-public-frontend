@@ -1,6 +1,7 @@
 {% extends "../../layouts/default.njk" %}
 
 {% block page_title %}
+  {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
   {{ texts.REASONABLE_ADJUSTMENT_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
   {% else %}
@@ -144,13 +145,40 @@
             <summary {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask for this - reasonable adjustment')"{% endif %}><span class="summary">{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_SUMMARY }}</span></summary>
             <div id="details-content-0" aria-hidden="true" class="panel panel-border-narrow">
               {% if user.thirdParty == 'Yes' %}
-              <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_1_OB }}</p>
-              <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_2_OB }}</p>
-              <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_3_OB }}<a href="tel:{{ texts.REASONABLE_ADJUSTMENT_PAGE.CONTACT_TEL }}">{{ texts.REASONABLE_ADJUSTMENT_PAGE.CONTACT_TEL }}</a></p>
+                <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_1_OB }}</p>
+                <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_2_OB }}</p>
+                <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_3_OB }}
+                {% if texts.INTERFACE.HTML_LANG === "cy" %}
+                  <br>
+                  {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+                    {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+                  {% endif %}
+                  <br>
+                  {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+                    {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+                  {% endif %}
+                {% else %}
+                  <a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>.
+                {% endif %}
+                </p>
               {% else %}
-              <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_1 }}</p>
-              <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_2 }}</p>
-              <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_3 }}<a href="tel:{{ texts.REASONABLE_ADJUSTMENT_PAGE.CONTACT_TEL }}">{{ texts.REASONABLE_ADJUSTMENT_PAGE.CONTACT_TEL }}</a></p>
+                <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_1 }}</p>
+                <p>{{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_2 }}</p>
+                <p>
+                  {{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_PARAGRAPH_3 }}
+                    {% if texts.INTERFACE.HTML_LANG === "cy" %}
+                      <br>
+                      {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+                        {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+                      {% endif %}
+                      <br>
+                      {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+                        {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+                      {% endif %}
+                  {% else %}
+                    <a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>.
+                  {% endif %}
+                </p>
               {% endif %}
 
             </div>

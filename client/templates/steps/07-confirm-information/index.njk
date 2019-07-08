@@ -1,7 +1,8 @@
 {% extends "../../layouts/default.njk" %}
 
 {% block page_title %}
-{{ texts.CHECK_ANSWERS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {% include "../../includes/title-error.njk" %}
+  {{ texts.CHECK_ANSWERS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}Check Your Answers{% endblock %}
@@ -214,15 +215,15 @@
               <p>
                 {% if user.qualify.mentalHealthCapacity.details.length > 0 and user.qualify.mentalHealthCapacity.answer == texts.QUALIFY_PAGE.YES %}
                   {% if user.thirdParty == 'Yes' %}
-                    <pre id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES_OB }} - {{ user.qualify.mentalHealthCapacity.details }}</pre>
+                    <pre id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_YES_OB }} - {{ user.qualify.mentalHealthCapacity.details }}</pre>
                   {% else %}
-                    <pre id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES }} - {{ user.qualify.mentalHealthCapacity.details }}</pre>
+                    <pre id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_YES }} - {{ user.qualify.mentalHealthCapacity.details }}</pre>
                   {% endif %}
                 {% else %}
                   {% if user.thirdParty == 'Yes' %}
-                    <span id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO_OB }}</span>
+                    <span id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_NO_OB }}</span>
                   {% else %}
-                    <span id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO }}</span>
+                    <span id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_NO }}</span>
                   {% endif %}
                 {% endif %}
               </p>
@@ -472,8 +473,14 @@
                 {% endif %}
               </p>
               <p>
-                {% if user.cjsEmployed == texts.CHECK_ANSWERS_PAGE.EMPLOYED_YES %}
-                  {{ texts.CHECK_ANSWERS_PAGE.EMPLOYED_YES }}
+                {% if (user.cjsEmployed == texts.CHECK_ANSWERS_PAGE.EMPLOYED_YES) or (user.cjsEmployed == texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_YES) %}
+                  
+                  {% if user.thirdParty == 'Yes' %}
+                    {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_YES }}
+                  {% else %}
+                    {{ texts.CHECK_ANSWERS_PAGE.EMPLOYED_YES }}
+                  {% endif %}
+                  
                   {% if user.cjsPolice %}
                     <pre>{{ texts.CHECK_ANSWERS_PAGE.POLICE }}<br>{{ user.cjsPoliceDetails }}</pre>
                   {% endif %}
@@ -491,8 +498,16 @@
                       <pre>{{ texts.CHECK_ANSWERS_PAGE.OTHER }}<br>{{ user.cjsEmployerDetails }}</pre>
                     {% endif %}
                   {% endfor %}
+                  {% if user.cjsEmployer === 'Other' %}
+                    <br>
+                    <pre>{{ texts.CHECK_ANSWERS_PAGE.OTHER }}<br>{{ user.cjsEmployerDetails }}</pre>
+                  {% endif %}
                 {% else %}
-                  {{ texts.CHECK_ANSWERS_PAGE.NOT_EMPLOYED }}
+                  {% if user.thirdParty == 'Yes' %}
+                    {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_NO }}
+                  {% else %}
+                    {{ texts.CHECK_ANSWERS_PAGE.EMPLOYED_NO }}
+                  {% endif %}
                 {% endif %}
               </p>
             </td>

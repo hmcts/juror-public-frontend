@@ -87,7 +87,7 @@
 
   "YOUR_DETAILS_CONFIRM": {
     "CHECK_DOB": "Gwiriwch eich dyddiad geni",
-    "CHECK_DOB_OB": "Nodwch enw cyntaf yr unigolyn",
+    "CHECK_DOB_OB": "Nodwch ddydiad geni'r unigolyn",
     "DAY_MISSING": "Nodwch y diwrnod y cawsoch eich geni",
     "DAY_INVALID": "Nodwch y diwrnod y cawsoch eich geni. Er enghraifft, 06",
     "MONTH_MISSING": "Nodwch y mis y cawsoch eich geni",
@@ -101,7 +101,7 @@
     "YEAR_MISSING_OB": "Nodwch y flwyddyn gafodd yr unigolyn ei eni",
     "YEAR_INVALID_OB": "Nodwch y flwyddyn gafodd yr unigolyn ei eni fel rhif pedwar digid. Er enghraifft, 1982",
     "INVALID_DATE": "Gwiriwch eich dyddiad geni",
-    "INVALID_DATE_OB": "Nodwch enw cyntaf yr unigolyn"
+    "INVALID_DATE_OB": "Nodwch ddydiad geni'r unigolyn"
   },
 
   "QUALIFY": {
@@ -141,8 +141,8 @@
   },
 
   "CJS_EMPLOYED": {
-    "EMPLOYED": "Atebwch Ydw/Do os oeddech wedi’ch cyflogi’n uniongyrchol gan unrhyw un o’r sefydliadau hyn. Os oeddech yn gweithio i is-gontractwr trydydd parti, atebwch Na.",
-    "EMPLOYED_OB": "Atebwch 'Oedd' os oedd yr unigolyn wedi’i gyflogi’n uniongyrchol gan unrhyw un o’r sefydliadau hyn. Os oeddent yn gweithio i is-gontractwr trydydd parti, atebwch 'Na'",
+    "EMPLOYED": "Atebwch Ydw os oeddech wedi’ch cyflogi’n uniongyrchol gan unrhyw un o’r sefydliadau hyn. Os oeddech yn gweithio i is-gontractwr trydydd parti, atebwch Nac ydw.",
+    "EMPLOYED_OB": "Atebwch 'Oedd' os oedd yr unigolyn wedi'i gyflogi'n uniongyrchol gan unrhyw un o'r sefydliadau hyn. Os oeddent yn gweithio i is-gontractwr trydydd parti, atebwch 'Na'",
     "WORKED_FOR": "Rhowch dic wrth ymyl unrhyw sefydliadau rydych wedi gweithio iddynt yn uniongyrchol (dim fel trydydd parti neu is-gontractwr)",
     "WORKED_FOR_OB": "Rhowch dic wrth ymyl unrhyw sefydliadau mae'r unigolyn wedi gweithio iddynt yn uniongyrchol (dim fel trydydd parti neu is-gontractwr)",
     "CHOOSE_ONE_OR_MORE": "Dewiswch un neu fwy",
@@ -166,16 +166,24 @@
     "CHECK_REASON_OB": "Gwiriwch y rheswm dros ofyn am ddyddiad diweddarach ar gyfer gwasanaeth rheithgor yr unigolyn",
     "CHECK_REASON_MISSING": "Rhowch reswm dros ofyn am ddyddiad diweddarach ar gyfer eich gwasanaeth rheithgor",
     "CHECK_REASON_MISSING_OB": "Rhowch reswm dros ofyn am ddyddiad diweddarach ar gyfer gwasanaeth rheithgor yr unigolyn",
-    "CHECK_DATES": "Nodwch dri dyddiad pan fyddwch ar gael i gyflawni eich gwasanaeth rheithgor",
-    "CHECK_DATES_OB": "Nodwch dri dyddiad pan fydd yr unigolyn rydych yn ymateb ar ei ran ar gael i wasanaethu ar reithgor ",
-    "CHECK_DATES_ERROR": "Dewiswch dri dyddiad",
+    "CHECK_DATES_ONE":"Nodwch y dyddiad cyntaf rydych ar gael ar gyfer eich gwasanaeth rheithgor",
+    "CHECK_DATES_ONE_OB":"Nodwch y dyddiad cyntaf y bydd y rheithiwr ar gael ar gyfer gwasanaeth rheithgor",
+    "CHECK_DATES_TWO":"Nodwch yr ail ddyddiad rydych ar gael ar gyfer eich gwasanaeth rheithgor",
+    "CHECK_DATES_TWO_OB":"Nodwch yr ail ddyddiad y bydd y rheithiwr ar gael ar gyfer gwasanaeth rheithgor",
+    "CHECK_DATES_THREE":"Nodwch y trydydd dyddiad rydych ar gael ar gyfer eich gwasanaeth rheithgor",
+    "CHECK_DATES_THREE_OB":"Nodwch y trydydd dyddiad y bydd y rheithiwr ar gael ar gyfer gwasanaeth rheithgor",
+    "CHECK_DATES_ERROR_ONE": "Dewiswch ddyddiad cyntaf",
+    "CHECK_DATES_ERROR_TWO": "Dewiswch ail ddyddiad",
+    "CHECK_DATES_ERROR_THREE": "Dewiswch trydydd ddyddiad",
     "CHECK_DATES_UNIQUE": "Nodwch dri dyddiad gwahanol",
     "CHECK_DATES_UNIQUE_OB": "Nodwch dri dyddiad gwahanol",
     "CHECK_DATES_UNIQUE_ERROR": "Dewiswch dri dyddiad gwahanol",
-    "CHECK_DATE_FUTURE": "Dewiswch ddyddiadau sydd o fewn 12 mis o ddyddiad yr wŷs wreiddiol",
-    "CHECK_DATE_FUTURE_OB": "Dewiswch ddyddiadau sydd o fewn 12 mis o ddyddiad yr wŷs wreiddiol",
-    "CHECK_DATES_MISSING": "Nodwch dri dyddiad pan fyddwch ar gael i gyflawni eich gwasanaeth rheithgor",
-    "CHECK_DATES_MISSING_OB": "Nodwch dri dyddiad pan fydd yr unigolyn rydych yn ymateb ar ei ran ar gael i wasanaethu ar reithgor ",
+    "CHECK_DATE_FUTURE_ONE": "Darparwch ddyddiad cyntaf sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
+    "CHECK_DATE_FUTURE_ERROR_ONE": "Darparwch ddyddiad cyntaf sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
+    "CHECK_DATE_FUTURE_TWO": "Darparwch ail ddyddiad sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
+    "CHECK_DATE_FUTURE_ERROR_TWO": "Darparwch ail ddyddiad sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
+    "CHECK_DATE_FUTURE_THREE": "Darparwch drydydd dyddiad sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
+    "CHECK_DATE_FUTURE_ERROR_THREE": "Darparwch drydydd dyddiad sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
     "CHECK_REASON_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
     "CHECK_REASON_LENGTH_ERROR": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
     "CHECK_DATE_AGE": "Os gwelwch yn dda, rhowch ddyddiad arall.  Mi fyddwch yn hŷn na 76 ar y dyddiad hwn ac ni fyddwch yn gymwys ar gyfer gwasanaeth rheithgor",
@@ -188,7 +196,8 @@
     "CHECK_REASON_OB": "Gwiriwch y rheswm am ofyn i gael eich esgusodi",
     "CHECK_REASON_MISSING": "Dywedwch pam eich bod angen cael eich esgusodi",
     "CHECK_REASON_MISSING_OB": "Dywedwch pam fod yr unigolyn angen cael ei esgusodi",
-    "LENGTH_REASON": "(MISSING)Please ensure that your reason is not too long"
+    "CHECK_REASON_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
+    "CHECK_REASON_LENGTH_ERROR": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau"
   },
 
   "ASSISTANCE": {

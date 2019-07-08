@@ -2,7 +2,8 @@
   "HEADING": "Your juror details",
   "HEADING_OB": "The juror details",
 
-  "SAMPLE_TITLE": "Your juror number can be found on your jury summons letter as shown in the image below",
+  "SAMPLE_TITLE": "Your juror number can be found on your jury summons letter as shown in the image below.",
+  "SAMPLE_TITLE_OB": "The juror number can be found on the jury summons letter as shown in the image below.",
   "SAMPLE_IMAGE_ALT": "Image showing a jury summons letter and where you can find your Juror number. It is at the top of the first page of the letter.",
   "IMAGE_TITLE": "Juror number can be found at the top of the summons letter",
 
@@ -15,9 +16,6 @@
 
   "GUIDANCE_COMPANY_NAME": "Jury Central Summoning Bureau",
   "GUIDANCE_EMAIL": "jurysummoning@hmcts.gsi.gov.uk",
-  "GUIDANCE_TELEPHONE_LABEL": "Telephone",
-  "GUIDANCE_TELEPHONE_NUMBER": "0300 456 1024",
-  "GUIDANCE_TELEPHONE_NUMBER_NOSPACE": "03004561024",
   "GUIDANCE_OPENING_TIMES": "Monday to Thursday 9am to 5pm",
   "GUIDANCE_OPENING_TIMES_FRIDAY": "Friday 9am to 3pm",
   "GUIDANCE_CALL_CHARGE_LABEL": "Find out about call charges",

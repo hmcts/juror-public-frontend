@@ -4,5 +4,6 @@
   "FORBIDDEN": "Forbidden",
   "NO_PERMISSION": "Nid oes gennych ganiatâd i gael mynediad at y cynnwys hwn",
   "NOT_FOUND": "Page not found",
-  "CHECK_CORRECT": "Os ydych wedi rhoi cyfeiriad gwe, gwnewch yn siŵr ei fod yn gywir, os gwelwch yn dda."
+  "CHECK_CORRECT": "Os ydych wedi rhoi cyfeiriad gwe, gwnewch yn siŵr ei fod yn gywir, os gwelwch yn dda.",
+  "TITLE_ERROR": "Gwall: "
 }

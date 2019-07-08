@@ -44,7 +44,24 @@
       </p>
     </div>
 
-    <p>{{ texts.INFO_PAGE.CONVICTIONS.FIFTH_THIRD_PARTY }}</p>
+    <p>
+    {{ texts.INFO_PAGE.CONVICTIONS.FIFTH_THIRD_PARTY }}
+      {% if texts.INTERFACE.HTML_LANG === "cy" %}
+        <br>
+        {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+          {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+        {% endif %}
+        <br>
+        {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+          {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+        {% endif %}
+        <br>
+        {{ texts.INFO_PAGE.CONVICTIONS.SIXTH_THIRD_PARTY }}
+      {% else %}
+        <a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+        {{ texts.INFO_PAGE.CONVICTIONS.SIXTH_THIRD_PARTY }}
+      {% endif %}
+    </p>
 
     {% else %}
 

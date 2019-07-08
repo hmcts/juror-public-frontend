@@ -4,7 +4,7 @@
 
   "CAPTION": "Eich Manylion",
   "HEADING_NAME": "Gwiriwch fod eich enw yn gywir",
-  "HEADING_ADDRESS": "Gwiriwch fod eich enw a'r cyfeiriad yn gywir",
+  "HEADING_ADDRESS": "Gwiriwch fod eich cyfeiriad yn gywir",
   "HEADING_DATE_OF_BIRTH": "Beth yw eich dyddiad geni?",
   "HEADING_PHONE": "Beth yw eich rhif ffôn?",
   "HEADING_EMAIL": "Beth yw eich cyfeiriad e-bost?",
@@ -37,23 +37,24 @@
 
 
   "FORM_DOB_SUBTITLE": "Dyddiad geni",
-  "FORM_DOB_HELPER": "Er enghraifft, 06 12 1982",
+  "FORM_DOB_HELPER": "Er enghraifft, 15 03 1982",
   "FORM_DOB_DAY_LABEL": "Diwrnod",
   "FORM_DOB_MONTH_LABEL": "Mis",
   "FORM_DOB_YEAR_LABEL": "Blwyddyn",
   "FORM_DOB_HELPER_TITLE": "Cymorth gyda'ch dyddiad geni", 
-  "FORM_DOB_HELPER_PARAGRAPH_1": "Nodwch ddyddiad geni'r unigolyn er mwyn i ni wirio os ydynt o'r oedran priodol i wasanaethu ar reithgor.",
+  "FORM_DOB_HELPER_PARAGRAPH_1": "Mae angen i chi ddweud wrthym beth yw eich dyddiad geni er mwyn i ni wirio os ydych o'r oedran priodol i wasanaethu ar reithgor.",
   "FORM_DOB_HELPER_PARAGRAPH_2": "Os nad ydych yn gwybod eich union ddyddiad geni, defnyddiwch yr un byddwch yn ei nodi ar ddogfennau swyddogol megis eich pasport neu drwydded yrru.",
-  "FORM_DOB_HELPER_PARAGRAPH_3": "Os na allwch roi dyddiad geni, bydd rhaid ichi anfon copïau o ddogfennau adnabod drwy'r post. Bydd rhaid i chi ymateb i’r wŷs gan ddefnyddio'r ffurflen a anfonwyd yn y post yn hytrach nag ar ar-lein. Ffoniwch ni ar 0300 456 1024 os oes arnoch angen cyngor am hyn.",
+  "FORM_DOB_HELPER_PARAGRAPH_3": "Os na allwch roi dyddiad geni, bydd rhaid ichi anfon copïau o ddogfennau adnabod drwy'r post. Bydd rhaid i chi ymateb i'r wŷs gan ddefnyddio'r ffurflen a anfonwyd yn y post yn hytrach nag ar ar-lein. Ffoniwch ni ar:",
+  "FORM_DOB_HELPER_PARAGRAPH_4": "os oes arnoch angen cyngor am hyn.",
 
   "FORM_PHONE_SUBTITLE": "Ffôn",
-  "FORM_PHONE_DESCRIPTION": "Nodwch rifau ffôn y gallwn eu defnyddio i gysylltu â chi rhwng 9:00AM a 5:00PM, dydd Llun i ddydd Gwener.",
+  "FORM_PHONE_DESCRIPTION": "Darparwch rif ffôn yn y DU y gallwn ei ddefnyddio i gysylltu â chi rhwng 9:00AM a 5:00PM, dydd Llun i ddydd Gwener.",
   "FORM_PHONE_PRIMARY_LABEL": "Prif rif ffôn",
   "FORM_PHONE_SECONDARY_LABEL": "Rhif ffôn arall (dewisol)",
 
   "FORM_EMAIL_SUBTITLE": "Cyfeiriad e-bost",
   "FORM_EMAIL_LABEL": "Nodwch eich cyfeiriad e-bost", 
   "FORM_EMAIL_CONFIRM_LABEL": "Nodwch eich cyfeiriad e-bost eto", 
-  "FORM_EMAIL_HELPER_TITLE": "Pam fod arnom angen cyfeiriad e-bost?",
+  "FORM_EMAIL_HELPER_TITLE": "Pam fod arnom angen eich cyfeiriad e-bost?",
   "FORM_EMAIL_HELPER_PARAGRAPH_1": "Byddwn yn defnyddio eich cyfeiriad e-bost i anfon gwybodaeth a nodiadau atgoffa am eich gwasanaeth rheithgor atoch."
 }

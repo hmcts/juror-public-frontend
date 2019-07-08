@@ -1,6 +1,7 @@
 {% extends "../../layouts/default.njk" %}
 
 {% block page_title %}
+  {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
   {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_TITLE_OB }} - {{ texts.INTERFACE.GOV }}
   {% else %}

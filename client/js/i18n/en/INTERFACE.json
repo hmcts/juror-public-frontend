@@ -24,6 +24,12 @@
   "SKIP_TO_MAIN_CONTENT": "Skip to main content",
   "LINK_OPENS_NEW_WINDOW": "Opens in a new window",
   "HTML_LANG": "en",
+  "CONTACT_TELEPHONE_LABEL_1": "Telephone: ",
+  "CONTACT_TELEPHONE_1": "0300 456 1024",
+  "CONTACT_TELEPHONE_LINK_1": "tel:03004561024",
+  "CONTACT_TELEPHONE_LABEL_2": "",
+  "CONTACT_TELEPHONE_2": "",
+  "CONTACT_TELEPHONE_LINK_2": "",
 
   "FOOTER_LINKS": {
     "COOKIES": "Cookies",

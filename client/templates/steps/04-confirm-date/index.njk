@@ -1,6 +1,7 @@
 {% extends "../../layouts/default.njk" %}
 
 {% block page_title %}
+  {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
   {{ texts.CONFIRM_DATE_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
   {% else %}
@@ -77,10 +78,10 @@
 
           <input type="hidden" id="hearingDateTimestamp" value="{{ user.hearingDateTimestamp }}">
 
-          {% if errors.items['confirmedDate'] %}<span class="error-message">{{ errors.items['confirmedDate'][0].details }}</span>{% endif %}
+          {% if errors.items['confirmedDate'] %}<span id="confirmedDateErrorMessage" class="error-message">{{ errors.items['confirmedDate'][0].details }}</span>{% endif %}
 
-          <label class="block-label selection-button-radio" for="confirmedDates">
-            <input id="confirmedDates" type="radio" name="confirmedDate" value="Yes" {% if user.confirmedDate == 'Yes' %}checked="checked"{% endif %}>
+          <label class="block-label selection-button-radio" for="confirmedDate">
+            <input id="confirmedDate" type="radio" name="confirmedDate" value="Yes" {% if user.confirmedDate == 'Yes' %}checked="checked"{% endif %} {% if errors.items['confirmedDate'] %}aria-describedby="confirmedDateErrorMessage"{% endif %}>
             <div role="text">
               {% if user.thirdParty == 'Yes' %}
               {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES_OB }}

@@ -22,7 +22,7 @@ var moment = require('moment');
               style: 'mainHeader'
             },
             {
-              image: './client/img/pdflogo.jpg',
+              image: texts.sharedText.logo,
               width: 130,
               alignment: 'right'
             }
@@ -36,7 +36,7 @@ var moment = require('moment');
       },
       footer: function(currentPage, pageCount) {
         return {
-          text: currentPage + ' of ' + pageCount,
+          text: currentPage + texts.sharedText.pageNumber + pageCount,
           alignment: 'right',
           marginRight: 40
         };
@@ -140,7 +140,7 @@ var moment = require('moment');
         },
         {
           text: [
-            juror.deferral ? texts.jurorPDF.excusalOne : texts.jurorPDF.confirmOne,
+            juror.deferral ? texts.jurorPDF.excusalOne : juror.excusal ? texts.jurorPDF.excusalThree : texts.jurorPDF.confirmOne,
             {
               text: juror.confirmedDate === 'Yes' ? texts.jurorPDF.can : juror.excusal ? texts.jurorPDF.cannot : texts.jurorPDF.changeDate,
               style: 'smallBold'
@@ -1060,7 +1060,16 @@ var moment = require('moment');
           marginBottom: 10
         },
         {
-          text: texts.sharedText.contactingInfo
+          text: texts.sharedText.contactingInfoOne
+        },
+        {
+          text: texts.sharedText.contactingInfoTwo
+        },
+        {
+          text: texts.sharedText.contactingInfoThree
+        },
+        {
+          text: texts.sharedText.contactingInfoFour
         }
       ],
       styles: {
@@ -1110,7 +1119,7 @@ var moment = require('moment');
               style: 'mainHeader'
             },
             {
-              image: './client/img/pdflogo.jpg',
+              image: texts.sharedText.logo,
               width: 130,
               alignment: 'right'
             }
@@ -1124,7 +1133,7 @@ var moment = require('moment');
       },
       footer: function(currentPage, pageCount) {
         return {
-          text: currentPage + ' of ' + pageCount,
+          text: currentPage + texts.sharedText.pageNumber + pageCount,
           alignment: 'right',
           marginRight: 40
         };
@@ -1228,7 +1237,7 @@ var moment = require('moment');
         },
         {
           text: [
-            juror.deferral ? texts.jurorPDF.excusalOne : texts.jurorPDF.confirmOne,
+            juror.deferral ? texts.jurorPDF.excusalOne : juror.excusal ? texts.jurorPDF.excusalThree : texts.jurorPDF.confirmOne,
             {
               text: juror.confirmedDate === 'Yes' ? texts.jurorPDF.can : juror.excusal ? texts.jurorPDF.cannot : texts.jurorPDF.changeDate,
               style: 'smallBold'
@@ -2339,7 +2348,16 @@ var moment = require('moment');
           marginBottom: 10
         },
         {
-          text: texts.sharedText.contactingInfo
+          text: texts.sharedText.contactingInfoOne
+        },
+        {
+          text: texts.sharedText.contactingInfoTwo
+        },
+        {
+          text: texts.sharedText.contactingInfoThree
+        },
+        {
+          text: texts.sharedText.contactingInfoFour
         }
       ],
       styles: {
@@ -2389,7 +2407,7 @@ var moment = require('moment');
               style: 'mainHeader'
             },
             {
-              image: './client/img/pdflogo.jpg',
+              image: texts.sharedText.logo,
               width: 130,
               alignment: 'right'
             }
@@ -2403,7 +2421,7 @@ var moment = require('moment');
       },
       footer: function(currentPage, pageCount) {
         return {
-          text: currentPage + ' of ' + pageCount,
+          text: currentPage + texts.sharedText.pageNumber + pageCount,
           alignment: 'right',
           marginRight: 40
         };
@@ -2556,7 +2574,16 @@ var moment = require('moment');
           marginBottom: 10
         },
         {
-          text: texts.deceasedPDF.contactDetails
+          text: texts.deceasedPDF.contactDetailsOne
+        },
+        {
+          text: texts.deceasedPDF.contactDetailsTwo
+        },
+        {
+          text: texts.deceasedPDF.contactDetailsThree
+        },
+        {
+          text: texts.deceasedPDF.contactDetailsFour
         }
       ],
       styles: {
@@ -2606,7 +2633,7 @@ var moment = require('moment');
               style: 'mainHeader'
             },
             {
-              image: './client/img/pdflogo.jpg',
+              image: texts.sharedText.logo,
               width: 130,
               alignment: 'right'
             }
@@ -2620,7 +2647,7 @@ var moment = require('moment');
       },
       footer: function(currentPage, pageCount) {
         return {
-          text: currentPage + ' of ' + pageCount,
+          text: currentPage + texts.sharedText.pageNumber + pageCount,
           alignment: 'right',
           marginRight: 40
         };
@@ -3127,7 +3154,16 @@ var moment = require('moment');
           marginBottom: 10
         },
         {
-          text: texts.ageIneligiblePDF.anyQuestions
+          text: texts.ageIneligiblePDF.anyQuestionsOne
+        },
+        {
+          text: texts.ageIneligiblePDF.anyQuestionsTwo
+        },
+        {
+          text: texts.ageIneligiblePDF.anyQuestionsThree
+        },
+        {
+          text: texts.ageIneligiblePDF.anyQuestionsFour
         }
       ],
       styles: {

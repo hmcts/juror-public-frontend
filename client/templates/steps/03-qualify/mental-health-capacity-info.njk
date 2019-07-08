@@ -16,25 +16,56 @@
 
     <h3 class="heading-medium">{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.TITLE }}</h3>
     {% if user.thirdParty == 'Yes' %}
-    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.FIRST_THIRD_PARTY }}</p>
-    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.TITLE }}</p>
-    <ul class="list list-bullet">
-      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.ITEM_1 }}</li>
-      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.ITEM_2 }}</li>
-      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.ITEM_3 }}</li>
-      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.ITEM_4 }}</li>
-    </ul>
-    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.SECOND_THIRD_PARTY }}</p>
+      <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.FIRST_THIRD_PARTY }}</p>
+      <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.TITLE }}</p>
+      <ul class="list list-bullet">
+        <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.ITEM_1 }}</li>
+        <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.ITEM_2 }}</li>
+        <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.ITEM_3 }}</li>
+        <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_THIRD_PARTY.ITEM_4 }}</li>
+      </ul>
+      <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.SECOND_THIRD_PARTY }}
+        {% if texts.INTERFACE.HTML_LANG === "cy" %}
+          <br>
+          {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+            {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+          {% endif %}
+          <br>
+          {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+            {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+          {% endif %}
+          <br>
+          {{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.THIRD_THIRD_PARTY }}
+        {% else %}
+          <a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1 }}</a>
+          {{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.THIRD_THIRD_PARTY }}
+        {% endif %}
+      </p>
     {% else %}
-    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.FIRST_MAIN }}</p>
-    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.TITLE }}</p>
-    <ul class="list list-bullet">
-      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.ITEM_1 }}</li>
-      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.ITEM_2 }}</li>
-      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.ITEM_3 }}</li>
-      <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.ITEM_4 }}</li>
-    </ul>
-    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.SECOND_MAIN }}<a href="tel:{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.CONTACT_TEL }}">{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.CONTACT_TEL }}</a>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.SECOND_MAIN_END }}</p>
+      <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.FIRST_MAIN }}</p>
+      <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.TITLE }}</p>
+      <ul class="list list-bullet">
+        <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.ITEM_1 }}</li>
+        <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.ITEM_2 }}</li>
+        <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.ITEM_3 }}</li>
+        <li>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.LIST_MAIN.ITEM_4 }}</li>
+      </ul>
+      <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.SECOND_MAIN }}
+      {% if texts.INTERFACE.HTML_LANG === "cy" %}
+        <br>
+        {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+          {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+        {% endif %}
+        <br>
+        {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+          {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+        {% endif %}
+        <br>
+        {{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.THIRD_MAIN }}
+      {% else %}
+        <a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+        {{ texts.INFO_PAGE.MENTAL_HEALTH.CAPACITY.THIRD_MAIN }}
+      {% endif %}
     {% endif %}
 
   </div>
