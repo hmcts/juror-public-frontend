@@ -70,7 +70,7 @@
           ].filter(function(val) {
             return val;
           }).join('-')
-        , 'YYYY-MM-DD');
+          , 'YYYY-MM-DD');
 
         // Add dobValue to req.body for validation
         req.body['dateOfBirth'] = dobValue;
