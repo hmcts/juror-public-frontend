@@ -1,57 +1,102 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}3rd Party Details Name{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
 
-<div class="grid-row">
+  {% include "../../includes/errors-gds.njk" %}
 
-  <div class="column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    {% include "../../includes/back-link.njk" %}
-    {% include "../../includes/errors.njk" %}
+      <form action="{{ url('branches.third.party.details.name.post') }}" method="POST" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-    <form action="{{ url('branches.third.party.details.name.post') }}" method="POST" {% if not IS_PRODUCTION %}novalidate{% endif %}>
-    
-      <div class="form-group {% if errors.items['firstName'] or errors.items['lastName'] %}error{% endif %}">
-    
-        <h1 class="heading-xlarge">
-          <div class="heading-secondary">
-            {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CAPTION }}
-          </div>
-          {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.TITLE }}
-        </h1>
+        {# Set First Name error #}
+        {% if errors.items['firstName'] %}
+          {% set firstNameError = {"text": errors.items['firstName'][0].details} %}
+        {% else %}
+          {% set firstNameError = undefined %}
+        {% endif %}
 
-        <fieldset>
-          <p class="form-group" id="firstNameGroup">
-            <label class="form-label" for="firstName">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.LABEL_FIRST_NAME }}</label>
-            {% if errors.items['firstName'] %}<span class="error-message" id="firstNameErrorMessage">{{ errors.items['firstName'][0].details }}</span>{% endif %}
-            <input type="text" class="form-control" name="firstName" id="firstName" value="{{ user.thirdPartyDetails.firstName }}" minlength="1" maxlength="50" autocomplete="off" {% if errors.items['firstName'] %}aria-describedby="firstNameErrorMessage"{% endif %}>
-          </p>
+        {# Set Last Namne error #}
+        {% if errors.items['lastName'] %}
+          {% set lastNameError = {"text": errors.items['lastName'][0].details} %}
+        {% else %}
+          {% set lastNameError = undefined %}
+        {% endif %}
+      
+        <div class="govuk-form-group {% if errors.items['firstName'] or errors.items['lastName'] %}govuk-form-group--error{% endif %}">
+      
+          <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-xl">
+              {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CAPTION }}
+            </span>
+            {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.TITLE }}
+          </h1>
 
-          <p class="form-group" id="lastNameGroup">
-            <label class="form-label" for="lastName">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.LABEL_LAST_NAME }}</label>
-            {% if errors.items['lastName'] %}<span class="error-message" id="lastNameErrorMessage">{{ errors.items['lastName'][0].details }}</span>{% endif %}
-            <input type="text" class="form-control" name="lastName" id="lastName" value="{{ user.thirdPartyDetails.lastName }}" minlength="1" maxlength="50" autocomplete="off" {% if errors.items['lastName'] %}aria-describedby="lastNameErrorMessage"{% endif %}>
-          </p>
-        </fieldset>
+          <fieldset class="govuk-fieldset">
 
-      </div>
-      <br><br>
-      <div class="form-group">
-        <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+            {# First Name #}
+            {{ govukInput({
+              label: {
+                text: texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.LABEL_FIRST_NAME
+              },
+              id: "firstName",
+              name: "firstName",
+              errorMessage: firstNameError,
+              attributes: {
+                minlength: "1",
+                maxlength: "50"
+              },
+              autocomplete: "off",
+              classes: "govuk-!-width-one-half",
+              value: user.thirdPartyDetails.firstName
+            }) }}
+
+            {# Last Name #}
+            {{ govukInput({
+              label: {
+                text: texts.ON_BEHALF.THIRD_PARTY_DETAILS.NAME.LABEL_LAST_NAME
+              },
+              id: "lastName",
+              name: "lastName",
+              errorMessage: lastNameError,
+              attributes: {
+                minlength: "1",
+                maxlength: "50"
+              },
+              autocomplete: "off",
+              classes: "govuk-!-width-one-half",
+              value: user.thirdPartyDetails.lastName
+            }) }}
+
+          </fieldset>
+
+        </div>
+
+        {# Submit form #}
+        {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
         <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-      </div>
 
-    </form>
+      </form>
 
   </div>
-
 </div>
 
 {% endblock %}

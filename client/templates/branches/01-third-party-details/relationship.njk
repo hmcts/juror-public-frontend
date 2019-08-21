@@ -1,52 +1,78 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}3rd Party Details{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
 
-<div class="grid-row">
+  {% include "../../includes/errors-gds.njk" %}
 
-  <div class="column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    {% include "../../includes/back-link.njk" %}
-    {% include "../../includes/errors.njk" %}
+      <form action="{{ url('branches.third.party.details.relationship.post') }}" method="POST" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-    <form action="{{ url('branches.third.party.details.relationship.post') }}" method="POST" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+        {# Set Relationship error #}
+        {% if errors.items['relationship'] %}
+          {% set relationshipError = {"text": errors.items['relationship'][0].details} %}
+        {% else %}
+          {% set relationshipError = undefined %}
+        {% endif %}
 
-      <div class="form-group {% if errors.items['relationship'] %}error{% endif %}">
-    
-        <h1 class="heading-xlarge">
-          <div class="heading-secondary">
-            {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CAPTION }}
-          </div>
-          {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.RELATIONSHIP.TITLE }}
-        </h1>
+        <div class="govuk-form-group {% if errors.items['relationship'] %}govuk-form-group--error{% endif %}">
 
-        <fieldset>
-          <p class="form-group" id="relationshipGroup">
-            <label class="form-label" for="relationship">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.RELATIONSHIP.LABEL_RELATIONSHIP }}</label>
-            {% if errors.items['relationship'] %}<span class="error-message" id="relationshipErrorMessage">{{ errors.items['relationship'][0].details }}</span>{% endif %}
-            <input type="text" class="form-control" name="relationship" id="relationship" value="{{ user.thirdPartyDetails.relationship }}" minlength="1" maxlength="100" autocomplete="off" {% if errors.items['relationship'] %}aria-describedby="relationshipErrorMessage"{% endif %}>
-          </p>
-        </fieldset>
+          <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-xl">
+              {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CAPTION }}
+            </span>
+            {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.RELATIONSHIP.TITLE }}
+          </h1>
 
-      </div>
+          <fieldset class="govuk-fieldset">
 
-      <br><br>
-      <div class="form-group">
-        <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+            {# Relationship #}
+            {{ govukInput({
+              label: {
+                text: texts.ON_BEHALF.THIRD_PARTY_DETAILS.RELATIONSHIP.LABEL_RELATIONSHIP
+              },
+              id: "relationship",
+              name: "relationship",
+              errorMessage: relationshipError,
+              attributes: {
+                minlength: "1",
+                maxlength: "50"
+              },
+              autocomplete: "off",
+              classes: "govuk-!-width-one-half",
+              value: user.thirdPartyDetails.relationship
+            }) }}
+
+          </fieldset>
+
+        </div>
+
+        {# Submit form #}
+        {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+        
         <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-      </div>
 
-    </form>
+      </form>
 
   </div>
-
 </div>
 
 {% endblock %}

@@ -1,98 +1,148 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/date-input/macro.njk" import govukDateInput %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}3rd Party Personal Details Date Of Birth{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
 
-<div class="grid-row">
-  <div class="column-two-thirds">
+  {% include "../../includes/errors-gds.njk" %}
 
-    {% include "../../includes/back-link.njk" %}
-    {% include "../../includes/errors.njk" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    <form action="{{ url('branches.third.party.personal.details.date-of-birth.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+      <form action="{{ url('branches.third.party.personal.details.date-of-birth.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-      <div class="form-group {% if errors.items['dateOfBirth'] or errors.items['firstName'] or errors.items['lastName'] %}error{% endif %}">
-
-        <h1 class="heading-xlarge">
-          <div class="heading-secondary">
-            {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.CAPTION }}
-          </div>
-          {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.DOB_HEADER }}
-        </h1>
-
-        {# Date of birth #}
-        <div class="form-group {% if errors.items['dateOfBirth'] %}error{% endif %}" id="dateOfBirthGroup">
-          <fieldset>
-            <legend>
-              <span class="form-hint" id="dob-hint">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_HELPER }}</span>
-            </legend>
-
-            {% if errors.items['dateOfBirth'][0].fields %}
-              {% for errorField in errors.items['dateOfBirth'][0].fields %}
+        {# Set Date of birth error #}
+        {% if errors.items['dateOfBirth'][0].fields %}
+          {% set dobErrorHTML %}
+            {% for errorField in errors.items['dateOfBirth'][0].fields %}
               {% if errorField !== 'dateOfBirth' %}
-                <span class="error-message dateOfBirthErrorMessage" id="{{ errorField }}ErrorMessage">{{ errors.items['dateOfBirth'][0].details[loop.index0] }}</span>
-              {% endif %}
-              {% endfor %}
-            {% else %}
-              {% if errors.items['dateOfBirth'] %}<span class="error-message dateOfBirthErrorMessage" id="dateOfBirthErrorMessage">{{ errors.items['dateOfBirth'][0].details }}</span>{% endif %}
-            {% endif %}
 
-            <div class="form-date">
-              <div class="form-group form-group-day">
-                <label class="form-label" for="dobDay">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_DAY_LABEL }}</label>
-                <input class="form-control focus-select-all " id="dobDay" name="dobDay" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobDay }}" pattern="[0-9]*" min="1" max="31" minlength="1" maxlength="2" aria-describedby="dob-hint" autocomplete="off">
-              </div>
-              <div class="form-group form-group-month">
-                <label class="form-label" for="dobMonth">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_MONTH_LABEL }}</label>
-                <input class="form-control focus-select-all" id="dobMonth" name="dobMonth" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobMonth }}" pattern="[0-9]*" min="1" max="12" maxlength="2" aria-describedby="dob-hint" autocomplete="off">
-              </div>
-              <div class="form-group form-group-year">
-                <label class="form-label" for="dobYear">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_YEAR_LABEL }}</label>
-                <input class="form-control focus-select-all" id="dobYear" name="dobYear" type="{% if not IS_PRODUCTION %}text{% else %}number{% endif %}" value="{{ user.dobYear }}" pattern="[0-9]*" maxlength="4" aria-describedby="dob-hint" autocomplete="off">
-              </div>
-            </div>
+                <span class="govuk-error-message dateOfBirthErrorMessage" id="{{ errorField }}ErrorMessage">{{ errors.items['dateOfBirth'][0].details[loop.index0] }}</span>
+
+              {% endif %}
+            {% endfor %}
+          {% endset %}
+          {% set dobError = {"html": dobErrorHTML} %}
+        {% else %}
+          {% set dobError = undefined %}
+        {% endif %}
+
+        <div class="govuk-form-group {% if errors.items['dateOfBirth'] %}govuk-form-group--error{% endif %}" id="dateOfBirthGroup">
+      
+          <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-xl">
+              {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.CAPTION }}
+            </span>
+            {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.DOB_HEADER }}
+          </h1>
+
+          <fieldset class="govuk-fieldset">
+
+            {{ govukDateInput({
+              id: "dateOfBirth",
+              hint: {
+                text: texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER
+              },
+              errorMessage: dobError,
+              items: [
+                {
+                  id: "dobDay",
+                  name: "dobDay",
+                  classes: "govuk-input--width-2",
+                  autocomplete: "off",
+                  label: texts.YOUR_DETAILS_PAGE.FORM_DOB_DAY_LABEL,
+                  attributes: {
+                    pattern: "[0-9]*",
+                    min: "1",
+                    max: "31",
+                    minlength: "1",
+                    maxlength: "2"
+                  },
+                  value: user.dobDay
+                },
+                {
+                  id: "dobMonth",
+                  name: "dobMonth",
+                  classes: "govuk-input--width-2",
+                  autocomplete: "off",
+                  label: texts.YOUR_DETAILS_PAGE.FORM_DOB_MONTH_LABEL,
+                  attributes: {
+                    pattern: "[0-9]*",
+                    min: "1",
+                    max: "12",
+                    maxlength: "2"
+                  },
+                  value: user.dobMonth
+                },
+                {
+                  id: "dobYear",
+                  name: "dobYear",
+                  classes: "govuk-input--width-4",
+                  autocomplete: "off",
+                  label: texts.YOUR_DETAILS_PAGE.FORM_DOB_YEAR_LABEL,
+                  attributes: {
+                    pattern: "[0-9]*",
+                    maxlength: "4"
+                  },
+                  value: user.dobYear
+                }
+              ]
+            }) }}
+            
           </fieldset>
+
         </div>
 
-      </div>
+        {# Info about DOB #}
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_HELPER_TITLE }}
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <p>{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_HELPER_PARAGRAPH_1 }}</p>
+            <p>{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_HELPER_PARAGRAPH_2 }}</p>
+              <p>
+                {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_HELPER_PARAGRAPH_3 }}
+                {% if texts.INTERFACE.HTML_LANG === "cy" %}
+                  <br>
+                  {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+                    {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+                  {% endif %}
+                  <br>
+                  {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+                    {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+                  {% endif %}
+                {% endif %}
+              </p>
+            </div>
+          </details>
 
-      <details>
-        <summary>
-          <span class="summary">
-            {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_HELPER_TITLE }}
-          </span>
-        </summary>
-        <div class="panel panel-border-narrow" id="details-content-1" aria-hidden="true">
-          <p>{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_HELPER_PARAGRAPH_1 }}</p>
-          <p>{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_HELPER_PARAGRAPH_2 }}</p>
-          <p>
-            {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_DOB_HELPER_PARAGRAPH_3 }}
-            {% if texts.INTERFACE.HTML_LANG === "cy" %}
-              <br>
-              {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
-                {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
-              {% endif %}
-              <br>
-              {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
-                {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
-              {% endif %}
-            {% endif %}
-          </p>
-        </div>
-      </details>
-      <br>
+          {# Submit form #}
+          {{ govukButton({
+            text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+          }) }}
 
-      {# Submit form #}
-      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
 
-    </form>
+      </form>
+
+    </div>
   </div>
-</div>
+
 {% endblock %}

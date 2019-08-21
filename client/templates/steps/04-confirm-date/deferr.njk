@@ -1,81 +1,109 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
-  {{ texts.DEFERRAL_PAGE.REASON_HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.DEFERRAL_PAGE.REASON_HEADING_OB }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-  {{ texts.DEFERRAL_PAGE.REASON_HEADING }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.DEFERRAL_PAGE.REASON_HEADING }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 
 {% block page_identifier %}Deferral{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
 
-<div class="grid-row">
+  {% include "../../includes/errors-gds.njk" %}
 
-  <div class="column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    {% include "../../includes/back-link.njk" %}
-    {% include "../../includes/errors.njk" %}
-
-    <form action="{{ url('steps.confirm.date.deferral.post') }}" method="post">
-
-      <div class="form-group {% if errors.items['deferralReason'] %}error{% endif %}" id="deferralReasonGroup">
+    <form class="govuk-form" action="{{ url('steps.confirm.date.deferral.post') }}" method="post">
         
-        <h1 class="heading-xlarge">
-          {% if user.thirdParty == 'Yes' %}
-          {{ texts.DEFERRAL_PAGE.REASON_HEADING_OB }}
-          {% else %}
-          {{ texts.DEFERRAL_PAGE.REASON_HEADING }}
-          {% endif %}
-        </h1>
-        
-        <label class="form-label" for="deferralReason">
-          <span class="form-hint">
+        {# Set label text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set deferralReasonLabel = texts.DEFERRAL_PAGE.REASON_FIELD_HINT_OB %}
+        {% else %}
+          {% set deferralReasonLabel = texts.DEFERRAL_PAGE.REASON_FIELD_HINT %}
+        {% endif %}
+
+        {# Set deferral details error #}
+        {% set deferralReasonError = undefined %}
+        {% if errors.items['deferralReason']%}
+          {% set deferralReasonError = {"text": errors.items['deferralReason'][0].details} %}
+        {% endif %}
+
+        <div class="govuk-form-group {% if errors.items['deferralReason'] %}govuk-form-group--error{% endif %}" id="deferralReasonGroup">
+
+          <h1 class="govuk-heading-xl">
             {% if user.thirdParty == 'Yes' %}
-            {{ texts.DEFERRAL_PAGE.REASON_FIELD_HINT_OB }}
+              {{ texts.DEFERRAL_PAGE.REASON_HEADING_OB }}
             {% else %}
-            {{ texts.DEFERRAL_PAGE.REASON_FIELD_HINT }}
+              {{ texts.DEFERRAL_PAGE.REASON_HEADING }}
             {% endif %}
-          </span>
-          {% if errors.items['deferralReason'] %}<span class="error-message" id="deferralReasonErrorMessage">
-            {{ errors.items['deferralReason'][0].details }}
-          </span>{% endif %}
-        </label>
-        <textarea class="form-control" name="deferralReason" id="deferralReason" cols="30" rows="4" maxlength="1000" {% if errors.items['deferralReason'] %}aria-describedby="deferralReasonErrorMessage"{% endif %}>{{ user.deferral.reason }}</textarea>
-        <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
-      </div>
+          </h1>
 
-      <div class="form-group">
-        <details>
-          <summary {% if trackingCode %}onclick="trackVirtualPageViews('What is an acceptable reason?')"{% endif %}>{{ texts.DEFERRAL_PAGE.ACCEPTABLE_SUMMARY }}</summary>
-          <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+          <div class="govuk-character-count">
+            {{ govukTextarea({
+              name: "deferralReason",
+              id: "deferralReason",
+              label: {
+                text: deferralReasonLabel
+              },
+              rows: "4",
+              attributes: {
+                maxlength: "1000"
+              },
+              errorMessage: deferralReasonError,
+              value: user.deferral.reason
+            }) }}
+            <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
+          </div>
+
+        </div>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary" {% if trackingCode %}onclick="trackVirtualPageViews('What is an acceptable reason?')"{% endif %}>
+            <span class="govuk-details__summary-text">
+              {{ texts.DEFERRAL_PAGE.ACCEPTABLE_SUMMARY }}
+            </span>
+          </summary>
+          <div class="govuk-details__text">
             <p>
               {% if user.thirdParty == 'Yes' %}
-              {{ texts.DEFERRAL_PAGE.ACCEPTABLE_INFO_OB }}
+                {{ texts.DEFERRAL_PAGE.ACCEPTABLE_INFO_OB }}
               {% else %}
-              {{ texts.DEFERRAL_PAGE.ACCEPTABLE_INFO }}
+                {{ texts.DEFERRAL_PAGE.ACCEPTABLE_INFO }}
               {% endif %}
             </p>
-
-            <ul class="list list-bullet">
+            <ul class="govuk-list govuk-list--bullet">
               <li>{{ texts.DEFERRAL_PAGE.ACCEPTABLE_LIST_ITEM_1 }}</li>
               <li>{{ texts.DEFERRAL_PAGE.ACCEPTABLE_LIST_ITEM_2 }}</li>
               <li>{{ texts.DEFERRAL_PAGE.ACCEPTABLE_LIST_ITEM_3 }}</li>
             </ul>
           </div>
         </details>
-      </div>
 
       {# Submit form #}
+      {{ govukButton({
+        text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+      }) }}
+
       <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+      
     </form>
 
   </div>
-
 </div>
 
 {% endblock %}

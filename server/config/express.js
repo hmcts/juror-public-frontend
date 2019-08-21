@@ -8,6 +8,7 @@
   var express = require('express')
     , session = require('express-session')
     , nunjucks = require('express-nunjucks')
+    , njk = require('nunjucks')
     , cookieParser = require('cookie-parser')
     , csrf = require('csurf')
     , helmet = require('helmet')
@@ -105,6 +106,8 @@
       siteLangs: ['en', 'cy']
     }));
 
+    //app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')));
+
     // Setup templating engine
     app.set('view engine', 'njk');
     app.set('views', [path.join(app.get('appPath'), 'templates')]);
@@ -114,6 +117,7 @@
       watch: true,
       noCache: true,
       filters: filters,
+      loader: njk.FileSystemLoader // Use synchronous loader templates
     });
   }
 

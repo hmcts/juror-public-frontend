@@ -229,7 +229,26 @@
           jwt: req.session.authToken,
           response: response
         });
+
+        return res.render('steps/07-confirm-information/index.njk', {
+          user: mergedUser,
+          //personalDetailsChangeLink: personalDetailsChangeLink,
+          personalDetailsChangeNameLink: personalDetailsChangeNameLink,
+          personalDetailsChangeAddressLink: personalDetailsChangeAddressLink,
+          personalDetailsChangeDateOfBirthLink: personalDetailsChangeDateOfBirthLink,
+          // contactDetailsChangeLink: contactDetailsChangeLink,
+          contactDetailsChangePhoneLink: contactDetailsChangePhoneLink,
+          contactDetailsChangeEmailLink: contactDetailsChangeEmailLink,
+          errors: {
+            title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            message: '',
+            count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
+            items: tmpErrors,
+          },
+        });
       }
+
+
       , getDetailsError = function(err) {
 
         app.logger.crit('Failed to fetch and parse details required for pdf download: ' + err.statusCode, {
@@ -238,20 +257,23 @@
           error: (typeof err.error !== 'undefined') ? err.error : err
         });
       }
-      if (req.session.user.ineligibleDeceased || req.session.user.ineligibleAge) {
 
+      /*
+      if (req.session.user.ineligibleDeceased || req.session.user.ineligibleAge) {
         //adds court details to session
         jurorObj.get(require('request-promise'), app, req.session.user.jurorNumber, req.session.authToken)
           .then(getDetailsSuccess, getDetailsError)
           .catch(getDetailsError);
       }
+      */
+      
 
       // Get correct link for changing personal details
       // of summoned juror
       if (req.session.user.thirdParty === 'Yes') {
         //personalDetailsChangeLink = app.namedRoutes.build('branches.third.party.personal.details.change.get');
         personalDetailsChangeNameLink = app.namedRoutes.build('branches.third.party.personal.details.name.change.get');
-        personalDetailsChangeAddressLink =app.namedRoutes.build('branches.third.party.personal.details.address.change.get');
+        personalDetailsChangeAddressLink = app.namedRoutes.build('branches.third.party.personal.details.address.change.get');
         personalDetailsChangeDateOfBirthLink = app.namedRoutes.build('branches.third.party.personal.details.date-of-birth.change.get');
         //contactDetailsChangeLink = app.namedRoutes.build('branches.third.party.contact.details.change.get');
         contactDetailsChangePhoneLink = app.namedRoutes.build('branches.third.party.contact.details.change.get');
@@ -334,22 +356,29 @@
       }
       mergedUser = _.merge(_.cloneDeep(req.session.user), _.cloneDeep(req.session.formFields));
 
-      return res.render('steps/07-confirm-information/index.njk', {
-        user: mergedUser,
-        //personalDetailsChangeLink: personalDetailsChangeLink,
-        personalDetailsChangeNameLink: personalDetailsChangeNameLink,
-        personalDetailsChangeAddressLink: personalDetailsChangeAddressLink,
-        personalDetailsChangeDateOfBirthLink: personalDetailsChangeDateOfBirthLink,
-        // contactDetailsChangeLink: contactDetailsChangeLink,
-        contactDetailsChangePhoneLink: contactDetailsChangePhoneLink,
-        contactDetailsChangeEmailLink: contactDetailsChangeEmailLink,
-        errors: {
-          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-          message: '',
-          count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
-          items: tmpErrors,
-        },
-      });
+      if (req.session.user.ineligibleDeceased) {
+        //adds court details to session
+        jurorObj.get(require('request-promise'), app, req.session.user.jurorNumber, req.session.authToken)
+          .then(getDetailsSuccess, getDetailsError)
+          .catch(getDetailsError);
+      } else {
+        return res.render('steps/07-confirm-information/index.njk', {
+          user: mergedUser,
+          //personalDetailsChangeLink: personalDetailsChangeLink,
+          personalDetailsChangeNameLink: personalDetailsChangeNameLink,
+          personalDetailsChangeAddressLink: personalDetailsChangeAddressLink,
+          personalDetailsChangeDateOfBirthLink: personalDetailsChangeDateOfBirthLink,
+          // contactDetailsChangeLink: contactDetailsChangeLink,
+          contactDetailsChangePhoneLink: contactDetailsChangePhoneLink,
+          contactDetailsChangeEmailLink: contactDetailsChangeEmailLink,
+          errors: {
+            title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            message: '',
+            count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
+            items: tmpErrors,
+          },
+        });
+      }
     };
   };
 

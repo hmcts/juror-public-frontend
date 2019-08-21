@@ -1,32 +1,40 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% block pageTitle %}
   {{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
 {% endblock %}
 
 {% block content %}
 
-<div class="grid-row">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-  <div class="column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        {{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.HEADING }}
+      </h1>
 
-    {% include "../../includes/back-link.njk" %}
+      <h3 class="govuk-heading-m">
+        {{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.TITLE }}
+      </h3>
 
-    <h1 class="heading-xlarge">{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.HEADING }}</h1>
+      <div class="govuk-body">
+        {% if user.thirdParty == 'Yes' %}
+          <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.FIRST_THIRD_PARTY }}</p>
+          <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.SECOND_THIRD_PARTY }}</p>
+          <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.THIRD_THIRD_PARTY }}</p>
+        {% else %}
+          <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.FIRST_MAIN }}</p>
+          <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.SECOND_MAIN }}</p>
+          <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.THIRD_MAIN }}</p>
+        {% endif %}
+      </div>
 
-    <h3 class="heading-medium">{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.TITLE }}</h3>
-    {% if user.thirdParty == 'Yes' %}
-    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.FIRST_THIRD_PARTY }}</p>
-    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.SECOND_THIRD_PARTY }}</p>
-    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.THIRD_THIRD_PARTY }}</p>
-    {% else %}
-    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.FIRST_MAIN }}</p>
-    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.SECOND_MAIN }}</p>
-    <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.THIRD_MAIN }}</p>
-    {% endif %}
-
+    </div>
   </div>
-
-</div>
 
 {% endblock %}

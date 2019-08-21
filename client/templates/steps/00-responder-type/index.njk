@@ -1,6 +1,10 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {{ texts.REPLY_TYPE.HEADER }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
@@ -8,51 +12,76 @@
 {% block page_identifier %}Responder Type{% endblock %}
 
 {% block content %}
+  
+  {% include "../../includes/errors-gds.njk" %}
 
-<div class="grid-row">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="{{ url('steps.responder.type.post') }}" method="post">
 
-  <div class="column-two-thirds">
+        {% if errors.count > 0 %}
+          {% set radiosError = {text: errors.items['thirdParty'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% else %}
+          {% set radiosError = undefined %}
+        {% endif %}
+        
+        {{ govukRadios({
+          classes: "govuk-radios",
+          name: "thirdParty",
+          fieldset: {
+            legend: {
+              text: texts.REPLY_TYPE.HEADER,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          errorMessage: radiosError,
+          items: [
+            {
+              id: "thirdParty_No",
+              value: "No",
+              text: texts.REPLY_TYPE.REPLY_SELF,
+              hint: {
+                text: texts.REPLY_TYPE.REPLY_SELF_INFO
+              }
+            },
+            {
+              id: "thirdParty_Yes",
+              value: "Yes",
+              text: texts.REPLY_TYPE.REPLY_TP,
+              hint: { 
+                text: texts.REPLY_TYPE.REPLY_TP_INFO
+              }
+            }
+          ]}) }}
 
-    {% include "../../includes/errors.njk" %}
-
-    <h1 class="heading-xlarge">{{ texts.REPLY_TYPE.HEADER }}</h1>
-
-    <form action="{{ url('steps.responder.type.post') }}" method="post">
-      <div class="form-group inline {% if errors.items['thirdParty'] %}error{% endif %}" id="thirdParty">
-        <fieldset>
-          <div class="form-group">
-          {% if errors.items['thirdParty'] %} <span class="error-message"> {{ errors.items['thirdParty'][0].details }} </span> {% endif %}
-            <label class="block-label selection-button-radio" for="thirdParty_No">
-              <input id="thirdParty_No" type="radio" name="thirdParty" value="No">
-              {{ texts.REPLY_TYPE.REPLY_SELF }}
-              <span class="form-hint">{{ texts.REPLY_TYPE.REPLY_SELF_INFO }}</span>
-            </label>
-          </div>
-
-          <div class="form-group">
-            <label class="block-label selection-button-radio" for="thirdParty_Yes">
-              <input id="thirdParty_Yes" type="radio" name="thirdParty" value="Yes">
-              {{ texts.REPLY_TYPE.REPLY_TP }}
-              <span class="form-hint">{{ texts.REPLY_TYPE.REPLY_TP_INFO }}</span>
-            </label>
-          </div>
-        </fieldset>
-      </div>
-
-      <div class="form-group">
-        <details>
-          <summary><span class="summary">{{texts.REPLY_TYPE.NEED_HELP}}</span></summary>
-          <div id="details-content-0" aria-hidden="true">
-          {{texts.REPLY_TYPE.NEED_HELP_TEXT}}
+        {#
+        {{ govukDetails({
+          summaryText: texts.REPLY_TYPE.NEED_HELP,
+          text: texts.REPLY_TYPE.NEED_HELP_TEXT
+        }) }}
+        #}
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              {{ texts.REPLY_TYPE.NEED_HELP }}
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            {{ texts.REPLY_TYPE.NEED_HELP_TEXT }}
           </div>
         </details>
-      </div>
 
-      {#Submit form#}
-      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
-    </form>
+
+        {# Submit form #}
+        {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
+    </div>
   </div>
-</div>
 
 {% endblock %}

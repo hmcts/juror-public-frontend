@@ -1,97 +1,149 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}3rd Party Personal Details Name{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
 
-<div class="grid-row">
-  <div class="column-two-thirds">
+  {% include "../../includes/errors-gds.njk" %}
 
-    {% include "../../includes/back-link.njk" %}
-    {% include "../../includes/errors.njk" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    <form action="{{ url('branches.third.party.personal.details.name.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+      <form action="{{ url('branches.third.party.personal.details.name.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-      <div class="form-group {% if errors.items['title'] or errors.items['firstName'] or errors.items['lastName'] %}error{% endif %}">
+        {# Set Title error #}
+        {% if errors.items['title'] %}
+          {% set titleError = {"text": errors.items['title'][0].details} %}
+        {% else %}
+          {% set titleError = undefined %}
+        {% endif %}
 
-        <h1 class="heading-xlarge">
-          <div class="heading-secondary">
-            {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.CAPTION }}
-          </div>
-          {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.NAME_HEADER }}
-        </h1>
+        {# Set First Name error #}
+        {% if errors.items['firstName'] %}
+          {% set firstNameError = {"text": errors.items['firstName'][0].details} %}
+        {% else %}
+          {% set firstNameError = undefined %}
+        {% endif %}
 
-        {# Name #}
-        <fieldset class="inline-edit" id="nameGroup">
+        {# Set Last Name error #}
+        {% if errors.items['lastName'] %}
+          {% set lastNameError = {"text": errors.items['lastName'][0].details} %}
+        {% else %}
+          {% set lastNameError = undefined %}
+        {% endif %}
 
-          <legend>
-            <strong class="bold-small">
+        <div class="govuk-form-group {% if errors.nameError %}govuk-form-group--error{% endif %}">
+
+          <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-xl">
+              {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.CAPTION }}
+            </span>
+            {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.NAME_HEADER }}
+          </h1>
+
+          {# Name #}
+          <fieldset class="inline-edit govuk-fieldset" id="nameGroup">
+
+            <strong class="govuk-body govuk-!-font-weight-bold">
               {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_NAME_LABEL }}
             </strong>
-          </legend>
 
-          <div class="grid-row inline-section primary {% if errors.nameError %}closed{% endif %}">
-            <div class="column-one-half" id="name">{{ user.nameRender }}</div>
-            <div class="column-one-half">
-              <a href="#nameGroup" class="inline-edit-toggle">{{ texts.INTERFACE.FORM_CHANGE_LABEL }}</a>
-            </div>
-          </div>
-
-          <div class="inline-section secondary {% if errors.nameError %}open{% endif %}">
-
-            <div class="form-group" id="titleGroup">
-              <label class="form-label" for="title">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_TITLE_LABEL }}</label>
-              {% if errors.items['title'] %}<span class="error-message" id="titleErrorMessage">{{ errors.items['title'][0].details }}</span>{% endif %}
-              <input type="text" class="form-control" name="title" id="title" value="{{ user.title }}" maxlength="10" autocomplete="off" {% if errors.items['title'] %}aria-describedby="titleErrorMessage"{% endif %}>
+            <div class="govuk-grid-row inline-section primary {% if errors.nameError %}closed{% endif %}">
+              <div class="govuk-grid-column-one-half govuk-body" id="name">{{ user.nameRender }}</div>
+              <div class="govuk-grid-column-one-half govuk-body">
+                <a href="#nameGroup" class="govuk-link inline-edit-toggle" id="changeName">{{ texts.INTERFACE.FORM_CHANGE_LABEL }}</a>
+              </div>
             </div>
 
-            <div class="form-group" id="firstNameGroup">
-              <label class="form-label" for="firstName">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_FIRST_NAME_LABEL }}</label>
-              {% if errors.items['firstName'] %}<span class="error-message" id="firstNameErrorMessage">{{ errors.items['firstName'][0].details }}</span>{% endif %}
-              <input type="text" class="form-control" name="firstName" id="firstName" value="{{ user.firstName }}" maxlength="20" autocomplete="off" {% if errors.items['firstName'] %}aria-describedby="firstNameErrorMessage"{% endif %}>
+            <div class="inline-section secondary {% if errors.nameError %}open{% endif %}">
+
+              {# Title #}
+              {{ govukInput({
+                label: {
+                  text: texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_TITLE_LABEL
+                },
+                id: "title",
+                name: "title",
+                errorMessage: titleError,
+                attributes: {
+                  maxlength: "10"
+                },
+                autocomplete: "off",
+                value: user.title
+              }) }}
+
+              {# First Name #}
+              {{ govukInput({
+                label: {
+                  text: texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_FIRST_NAME_LABEL
+                },
+                id: "firstName",
+                name: "firstName",
+                errorMessage: firstNameError,
+                attributes: {
+                  maxlength: "20"
+                },
+                autocomplete: "off",
+                value: user.firstName
+              }) }}
+              
+              {# Last Name #}
+              {{ govukInput({
+                label: {
+                  text: texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_LAST_NAME_LABEL
+                },
+                id: "lastName",
+                name: "lastName",
+                errorMessage: lastNameError,
+                attributes: {
+                  maxlength: "20"
+                },
+                autocomplete: "off",
+                value: user.lastName
+              }) }}
+
             </div>
 
-            <div class="form-group" id="lastNameGroup">
-              <label class="form-label" for="lastName">{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_LAST_NAME_LABEL }}</label>
-              {% if errors.items['lastName'] %}<span class="error-message" id="lastNameErrorMessage">{{ errors.items['lastName'][0].details }}</span>{% endif %}
-              <input type="text" class="form-control" name="lastName" id="lastName" value="{{ user.lastName }}" maxlength="20" autocomplete="off" {% if errors.items['lastName'] %}aria-describedby="lastNameErrorMessage"{% endif %}>
-            </div>
+          </fieldset>
 
-          </div>
+        </div>
 
-        </fieldset>
-
-      </div>
-
-      {# Info about change of name #}
-      <br>
-      <div class="form-group">
-        <details>
-          <summary>
-            <span class="summary">
+        {# Info about change of name #}
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my name?')"{% endif %}>
               {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.HELPER_CHANGE_NAME_TITLE }}
             </span>
           </summary>
-          <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
-            <p>
-              {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.HELPER_CHANGE_NAME_PARAGRAPH_1 }}
-            </p>
+          <div class="govuk-details__text">
+            {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.HELPER_CHANGE_NAME_PARAGRAPH_1 }}
           </div>
         </details>
-      </div>
 
-      <br>
+        {# Submit form #}
+        {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
 
-      {# Submit form #}
-      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
 
-    </form>
+      </form>
+      
+    </div>
   </div>
-</div>
+
 {% endblock %}

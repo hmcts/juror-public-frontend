@@ -1,0 +1,211 @@
+.inline-edit {
+
+  .inline-section {
+
+    &.primary {
+      display: none;
+    }
+
+    &.secondary {
+      display: block;
+    }
+
+    &.show {
+      display: block;
+    }
+
+    &.hide {
+      display: none;
+    }
+
+    &.open {
+      display: block;
+    }
+
+    &.closed {
+      display: none;
+    }
+
+  }
+
+  .inline-edit-toggle {
+    display: none;
+
+    &.show {
+      display: inline-block;
+    }
+  }
+
+  /*
+  input,
+  textarea {
+    width: 100%;
+  }
+  */
+  
+
+}
+
+/*
+
+  Date picker (Deferral Dates)
+
+*/
+
+.noscript {
+  display: none; }
+
+.calendar-button {
+  float: right;
+  background: none;
+  border: none;
+  padding: 0; }
+
+.datepicker {
+  padding: 2px;
+  position: absolute;
+  width: 261px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 1; }
+
+div#bn_prev {
+  margin: 3px;
+  float: left;
+  width: 24px;
+  height: 24px;
+  text-align: center; }
+
+div#bn_next {
+  margin: 3px;
+  float: right;
+  width: 24px;
+  height: 24px;
+  text-align: center; }
+
+div#bn_prev:hover,
+div#bn_prev:focus,
+div#bn_next:hover,
+div#bn_next:focus {
+  margin: 3px;
+  background-color: #fc3;
+  border-radius: 4px; }
+
+img.bn_img {
+  margin: 0;
+  padding: 2px; }
+
+div#month {
+  float: left;
+  padding-top: 3px;
+  width: 190px;
+  height: 24px;
+  text-align: center;
+  font-weight: bold; }
+
+table#cal {
+  font-size: 1.2em;
+  text-align: center; }
+
+table#cal th,
+table#cal td {
+  width: 35px;
+  height: 30px;
+  padding: 0; }
+
+table#cal thead {
+  border-bottom: 1px solid #999; }
+
+table#cal td {
+  border: none;
+  text-align: center; }
+
+table#cal td.today {
+  background-color: #FFF0C4;
+  border-radius: 2px; }
+
+table#cal td:hover,
+table#cal td.focus {
+  background-color: #fc3; }
+
+table#cal td.empty:hover {
+  background-color: #f9f9f9;
+  border: 1px solid #eee; }
+
+.offscreen {
+  position: absolute;
+  left: -200em;
+  top: -100em; }
+
+.datepicker[aria-hidden="true"] {
+  display: none; }
+
+.fill {
+  width: 80% !important; }
+
+
+/*
+
+  Confirm Answers Page
+
+*/
+
+@media (min-width: 40.0625em) {
+  .govuk-summary-list__key_jd {
+    width: 50%; } }
+
+@media (min-width: 40.0625em) {
+  .govuk-summary-list__value_jd {
+    width: 40%; } }
+
+@media (min-width: 40.0625em) {
+  .govuk-summary-list__actions_jd {
+    width: 10%; } }
+
+
+/*
+
+  Colour Panels (e.g. Deferral Dates / Check Answers)
+
+*/
+.background-grey {
+  background-color: #dee0e2;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+}
+
+.background-white {
+  background-color: #ffffff; }
+
+
+.grey-background-box {
+  background-color: #dee0e2;
+  padding: 5px 42px 0px 40px; }
+
+.input-checkbox-white {
+  background-color: white;
+} 
+
+.pink-background-box {
+  background-color: #fbdeea;
+  padding: 5px 42px 0px 40px; }
+
+
+ /*
+
+  Fix for IE Login page
+
+*/
+.govuk-grid-column-two-thirds-no-float {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 15px; }
+  @media (min-width: 40.0625em) {
+    .govuk-grid-column-two-thirds {
+      width: 66.6666%;
+      //float: left;
+    }
+  }
+

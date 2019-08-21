@@ -1,45 +1,46 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
-{{ texts.CONFIRMATION.TITLE }} - {{ texts.INTERFACE.GOV }}
+{% block pageTitle %}
+  {{ texts.CONFIRMATION.TITLE }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}Confirmation Age Disqualified{% endblock %}
 
 {% block content %}
 
-<div class="grid-row">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-  <div class="column-two-thirds">
-    {% include "./_hero.njk" %}
+      {% include "./_hero.njk" %}
 
-    <p class="bold-small">
-      {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_1 }}<a href="/steps/08-confirmation/download">{{ texts.CONFIRMATION.DOWNLOAD_A_COPY_2}}</a>
-      {% if user.thirdParty == 'Yes' %}
-        {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3_OB}}
-      {% else %}
-        {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3}}
-      {% endif %}
-    </p>
+      <p class="govuk-body govuk-!-font-weight-bold">
+        {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_1 }}<a class="govuk-link" href="/steps/08-confirmation/download">{{ texts.CONFIRMATION.DOWNLOAD_A_COPY_2}}</a>
+        {% if user.thirdParty == 'Yes' %}
+          {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3_OB}}
+        {% else %}
+          {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3}}
+        {% endif %}
+      </p>
 
-    <br>
-    <h2 class="heading-medium">{{ texts.CONFIRMATION.NEXT_INFO }}</h2>
+      <br>
+      <h2 class="govuk-heading-m">{{ texts.CONFIRMATION.NEXT_INFO }}</h2>
+      <div class="govuk-body">
+        {% if user.thirdParty == 'Yes' %}
+          <p>{{ texts.CONFIRMATION.AGE.NO_SERVICE_REQUIRED_OB }} {{ texts.CONFIRMATION.NO_ACTION }}</p>
+        {% else %}
+          <p>{{ texts.CONFIRMATION.AGE.NO_SERVICE_REQUIRED }} {{ texts.CONFIRMATION.NO_ACTION }}</p>
+        {% endif %}
 
-    {% if user.thirdParty == 'Yes' %}
-    <p>{{ texts.CONFIRMATION.AGE.NO_SERVICE_REQUIRED_OB }} {{ texts.CONFIRMATION.NO_ACTION }}</p>
-    {% else %}
-    <p>{{ texts.CONFIRMATION.AGE.NO_SERVICE_REQUIRED }} {{ texts.CONFIRMATION.NO_ACTION }}</p>
-    {% endif %}
+        {% if user.thirdParty == 'Yes' %}
+          <p>{{ texts.CONFIRMATION.AGE.DOB_QUALIFICATION_OB }}</p>
+        {% else %}
+          <p>{{ texts.CONFIRMATION.AGE.DOB_QUALIFICATION }}</p>
+        {% endif %}
+      </div>
 
-    {% if user.thirdParty == 'Yes' %}
-    <p>{{ texts.CONFIRMATION.AGE.DOB_QUALIFICATION_OB }}</p>
-    {% else %}
-    <p>{{ texts.CONFIRMATION.AGE.DOB_QUALIFICATION }}</p>
-    {% endif %}
+      {% include "../../includes/feedback.njk" %}
+    </div>
 
-    {% include "../../includes/feedback.njk" %}
   </div>
-
-</div>
 
 {% endblock %}

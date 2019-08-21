@@ -1,171 +1,317 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
-  {{ texts.EMPLOYED_PAGE.HEADER_OB }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.EMPLOYED_PAGE.HEADER_OB }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-  {{ texts.EMPLOYED_PAGE.HEADER }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.EMPLOYED_PAGE.HEADER }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 
 {% block page_identifier %}Employment{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
 
-<div class="grid-row">
+  {% include "../../includes/errors-gds.njk" %}
 
-  <div class="column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    {% include "../../includes/back-link.njk" %}
-    {% include "../../includes/errors.njk" %}
+      <form action="{{ url('steps.cjs.employed.post') }}" method="post">
 
-    <form action="{{ url('steps.cjs.employed.post') }}" method="post">
-
-      <div class="form-group inline {% if errors.items['cjsEmployed'] %}error{% endif %}" id="cjsEmployedGroup">
-        
-        <h1 class="heading-xlarge">
-          {% if user.thirdParty == 'Yes' %}
-          {{ texts.EMPLOYED_PAGE.HEADER_OB }}
-          {% else %}
-          {{ texts.EMPLOYED_PAGE.HEADER }}
+        {# Set radio labels #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set radioYesLabel = texts.EMPLOYED_PAGE.YES_OB  %}
+          {% set radioNoLabel = texts.EMPLOYED_PAGE.NO_OB %}
+          {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES_OB %}
+            {% set radioYesChecked = true %}
           {% endif %}
-        </h1>
-        
-        <fieldset>
-          <legend>
-            <span class="form-label-bold">
-              {% if user.thirdParty == 'Yes' %}
+          {% if user.cjsEmployed == texts.EMPLOYED_PAGE.NO_OB %}
+            {% set radioNoChecked = true %}
+          {% endif %}
+        {% else %}
+          {% set radioYesLabel = texts.EMPLOYED_PAGE.YES %}
+          {% set radioNoLabel = texts.EMPLOYED_PAGE.NO %}
+          {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES %}
+            {% set radioYesChecked = true %}
+          {% endif %}
+          {% if user.cjsEmployed == texts.EMPLOYED_PAGE.NO %}
+            {% set radioNoChecked = true %}
+          {% endif %}
+        {% endif %}
+
+        {# Set radios hint html #}
+        {% set radiosHintHTML %}
+          <strong class="govuk-body govuk-!-font-weight-bold">
+            {% if user.thirdParty == 'Yes' %}
               {{ texts.EMPLOYED_PAGE.QUESTION_OB }}
-              {% else %}
+            {% else %}
               {{ texts.EMPLOYED_PAGE.QUESTION }}
-              {% endif %}
-            </span>
-          </legend>
-          {% if errors.items['cjsEmployed'] %}<span class="error-message">{{ errors.items['cjsEmployed'][0].details }}</span>{% endif %}
-          <br>
-          <label class="block-label selection-button-radio" data-target="cjsEmployerGroup" for="employedCjs-Yes">
-              {% if user.thirdParty == 'Yes' %}
-                <input id="employedCjs-Yes" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.YES_OB }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES_OB %}checked="checked"{% endif %}>
-                {{ texts.EMPLOYED_PAGE.YES_OB }}
-              {% else %}
-                <input id="employedCjs-Yes" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.YES }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES %}checked="checked"{% endif %}>
-                {{ texts.EMPLOYED_PAGE.YES }}
             {% endif %}
-          </label>
-          <label class="block-label selection-button-radio" for="employedCjs-No">
-              {% if user.thirdParty == 'Yes' %}
-                <input id="employedCjs-No" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.NO_OB }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.NO_OB %}checked="checked"{% endif %}>
-                {{ texts.EMPLOYED_PAGE.NO_OB }}
-              {% else %}
-                <input id="employedCjs-No" type="radio" name="cjsEmployed" value="{{ texts.EMPLOYED_PAGE.NO }}" {% if user.cjsEmployed == texts.EMPLOYED_PAGE.NO %}checked="checked"{% endif %}>
-                {{ texts.EMPLOYED_PAGE.NO }}
-              {% endif %}
-          </label>
-        </fieldset>
-      </div>
+          </strong>
+        {% endset %}
 
+        {# Set radios answer error #}
+        {% set radiosAnswerError = undefined %}
+        {% if errors.items['cjsEmployed'] %}
+          {% set radiosAnswerError = {"text": errors.items['cjsEmployed'][0].details} %}
+        {% endif %}
 
-      <div class="panel panel-border-narrow {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES %}{% else %}js-hidden{% endif %} {% if errors.items['cjsEmployer'] %}error{% endif %}" id="cjsEmployerGroup">
-
-        <strong class="bold-small">
+        {# Set checkboxes hint html #}
+        {% set checkboxesHintHTML %}
+          <strong class="govuk-body govuk-!-font-weight-bold">
           {% if user.thirdParty == 'Yes' %}
-          {{ texts.EMPLOYED_PAGE.SELECT_PROMPT_OB }}
+            {{ texts.EMPLOYED_PAGE.SELECT_PROMPT_OB }}
           {% else %}
-          {{ texts.EMPLOYED_PAGE.SELECT_PROMPT }}
+            {{ texts.EMPLOYED_PAGE.SELECT_PROMPT }}
           {% endif %}
-        </strong>
+          </strong>
+        {% endset %}
 
-        <br>
-        <br>
+        {# Set checkboxes answer error #}
+        {% set checkboxesAnswerError = undefined %}
+        {% if errors.items['cjsEmployer'] %}
+          {% set checkboxesAnswerError = {"text":  errors.items['cjsEmployer'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
 
-        <div class="form-group">
+        {# Set Police checked #}
+        {% if cjsActive.police %}
+          {% set checkboxPoliceChecked = true %}
+        {% else %}
+          {% set checkboxPoliceChecked = false %}
+        {% endif %}
 
-          <!-- Police -->
-          {% if errors.items['cjsEmployer'] %}<span class="error-message">{{ errors.items['cjsEmployer'][0].details }}</span>{% endif %}
-          <label class="block-label selection-button-checkbox" for="cjsEmployer-police" data-target="cjsPoliceDetailsGroup">
-            <input type="checkbox" name="cjsEmployer" id="cjsEmployer-police" value="Police Force" {% if cjsActive.police %}checked="checked"{% endif %}>
-            {{ texts.EMPLOYED_PAGE.POLICE }}
-          </label>
+        {# Set Police details error #}
+        {% set policeDetailsError = undefined %}
+        {% if errors.items['cjsPoliceDetails'] %}
+          {% set policeDetailsError = {"text": errors.items['cjsPoliceDetails'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
 
-          <div class="form-group {% if cjsActive.policeForce %}{% else %}js-hidden{% endif %} {% if errors.items['cjsPoliceDetails'] %}error{% endif %}" id="cjsPoliceDetailsGroup">
-            <label class="form-label" for="cjsPoliceDetails">
-              <strong class="small panel panel-border-narrow">
-                {{ texts.EMPLOYED_PAGE.WHICH_FORCE }}
-                {% if errors.items['cjsPoliceDetails'] %}<span class="error-message" id="cjsPoliceDetailsErrorMessage">{{ errors.items['cjsPoliceDetails'][0].details }}</span>{% endif %}
-              </strong>
-            </label>
-            <textarea class="form-control" id="cjsPoliceDetails" name="cjsPoliceDetails" maxlength="1000" {% if errors.items['cjsPoliceDetails'] %}aria-describedby="cjsPoliceDetailsErrorMessage"{% endif %}>{{ user.cjsPoliceDetails }}</textarea>
-            <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
+        {# Set Police details HTML #}
+        {% set policeDetailsHTML %}
+          <div class="govuk-character-count">
+            {{ govukTextarea({
+              name: "cjsPoliceDetails",
+              id: "cjsPoliceDetails",
+              label: {
+                text: texts.EMPLOYED_PAGE.WHICH_FORCE
+              },
+              rows: "2",
+              attributes: {
+                maxlength: "1000"
+              },
+              errorMessage: policeDetailsError,
+              value: user.cjsPoliceDetails
+            }) }}
+            <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
+        {% endset %}
 
-          <!-- Prison -->
-          <label class="block-label selection-button-checkbox" for="cjsEmployer-prison" data-target="cjsPrisonDetailsGroup">
-            <input type="checkbox" name="cjsEmployer" id="cjsEmployer-prison" value="HM Prison Service" {% if cjsActive.prison %}checked="checked"{% endif %}>
-            {{ texts.EMPLOYED_PAGE.HM }}
-          </label>
+        {# Set Prison checked #}
+        {% if cjsActive.prison %}
+          {% set checkboxPrisonChecked = true %}
+        {% else %}
+          {% set checkboxPrisonChecked = false %}
+        {% endif %}
 
-          <div class="form-group {% if cjsActive.prison %}{% else %}js-hidden{% endif %} {% if errors.items['cjsPrisonDetails'] %}error{% endif %}" id="cjsPrisonDetailsGroup">
-            <label class="form-label" for="cjsPrisonDetails">
-              <strong class="small panel panel-border-narrow">
-                {{ texts.EMPLOYED_PAGE.WHICH_PRISON }}
-                {% if errors.items['cjsPrisonDetails'] %}<span class="error-message" id="cjsPrisonDetailsErrorMessage">{{ errors.items['cjsPrisonDetails'][0].details }}</span>{% endif %}
-              </strong>
-            </label>
-            <textarea class="form-control" id="cjsPrisonDetails" name="cjsPrisonDetails" maxlength="1000" {% if errors.items['cjsPrisonDetails'] %}aria-describedby="cjsPrisonDetailsErrorMessage"{% endif %}>{{ user.cjsPrisonDetails }}</textarea>
-            <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
+        {# Set Prison details error #}
+        {% set prisonDetailsError = undefined %}
+        {% if errors.items['cjsPrisonDetails'] %}
+          {% set prisonDetailsError = {"text": errors.items['cjsPrisonDetails'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+        {# Set Prison details HTML #}
+        {% set prisonDetailsHTML %}
+          <div class="govuk-character-count">
+            {{ govukTextarea({
+              name: "cjsPrisonDetails",
+              id: "cjsPrisonDetails",
+              label: {
+                text: texts.EMPLOYED_PAGE.WHICH_PRISON
+              },
+              rows: "2",
+              attributes: {
+                maxlength: "1000"
+              },
+              errorMessage: prisonDetailsError,
+              value: user.cjsPrisonDetails
+            }) }}
+            <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
+        {% endset %}
 
-          <!-- NCA -->
-          <label class="block-label selection-button-checkbox" for="cjsEmployer-nca">
-            <input type="checkbox" name="cjsEmployer" id="cjsEmployer-nca" value="National Crime Agency" {% if cjsActive.nca %}checked="checked"{% endif %}>
-            {{ texts.EMPLOYED_PAGE.NCA }}
-          </label>
+        {# Set NCA checked #}
+        {% if cjsActive.nca %}
+          {% set checkboxNCAChecked = true %}
+        {% else %}
+          {% set checkboxNCAChecked = false %}
+        {% endif %}
 
-          <!-- Other -->
-          <label class="block-label selection-button-checkbox" for="cjsEmployer-other" data-target="cjsEmployerDetailsGroup">
-            <input type="checkbox" name="cjsEmployer" id="cjsEmployer-other" value="Other" {% if cjsActive.other %}checked="checked"{% endif %}>
-            {{ texts.EMPLOYED_PAGE.OTHER }}
-          </label>
+        {# Set Other checked #}
+        {% if cjsActive.other %}
+          {% set checkboxOtherChecked = true %}
+        {% else %}
+          {% set checkboxOtherChecked = false %}
+        {% endif %}
 
-          <div class="form-group {% if cjsActive.other %}{% else %}js-hidden{% endif %} {% if errors.items['cjsEmployerDetails'] %}error{% endif %}" id="cjsEmployerDetailsGroup">
-            <label class="form-label" for="cjsEmployerDetails">
-              <strong class="small panel panel-border-narrow">
-                {{ texts.EMPLOYED_PAGE.DETAILS }}
-                {% if errors.items['cjsEmployerDetails'] %}<span class="error-message" id="cjsEmployerDetailsErrorMessage">{{ errors.items['cjsEmployerDetails'][0].details }}</span>{% endif %}
-              </strong>
-            </label>
-            <textarea class="form-control" id="cjsEmployerDetails" name="cjsEmployerDetails" maxlength="1000" {% if errors.items['cjsEmployerDetails'] %}aria-describedby="cjsEmployerDetailsErrorMessage"{% endif %}>{{ user.cjsEmployerDetails }}</textarea>
-            <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
+        {# Set Other details error #}
+        {% set otherDetailsError = undefined %}
+        {% if errors.items['cjsEmployerDetails'] %}
+          {% set otherDetailsError = {"text": errors.items['cjsEmployerDetails'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+        {# Set Other details HTML #}
+        {% set otherDetailsHTML %}
+          <div class="govuk-character-count">
+            {{ govukTextarea({
+              name: "cjsEmployerDetails",
+              id: "cjsEmployerDetails",
+              label: {
+                text: texts.EMPLOYED_PAGE.DETAILS
+              },
+              rows: "2",
+              attributes: {
+                maxlength: "1000"
+              },
+              errorMessage: otherDetailsError,
+              value: user.cjsEmployerDetails
+            }) }}
+            <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
+        {% endset %}
+
+        {# Set organisations HTML #}
+        {% set organisationsHTML%}
+          {{ govukCheckboxes({
+            name: "cjsEmployer",
+            fieldset: {
+            },  
+            hint: {
+              html: checkboxesHintHTML
+            },
+            errorMessage: checkboxesAnswerError,
+            items: [
+              {
+                id: "cjsEmployer-police",
+                name: "cjsEmployer",
+                value: "Police Force",
+                text: texts.EMPLOYED_PAGE.POLICE,
+                conditional: {
+                  html: policeDetailsHTML
+                },
+                checked: checkboxPoliceChecked
+              },
+              {
+                id: "cjsEmployer-prison",
+                name: "cjsEmployer",
+                value: "HM Prison Service",
+                text: texts.EMPLOYED_PAGE.HM,
+                conditional: {
+                  html: prisonDetailsHTML
+                },
+                checked: checkboxPrisonChecked
+              },
+              {
+                id: "cjsEmployer-nca",
+                name: "cjsEmployer",
+                value: "National Crime Agency",
+                text: texts.EMPLOYED_PAGE.NCA,
+                checked: checkboxNCAChecked
+              },
+              {
+                id: "cjsEmployer-other",
+                name: "cjsEmployer",
+                value: "Other",
+                text: texts.EMPLOYED_PAGE.OTHER,
+                conditional: {
+                  html: otherDetailsHTML
+                },
+                checked: checkboxOtherChecked
+              }
+            ]
+          }) }}
+        {% endset %}
+
+        <div class="govuk-form-group {% if errors.items['cjsEmployed'] or errors.items['cjsEmployer'] or policeDetailsError or prisonDetailsError or otherDetailsError %}govuk-form-group--error{% endif %}" id="cjsEmployedGroup">
+          
+          <h1 class="govuk-heading-xl">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.EMPLOYED_PAGE.HEADER_OB }}
+            {% else %}
+              {{ texts.EMPLOYED_PAGE.HEADER }}
+            {% endif %}
+          </h1>
+          
+          {{ govukRadios({
+            id: "cjsEmployed",
+            name: "cjsEmployed",
+            hint: {
+              html: radiosHintHTML
+            },
+            errorMessage: radiosAnswerError,
+            items: [
+              {
+                id: "employedCjs-Yes",
+                name: "cjsEmployed",
+                value: radioYesLabel ,
+                text: radioYesLabel,
+                checked: radioYesChecked,
+                conditional: {
+                  html: organisationsHTML
+                }
+              },
+              {
+                id: "employedCjs-No",
+                name: "cjsEmployed",
+                value: radioNoLabel,
+                text: radioNoLabel,
+                checked: radioNoChecked
+              }
+            ]
+          }) }}
+          
         </div>
 
-      </div>
-
-
-      <div class="form-group">
-        <details>
-          <summary {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask for this?')"{% endif %}><span class="summary">{{ texts.EMPLOYED_PAGE.MORE_INFO_LINK }}</span></summary>
-          <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+        <details class="govuk-details">
+          <summary class="govuk-details__summary" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask for this?')"{% endif %}>
+            <span class="govuk-details__summary-text">
+              {{ texts.EMPLOYED_PAGE.MORE_INFO_LINK }}
+            </span>
+          </summary>
+          <div class="govuk-details__text">
             <p>
-              {% if user.thirdParty == 'Yes' %}
-              {{ texts.EMPLOYED_PAGE.MORE_INFO_1_OB }}
-              {% else %}
-              {{ texts.EMPLOYED_PAGE.MORE_INFO_1 }}
-              {% endif %}
-            </p>
+                {% if user.thirdParty == 'Yes' %}
+                  {{ texts.EMPLOYED_PAGE.MORE_INFO_1_OB }}
+                {% else %}
+                  {{ texts.EMPLOYED_PAGE.MORE_INFO_1 }}
+                {% endif %}
+              </p>
           </div>
         </details>
-      </div>
 
 
-      {# Submit form #}
-      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
-    </form>
+        {# Submit form #}
+        {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
 
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      
+      </form>
+
+    </div>
   </div>
-
-</div>
 
 {% endblock %}

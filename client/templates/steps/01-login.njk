@@ -1,6 +1,11 @@
-{% extends "../layouts/default.njk" %}
+{% extends "../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../govuk-frontend/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
   {{ texts.LOGIN_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
@@ -11,131 +16,197 @@
 
 {% block page_identifier %}Login{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
+  
+  {% include "../includes/errors-gds.njk" %}
 
-<div class="grid-row">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-  <div class="column-two-thirds">
+      <form action="{{ url('steps.login.post') }}" method="POST" id="login-form" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-    {% include "../includes/back-link.njk" %}
-    {% include "../includes/errors.njk" %}
+        {# Set Juror Number error #}
+        {% if errors.items['jurorNumber'] %}
+          {% set jurorNumberError = {"text": errors.items['jurorNumber'][0].details} %}
+        {% else %}
+          {% set jurorNumberError = undefined %}
+        {% endif %}
 
-    <h1 class="heading-xlarge">
-      {% if user.thirdParty == 'Yes' %}
-      {{ texts.LOGIN_PAGE.HEADING_OB }}
-      {% else %}
-      {{ texts.LOGIN_PAGE.HEADING }}
-      {% endif %}
-    </h1>
+        {# set Last Name error #}
+        {% if errors.items['jurorLastName'] %}
+          {% set lastNameError = {"text": errors.items['jurorLastName'][0].details} %}
+        {% else %}
+          {% set lastNameError = undefined %}
+        {% endif %}
 
-    <p>             
-      {% if user.thirdParty == 'Yes' %}
-        {{ texts.LOGIN_PAGE.SAMPLE_TITLE_OB }}
-      {% else %}
-        {{ texts.LOGIN_PAGE.SAMPLE_TITLE }}
-      {% endif %}
-    </p>
+        {# Set Postcode error #}
+        {% if errors.items['jurorPostcode'] %}
+          {% set postcodeError = {"text": errors.items['jurorPostcode'][0].details} %}
+        {% else %}
+          {% set postcodeError = undefined %}
+        {% endif %}
 
-    <img src="/img/example-juror-number.png" alt="{{ texts.LOGIN_PAGE.SAMPLE_IMAGE_ALT }}" title="{{ texts.LOGIN_PAGE.IMAGE_TITLE }}">
-    <br><br>
+        {# Set Last Name hint #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set lastNameHintText = texts.LOGIN_PAGE.FIELD_LAST_NAME_HINT_OB %}
+        {% else %}
+          {% set lastNameHintText = texts.LOGIN_PAGE.FIELD_LAST_NAME_HINT %}
+        {% endif %}
 
-    <form action="{{ url('steps.login.post') }}" method="POST" id="login-form" {% if not IS_PRODUCTION %}novalidate{% endif %}>
-      <div id="authenticationGroup">
-        <div class="form-group {% if errors.items['jurorNumber'] %}error{% endif %}" id="jurorNumberGroup">
-          <label class="form-label" for="jurorNumber">
-            <strong class="bold-small">
-              {{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_TITLE }}
-            </strong>
-          </label>
-          {% if errors.items['jurorNumber'] %}<span class="error-message" id="jurorNumberGroupError">{{ errors.items['jurorNumber'][0].details }}</span>{% endif %}
-          <input class="form-control" name="jurorNumber" id="jurorNumber" type="number" pattern="[0-9]*" inputmode="numeric" minlength="9" maxlength="9" autocomplete="off" {% if errors.items['jurorNumber'] %}aria-describedby="jurorNumberGroupError"{% endif %}>
-        </div>
+        {# Set Postcode hint #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set postcodeHintText = texts.LOGIN_PAGE.FIELD_POSTCODE_HINT_OB %}
+        {% else %}
+          {% set postcodeHintText = texts.LOGIN_PAGE.FIELD_POSTCODE_HINT %}
+        {% endif %}
 
-        <div class="form-group">
-          <details>
-            <summary><span class="summary" {% if trackingCode %}onclick="trackVirtualPageViews('I don\'t have a juror number')"{% endif %}>
-              {% if user.thirdParty == 'Yes' %}
-              {{ texts.LOGIN_PAGE.GUIDANCE_TITLE_OB }}
-              {% else %}
-              {{ texts.LOGIN_PAGE.GUIDANCE_TITLE }}
-              {% endif %}</span></summary>
-            <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
-              <p>
-                {% if user.thirdParty == 'Yes' %}
-                {{ texts.LOGIN_PAGE.GUIDANCE_INTRO_OB }}
-                {% else %}
-                {{ texts.LOGIN_PAGE.GUIDANCE_INTRO }}
-                {% endif %}
-              </p>
+        <div class="govuk-form-group {% if jurorNumberError or lastNameError or postcodeError %}govuk-form-group--error{% endif %}" id="loginGroup">
 
-              <p>
-                <strong class="bold-small">{{ texts.LOGIN_PAGE.GUIDANCE_COMPANY_NAME }}</strong><br>
-                <a href="mailto:{{ texts.INTERFACE.CONTACT_EMAIL }}">{{ texts.INTERFACE.CONTACT_EMAIL }}</a><br>
+          <h1 class="govuk-heading-xl">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.LOGIN_PAGE.HEADING_OB }}
+            {% else %}
+              {{ texts.LOGIN_PAGE.HEADING }}
+            {% endif %}
+          </h1>
 
-                {% if texts.INTERFACE.HTML_LANG === "cy" %}
-                  {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
-                    {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+          <p class="govuk-body">             
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.LOGIN_PAGE.SAMPLE_TITLE_OB }}
+            {% else %}
+              {{ texts.LOGIN_PAGE.SAMPLE_TITLE }}
+            {% endif %}
+          </p>
+          
+          <img src="/img/example-juror-number.png" alt="{{ texts.LOGIN_PAGE.SAMPLE_IMAGE_ALT }}" title="{{ texts.LOGIN_PAGE.IMAGE_TITLE }}">
+          <br><br>
+
+          <fieldset class="govuk-fieldset">
+
+            {# Juror Number #}
+            {{ govukInput({
+              label: {
+                text: texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_TITLE
+              },
+              classes: "govuk-!-width-one-third",
+              id: "jurorNumber",
+              name: "jurorNumber",
+              type: "number",
+              pattern: "[0-9]*",
+              autocomplete: "off",
+              errorMessage: jurorNumberError,
+              attributes: {
+                inputmode: "numeric",
+                minlength: "9",
+                maxlength: "9"
+              }
+            }) }}
+
+            <details class="govuk-details">
+
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text" {% if trackingCode %}onclick="trackVirtualPageViews('I don\'t have a juror number')"{% endif %}>
+                  {% if user.thirdParty == 'Yes' %}
+                    {{ texts.LOGIN_PAGE.GUIDANCE_TITLE_OB }}
+                    {% else %}
+                    {{ texts.LOGIN_PAGE.GUIDANCE_TITLE }}
+                    {% endif %}
+                </span>
+              </summary>
+              
+              <div class="govuk-details__text">
+                <p>
+                  {% if user.thirdParty == 'Yes' %}
+                  {{ texts.LOGIN_PAGE.GUIDANCE_INTRO_OB }}
+                  {% else %}
+                  {{ texts.LOGIN_PAGE.GUIDANCE_INTRO }}
                   {% endif %}
-                  <br>
-                  {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
-                    {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+                </p>
+
+                <p>
+                  <strong class="bold-small">{{ texts.LOGIN_PAGE.GUIDANCE_COMPANY_NAME }}</strong><br>
+                  <a class="govuk-link" href="mailto:{{ texts.INTERFACE.CONTACT_EMAIL }}">{{ texts.INTERFACE.CONTACT_EMAIL }}</a><br>
+
+                  {% if texts.INTERFACE.HTML_LANG === "cy" %}
+                    {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+                      {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+                    {% endif %}
+                    <br>
+                    {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+                      {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+                    {% endif %}
+                    <br>
+                  {% else %}
+                    {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+                    <br>
                   {% endif %}
-                  <br>
-                {% else %}
-                  {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
-                  <br>
-                {% endif %}
 
-                {{ texts.LOGIN_PAGE.GUIDANCE_OPENING_TIMES }}<br>
-                {{ texts.LOGIN_PAGE.GUIDANCE_OPENING_TIMES_FRIDAY }}<br>
-                <a href="{{ texts.LOGIN_PAGE.GUIDANCE_CALL_CHARGE_LINK }}">{{ texts.LOGIN_PAGE.GUIDANCE_CALL_CHARGE_LABEL }}</a>
-              </p>
+                  {{ texts.LOGIN_PAGE.GUIDANCE_OPENING_TIMES }}<br>
+                  {{ texts.LOGIN_PAGE.GUIDANCE_OPENING_TIMES_FRIDAY }}<br>
+                  <a class="govuk-link" href="{{ texts.LOGIN_PAGE.GUIDANCE_CALL_CHARGE_LINK }}">{{ texts.LOGIN_PAGE.GUIDANCE_CALL_CHARGE_LABEL }}</a>
+                </p>
 
-              <p>
-                {{ texts.LOGIN_PAGE.GUIDANCE_ADDRESS_LINE_1 }}<br>
-                {{ texts.LOGIN_PAGE.GUIDANCE_ADDRESS_LINE_2 }}<br>
-                {{ texts.LOGIN_PAGE.GUIDANCE_ADDRESS_LINE_3 }}<br>
-                {{ texts.LOGIN_PAGE.GUIDANCE_ADDRESS_LINE_4 }}
-              </p>
-            </div>
-          </details>
+                <p>
+                  {{ texts.LOGIN_PAGE.GUIDANCE_ADDRESS_LINE_1 }}<br>
+                  {{ texts.LOGIN_PAGE.GUIDANCE_ADDRESS_LINE_2 }}<br>
+                  {{ texts.LOGIN_PAGE.GUIDANCE_ADDRESS_LINE_3 }}<br>
+                  {{ texts.LOGIN_PAGE.GUIDANCE_ADDRESS_LINE_4 }}
+                </p>
+              </div>
+            </details>
+
+            {# Last Name #}
+            {{ govukInput({
+              label: {
+                text: texts.LOGIN_PAGE.FIELD_LAST_NAME_TITLE
+              },
+              hint: {
+                text: lastNameHintText
+              },
+              classes: "govuk-!-width-one-third",
+              id: "jurorLastName",
+              name: "jurorLastName",
+              autocomplete: "off",
+              errorMessage: lastNameError,
+              attributes: {
+                maxlength: "20"
+              }
+            }) }}
+
+            {# Postcode #}
+            {{ govukInput({
+              label: {
+                text: texts.LOGIN_PAGE.FIELD_POSTCODE_TITLE
+              },
+              hint: {
+                text: postcodeHintText
+              },
+              classes: "govuk-!-width-one-third",
+              id: "jurorPostcode",
+              name: "jurorPostcode",
+              autocomplete: "off",
+              errorMessage: postcodeError
+            }) }}
+
+          </fieldset>
+
         </div>
 
-        <div class="form-group {% if errors.items['jurorLastName'] %}error{% endif %}" id="jurorLastNameGroup">
-          <label class="form-label" for="jurorLastName">
-            <strong class="bold-small">
-              {{ texts.LOGIN_PAGE.FIELD_LAST_NAME_TITLE }}
-            </strong>
-            <span class="form-hint">{% if user.thirdParty == 'Yes' %}
-              {{ texts.LOGIN_PAGE.FIELD_LAST_NAME_HINT_OB }}
-              {% else %}
-              {{ texts.LOGIN_PAGE.FIELD_LAST_NAME_HINT }}
-            {% endif %}</span>
-            {% if errors.items['jurorLastName'] %}<span class="error-message" id="jurorLastNameGroupError">{{ errors.items['jurorLastName'][0].details }}</span>{% endif %}
-          </label>
-          <input class="form-control" name="jurorLastName" id="jurorLastName" type="text" maxlength="20" autocomplete="off" {% if errors.items['jurorLastName'] %}aria-describedby="jurorLastNameGroupError"{% endif %}>
-        </div>
+        {# Submit form #}
+        {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
 
-        <div class="form-group {% if errors.items['jurorPostcode'] %}error{% endif %}" id="jurorPostcodeGroup">
-          <label class="form-label" for="jurorPostcode">
-            <strong class="bold-small">
-              {{ texts.LOGIN_PAGE.FIELD_POSTCODE_TITLE }}
-            </strong>
-            <span class="form-hint">{% if user.thirdParty == 'Yes' %}
-              {{ texts.LOGIN_PAGE.FIELD_POSTCODE_HINT_OB }}
-              {% else %}
-              {{ texts.LOGIN_PAGE.FIELD_POSTCODE_HINT }}
-            {% endif %}</span>
-            {% if errors.items['jurorPostcode'] %}<span class="error-message" id="jurorPostcodeGroupError">{{ errors.items['jurorPostcode'][0].details }}</span>{% endif %}
-          </label>
-          <input class="form-control" name="jurorPostcode" id="jurorPostcode" type="text" autocomplete="off" {% if errors.items['jurorPostcode'] %}aria-describedby="jurorPostcodeGroupError"{% endif %}>
-        </div>
-      </div>
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
 
-      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
-      <input type="hidden" name="_csrf" value="{{csrftoken}}">
-
-    </form>
+      </form>
+      
+    </div>
   </div>
-</div>
+
 {% endblock %}

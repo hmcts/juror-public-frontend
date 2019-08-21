@@ -1,39 +1,41 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
-{{ texts.CONFIRMATION.TITLE }} - {{ texts.INTERFACE.GOV }}
+{% block pageTitle %}
+  {{ texts.CONFIRMATION.TITLE }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}Confirmation Deceased{% endblock %}
 
 {% block content %}
 
-<div class="grid-row">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-  <div class="column-two-thirds">
-    {% include "./_hero.njk" %}
+      {% include "./_hero.njk" %}
 
-    <p class="bold-small">
-      {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_1 }}<a href="/steps/08-confirmation/download">{{ texts.CONFIRMATION.DOWNLOAD_A_COPY_2}}</a>
-      {% if user.thirdParty == 'Yes' %}
-        {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3_OB}}
-      {% else %}
-        {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3}}
-      {% endif %}
-    </p>
+      <p class="govuk-body govuk-!-font-weight-bold">
+        {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_1 }}<a class="govuk-link" href="/steps/08-confirmation/download">{{ texts.CONFIRMATION.DOWNLOAD_A_COPY_2}}</a>
+        {% if user.thirdParty == 'Yes' %}
+          {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3_OB}}
+        {% else %}
+          {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3}}
+        {% endif %}
+      </p>
 
-    <h2 class="heading-medium">{{ texts.CONFIRMATION.NEXT_INFO }}</h2>
-    <p>{{ texts.CONFIRMATION.NO_ACTION }}</p>
+      <h2 class="govuk-heading-m">{{ texts.CONFIRMATION.NEXT_INFO }}</h2>
+      <p class="govuk-body">
+        {{ texts.CONFIRMATION.NO_ACTION }}
+      </p>
 
-    <h2 class="heading-medium">{{ texts.CONFIRMATION.DECEASED.APOLOGY }}</h2>
-    <p>
-      {{ texts.CONFIRMATION.DECEASED.APOLOGY_INFO }}
-    </p>
+      <h2 class="govuk-heading-m">{{ texts.CONFIRMATION.DECEASED.APOLOGY }}</h2>
+      <p class="govuk-body">
+        {{ texts.CONFIRMATION.DECEASED.APOLOGY_INFO }}
+      </p>
 
-    {% include "../../includes/feedback.njk" %}
+      {% include "../../includes/feedback.njk" %}
+
+    </div>
 
   </div>
-
-</div>
 
 {% endblock %}

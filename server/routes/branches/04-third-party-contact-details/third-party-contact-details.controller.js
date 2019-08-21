@@ -60,6 +60,17 @@
       delete req.session.errors;
       delete req.session.formFields;
 
+      // Reset phone fields if not selected
+      if (req.body['useJurorPhoneDetails'] === 'No'){
+        req.body['primaryPhone'] = '';
+        req.body['secondaryPhone'] = '';
+      }
+
+      // Reset email fields if not selected
+      if (req.body['useJurorEmailDetails'] === 'No'){
+        req.body['emailAddress'] = '';
+        req.body['emailAddressConfirmation'] = '';
+      }
 
       // Validate form submission
       validatorResult = validate(req.body, require('../../../config/validation/third-party-contact-details')(req));

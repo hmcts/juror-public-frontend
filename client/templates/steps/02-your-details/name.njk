@@ -1,117 +1,153 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
-  {% if user.thirdParty == 'Yes' %}
-  {{ texts.YOUR_DETAILS_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
-  {% else %}
   {{ texts.YOUR_DETAILS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
-  {% endif %}
 {% endblock %}
 
 {% block page_identifier %}Personal Details Name{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
 
-<div class="grid-row">
+  {% include "../../includes/errors-gds.njk" %}
 
-  <div class="column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    {% include "../../includes/back-link.njk" %}
-    {% include "../../includes/errors.njk" %}
+      <form action="{{ url('steps.your.details.name.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-    <form action="{{ url('steps.your.details.name.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+        <div class="govuk-form-group {% if errors.nameError %}govuk-form-group--error{% endif %}" id="titleGroup">
 
-      <div class="form-group {% if errors.nameError %}error{% endif %}" id="titleGroup">
-
-        <h1 class="heading-xlarge">
-          <div class="heading-secondary">
-            {% if user.thirdParty == 'Yes' %}
-            {{ texts.YOUR_DETAILS_PAGE.CAPTION_OB }}
-            {% else %}
-            {{ texts.YOUR_DETAILS_PAGE.CAPTION }}
-            {% endif %}
-          </div>
-          {% if user.thirdParty == 'Yes' %}
-            {{ texts.YOUR_DETAILS_PAGE.HEADING_NAME_OB }}
-            {% else %}
+          <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-xl">
+              {{ texts.YOUR_DETAILS_PAGE.CAPTION }}
+            </span>
             {{ texts.YOUR_DETAILS_PAGE.HEADING_NAME }}
-          {% endif %}
-        </h1>
+          </h1>
 
-        {# Name #}
-        <fieldset class="inline-edit" id="nameGroup">
+          {# Name #}
+          <fieldset class="inline-edit govuk-fieldset" id="nameGroup">
 
-          <div class="grid-row inline-section primary {% if errors.nameError %}closed{% endif %}">
-            <div class="column-one-half">{{ user.nameRender }}</div>
-            <div class="column-one-half">
-              <a href="#nameGroup" class="inline-edit-toggle" id="changeName" {% if trackingCode %}onclick="trackVirtualPageViews('Change - name')"{% endif %}>{{ texts.INTERFACE.FORM_CHANGE_LABEL }}</a>
-            </div>
-          </div>
-
-          <div class="inline-section secondary {% if errors.nameError %}open{% endif %}">
-
-            <div class="form-group" id="titleGroup">
-              <label class="form-label" for="title">{{ texts.YOUR_DETAILS_PAGE.FORM_TITLE_LABEL }}</label>
-              {% if errors.items['title'] %}<span class="error-message" id="titleGroupError">{{ errors.items['title'][0].details }}</span>{% endif %}
-              <input type="text" class="form-control" name="title" id="title" value="{{ user.title }}" maxlength="11" autocomplete="off" {% if errors.items['title'] %}aria-describedby="titleGroupError"{% endif %}>
+            <div class="govuk-grid-row inline-section primary {% if errors.nameError %}closed{% endif %}">
+              <div class="govuk-grid-column-one-half govuk-body">{{ user.nameRender }}</div>
+              <div class="govuk-grid-column-one-half govuk-body">
+                <a href="#nameGroup" class="govuk-link inline-edit-toggle" id="changeName" {% if trackingCode %}onclick="trackVirtualPageViews('Change - name')"{% endif %}>{{ texts.INTERFACE.FORM_CHANGE_LABEL }}</a>
+              </div>
             </div>
 
-            <div class="form-group" id="firstNameGroup">
-              <label class="form-label" for="firstName">{{ texts.YOUR_DETAILS_PAGE.FORM_FIRST_NAME_LABEL }}</label>
-              {% if errors.items['firstName'] %}<span class="error-message" id="firstNameGroupError">{{ errors.items['firstName'][0].details }}</span>{% endif %}
-              <input type="text" class="form-control" name="firstName" id="firstName" value="{{ user.firstName }}" maxlength="20" autocomplete="off" {% if errors.items['firstName'] %}aria-describedby="firstNameGroupError"{% endif %}>
-            </div>
+            {# Set Title error #}
+            {% if errors.items['title'] %}
+              {% set titleError = {"text": errors.items['title'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+            {% else %}
+              {% set titleError = undefined %}
+            {% endif %}
 
-            <div class="form-group" id="lastNameGroup">
-              <label class="form-label" for="lastName">{{ texts.YOUR_DETAILS_PAGE.FORM_LAST_NAME_LABEL }}</label>
-              {% if errors.items['lastName'] %}<span class="error-message" id="lastNameGroupError">{{ errors.items['lastName'][0].details }}</span>{% endif %}
-              <input type="text" class="form-control" name="lastName" id="lastName" value="{{ user.lastName }}" maxlength="20" autocomplete="off" {% if errors.items['lastName'] %}aria-describedby="lastNameGroupError"{% endif %}>
-            </div>
+            {# Set First Name error #}
+            {% if errors.items['firstName'] %}
+              {% set firstNameError = {"text": errors.items['firstName'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+            {% else %}
+              {% set firstNameError = undefined %}
+            {% endif %}
 
-          </div>
-
-        </fieldset>
-
-        <br/>
-
-      </div>
-
-      {# Info about change of name #}
-      <br>
-      <div class="form-group">
-        <details>
-          <summary>
-            <span class="summary" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my name?')"{% endif %}>
-              {% if user.thirdParty == 'Yes' %}
-              {{- texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_TITLE_OB -}}
+            {# Set Last Name error #}
+              {% if errors.items['lastName'] %}
+                {% set lastNameError = {"text": errors.items['lastName'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
               {% else %}
-              {{- texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_TITLE -}}
+                {% set lastNameError = undefined %}
               {% endif %}
 
+            <div class="inline-section secondary {% if errors.nameError %}open{% endif %}">
+
+              {# Title #}
+              {{ govukInput({
+                label: {
+                  text: texts.YOUR_DETAILS_PAGE.FORM_TITLE_LABEL
+                },
+                id: "title",
+                name: "title",
+                errorMessage: titleError,
+                attributes: {
+                  maxlength: "11"
+                },
+                autocomplete: "off",
+                value: user.title
+              }) }}
+
+              {# First Name #}
+              {{ govukInput({
+                label: {
+                  text: texts.YOUR_DETAILS_PAGE.FORM_FIRST_NAME_LABEL
+                },
+                id: "firstName",
+                name: "firstName",
+                errorMessage: firstNameError,
+                attributes: {
+                  maxlength: "20"
+                },
+                autocomplete: "off",
+                value: user.firstName
+              }) }}
+
+              {# Last Name #}
+              {% if errors.items['lastName'] %}
+                {% set lastNameError = {"text": errors.items['lastName'][0].details} %}
+              {% else %}
+                {% set lastNameError = undefined %}
+              {% endif %}
+              
+              {# Last Name #}
+              {{ govukInput({
+                label: {
+                  text: texts.YOUR_DETAILS_PAGE.FORM_LAST_NAME_LABEL
+                },
+                id: "lastName",
+                name: "lastName",
+                errorMessage: lastNameError,
+                attributes: {
+                  maxlength: "20"
+                },
+                autocomplete: "off",
+                value: user.lastName
+              }) }}
+
+            </div>
+
+          </fieldset>
+
+        </div>
+
+        {# Info about change of name #}
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my name?')"{% endif %}>
+              {{- texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_TITLE -}}
             </span>
           </summary>
-          <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
-            <p>
-              {% if user.thirdParty == 'Yes' %}
-              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_PARAGRAPH_1_OB }}
-              {% else %}
-              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_PARAGRAPH_1 }}
-              {% endif %}
-            </p>
+          <div class="govuk-details__text">
+            {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_PARAGRAPH_1 }}
           </div>
         </details>
-      </div>
 
+        {# Submit form #}
+        {{ govukButton({
+            text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
       
-
-      {# Submit form #}
-      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
-    </form>
-    
+    </div>
   </div>
-
-</div>
 
 {% endblock %}

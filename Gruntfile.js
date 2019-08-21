@@ -70,12 +70,17 @@
             {expand: true, src: ['server/**/*.js'], dest: 'dist'},
             {expand: true, src: ['package.json', 'Dockerfile', 'run.sh'], dest: 'dist'},
             {expand: true, cwd: 'client/js/', src: ['jquery.min.js', 'html5shiv.min.js', 'respond.min.js', 'datepicker.js'], dest: 'dist/client/js'},
-            { expand: true, cwd: 'client/fonts/', src: ['boldFont.ttf', 'lightFont.ttf', 'OpenSans-Regular.ttf','OpenSans-Bold.ttf'], dest: 'dist/client/fonts' },
+            {expand: true, cwd: 'client/fonts/', src: ['boldFont.ttf', 'lightFont.ttf', 'OpenSans-Regular.ttf','OpenSans-Bold.ttf'], dest: 'dist/client/fonts' },
 
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/javascripts/', src: ['**'], dest: 'dist/client/js'},
             {expand: true, cwd: 'govuk_modules/govuk_frontend_toolkit/javascripts/govuk/', src: ['**'], dest: 'dist/client/js'},
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/stylesheets/', src: ['**'], dest: 'dist/client/css'},
-            {expand: true, cwd: 'govuk_modules/govuk_template/assets/images/', src: ['**'], dest: 'dist/client/img'}
+            {expand: true, cwd: 'govuk_modules/govuk_template/assets/images/', src: ['**'], dest: 'dist/client/img'},
+
+            {expand: true, cwd: 'node_modules/govuk-frontend', src: ['*/**'], dest: 'dist/client/templates/govuk-frontend'},
+            {expand: true, cwd: 'node_modules/govuk-frontend', src: ['all.js'], dest: 'dist/client/js'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/assets/fonts', src: ['**'], dest: 'dist/client/assets/fonts'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/assets/images', src: ['**'], dest: 'dist/client/assets/images'}
           ]
         },
         dev: {
@@ -83,13 +88,18 @@
             {expand: true, src: ['client/**/*.html', 'client/**/*.njk'], dest: 'dev'},
             {expand: true, src: ['server/**/*.js'], dest: 'dev'},
             {expand: true, src: ['package.json', 'Dockerfile', 'run.sh'], dest: 'dev'},
-            { expand: true, cwd: 'client/js/', src: ['jquery.min.js', 'html5shiv.min.js', 'respond.min.js', 'datepicker.js'], dest: 'dev/client/js'},
-            { expand: true, cwd: 'client/fonts/', src: ['boldFont.ttf', 'lightFont.ttf', 'OpenSans-Regular.ttf','OpenSans-Bold.ttf'], dest: 'dev/client/fonts' },
+            {expand: true, cwd: 'client/js/', src: ['jquery.min.js', 'html5shiv.min.js', 'respond.min.js', 'datepicker.js'], dest: 'dev/client/js'},
+            {expand: true, cwd: 'client/fonts/', src: ['boldFont.ttf', 'lightFont.ttf', 'OpenSans-Regular.ttf','OpenSans-Bold.ttf'], dest: 'dev/client/fonts' },
 
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/javascripts/', src: ['**'], dest: 'dev/client/js'},
             {expand: true, cwd: 'govuk_modules/govuk_frontend_toolkit/javascripts/govuk/', src: ['**'], dest: 'dev/client/js'},
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/stylesheets/', src: ['**'], dest: 'dev/client/css'},
-            {expand: true, cwd: 'govuk_modules/govuk_template/assets/images/', src: ['**'], dest: 'dev/client/img'}
+            {expand: true, cwd: 'govuk_modules/govuk_template/assets/images/', src: ['**'], dest: 'dev/client/img'},
+
+            {expand: true, cwd: 'node_modules/govuk-frontend', src: ['*/**'], dest: 'dev/client/templates/govuk-frontend'},
+            {expand: true, cwd: 'node_modules/govuk-frontend', src: ['all.js'], dest: 'dev/client/js'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/assets/fonts', src: ['**'], dest: 'dev/client/assets/fonts'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/assets/images', src: ['**'], dest: 'dev/client/assets/images'}
           ]
         },
         test: {
@@ -97,13 +107,18 @@
             {expand: true, src: ['client/**/*.html', 'client/**/*.njk'], dest: 'test'},
             {expand: true, src: ['server/**/*.js'], dest: 'test'},
             {expand: true, src: ['package.json', 'Dockerfile', 'run.sh'], dest: 'test'},
-            { expand: true, cwd: 'client/js/', src: ['jquery.min.js', 'html5shiv.min.js', 'respond.min.js', 'datepicker.js'], dest: 'test/client/js'},
-            { expand: true, cwd: 'client/fonts/', src: ['boldFont.ttf', 'lightFont.ttf', 'OpenSans-Regular.ttf','OpenSans-Bold.ttf'], dest: 'test/client/fonts' },
+            {expand: true, cwd: 'client/js/', src: ['jquery.min.js', 'html5shiv.min.js', 'respond.min.js', 'datepicker.js'], dest: 'test/client/js'},
+            {expand: true, cwd: 'client/fonts/', src: ['boldFont.ttf', 'lightFont.ttf', 'OpenSans-Regular.ttf','OpenSans-Bold.ttf'], dest: 'test/client/fonts' },
 
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/javascripts/', src: ['**'], dest: 'test/client/js'},
             {expand: true, cwd: 'govuk_modules/govuk_frontend_toolkit/javascripts/govuk/', src: ['**'], dest: 'test/client/js'},
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/stylesheets/', src: ['**'], dest: 'test/client/css'},
-            {expand: true, cwd: 'govuk_modules/govuk_template/assets/images/', src: ['**'], dest: 'test/client/img'}
+            {expand: true, cwd: 'govuk_modules/govuk_template/assets/images/', src: ['**'], dest: 'test/client/img'},
+
+            {expand: true, cwd: 'node_modules/govuk-frontend', src: ['*/**'], dest: 'test/client/templates/govuk-frontend'},
+            {expand: true, cwd: 'node_modules/govuk-frontend', src: ['all.js'], dest: 'test/client/js'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/assets/fonts', src: ['**'], dest: 'test/client/assets/fonts'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/assets/images', src: ['**'], dest: 'test/client/assets/images'}
           ]
         },
         govuk: {
@@ -161,20 +176,33 @@
           includePaths: [
             'govuk_modules/govuk_template/assets/stylesheets',
             'govuk_modules/govuk_frontend_toolkit/stylesheets',
-            'govuk_modules/govuk-elements-sass/'
+            'govuk_modules/govuk-elements-sass/',
+            'node_modules/govuk-frontend'
           ]
         },
         dist: {
-          options: { sourceMaps: false },
-          files: { 'client/css/style.css': 'client/scss/main.scss' }
+          options: { sourceMaps: true },
+          files: { 
+            'client/css/style.css': 'client/scss/main.scss',
+            'client/css/jd-style.css': 'client/scss/jd-main.scss',
+            'client/css/govuk-frontend.css': 'node_modules/govuk-frontend/all.scss'
+          }
         },
         dev: {
           options: { sourceMaps: true },
-          files: { 'client/css/style.css': 'client/scss/main.scss' }
+          files: { 
+            'client/css/style.css': 'client/scss/main.scss',
+            'client/css/jd-style.css': 'client/scss/jd-main.scss',
+            'client/css/govuk-frontend.css': 'node_modules/govuk-frontend/all.scss'
+          }
         },
         test: {
-          options: { sourceMaps: false },
-          files: { 'client/css/style.css': 'client/scss/main.scss' }
+          options: { sourceMaps: true },
+          files: { 
+            'client/css/style.css': 'client/scss/main.scss',
+            'client/css/jd-style.css': 'client/scss/jd-main.scss',
+            'client/css/govuk-frontend.css': 'node_modules/govuk-frontend/all.scss'
+           }
         },
       },
 
@@ -196,7 +224,7 @@
           files: [
             {expand: true, cwd: 'client/css', src: ['*.css', '!*.min.css'], dest: 'dist/client/css', ext: '.css'},
           ],
-          options: {sourceMap: false}
+          options: {sourceMap: true}
         },
         dev: {
           files: [
@@ -208,7 +236,7 @@
           files: [
             {expand: true, cwd: 'client/css', src: ['*.css', '!*.min.css'], dest: 'test/client/css', ext: '.css'},
           ],
-          options: {sourceMap: false}
+          options: {sourceMap: true}
         }
       },
 

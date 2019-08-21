@@ -20,7 +20,7 @@
       "LABEL_BY_PHONE": "By phone (UK Numbers only)",
       "LABEL_BY_EMAIL": "By email",
 
-      "INFO_PHONE": "Please provide a UK phone number that we can use to reach you between 9:00AM and 5:00PM, Monday to Friday.",
+      "INFO_PHONE": "Please provide a UK phone number that we can use to reach you between 9AM and 5PM, Monday to Friday.",
       "LABEL_MAIN_PHONE": "Main phone",
       "LABEL_OTHER_PHONE": "Another phone (optional)",
       "LABEL_EMAIL": "Enter your email address",
@@ -99,7 +99,7 @@
     "CONTACT": "How we get in touch",
     "CONTACT_PARAGRAPH": "Please tell us how we can get in touch with the person you're replying for. Or we can use your contact information, if you're going to carry on acting for them.",
     "PHONE": "Phone",
-    "PHONE_PARAGRAPH": "Please give phone numbers that we can use to call you or the juror between 9:00AM and 5:00PM, Monday to Friday.",
+    "PHONE_PARAGRAPH": "Please give phone numbers that we can use to call you or the juror between 9AM and 5PM, Monday to Friday.",
     "MAIN_PHONE" :"Main phone number",
     "OTHER_PHONE" :"Another phone number (optional)",
     "PHONE_USE_PREVIOUS": "Use the phone number that you have already given to contact you",

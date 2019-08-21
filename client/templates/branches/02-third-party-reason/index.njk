@@ -1,70 +1,161 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {{ texts.ON_BEHALF.THIRD_PARTY_REASON.HEADER }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}3rd Party Reason{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
 
-<div class="grid-row">
-  <div class="column-two-thirds">
+  {% include "../../includes/errors-gds.njk" %}
 
-    {% include "../../includes/back-link.njk" %}
-    {% include "../../includes/errors.njk" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    <form action="{{ url('branches.third.party.reason.post') }}" method="POST">
+      <form action="{{ url('branches.third.party.reason.post') }}" method="POST">
 
-      <div class="form-group {% if errors.items['thirdPartyReason'] or errors.items['thirdPartyOtherReason'] %}error{% endif %}" id="thirdPartyReasonGroup">
-        
-        <h1 class="heading-xlarge">{{ texts.ON_BEHALF.THIRD_PARTY_REASON.HEADER }}</h1>
+        {# Set Not Here radio checked #}
+        {% if user.thirdPartyDetails.thirdPartyReason === 'nothere' %}
+          {% set radioNotHereChecked = true %}
+        {% else %}
+          {% set radioNotHereChecked = false %}
+        {% endif %}
 
-        <fieldset>
+        {# Set Assistance radio checked #}
+        {% if user.thirdPartyDetails.thirdPartyReason === 'assistance' %}
+          {% set radioAssistanceChecked = true %}
+        {% else %}
+          {% set radioAssistanceChecked = false %}
+        {% endif %}
 
-          {% if errors.items['thirdPartyReason'] %}<span class="error-message">{{ errors.items['thirdPartyReason'][0].details }}</span>{% endif %}
-          <label class="block-label selection-button-radio" for="thirdPartyReasonNotHere">
-            <input type="radio" name="thirdPartyReason" id="thirdPartyReasonNotHere" value="nothere" {% if user.thirdPartyDetails.thirdPartyReason === 'nothere' %}checked{% endif %}>
-            {{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.NOT_HERE }}
-            <span class="form-hint">
-              {{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.NOT_HERE_HELP }}
-            </span>
-          </label>
+        {# Set Deceased radio checked #}
+        {% if user.thirdPartyDetails.thirdPartyReason === 'deceased' %}
+          {% set radioDeceasedChecked = true %}
+        {% else %}
+          {% set radioDeceasedChecked = false %}
+        {% endif %}
 
-          <label class="block-label selection-button-radio" for="thirdPartyReasonAssistance">
-            <input type="radio" name="thirdPartyReason" id="thirdPartyReasonAssistance" value="assistance" {% if user.thirdPartyDetails.thirdPartyReason === 'assistance' %}checked{% endif %}>
-            {{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.REQUIRE_ASSISTANCE }}
-            <span class="form-hint">
-              {{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.REQUIRE_ASSISTANCE_HELP }}
-            </span>
-          </label>
+        {# Set Other radio checked #}
+        {% if user.thirdPartyDetails.thirdPartyReason === 'other' %}
+          {% set radioOtherChecked = true %}
+        {% else %}
+          {% set radioOtherChecked = false %}
+        {% endif %}
 
-          <label class="block-label selection-button-radio" for="thirdPartyReasonDeceased">
-            <input type="radio" name="thirdPartyReason" id="thirdPartyReasonDeceased" value="deceased" {% if user.thirdPartyDetails.thirdPartyReason === 'deceased' %}checked{% endif %}>
-            {{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.DECEASED }}
-          </label>
+        {# Set radio answer error #}
+        {% if errors.items['thirdPartyReason'] %}
+          {% set radioAnswerError = {"text": errors.items['thirdPartyReason'][0].details} %}
+        {% else %}
+          {% set radioAnswerError = undefined %}
+        {% endif %}
 
-          <label class="block-label selection-button-radio" data-target="thirdPartyOtherReasonGroup" for="thirdPartyReasonOther">
-            <input type="radio" name="thirdPartyReason" id="thirdPartyReasonOther" value="other" {% if user.thirdPartyDetails.thirdPartyReason === 'other' %}checked{% endif %}>
-            {{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.OTHER }}
-          </label>
-          <div class="form-group panel panel-border-narrow {% if user.thirdPartyDetails.thirdPartyReason === 'other' %}{% else %}js-hidden{% endif %}" id="thirdPartyOtherReasonGroup">
-            <label class="form-label" for="thirdPartyOtherReason">{{ texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.OTHER_INFO }}</label>
-            {% if errors.items['thirdPartyOtherReason'] %}<span class="error-message" id="thirdPartyOtherReasonErrorMessage">{{ errors.items['thirdPartyOtherReason'][0] }}</span>{% endif %}
-            <textarea class="form-control" name="thirdPartyOtherReason" id="thirdPartyOtherReason" maxLength="100" {% if errors.items['thirdPartyOtherReason'] %}aria-describedby="thirdPartyOtherReasonErrorMessage"{% endif %}>{{ user.thirdPartyDetails.thirdPartyOtherReason }}</textarea>
-            <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS_HUNDRED }}</span>
+        {# Set other reason details error #}
+        {% if errors.items['thirdPartyOtherReason'] %}
+          {% set otherReasonDetailsError = {"text": errors.items['thirdPartyOtherReason'][0]} %}
+        {% else %}
+          {% set otherReasonDetailsError = undefined %}
+        {% endif %}
+
+        {# Set Other details HTML #}
+        {% set otherDetailsHTML %}
+          <div class="govuk-character-count">
+            {{ govukTextarea({
+              name: "thirdPartyOtherReason",
+              id: "thirdPartyOtherReason",
+              label: {
+                text: texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.OTHER_INFO
+              },
+              rows: "3",
+              classes: "govuk-!-width-two-thirds",
+              attributes: {
+                maxlength: "100"
+              },
+              errorMessage: otherReasonDetailsError,
+              value: user.thirdPartyDetails.thirdPartyOtherReason
+            }) }}
+            <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS_HUNDRED }}</span>
           </div>
-        </fieldset>
-      </div>
+        {% endset %}
 
+        <div class="govuk-form-group {% if errors.items['thirdPartyReason'] or errors.items['thirdPartyOtherReason'] %}govuk-form-group--error{% endif %}" id="thirdPartyReasonGroup">
+          
+          <h1 class="govuk-heading-xl">
+            {{ texts.ON_BEHALF.THIRD_PARTY_REASON.HEADER }}
+          </h1>
 
-      <div class="form-group">
-        <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}" id="continue">
+          <fieldset class="govuk-fieldset">
+
+            {{ govukRadios({
+              id: "thirdPartyReason",
+              name: "thirdPartyReason",
+              hint: {
+                html: infoLinkHtml
+              },
+              errorMessage: radioAnswerError,
+              items: [
+                {
+                  id: "thirdPartyReasonNotHere",
+                  name: "thirdPartyReason",
+                  value: "nothere",
+                  text: texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.NOT_HERE,
+                  hint: {
+                    text: texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.NOT_HERE_HELP
+                  },
+                  checked: radioNotHereChecked
+                },
+                {
+                  id: "thirdPartyReasonAssistance",
+                  name: "thirdPartyReason",
+                  value: "assistance",
+                  text: texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.REQUIRE_ASSISTANCE,
+                  hint: {
+                    text: texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.REQUIRE_ASSISTANCE_HELP
+                  },
+                  checked: radioAssistanceChecked
+                },
+                {
+                  id: "thirdPartyReasonDeceased",
+                  name: "thirdPartyReason",
+                  value: "deceased",
+                  text: texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.DECEASED,
+                  checked: radioDeceasedChecked
+                },
+                {
+                  id: "thirdPartyReasonOther",
+                  name: "thirdPartyReason",
+                  value: "other",
+                  text: texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.OTHER,
+                  checked: radioOtherChecked,
+                  conditional: {
+                    html: otherDetailsHTML
+                  }
+                }
+              ]
+            }) }}
+
+          </fieldset>
+        </div>
+
+        {# Submit form #}
+        {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
         <input type="hidden" name="_csrf" value="{{csrftoken}}">
-      </div>
 
-    </form>
+      </form>
+
+    </div>
   </div>
-</div>
 {% endblock %}
