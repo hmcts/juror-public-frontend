@@ -1,6 +1,10 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
     {{ texts.EXCUSAL_PAGE.PROMPT_OB }}
@@ -11,72 +15,92 @@
 
 {% block page_identifier %}Excusal{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
 
-<div class="grid-row">
+  {% include "../../includes/errors-gds.njk" %}
 
-  <div class="column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    {% include "../../includes/back-link.njk" %}
-    {% include "../../includes/errors.njk" %}
+      <form action="{{ url('steps.confirm.date.excusal.post') }}" method="post">
 
-    <form action="{{ url('steps.confirm.date.excusal.post') }}" method="post">
+        {# Set label text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set labelText =  texts.EXCUSAL_PAGE.HINT_OB %}
+        {% else %}
+          {% set labelText =  texts.EXCUSAL_PAGE.HINT %}
+        {% endif %}
 
-      <div class="form-group {% if errors.items['excusalReason'] %}error{% endif %}" id="excusalReasonGroup">
+        {# Set excusal details error #}
+        {% set excusalReasonError = undefined %}
+        {% if errors.items['excusalReason']%}
+          {% set excusalReasonError = {"text": errors.items['excusalReason'][0].details} %}
+        {% endif %}
 
-        <h1 class="heading-xlarge">
-          {% if user.thirdParty == 'Yes' %}
-          {{ texts.EXCUSAL_PAGE.PROMPT_OB }}
-          {% else %}
-          {{ texts.EXCUSAL_PAGE.PROMPT }}
-          {% endif %}
-        </h1>
+        <div class="govuk-form-group {% if errors.items['excusalReason'] %}govuk-form-group--error{% endif %}" id="excusalReasonGroup">
 
-        <label class="form-label" for="excusalReason">
-          <span class="form-hint">
+          <h1 class="govuk-heading-xl">
             {% if user.thirdParty == 'Yes' %}
-            {{ texts.EXCUSAL_PAGE.HINT_OB }}
+              {{ texts.EXCUSAL_PAGE.PROMPT_OB }}
             {% else %}
-            {{ texts.EXCUSAL_PAGE.HINT }}
+              {{ texts.EXCUSAL_PAGE.PROMPT }}
             {% endif %}
-          </span>
-          {% if errors.items['excusalReason'] %}<span class="error-message" id="excusalReasonErrorMessage">
-            {{ errors.items['excusalReason'][0].details }}
-          </span>{% endif %}
-        </label>
-        <textarea class="form-control" name="excusalReason" id="excusalReason" cols="30" rows="4" maxlength="1000" {% if errors.items['excusalReason'] %}aria-describedby="excusalReasonErrorMessage"{% endif %}>{{ user.excusal.reason }}</textarea>
-        <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
-      </div>
+          </h1>
 
-      <div class="form-group">
-        <details>
-          <summary {% if trackingCode %}onclick="trackVirtualPageViews('What evidence will I need to provide')"{% endif %}><span class="summary">
-            {% if user.thirdParty == 'Yes' %}
-            {{ texts.EXCUSAL_PAGE.EVIDENCE_QUESTION_OB }}
-            {% else %}
-            {{ texts.EXCUSAL_PAGE.EVIDENCE_QUESTION }}
-            {% endif %}</span>
-          </summary>
-          <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
-            <p>
+          <div class="govuk-character-count">
+            {{ govukTextarea({
+              name: "excusalReason",
+              id: "excusalReason",
+              label: {
+                text: labelText
+              },
+              attributes: {
+                cols: "30",
+                rows: "4",
+                maxlength: "1000"
+              },
+              errorMessage: excusalReasonError,
+              value: user.excusal.reason
+            }) }}
+            <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
+          </div>
+
+        </div>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary" {% if trackingCode %}onclick="trackVirtualPageViews('What evidence will I need to provide')"{% endif %}>
+            <span class="govuk-details__summary-text">
               {% if user.thirdParty == 'Yes' %}
-              {{ texts.EXCUSAL_PAGE.EVIDENCE_ANSWER_OB }}
+                {{ texts.EXCUSAL_PAGE.EVIDENCE_QUESTION_OB }}
               {% else %}
-              {{ texts.EXCUSAL_PAGE.EVIDENCE_ANSWER }}
+                {{ texts.EXCUSAL_PAGE.EVIDENCE_QUESTION }}
               {% endif %}
-            </p>
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.EXCUSAL_PAGE.EVIDENCE_ANSWER_OB }}
+            {% else %}
+              {{ texts.EXCUSAL_PAGE.EVIDENCE_ANSWER }}
+            {% endif %}
           </div>
         </details>
-      </div>
 
+        {# Submit form #}
+        {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
 
-      {# Submit form #}
-      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
-    </form>
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
 
   </div>
-
 </div>
 
 {% endblock %}

@@ -296,7 +296,7 @@
 
       if (req.session.change === true) {
         //check if further questions still to be completed
-        if (typeof(req.session.user.qualify) !== 'undefined'){
+        if (typeof(req.session.user.qualify) !== 'undefined' || req.session.user['ineligibleAge'] === true){
           return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
         }
 
@@ -416,7 +416,7 @@
 
       if (req.session.change === true) {
         //check if further questions still to be completed
-        if (typeof(req.session.user.qualify) !== 'undefined'){
+        if (typeof(req.session.user.qualify) !== 'undefined' || req.session.user['ineligibleAge'] === true){
           return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
         }
 
@@ -613,7 +613,7 @@
 
       if (req.session.change === true) {
         //check if further questions still to be completed
-        if (typeof(req.session.user.qualify) !== 'undefined'){
+        if (typeof(req.session.user.qualify) !== 'undefined' || req.session.user['ineligibleAge'] === true){
           return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
         }
         // reset change
@@ -693,7 +693,7 @@
 
       if (req.session.change === true) {
         //check if further questions still to be completed
-        if (typeof(req.session.user.qualify) !== 'undefined'){
+        if (typeof(req.session.user.qualify) !== 'undefined' || req.session.user['ineligibleAge'] === true){
           return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
         }
 

@@ -1,48 +1,65 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% if user.thirdParty == 'Yes' %}
-  {{ texts.QUALIFY_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.QUALIFY_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-  {{ texts.QUALIFY_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.QUALIFY_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 
 {% block page_identifier %}Eligibility{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
 
-<div class="grid-row">
+  {% include "../../includes/errors-gds.njk" %}
 
-  <div class="column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <h1 class="govuk-heading-xl">
+        {% if user.thirdParty == 'Yes' %}
+          {{ texts.QUALIFY_PAGE.HEADING_OB }}
+        {% else %}
+          {{ texts.QUALIFY_PAGE.HEADING }}
+        {% endif %}
+      </h1>
 
-    {% include "../../includes/back-link.njk" %}
-    
-    <h1 class="heading-xlarge">
+      <p class="govuk-body" >
+        {% if user.thirdParty == 'Yes' %}
+          {{ texts.QUALIFY_PAGE.MAIN_OB }}
+        {% else %}
+          {{ texts.QUALIFY_PAGE.MAIN }}
+        {% endif %}
+      </p>
+
+      {# Submit form #}
       {% if user.thirdParty == 'Yes' %}
-        {{ texts.QUALIFY_PAGE.HEADING_OB }}
+        {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE,
+          href: url('steps.qualify.residency.tp.get'),
+          attributes: {
+            id: "continueButton"
+          }
+        }) }}
       {% else %}
-        {{ texts.QUALIFY_PAGE.HEADING }}
+        {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE,
+          href: url('steps.qualify.residency.get'),
+          attributes: {
+            id: "continueButton"
+          }
+        }) }}
       {% endif %}
-    </h1>
 
-    <p>
-      {% if user.thirdParty == 'Yes' %}
-        {{ texts.QUALIFY_PAGE.MAIN_OB }}
-      {% else %}
-        {{ texts.QUALIFY_PAGE.MAIN }}
-      {% endif %}
-    </p>
-
-    {% include "../../includes/errors.njk" %}
-<br>
-    {% if user.thirdParty == 'Yes' %}
-      <a class="button" id="continue" href="{{ url('steps.qualify.residency.tp.get') }}" role="button">{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}</a>
-    {% else %}
-      <a class="button" id="continue" href="{{ url('steps.qualify.residency.get') }}" role="button">{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}</a>
-    {% endif %}
+    </div>
   </div>
-
-</div>
 
 {% endblock %}

@@ -1,61 +1,66 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% block pageTitle %}
   {% if user.thirdParty == 'Yes' %}
-  {{ texts.INFO_PAGE.RESIDENCY.HEADING_THIRD_PARTY }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.INFO_PAGE.RESIDENCY.HEADING_THIRD_PARTY }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-  {{ texts.INFO_PAGE.RESIDENCY.HEADING }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.INFO_PAGE.RESIDENCY.HEADING }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
 {% endblock %}
 
 {% block content %}
 
-<div class="grid-row">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-  <div class="column-two-thirds">
-
-    {% include "../../includes/back-link.njk" %}
-
-    {% if user.thirdParty == 'Yes' %}
-    <h1 class="heading-xlarge">{{ texts.INFO_PAGE.RESIDENCY.HEADING_THIRD_PARTY }}</h1>
-    {% else %}
-    <h1 class="heading-xlarge">{{ texts.INFO_PAGE.RESIDENCY.HEADING }}</h1>
-    {% endif %}
-
-    {% if user.thirdParty == 'Yes' %}
-      <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_THIRD_PARTY }}</p>
-      <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_THIRD_PARTY }}
-      {% if texts.INTERFACE.HTML_LANG === "cy" %}
-        <br>
-        {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
-          {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+      <h1 class="govuk-heading-xl">
+        {% if user.thirdParty == 'Yes' %}
+          {{ texts.INFO_PAGE.RESIDENCY.HEADING_THIRD_PARTY }}
+        {% else %}
+          {{ texts.INFO_PAGE.RESIDENCY.HEADING }}
         {% endif %}
-        <br>
-        {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
-          {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
-        {% endif %}
-      {% else %}
-        <a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
-      {% endif %}
-    {% else %}
-      <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_MAIN }}</p>
-      <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_MAIN }}
-      {% if texts.INTERFACE.HTML_LANG === "cy" %}
-        <br>
-        {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
-          {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
-        {% endif %}
-        <br>
-        {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
-          {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
-        {% endif %}
-      {% else %}
-        <a href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
-      {% endif %}
-    {% endif %}
+      </h1>
 
+      <div class="govuk-body">
+        {% if user.thirdParty == 'Yes' %}
+          <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_THIRD_PARTY }}</p>
+          <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_THIRD_PARTY }}
+          {% if texts.INTERFACE.HTML_LANG === "cy" %}
+            <br>
+            {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+              {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+            {% endif %}
+            <br>
+            {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+              {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+            {% endif %}
+          {% else %}
+            <a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+          {% endif %}
+        {% else %}
+          <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_MAIN }}</p>
+          <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_MAIN }}
+          {% if texts.INTERFACE.HTML_LANG === "cy" %}
+            <br>
+            {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+              {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+            {% endif %}
+            <br>
+            {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+              {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+            {% endif %}
+          {% else %}
+            <a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+          {% endif %}
+        {% endif %}
+      </div>
+
+    </div>  
   </div>
-
-</div>
 
 {% endblock %}

@@ -1,84 +1,146 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
-  {{ texts.QUALIFY_PAGE.RESIDENCY_TITLE_OB }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.QUALIFY_PAGE.RESIDENCY_TITLE_OB }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-  {{ texts.QUALIFY_PAGE.RESIDENCY_TITLE }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.QUALIFY_PAGE.RESIDENCY_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 
 {% block page_identifier %}Eligibility Residency{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
 
-<div class="grid-row">
+  {% include "../../includes/errors-gds.njk" %}
 
-  <div class="column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    {% include "../../includes/back-link.njk" %}
-    {% include "../../includes/errors.njk" %}
+      <form action="{{ url('steps.qualify.residency.post') }}" method="post">
 
-    <form action="{{ url('steps.qualify.residency.post') }}" method="post">
-      <div class="form-group inline {% if (errors.items['livedConsecutiveDetails']) or (errors.items['livedConsecutive']) %}error{% endif %}" id="livedConsecutiveGroup">
+        {# Set radio labels #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set radioYesLabel = texts.QUALIFY_PAGE.RESIDENCY_YES_OB %}
+          {% set radioNoLabel = texts.QUALIFY_PAGE.RESIDENCY_NO_OB %}
+        {% else %}
+          {% set radioYesLabel = texts.QUALIFY_PAGE.RESIDENCY_YES %}
+          {% set radioNoLabel = texts.QUALIFY_PAGE.RESIDENCY_NO %}
+        {% endif %}
 
-        <h1 class="heading-xlarge">
-          <div class="heading-secondary">
+        {# Set radio values #}
+        {% if user.qualify.livedConsecutive.answer === texts.QUALIFY_PAGE.YES %}
+          {% set radioYesChecked = 'checked="checked"' %}
+        {% else %}
+          {% set radioYesChecked = undefined %}
+        {% endif %}
+        {% if user.qualify.livedConsecutive.answer === texts.QUALIFY_PAGE.NO %}
+          {% set radioNoChecked = 'checked="checked"' %}
+        {% else %}
+          {% set radioNoChecked = undefined %}
+        {% endif %}
+
+        {# Set radio errors #}
+        {% set radioAnswerError = undefined %}
+        {% set radioDetailsError = undefined %}
+        {% if errors.items['livedConsecutive']%}
+          {% set radioAnswerError = {"text": errors.items['livedConsecutive'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+        {% if errors.items['livedConsecutiveDetails']%}
+          {% set radioDetailsError = {"text": errors.items['livedConsecutiveDetails'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+        <div class="govuk-form-group {% if radioAnswerError or radioDetailsError %}govuk-form-group--error{% endif %}" id="livedConsecutiveGroup">
+
+          <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-xl">
+              {% if user.thirdParty == 'Yes' %}
+                {{ texts.QUALIFY_PAGE.CAPTION_OB }}
+              {% else %}
+                {{ texts.QUALIFY_PAGE.CAPTION }}
+              {% endif %}
+            </span>
             {% if user.thirdParty == 'Yes' %}
-            {{ texts.QUALIFY_PAGE.CAPTION_OB }}
+              {{ texts.QUALIFY_PAGE.RESIDENCY_TITLE_OB }}
             {% else %}
-            {{ texts.QUALIFY_PAGE.CAPTION }}
+              {{ texts.QUALIFY_PAGE.RESIDENCY_TITLE }}
             {% endif %}
+          </h1>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+
+              <span class="govuk-hint" id="mentalHealthSectioned-hint">{{texts.QUALIFY_PAGE.UNSURE_PROMPT}} <a class="govuk-link" href="{{ url('steps.qualify.residency.info') }}">{{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}</a></span>
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+
+                {% if radioAnswerError %}
+                  <span id="livedConsecutiveError" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">{{texts.ERRORS.HIDDEN_ERROR}}: </span>
+                    {{- radioAnswerError.text -}}
+                  </span>
+                {% endif%}
+
+                {# Radio YES #}
+                <div class="govuk-radios__item">    
+                  <input class="selection-button-radio govuk-radios__input store-updated-information" id="livedConsecutive-Yes" name="livedConsecutive" type="radio" value="{{ texts.QUALIFY_PAGE.YES }}" {{radioYesChecked}}>
+                  <label class="govuk-radios__label" for="livedConsecutive-Yes">
+                    {{ radioYesLabel }}
+                  </label>
+                </div>
+
+                {# Radio NO #}
+                <div class="govuk-radios__item">
+                  <input class="selection-button-radio govuk-radios__input store-updated-information" id="livedConsecutive-No" name="livedConsecutive" type="radio" data-aria-controls="livedConsecutiveDetailsGroup"  value="{{ texts.QUALIFY_PAGE.NO }}" {{radioNoChecked}}>
+                  <label class="govuk-label govuk-radios__label" for="livedConsecutive-No">
+                    {{ radioNoLabel }}
+                  </label>
+                </div>
+                
+                {# Details #}
+                <div class="govuk-character-count govuk-radios__conditional" id="livedConsecutiveDetailsGroup">
+                  {{ govukTextarea({
+                    name: "livedConsecutiveDetails",
+                    id: "livedConsecutiveDetails",
+                    label: {
+                      text: texts.QUALIFY_PAGE.DETAILS
+                    },
+                    attributes: {
+                      maxlength: "1000"
+                    },
+                    errorMessage: radioDetailsError,
+                    value: user.qualify.livedConsecutive.details
+                  }) }}
+                  <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
+                </div>
+
+              </div>
+
+            </fieldset>
           </div>
-          {% if user.thirdParty == 'Yes' %}
-          {{ texts.QUALIFY_PAGE.RESIDENCY_TITLE_OB }}
-          {% else %}
-          {{ texts.QUALIFY_PAGE.RESIDENCY_TITLE }}
-          {% endif %}
-        </h1>
 
-        <fieldset>
-          <span class="form-hint" id="livedConsecutiveHint">{{ texts.QUALIFY_PAGE.UNSURE_PROMPT }} <a href="{{ url('steps.qualify.residency.info') }}">{{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}</a></span>
-            {% if errors.items['livedConsecutive'] %} <span class="error-message"> {{ errors.items['livedConsecutive'][0].details }} </span> {% endif %}
-          <br>
-          <label class="block-label selection-button-radio" for="livedConsecutive-Yes">
-            {% if user.thirdParty == 'Yes' %}
-              <input id="livedConsecutive-Yes" type="radio" class="store-updated-information" name="livedConsecutive" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.livedConsecutive.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
-              {{ texts.QUALIFY_PAGE.RESIDENCY_YES_OB }}
-            {% else %}
-              <input id="livedConsecutive-Yes" type="radio" class="store-updated-information" name="livedConsecutive" value="{{ texts.QUALIFY_PAGE.YES }}" {% if user.qualify.livedConsecutive.answer == texts.QUALIFY_PAGE.YES %}checked="checked"{% endif %}>
-              {{ texts.QUALIFY_PAGE.RESIDENCY_YES }}
-            {% endif %}
-          </label>
-          <label class="block-label selection-button-radio" for="livedConsecutive-No" data-target="livedConsecutiveDetailsGroup">
-            {% if user.thirdParty == 'Yes' %}
-              <input id="livedConsecutive-No" type="radio" class="store-updated-information" name="livedConsecutive" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.livedConsecutive.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
-              {{ texts.QUALIFY_PAGE.RESIDENCY_NO_OB }}
-            {% else %}
-              <input id="livedConsecutive-No" type="radio" class="store-updated-information" name="livedConsecutive" value="{{ texts.QUALIFY_PAGE.NO }}" {% if user.qualify.livedConsecutive.answer == texts.QUALIFY_PAGE.NO %}checked="checked"{% endif %}>
-              {{ texts.QUALIFY_PAGE.RESIDENCY_NO }}
-            {% endif %}
-          </label>
+        </div>
+        
+        {# Submit form #}
+        {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
 
-          <div class="panel panel-border-narrow {% if user.qualify.livedConsecutive.answer === texts.QUALIFY_PAGE.NO %}{% else %}js-hidden{% endif %}" id="livedConsecutiveDetailsGroup">
-            <label class="form-label" for="livedConsecutiveDetails">{{ texts.QUALIFY_PAGE.DETAILS }}</label>
-            {% if errors.items['livedConsecutiveDetails'] %}<span class="error-message" id="livedConsecutiveDetailsErrorMessage">{{ errors.items['livedConsecutiveDetails'][0].details }}</span>{% endif %}
-            <textarea class="form-control" name="livedConsecutiveDetails" id="livedConsecutiveDetails" maxlength="1000" {% if errors.items['livedConsecutiveDetails'] %}aria-describedby="livedConsecutiveDetailsErrorMessage"{% endif %}>{{ user.qualify.livedConsecutive.details }}</textarea>
-            <span class="form-hint" style="padding-top:4px;" aria-live="polite">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
-          </div>
-
-        </fieldset>
-      </div>
-
-     {# Submit form #}
-      <input type="hidden" name="_csrf" id="_csrf" value="{{ csrftoken }}">
-      <input type="hidden" id="store_url" value="{{ url('steps.qualify.store') }}">
-      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
-    </form>
+        <input type="hidden" name="_csrf" id="_csrf" value="{{ csrftoken }}">
+        <input type="hidden" id="store_url" value="{{ url('steps.qualify.store') }}">
+        
+      </form>
 
   </div>
-
 </div>
 
 {% endblock %}

@@ -1,6 +1,9 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {{ texts.CHECK_ANSWERS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
@@ -9,651 +12,787 @@
 
 {% block content %}
 
-<div class="grid-row">
+  {% include "../../includes/errors-gds.njk" %}
 
-  <div class="column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
 
-    <h1 class="heading-xlarge">{{ texts.CHECK_ANSWERS_PAGE.HEADING }}</h1>
+      <h1 class="govuk-heading-xl">
+        {{ texts.CHECK_ANSWERS_PAGE.HEADING }}
+      </h1>
 
-    {% include "../../includes/errors.njk" %}
-
-    <p>
-      {% if user.thirdParty == 'Yes' %}
-      {{ texts.CHECK_ANSWERS_PAGE.OB_INFO }}
-      {% else %}
-      {{ texts.CHECK_ANSWERS_PAGE.JUROR_INFO }}
-      {% endif %}
-    </p>
+      <p class="govuk-body">
+        {% if user.thirdParty == 'Yes' %}
+          {{ texts.CHECK_ANSWERS_PAGE.OB_INFO }}
+        {% else %}
+          {{ texts.CHECK_ANSWERS_PAGE.JUROR_INFO }}
+        {% endif %}
+      </p>
 
     {% if user.ineligibleDeceased !== true %}
-    <table caption="juror details" class="check-your-answers">
-      <thead>
-        <tr>
-          <th colspan="3">
-            {% if user.thirdParty == 'Yes' %}
-            {{ texts.CHECK_ANSWERS_PAGE.DETAILS_HEADER_OB }}
-            {% else %}
-            {{ texts.CHECK_ANSWERS_PAGE.DETAILS_HEADER_NORMAL }}
-            {% endif %}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th class="question" id="question-name">{{ texts.CHECK_ANSWERS_PAGE.NAME_LABEL }}</th>
-          <td id="name">{{ user.nameRender }}</td>
-          <td class="change-answer"><a href="{{ personalDetailsChangeNameLink }}" id="changeName" aria-describedby="question-name">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-        </tr>
-        <tr>
-          <th class="question" id="question-address">{{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</th>
-          <td id="address">{{ user.addressRender | replace("<br>", ", ") }}</td>
-          <td class="change-answer"><a href="{{ personalDetailsChangeAddressLink }}" aria-describedby="question-address">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-        </tr>
-        <tr>
-          <th class="question" id="question-dob">{{ texts.CHECK_ANSWERS_PAGE.DOB_LABEL }}</th>
-          <td id="dateOfBirth">{{ user.dobDay }} / {{ user.dobMonth }} / {{ user.dobYear }}</td>
-          <td class="change-answer"><a href="{{ personalDetailsChangeDateOfBirthLink }}" aria-describedby="question-dob">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-        </tr>
-        <tr>
-          <th class="question" id="question-phoneprimary">{{ texts.CHECK_ANSWERS_PAGE.PHONE_LABEL }}</th>
-          <td id="primaryPhone">{{ user.primaryPhone }}</td>
-          <td class="change-answer"><a href="{{ contactDetailsChangePhoneLink }}" id="changePhone" aria-describedby="question-phoneprimary">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-        </tr>
-        <tr>
-          <th class="question" id="question-phonesecondary">{{ texts.CHECK_ANSWERS_PAGE.ALT_PHONE_LABEL }}</th>
-          <td id="secondaryPhone">{{ user.secondaryPhone }}</td>
-          <td class="change-answer"><a href="{{ contactDetailsChangePhoneLink }}" id="changeSecondaryPhone" aria-describedby="question-phonesecondary">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-        </tr>
-        <tr>
-          <th class="question" id="question-email">{{ texts.CHECK_ANSWERS_PAGE.EMAIL_LABEL }}</th>
-          <td id="emailAddress">{{ user.emailAddress }}</td>
-          <td class="change-answer"><a href="{{ contactDetailsChangeEmailLink }}" id="changeEmailAddress" aria-describedby="question-email">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-        </tr>
-      </tbody>
-    </table>
+
+      <div class="govuk-body govuk-table__cell" >
+        {% if user.thirdParty == 'Yes' %}
+          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.DETAILS_HEADER_OB }}</h3>
+        {% else %}
+          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.DETAILS_HEADER_NORMAL }}</h3>
+        {% endif %}
+      </div>
+
+      <dl class="govuk-summary-list">
+
+        {# name #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="question-name">
+            {{ texts.CHECK_ANSWERS_PAGE.NAME_LABEL }}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="name">
+            {{ user.nameRender }}
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            <a class="govuk-link" href="{{ personalDetailsChangeNameLink }}" id="changeName" aria-describedby="question-name">
+              {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
+              <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.NAME_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
+
+        {# address #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key" id="question-address">
+            {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}
+          </dt>
+          <dd class="govuk-summary-list__value" id="adress">
+            {{ user.addressRender | replace("<br>", ", ") }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="{{ personalDetailsChangeAddressLink }}" id="changeAddress" aria-describedby="question-address">
+              {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
+              <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
+
+        {# date of birth #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key" id="question-dob">
+            {{ texts.CHECK_ANSWERS_PAGE.DOB_LABEL }}
+          </dt>
+          <dd class="govuk-summary-list__value" id="dateOfBirth">
+            {{ user.dobDay }} / {{ user.dobMonth }} / {{ user.dobYear }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="{{ personalDetailsChangeDateOfBirthLink }}" id="changeDob" aria-describedby="question-dob">
+              {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
+              <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.DOB_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
+
+        {# primary phone #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key" id="question-phoneprimary">
+            {{ texts.CHECK_ANSWERS_PAGE.PHONE_LABEL }}
+          </dt>
+          <dd class="govuk-summary-list__value" id="primaryPhone">
+            {{ user.primaryPhone }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="{{ contactDetailsChangePhoneLink }}" id="changePhone" aria-describedby="question-phoneprimary">
+              {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
+              <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.PHONE_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
+
+        {# secondary phone #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key" id="question-phonesecondary">
+            {{ texts.CHECK_ANSWERS_PAGE.ALT_PHONE_LABEL }}
+          </dt>
+          <dd class="govuk-summary-list__value" id="secondaryPhone">
+            {{ user.secondaryPhone }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="{{ contactDetailsChangePhoneLink }}" id="changeSecondaryPhone" aria-describedby="question-phonesecondary">
+              {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
+              <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ALT_PHONE_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
+
+        {# email #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key" id="question-email">
+            {{ texts.CHECK_ANSWERS_PAGE.EMAIL_LABEL }}
+          </dt>
+          <dd class="govuk-summary-list__value" id="emailAddress">
+            {{ user.emailAddress }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="{{ contactDetailsChangeEmailLink }}" id="changeEmailAddress" aria-describedby="question-email">
+              {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
+              <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.EMAIL_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
     {% endif %}
 
     {% if user.thirdParty == 'Yes' %}
-    <br>
-    <table caption="juror details" class="check-your-answers">
-      <thead>
-        <tr>
-          <th colspan="3">{{ texts.CHECK_ANSWERS_PAGE.OB_HEADING }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th class="question" id="question-obname">{{ texts.CHECK_ANSWERS_PAGE.OB_NAME_LABEL }}</th>
-          <td id="thirdPartyName">{{ user.thirdPartyDetails.nameRender }}</td>
-          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.name.get') }}" id="changeThirdPartyName" aria-describedby="question-obname">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-        </tr>
+      <br>
 
-        <tr>
-          <th class="question" id="question-obrelationship">{{ texts.CHECK_ANSWERS_PAGE.OB_RELATIONSHIP_LABEL }}</th>
-          <td id="thirdPartyRelationship">{{ user.thirdPartyDetails.relationship }}</td>
-          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.relationship.get') }}" id="changeThirdPartyRelationship" aria-describedby="question-obrelationship">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-        </tr>
+      <div class="govuk-body govuk-table__cell" >
+        <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_HEADING }}</h3>
+      </div>
 
-        <tr>
-          <th class="question" id="question-obphoneprimary">{{ texts.CHECK_ANSWERS_PAGE.OB_MAIN_PHONE_LABEL }}</th>
-          <td id="thirdPartyMainPhone">{{ user.thirdPartyDetails.mainPhone }}</td>
-          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.contact.get') }}" id="changeThirdPartyMainPhone" aria-describedby="question-obphoneprimary">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-        </tr>
+      <dl class="govuk-summary-list">
 
-        <tr>
-          <th class="question" id="question-obphonesecondary">{{ texts.CHECK_ANSWERS_PAGE.OB_OTHER_PHONE_LABEL }}</th>
-          <td id="thirdPartyOtherPhone">{{ user.thirdPartyDetails.otherPhone }}</td>
-          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.contact.get') }}" id="changeThirdPartyOtherPhone" aria-describedby="question-obphonesecondary">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-        </tr>
+        {# TP name #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="question-obname">
+            {{ texts.CHECK_ANSWERS_PAGE.OB_NAME_LABEL }}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="thirdPartyName">
+            {{ user.thirdPartyDetails.nameRender }}
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            <a class="govuk-link" href="{{ url('branches.third.party.details.change.name.get') }}" id="changeThirdPartyName" aria-describedby="question-obname">
+              {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}<span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.OB_NAME_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
 
-        <tr>
-          <th class="question" id="question-obemail">{{ texts.CHECK_ANSWERS_PAGE.OB_EMAIL_ADDRESS_LABEL }}</th>
-          <td id="thirdPartyEmailAddress">{{ user.thirdPartyDetails.emailAddress }}</td>
-          <td class="change-answer"><a href="{{ url('branches.third.party.details.change.contact.get') }}" id="changeThirdPartyEmailAddress" aria-describedby="question-obemail">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-        </tr>
+        {# TP relationship #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key" id="question-obrelationship">
+            {{ texts.CHECK_ANSWERS_PAGE.OB_RELATIONSHIP_LABEL }}
+          </dt>
+          <dd class="govuk-summary-list__value" id="thirdPartyRelationship">
+            {{ user.thirdPartyDetails.relationship }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="{{ url('branches.third.party.details.change.relationship.get') }}" id="changeThirdPartyRelationship" aria-describedby="question-obrelationship">
+              {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}<span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.OB_RELATIONSHIP_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
 
-        <tr>
-          <td colspan="2">
-            <p class="question question--full" id="question-obreason">{{ texts.CHECK_ANSWERS_PAGE.OB_WHY_QUESTION }}</p>
-            <p id="thirdPartyReason">{{ user.thirdPartyDetails.reasonText }}</p>
-          </td>
-          <td class="change-answer"><a href="{{ url('branches.third.party.reason.change.get') }}" id="changeReason" aria-describedby="question-obreason">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-        </tr>
-      </tbody>
-    </table>
+        {# TP primary phone #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key" id="question-obphoneprimary">
+            {{ texts.CHECK_ANSWERS_PAGE.OB_MAIN_PHONE_LABEL }}
+          </dt>
+          <dd class="govuk-summary-list__value" id="thirdPartyMainPhone">
+            {{ user.thirdPartyDetails.mainPhone }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="{{ url('branches.third.party.details.change.contact.get') }}" id="changeThirdPartyMainPhone" aria-describedby="question-obphoneprimary">
+              {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}<span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.OB_MAIN_PHONE_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
+
+        {# TP secondary phone #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key" id="question-obphonesecondary">
+            {{ texts.CHECK_ANSWERS_PAGE.OB_OTHER_PHONE_LABEL }}
+          </dt>
+          <dd class="govuk-summary-list__value" id="thirdPartyOtherPhone">
+            {{ user.thirdPartyDetails.otherPhone }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="{{ url('branches.third.party.details.change.contact.get') }}" id="changeThirdPartyOtherPhone" aria-describedby="question-obphonesecondary">
+              {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}<span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.OB_OTHER_PHONE_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
+
+        {# TP email #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key" id="question-obemail">
+            {{ texts.CHECK_ANSWERS_PAGE.OB_EMAIL_ADDRESS_LABEL }}
+          </dt>
+          <dd class="govuk-summary-list__value" id="thirdPartyEmailAddress">
+            {{ user.thirdPartyDetails.emailAddress }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="{{ url('branches.third.party.details.change.contact.get') }}" id="changeThirdPartyEmailAddress" aria-describedby="question-obemail">
+              {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}<span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.OB_EMAIL_ADDRESS_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
+
+        {# TP Reason #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key" id="question-obreason">
+            {{ texts.CHECK_ANSWERS_PAGE.OB_WHY_QUESTION }}
+          </dt>
+          <dd class="govuk-summary-list__value" id="thirdPartyReason">
+           {{ user.thirdPartyDetails.reasonText }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="{{ url('branches.third.party.reason.change.get') }}" id="changeReason" aria-describedby="question-obreason">
+              {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}<span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
 
     {% endif %}
 
-    <br><br>
+    <br>
     {% if user.ineligibleAge === false and user.ineligibleDeceased !== true %}
-      <table class="check-your-answers" id="qualifyAnswersTable">
-        <thead>
-          <tr>
-            <th colspan="2">
+
+      <div class="govuk-body govuk-table__cell" >
+        {% if user.thirdParty == 'Yes' %}
+          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION }}</h3>
+        {% else %}
+          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION }}</h3>
+        {% endif %}
+      </div>
+
+      {# Qualify - Residency Lived Consecutive#}
+      <dl class="govuk-summary-list govuk-body">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionLivedConsecutive">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_LIVED_CONSECUTIVE }}
+            {% else %}
+              {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_LIVED_CONSECUTIVE }}
+            {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerLivedConsecutive">
+            {% if user.qualify.livedConsecutive.details.length > 0 and user.qualify.livedConsecutive.answer == texts.QUALIFY_PAGE.NO %}
               {% if user.thirdParty == 'Yes' %}
-              {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION }}
+                <span id="livedConsecutiveAnswer">{{ texts.QUALIFY_PAGE.RESIDENCY_NO_OB }} - {{ user.qualify.livedConsecutive.details }}</span>
               {% else %}
-              {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION }}
+                <span id="livedConsecutiveAnswer">{{ texts.QUALIFY_PAGE.RESIDENCY_NO }} - {{ user.qualify.livedConsecutive.details }}</span>
               {% endif %}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <p class="question question--full" id="question-livedconsecutive">
-                {% if user.thirdParty == 'Yes' %}
-                {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_LIVED_CONSECUTIVE }}
-                {% else %}
-                {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_LIVED_CONSECUTIVE }}
-                {% endif %}
-              </p>
-              <p>
-                {% if user.qualify.livedConsecutive.details.length > 0 and user.qualify.livedConsecutive.answer == texts.QUALIFY_PAGE.NO %}
-                  {% if user.thirdParty == 'Yes' %}
-                    <pre>{{ texts.QUALIFY_PAGE.RESIDENCY_NO_OB }} - {{ user.qualify.livedConsecutive.details }}</pre>
-                  {% else %}
-                    <pre>{{ texts.QUALIFY_PAGE.RESIDENCY_NO }} - {{ user.qualify.livedConsecutive.details }}</pre>
-                  {% endif %}
-                {% else %}
-                  {% if user.thirdParty == 'Yes' %}
-                    {{ texts.QUALIFY_PAGE.RESIDENCY_YES_OB }}
-                  {% else %}
-                    {{ texts.QUALIFY_PAGE.RESIDENCY_YES }}
-                  {% endif %}
-                {% endif %}
-              </p>
-            </td>
-            {% if user.thirdParty == 'Yes' %}
-              <td class="change-answer"><a href="{{ url('steps.qualify.residency.change.tp.get') }}" id="changeQualify" aria-describedby="question-livedconsecutive">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
             {% else %}
-              <td class="change-answer"><a href="{{ url('steps.qualify.residency.change.get') }}" id="changeQualify" aria-describedby="question-livedconsecutive">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% endif %}
-
-          </tr>
-          <tr>
-            <td>
-              <p class="question question--full" id="question-mentalhealth-sectioned">
-                {% if user.thirdParty == 'Yes' %}
-                {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH_SECTIONED }}
-                {% else %}
-                {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_MENTAL_HEALTH_SECTIONED }}
-                {% endif %}
-              </p>
-              <p>
-                {% if user.qualify.mentalHealthSectioned.details.length > 0 and user.qualify.mentalHealthSectioned.answer == texts.QUALIFY_PAGE.YES %}
-                  {% if user.thirdParty == 'Yes' %}
-                    <pre id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES_OB }} - {{ user.qualify.mentalHealthSectioned.details }}</pre>
-                  {% else %}
-                    <pre id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES }} - {{ user.qualify.mentalHealthSectioned.details }}</pre>
-                  {% endif %}
-                {% else %}
-                  {% if user.thirdParty == 'Yes' %}
-                    <span id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO_OB }}</span>
-                  {% else %}
-                    <span id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO }}</span>
-                  {% endif %}
-                {% endif %}
-              </p>
-            </td>
-            {% if user.thirdParty == 'Yes' %}
-              <td class="change-answer"><a href="{{ url('steps.qualify.mental.health.sectioned.change.tp.get') }}" aria-describedby="question-mentalhealth">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% else %}
-              <td class="change-answer"><a href="{{ url('steps.qualify.mental.health.sectioned.change.get') }}" aria-describedby="question-mentalhealth">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% endif %}
-          </tr>
-
-          <tr>
-            <td>
-              <p class="question question--full" id="question-mentalhealth-capacity">
-                {% if user.thirdParty == 'Yes' %}
-                {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY }}
-                {% else %}
-                {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY }}
-                {% endif %}
-              </p>
-              <p>
-                {% if user.qualify.mentalHealthCapacity.details.length > 0 and user.qualify.mentalHealthCapacity.answer == texts.QUALIFY_PAGE.YES %}
-                  {% if user.thirdParty == 'Yes' %}
-                    <pre id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_YES_OB }} - {{ user.qualify.mentalHealthCapacity.details }}</pre>
-                  {% else %}
-                    <pre id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_YES }} - {{ user.qualify.mentalHealthCapacity.details }}</pre>
-                  {% endif %}
-                {% else %}
-                  {% if user.thirdParty == 'Yes' %}
-                    <span id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_NO_OB }}</span>
-                  {% else %}
-                    <span id="mentalHealthAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_NO }}</span>
-                  {% endif %}
-                {% endif %}
-              </p>
-            </td>
-            {% if user.thirdParty == 'Yes' %}
-              <td class="change-answer"><a href="{{ url('steps.qualify.mental.health.capacity.change.tp.get') }}" aria-describedby="question-mentalhealth">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% else %}
-              <td class="change-answer"><a href="{{ url('steps.qualify.mental.health.capacity.change.get') }}" aria-describedby="question-mentalhealth">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% endif %}
-          </tr>
-
-          <tr>
-            <td>
-              <p class="question question--full" id="question-bail">
-                {% if user.thirdParty == 'Yes' %}
-                {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_BAIL }}
-                {% else %}
-                {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_BAIL }}
-                {% endif %}
-              </p>
-              <p>
-              {% if user.qualify.onBail.details.length > 0 and user.qualify.onBail.answer == texts.QUALIFY_PAGE.YES %}
-                {% if user.thirdParty == 'Yes' %}
-                  <pre id="onBailAnswer">{{ texts.QUALIFY_PAGE.BAIL_YES_OB }} - {{ user.qualify.onBail.details }}</pre>
-                {% else %}
-                  <pre id="onBailAnswer">{{ texts.QUALIFY_PAGE.BAIL_YES }} - {{ user.qualify.onBail.details }}</pre>
-                {% endif %}
-              {% else %}
-                {% if user.thirdParty == 'Yes' %}
-                  <span id="onBailAnswer">{{ texts.QUALIFY_PAGE.BAIL_NO_OB }}</span>
-                {% else %}
-                  <span id="onBailAnswer">{{ texts.QUALIFY_PAGE.BAIL_NO }}</span>
-                {% endif %}
-              {% endif %}
-              </p>
-            </td>
-            {% if user.thirdParty == 'Yes' %}
-              <td class="change-answer"><a href="{{ url('steps.qualify.bail.change.tp.get') }}" aria-describedby="question-bail">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% else %}
-              <td class="change-answer"><a href="{{ url('steps.qualify.bail.change.get') }}" aria-describedby="question-bail">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% endif %}
-          </tr>
-          <tr>
-            <td>
-              <p class="question question--full" id="question-conviction">
-                {% if user.thirdParty == 'Yes' %}
-                {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_CONVICTED }}
-                {% else %}
-                {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_CONVICTED }}
-                {% endif %}
-              </p>
-              <p>
-                {% if user.qualify.convicted.details.length > 0 and user.qualify.convicted.answer == texts.QUALIFY_PAGE.YES %}
-                  {% if user.thirdParty == 'Yes' %}
-                    <pre id="convictionAnswer">{{ texts.QUALIFY_PAGE.CONVICTIONS_YES_OB}} - {{ user.qualify.convicted.details }}</pre>
-                  {% else %}
-                    <pre id="convictionAnswer">{{ texts.QUALIFY_PAGE.CONVICTIONS_YES}} - {{ user.qualify.convicted.details }}</pre>
-                  {% endif %}
-                {% else %}
-                  {% if user.thirdParty == 'Yes' %}
-                    <span id="convictionAnswer">{{ texts.QUALIFY_PAGE.CONVICTIONS_NO_OB }}</span>
-                  {% else %}
-                    <span id="convictionAnswer">{{ texts.QUALIFY_PAGE.CONVICTIONS_NO }}</span>
-                  {% endif %}
-                {% endif %}
-              </p>
-            </td>
-            {% if user.thirdParty == 'Yes' %}
-              <td class="change-answer"><a href="{{ url('steps.qualify.convictions.change.tp.get') }}" aria-describedby="question-conviction">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% else %}
-              <td class="change-answer"><a href="{{ url('steps.qualify.convictions.change.get') }}" aria-describedby="question-conviction">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% endif %}
-          </tr>
-        </tbody>
-      </table>
-
-
-      <br><br>
-      <table class="check-your-answers" id="confirmDateTable">
-        <thead>
-          <tr>
-            <th colspan="2">
               {% if user.thirdParty == 'Yes' %}
-              {{ texts.CHECK_ANSWERS_PAGE.OB_CONFIRM_DATE_HEADER }}
+                <span id="livedConsecutiveAnswer">{{ texts.QUALIFY_PAGE.RESIDENCY_YES_OB }}</span>
               {% else %}
-              {{ texts.CHECK_ANSWERS_PAGE.JUROR_CONFIRM_DATE_HEADER }}
+                <span id="livedConsecutiveAnswer">{{ texts.QUALIFY_PAGE.RESIDENCY_YES }}</span>
               {% endif %}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <p class="question question--full" id="question-confirmdate">
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            {% if user.thirdParty == 'Yes' %}
+              <a class="govuk-link" href="{{ url('steps.qualify.residency.change.tp.get') }}" id="changeLivedConsecutive" aria-describedby="question-livedconsecutive">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% else %}
+              <a class="govuk-link" href="{{ url('steps.qualify.residency.change.get') }}" id="changeLivedConsecutive" aria-describedby="question-livedconsecutive">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% endif %}
+          </dd>
+        </div>
+        
+
+        {# Qualify - Mental Health Sectioned #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionMentalHealthSectioned">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH_SECTIONED }}
+            {% else %}
+              {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_MENTAL_HEALTH_SECTIONED }}
+            {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerMentalHealthSectioned">
+            {% if user.qualify.mentalHealthSectioned.details.length > 0 and user.qualify.mentalHealthSectioned.answer == texts.QUALIFY_PAGE.YES %}
+              {% if user.thirdParty == 'Yes' %}
+                <span id="mentalHealthSectionedAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES_OB }} - {{ user.qualify.mentalHealthSectioned.details }}</span>
+              {% else %}
+                <span id="mentalHealthSectionedAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES }} - {{ user.qualify.mentalHealthSectioned.details }}</span>
+              {% endif %}
+            {% else %}
+              {% if user.thirdParty == 'Yes' %}
+                <span id="mentalHealthSectionedAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO_OB }}</span>
+              {% else %}
+                <span id="mentalHealthSectionedAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO }}</span>
+              {% endif %}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            {% if user.thirdParty == 'Yes' %}
+              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.sectioned.change.tp.get') }}" id="changeMentalHealthSectioned" aria-describedby="question-mentalhealth">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% else %}
+              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.sectioned.change.get') }}" id="changeMentalHealthSectioned" aria-describedby="question-mentalhealth">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% endif %}
+          </dd>
+        </div>
+
+
+        {# Qualify - Mental Health Capacity #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionMentalHealthCapacity">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY }}
+            {% else %}
+              {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY }}
+            {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerMentalHealthCapacity">
+            {% if user.qualify.mentalHealthCapacity.details.length > 0 and user.qualify.mentalHealthCapacity.answer == texts.QUALIFY_PAGE.YES %}
+              {% if user.thirdParty == 'Yes' %}
+                <span id="mentalHealthCapacityAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_YES_OB }} - {{ user.qualify.mentalHealthCapacity.details }}</span>
+              {% else %}
+                <span id="mentalHealthCapacityAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_YES }} - {{ user.qualify.mentalHealthCapacity.details }}</span>
+              {% endif %}
+            {% else %}
+              {% if user.thirdParty == 'Yes' %}
+                <span id="mentalHealthCapacityAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_NO_OB }}</span>
+              {% else %}
+                <span id="mentalHealthCapacityAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_NO }}</span>
+              {% endif %}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            {% if user.thirdParty == 'Yes' %}
+              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.capacity.change.tp.get') }}" id="changeMentalHealthCapacity" aria-describedby="question-mentalhealth">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% else %}
+              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.capacity.change.get') }}" id="changeMentalHealthCapacity" aria-describedby="question-mentalhealth">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% endif %}
+          </dd>
+        </div>
+
+
+        {# Qualify - On Bail #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionOnBail">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_BAIL }}
+            {% else %}
+              {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_BAIL }}
+            {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerOnBail">
+            {% if user.qualify.onBail.details.length > 0 and user.qualify.onBail.answer == texts.QUALIFY_PAGE.YES %}
+              {% if user.thirdParty == 'Yes' %}
+                <span id="onBailAnswer">{{ texts.QUALIFY_PAGE.BAIL_YES_OB }} - {{ user.qualify.onBail.details }}</span>
+              {% else %}
+                <span id="onBailAnswer">{{ texts.QUALIFY_PAGE.BAIL_YES }} - {{ user.qualify.onBail.details }}</span>
+              {% endif %}
+            {% else %}
+              {% if user.thirdParty == 'Yes' %}
+                <span id="onBailAnswer">{{ texts.QUALIFY_PAGE.BAIL_NO_OB }}</span>
+              {% else %}
+                <span id="onBailAnswer">{{ texts.QUALIFY_PAGE.BAIL_NO }}</span>
+              {% endif %}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            {% if user.thirdParty == 'Yes' %}
+              <a class="govuk-link" href="{{ url('steps.qualify.bail.change.tp.get') }}" id="changeOnBail" aria-describedby="question-bail">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% else %}
+              <a class="govuk-link" href="{{ url('steps.qualify.bail.change.get') }}" id="changeOnBail" aria-describedby="question-bail">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% endif %}
+          </dd>
+        </div>
+
+
+        {# Qualify - Convictions #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionConvictions">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_CONVICTED }}
+            {% else %}
+              {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_CONVICTED }}
+            {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerConvictions">
+            {% if user.qualify.convicted.details.length > 0 and user.qualify.convicted.answer == texts.QUALIFY_PAGE.YES %}
+              {% if user.thirdParty == 'Yes' %}
+                <span id="convictionAnswer">{{ texts.QUALIFY_PAGE.CONVICTIONS_YES_OB}} - {{ user.qualify.convicted.details }}</span>
+              {% else %}
+                <span id="convictionAnswer">{{ texts.QUALIFY_PAGE.CONVICTIONS_YES}} - {{ user.qualify.convicted.details }}</span>
+              {% endif %}
+            {% else %}
+              {% if user.thirdParty == 'Yes' %}
+                <span id="convictionAnswer">{{ texts.QUALIFY_PAGE.CONVICTIONS_NO_OB }}</span>
+              {% else %}
+                <span id="convictionAnswer">{{ texts.QUALIFY_PAGE.CONVICTIONS_NO }}</span>
+              {% endif %}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            {% if user.thirdParty == 'Yes' %}
+              <a class="govuk-link" href="{{ url('steps.qualify.convictions.change.tp.get') }}" id="changeConvictions" aria-describedby="question-conviction">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% else %}
+              <a class="govuk-link" href="{{ url('steps.qualify.convictions.change.get') }}" id="changeConvictions" aria-describedby="question-conviction">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% endif %}
+          </dd>
+        </div>
+
+      </dl>
+
+      <br>
+
+      <div class="govuk-body govuk-table__cell" >
+        {% if user.thirdParty == 'Yes' %}
+          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_CONFIRM_DATE_HEADER }}</h3>
+        {% else %}
+          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_CONFIRM_DATE_HEADER }}</h3>
+        {% endif %}
+      </div>
+
+      {# Date of Jury Service #}
+      <dl class="govuk-summary-list govuk-body">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionConfirmDate">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.CHECK_ANSWERS_PAGE.OB_CONFIRM_DATE_PROMPT }}
+            {% else %}
+              {{ texts.CHECK_ANSWERS_PAGE.JUROR_CONFIRM_DATE_PROMPT }}
+            {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerConfirmDate">
+             {% if user.confirmedDate == 'Change' %}
                 {% if user.thirdParty == 'Yes' %}
-                {{ texts.CHECK_ANSWERS_PAGE.OB_CONFIRM_DATE_PROMPT }}
-                {% else %}
-                {{ texts.CHECK_ANSWERS_PAGE.JUROR_CONFIRM_DATE_PROMPT }}
-                {% endif %}
-              </p>
-              <p>
-                {% if user.confirmedDate == 'Change' %}
-                  {% if user.thirdParty == 'Yes' %}
                   {{ texts.CHECK_ANSWERS_PAGE.OB_LATER_DATE_REQUEST }}
-                  {% else %}
+                {% else %}
                   {{ texts.CHECK_ANSWERS_PAGE.JUROR_LATER_DATE_REQUEST }}
-                  {% endif %}
-                {% elseif user.confirmedDate == 'Yes' %}
-                  {% if user.thirdParty == 'Yes' %}
+                {% endif %}
+              {% elseif user.confirmedDate == 'Yes' %}
+                {% if user.thirdParty == 'Yes' %}
                   {{ texts.CHECK_ANSWERS_PAGE.OB_CONFIRM_DATE }}
-                  {% else %}
+                {% else %}
                   {{ texts.CHECK_ANSWERS_PAGE.JUROR_CONFIRM_DATE }}
-                  {% endif %}
-                {% else %}
-                  {% if user.thirdParty == 'Yes' %}
-                  {{ texts.CHECK_ANSWERS_PAGE.OB_EXCUSAL_REQUEST }}
-                  {% else %}
-                  {{ texts.CHECK_ANSWERS_PAGE.JUROR_EXCUSAL_REQUEST }}
-                  {% endif %}
                 {% endif %}
-              </p>
-            </td>
-            {% if user.thirdParty == 'Yes' %}
-              <td class="change-answer"><a href="{{ url('steps.confirm.date.change.tp.get') }}" id="changeConfirmDate" aria-describedby="question-confirmdate">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% else %}
-              <td class="change-answer"><a href="{{ url('steps.confirm.date.change.get') }}" id="changeConfirmDate" aria-describedby="question-confirmdate">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% endif %}
-          </tr>
-        </tbody>
-      </table>
-
-
-      {% if user.confirmedDate == 'Change' %}
-      <br><br>
-
-      <table class="check-your-answers" id="deferralTable">
-        <thead>
-          <tr>
-            <th colspan="2">
-              {% if user.thirdParty == 'Yes' %}
-              {{ texts.CHECK_ANSWERS_PAGE.OB_CHANGE_DATE_HEADER }}
               {% else %}
-              {{ texts.CHECK_ANSWERS_PAGE.JUROR_CHANGE_DATE_HEADER }}
+                {% if user.thirdParty == 'Yes' %}
+                  {{ texts.CHECK_ANSWERS_PAGE.OB_EXCUSAL_REQUEST }}
+                {% else %}
+                  {{ texts.CHECK_ANSWERS_PAGE.JUROR_EXCUSAL_REQUEST }}
+                {% endif %}
               {% endif %}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <p class="question question--full" id="question-changedate-reason">
-                {% if user.thirdParty == 'Yes' %}
-                {{ texts.CHECK_ANSWERS_PAGE.OB_CHANGE_DATE_QUESTION_1 }}
-                {% else %}
-                {{ texts.CHECK_ANSWERS_PAGE.JUROR_CHANGE_DATE_QUESTION_1 }}
-                {% endif %}
-              </p>
-              <pre>{{ user.deferral.reason }}</pre>
-            </td>
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             {% if user.thirdParty == 'Yes' %}
-              <td class="change-answer"><a href="{{ url('steps.confirm.date.deferral.change.tp.get') }}" id="changeDeferral" aria-describedby="question-changedate-reason">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+              <a class="govuk-link" href="{{ url('steps.confirm.date.change.tp.get') }}" id="changeConfirmDate" aria-describedby="question-confirmdate">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
             {% else %}
-              <td class="change-answer"><a href="{{ url('steps.confirm.date.deferral.change.get') }}" id="changeDeferral" aria-describedby="question-changedate-reason">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+              <a class="govuk-link" href="{{ url('steps.confirm.date.change.get') }}" id="changeConfirmDate" aria-describedby="question-confirmdate">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
             {% endif %}
-          </tr>
-          <tr>
-            <td>
-              <p class="question question--full" id="question-changedate-dates">
-                {% if user.thirdParty == 'Yes' %}
-                {{ texts.CHECK_ANSWERS_PAGE.OB_CHANGE_DATE_QUESTION_2 }}
-                {% else %}
-                {{ texts.CHECK_ANSWERS_PAGE.JUROR_CHANGE_DATE_QUESTION_2 }}
-                {% endif %}
-              </p>
-              <pre>{{ user.deferral.dates }}</pre>
-            </td>
-            {% if user.thirdParty == 'Yes' %}
-              <td class="change-answer"><a href="{{ url('steps.confirm.date.deferral-dates.change.tp.get') }}" aria-describedby="question-changedate-dates">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% else %}
-              <td class="change-answer"><a href="{{ url('steps.confirm.date.deferral-dates.change.get') }}" aria-describedby="question-changedate-dates">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% endif %}
-          </tr>
-        </tbody>
-      </table>
-      {% endif %}
+          </dd>
+        </div>
 
+      </dl>
+
+      {# Change Date - Deferral #}
+      {% if user.confirmedDate == 'Change' %}
+        <br>
+
+        <div class="govuk-body govuk-table__cell" >
+          {% if user.thirdParty == 'Yes' %}
+            <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_CHANGE_DATE_HEADER }}</h3>
+          {% else %}
+            <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_CHANGE_DATE_HEADER }}</h3>
+          {% endif %}
+        </div>
+
+        <dl class="govuk-summary-list govuk-body">
+
+          {# Deferral Reason #}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionDeferralReason">
+              {% if user.thirdParty == 'Yes' %}
+                {{ texts.CHECK_ANSWERS_PAGE.OB_CHANGE_DATE_QUESTION_1 }}
+              {% else %}
+                {{ texts.CHECK_ANSWERS_PAGE.JUROR_CHANGE_DATE_QUESTION_1 }}
+              {% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerDeferralReason">
+              {{ user.deferral.reason }} 
+            </dd>
+            <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+              {% if user.thirdParty == 'Yes' %}
+                <a class="govuk-link" href="{{ url('steps.confirm.date.deferral.change.tp.get') }}" id="changeDeferral" aria-describedby="question-changedate-reason">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+              {% else %}
+                <a class="govuk-link" href="{{ url('steps.confirm.date.deferral.change.get') }}" id="changeDeferral" aria-describedby="question-changedate-reason">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+              {% endif %}
+            </dd>
+          </div>
+
+          {# Deferral Dates #}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionDeferralDates">
+              {% if user.thirdParty == 'Yes' %}
+                {{ texts.CHECK_ANSWERS_PAGE.OB_CHANGE_DATE_QUESTION_2 }}
+              {% else %}
+                {{ texts.CHECK_ANSWERS_PAGE.JUROR_CHANGE_DATE_QUESTION_2 }}
+              {% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerDeferralDates">
+              {{ user.deferral.dates }}
+            </dd>
+            <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+              {% if user.thirdParty == 'Yes' %}
+                <a class="govuk-link" href="{{ url('steps.confirm.date.deferral-dates.change.tp.get') }}" id="changeDeferralDates" aria-describedby="question-changedate-dates">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+              {% else %}
+                <a class="govuk-link" href="{{ url('steps.confirm.date.deferral-dates.change.get') }}" id="changeDeferralDates" aria-describedby="question-changedate-dates">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+              {% endif %}
+            </dd>
+          </div>
+
+        </dl>
+
+      {% endif %}
 
       {% if user.confirmedDate == 'No' %}
-      <br><br>
+        <br>
 
-      <table class="check-your-answers" id="excusalTable">
-        <thead>
-          <tr>
-            <th colspan="2">
+        <div class="govuk-body govuk-table__cell" >
+          {% if user.thirdParty == 'Yes' %}
+            <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_EXCUSAL_HEADER }}</h3>
+          {% else %}
+            <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_EXCUSAL_HEADER }}</h3>
+          {% endif %}
+        </div>
+
+        <dl class="govuk-summary-list govuk-body">
+
+          {# Excusal Reason #}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionExcusalReason">
               {% if user.thirdParty == 'Yes' %}
-              {{ texts.CHECK_ANSWERS_PAGE.OB_EXCUSAL_HEADER }}
-              {% else %}
-              {{ texts.CHECK_ANSWERS_PAGE.JUROR_EXCUSAL_HEADER }}
-              {% endif %}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <p class="question question--full" id="question-excusal">
-                {% if user.thirdParty == 'Yes' %}
                 {{ texts.CHECK_ANSWERS_PAGE.OB_EXCUSAL_PROMPT }}
-                {% else %}
+              {% else %}
                 {{ texts.CHECK_ANSWERS_PAGE.JUROR_EXCUSAL_PROMPT }}
-                {% endif %}
-              </p>
-              <pre>{{ user.excusal.reason }}</pre>
-            </td>
-            {% if user.thirdParty == 'Yes' %}
-              <td class="change-answer"><a href="{{ url('steps.confirm.date.excusal.change.tp.get') }}" id="changeExcusalReason" aria-describedby="question-excusal">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% else %}
-              <td class="change-answer"><a href="{{ url('steps.confirm.date.excusal.change.get') }}" id="changeExcusalReason" aria-describedby="question-excusal">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% endif %}
-          </tr>
-        </tbody>
-      </table>
+              {% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerExcusalReason">
+              {{ user.excusal.reason }}
+            </dd>
+            <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+              {% if user.thirdParty == 'Yes' %}
+                <a class="govuk-link" href="{{ url('steps.confirm.date.excusal.change.tp.get') }}" id="changeExcusalReason" aria-describedby="question-excusal">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+              {% else %}
+                <a class="govuk-link" href="{{ url('steps.confirm.date.excusal.change.get') }}" id="changeExcusalReason" aria-describedby="question-excusal">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+              {% endif %}
+            </dd>
+          </div>
+
+        </dl>
+
       {% endif %}
 
-      <br><br>
+      <br>
 
-      <table class="check-your-answers" id="cjsEmployedTable">
-        <thead>
-          <tr>
-            <th colspan="2">
+      {# CJS Employment #}
+      <div class="govuk-body govuk-table__cell" >
+        {% if user.thirdParty == 'Yes' %}
+          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_HEADER }}</h3>
+        {% else %}
+          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_EMPLOYED_HEADER }}</h3>
+        {% endif %}
+      </div>
+
+      <dl class="govuk-summary-list govuk-body">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionCJSEmployed">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_QUESTION }}
+            {% else %}
+              {{ texts.CHECK_ANSWERS_PAGE.JUROR_EMPLOYED_QUESTION }}
+            {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerCJSEmployed">
+            {% if (user.cjsEmployed == texts.CHECK_ANSWERS_PAGE.EMPLOYED_YES) or (user.cjsEmployed == texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_YES) %}
               {% if user.thirdParty == 'Yes' %}
-              {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_HEADER }}
+                {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_YES }}
               {% else %}
-              {{ texts.CHECK_ANSWERS_PAGE.JUROR_EMPLOYED_HEADER }}
+                {{ texts.CHECK_ANSWERS_PAGE.EMPLOYED_YES }}
               {% endif %}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <p class="question question--full" id="question-cjsemployed">
-                {% if user.thirdParty == 'Yes' %}
-                {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_QUESTION }}
-                {% else %}
-                {{ texts.CHECK_ANSWERS_PAGE.JUROR_EMPLOYED_QUESTION }}
+              
+              {% if user.cjsPolice %}
+                <br><br>
+                {{ texts.CHECK_ANSWERS_PAGE.POLICE }}<br>{{ user.cjsPoliceDetails }}
+              {% endif %}
+              {% if user.cjsPrison %}
+                <br><br>
+                {{ texts.CHECK_ANSWERS_PAGE.PRISON_SERVICE }}<br>{{ user.cjsPrisonDetails }}
+              {% endif %}
+              {% if user.cjsNca %}
+                <br><br>
+                {{ texts.CHECK_ANSWERS_PAGE.NCA }}
+              {% endif %}
+              {% for employer in user.cjsEmployer %}
+                {% if employer === 'Other' %}
+                  <br><br>
+                  {{ texts.CHECK_ANSWERS_PAGE.OTHER }}<br>{{ user.cjsEmployerDetails }}
                 {% endif %}
-              </p>
-              <p>
-                {% if (user.cjsEmployed == texts.CHECK_ANSWERS_PAGE.EMPLOYED_YES) or (user.cjsEmployed == texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_YES) %}
-                  
-                  {% if user.thirdParty == 'Yes' %}
-                    {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_YES }}
-                  {% else %}
-                    {{ texts.CHECK_ANSWERS_PAGE.EMPLOYED_YES }}
-                  {% endif %}
-                  
-                  {% if user.cjsPolice %}
-                    <pre>{{ texts.CHECK_ANSWERS_PAGE.POLICE }}<br>{{ user.cjsPoliceDetails }}</pre>
-                  {% endif %}
-                  {% if user.cjsPrison %}
-                    <br>
-                    <pre>{{ texts.CHECK_ANSWERS_PAGE.PRISON_SERVICE }}<br>{{ user.cjsPrisonDetails }}</pre>
-                  {% endif %}
-                  {% if user.cjsNca %}
-                    <br>
-                    <pre>{{ texts.CHECK_ANSWERS_PAGE.NCA }}</pre>
-                  {% endif %}
-                  {% for employer in user.cjsEmployer %}
-                    {% if employer === 'Other' %}
-                      <br>
-                      <pre>{{ texts.CHECK_ANSWERS_PAGE.OTHER }}<br>{{ user.cjsEmployerDetails }}</pre>
-                    {% endif %}
-                  {% endfor %}
-                  {% if user.cjsEmployer === 'Other' %}
-                    <br>
-                    <pre>{{ texts.CHECK_ANSWERS_PAGE.OTHER }}<br>{{ user.cjsEmployerDetails }}</pre>
-                  {% endif %}
-                {% else %}
-                  {% if user.thirdParty == 'Yes' %}
-                    {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_NO }}
-                  {% else %}
-                    {{ texts.CHECK_ANSWERS_PAGE.EMPLOYED_NO }}
-                  {% endif %}
-                {% endif %}
-              </p>
-            </td>
-            {% if user.thirdParty == 'Yes' %}
-              <td class="change-answer"><a href="{{ url('steps.cjs.employed.change.tp.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+              {% endfor %}
+              {% if user.cjsEmployer === 'Other' %}
+                <br><br>
+                {{ texts.CHECK_ANSWERS_PAGE.OTHER }}<br>{{ user.cjsEmployerDetails }}
+              {% endif %}
             {% else %}
-              <td class="change-answer"><a href="{{ url('steps.cjs.employed.change.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% endif %}
-          </tr>
-        </tbody>
-      </table>
-
-      <br><br>
-
-      <table class="check-your-answers" id="reasonableAdjustmentsTable">
-        <thead>
-          <tr>
-            <th colspan="2">
               {% if user.thirdParty == 'Yes' %}
-              {{ texts.CHECK_ANSWERS_PAGE.OB_ASSISTANCE_HEADER }}
+                {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_NO }}
               {% else %}
-              {{ texts.CHECK_ANSWERS_PAGE.JUROR_ASSISTANCE_HEADER }}
+                {{ texts.CHECK_ANSWERS_PAGE.EMPLOYED_NO }}
               {% endif %}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="otherDetails">
-              <p class="question question--full" id="question-assistance1">
-                {% if user.thirdParty == 'Yes' %}
-                {{ texts.CHECK_ANSWERS_PAGE.OB_ASSISTANCE_QUESTION_1 }}
-                {% else %}
-                {{ texts.CHECK_ANSWERS_PAGE.JUROR_ASSISTANCE_QUESTION_1 }}
-                {% endif %}
-              </p>
-              <p>
-                {% if user.assistanceNeeded == 'Yes' %}
-                {{ texts.CHECK_ANSWERS_PAGE.YES_ASSISTANCE }}
-                <pre>{{ user.assistanceTypeOutput}}</pre>
-                {% else %}
-                {{ texts.CHECK_ANSWERS_PAGE.NO_ASSISTANCE }}
-                {% endif %}
-              </p>
-              <p>
-                {% if user.assistanceTypeDetails %}
-                <pre id="assistanceTypeOther">{{ texts.CHECK_ANSWERS_PAGE.OTHER }}</br>{{ user.assistanceTypeDetails }}</pre>
-                {% endif %}
-              </p>
-            </td>
-            {% if user.thirdParty == 'Yes' %}
-              <td class="change-answer"><a href="{{ url('steps.assistance.change.tp.get') }}" id="changeAdjustments" aria-describedby="question-assistance1">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
-            {% else %}
-              <td class="change-answer"><a href="{{ url('steps.assistance.change.get') }}" id="changeAdjustments" aria-describedby="question-assistance1">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
             {% endif %}
-          </tr>
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            {% if user.thirdParty == 'Yes' %}
+              <a class="govuk-link" href="{{ url('steps.cjs.employed.change.tp.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% else %}
+              <a class="govuk-link" href="{{ url('steps.cjs.employed.change.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
 
-          <tr class="{% if user.assistanceNeeded == 'Yes' %}{% else %}js-hidden{% endif %}">
-            <td>
-              <p class="question question--full" id="question-assistance2">
-                {% if user.thirdParty == 'Yes' %}
-                {{ texts.CHECK_ANSWERS_PAGE.OB_ASSISTANCE_QUESTION_2 }}
-                {% else %}
-                {{ texts.CHECK_ANSWERS_PAGE.JUROR_ASSISTANCE_QUESTION_2 }}
-                {% endif %}
-              </p>
-                {% if user.assistanceSpecialArrangements and user.assistanceNeeded == 'Yes' %}
-                <pre id="assistanceSpecialArrangements">{{ user.assistanceSpecialArrangements }}</pre>
-                {% else %}
-                &nbsp;
-                {% endif %}
-            </td>
+      <br>
+
+      {# Assistance in Court (Reasonable Adustments) #}
+      <div class="govuk-body govuk-table__cell" >
+        {% if user.thirdParty == 'Yes' %}
+          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_ASSISTANCE_HEADER }}</h3>
+        {% else %}
+          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_ASSISTANCE_HEADER }}</h3>
+        {% endif %}
+      </div>
+
+      <dl class="govuk-summary-list govuk-body">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionAdjustments">
             {% if user.thirdParty == 'Yes' %}
-              <td class="change-answer"><a href="{{ url('steps.assistance.change.tp.get') }}" aria-describedby="question-assistance2">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+              {{ texts.CHECK_ANSWERS_PAGE.OB_ASSISTANCE_QUESTION_1 }}
             {% else %}
-              <td class="change-answer"><a href="{{ url('steps.assistance.change.get') }}" aria-describedby="question-assistance2">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a></td>
+              {{ texts.CHECK_ANSWERS_PAGE.JUROR_ASSISTANCE_QUESTION_1 }}
             {% endif %}
-          </tr>
-        </tbody>
-      </table>
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerAdjustments">
+            {% if user.assistanceNeeded == 'Yes' %}
+              {{ texts.CHECK_ANSWERS_PAGE.YES_ASSISTANCE }}<br>
+              {{ user.assistanceTypeOutput}}
+
+              <br><br>
+              {% if user.assistanceTypeDetails %}
+                <div id="assistanceTypeOther">{{ texts.CHECK_ANSWERS_PAGE.OTHER }}</br>{{ user.assistanceTypeDetails }}</div>
+              {% endif %}
+
+            {% else %}
+              {{ texts.CHECK_ANSWERS_PAGE.NO_ASSISTANCE }}
+            {% endif %}
+            
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            {% if user.thirdParty == 'Yes' %}
+              <a class="govuk-link" href="{{ url('steps.assistance.change.tp.get') }}" id="changeAdjustments" aria-describedby="question-assistance1">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% else %}
+              <a class="govuk-link" href="{{ url('steps.assistance.change.get') }}" id="changeAdjustments" aria-describedby="question-assistance1">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% endif %}
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.CHECK_ANSWERS_PAGE.OB_ASSISTANCE_QUESTION_2 }}
+            {% else %}
+              {{ texts.CHECK_ANSWERS_PAGE.JUROR_ASSISTANCE_QUESTION_2 }}
+            {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd">
+            {% if user.assistanceSpecialArrangements and user.assistanceNeeded == 'Yes' %}
+              <div id="assistanceSpecialArrangements">{{ user.assistanceSpecialArrangements }}</div>
+            {% else %}
+              &nbsp;
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            {% if user.thirdParty == 'Yes' %}
+              <a class="govuk-link" href="{{ url('steps.assistance.change.tp.get') }}" id="changeSpecialArrangements" aria-describedby="question-assistance2">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% else %}
+              <a class="govuk-link" href="{{ url('steps.assistance.change.get') }}" id="changeSpecialArrangements" aria-describedby="question-assistance2">{{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}</a>
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
 
       <br/><br/><br/>
     {% endif %}{#{% if user.ineligibleAge === false %}#}
-
-
-
+    
     <form action="{{ url('steps.confirm.information.post') }}" method="post">
 
-      <h2>{{ texts.VALIDATION.CONFIRM_INFO.CONFIRM_CORRECT }}</h2>
+      <div class="govuk-form-group {% if errors.items['informationConfirmed'] %}govuk-form-group--error{% endif %}">
 
-      <br/>
+        <h2 class="govuk-heading-s">
+          {{ texts.VALIDATION.CONFIRM_INFO.CONFIRM_CORRECT }}
+        </h2>
 
-      <div class="notice">
-        <i class="icon icon-important">
-          <span class="visuallyhidden">{{ texts.CHECK_ANSWERS_PAGE.WARNING }}</span>
-        </i>
-        <strong class="bold-small">
-          {{ texts.CHECK_ANSWERS_PAGE.WARNING_TEXT_1 }}
-        </strong>
-      </div>
+        <br/>
 
-      <div class="notice">
-        <ul class="list list-bullet">
-          {% if user.thirdParty == 'Yes' %}
-          <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.OB_WARNING_TEXT_2 }}</strong></li>
-          <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.OB_WARNING_TEXT_3 }}</strong></li>
-          {% else %}
-          <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.JUROR_WARNING_TEXT_2 }}</strong></li>
-          <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.JUROR_WARNING_TEXT_3 }}</strong></li>
-          {% endif %}
-        </ul>
-      </div>
-
-      <div class="{% if errors.items['informationConfirmed'] %} panel panel-border-narrow error {% endif %}" id="informationConfirmedGroup">
-    {% if errors.items['informationConfirmed'] %}<span class="error-message">{{ errors.items['informationConfirmed'][0].details }}</span>{% endif %}
-        <div class="form-group {% if errors.items['informationConfirmed'] %} pink-background-box {% else %} grey-background-box {% endif %}">
-          <br style="clear:both">
-          <label class="block-label selection-button-checkbox toggle-reset" for="informationConfirmed">
-            <input name="informationConfirmed" id="informationConfirmed" type="checkbox" value="true">
-
-            {% if user.thirdParty == 'Yes' %}
-            {{ texts.CHECK_ANSWERS_PAGE.OB_CONFIRM_TRUE }}
-            {% else %}
-            {{ texts.CHECK_ANSWERS_PAGE.JUROR_CONFIRM_TRUE }}
-            {% endif %}
-
-            <p>
-            {% if user.thirdParty == 'Yes' %}
-            {{ texts.CHECK_ANSWERS_PAGE.OB_UNDERSTAND_MUST_BE_TRUE }}
-            {% else %}
-            {{ texts.CHECK_ANSWERS_PAGE.JUROR_UNDERSTAND_MUST_BE_TRUE }}
-            {% endif %}
-            </p>
-
-          </label>
-          
-          <br style="clear:both">
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__icon govuk-warning-text__assistive">{{ texts.CHECK_ANSWERS_PAGE.WARNING }}</span>
+            {{ texts.CHECK_ANSWERS_PAGE.WARNING_TEXT_1 }}
+          </strong>
         </div>
-      </div>
+        <div class="govuk-warning-text__text govuk-body">
+        <ul class="govuk-list govuk-list--bullet">
+            {% if user.thirdParty == 'Yes' %}
+            <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.OB_WARNING_TEXT_2 }}</strong></li>
+            <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.OB_WARNING_TEXT_3 }}</strong></li>
+            {% else %}
+            <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.JUROR_WARNING_TEXT_2 }}</strong></li>
+            <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.JUROR_WARNING_TEXT_3 }}</strong></li>
+            {% endif %}
+          </ul>
+          </div>
 
+        {# Confirm panel #}
+        <div class="{% if errors.items['informationConfirmed'] %} panel panel-border-narrow govuk-error {% endif %}" id="informationConfirmedGroup">
+          {% if errors.items['informationConfirmed'] %}
+          <span class="govuk-error-message">
+            <span class="govuk-visually-hidden">{{texts.ERRORS.HIDDEN_ERROR}}: </span>
+            {{ errors.items['informationConfirmed'][0].details }}
+          </span>
+          {% endif %}
+          <div class="{% if errors.items['informationConfirmed'] %} pink-background-box {% else %} grey-background-box {% endif %}">
+            
+            <br style="clear:both">
+
+            <fieldset class="govuk-fieldset">
+              <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input input-checkbox-white" id="informationConfirmed" name="informationConfirmed" type="checkbox" value="true">
+                  <label class="govuk-label govuk-checkboxes__label" for="informationConfirmed">
+                    {% if user.thirdParty == 'Yes' %}
+                      {{ texts.CHECK_ANSWERS_PAGE.OB_CONFIRM_TRUE }}
+                    {% else %}
+                      {{ texts.CHECK_ANSWERS_PAGE.JUROR_CONFIRM_TRUE }}
+                    {% endif %}
+                  </label>
+                </div>
+              </div>
+              <p class="govuk-label">
+                {% if user.thirdParty == 'Yes' %}
+                  {{ texts.CHECK_ANSWERS_PAGE.OB_UNDERSTAND_MUST_BE_TRUE }}
+                {% else %}
+                  {{ texts.CHECK_ANSWERS_PAGE.JUROR_UNDERSTAND_MUST_BE_TRUE }}
+                {% endif %}
+              </p>
+            </fieldset>
+
+          </div>
+        </div>
+
+      </div>
 
       {# Submit form #}
-      <div class="form-group">
-        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-        <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_SUBMIT }}">
-      </div>
+      {{ govukButton({
+        text: texts.INTERFACE.BUTTON_TEXT_SUBMIT
+      }) }}
+
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
     </form>
 
   </div>

@@ -96,8 +96,11 @@
       delete req.session.formFields;
 
       // clear checkboxes if no is selected
-      if (req.body['cjsEmployed'] === 'No'){
+      if ((req.body['cjsEmployed'] === 'No') || (req.body['cjsEmployed'] === 'Nac ydw') || (req.body['cjsEmployed'] === 'Naddo')){
         delete req.body['cjsEmployer'];
+        req.session.user.cjsEmployerDetails = '';
+        req.session.user.cjsPoliceDetails = '';
+        req.session.user.cjsPrisonDetails = '';
       }
 
       // Validate form submission

@@ -20,7 +20,7 @@
       "LABEL_BY_PHONE": "Dros y ffôn (rhifau yn y DU yn unig)",
       "LABEL_BY_EMAIL": "Trwy e-bost",
 
-      "INFO_PHONE": "Darparwch rif ffôn yn y DU y gallwn ei ddefnyddio i gysylltu â chi rhwng 9:00AM a 5:00PM, dydd Llun i ddydd Gwener.",
+      "INFO_PHONE": "Darparwch rif ffôn yn y DU y gallwn ei ddefnyddio i gysylltu â chi rhwng 9AM a 5PM, dydd Llun i ddydd Gwener.",
       "LABEL_MAIN_PHONE": "Prif rif ffôn",
       "LABEL_OTHER_PHONE": "Rhif ffôn arall (dewisol)",
       "LABEL_EMAIL": "Nodwch gyfeiriad e-bost",
@@ -99,7 +99,7 @@
     "CONTACT": "Sut y gallwn gysylltu â'r rheithiwr",
     "CONTACT_PARAGRAPH": "Dywedwch wrthym sut y gallwn gysylltu â'r unigolyn yr ydych yn ymateb ar ei ran. Neu gallwn ni ddefnyddio eich manylion cyswllt chi, os ydych am barhau i weithredu ar ran yr unigolyn.",
     "PHONE": "Ffôn",
-    "PHONE_PARAGRAPH": "Nodwch rifau ffôn y gallwn eu defnyddio i gysylltu â chi rhwng 9:00AM a 5:00PM, dydd Llun i ddydd Gwener.",
+    "PHONE_PARAGRAPH": "Nodwch rifau ffôn y gallwn eu defnyddio i gysylltu â chi rhwng 9AM a 5PM, dydd Llun i ddydd Gwener.",
     "MAIN_PHONE" :"Prif rif ffôn",
     "OTHER_PHONE" :"Rhif ffôn arall (dewisol)",
     "PHONE_USE_PREVIOUS": "Defnyddio'r rhif ffôn rydych eisoes wedi'i ddarparu i gysylltu â chi",

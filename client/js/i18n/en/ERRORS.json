@@ -5,6 +5,7 @@
   "NO_PERMISSION": "You do not have permission to access this content",
   "NOT_FOUND": "Page not found",
   "CHECK_CORRECT": "If you entered a web address please check it was correct.",
-  "TITLE_ERROR": "Error: "
+  "TITLE_ERROR": "Error: ",
+  "HIDDEN_ERROR": "Error"
   
 }

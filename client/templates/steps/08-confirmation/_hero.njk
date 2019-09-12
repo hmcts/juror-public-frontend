@@ -1,39 +1,40 @@
-<div class="govuk-box-highlight">
-  <h1 class="bold-large">
+{% from "../../govuk-frontend/components/panel/macro.njk" import govukPanel %}
+
+<div class="govuk-panel govuk-panel--confirmation">
+  <h1 class="govuk-panel__title">
     {{ texts.CONFIRMATION.HERO.THANKS }}<br>
-    <img src="/img/icons/icon-tick.png" class="tick" alt="&#x2714;"> {{ texts.CONFIRMATION.HERO.FINISHED }}
+    {{ texts.CONFIRMATION.HERO.FINISHED }}
   </h1>
-
-  <p class="text-center">
-    {% if user.ineligibleDeceased == true %}
-    {{ texts.CONFIRMATION.DECEASED.REFERENCE }}<br>
-    {% elif user.thirdParty == 'Yes' %}
-    {{ texts.CONFIRMATION.HERO.YOUR_NUMBER_OB }}<br>
-    {% else %}
-    {{ texts.CONFIRMATION.HERO.YOUR_NUMBER }}<br>
-    {% endif %}
-
-    <strong class="bold-small">{{ user.jurorNumber }}</strong>
-  </p>
-
-  <p>
-    {% if user.ineligibleDeceased == true %}
-    {{ texts.CONFIRMATION.DECEASED.GETTING_IN_TOUCH }}
-    {% elif user.thirdParty == 'Yes' %}
-    {{ texts.CONFIRMATION.HERO.GETTING_IN_TOUCH_OB }}
-    {% else %}
-    {{ texts.CONFIRMATION.HERO.GETTING_IN_TOUCH }}
-    {% endif %}
-
-  </p>
+  <div class="govuk-panel__body">
+    <p class="text-center">
+      {% if user.ineligibleDeceased == true %}
+        {{ texts.CONFIRMATION.DECEASED.REFERENCE }}<br>
+      {% elif user.thirdParty == 'Yes' %}
+        {{ texts.CONFIRMATION.HERO.YOUR_NUMBER_OB }}<br>
+      {% else %}
+        {{ texts.CONFIRMATION.HERO.YOUR_NUMBER }}<br>
+      {% endif %}
+      <strong class="bold-small">{{ user.jurorNumber }}</strong>
+    </p>
+    <p class="govuk-!-font-size-19">
+      {% if user.ineligibleDeceased == true %}
+        {{ texts.CONFIRMATION.DECEASED.GETTING_IN_TOUCH }}
+      {% elif user.thirdParty == 'Yes' %}
+        {{ texts.CONFIRMATION.HERO.GETTING_IN_TOUCH_OB }}
+      {% else %}
+        {{ texts.CONFIRMATION.HERO.GETTING_IN_TOUCH }}
+      {% endif %}
+    </p>
+  </div>
 </div>
 
-<p>
+<p class="govuk-body">
 {% if user.ineligibleDeceased == true %}
-{{ texts.CONFIRMATION.DECEASED.EMAIL_RESPONSE }}
+    {{ texts.CONFIRMATION.DECEASED.EMAIL_RESPONSE }}
 {% elif user.thirdParty == 'Yes' %}
-{{ texts.CONFIRMATION.HERO.EMAIL_SUMMONS_OB }}
+  {{ texts.CONFIRMATION.HERO.EMAIL_SUMMONS_OB }}
 {% else %}
-{{ texts.CONFIRMATION.HERO.EMAIL_SUMMONS }}
+  {{ texts.CONFIRMATION.HERO.EMAIL_SUMMONS }}
 {% endif %}
 </p>
+

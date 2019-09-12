@@ -5,8 +5,8 @@
   jQuery.fx.off = true;
 
   // Fallback for new browser features
-  require('./polyfills/details.polyfill.js');
-  require('./polyfills/bind.polyfill.js');
+  // TEST EXCLUDE require('./polyfills/details.polyfill.js');
+  // TEST EXCLUDE require('./polyfills/bind.polyfill.js');
 
   // jQuery plugins
   require('./jquery/jquery.tabs');
@@ -14,7 +14,7 @@
 
   // JS to enable plugins
   require('./components/selectButtons');
-  require('./components/showhide.js');
+  // TEST EXCLUDE require('./components/showhide.js');
   require('./components/shims.js');
   require('./components/inlineEdit');
   require('./components/tabs');

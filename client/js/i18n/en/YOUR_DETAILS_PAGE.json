@@ -48,7 +48,7 @@
   "FORM_DOB_HELPER_PARAGRAPH_4": "",
 
   "FORM_PHONE_SUBTITLE": "Phone",
-  "FORM_PHONE_DESCRIPTION": "Please provide a UK phone number that we can use to reach you between 9:00AM and 5:00PM, Monday to Friday.",
+  "FORM_PHONE_DESCRIPTION": "Please provide a UK phone number that we can use to reach you between 9AM and 5PM, Monday to Friday.",
   "FORM_PHONE_PRIMARY_LABEL": "Main phone",
   "FORM_PHONE_SECONDARY_LABEL": "Another phone (optional)",
 

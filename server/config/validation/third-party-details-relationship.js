@@ -18,7 +18,7 @@
           },
         },
         length: {
-          maximum: 100,
+          maximum: 50,
           message: {
             summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_DETAILS.RELATIONSHIP_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_DETAILS.RELATIONSHIP_CHECK_INVALID', (req.session.ulang === 'cy' ? texts_cy : texts_en))

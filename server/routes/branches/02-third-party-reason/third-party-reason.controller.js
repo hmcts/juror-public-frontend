@@ -60,6 +60,9 @@
       delete req.session.errors;
       delete req.session.formFields;
 
+      if (req.body.thirdPartyReason !== 'other'){
+        req.body.thirdPartyOtherReason = '';
+      }
 
       // Validate form submission
       validatorResult = validate(req.body, require('../../../config/validation/third-party-reason')(req));

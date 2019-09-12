@@ -1,82 +1,108 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
-  {% if user.thirdParty == 'Yes' %}
-  {{ texts.YOUR_DETAILS_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
-  {% else %}
   {{ texts.YOUR_DETAILS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
-  {% endif %}
 {% endblock %}
 
 {% block page_identifier %}Personal Details Phone{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
 
-<div class="grid-row">
+  {% include "../../includes/errors-gds.njk" %}
 
-  <div class="column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    {% include "../../includes/back-link.njk" %}
-    {% include "../../includes/errors.njk" %}
+      <form action="{{ url('steps.your.details.phone.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-    <form action="{{ url('steps.your.details.phone.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
-      
-      <div class="form-group {% if (errors.items['primaryPhone']) or (errors.items['secondaryPhone']) %}error{% endif %}" id="titleGroup">
-
-      <h1 class="heading-xlarge">
-        <div class="heading-secondary">
-          {% if user.thirdParty == 'Yes' %}
-          {{- texts.YOUR_DETAILS_PAGE.CAPTION_OB -}}
-          {% else %}
-          {{- texts.YOUR_DETAILS_PAGE.CAPTION -}}
-          {% endif %}
-        </div>
-        {% if user.thirdParty == 'Yes' %}
-          {{- texts.YOUR_DETAILS_PAGE.HEADING_PHONE_OB -}}
-          {% else %}
-          {{- texts.YOUR_DETAILS_PAGE.HEADING_PHONE -}}
-        {% endif %}
-      </h1>
-
-      <p>
-        {% if user.thirdParty == 'Yes' %}
-        {{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_DESCRIPTION_OB }}
+        {# Set Primary Phone error #}
+        {% if errors.items['primaryPhone'] %}
+          {% set primaryPhoneError = {"text": errors.items['primaryPhone'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
         {% else %}
-        {{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_DESCRIPTION }}
+          {% set primaryPhoneError = undefined %}
         {% endif %}
-      </p>
 
-        {# Phone #}
-      <fieldset>
+        {# Set Secondary Phone error #}
+        {% if errors.items['secondaryPhone'] %}
+          {% set secondaryPhoneError = {"text": errors.items['secondaryPhone'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% else %}
+          {% set secondaryPhoneError = undefined %}
+        {% endif %}
+        
+        <div class="govuk-form-group {% if primaryPhoneError or secondaryPhoneError %}govuk-form-group--error{% endif %}" id="phoneGroup">
 
-        <div class="form-group" id="primaryPhoneGroup">
-          <label class="form-label" for="primaryPhone">{{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_PRIMARY_LABEL }}</label>
-          {% if errors.items['primaryPhone'] %}<legend><span class="error-message" id="primaryPhoneErrorMessage">{{ errors.items['primaryPhone'][0].details }}</span></legend>{% endif %}
-          <input type="text" inputmode="numeric" class="form-control" id="primaryPhone" name="primaryPhone" value="{{ user.primaryPhone }}" {% if errors.items['primaryPhone'] %}aria-describedby="primaryPhoneErrorMessage"{% endif %} {% if IS_PRODUCTION %}maxlength="15"{% endif %}  autocomplete="off">
+          <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-xl">
+              {{- texts.YOUR_DETAILS_PAGE.CAPTION -}}
+            </span>
+            {{- texts.YOUR_DETAILS_PAGE.HEADING_PHONE -}}
+          </h1>
+          
+          <p id="phone-hint" class="govuk-body">
+            {{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_DESCRIPTION }}
+          </p>
+          
+          <fieldset class="govuk-fieldset">
+
+            {# Primary Phone #}
+            {{ govukInput({
+              label: {
+                html: texts.YOUR_DETAILS_PAGE.FORM_PHONE_PRIMARY_LABEL
+              },
+              id: "primaryPhone",
+              name: "primaryPhone",
+              errorMessage: primaryPhoneError,
+              attributes: {
+                maxlength: "15",
+                inputmode: "numeric",
+                "aria-describedby": "phone-hint"
+              },
+              classes: "govuk-!-width-two-thirds",
+              autocomplete: "off",
+              value: user.primaryPhone
+            }) }}
+
+            {# Secondary Phone #}
+            {{ govukInput({
+              label: {
+                html: texts.YOUR_DETAILS_PAGE.FORM_PHONE_SECONDARY_LABEL
+              },
+              id: "secondaryPhone",
+              name: "secondaryPhone",
+              errorMessage: secondaryPhoneError,
+              attributes: {
+                maxlength: "15",
+                inputmode: "numeric",
+                "aria-describedby": "phone-hint"
+              },
+              classes: "govuk-!-width-two-thirds",
+              autocomplete: "off",
+              value: user.secondaryPhone
+            }) }}
+
+          </fieldset>
+
         </div>
 
-        <div class="form-group" id="secondaryPhoneGroup">
-          <label class="form-label" for="secondaryPhone">{{ texts.YOUR_DETAILS_PAGE.FORM_PHONE_SECONDARY_LABEL }}</label>
-          {% if errors.items['secondaryPhone'] %}<legend><span class="error-message" id="secondaryPhoneErrorMessage">{{ errors.items['secondaryPhone'][0].details }}</span>{% endif %}
-          <input type="text" inputmode="numeric" class="form-control" id="secondaryPhone" name="secondaryPhone" value="{{ user.secondaryPhone }}" {% if errors.items['secondaryPhone'] %}aria-describedby="secondaryPhoneErrorMessage"{% endif %} {% if IS_PRODUCTION %}maxlength="15"{% endif %} autocomplete="off">
-        </div>
+        {# Submit form #}
+        {{ govukButton({
+            text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
 
-      </fieldset>
-
-      </div>
-
-      <br/>
-
-      {# Submit form #}
-      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
-    </form>
-    
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+        
+      </form>
+      
+    </div>
   </div>
-
-</div>
-
-
 
 {% endblock %}

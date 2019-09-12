@@ -1,117 +1,354 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}3rd Party Contact Details{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
 
-<div class="grid-row">
-  <div class="column-two-thirds">
+  {% include "../../includes/errors-gds.njk" %}
 
-    {% include "../../includes/back-link.njk" %}
-    {% include "../../includes/errors.njk" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    <form action="{{ url('branches.third.party.contact.details.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+      <form action="{{ url('branches.third.party.contact.details.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-      <div class="form-group {% if errors.items['primaryPhone'] or errors.items['secondaryPhone'] or errors.items['useJurorPhoneDetails'] or errors.items['useJurorEmailDetails'] or errors.items['emailAddress'] or errors.items['emailAddressConfirmation'] %}error{% endif %}" id="thirdPartyReasonGroup">
+        {# Set Phone radios checked #}
+        {% if user.useJurorPhoneDetails == 'No' %}
+          {% set radioPhoneExisitingChecked = 'checked="checked"' %}
+          {% set radioPhoneNewChecked = undefined %}
+        {% endif %}
+        {% if user.useJurorPhoneDetails == 'Yes' %}
+          {% set radioPhoneExisitingChecked = undefined %}
+          {% set radioPhoneNewChecked = 'checked="checked"' %}
+        {% endif %}
 
-      <h1 class="heading-xlarge">
-        <div class="heading-secondary">
-          {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CAPTION }}
+        {# Set Email radios checked #}
+        {% if user.useJurorEmailDetails == 'No' %}
+          {% set radioEmailExisitingChecked = 'checked="checked"' %}
+          {% set radioEmailNewChecked = undefined %}
+        {% endif %}
+        {% if user.useJurorEmailDetails == 'Yes' %}
+          {% set radioEmailExisitingChecked = undefined %}
+          {% set radioEmailNewChecked = 'checked="checked"' %}
+        {% endif %}
+
+        {# Set Primary Phone error #}
+        {% if errors.items['primaryPhone'] %}
+          {% set primaryPhoneError = {"text": errors.items['primaryPhone'][0].details} %}
+        {% else %}
+          {% set primaryPhoneError = undefined %}
+        {% endif %}
+
+        {# Set Secondary Phone error #}
+        {% if errors.items['secondaryPhone'] %}
+          {% set secondaryPhoneError = {"text": errors.items['secondaryPhone'][0].details} %}
+        {% else %}
+          {% set secondaryPhoneError = undefined %}
+        {% endif %}
+
+        {# Set Email Address error #}
+        {% if errors.items['emailAddress'] %}
+          {% set emailAddressError = {"text": errors.items['emailAddress'][0].details} %}
+        {% else %}
+          {% set emailAddressError = undefined %}
+        {% endif %}
+
+        {# Set Email Address Confirmation error #}
+        {% if errors.items['emailAddressConfirmation'] %}
+          {% set emailAddressConfirmationError = {"text": errors.items['emailAddressConfirmation'][0].details} %}
+        {% else %}
+          {% set emailAddressConfirmationError = undefined %}
+        {% endif %}
+
+        {# Set radios Phone error #}
+        {% if errors.items['useJurorPhoneDetails'] %}
+          {% set radiosPhoneError = {"text": errors.items['useJurorPhoneDetails'][0].details} %}
+        {% else %}
+          {% set radiosPhoneError = undefined %}
+        {% endif %}
+
+        {# Set radios Email error #}
+        {% if errors.items['useJurorEmailDetails'] %}
+          {% set radiosEmailError = {"text": errors.items['useJurorEmailDetails'][0].details} %}
+        {% else %}
+          {% set radiosEmailError = undefined %}
+        {% endif %}
+        
+        {# Set phone details HTML #}
+        {% set phoneDetailsHTML %}
+
+          {# Primary Phone #}
+          {{ govukInput({
+            label: {
+              text: texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.MAIN_PHONE
+            },
+            id: "primaryPhone",
+            name: "primaryPhone",
+            errorMessage: primaryPhoneError,
+            attributes: {
+              inputmode: "numeric"
+            },
+            autocomplete: "off",
+            classes: "govuk-!-width-two-thirds",
+            value: user.primaryPhone
+          }) }}
+
+          {# Secondary Phone #}
+          {{ govukInput({
+            label: {
+              text: texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.OTHER_PHONE
+            },
+            id: "secondaryPhone",
+            name: "secondaryPhone",
+            errorMessage: secondaryPhoneError,
+            attributes: {
+              inputmode: "numeric"
+            },
+            autocomplete: "off",
+            classes: "govuk-!-width-two-thirds",
+            value: user.secondaryPhone
+          }) }}
+        {% endset %}
+
+        {# Set email details HTML #}
+        {% set emailDetailsHTML %}
+          {# Email Address #}
+          {{ govukInput({
+            label: {
+              text: texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_ENTER
+            },
+            id: "emailAddress",
+            name: "emailAddress",
+            errorMessage: emailAddressError,
+            type: "email",
+            autocomplete: "off",
+            attributes: {
+              maxlength: "254",
+              spellcheck: "false"
+            },
+            classes: "govuk-!-width-two-thirds",
+            value: user.emailAddress
+          }) }}
+
+          {# Email Address Confirmation #}
+          {{ govukInput({
+            label: {
+              text: texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_ENTER_CONFIRM
+            },
+            id: "emailAddressConfirmation",
+            name: "emailAddressConfirmation",
+            errorMessage: emailAddressConfirmationError,
+            type: "email",
+            autocomplete: "off",
+            attributes: {
+              maxlength: "254",
+              spellcheck: "false"
+            },
+            classes: "govuk-!-width-two-thirds",
+            value: user.emailAddressConfirmation
+          }) }}
+        {% endset %}
+
+        <div class="govuk-form-group {% if errors.items['primaryPhone'] or errors.items['secondaryPhone'] or errors.items['useJurorPhoneDetails'] or errors.items['useJurorEmailDetails'] or errors.items['emailAddress'] or errors.items['emailAddressConfirmation'] %}govuk-form-group--error{% endif %}" id="thirdPartyReasonGroup">
+
+          <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-xl">
+              {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CAPTION }}
+            </span>
+            {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.HEADER }}
+          </h1>
+
+          <fieldset class="govuk-fieldset">
+
+            <strong class="govuk-body-l govuk-!-font-weight-bold">
+              {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT }}
+            </strong>
+            <p class="govuk-body">
+              {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT_PARAGRAPH }}
+            </p>
+
+            {# Phone options #}
+            <strong class="govuk-body govuk-!-font-weight-bold">
+              {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE }}
+            </strong>
+            <p class="govuk-body">
+              {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_PARAGRAPH }}
+            </p>
+
+            {#            
+            <div class="govuk-form-group">
+              <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+    
+                <div class="govuk-radios__item">
+                  <input class="selection-button-radio-gds store-updated-information govuk-radios__input" id="phoneNumber_existing" name="useJurorPhoneDetails" autocomplete="off" type="radio" value="No" data-aria-controls="conditional-phoneNumber_new" {{radioPhoneExisitingChecked}}}>
+                  <label class="govuk-label govuk-radios__label" for="phoneNumber_existing">
+                    {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_USE_PREVIOUS}}
+                  </label>
+                </div>
+    
+                <div class="govuk-radios__item">
+                  <input class="selection-button-radio-gds store-updated-information govuk-radios__input" id="phoneNumber_new" name="useJurorPhoneDetails" type="radio" autocomplete="off" value="Yes" data-aria-controls="conditional-phoneNumber_new" {{radioPhoneNewChecked}}>
+                  <label class="govuk-label govuk-radios__label" for="phoneNumber_new">
+                    {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_GIVE_NEW}}
+                  </label>
+                </div>
+    
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-phoneNumber_new">
+          
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="primaryPhone">
+                      {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.MAIN_PHONE}}
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="primaryPhone" name="primaryPhone" type="text" autocomplete="off" inputmode="numeric" value="{{user.primaryPhone}}">
+                  </div>
+
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="secondaryPhone">
+                      {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.OTHER_PHONE}}
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="secondaryPhone" name="secondaryPhone" type="text" autocomplete="off" inputmode="numeric" value="{{ user.secondaryPhone }}">
+                  </div>
+          
+                </div>
+
+              </div>
+            </div>
+            #}
+            
+            {{ govukRadios({
+              id: "useJurorPhoneDetails",
+              name: "useJurorPhoneDetails",
+              errorMessage: radiosPhoneError,
+              items: [
+                {
+                  id: "phoneNumber_existing",
+                  name: "useJurorPhoneDetails",
+                  value: "No" ,
+                  text: texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_USE_PREVIOUS,
+                  checked: radioPhoneExisitingChecked
+                },
+                {
+                  id: "phoneNumber_new",
+                  name: "useJurorPhoneDetails",
+                  value: "Yes",
+                  text: texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_GIVE_NEW,
+                  checked: radioPhoneNewChecked,
+                  conditional: {
+                    html: phoneDetailsHTML
+                  }
+                }
+              ]
+            }) }}
+            
+
+            {# Email options #}
+            <strong class="govuk-body govuk-!-font-weight-bold">
+              {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL }}
+            </strong>
+            <p class="govuk-body">
+              {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_PARAGRAPH }}
+            </p>
+
+            {#
+            <div class="govuk-form-group">
+              <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+    
+                <div class="govuk-radios__item">
+                  <input class="selection-button-radio-gds store-updated-information govuk-radios__input" id="emailAddress_existing" name="useJurorEmailDetails" type="radio" value="No" {{radioEmailExisitingChecked}}>
+                  <label class="govuk-label govuk-radios__label" for="phoneNumber_existing">
+                    {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_USE_PREVIOUS}}
+                  </label>
+                </div>
+    
+                <div class="govuk-radios__item">
+                  <input class="selection-button-radio-gds store-updated-information govuk-radios__input" id="emailAddress_new" name="useJurorEmailDetails" type="radio" value="Yes" data-aria-controls="conditional-emailAddress_new" {{radioEmailNewChecked}}>
+                  <label class="govuk-label govuk-radios__label" for="phoneNumber_new">
+                    {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_GIVE_NEW}}
+                  </label>
+                </div>
+    
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-emailAddress_new">
+          
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="emailAddress">
+                      {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_ENTER}}
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="emailAddress" name="emailAddress" type="text" autocomplete="off" maxlength="254" value="{{ user.emailAddress }}">
+                  </div>
+
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="emailAddressConfirmation">
+                      {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_ENTER_CONFIRM}}
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="emailAddressConfirmation" name="emailAddressConfirmation" type="text" autocomplete="off" maxlength="254" value="{{ user.emailAddressConfirmation }}">
+                  </div>
+          
+                </div>
+
+              </div>
+            </div>
+            #}
+
+            
+            {{ govukRadios({
+              id: "useJurorEmailDetails",
+              name: "useJurorEmailDetails",
+              errorMessage: radiosEmailError,
+              items: [
+                {
+                  id: "emailAddress_existing",
+                  name: "useJurorEmailDetails",
+                  value: "No" ,
+                  text: texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_USE_PREVIOUS,
+                  checked: radioEmailExisitingChecked
+                },
+                {
+                  id: "emailAddress_new",
+                  name: "useJurorEmailDetails",
+                  value: "Yes",
+                  text: texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_GIVE_NEW,
+                  checked: radioEmailNewChecked,
+                  conditional: {
+                    html: emailDetailsHTML
+                  }
+                }
+              ]
+            }) }}
+            
+
+          </fieldset>
+        
         </div>
-        {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.HEADER }}
-      </h1>
 
-      <fieldset>
-        <legend>
-          <span class="lede">
-            <strong class="bold-medium">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT }}</strong>
-          </span>
-        </legend>
+        {{ govukDetails({
+          summaryText: texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_HELPER_TITLE,
+          text: texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_HELPER_TEXT
+        }) }}
 
-        <p>
-          {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT_PARAGRAPH }}
-        </p>
+        {# Submit form #}
+        {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
 
-        <div class="bold-small">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE }}</div>
-        {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_PARAGRAPH }}
-        {% if errors.items['useJurorPhoneDetails'] %}<span class="error-message" id="useJurorPhoneDetailsGroup">{{ errors.items['useJurorPhoneDetails'][0].details }}</span>{% endif %}
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
 
-        <div class="form-group">
-          <br>
-          <label class="block-label selection-button-radio" for="phoneNumber_existing">
-            <input id="phoneNumber_existing" type="radio" name="useJurorPhoneDetails" value="No" {% if user.useJurorPhoneDetails == 'No' %}checked="checked"{% endif %}>
-            {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_USE_PREVIOUS }}
-          </label>
+      </form>
 
-          <label class="block-label selection-button-radio" for="phoneNumber_new" data-target="newPhoneNumber">
-            <input id="phoneNumber_new" type="radio" name="useJurorPhoneDetails" value="Yes" {% if user.useJurorPhoneDetails == 'Yes' %}checked="checked"{% endif %}>
-            {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_GIVE_NEW }}
-          </label>
-          <div class="panel panel-border-narrow js-hidden" id="newPhoneNumber">
-            <div class="form-group">
-              <label class="form-label" for="primaryPhone">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.MAIN_PHONE }}</label>
-              {% if errors.items['primaryPhone'] %}<span class="error-message" id="primaryPhoneErrorMessage">{{ errors.items['primaryPhone'][0].details }}</span>{% endif %}
-              <input class="form-control" name="primaryPhone" type="text" inputmode="numeric" id="primaryPhone" value="{{ user.primaryPhone }}" autocomplete="off" {% if errors.items['primaryPhone'] %}aria-describedby="primaryPhoneErrorMessage"{% endif %}>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="secondaryPhone">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.OTHER_PHONE }}</label>
-              {% if errors.items['secondaryPhone'] %}<span class="error-message" id="secondaryPhoneErrorMessage">{{ errors.items['secondaryPhone'][0].details }}</span>{% endif %}
-              <input class="form-control" name="secondaryPhone" type="text" inputmode="numeric" id="secondaryPhone" value="{{ user.secondaryPhone }}" autocomplete="off" {% if errors.items['secondaryPhone'] %}aria-describedby="secondaryPhoneErrorMessage"{% endif %}>
-            </div>
-          </div>
-        </div>
-
-        <div class="bold-small">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL }}</div>
-        {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_PARAGRAPH }}
-        {% if errors.items['useJurorEmailDetails'] %}<span class="error-message" id="useJurorEmailDetailsGroup">{{ errors.items['useJurorEmailDetails'][0].details }}</span>{% endif %}
-
-        <div class="form-group">
-          <br>
-          <label class="block-label selection-button-radio" for="emailAddress_existing">
-            <input id="emailAddress_existing" type="radio" name="useJurorEmailDetails" value="No" {% if user.useJurorEmailDetails == 'No' %}checked="checked"{% endif %}>
-            {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_USE_PREVIOUS }}
-          </label>
-
-          <label class="block-label selection-button-radio" for="emailAddress_new" data-target="newEmailAddress">
-            <input id="emailAddress_new" type="radio" name="useJurorEmailDetails" value="Yes" {% if user.useJurorEmailDetails == 'Yes' %}checked="checked"{% endif %}>
-            {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_GIVE_NEW }}
-          </label>
-          <div class="panel panel-border-narrow js-hidden" id="newEmailAddress">
-            <div class="form-group">
-              <label class="form-label" for="emailAddress">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_ENTER }}</label>
-              {% if errors.items['emailAddress'] %}<span class="error-message" id="emailAddressErrorMessage">{{ errors.items['emailAddress'][0].details }}</span>{% endif %}
-              <input class="form-control" type="email" id="emailAddress" name="emailAddress" maxlength="254" value="{{ user.emailAddress }}" autocomplete="off" {% if errors.items['emailAddress'] %}aria-describedby="emailAddressErrorMessage"{% endif %}>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="emailAddressConfirmation">{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_ENTER_CONFIRM }}</label>
-              {% if errors.items['emailAddressConfirmation'] %}<span class="error-message" id="emailAddressConfirmationErrorMessage">{{ errors.items['emailAddressConfirmation'][0].details }}</span>{% endif %}
-              <input class="form-control" type="email" id="emailAddressConfirmation" name="emailAddressConfirmation" maxlength="254" value="{{ user.emailAddressConfirmation }}" autocomplete="off" {% if errors.items['emailAddressConfirmation'] %}aria-describedby="emailAddressConfirmationErrorMessage"{% endif %}>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="form-group">
-          <details>
-            <summary>{{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_HELPER_TITLE }}</summary>
-            <div class="panel panel-border-narrow" id="details-content-1" aria-hidden="true">
-              <p>
-                {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_HELPER_TEXT }}
-              </p>
-            </div>
-          </details>
-        </div>
-      </fieldset>
-
-      {# Submit form #}
-      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-      <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
-    </form>
+    </div>
   </div>
-</div>
 {% endblock %}

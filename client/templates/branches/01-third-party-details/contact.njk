@@ -1,127 +1,226 @@
-{% extends "../../layouts/default.njk" %}
+{% extends "../../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../../govuk-frontend/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}3rd Party Details{% endblock %}
 
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
 {% block content %}
 
-<div class="grid-row">
+  {% include "../../includes/errors-gds.njk" %}
 
-  <div class="column-two-thirds">
-
-    {% include "../../includes/back-link.njk" %}
-    {% include "../../includes/errors.njk" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
     <form action="{{ url('branches.third.party.details.contact.post') }}" method="POST" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-      <div class="form-group {% if errors.items['contactPhone'] or errors.items['mainPhone'] or errors.items['otherPhone'] or errors.items['emailAddress'] or errors.items['emailAddressConfirmation'] %}error{% endif %}">
+      {# Set checkbox phone checked #}
+      {% if user.thirdPartyDetails.contactPhone == 'By phone' %}
+        {% set checkboxPhoneChecked = true %}
+      {% else %}
+        {% set checkboxPhoneChecked = false %}
+      {% endif %}
 
-        <h1 class="heading-xlarge">
-          <div class="heading-secondary">
+      {# Set checkbox email checked #}
+      {% if user.thirdPartyDetails.contactEmail == 'By email' %}
+        {% set checkboxEmailChecked = true %}
+      {% else %}
+        {% set checkboxEmailChecked = false %}
+      {% endif %}
+      
+      {% if errors.items['contactPhone'] %}
+        {% set checkboxesAnswerError = {"text": errors.items['contactPhone'][0].details} %}
+      {% else %}
+        {% set checkboxesAnswerError = undefined %}
+      {% endif %}
+
+      {# Set primary phone error #}
+      {% if errors.items['mainPhone'] %}
+        {% set primaryPhoneError = {"text": errors.items['mainPhone'][0].details} %}
+      {% else %}
+        {% set primaryPhoneError = undefined %}
+      {% endif %}
+
+      {# Set secondary phone error #}
+      {% if errors.items['otherPhone'] %}
+        {% set secondaryPhoneError = {"text": errors.items['otherPhone'][0].details} %}
+      {% else %}
+        {% set secondaryPhoneError = undefined %}
+      {% endif %}
+
+      {# Set email address error #}
+      {% if errors.items['emailAddress'] %}
+        {% set emailAddressError = {"text": errors.items['emailAddress'][0].details} %}
+      {% else %}
+        {% set emailAddressError = undefined %}
+      {% endif %}
+
+      {# Set email address confirmation error #}
+      {% if errors.items['emailAddressConfirmation'] %}
+        {% set emailAddressConfirmationError = {"text": errors.items['emailAddressConfirmation'][0].details} %}
+      {% else %}
+        {% set emailAddressConfirmationError = undefined %}
+      {% endif %}
+
+      {# Set phone details HTML #}
+      {% set phoneDetailsHTML %}
+        <p class="govuk-body" id="phone-hint">
+          {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.INFO_PHONE }}
+        </p>
+
+        {# Main Phone #}
+        {{ govukInput({
+          label: {
+            text: texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_MAIN_PHONE
+          },
+          id: "mainPhone",
+          name: "mainPhone",
+          errorMessage: primaryPhoneError,
+          attributes: {
+            inputmode: "numeric",
+            "aria-describedby": "phone-hint"
+          },
+          autocomplete: "off",
+          classes: "govuk-!-width-two-thirds",
+          value: user.thirdPartyDetails.mainPhone
+        }) }}
+
+        {# Other Phone #}
+        {{ govukInput({
+          label: {
+            text: texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_OTHER_PHONE
+          },
+          id: "otherPhone",
+          name: "otherPhone",
+          errorMessage: secondaryPhoneError,
+          attributes: {
+            inputmode: "numeric",
+            "aria-describedby": "phone-hint"
+          },
+          autocomplete: "off",
+          classes: "govuk-!-width-two-thirds",
+          value: user.thirdPartyDetails.otherPhone
+        }) }}
+      {% endset %}
+
+      {# Set email details HTML #}
+      {% set emailDetailsHTML %}
+        {# Email Address #}
+        {{ govukInput({
+          label: {
+            text: texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_EMAIL
+          },
+          id: "emailAddress",
+          name: "emailAddress",
+          errorMessage: emailAddressError,
+          type: "email",
+          autocomplete: "off",
+          attributes: {
+            maxlength: "254",
+            spellcheck: "false"
+          },
+          classes: "govuk-!-width-two-thirds",
+          value: user.thirdPartyDetails.emailAddress
+        }) }}
+
+        {# Email Address Confirmation #}
+        {{ govukInput({
+          label: {
+            text: texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_EMAIL_CONFIRM
+          },
+          id: "emailAddressConfirmation",
+          name: "emailAddressConfirmation",
+          errorMessage: emailAddressConfirmationError,
+          type: "email",
+          autocomplete: "off",
+          attributes: {
+            maxlength: "254",
+            spellcheck: "false"
+          },
+          classes: "govuk-!-width-two-thirds",
+          value: user.thirdPartyDetails.emailAddressConfirmation
+        }) }}
+      {% endset %}
+
+      <div class="govuk-form-group {% if errors.items['contactPhone'] or errors.items['mainPhone'] or errors.items['otherPhone'] or errors.items['emailAddress'] or errors.items['emailAddressConfirmation'] %}govuk-form-group--error{% endif %}">
+
+        <h1 class="govuk-heading-xl">
+          <span class="govuk-caption-xl">
             {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CAPTION }}
-          </div>
+          </span>
           {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.TITLE }}
         </h1>
 
-        <fieldset>
+        <fieldset class="govuk-fieldset">
  
-          <p>
-            {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.INFO_1 }}<br>
-          </p>
-
-          <div class="form-group" id="contactPhoneGroup">
-            {# Phone #}
-
-            {% if errors.items['contactPhone'] %}<span class="error-message" id="contactPhoneErrorMessage">{{ errors.items['contactPhone'][0].details }}</span>{% endif %}
-
-            <label class="block-label toggle-reset" for="contactPhone" data-target="phoneGroup">
-              <input type="checkbox" name="contactPhone" id="contactPhone" value="By phone" {% if user.thirdPartyDetails.contactPhone == 'By phone' %}checked{% endif %} {% if errors.items['contactPhone'] %}aria-describedby="contactPhoneErrorMessage"{% endif %}>
-              {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_BY_PHONE }}
-            </label>
-
-            <div class="panel panel-border-narrow {% if user.thirdPartyDetails.contactPhone == 'By phone' %}{% else %}js-hidden{% endif %}" id="phoneGroup">
-              <p>
-                {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.INFO_PHONE }}
-              </p>
-
-              <div class="form-group" id="mainPhoneGroup">
-                <label class="form-label" for="mainPhone">
-                  {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_MAIN_PHONE }}
-                </label>
-                {% if errors.items['mainPhone'] %}<span class="error-message" id="mainPhoneErrorMessage">{{ errors.items['mainPhone'][0].details }}</span>{% endif %}
-                <input type="text" class="form-control" id="mainPhone" name="mainPhone" value="{{ user.thirdPartyDetails.mainPhone }}" autocomplete="off" {% if errors.items['mainPhone'] %}aria-describedby="mainPhoneErrorMessage"{% endif %}>
-              </div>
-
-              <div class="form-group" id="otherPhoneGroup">
-                <label class="form-label" for="otherPhone">
-                  {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_OTHER_PHONE }}
-                </label>
-                {% if errors.items['otherPhone'] %}<span class="error-message" id="otherPhoneErrorMessage">{{ errors.items['otherPhone'][0].details }}</span>{% endif %}
-                <input type="text" class="form-control" id="otherPhone" name="otherPhone" value="{{ user.thirdPartyDetails.otherPhone }}" autocomplete="off" {% if errors.items['otherPhone'] %}aria-describedby="otherPhoneErrorMessage"{% endif %}>
-              </div>
-            </div>
-
-
-            {# Email address #}
-            <label class="block-label toggle-reset" for="contactEmail" data-target="emailGroup">
-              <input type="checkbox" name="contactEmail" id="contactEmail" value="By email" {% if user.thirdPartyDetails.contactEmail == 'By email' %}checked{% endif %}>
-              {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_BY_EMAIL }}
-            </label>
-
-            <div class="panel panel-border-narrow {% if user.thirdPartyDetails.contactEmail == 'By email' %}{% else %}js-hidden{% endif %}" id="emailGroup">
-              <div class="form-group" id="emailAddressGroup">
-                <label class="form-label" for="emailAddress">
-                  {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_EMAIL }}
-                </label>
-                {% if errors.items['emailAddress'] %}<span class="error-message" id="emailAddressErrorMessage">{{ errors.items['emailAddress'][0].details }}</span>{% endif %}
-                <input type="email" class="form-control" id="emailAddress" name="emailAddress" maxlength="254" value="{{ user.thirdPartyDetails.emailAddress }}" autocomplete="off" {% if errors.items['emailAddress'] %}aria-describedby="emailAddressErrorMessage"{% endif %}>
-              </div>
-
-              <div class="form-group" id="emailAddressConfirmationGroup">
-                <label class="form-label" for="emailAddressConfirmation">
-                  {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_EMAIL_CONFIRM }}
-                </label>
-                {% if errors.items['emailAddressConfirmation'] %}<span class="error-message" id="emailAddressConfirmationErrorMessage">{{ errors.items['emailAddressConfirmation'][0].details }}</span>{% endif %}
-                <input type="email" class="form-control" id="emailAddressConfirmation" name="emailAddressConfirmation" maxlength="254" value="{{ user.thirdPartyDetails.emailAddressConfirmation }}" autocomplete="off" {% if errors.items['emailAddressConfirmation'] %}aria-describedby="emailAddressConfirmationErrorMessage"{% endif %}>
-              </div>
-            </div>
-          </div>
+          {{ govukCheckboxes({
+            name: "contactPhone",
+            fieldset: {
+            },  
+            hint: {
+              text: texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.INFO_1
+            },
+            errorMessage: checkboxesAnswerError,
+            items: [
+              {
+                id: "contactPhone",
+                name: "contactPhone",
+                value: "By phone",
+                text: texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_BY_PHONE,
+                conditional: {
+                  html: phoneDetailsHTML
+                },
+                checked: checkboxPhoneChecked
+              },
+              {
+                id: "contactEmail",
+                name: "contactEmail",
+                value: "By email",
+                text: texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.LABEL_BY_EMAIL,
+                conditional: {
+                  html: emailDetailsHTML
+                },
+                checked: checkboxEmailChecked
+              }
+            ]
+          }) }}          
 
         </fieldset>
 
-        <br>
-        <details>
-          <summary><span class="summary">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.TITLE_1 }}</span></summary>
-          <div class="panel panel-border-narrow">
-            <p>{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.INFO_1 }}</p>
-          </div>
-          <br>
-        </details>
-
-        <br>
-        <details>
-          <summary><span class="summary">{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.TITLE_2 }}</span></summary>
-          <div class="panel panel-border-narrow">
-            <p>{{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.INFO_2 }}</p>
-          </div>
-        </details>
-
       </div>
 
-      <br><br>
-      <div class="form-group">
-        <input class="button" type="submit" value="{{ texts.INTERFACE.BUTTON_TEXT_CONTINUE }}">
-        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-      </div>
+      {{ govukDetails({
+        summaryText: texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.TITLE_1,
+        text: texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.INFO_1
+      }) }}
+
+      {{ govukDetails({
+        summaryText: texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.TITLE_2,
+        text: texts.ON_BEHALF.THIRD_PARTY_DETAILS.CONTACT.DETAILS.INFO_2
+      }) }}
+
+      {# Submit form #}
+      {{ govukButton({
+        text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+      }) }}
+
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
 
     </form>
 
   </div>
-
 </div>
 
 {% endblock %}
