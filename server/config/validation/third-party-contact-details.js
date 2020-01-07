@@ -18,6 +18,7 @@
           message: {
             summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.CANNOT_USE_OWN_PHONE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.CANNOT_USE_OWN_PHONE_INLINE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summaryLink: 'phoneNumber_existing'
           },
         },
         presenceIfSet: {
@@ -25,6 +26,15 @@
           message: {
             summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.USE_PHONE_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.USE_PHONE_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summaryLink: 'phoneNumber_existing'
+          },
+        },
+        presence: {
+          allowEmpty: false,
+          message: {
+            summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.USE_PHONE_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.USE_PHONE_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summaryLink: 'phoneNumber_existing'
           },
         },
       },
@@ -72,6 +82,7 @@
           message: {
             summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.CANNOT_USE_OWN_EMAIL', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.CANNOT_USE_OWN_EMAIL_INLINE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summaryLink: 'emailAddress_existing',
           },
         },
         presenceIfSet: {
@@ -79,13 +90,15 @@
           message: {
             summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.USE_EMAIL_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.USE_EMAIL_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summaryLink: 'emailAddress_existing',
           },
         },
         presence: {
           allowEmpty: false,
           message: {
             summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.USE_EMAIL_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.USE_EMAIL_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_CONTACT.USE_EMAIL_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summaryLink: 'emailAddress_existing',
           },
         },
       },

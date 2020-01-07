@@ -73,7 +73,17 @@
         jurorObj = require('../../../objects/juror').object
         , getDetailsSuccess
         , deferralDates
-        , getDetailsError;
+        , getDetailsError
+        , qualifyDetailsExist = function(objQualify){
+          var boolDetalsExist = false;
+
+          if (objQualify){
+            if (objQualify.details) {
+              boolDetalsExist = true;
+            }
+          }
+          return boolDetalsExist;
+        }
 
       //reset value for conventional route vs edit route
       if (req.session.change === true){
@@ -339,15 +349,13 @@
 
       }
 
-
-
       // Merge and then delete form fields and errors, prevents retention after pressing back link
       tmpErrors = _.cloneDeep(req.session.errors);
 
       delete req.session.errors;
       delete req.session.formFields;
       if (req.session.user.qualify) {
-        if (req.session.user.qualify.livedConsecutive.details || req.session.user.qualify.mentalHealthSectioned.details || req.session.user.qualify.mentalHealthCapacity.details || req.session.user.qualify.onBail.details || req.session.user.qualify.convicted.details) {
+        if (qualifyDetailsExist(req.session.user.qualify.livedConsecutive)|| qualifyDetailsExist(req.session.user.qualify.mentalHealthSectioned) || qualifyDetailsExist(req.session.user.qualify.mentalHealthCapacity) || qualifyDetailsExist(req.session.user.qualify.onBail) || qualifyDetailsExist(req.session.user.qualify.convicted)) {
           req.session.user['ineligible'] = 'Yes';
         }
         else {

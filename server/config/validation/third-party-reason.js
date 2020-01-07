@@ -13,6 +13,7 @@
           message: {
             summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_REASON.REASON_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_REASON.REASON_CHECK_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summaryLink: 'thirdPartyReasonNotHere',
           }
         },
       },

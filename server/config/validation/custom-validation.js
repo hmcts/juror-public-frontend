@@ -319,12 +319,15 @@
     var message = {
         summary: filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.CHECK_DOB'
           + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+        summaryLink: 'dobDay',
         fields: [],
         details: []
       }
       , formattedDob
       , dayMonthRegex = /^[0-9]{1,2}$/
-      , yearRegex = /^[0-9]{4}$/;
+      , yearRegex = /^[0-9]{4}$/
+      , summaryLinkSet = false
+      , dateError = false;
 
     if (attributes.dobDay.length === 0) {
       message.fields.push('dobDay');
@@ -332,12 +335,19 @@
         filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.DAY_MISSING'
           + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
       );
+      dateError = true;
     } else if ((attributes.dobDay > 31 || attributes.dobDay < 1) || !dayMonthRegex.test(attributes.dobDay)) {
       message.fields.push('dobDay');
       message.details.push(
         filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.DAY_INVALID'
           + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
       );
+      dateError = true;
+    }
+    if (dateError === true && summaryLinkSet === false){
+      message.summaryLink = 'dobDay';
+      summaryLinkSet = true;
+      dateError = false;
     }
 
     if (attributes.dobMonth.length === 0) {
@@ -346,12 +356,19 @@
         filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.MONTH_MISSING'
           + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
       );
+      dateError = true;
     } else if ((attributes.dobMonth > 12 || attributes.dobMonth < 1) || !dayMonthRegex.test(attributes.dobMonth)) {
       message.fields.push('dobMonth');
       message.details.push(
         filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.MONTH_INVALID'
           + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
       );
+      dateError = true;
+    }
+    if (dateError === true && summaryLinkSet === false){
+      message.summaryLink = 'dobMonth';
+      summaryLinkSet = true;
+      dateError = false;
     }
 
     if (attributes.dobYear.length === 0) {
@@ -360,12 +377,19 @@
         filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.YEAR_MISSING'
           + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
       );
+      dateError = true;
     } else if (attributes.dobYear.length !== 4 || !yearRegex.test(attributes.dobYear)) {
       message.fields.push('dobYear');
       message.details.push(
         filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.YEAR_INVALID'
           + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
       );
+      dateError = true;
+    }
+    if (dateError === true && summaryLinkSet === false){
+      message.summaryLink = 'dobYear';
+      summaryLinkSet = true;
+      dateError = false;
     }
 
 

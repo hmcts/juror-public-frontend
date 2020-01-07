@@ -1,14 +1,13 @@
 {
-  "HEADING": "Please give us three dates you could start jury service during the next 12 months.",
+  "HEADING": "Please give us three dates you could start jury service during the next 12 months",
   "HEADING_OB": "Please give us three dates the person you're replying for could do jury service during the next 12 months",
   "REASON_HEADING": "Please say why you need another date for your jury service",
   "REASON_HEADING_OB": "Please say why the person you're answering for needs another date for their jury service",
 
-
   "REASON_FIELD_TITLE": "Please say why you need another date for your jury service",
   "REASON_FIELD_TITLE_OB": "Please say why the person you're answering for needs another date for their jury service",
-  "REASON_FIELD_HINT": "You can only change the date of your jury service once",
-  "REASON_FIELD_HINT_OB": "You can only change the date of the jury service once",
+  "REASON_FIELD_HINT": "You can only change the date of your jury service once.",
+  "REASON_FIELD_HINT_OB": "You can only change the date of the jury service once.",
 
   "ACCEPTABLE_SUMMARY": "What is an acceptable reason?",
   "ACCEPTABLE_INFO": "We may be able to change the date of your jury service if you have a good reason. These are some examples - or you might have a different good reason:",
@@ -25,7 +24,7 @@
   "WHY_ASK_SUMMARY": "Why do we ask this?",
   "WHY_ASK_SUMMARY_OB": "Why do we ask?",
   "WHY_ASK_INFO": "It may be possible to start your jury service on another more suitable date.",
-  "WHY_ASK_INFO_OB": "It may be possible to start the person's jury service on another more suitable date. ",
+  "WHY_ASK_INFO_OB": "It may be possible to start the person's jury service on another more suitable date.",
 
   "DATE1": "Date 1",
   "DATE2": "Date 2",

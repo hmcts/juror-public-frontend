@@ -69,15 +69,17 @@
 
         <div class="govuk-form-group {% if errors.addressError %}govuk-form-group--error{% endif %}" id="titleGroup">
 
-          <h1 class="govuk-heading-xl">
-            <span class="govuk-caption-xl">
-              {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.CAPTION }}
-            </span>
-            {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.ADDRESS_HEADER }}
-          </h1>
-
           {# Address #}
           <fieldset class="inline-edit govuk-fieldset" id="addressGroup">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                <span class="govuk-caption-xl">
+                  {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.CAPTION }}
+                </span>
+                {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.ADDRESS_HEADER }}
+              </h1>
+            </legened>
 
             <strong class="govuk-body govuk-!-font-weight-bold">
               {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_LABEL }}

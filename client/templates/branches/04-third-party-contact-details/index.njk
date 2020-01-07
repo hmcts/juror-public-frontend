@@ -166,14 +166,16 @@
 
         <div class="govuk-form-group {% if errors.items['primaryPhone'] or errors.items['secondaryPhone'] or errors.items['useJurorPhoneDetails'] or errors.items['useJurorEmailDetails'] or errors.items['emailAddress'] or errors.items['emailAddressConfirmation'] %}govuk-form-group--error{% endif %}" id="thirdPartyReasonGroup">
 
-          <h1 class="govuk-heading-xl">
-            <span class="govuk-caption-xl">
-              {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CAPTION }}
-            </span>
-            {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.HEADER }}
-          </h1>
-
           <fieldset class="govuk-fieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                <span class="govuk-caption-xl">
+                  {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CAPTION }}
+                </span>
+                {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.HEADER }}
+              </h1>
+            </legend>
 
             <strong class="govuk-body-l govuk-!-font-weight-bold">
               {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT }}

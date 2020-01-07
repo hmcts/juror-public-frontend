@@ -13,6 +13,7 @@
           message: {
             summary: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summaryLink: 'assistanceNeeded-Yes'
           }
         },
       },
@@ -24,6 +25,7 @@
           message: {
             summary: filters.translate('VALIDATION.ASSISTANCE.ASSISTANCE_GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.ASSISTANCE.ASSISTANCE_GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summaryLink: 'assistanceType-mobility'
           }
         }
       },

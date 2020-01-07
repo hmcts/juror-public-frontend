@@ -12,7 +12,8 @@
           allowEmpty: false,
           message: {
             summary: filters.translate('VALIDATION.QUALIFY.MENTAL_HEALTH_CAPACITY' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summaryLink: 'mentalHealthCapacity-Yes'
           }
         },
       },

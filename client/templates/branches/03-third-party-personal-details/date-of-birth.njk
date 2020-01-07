@@ -43,14 +43,16 @@
 
         <div class="govuk-form-group {% if errors.items['dateOfBirth'] %}govuk-form-group--error{% endif %}" id="dateOfBirthGroup">
       
-          <h1 class="govuk-heading-xl">
-            <span class="govuk-caption-xl">
-              {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.CAPTION }}
-            </span>
-            {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.DOB_HEADER }}
-          </h1>
-
           <fieldset class="govuk-fieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                <span class="govuk-caption-xl">
+                  {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.CAPTION }}
+                </span>
+                {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.DOB_HEADER }}
+              </h1>
+            </legend>
 
             {{ govukDateInput({
               id: "dateOfBirth",

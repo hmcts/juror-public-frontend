@@ -36,7 +36,7 @@
         "ITEM_3": "Pwyso a mesur yr wybodaeth sydd ar gael i wneud y penderfyniad.",
         "ITEM_4": "Cyfathrebu'r penderfyniad drwy unrhyw fodd."
       },
-      "SECOND_MAIN": "Os nad ydych yn sicr os yw'r unigolyn rydych yn ymateb ar ei ran yn gallu gwasanaethu ar reithgor oherwydd anhwylder meddyliol neu ddiffyg galluedd meddyliol, gallwch ein ffonio ar:",
+      "SECOND_MAIN": "Os nad ydych yn sicr os ydych yn gallu gwasanaethu ar reithgor oherwydd anhwylder meddyliol neu ddiffyg galluedd meddyliol, gallwch ein ffonio ar:",
       "THIRD_MAIN": "i gael cyngor.",
 
       "FIRST_THIRD_PARTY": "Os nad oes gan yr unigolyn rydych yn ymateb ar ei ran y galluedd meddyliol i fod yn rheithiwr, ni allant fod ar reithgor. Mae galluedd meddyliol yn golygu fod rhaid i unigolyn fod â'r gallu i wneud penderfyniad ei hun. Dywedir fod gan bobl nad ydynt yn gallu gwneud hyn ddiffyg galluedd. Rhaid i'r diffyg galluedd fod oherwydd nam neu broblem gyda'u meddwl neu ymennydd, a allai fod oherwydd salwch, anaf, anabledd dysgu neu broblemau iechyd meddwl.",
@@ -49,7 +49,7 @@
       },
       "SECOND_THIRD_PARTY": "Os nad ydych yn sicr os yw'r unigolyn rydych yn ymateb ar ei ran yn gallu gwasanaethu ar reithgor oherwydd anhwylder meddyliol neu ddiffyg galluedd meddyliol, gallwch ein ffonio ar:",
       "CONTACT_TEL": "0300 303 5173",
-      "THIRD_THIRD_PARTY": " i gael cyngor."
+      "THIRD_THIRD_PARTY": "i gael cyngor."
     }
   },
 

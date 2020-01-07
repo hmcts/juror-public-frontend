@@ -7,12 +7,21 @@
   {% if errors.message.length > 0 %}
   {% endif %}
 
+
   {% set errorItems = [] %}
   {% for key, messages in errors.items %}
-    {% if messages[0]|isString %}
-      {% set errorItems = (errorItems.push({text: messages[0], href: '#' + key}), errorItems) %}
+
+    {# Generate HREF from summaryLink value if providede otherwise default to key #}
+    {% if messages[0].summaryLink != undefined %}
+      {% set hrefValue = messages[0].summaryLink %}
     {% else %}
-      {% set errorItems = (errorItems.push({text: messages[0].summary, href: '#' + key}), errorItems) %}
+      {% set hrefValue = key %}
+    {% endif %}
+
+    {% if messages[0]|isString %}
+      {% set errorItems = (errorItems.push({text: messages[0], href: '#' + hrefValue}), errorItems) %}
+    {% else %}
+      {% set errorItems = (errorItems.push({text: messages[0].summary, href: '#' + hrefValue}), errorItems) %}
     {% endif %}
   {% endfor %}
 

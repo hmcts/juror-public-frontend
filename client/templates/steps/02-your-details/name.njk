@@ -26,45 +26,47 @@
 
       <form action="{{ url('steps.your.details.name.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-        <div class="govuk-form-group {% if errors.nameError %}govuk-form-group--error{% endif %}" id="titleGroup">
+        {# Set Title error #}
+        {% if errors.items['title'] %}
+          {% set titleError = {"text": errors.items['title'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% else %}
+          {% set titleError = undefined %}
+        {% endif %}
 
-          <h1 class="govuk-heading-xl">
-            <span class="govuk-caption-xl">
-              {{ texts.YOUR_DETAILS_PAGE.CAPTION }}
-            </span>
-            {{ texts.YOUR_DETAILS_PAGE.HEADING_NAME }}
-          </h1>
+        {# Set First Name error #}
+        {% if errors.items['firstName'] %}
+          {% set firstNameError = {"text": errors.items['firstName'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% else %}
+          {% set firstNameError = undefined %}
+        {% endif %}
+
+        {# Set Last Name error #}
+        {% if errors.items['lastName'] %}
+          {% set lastNameError = {"text": errors.items['lastName'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% else %}
+          {% set lastNameError = undefined %}
+        {% endif %}
+
+        <div class="govuk-form-group {% if errors.nameError %}govuk-form-group--error{% endif %}" id="titleGroup">
 
           {# Name #}
           <fieldset class="inline-edit govuk-fieldset" id="nameGroup">
 
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                <span class="govuk-caption-xl">
+                  {{ texts.YOUR_DETAILS_PAGE.CAPTION }}
+                </span>
+                {{ texts.YOUR_DETAILS_PAGE.HEADING_NAME }}
+              </h1>
+            </legend>
+
             <div class="govuk-grid-row inline-section primary {% if errors.nameError %}closed{% endif %}">
               <div class="govuk-grid-column-one-half govuk-body">{{ user.nameRender }}</div>
               <div class="govuk-grid-column-one-half govuk-body">
-                <a href="#nameGroup" class="govuk-link inline-edit-toggle" id="changeName" {% if trackingCode %}onclick="trackVirtualPageViews('Change - name')"{% endif %}>{{ texts.INTERFACE.FORM_CHANGE_LABEL }}</a>
+                <a href="#nameGroup" class="govuk-link inline-edit-toggle" id="changeName" {% if trackingCode %}onclick="trackVirtualPageViews('Change - name')"{% endif %}>{{ texts.INTERFACE.FORM_CHANGE_LABEL }}<span class="govuk-visually-hidden">{{ texts.YOUR_DETAILS_PAGE.FORM_NAME_LABEL }}</span></a>
               </div>
             </div>
-
-            {# Set Title error #}
-            {% if errors.items['title'] %}
-              {% set titleError = {"text": errors.items['title'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
-            {% else %}
-              {% set titleError = undefined %}
-            {% endif %}
-
-            {# Set First Name error #}
-            {% if errors.items['firstName'] %}
-              {% set firstNameError = {"text": errors.items['firstName'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
-            {% else %}
-              {% set firstNameError = undefined %}
-            {% endif %}
-
-            {# Set Last Name error #}
-              {% if errors.items['lastName'] %}
-                {% set lastNameError = {"text": errors.items['lastName'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
-              {% else %}
-                {% set lastNameError = undefined %}
-              {% endif %}
 
             <div class="inline-section secondary {% if errors.nameError %}open{% endif %}">
 

@@ -33,14 +33,16 @@
 
         <div class="govuk-form-group {% if errors.items['relationship'] %}govuk-form-group--error{% endif %}">
 
-          <h1 class="govuk-heading-xl">
-            <span class="govuk-caption-xl">
-              {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CAPTION }}
-            </span>
-            {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.RELATIONSHIP.TITLE }}
-          </h1>
-
           <fieldset class="govuk-fieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                <span class="govuk-caption-xl">
+                  {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.CAPTION }}
+                </span>
+                {{ texts.ON_BEHALF.THIRD_PARTY_DETAILS.RELATIONSHIP.TITLE }}
+              </h1>
+            </legend>
 
             {# Relationship #}
             {{ govukInput({
