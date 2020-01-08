@@ -53,43 +53,45 @@
 
         <div class="govuk-form-group {% if errors.items['dateOfBirth'] or errors.items %}govuk-form-group--error{% endif %}">
 
-          <h1 class="govuk-heading-xl">
-            <span class="govuk-caption-xl">
-              {% if user.thirdParty == 'Yes' %}
-                {{ texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION_OB }}
-              {% else %}
-                {{ texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION }}
-              {% endif %}
-            </span>
-            {% if user.thirdParty == 'Yes' %}
-              {{ texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING_OB }}
-            {% else %}
-              {{ texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING }}
-            {% endif %}
-          </h1>
-
-          {% if user.thirdParty == 'Yes' %}
-            {% if dobError == undefined %}
-              <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE_OB' | translate(texts, { formattedDob: formattedDob }) }}</p>
-              <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE_OB' | translate(texts, { currentAge: currentAge }) }}</p>
-            {% endif %}
-            <p><strong class="govuk-body govuk-!-font-weight-bold">{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE_OB }}</strong></p>
-          {% else %}
-            {% if dobError == undefined %}
-              <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE' | translate(texts, { formattedDob: formattedDob }) }}</p>
-              <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE' | translate(texts, { currentAge: currentAge }) }}</p>
-            {% endif %}
-            <p><strong class="govuk-body govuk-!-font-weight-bold">{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE }}</strong></p>
-          {% endif %}
-
           <fieldset class="govuk-fieldset inline-edit" id="dateOfBirthGroup">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                <span class="govuk-caption-xl">
+                  {% if user.thirdParty == 'Yes' %}
+                    {{ texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION_OB }}
+                  {% else %}
+                    {{ texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION }}
+                  {% endif %}
+                </span>
+                {% if user.thirdParty == 'Yes' %}
+                  {{ texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING_OB }}
+                {% else %}
+                  {{ texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING }}
+                {% endif %}
+              </h1>
+            </legend>
+
+            {% if user.thirdParty == 'Yes' %}
+              {% if dobError == undefined %}
+                <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE_OB' | translate(texts, { formattedDob: formattedDob }) }}</p>
+                <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE_OB' | translate(texts, { currentAge: currentAge }) }}</p>
+              {% endif %}
+              <p><strong class="govuk-body govuk-!-font-weight-bold">{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE_OB }}</strong></p>
+            {% else %}
+              {% if dobError == undefined %}
+                <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE' | translate(texts, { formattedDob: formattedDob }) }}</p>
+                <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE' | translate(texts, { currentAge: currentAge }) }}</p>
+              {% endif %}
+              <p><strong class="govuk-body govuk-!-font-weight-bold">{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE }}</strong></p>
+            {% endif %}
 
             <label class="govuk-label govuk-!-font-weight-bold">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_SUBTITLE }}</label>
 
             <div class="govuk-grid-row inline-section primary {% if errors.items %}closed govuk-error{% endif %} " id="dateOfBirthGroup">
               <div class="govuk-grid-column-one-half govuk-body">{{ formattedDob }}</div>
               <div class="govuk-grid-column-one-half govuk-body">
-                <a href="#dateOfBirthGroup" class="govuk-link inline-edit-toggle" id="changeDob">{{ texts.INTERFACE.FORM_CHANGE_LABEL }}</a>
+                <a href="#dateOfBirthGroup" class="govuk-link inline-edit-toggle" id="changeDob">{{ texts.INTERFACE.FORM_CHANGE_LABEL }}<span class="govuk-visually-hidden">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_SUBTITLE }}</span></a>
               </div>
             </div>
 

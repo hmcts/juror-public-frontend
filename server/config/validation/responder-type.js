@@ -12,7 +12,8 @@
           allowEmpty: false,
           message: {
             summary: filters.translate('VALIDATION.RESPONDER_TYPE.MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.RESPONDER_TYPE.MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.RESPONDER_TYPE.MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summaryLink: 'thirdParty_No'
           }
         },
       },

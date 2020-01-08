@@ -40,15 +40,15 @@
 
     "REASONS": {
       "NOT_HERE": "Nid yw'r unigolyn yma",
-      "NOT_HERE_HELP": "Efallai ei fod yn teithio, yn yr ysbyty, neu i ffwrdd am fwy nag ychydig ddyddiau am reswm arall",
+      "NOT_HERE_HELP": "Efallai ei fod yn teithio, yn yr ysbyty, neu i ffwrdd am fwy nag ychydig ddyddiau am reswm arall.",
 
-      "REQUIRE_ASSISTANCE": "Nid yw'r unigolyn yn gallu ymateb dros ei hun.",
+      "REQUIRE_ASSISTANCE": "Nid yw'r unigolyn yn gallu ymateb dros ei hun",
       "REQUIRE_ASSISTANCE_HELP": "Nid yw'r unigolyn â'r gallu i ymateb drosto'i hun. Efallai bod hyn oherwydd bod ganddo anabledd neu nam.",
 
       "DECEASED": "Mae'r unigolyn wedi marw",
 
       "OTHER": "Arall",
-      "OTHER_INFO": "Rhowch reswm"
+      "OTHER_INFO": "Rhowch reswm."
     }
   },
 

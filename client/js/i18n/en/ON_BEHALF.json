@@ -40,15 +40,15 @@
 
     "REASONS": {
       "NOT_HERE": "The person isn’t here",
-      "NOT_HERE_HELP": "They might be travelling, in hospital or away for more than a few days for some other reason",
+      "NOT_HERE_HELP": "They might be travelling, in hospital or away for more than a few days for some other reason.",
 
       "REQUIRE_ASSISTANCE": "The person is unable to reply by themselves",
-      "REQUIRE_ASSISTANCE_HELP": "The person can't reply for themself. This might be because they have a disability or impairment",
+      "REQUIRE_ASSISTANCE_HELP": "The person can't reply for themself. This might be because they have a disability or impairment.",
 
       "DECEASED": "The person has died",
 
       "OTHER": "Other",
-      "OTHER_INFO": "Please provide the reason"
+      "OTHER_INFO": "Please provide the reason."
     }
   },
 

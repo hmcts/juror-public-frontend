@@ -25,73 +25,74 @@
 
       <form action="{{ url('steps.your.details.address.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
+        {# Set Address Line 1 error #}
+        {% if errors.items['addressLineOne'] %}
+          {% set address1Error = {"text": errors.items['addressLineOne'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% else %}
+          {% set address1Error = undefined %}
+        {% endif %}
+
+        {# Set Address Line 2 error #}
+        {% if errors.items['addressLineTwo'] %}
+          {% set address2Error = {"text": errors.items['addressLineTwo'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% else %}
+          {% set address2Error = undefined %}
+        {% endif %}
+
+        {# Set Address Line 3 error #}
+        {% if errors.items['addressLineThree'] %}
+          {% set address3Error = {"text": errors.items['addressLineThree'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% else %}
+          {% set address3Error = undefined %}
+        {% endif %}
+
+        {# Set Town or City error #}
+        {% if errors.items['addressTown'] %}
+          {% set townError = {"text": errors.items['addressTown'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% else %}
+          {% set townError = undefined %}
+        {% endif %}
+
+        {# Set County error #}
+        {% if errors.items['addressCounty'] %}
+          {% set countyError = {"text": errors.items['addressCounty'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% else %}
+          {% set countyError = undefined %}
+        {% endif %}
+
+        {# Set Postcode error #}
+        {% if errors.items['addressPostcode'] %}
+          {% set postcodeError = {"text": errors.items['addressPostcode'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% else %}
+          {% set postcodeError = undefined %}
+        {% endif %}
+
         <div class="govuk-form-group {% if errors.addressError %}govuk-form-group--error{% endif %}" id="titleGroup">
 
-          <h1 class="govuk-heading-xl">
-            <span class="govuk-caption-xl">
-              {{- texts.YOUR_DETAILS_PAGE.CAPTION -}}
-            </span>
-            {{- texts.YOUR_DETAILS_PAGE.HEADING_ADDRESS -}}
-          </h1>
-
-          {# Address #}
           <fieldset class="inline-edit govuk-fieldset" id="addressGroup">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                <span class="govuk-caption-xl">
+                  {{- texts.YOUR_DETAILS_PAGE.CAPTION -}}
+                </span>
+                {{- texts.YOUR_DETAILS_PAGE.HEADING_ADDRESS -}}
+              </h1>
+            </legend>
 
             <div class="govuk-grid-row inline-section primary {% if errors.addressError %}closed{% endif %}">
               <div class="govuk-grid-column-one-half govuk-body">{{ user.addressRender | safe }}</div>
               <div class="govuk-grid-column-one-half govuk-body">
-                <a href="#addressGroup" class="govuk-link inline-edit-toggle" id="changeAddress" {% if trackingCode %}onclick="trackVirtualPageViews('Change - address')"{% endif %}>{{ texts.INTERFACE.FORM_CHANGE_LABEL }}</a>
+                <a href="#addressGroup" class="govuk-link inline-edit-toggle" id="changeAddress" {% if trackingCode %}onclick="trackVirtualPageViews('Change - address')"{% endif %}>{{ texts.INTERFACE.FORM_CHANGE_LABEL }}<span class="govuk-visually-hidden">{{ texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LABEL }}</span></a>
               </div>
             </div>
-
-            {# Set Address Line 1 error #}
-            {% if errors.items['addressLineOne'] %}
-              {% set address1Error = {"text": errors.items['addressLineOne'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
-            {% else %}
-              {% set address1Error = undefined %}
-            {% endif %}
-
-            {# Set Address Line 2 error #}
-            {% if errors.items['addressLineTwo'] %}
-              {% set address2Error = {"text": errors.items['addressLineTwo'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
-            {% else %}
-              {% set address2Error = undefined %}
-            {% endif %}
-
-            {# Set Address Line 3 error #}
-            {% if errors.items['addressLineThree'] %}
-              {% set address3Error = {"text": errors.items['addressLineThree'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
-            {% else %}
-              {% set address3Error = undefined %}
-            {% endif %}
-
-            {# Set Town or City error #}
-            {% if errors.items['addressTown'] %}
-              {% set townError = {"text": errors.items['addressTown'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
-            {% else %}
-              {% set townError = undefined %}
-            {% endif %}
-
-            {# Set County error #}
-            {% if errors.items['addressCounty'] %}
-              {% set countyError = {"text": errors.items['addressCounty'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
-            {% else %}
-              {% set countyError = undefined %}
-            {% endif %}
-
-            {# Set Postcode error #}
-            {% if errors.items['addressPostcode'] %}
-              {% set postcodeError = {"text": errors.items['addressPostcode'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
-            {% else %}
-              {% set postcodeError = undefined %}
-            {% endif %}
 
             <div class="inline-section secondary {% if errors.addressError %}open{% endif %}">
 
               {# Address Line 1 #}
               {{ govukInput({
                 label: {
-                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_ONE_LABEL + '<span class="govuk-visually-hidden">line 1 of 3</span>'
+                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_ONE_LABEL
                 },
                 id: "addressLineOne",
                 name: "addressLineOne",
@@ -106,7 +107,7 @@
               {# Address Line 2 #}
               {{ govukInput({
                 label: {
-                  html: '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_TWO_LABEL + ' line 2 of 3</span>'
+                  html: '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_TWO_LABEL
                 },
                 id: "addressLineTwo",
                 name: "addressLineTwo",
@@ -121,7 +122,7 @@
               {# Address Line 3 #}
               {{ govukInput({
                 label: {
-                  html: '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_THREE_LABEL + ' line 3 of 3</span>'
+                  html: '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_THREE_LABEL
                 },
                 id: "addressLineThree",
                 name: "addressLineThree",

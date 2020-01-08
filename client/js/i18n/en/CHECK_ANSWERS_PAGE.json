@@ -7,6 +7,7 @@
   "DETAILS_HEADER_OB": "You gave us these details about the person you're replying for",
   "DETAILS_HEADER_NORMAL": "You gave us these juror details",
   "CHANGE_LINK": "Change",
+  "CHANGE_HIDDEN": " your answer for this question",
   "NAME_LABEL": "Name",
   "ADDRESS_LABEL": "Address",
   "DOB_LABEL": "Date of birth",
@@ -69,16 +70,19 @@
   "OB_ASSISTANCE_QUESTION_2": "Please tell us about any special arrangements or help the person you're answering for needs while they're doing jury service",
   "YES_ASSISTANCE": "Yes",
   "NO_ASSISTANCE": "No",
+
   "WARNING": "Warning",
   "WARNING_TEXT_1": "It is a criminal offence, and on conviction you may have to pay a fine of up to £1,000, if:",
   "JUROR_WARNING_TEXT_2": "you refuse to provide information to determine whether you are qualified to be a juror, or",
   "JUROR_WARNING_TEXT_3": "you or somebody on your behalf gives false information to evade jury service.",
   "JUROR_CONFIRM_TRUE": "The information I have given is true to the best of my knowledge.",
   "JUROR_UNDERSTAND_MUST_BE_TRUE": "I understand that the answers I have given may be checked and that I may be prosecuted if I have given false information on purpose.",
+  
   "OB_WARNING_TEXT_2": "you refuse to provide information to determine whether you are qualified to be a juror, or",
   "OB_WARNING_TEXT_3": "you or somebody on your behalf gives false information to evade jury service.",
   "OB_CONFIRM_TRUE": "The answers I have given for the person I'm replying for are true as far as I know.",
   "OB_UNDERSTAND_MUST_BE_TRUE": "I understand that the answers I have given may be checked and that I may be prosecuted if I have given false information on purpose.",
+  
   "OTHER": "Other",
   "EMPLOYED_YES": "Yes",
   "OB_EMPLOYED_YES": "Yes",

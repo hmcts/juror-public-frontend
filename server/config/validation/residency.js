@@ -12,7 +12,8 @@
           allowEmpty: false,
           message: {
             summary: filters.translate('VALIDATION.QUALIFY.WHERE_YOU_LIVE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summaryLink: 'livedConsecutive-Yes'
           }
         },
       },

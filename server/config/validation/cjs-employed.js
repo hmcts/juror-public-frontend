@@ -19,7 +19,8 @@
           message: {
             summary: filters.translate('VALIDATION.CJS_EMPLOYED.WORKED_FOR'
               + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.CJS_EMPLOYED.CHOOSE_ONE_OR_MORE', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.CJS_EMPLOYED.CHOOSE_ONE_OR_MORE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summaryLink: 'cjsEmployer-police'
           }
         },
       },
@@ -65,7 +66,8 @@
           message: {
             summary: filters.translate('VALIDATION.CJS_EMPLOYED.EMPLOYED'
               + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summaryLink: 'employedCjs-Yes'
           }
         }
       },

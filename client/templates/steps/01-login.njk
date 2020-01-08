@@ -67,26 +67,33 @@
 
         <div class="govuk-form-group {% if jurorNumberError or lastNameError or postcodeError %}govuk-form-group--error{% endif %}" id="loginGroup">
 
-          <h1 class="govuk-heading-xl">
-            {% if user.thirdParty == 'Yes' %}
-              {{ texts.LOGIN_PAGE.HEADING_OB }}
-            {% else %}
-              {{ texts.LOGIN_PAGE.HEADING }}
-            {% endif %}
-          </h1>
-
-          <p class="govuk-body">             
-            {% if user.thirdParty == 'Yes' %}
-              {{ texts.LOGIN_PAGE.SAMPLE_TITLE_OB }}
-            {% else %}
-              {{ texts.LOGIN_PAGE.SAMPLE_TITLE }}
-            {% endif %}
-          </p>
-          
-          <img src="/img/example-juror-number.png" alt="{{ texts.LOGIN_PAGE.SAMPLE_IMAGE_ALT }}" title="{{ texts.LOGIN_PAGE.IMAGE_TITLE }}">
-          <br><br>
-
           <fieldset class="govuk-fieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                <span>
+                  {% if user.thirdParty == 'Yes' %}
+                    {{ texts.LOGIN_PAGE.HEADING_OB }}
+                  {% else %}
+                    {{ texts.LOGIN_PAGE.HEADING }}
+                  {% endif %}
+                </span>
+              </h1>
+            </legend>
+              
+            <span class="govuk-hint" id="login-hint">
+              <p class="govuk-body">             
+                {% if user.thirdParty == 'Yes' %}
+                  {{ texts.LOGIN_PAGE.SAMPLE_TITLE_OB }}
+                {% else %}
+                  {{ texts.LOGIN_PAGE.SAMPLE_TITLE }}
+                {% endif %}
+              </p>
+
+              <img src="/img/example-juror-number.png" alt="{{ texts.LOGIN_PAGE.SAMPLE_IMAGE_ALT }}" title="{{ texts.LOGIN_PAGE.IMAGE_TITLE }}">
+              <br><br>
+            </span>
+              
 
             {# Juror Number #}
             {{ govukInput({

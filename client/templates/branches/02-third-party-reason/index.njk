@@ -90,11 +90,13 @@
 
         <div class="govuk-form-group {% if errors.items['thirdPartyReason'] or errors.items['thirdPartyOtherReason'] %}govuk-form-group--error{% endif %}" id="thirdPartyReasonGroup">
           
-          <h1 class="govuk-heading-xl">
-            {{ texts.ON_BEHALF.THIRD_PARTY_REASON.HEADER }}
-          </h1>
-
           <fieldset class="govuk-fieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                {{ texts.ON_BEHALF.THIRD_PARTY_REASON.HEADER }}
+              </h1>
+            </legend>
 
             {{ govukRadios({
               id: "thirdPartyReason",
