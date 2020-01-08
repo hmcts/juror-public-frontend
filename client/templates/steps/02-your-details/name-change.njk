@@ -1,0 +1,156 @@
+{% extends "../../layouts/default-gds.njk" %}
+
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  {% include "../../includes/title-error.njk" %}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Personal Details Name Change{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "../../includes/errors-gds.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="{{ url('steps.your.details.name-change.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+
+        {# Set Title error #}
+        {% if errors.items['title'] %}
+          {% set titleError = {"text": errors.items['title'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% else %}
+          {% set titleError = undefined %}
+        {% endif %}
+
+        {# Set First Name error #}
+        {% if errors.items['firstName'] %}
+          {% set firstNameError = {"text": errors.items['firstName'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% else %}
+          {% set firstNameError = undefined %}
+        {% endif %}
+
+        {# Set Last Name error #}
+        {% if errors.items['lastName'] %}
+          {% set lastNameError = {"text": errors.items['lastName'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% else %}
+          {% set lastNameError = undefined %}
+        {% endif %}
+
+        <div class="govuk-form-group {% if errors.nameError %}govuk-form-group--error{% endif %}" id="nameGroup">
+
+          <fieldset class="inline-edit govuk-fieldset" id="nameFieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                <span class="govuk-caption-xl">
+                  {{ texts.YOUR_DETAILS_PAGE.CAPTION }}
+                </span>
+                {{ texts.YOUR_DETAILS_PAGE.HEADING_NAME_CHANGE }}
+              </h1>
+            </legend>
+
+            {#
+            <div class="govuk-grid-row inline-section primary {% if errors.nameError %}closed{% endif %}">
+              <div class="govuk-grid-column-one-half govuk-body">{{ user.nameRender }}</div>
+              <div class="govuk-grid-column-one-half govuk-body">
+                <a href="#nameGroup" class="govuk-link inline-edit-toggle" id="changeName" {% if trackingCode %}onclick="trackVirtualPageViews('Change - name')"{% endif %}>{{ texts.INTERFACE.FORM_CHANGE_LABEL }}<span class="govuk-visually-hidden">{{ texts.YOUR_DETAILS_PAGE.FORM_NAME_LABEL }}</span></a>
+              </div>
+            </div>
+            #}
+
+            <div class="govuk-body">
+
+              {# Title #}
+              {{ govukInput({
+                label: {
+                  text: texts.YOUR_DETAILS_PAGE.FORM_TITLE_LABEL
+                },
+                id: "title",
+                name: "title",
+                errorMessage: titleError,
+                attributes: {
+                  maxlength: "11"
+                },
+                classes: "govuk-!-width-one-third",
+                autocomplete: "off",
+                value: user.title
+              }) }}
+
+              {# First Name #}
+              {{ govukInput({
+                label: {
+                  text: texts.YOUR_DETAILS_PAGE.FORM_FIRST_NAME_LABEL
+                },
+                id: "firstName",
+                name: "firstName",
+                errorMessage: firstNameError,
+                attributes: {
+                  maxlength: "20"
+                },
+                autocomplete: "off",
+                value: user.firstName
+              }) }}
+
+              {# Last Name #}
+              {% if errors.items['lastName'] %}
+                {% set lastNameError = {"text": errors.items['lastName'][0].details} %}
+              {% else %}
+                {% set lastNameError = undefined %}
+              {% endif %}
+              
+              {# Last Name #}
+              {{ govukInput({
+                label: {
+                  text: texts.YOUR_DETAILS_PAGE.FORM_LAST_NAME_LABEL
+                },
+                id: "lastName",
+                name: "lastName",
+                errorMessage: lastNameError,
+                attributes: {
+                  maxlength: "20"
+                },
+                autocomplete: "off",
+                value: user.lastName
+              }) }}
+
+            </div>
+
+          </fieldset>
+
+        </div>
+
+        {# Info about change of name #}
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my name?')"{% endif %}>
+              {{- texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_TITLE -}}
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_PARAGRAPH_1 }}
+          </div>
+        </details>
+
+        {# Submit form #}
+        {{ govukButton({
+            text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
+      
+    </div>
+  </div>
+
+{% endblock %}

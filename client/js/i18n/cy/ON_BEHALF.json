@@ -59,14 +59,32 @@
     "NAME_INTRO_PARAGRAPH": "Gwiriwch fod enw a chyfeiriad yr unigolyn rydych yn ymateb ar ei ran yn gywir.",
 
     "NAME_HEADER": "Gwiriwch fod enw'r unigolyn rydych chi'n ymateb ar ei ran yn gywir",
+    "NAME_CONFIRM_HEADER": "A yw'r enw sydd gennym ar ei gyfer yn gywir?",
+    "NAME_CHANGE_HEADER": "Beth yw ei enw?",
+
+    "FORM_CONFIRM_NAME_YES_LABEL": "Ydy",
+    "FORM_CONFIRM_NAME_NO_LABEL": "Nac ydy",
+
     "FORM_NAME_LABEL": "Enw",
     "FORM_TITLE_LABEL": "Teitl (dewisol)",
     "FORM_FIRST_NAME_LABEL": "Enw cyntaf",
     "FORM_LAST_NAME_LABEL": "Cyfenw",
-    "HELPER_CHANGE_NAME_TITLE": "Beth sy'n digwydd os yw'r unigolyn rwy'n ymateb ar ei ran wedi newid ei enw?",
-    "HELPER_CHANGE_NAME_PARAGRAPH_1": "Os yw enw'r unigolyn wedi newid ac mae'n wahanol i'r enw ar ei lythyr gwŷs rheithgor, nodwch yr enw cywir yma. Byddwn yn cysylltu hwyrach ymlaen i wirio hyn. Er enghraifft, efallai y byddwn eisiau gweld tystysgrif briodas neu dystysgrif gweithred newid enw. Parhewch gyda'r ffurflen ar-lein yn awr.",
+
+    "HELPER_CHANGE_NAME_TITLE": "Beth fydd yn digwydd os ydyw wedi newid ei enw?",
+    "HELPER_CHANGE_NAME_PARAGRAPH_1": "Os yw ei enw wedi newid, byddwn yn cysylltu â chi i wirio hynny. Efallai y byddwn yn gofyn am dystysgrif briodas, tystysgrif partneriaeth sifil neu weithred newid enw.",
     
     "ADDRESS_HEADER": "Gwiriwch fod cyfeiriad yr unigolyn rydych chi'n ymateb ar ei ran yn gywir",
+    "ADDRESS_CONFIRM_HEADER": "Ei gyfeiriad ef yw hwn?",
+    "ADDRESS_CHANGE_HEADER": "Beth yw ei gyfeiriad?",
+
+    "FORM_CONFIRM_ADDRESS_YES_LABEL": "Ie",
+    "FORM_CONFIRM_ADDRESS_NO_LABEL": "Na",
+
+    "HELPER_CONFIRM_ADDRESS_TITLE": "A fydd ei gyfeiriad yn newid yn fuan?",
+    "HELPER_CONFIRM_ADDRESS_PARAGRAPH_1": "Os bydd ei gyfeiriad yn newid yn fuan, nodwch ei gyfeiriad presennol, er mwyn i ni allu cysylltu ag ef.",
+    "HELPER_CONFIRM_ADDRESS_PARAGRAPH_2": "Ar ôl iddo symud, cysylltwch â'r Swyddfa Wysio Rheithgorau i ddarparu ei gyfeiriad newydd.",
+    "HELPER_CONFIRM_ADDRESS_PARAGRAPH_3": "Os ydyw yn symud o'r ardal lle mae'n byw ar hyn o bryd, mae'n bosibl y byddwn yn newid lleoliad ei wasanaeth rheithgor.",
+
     "FORM_ADDRESS_LABEL": "Cyfeiriad",
     "FORM_ADDRESS_LINE_ONE_LABEL": "Adeilad a'r stryd",
     "FORM_ADDRESS_LINE_TWO_LABEL": "Cyfeiriad llinell 2",
@@ -74,9 +92,11 @@
     "FORM_ADDRESS_TOWN_LABEL": "Tref neu ddinas",
     "FORM_ADDRESS_COUNTY_LABEL": "Sir (dewisol)",
     "FORM_ADDRESS_POSTCODE_LABEL": "Cod post",
-    "HELPER_CHANGE_ADDRESS_TITLE": "Beth sy'n digwydd os yw'r unigolyn rwy'n ymateb ar ei ran wedi newid ei gyfeiriad?",
-    "HELPER_CHANGE_ADDRESS_PARAGRAPH_1": "Os yw cyfeiriad yr unigolyn wedi newid, efallai y bydd modd i ni symud y gwasanaeth rheithgor i lys sy'n agosach at y cyfeiriad newydd. Byddwn yn cysylltu ynglŷn â hyn hwyrach ymlaen. Parhewch gyda'r ffurflen ar-lein yn awr.",
-    
+
+    "HELPER_CHANGE_ADDRESS_TITLE": "Beth fydd yn digwydd os ydyw wedi newid ei gyfeiriad?",
+    "HELPER_CHANGE_ADDRESS_PARAGRAPH_1": "Os yw ei gyfeiriad wedi newid, efallai y byddwn yn gallu symud ei wasanaeth rheithgor i Lys yn nes at ei gyfeiriad newydd.",
+    "HELPER_CHANGE_ADDRESS_PARAGRAPH_2": "Byddwn yn cysylltu ag ef yn ddiweddarach ynglŷn â hyn. Parhewch i ddefnyddio'r ffurflen ar-lein ar hyn o bryd.",
+
     "HELPER_CHANGE_NAME_ADDRESS_TITLE": "Beth sy’n digwydd os yw’r unigolyn rwy’n ymateb ar ei ran wedi newid ei enw neu gyfeiriad?",
     "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_1": "Os yw enw’r unigolyn wedi newid ac mae'n wahanol i'r enw ar ei lythyr gwŷs rheithgor, nodwch yr enw cywir yma. Byddwn yn cysylltu hwyrach ymlaen i wirio hyn. Er enghraifft, efallai y byddwn eisiau gweld tystysgrif briodas neu dystysgrif gweithred newid enw. Parhewch gyda’r ffurflen ar-lein yn awr.",
     "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_2": "Os ydy cyfeiriad yr unigolyn wedi newid, efallai y bydd modd i ni symud y gwasanaeth rheithgor i lys sy'n agosach at y cyfeiriad newydd. Byddwn yn cysylltu ynglŷn â hyn hwyrach ymlaen.  Parhewch gyda’r ffurflen ar-lein yn awr.",
@@ -89,7 +109,10 @@
     "FORM_DOB_HELPER_TITLE": "Cymorth gyda'ch dyddiad geni",
     "FORM_DOB_HELPER_PARAGRAPH_1": "Nodwch ddyddiad geni'r unigolyn er mwyn i ni wirio os ydynt o'r oedran priodol i wasanaethu ar reithgor.",
     "FORM_DOB_HELPER_PARAGRAPH_2": "Os nad yw'r unigolyn yn gwybod ei union ddyddiad geni, defnyddiwch yr un maent yn ei nodi ar ddogfennau swyddogol megis pasbort neu drwydded yrru.",
-    "FORM_DOB_HELPER_PARAGRAPH_3": "Os na allwch roi dyddiad geni ar gyfer yr unigolyn, efallai y bydd yn rhaid ichi anfon copïau o ddogfennau adnabod drwy'r post. Bydd yn rhaid i chi ymateb i'r wŷs gan ddefnyddio'r ffurflen a anfonwyd drwy'r post yn hytrach nag ar-lein. Os oes arnoch angen cymorth, ffoniwch ni ar:"
+    "FORM_DOB_HELPER_PARAGRAPH_3": "Os na allwch roi dyddiad geni ar gyfer yr unigolyn, efallai y bydd yn rhaid ichi anfon copïau o ddogfennau adnabod drwy'r post. Bydd yn rhaid i chi ymateb i'r wŷs gan ddefnyddio'r ffurflen a anfonwyd drwy'r post yn hytrach nag ar-lein. Os oes arnoch angen cymorth, ffoniwch ni ar:",
+  
+    "YES": "Yes",
+    "NO": "No"
   },
 
   "THIRD_PARTY_CONTACT_DETAILS": {

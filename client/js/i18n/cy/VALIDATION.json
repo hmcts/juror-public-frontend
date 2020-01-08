@@ -3,6 +3,7 @@
   "PROVIDE_DETAILS": "^Rhowch fanylion",
   "GIVE_DETAILS": "Rhowch fanylion",
   "PLEASE_ANSWER": "Atebwch y cwestiwn hwn os gwelwch yn dda",
+  
 
   "PRESENCE": "^Nodwch eich {{ field }}",
   "DATETIME": "^Gwiriwch eich {{ field }}",
@@ -23,7 +24,7 @@
   "MAX_TEXT_CHARS_HUNDRED": "Gall eich ateb gynnwys hyd at 100 o nodau.",
 
   "RESPONDER_TYPE": {
-    "MISSING": "Dewiswch un o’r opsiynau canlynol"
+    "MISSING": "Dewiswch un o'r opsiynau canlynol"
   },
 
   "LOGIN": {
@@ -45,6 +46,8 @@
   },
 
   "YOUR_DETAILS": {
+    "TITLE_CHECK": "Please enter a valid title",
+    "TITLE_CHECK_INVALID": "Please enter a valid title",
     "FIRST_NAME_CHECK": "Gwiriwch eich enw cyntaf",
     "FIRST_NAME_CHECK_OB": "Gwiriwch enw cyntaf yr unigolyn",
     "FIRST_NAME_MISSING": "Nodwch eich enw cyntaf",
@@ -53,10 +56,13 @@
     "LAST_NAME_CHECK_OB": "Gwiriwch enw cyntaf yr unigolyn",
     "LAST_NAME_MISSING": "Nodwch eich cyfenw",
     "LAST_NAME_MISSING_OB": "Nodwch gyfenw’r unigolyn",
+    "NAME_CONFIRM_MISSING": "Dewiswch un o'r opsiynau canlynol",
+    "ADDRESS_CONFIRM_MISSING": "Dewiswch un o'r opsiynau canlynol",
     "ADDRESS_LINE_ONE_CHECK": "Gwiriwch eich cyfeiriad",
     "ADDRESS_LINE_ONE_CHECK_OB": "Gwiriwch y cyfeiriad",
     "ADDRESS_LINE_ONE_MISSING": "Nodwch linell gyntaf eich cyfeiriad",
     "ADDRESS_LINE_ONE_MISSING_OB": "Nodwch linell gyntaf eich cyfeiriad",
+    "ADDRESS_LINE_TWO_CHECK": "Please enter your building and street",
     "ADDRESS_TOWN_CHECK": "Gwiriwch eich tref neu ddinas",
     "ADDRESS_TOWN_CHECK_OB": "Gwiriwch y dref neu'r ddinas",
     "ADDRESS_TOWN_MISSING": "Nodwch y dref neu’r ddinas lle rydych yn byw",
@@ -71,6 +77,7 @@
     "MAIN_PHONE_CHECK_OB": "Gwiriwch y prif rif ffôn",
     "MAIN_PHONE_MISSING": "Nodwch y rhif ffôn byddwch yn ei ddefnyddio fwyaf.",
     "MAIN_PHONE_MISSING_OB": "Nodwch y rhif ffôn byddwch yn ei ddefnyddio fwyaf.",
+    "OTHER_PHONE_CHECK": "Please check your other phone number",
     "EMAIL_CHECK": "Gwiriwch eich cyfeiriad e-bost.",
     "EMAIL_CHECK_OB": "Gwiriwch y cyfeiriad e-bost",
     "EMAIL_CHECK_MISSING": "Nodwch eich cyfeiriad e-bost.",
@@ -248,6 +255,11 @@
     },
 
     "THIRD_PARTY_PERSONAL_DETAILS": {
+      "NAME_CONFIRM_MISSING": "Dewiswch un o'r opsiynau canlynol",
+
+      "TITLE_CHECK": "Please check the person's title",
+      "TITLE_CHECK_INVALID": "Please enter a valid title",
+
       "FIRST_NAME_CHECK": "Gwiriwch enw cyntaf yr unigolyn",
       "FIRST_NAME_CHECK_MISSING": "Nodwch enw cyntaf yr unigolyn",
       "FIRST_NAME_CHECK_INVALID": "Gwiriwch enw cyntaf yr unigolyn",
@@ -256,9 +268,17 @@
       "LAST_NAME_CHECK_MISSING": "Nodwch gyfenw’r unigolyn",
       "LAST_NAME_CHECK_INVALID": "Gwiriwch enw cyntaf yr unigolyn",
 
+      "ADDRESS_CONFIRM_MISSING": "Dewiswch un o'r opsiynau canlynol",
+
       "ADDRESS_LINE_ONE_CHECK": "Gwiriwch y cyfeiriad",
       "ADDRESS_LINE_ONE_CHECK_INVALID": "Gwiriwch y cyfeiriad",
       "ADDRESS_LINE_ONE_MISSING": "Nodwch linell gyntaf eich cyfeiriad",
+
+      "ADDRESS_LINE_TWO_CHECK": "Please check the second line of the address",
+      "ADDRESS_LINE_TWO_CHECK_INVALID": "Please check the second line of the address",
+
+      "ADDRESS_LINE_THREE_CHECK": "Please check the third line of the address",
+      "ADDRESS_LINE_THREE_CHECK_INVALID": "Please check the third line of the address",
 
       "ADDRESS_TOWN_CHECK": "Gwiriwch y dref neu'r ddinas",
       "ADDRESS_TOWN_CHECK_MISSING": "Nodwch y dref neu'r ddinas lle rydych yn byw",

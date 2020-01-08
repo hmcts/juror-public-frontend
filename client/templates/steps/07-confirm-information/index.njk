@@ -838,19 +838,14 @@
                   <label class="govuk-label govuk-checkboxes__label" for="informationConfirmed">
                     {% if user.thirdParty == 'Yes' %}
                       {{ texts.CHECK_ANSWERS_PAGE.OB_CONFIRM_TRUE }}
+                      <p>{{ texts.CHECK_ANSWERS_PAGE.OB_UNDERSTAND_MUST_BE_TRUE }}</p>
                     {% else %}
                       {{ texts.CHECK_ANSWERS_PAGE.JUROR_CONFIRM_TRUE }}
+                      <p>{{ texts.CHECK_ANSWERS_PAGE.JUROR_UNDERSTAND_MUST_BE_TRUE }}</p>
                     {% endif %}
                   </label>
                 </div>
               </div>
-              <p class="govuk-label">
-                {% if user.thirdParty == 'Yes' %}
-                  {{ texts.CHECK_ANSWERS_PAGE.OB_UNDERSTAND_MUST_BE_TRUE }}
-                {% else %}
-                  {{ texts.CHECK_ANSWERS_PAGE.JUROR_UNDERSTAND_MUST_BE_TRUE }}
-                {% endif %}
-              </p>
             </fieldset>
 
           </div>
