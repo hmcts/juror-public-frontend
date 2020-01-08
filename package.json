@@ -1,6 +1,6 @@
 {
   "name": "juror-public-front-end",
-  "version": "2.14.116-development",
+  "version": "2.15.129-development",
   "description": "A front-end for responding to jury summons",
   "main": "server/index.js",
   "scripts": {

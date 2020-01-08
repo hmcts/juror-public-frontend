@@ -25,116 +25,71 @@
 
       <form action="{{ url('branches.third.party.personal.details.name.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-        {# Set Title error #}
-        {% if errors.items['title'] %}
-          {% set titleError = {"text": errors.items['title'][0].details} %}
+        {# Set radio labels #}
+        {% set radioYesLabel = texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_CONFIRM_NAME_YES_LABEL %}
+        {% set radioNoLabel = texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_CONFIRM_NAME_NO_LABEL %}
+
+        {# Set radio values #}
+        {% if user.nameConfirm === texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.YES %}
+          {% set radioYesChecked = 'checked="checked"' %}
         {% else %}
-          {% set titleError = undefined %}
+          {% set radioYesChecked = undefined %}
+        {% endif %}
+        {% if user.nameConfirm === texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.NO %}
+          {% set radioNoChecked = 'checked="checked"' %}
+        {% else %}
+          {% set radioNoChecked = undefined %}
         {% endif %}
 
-        {# Set First Name error #}
-        {% if errors.items['firstName'] %}
-          {% set firstNameError = {"text": errors.items['firstName'][0].details} %}
-        {% else %}
-          {% set firstNameError = undefined %}
+        {# Set radio errors #}
+        {% set radioAnswerError = undefined %}
+        {% if errors.items['nameConfirm']%}
+          {% set radioAnswerError = {text: errors.items['nameConfirm'][0].details} %}
         {% endif %}
 
-        {# Set Last Name error #}
-        {% if errors.items['lastName'] %}
-          {% set lastNameError = {"text": errors.items['lastName'][0].details} %}
-        {% else %}
-          {% set lastNameError = undefined %}
-        {% endif %}
+        <div class="govuk-form-group {% if errors.nameError %}govuk-form-group--error{% endif %}" id="nameGroup">
 
-        <div class="govuk-form-group {% if errors.nameError %}govuk-form-group--error{% endif %}">
-
-          {# Name #}
-          <fieldset class="inline-edit govuk-fieldset" id="nameGroup">
+          <fieldset class="govuk-fieldset" id="nameFieldset">
 
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
               <h1 class="govuk-fieldset__heading">
                 <span class="govuk-caption-xl">
                   {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.CAPTION }}
                 </span>
-                {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.NAME_HEADER }}
+                {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.NAME_CONFIRM_HEADER }}
               </h1>
             </legend>
 
-            <strong class="govuk-body govuk-!-font-weight-bold">
-              {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_NAME_LABEL }}
-            </strong>
+            <div class="govuk-body" id="fullName">{{ user.nameRender | safe }}</div>
 
-            <div class="govuk-grid-row inline-section primary {% if errors.nameError %}closed{% endif %}">
-              <div class="govuk-grid-column-one-half govuk-body" id="name">{{ user.nameRender }}</div>
-              <div class="govuk-grid-column-one-half govuk-body">
-                <a href="#nameGroup" class="govuk-link inline-edit-toggle" id="changeName">{{ texts.INTERFACE.FORM_CHANGE_LABEL }}</a>
+            <div class="govuk-radios" data-module="radios">
+              {% if radioAnswerError %}
+                <span id="nameConfirmError" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">{{texts.ERRORS.HIDDEN_ERROR}}: </span>
+                  {{- radioAnswerError.text -}}
+                </span>
+              {% endif%}
+
+              {# Radio YES #}
+              <div class="govuk-radios__item">    
+                <input class="selection-button-radio govuk-radios__input store-updated-information" id="nameConfirm-Yes" name="nameConfirm" type="radio" value="{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.YES }}" {{radioYesChecked}}}>
+                <label class="govuk-radios__label" for="nameConfirm-Yes">
+                  {{ radioYesLabel }}
+                </label>
               </div>
-            </div>
 
-            <div class="inline-section secondary {% if errors.nameError %}open{% endif %}">
-
-              {# Title #}
-              {{ govukInput({
-                label: {
-                  text: texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_TITLE_LABEL
-                },
-                id: "title",
-                name: "title",
-                errorMessage: titleError,
-                attributes: {
-                  maxlength: "10"
-                },
-                autocomplete: "off",
-                value: user.title
-              }) }}
-
-              {# First Name #}
-              {{ govukInput({
-                label: {
-                  text: texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_FIRST_NAME_LABEL
-                },
-                id: "firstName",
-                name: "firstName",
-                errorMessage: firstNameError,
-                attributes: {
-                  maxlength: "20"
-                },
-                autocomplete: "off",
-                value: user.firstName
-              }) }}
-              
-              {# Last Name #}
-              {{ govukInput({
-                label: {
-                  text: texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_LAST_NAME_LABEL
-                },
-                id: "lastName",
-                name: "lastName",
-                errorMessage: lastNameError,
-                attributes: {
-                  maxlength: "20"
-                },
-                autocomplete: "off",
-                value: user.lastName
-              }) }}
-
+              {# Radio NO #}
+              <div class="govuk-radios__item">
+                <input class="selection-button-radio govuk-radios__input store-updated-information" id="nameConfirm-No" name="nameConfirm" type="radio" value="{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.NO }}" {{radioNoChecked}}}>
+                <label class="govuk-label govuk-radios__label" for="nameConfirm-No">
+                  {{ radioNoLabel }}
+                </label>
+              </div>
             </div>
 
           </fieldset>
 
         </div>
-
-        {# Info about change of name #}
-        <details class="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my name?')"{% endif %}>
-              {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.HELPER_CHANGE_NAME_TITLE }}
-            </span>
-          </summary>
-          <div class="govuk-details__text">
-            {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.HELPER_CHANGE_NAME_PARAGRAPH_1 }}
-          </div>
-        </details>
 
         {# Submit form #}
         {{ govukButton({

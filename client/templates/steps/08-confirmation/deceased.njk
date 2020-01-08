@@ -13,19 +13,9 @@
 
       {% include "./_hero.njk" %}
 
-      <p class="govuk-body govuk-!-font-weight-bold">
-        {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_1 }}<a class="govuk-link" href="/steps/08-confirmation/download">{{ texts.CONFIRMATION.DOWNLOAD_A_COPY_2}}</a>
-        {% if user.thirdParty == 'Yes' %}
-          {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3_OB}}
-        {% else %}
-          {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3}}
-        {% endif %}
-      </p>
-
-      <h2 class="govuk-heading-m">{{ texts.CONFIRMATION.NEXT_INFO }}</h2>
-      <p class="govuk-body">
-        {{ texts.CONFIRMATION.NO_ACTION }}
-      </p>
+      <br/><br/>
+      
+      <h2 class="govuk-heading-l">{{ texts.CONFIRMATION.DECEASED.NO_ACTION }}</h2>
 
       <h2 class="govuk-heading-m">{{ texts.CONFIRMATION.DECEASED.APOLOGY }}</h2>
       <p class="govuk-body">

@@ -3,8 +3,15 @@
   "INTRO_PARAGRAPH": "Gwiriwch fod eich enw yn gywir",
 
   "CAPTION": "Eich Manylion",
+
   "HEADING_NAME": "Gwiriwch fod eich enw yn gywir",
+  "HEADING_NAME_CONFIRM": "A yw'r enw sydd gennym ar eich cyfer chi yn gywir?",
+  "HEADING_NAME_CHANGE" : "Beth yw eich enw?",
+
   "HEADING_ADDRESS": "Gwiriwch fod eich cyfeiriad yn gywir",
+  "HEADING_ADDRESS_CONFIRM": "Eich cyfeiriad chi yw hwn?",
+  "HEADING_ADDRESS_CHANGE": "Beth yw eich cyfeiriad?",
+
   "HEADING_DATE_OF_BIRTH": "Beth yw eich dyddiad geni?",
   "HEADING_PHONE": "Beth yw eich rhif ffôn?",
   "HEADING_EMAIL": "Beth yw eich cyfeiriad e-bost?",
@@ -14,9 +21,25 @@
   "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_2": "Os yw eich cyfeiriad wedi newid, efallai byddwn yn gallu symud eich gwasanaeth rheithgor i lys sy'n agosach at eich cyfeiriad newydd. Byddwn yn cysylltu â chi ynglŷn â hyn hwyrach ymlaen.  Ewch ymlaen gyda’r ffurflen ar-lein nawr.",
 
   "HELPER_CHANGE_NAME_TITLE": "Beth sy'n digwydd os rwyf wedi newid fy enw?",
-  "HELPER_CHANGE_NAME_PARAGRAPH_1": "Os yw eich enw wedi newid ac mae'n wahanol i'r enw ar eich llythyr gwŷs rheithgor, nodwch eich enw cywir yma. Byddwn yn cysylltu â chi hwyrach ymlaen i wirio hyn. Er enghraifft, efallai bydd angen i ni weld tystysgrif priodas neu dystysgrif newid enw. Ewch ymlaen gyda'r ffurflen ar-lein nawr.",
-  "HELPER_CHANGE_ADDRESS_TITLE": "Beth sy'n digwydd os rwyf wedi newid fy nghyfeiriad?",
-  "HELPER_CHANGE_ADDRESS_PARAGRAPH_1": "Os yw eich cyfeiriad wedi newid, efallai byddwn yn gallu symud eich gwasanaeth rheithgor i lys sy'n agosach at eich cyfeiriad newydd. Byddwn yn cysylltu â chi ynglŷn â hyn hwyrach ymlaen.  Ewch ymlaen gyda'r ffurflen ar-lein nawr.",
+  "HELPER_CHANGE_NAME_PARAGRAPH_1": "Os yw eich enw chi wedi newid, byddwn yn cysylltu â chi i wirio hynny. Efallai y byddwn yn gofyn am dystysgrif briodas, tystysgrif partneriaeth sifil neu weithred newid enw.",
+  
+  "HELPER_CONFIRM_ADDRESS_TITLE": "A fydd eich cyfeiriad chi yn newid yn fuan? ",
+  "HELPER_CONFIRM_ADDRESS_PARAGRAPH_1": "Os bydd eich cyfeiriad yn newid yn fuan, nodwch eich cyfeiriad presennol, er mwyn i ni allu cysylltu â chi.",
+  "HELPER_CONFIRM_ADDRESS_PARAGRAPH_2": "Ar ôl i chi symud, cysylltwch â'r Swyddfa Wysio Rheithgorau i ddarparu eich cyfeiriad newydd.",
+  "HELPER_CONFIRM_ADDRESS_PARAGRAPH_3": "Os ydych yn symud o'r ardal lle'r ydych yn byw ar hyn o bryd, mae'n bosibl y byddwn yn newid lleoliad eich gwasanaeth rheithgor.",
+
+  "HELPER_CHANGE_ADDRESS_TITLE": "Beth fydd yn digwydd os ydw i wedi newid fy nghyfeiriad?",
+  "HELPER_CHANGE_ADDRESS_PARAGRAPH_1": "Os yw eich cyfeiriad wedi newid, efallai y byddwn yn gallu symud eich gwasanaeth rheithgor i Lys yn nes at eich cyfeiriad newydd.",
+  "HELPER_CHANGE_ADDRESS_PARAGRAPH_2": "Byddwn yn cysylltu â chi yn ddiweddarach ynglŷn â hyn. Parhewch i ddefnyddio'r ffurflen ar-lein ar hyn o bryd.",
+
+  "FORM_CONFIRM_ADDRESS_YES": "Ie",
+  "FORM_CONFIRM_ADDRESS_NO": "Na",
+
+  "FORM_CONFIRM_NAME_YES": "Ydy",
+  "FORM_CONFIRM_NAME_NO": "Nac ydy",
+
+  "YES": "Yes",
+  "NO": "No",
 
   "FORM_SUB_HEADING_1": "Llenwch y bylchau isod.",
 
@@ -25,7 +48,6 @@
   "FORM_FIRST_NAME_LABEL": "Enw cyntaf",
   "FORM_LAST_NAME_LABEL": "Cyfenw",
 
-
   "FORM_ADDRESS_LABEL": "Cyfeiriad",
   "FORM_ADDRESS_LINE_ONE_LABEL": "Adeilad a’r stryd",
   "FORM_ADDRESS_LINE_TWO_LABEL": "Cyfeiriad llinell 2",
@@ -33,8 +55,6 @@
   "FORM_ADDRESS_TOWN_LABEL": "Tref neu ddinas",
   "FORM_ADDRESS_COUNTY_LABEL": "Sir (dewisol)",
   "FORM_ADDRESS_POSTCODE_LABEL": "Cod post",
-
-
 
   "FORM_DOB_SUBTITLE": "Dyddiad geni",
   "FORM_DOB_HELPER": "Er enghraifft, 15 03 1982",

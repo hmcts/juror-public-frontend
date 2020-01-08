@@ -23,7 +23,6 @@
   "MAX_TEXT_CHARS": "Your answer can be up to 1000 characters.",
   "MAX_TEXT_CHARS_HUNDRED": "Your answer can be up to 100 characters.",
 
-
   "RESPONDER_TYPE": {
     "MISSING": "Please select one of the options"
   },
@@ -57,6 +56,8 @@
     "LAST_NAME_CHECK_OB": "Please check the person's last name",
     "LAST_NAME_MISSING": "Please enter your last name",
     "LAST_NAME_MISSING_OB": "Please enter the person's last name",
+    "NAME_CONFIRM_MISSING": "Please select one of the options",
+    "ADDRESS_CONFIRM_MISSING": "Please select one of the options",
     "ADDRESS_LINE_ONE_CHECK": "Please check your address",
     "ADDRESS_LINE_ONE_CHECK_OB": "Please check the address",
     "ADDRESS_LINE_ONE_MISSING": "Please provide the first line of your address",
@@ -116,6 +117,7 @@
     "WHERE_YOU_LIVE_DETAILS": "Please give details about your residency",
     "WHERE_YOU_LIVE_DETAILS_OB": "Please give details about the person's residency",
     "WHERE_YOU_LIVE_LENGTH": "Please ensure that your reason is not too long",
+    "WHERE_YOU_LIVE_LENGTH_ERROR": "",
     "MENTAL_HEALTH_CAPACITY": "Please answer the question about the Mental Capacity Act",
     "MENTAL_HEALTH_CAPACITY_OB": "Please answer the question about the Mental Capacity Act",
     "MENTAL_HEALTH_CAPACITY_DETAILS": "Please give details about the Mental Capacity Act",
@@ -127,6 +129,7 @@
     "MENTAL_HEALTH_SECTIONED_DETAILS": "Please give details about the Mental Health Act",
     "MENTAL_HEALTH_SECTIONED_DETAILS_OB": "Please give details about the Mental Health Act",
     "MENTAL_HEALTH_SECTIONED_LENGTH": "Please check the length of the reason",
+    "MENTAL_HEALTH_SECTIONED_LENGTH_ERROR": "",
     "ON_BAIL": "Please tell us if you're on bail for a criminal offence",
     "ON_BAIL_OB": "Please tell us if the person you're answering for is on bail for a criminal offence",
     "ON_BAIL_DETAILS": "Please give details about your bail",
@@ -252,6 +255,8 @@
     },
 
     "THIRD_PARTY_PERSONAL_DETAILS": {
+      "NAME_CONFIRM_MISSING": "Please select one of the options",
+
       "TITLE_CHECK": "Please check the person's title",
       "TITLE_CHECK_INVALID": "Please enter a valid title",
 
@@ -262,6 +267,8 @@
       "LAST_NAME_CHECK": "Please check the person's last name",
       "LAST_NAME_CHECK_MISSING": "Please enter the person's last name",
       "LAST_NAME_CHECK_INVALID": "Please check the person's last name",
+      
+      "ADDRESS_CONFIRM_MISSING": "Please select one of the options",
 
       "ADDRESS_LINE_ONE_CHECK": "Please check the address",
       "ADDRESS_LINE_ONE_CHECK_INVALID": "Please check the first line of the address",

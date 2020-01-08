@@ -3,8 +3,15 @@
   "INTRO_PARAGRAPH": "Check that your name and address are correct.",
   
   "CAPTION": "Your details",
+
   "HEADING_NAME": "Check that your name is correct",
+  "HEADING_NAME_CONFIRM": "Is the name we have for you correct?",
+  "HEADING_NAME_CHANGE" : "What is your name?",
+
   "HEADING_ADDRESS": "Check that your address is correct",
+  "HEADING_ADDRESS_CONFIRM": "Is this your address?",
+  "HEADING_ADDRESS_CHANGE": "What is your address?",
+
   "HEADING_DATE_OF_BIRTH": "What is your date of birth?",
   "HEADING_PHONE": "What is your phone number?",
   "HEADING_EMAIL": "What is your email address?",
@@ -14,9 +21,25 @@
   "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_2": "If your address has changed, we might be able to move your jury service to a court nearer to your new address. We'll get in touch with you later about this. Please carry on with the online form now.",
 
   "HELPER_CHANGE_NAME_TITLE": "What happens if I have changed my name?",
-  "HELPER_CHANGE_NAME_PARAGRAPH_1": "If your name has changed and is different from the name on your jury summons letter, enter your correct name here. We'll get in touch with you later to check this. For instance, we might want to see a marriage certificate or deed poll certificate. Please carry on with the online form now.",
+  "HELPER_CHANGE_NAME_PARAGRAPH_1": "If your name has changed we will contact you to check this. We might ask for a marriage, civil partnership or deed poll certificate.",
+  
+  "HELPER_CONFIRM_ADDRESS_TITLE": "Will your address change soon?",
+  "HELPER_CONFIRM_ADDRESS_PARAGRAPH_1": "If your address will change soon, give us your current address. This is so we can still contact you.",
+  "HELPER_CONFIRM_ADDRESS_PARAGRAPH_2": "After you've moved, contact the jury central summoning bureau to give them your new address.",
+  "HELPER_CONFIRM_ADDRESS_PARAGRAPH_3": "If you are moving away from the area where you currently live, we may change the location of your jury service.",
+
   "HELPER_CHANGE_ADDRESS_TITLE": "What happens if I have changed my address?",
-  "HELPER_CHANGE_ADDRESS_PARAGRAPH_1": "If your address has changed, we might be able to move your jury service to a court nearer to your new address. We'll get in touch with you later about this. Please carry on with the online form now.",
+  "HELPER_CHANGE_ADDRESS_PARAGRAPH_1": "If your address has changed, we might be able to move your jury service to a court nearer to your new address.",
+  "HELPER_CHANGE_ADDRESS_PARAGRAPH_2": "We'll get in touch with you later about this. Please carry on with the online form now.",
+
+  "FORM_CONFIRM_ADDRESS_YES": "Yes",
+  "FORM_CONFIRM_ADDRESS_NO": "No",
+
+  "FORM_CONFIRM_NAME_YES": "Yes",
+  "FORM_CONFIRM_NAME_NO": "No",
+
+  "YES": "Yes",
+  "NO": "No",
 
   "FORM_SUB_HEADING_1": "Fill in the boxes below.",
 
@@ -25,7 +48,6 @@
   "FORM_FIRST_NAME_LABEL": "First name",
   "FORM_LAST_NAME_LABEL": "Last name",
 
-
   "FORM_ADDRESS_LABEL": "Address",
   "FORM_ADDRESS_LINE_ONE_LABEL": "Building and street",
   "FORM_ADDRESS_LINE_TWO_LABEL": "Address line two",
@@ -33,8 +55,6 @@
   "FORM_ADDRESS_TOWN_LABEL": "Town or city",
   "FORM_ADDRESS_COUNTY_LABEL": "County (optional)",
   "FORM_ADDRESS_POSTCODE_LABEL": "Postcode",
-
-
 
   "FORM_DOB_SUBTITLE": "Date of birth",
   "FORM_DOB_HELPER": "For example, 15 03 1982",

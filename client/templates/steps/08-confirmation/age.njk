@@ -13,29 +13,33 @@
 
       {% include "./_hero.njk" %}
 
-      <p class="govuk-body govuk-!-font-weight-bold">
-        {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_1 }}<a class="govuk-link" href="/steps/08-confirmation/download">{{ texts.CONFIRMATION.DOWNLOAD_A_COPY_2}}</a>
-        {% if user.thirdParty == 'Yes' %}
-          {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3_OB}}
-        {% else %}
-          {{ texts.CONFIRMATION.DOWNLOAD_A_COPY_3}}
-        {% endif %}
-      </p>
-
       <br>
+
+      <h2 class="govuk-heading-l">
+        {% if user.thirdParty == 'Yes' %}
+          {{ texts.CONFIRMATION.AGE.DISQUALIFICATION_OB }}
+        {% else %}
+          {{ texts.CONFIRMATION.AGE.DISQUALIFICATION }}
+        {% endif %}
+      </h2>
+      <div class="govuk-body">
+        {% if user.thirdParty == 'Yes' %}
+          {{ texts.CONFIRMATION.AGE.DOB_QUALIFICATION_OB }}
+        {% else %}
+          {{ texts.CONFIRMATION.AGE.DOB_QUALIFICATION }}
+        {% endif %}
+      </div>
+
+
       <h2 class="govuk-heading-m">{{ texts.CONFIRMATION.NEXT_INFO }}</h2>
       <div class="govuk-body">
         {% if user.thirdParty == 'Yes' %}
-          <p>{{ texts.CONFIRMATION.AGE.NO_SERVICE_REQUIRED_OB }} {{ texts.CONFIRMATION.NO_ACTION }}</p>
+          <p>{{ texts.CONFIRMATION.AGE.NO_SERVICE_REQUIRED_OB }}</p>
         {% else %}
-          <p>{{ texts.CONFIRMATION.AGE.NO_SERVICE_REQUIRED }} {{ texts.CONFIRMATION.NO_ACTION }}</p>
+          <p>{{ texts.CONFIRMATION.AGE.NO_SERVICE_REQUIRED }}</p>
         {% endif %}
 
-        {% if user.thirdParty == 'Yes' %}
-          <p>{{ texts.CONFIRMATION.AGE.DOB_QUALIFICATION_OB }}</p>
-        {% else %}
-          <p>{{ texts.CONFIRMATION.AGE.DOB_QUALIFICATION }}</p>
-        {% endif %}
+        
       </div>
 
       {% include "../../includes/feedback.njk" %}

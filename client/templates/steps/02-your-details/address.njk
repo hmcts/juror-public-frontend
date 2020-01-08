@@ -1,7 +1,7 @@
 {% extends "../../layouts/default-gds.njk" %}
 
 {% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
-{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
 {% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
 
 {% block pageTitle %}
@@ -25,159 +25,67 @@
 
       <form action="{{ url('steps.your.details.address.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-        {# Set Address Line 1 error #}
-        {% if errors.items['addressLineOne'] %}
-          {% set address1Error = {"text": errors.items['addressLineOne'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {# Set radio labels #}
+        {% set radioYesLabel = texts.YOUR_DETAILS_PAGE.FORM_CONFIRM_ADDRESS_YES %}
+        {% set radioNoLabel = texts.YOUR_DETAILS_PAGE.FORM_CONFIRM_ADDRESS_NO %}
+
+        {# Set radio values #}
+        {% if user.addressConfirm === texts.YOUR_DETAILS_PAGE.YES %}
+          {% set radioYesChecked = 'checked="checked"' %}
         {% else %}
-          {% set address1Error = undefined %}
+          {% set radioYesChecked = undefined %}
+        {% endif %}
+        {% if user.addressConfirm === texts.YOUR_DETAILS_PAGE.NO %}
+          {% set radioNoChecked = 'checked="checked"' %}
+        {% else %}
+          {% set radioNoChecked = undefined %}
         {% endif %}
 
-        {# Set Address Line 2 error #}
-        {% if errors.items['addressLineTwo'] %}
-          {% set address2Error = {"text": errors.items['addressLineTwo'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
-        {% else %}
-          {% set address2Error = undefined %}
+        {# Set radio errors #}
+        {% set radioAnswerError = undefined %}
+        {% if errors.items['addressConfirm']%}
+          {% set radioAnswerError = {text: errors.items['addressConfirm'][0].details} %}
         {% endif %}
 
-        {# Set Address Line 3 error #}
-        {% if errors.items['addressLineThree'] %}
-          {% set address3Error = {"text": errors.items['addressLineThree'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
-        {% else %}
-          {% set address3Error = undefined %}
-        {% endif %}
+        <div class="govuk-form-group {% if errors.addressError %}govuk-form-group--error{% endif %}" id="addressGroup">
 
-        {# Set Town or City error #}
-        {% if errors.items['addressTown'] %}
-          {% set townError = {"text": errors.items['addressTown'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
-        {% else %}
-          {% set townError = undefined %}
-        {% endif %}
-
-        {# Set County error #}
-        {% if errors.items['addressCounty'] %}
-          {% set countyError = {"text": errors.items['addressCounty'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
-        {% else %}
-          {% set countyError = undefined %}
-        {% endif %}
-
-        {# Set Postcode error #}
-        {% if errors.items['addressPostcode'] %}
-          {% set postcodeError = {"text": errors.items['addressPostcode'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
-        {% else %}
-          {% set postcodeError = undefined %}
-        {% endif %}
-
-        <div class="govuk-form-group {% if errors.addressError %}govuk-form-group--error{% endif %}" id="titleGroup">
-
-          <fieldset class="inline-edit govuk-fieldset" id="addressGroup">
+          <fieldset class="govuk-fieldset" id="addressFieldset">
 
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
               <h1 class="govuk-fieldset__heading">
                 <span class="govuk-caption-xl">
                   {{- texts.YOUR_DETAILS_PAGE.CAPTION -}}
                 </span>
-                {{- texts.YOUR_DETAILS_PAGE.HEADING_ADDRESS -}}
+                {{- texts.YOUR_DETAILS_PAGE.HEADING_ADDRESS_CONFIRM -}}
               </h1>
             </legend>
 
-            <div class="govuk-grid-row inline-section primary {% if errors.addressError %}closed{% endif %}">
-              <div class="govuk-grid-column-one-half govuk-body">{{ user.addressRender | safe }}</div>
-              <div class="govuk-grid-column-one-half govuk-body">
-                <a href="#addressGroup" class="govuk-link inline-edit-toggle" id="changeAddress" {% if trackingCode %}onclick="trackVirtualPageViews('Change - address')"{% endif %}>{{ texts.INTERFACE.FORM_CHANGE_LABEL }}<span class="govuk-visually-hidden">{{ texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LABEL }}</span></a>
+            <div class="govuk-body">{{ user.addressRender | safe }}</div>
+
+            <div class="govuk-radios" data-module="radios">
+              {% if radioAnswerError %}
+                <span id="addressConfirmError" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">{{texts.ERRORS.HIDDEN_ERROR}}: </span>
+                  {{- radioAnswerError.text -}}
+                </span>
+              {% endif%}
+
+              {# Radio YES #}
+              <div class="govuk-radios__item">    
+                <input class="selection-button-radio govuk-radios__input store-updated-information" id="addressConfirm-Yes" name="addressConfirm" type="radio" value="{{ texts.YOUR_DETAILS_PAGE.YES }}" {{radioYesChecked}}}>
+                <label class="govuk-radios__label" for="addressConfirm-Yes">
+                  {{ radioYesLabel }}
+                </label>
+              </div>
+
+              {# Radio NO #}
+              <div class="govuk-radios__item">
+                <input class="selection-button-radio govuk-radios__input store-updated-information" id="addressConfirm-No" name="addressConfirm" type="radio" value="{{ texts.YOUR_DETAILS_PAGE.NO }}" {{radioNoChecked}}}>
+                <label class="govuk-label govuk-radios__label" for="addressConfirm-No">
+                  {{ radioNoLabel }}
+                </label>
               </div>
             </div>
-
-            <div class="inline-section secondary {% if errors.addressError %}open{% endif %}">
-
-              {# Address Line 1 #}
-              {{ govukInput({
-                label: {
-                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_ONE_LABEL
-                },
-                id: "addressLineOne",
-                name: "addressLineOne",
-                errorMessage: address1Error,
-                attributes: {
-                  maxlength: "35"
-                },
-                autocomplete: "off",
-                value: user.addressLineOne
-              }) }}
-
-              {# Address Line 2 #}
-              {{ govukInput({
-                label: {
-                  html: '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_TWO_LABEL
-                },
-                id: "addressLineTwo",
-                name: "addressLineTwo",
-                errorMessage: address2Error,
-                attributes: {
-                  maxlength: "35"
-                },
-                autocomplete: "off",
-                value: user.addressLineTwo
-              }) }}
-
-              {# Address Line 3 #}
-              {{ govukInput({
-                label: {
-                  html: '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_THREE_LABEL
-                },
-                id: "addressLineThree",
-                name: "addressLineThree",
-                errorMessage: address3Error,
-                attributes: {
-                  maxlength: "35"
-                },
-                autocomplete: "off",
-                value: user.addressLineThree
-              }) }}
-
-              {# Town or City #}
-              {{ govukInput({
-                label: {
-                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_TOWN_LABEL
-                },
-                id: "addressTown",
-                name: "addressTown",
-                errorMessage: townError,
-                attributes: {
-                  maxlength: "35"
-                },
-                autocomplete: "off",
-                value: user.addressTown
-              }) }}
-
-              {# County #}
-              {{ govukInput({
-                label: {
-                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_COUNTY_LABEL
-                },
-                id: "addressCounty",
-                name: "addressCounty",
-                errorMessage: countyError,
-                attributes: {
-                  maxlength: "35"
-                },
-                autocomplete: "off",
-                value: user.addressCounty
-              }) }}
-
-              {# Postcode #}
-              {{ govukInput({
-                label: {
-                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_POSTCODE_LABEL
-                },
-                id: "addressPostcode",
-                name: "addressPostcode",
-                errorMessage: postcodeError,
-                attributes: {
-                  maxlength: "8"
-                },
-                autocomplete: "off",
-                value: user.addressPostcode
-              }) }}
 
           </fieldset>
 
@@ -187,11 +95,13 @@
         <details class="govuk-details">
           <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my address?')"{% endif %}>
-              {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_ADDRESS_TITLE }}
+              {{ texts.YOUR_DETAILS_PAGE.HELPER_CONFIRM_ADDRESS_TITLE }}
             </span>
           </summary>
           <div class="govuk-details__text">
-            {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_ADDRESS_PARAGRAPH_1 }}
+            <p>{{ texts.YOUR_DETAILS_PAGE.HELPER_CONFIRM_ADDRESS_PARAGRAPH_1 }}</p>
+            <p>{{ texts.YOUR_DETAILS_PAGE.HELPER_CONFIRM_ADDRESS_PARAGRAPH_2 }}</p>
+            <p>{{ texts.YOUR_DETAILS_PAGE.HELPER_CONFIRM_ADDRESS_PARAGRAPH_3 }}</p>
           </div>
         </details>
 
