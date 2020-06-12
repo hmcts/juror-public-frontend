@@ -6,7 +6,7 @@
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
-  {{ texts.YOUR_DETAILS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING_ADDRESS_CONFIRM }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}Personal Details Address{% endblock %}
@@ -93,8 +93,8 @@
 
         {# Info about change of address #}
         <details class="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my address?')"{% endif %}>
+          <summary class="govuk-details__summary ga-details-address-change-soon">
+            <span class="govuk-details__summary-text ga-details-address-change-soon" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my address?')"{% endif %}>
               {{ texts.YOUR_DETAILS_PAGE.HELPER_CONFIRM_ADDRESS_TITLE }}
             </span>
           </summary>

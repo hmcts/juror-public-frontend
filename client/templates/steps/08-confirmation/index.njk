@@ -1,7 +1,7 @@
 {% extends "../../layouts/default-gds.njk" %}
 
 {% block pageTitle %}
-  {{ texts.CONFIRMATION.TITLE }} - {{ texts.INTERFACE.GOV }}
+  {{ texts.CONFIRMATION.TITLE }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}Confirmation Straight Through{% endblock %}
@@ -95,41 +95,47 @@
         {% if user.thirdParty == 'Yes' %}
           <p>
             {{ texts.CONFIRMATION.YOU_CAN_OB }}
-            <a class="govuk-link" id="watch-video" href="https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s" {% if trackingCode %}onclick="trackOutboundLink('https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s')"{% endif %} rel="external" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.WATCH_VIDEO_LINK }}</a>
+            <a class="govuk-link" id="watch-video-link" target="_blank" href="{{texts.CONFIRMATION.WATCH_VIDEO_LINK_URL}}" {% if trackingCode %}onclick="trackOutboundLink('https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s')"{% endif %} rel="external" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.WATCH_VIDEO_LINK }}</a>
             {{- texts.CONFIRMATION.WATCH_VIDEO_OB }}
           </p>
         {% else %}
           <p>
             {{ texts.CONFIRMATION.YOU_CAN }}
-            <a class="govuk-link" id="watch-video" href="https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s" {% if trackingCode %}onclick="trackOutboundLink('https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s')"{% endif %} rel="external" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.WATCH_VIDEO_LINK }}</a>
+            <a class="govuk-link" id="watch-video-link" target="_blank" href="{{texts.CONFIRMATION.WATCH_VIDEO_LINK_URL}}" {% if trackingCode %}onclick="trackOutboundLink('https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s')"{% endif %} rel="external" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.WATCH_VIDEO_LINK }}</a>
             {{- texts.CONFIRMATION.WATCH_VIDEO }}
           </p>
         {% endif %}
 
         {% if user.thirdParty == 'Yes' %}
           <p>
-            {{ texts.CONFIRMATION.LEARN_MORE_OB }}
-            <a class="govuk-link" href="https://www.gov.uk/jury-service/discussing-the-trial" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/discussing-the-trial')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.DISCUSSING_LINK_OB }}</a>
-            {{ texts.CONFIRMATION.FIND_OUT_OB }} <a class="govuk-link" href="https://www.gov.uk/jury-service/how-to-claim-expenses" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/how-to-claim-expenses')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.CLAIM_EXPENSES_LINK_OB }}</a>.
+            <a class="govuk-link" id ="learn-more-link" target="_blank" href="{{texts.CONFIRMATION.LEARN_MORE_LINK_URL}}" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.LEARN_MORE_LINK_OB }}</a>.
+            {{ texts.CONFIRMATION.YOU_CAN_READ_THE }}
+            <a class="govuk-link" id ="discuss-trial-link" target="_blank" href="{{texts.CONFIRMATION.DISCUSSING_LINK_URL}}" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/discussing-the-trial')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.DISCUSSING_LINK_OB }}</a>
+            {{ texts.CONFIRMATION.FIND_OUT_OB }} <a class="govuk-link" id ="expenses-info-link" target="_blank" href="{{texts.CONFIRMATION.EXPENSES_INFO_LINK_URL}}" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.EXPENSES_INFO_LINK_OB }}</a>.
           </p>
         {% else %}
           <p>
-            {{ texts.CONFIRMATION.LEARN_MORE }}
-            <a class="govuk-link" href="https://www.gov.uk/jury-service/discussing-the-trial" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/discussing-the-trial')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.DISCUSSING_LINK }}</a>
-            {{ texts.CONFIRMATION.FIND_OUT }} <a class="govuk-link" href="https://www.gov.uk/jury-service/how-to-claim-expenses" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/how-to-claim-expenses')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.CLAIM_EXPENSES_LINK }}</a>.
+            <a class="govuk-link" id ="learn-more-link" target="_blank" href="{{texts.CONFIRMATION.LEARN_MORE_LINK_URL}}" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.LEARN_MORE_LINK }}</a>.
+            {{ texts.CONFIRMATION.YOU_CAN_READ_THE }}
+            <a class="govuk-link" id ="discuss-trial-link" target="_blank" href="{{texts.CONFIRMATION.DISCUSSING_LINK_URL}}" {% if trackingCode %}onclick="trackOutboundLink('https://www.gov.uk/jury-service/discussing-the-trial')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.DISCUSSING_LINK }}</a>
+            {{ texts.CONFIRMATION.FIND_OUT }} <a class="govuk-link" id ="expenses-info-link" target="_blank" href="{{texts.CONFIRMATION.EXPENSES_INFO_LINK_URL}}" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.EXPENSES_INFO_LINK }}</a>.
           </p>
         {% endif %}
-      </div>
 
-      <br>
-      <div class="notice govuk-body">
-        <i class="icon icon-file-download">
-          <span class="govuk-visually-hidden">{{ texts.CONFIRMATION.DOWNLOAD_PDF }}</span>
-          <img src="{{ assetPath }}img/icons/icon-file-download.png"/>
-        </i>
-        <strong class="bold-small">
-          <a class="govuk-link" id="service-guide" href="https://formfinder.hmctsformfinder.justice.gov.uk/jury-summons-guide-eng.pdf"{% if trackingCode %}onclick="trackEvent('PDF guide', 'Download', 'Guide to Jury Service')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.SERVICE_GUIDE }}</a>
-        </strong>
+        <p>
+          {% if user.thirdParty == 'Yes' %}
+            <a class="govuk-link" id ="calculate-expenses-link" target="_blank" href="{{texts.CONFIRMATION.CALCULATE_EXPENSES_LINK_URL}}" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.CALCULATE_EXPENSES_LINK_OB }}</a>.
+          {% else %}
+            <a class="govuk-link" id ="calculate-expenses-link" target="_blank" href="{{texts.CONFIRMATION.CALCULATE_EXPENSES_LINK_URL}}" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.CALCULATE_EXPENSES_LINK }}</a>.
+          {% endif %}
+        </p>
+
+        <br/>
+        <div class="notice">
+          {{texts.CONFIRMATION.YOU_CAN_READ}}<a class="govuk-link" target="_blank" id="service-guide" href="{{ texts.CONFIRMATION.SERVICE_GUIDE_LINK }}"{% if trackingCode %}onclick="trackEvent('PDF guide', 'Download', 'Guide to Jury Service')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.SERVICE_GUIDE }}</a>
+        </div>
+
+
       </div>
 
       {% include "../../includes/feedback.njk" %}

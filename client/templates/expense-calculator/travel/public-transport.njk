@@ -1,0 +1,87 @@
+{% extends "../../layouts/expense-calculator-default.njk" %}
+
+{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+    {{ texts.EXPENSE_CALCULATOR.TRAVEL_PUBLIC_TRANSPORT.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Expense Calculator Travel Public Transport{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "../../includes/errors-gds.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="{{ url('expense.calculator.travel.public.transport.post') }}" method="post">
+
+        {# Set error text #}
+        {% set amountError = undefined %}
+        {% if errors.items['publicTransportAmount']%}
+          {% set amountError = {"text": errors.items['publicTransportAmount'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+        <div class="govuk-form-group {% if amountError %}govuk-form-group--error{% endif %}" id="travelPublicTransportGroup">
+
+          <fieldset class="govuk-fieldset" id="travelPublicTransportFieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                {{- texts.EXPENSE_CALCULATOR.TRAVEL_PUBLIC_TRANSPORT.HEADING -}}
+              </h1>
+            </legend>
+
+            <p class="govuk-body govuk-hint">
+              {{texts.EXPENSE_CALCULATOR.TRAVEL_PUBLIC_TRANSPORT.HINT}}</p>
+            <br />
+
+            {% set guidanceHTML %}
+              <p>{{texts.EXPENSE_CALCULATOR.TRAVEL_PUBLIC_TRANSPORT.GUIDANCE_PARAGRAPH_1}}</p>
+              <p>{{texts.EXPENSE_CALCULATOR.TRAVEL_PUBLIC_TRANSPORT.GUIDANCE_PARAGRAPH_2}}</p>
+            {% endset %}
+
+            {{ govukInput({
+              id: "publicTransportAmount",
+              name: "publicTransportAmount",
+              label: {
+                text: texts.EXPENSE_CALCULATOR.TRAVEL_PUBLIC_TRANSPORT.LABEL
+              },
+             
+              classes: "govuk-!-width-one-third",
+              errorMessage: amountError,
+              value: user.publicTransportAmount
+            }) }}
+
+            <br />
+
+            {{ govukDetails({
+              id: "publicTransportGuidance",
+              summaryText: texts.EXPENSE_CALCULATOR.TRAVEL_PUBLIC_TRANSPORT.GUIDANCE_HEADING,
+              html: guidanceHTML
+            }) }}
+            
+          </fieldset>
+        </div>
+
+        {# Submit form #}
+        {{ govukButton({
+            text: texts.EXPENSE_CALCULATOR.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

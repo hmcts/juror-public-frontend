@@ -15,26 +15,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     {% if trackingCode %}
-    <!-- Google Analytics -->
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('set', 'anonymizeIp', true);
-    ga('create', '{{ trackingCode }}', 'auto');
-    ga('send', 'pageview');
-    
-    // Cross domain tracking
-    ga('create', 'UA-145652997-1', 'auto', 'govuk_shared', {'allowLinker': true});
-    ga('govuk_shared.require', 'linker');
-    ga('govuk_shared.linker.set', 'anonymizeIp', true);
-    ga('govuk_shared.linker:autoLink', ['www.gov.uk']);
-    ga('govuk_shared.send', 'pageview');
-
-    </script>
-    <!-- End Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','{{trackingCode}}');</script>
+    <!-- End Google Tag Manager -->
     {% endif %}
     
     {% block headIcons %}
@@ -63,12 +50,19 @@
 
   </head>
   <body class="govuk-template__body {{ bodyClasses }}">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{trackingCode}}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
     {% block bodyStart %}{% endblock %}
 
     {% block header %}
       
-      <header class="govuk-header " role="banner" data-module="header">
+      <header class="govuk-header " role="banner" data-module="govuk-header">
         <div class="govuk-header__container govuk-width-container">
 
           <div class="govuk-header__logo">
@@ -107,7 +101,7 @@
             beta
           </strong>
               <span class="govuk-phase-banner__text">
-                {{ texts.BANNER_BETA.FEEDBACK_1 }}<a class="govuk-link" target="_blank" href="http://www.smartsurvey.co.uk/s/Summons_feedback/" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}"> {{ texts.BANNER_BETA.FEEDBACK_2 }} </a>{{ texts.BANNER_BETA.FEEDBACK_3 }}.
+                {{ texts.BANNER_BETA.FEEDBACK_1 }}<a class="govuk-link" id="banner-survey-link" target="_blank" href="https://www.smartsurvey.co.uk/s/summonsreplyfeedback/" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}"> {{ texts.BANNER_BETA.FEEDBACK_2 }} </a>{{ texts.BANNER_BETA.FEEDBACK_3 }}.
               </span>
             </p>
           </div>

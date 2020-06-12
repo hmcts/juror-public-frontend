@@ -1,5 +1,5 @@
 {
-  "TITLE": "Your response is complete",
+  "TITLE": "You have completed your reply",
   "NEXT_INFO": "What happens next",
   "RECEIVE_LIST": "At least two weeks before your jury service starts, we'll send you:",
   "RECEIVE_LIST_OB": "At least two weeks before their jury service starts, we'll send the person you replied for:",
@@ -17,19 +17,37 @@
 
   "YOU_CAN": "You can ",
   "YOU_CAN_OB": "You or the person you've replied for, can",
-  "WATCH_VIDEO_LINK": "watch this video on YouTube",
-  "WATCH_VIDEO": " about what happens when you're a juror, so you know what to expect. The video takes 13 minutes to watch.",
-  "WATCH_VIDEO_OB": " about what happens when you're a juror, so they know what to expect. The video takes 13 minutes to watch.",
+  "WATCH_VIDEO_LINK": "watch this video on YouTube about what happens when you're a juror",
+  "WATCH_VIDEO_LINK_URL": "https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s",
+  "WATCH_VIDEO": ", so you know what to expect. The video takes 13 minutes to watch.",
+  "WATCH_VIDEO_OB": ", so they know what to expect. The video takes 13 minutes to watch.",
+
   "WHAT_TO_EXPECT": ", so you know what to expect.",
   "WHAT_TO_EXPECT_OB": ", so they know what to expect.",
-  "LEARN_MORE": "Learn more about your jury service. You can read the ",
-  "LEARN_MORE_OB": "Learn more about jury service. You can read the ",
+
+  "LEARN_MORE_LINK": "Learn more about your jury service",
+  "LEARN_MORE_LINK_OB": "Learn more about jury service",
+  "LEARN_MORE_LINK_URL": "https://www.gov.uk/jury-service",
+
+  "YOU_CAN_READ": "You can read ",
+  "YOU_CAN_READ_THE": " You can read the ",
+
   "DISCUSSING_LINK": "rules about discussing the trial",
   "DISCUSSING_LINK_OB": "rules about discussing the trial",
+  "DISCUSSING_LINK_URL": "https://www.gov.uk/jury-service/discussing-the-trial",
+
+  "AND": " and ",
+
   "FIND_OUT": "and find out",
   "FIND_OUT_OB": "and find out",
-  "CLAIM_EXPENSES_LINK": "how to claim expenses",
-  "CLAIM_EXPENSES_LINK_OB": "how to claim expenses",
+  "EXPENSES_INFO_LINK": "how to claim expenses",
+  "EXPENSES_INFO_LINK_OB": "how to claim expenses",
+  "EXPENSES_INFO_LINK_URL": "https://www.gov.uk/jury-service/how-to-claim-expenses",
+
+  "CALCULATE_EXPENSES_LINK": "Calculate what expenses and allowances you can claim",
+  "CALCULATE_EXPENSES_LINK_OB": "Calculate what expenses and allowances you can claim",
+  "CALCULATE_EXPENSES_LINK_URL": "/expense-calculator",
+
   "DOWNLOAD_PDF": "Download PDF",
 
   "DOWNLOAD_A_COPY_1": "You can ",
@@ -37,7 +55,8 @@
   "DOWNLOAD_A_COPY_3": " of your summons reply for your records.",
   "DOWNLOAD_A_COPY_3_OB": " of the summons reply for your records.",
 
-  "SERVICE_GUIDE": "Your Guide to Jury Service (PDF)",
+  "SERVICE_GUIDE": "Your Guide to Jury Service (PDF 85KB)",
+  "SERVICE_GUIDE_LINK": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/709844/jury-summons-guide-eng.pdf",
   "JUROR_CHARTER": "The Juror Charter (PDF)",
   "SUPPORTING_YOU": "Supporting You Through Jury Service (PDF)",
   "SURVEY_LINK": "What did you think of this service?",
@@ -56,7 +75,7 @@
     "GETTING_IN_TOUCH_OB": "If we get in touch with them, they may need to give their juror number. It's also on the letter we sent them.",
     "EMAIL_SUMMONS": "We have sent you an email to say you have replied to your jury summons.",
     "EMAIL_SUMMONS_OB": "We have sent an email to say you have replied to this jury summons.",
-    "DOWNLOAD_LINK": "Download a copy of your summons reply"
+    "DOWNLOAD_LINK": "Download a copy of your summons reply PDF (65KB)"
   },
   "AGE": {
     "DISQUALIFICATION": "Your age means you cannot do jury service",

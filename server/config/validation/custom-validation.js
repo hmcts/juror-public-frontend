@@ -414,6 +414,114 @@
     return null;
   };
 
+  validate.validators.dateOfBirthDay = function(value, req, key, attributes) {
+    var message = {
+        summary: '',
+        summaryLink: 'dobDay',
+        fields: 'dobDay',
+        details: [],
+      }
+      , dayMonthRegex = /^[0-9]{1,2}$/
+      , errMessage = '';
+
+    if (attributes.dobDay.length === 0) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.DAY_MISSING'
+        + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    } else if ((attributes.dobDay > 31 || attributes.dobDay < 1) || !dayMonthRegex.test(attributes.dobDay)) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.DAY_INVALID'
+        + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    }
+    if (errMessage){
+      message.details.push(errMessage);
+      message.summary = errMessage;
+      return message;
+    }
+
+    return null;
+  };
+
+  validate.validators.dateOfBirthMonth = function(value, req, key, attributes) {
+    var message = {
+        summary: '',
+        summaryLink: 'dobMonth',
+        fields: 'dobMonth',
+        details: []
+      }
+      , dayMonthRegex = /^[0-9]{1,2}$/
+      , errMessage = '';
+
+    if (attributes.dobMonth.length === 0) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.MONTH_MISSING'
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    } else if ((attributes.dobMonth > 12 || attributes.dobMonth < 1) || !dayMonthRegex.test(attributes.dobMonth)) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.MONTH_INVALID'
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    }
+    if (errMessage){
+      message.details.push(errMessage);
+      message.summary = errMessage;
+      return message;
+    }
+
+    return null;
+  };
+
+  validate.validators.dateOfBirthYear = function(value, req, key, attributes) {
+    var message = {
+        summary: '',
+        summaryLink: 'dobYear',
+        fields: 'dobYear',
+        details: []
+      }
+      , formattedDob
+      , yearRegex = /^[0-9]{4}$/
+      , errMessage = '';
+
+    if (attributes.dobYear.length === 0) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.YEAR_MISSING'
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    } else if (attributes.dobYear.length !== 4 || !yearRegex.test(attributes.dobYear)) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.YEAR_INVALID'
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    }
+    if (errMessage){
+      message.details.push(errMessage);
+      message.summary = errMessage;
+      return message;
+    }
+
+    return null;
+  };
+
+  validate.validators.dateOfBirthLimits = function(value, req, key, attributes) {
+    var message = {
+        summary: '',
+        summaryLink: 'dobDay',
+        fields: 'dateOfBirth',
+        details: []
+      }
+      , formattedDob
+      , errMessage = '';
+
+    // Check for limits
+    formattedDob = moment([attributes.dobYear, attributes.dobMonth, attributes.dobDay].filter(function(val) {
+      return val;
+    }).join('-'), 'YYYY-MM-DD');
+
+    if (message.fields.length > 0 && moment().diff(formattedDob, 'days') <= 0) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.INVALID_DATE'
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    }
+    if (errMessage){
+      message.details.push(errMessage);
+      message.summary = errMessage;
+      return message;
+    }
+
+    return null;
+  };
+
+
   validate.validators.datesDistinct = function(value, options, key, attributes) {
     var message = {
       summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_UNIQUE', options.texts),

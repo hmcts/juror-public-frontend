@@ -4,7 +4,7 @@ Juror Public Front End
 - Technologies: NodeJS, Express, Nunjucks
 - Summary: A front-end for responding to jury summons
 
-## What is it?
+### What is it?
 Provides a front-end for responding to jury summons
 
 

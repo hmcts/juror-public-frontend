@@ -6,9 +6,9 @@
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
-    {{ texts.DEFERRAL_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.DEFERRAL_PAGE.HEADING_OB }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-    {{ texts.DEFERRAL_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.DEFERRAL_PAGE.HEADING }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 
@@ -78,18 +78,19 @@
           <br />
           
             <div class="govuk-grid-row govuk-body">
-              <div class="govuk-error-message" id="date1ErrorMessage">
-                {{ errors.items['date1'][0].details }}{% if errors.items['date1'] %}<br>{% endif %}
+              <div class="govuk-error-message deferral-date-error" id="date1ErrorMessage">
+                {% if errors.items['date1'] %}<span class="govuk-visually-hidden">{{texts.ERRORS.TITLE_ERROR}}</span>{{ errors.items['date1'][0].details }}<br>{% endif %}
               </div>
               <div class="govuk-grid-column-one-third" id="date1Group">
                 <div class="{% if errors.items['date1'] or errors.items['date1Error'] %}govuk-error{% endif %}">
                   <label class="form-label" for="date1">
                     <strong class="bold-small">
                       {{ texts.DEFERRAL_PAGE.DATE1 }}
-                    </strong>
+                    </strong>              
                   </label>
+                  <div class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</div>
                   <input class="form-control fill govuk-body" name="date1" id="date1" type="text" value="{{ user.date1 }}" autocomplete="off" {% if errors.items['date1'] or errors.items['date1Error'] %}aria-describedby="date1ErrorMessage"{% endif %} />
-                  <button id="btn_date1" class="calendar-button noscript" aria-hidden="true"><img src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_1 }}" /></button>
+                  <button id="btn_date1" class="calendar-button noscript" aria-hidden="true"><img class="ga-defer-datepicker-1" src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_1 }}" /></button>
 
                   <div id="dp1" class="datepicker" aria-hidden="true">
                     <div id="month-wrap">
@@ -122,15 +123,13 @@
                     <div id="bn_prev-label" class="offscreen">Go to previous month</div>
                     <div id="bn_next-label" class="offscreen">Go to next month</div>
                   </div>
-
-                  <span class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</span>
                 </div>
               </div>
             </div>
 
             <div class="govuk-grid-row govuk-body">
-              <div class="govuk-error-message" id="date2ErrorMessage">
-                {{ errors.items['date2'][0].details }}{% if errors.items['date2'] %}<br>{% endif %}
+              <div class="govuk-error-message deferral-date-error" id="date2ErrorMessage">
+                {% if errors.items['date2'] %}<span class="govuk-visually-hidden">{{texts.ERRORS.TITLE_ERROR}}</span>{{ errors.items['date2'][0].details }}<br>{% endif %}
               </div>
               <div class="govuk-grid-column-one-third" id="date2Group">
                 <div class="{% if errors.items['date2'] or errors.items['date2Error'] %}govuk-error{% endif %}">
@@ -139,8 +138,9 @@
                       {{ texts.DEFERRAL_PAGE.DATE2 }}
                     </strong>
                   </label>
+                  <div class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</div>
                   <input class="form-control fill govuk-body" name="date2" id="date2" type="text" value="{{ user.date2 }}" autocomplete="off" {% if errors.items['date2'] or errors.items['date2Error'] %}aria-describedby="date2ErrorMessage"{% endif %} />
-                  <button id="btn_date2" class="calendar-button noscript" aria-hidden="true"><img src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_2 }}" /></button>
+                  <button id="btn_date2" class="calendar-button noscript" aria-hidden="true"><img class="ga-defer-datepicker-2" src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_2 }}" /></button>
 
                   <div id="dp2" class="datepicker" aria-hidden="true">
                     <div id="month-wrap">
@@ -173,15 +173,13 @@
                     <div id="bn_prev-label" class="offscreen">Go to previous month</div>
                     <div id="bn_next-label" class="offscreen">Go to next month</div>
                   </div>
-
-                  <span class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</span>
                 </div>
               </div>
             </div>
 
             <div class="govuk-grid-row govuk-body">
-              <div class="govuk-error-message" id="date3ErrorMessage">
-                {{ errors.items['date3'][0].details }}{% if errors.items['date3'] %}<br>{% endif %}
+              <div class="govuk-error-message deferral-date-error" id="date3ErrorMessage">
+                {% if errors.items['date3'] %}<span class="govuk-visually-hidden">{{texts.ERRORS.TITLE_ERROR}}</span>{{ errors.items['date3'][0].details }}<br>{% endif %}
               </div>
               <div class="govuk-grid-column-one-third" id="date3Group">
                 <div class="{% if errors.items['date3'] or errors.items['date3Error'] %}govuk-error{% endif %}">
@@ -190,8 +188,9 @@
                       {{ texts.DEFERRAL_PAGE.DATE3 }}
                     </strong>
                   </label>
+                  <div class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</div>
                   <input class="form-control fill govuk-body" name="date3" id="date3" type="text" value="{{ user.date3 }}" autocomplete="off" {% if errors.items['date3'] or errors.items['date3Error'] %}aria-describedby="date3ErrorMessage"{% endif %} />
-                  <button id="btn_date3" class="calendar-button noscript" aria-hidden="true"><img src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_3 }}" /></button>
+                  <button id="btn_date3" class="calendar-button noscript" aria-hidden="true"><img class="ga-defer-datepicker-3" src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_3 }}" /></button>
 
                   <div id="dp3" class="datepicker" aria-hidden="true">
                     <div id="month-wrap">
@@ -224,8 +223,6 @@
                     <div id="bn_prev-label" class="offscreen">Go to previous month</div>
                     <div id="bn_next-label" class="offscreen">Go to next month</div>
                   </div>
-
-                  <span class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</span>
                 </div>
               </div>
             </div>
@@ -238,11 +235,11 @@
       
       
       <details class="govuk-details">
-        <summary class="govuk-details__summary">
+        <summary class="govuk-details__summary ga-details-deferral-dates">
           {% if user.thirdParty == 'Yes' %}
-            <span class="govuk-details__summary-text" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask this?')"{% endif %}>{{ texts.DEFERRAL_PAGE.WHY_ASK_SUMMARY_OB }}</span>
+            <span class="govuk-details__summary-text ga-details-deferral-dates" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask this?')"{% endif %}>{{ texts.DEFERRAL_PAGE.WHY_ASK_SUMMARY_OB }}</span>
           {% else %}
-            <span class="govuk-details__summary-text" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask this?')"{% endif %}>{{ texts.DEFERRAL_PAGE.WHY_ASK_SUMMARY }}</span>
+            <span class="govuk-details__summary-text ga-details-deferral-dates" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask this?')"{% endif %}>{{ texts.DEFERRAL_PAGE.WHY_ASK_SUMMARY }}</span>
           {% endif %}
         </summary>
           <div class="govuk-details__text" id="details-content-1">

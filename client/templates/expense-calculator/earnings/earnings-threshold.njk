@@ -1,0 +1,87 @@
+{% extends "../../layouts/expense-calculator-default.njk" %}
+
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails%}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+    {{ texts.EXPENSE_CALCULATOR.EARNINGS_THRESHOLD.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Expense Calculator Earnings Threshold{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "../../includes/errors-gds.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="{{ url('expense.calculator.earnings.threshold.post') }}" method="post">
+
+        {# Set error text #}
+        {% set radioAnswerError = undefined %}
+        {% if errors.items['earningsThreshold']%}
+          {% set radioAnswerError = {"text": errors.items['earningsThreshold'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+        {# Set radios checked #}
+        {% set radioYesChecked = undefined %}
+        {% set radioNoChecked = undefined %}
+        {% if user.earningsThreshold === "Yes" %}
+          {% set radioYesChecked = 'checked="checked"' %}
+        {% endif %}
+        {% if user.earningsThreshold === "No" %}
+          {% set radioNoChecked = 'checked="checked"' %}
+        {% endif %}
+        
+        {{ govukRadios({
+          id: "earningsThreshold",
+          name: "earningsThreshold",
+          errorMessage: radioAnswerError,
+          fieldset: {
+            legend: {
+              text: texts.EXPENSE_CALCULATOR.EARNINGS_THRESHOLD.HEADING,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: texts.EXPENSE_CALCULATOR.EARNINGS_THRESHOLD.HINT
+          },
+          items: [
+            {
+              id: "earningsThresholdYes",
+              name: "earningsThreshold",
+              value: "Yes" ,
+              text: texts.EXPENSE_CALCULATOR.EARNINGS_THRESHOLD.YES,
+              checked: radioYesChecked
+            },
+            {
+              id: "earningsThresholdNo",
+              name: "earningsThreshold",
+              value: "No",
+              text: texts.EXPENSE_CALCULATOR.EARNINGS_THRESHOLD.NO,
+              checked: radioNoChecked
+            }
+          ]
+        }) }}
+
+        {# Submit form #}
+        {{ govukButton({
+            text: texts.EXPENSE_CALCULATOR.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

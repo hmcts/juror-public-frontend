@@ -50,8 +50,9 @@
 
   "FORM_ADDRESS_LABEL": "Address",
   "FORM_ADDRESS_LINE_ONE_LABEL": "Building and street",
-  "FORM_ADDRESS_LINE_TWO_LABEL": "Address line two",
-  "FORM_ADDRESS_LINE_THREE_LABEL": "Address line three",
+  "FORM_ADDRESS_LINE_1_OF_3": "line 1 of 3",
+  "FORM_ADDRESS_LINE_TWO_LABEL": "Building and street line 2 of 3",
+  "FORM_ADDRESS_LINE_THREE_LABEL": "Building and street line 3 of 3",
   "FORM_ADDRESS_TOWN_LABEL": "Town or city",
   "FORM_ADDRESS_COUNTY_LABEL": "County (optional)",
   "FORM_ADDRESS_POSTCODE_LABEL": "Postcode",

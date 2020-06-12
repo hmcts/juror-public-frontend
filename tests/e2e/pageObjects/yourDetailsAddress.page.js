@@ -57,6 +57,16 @@ class YourDetailsAddressPage extends Page {
     this.addressPostcode.setValue(value);
   }
 
+  confirmYes() {
+    const selectedElement = browser.element('[name="addressConfirm"][value="Yes"]');
+    selectedElement.click();
+  }
+
+  confirmNo() {
+    const selectedElement = browser.element('[name="addressConfirm"][value="No"]');
+    selectedElement.click();
+  }
+
   // Errors
   // ===========
   //
@@ -69,6 +79,7 @@ class YourDetailsAddressPage extends Page {
     return browser.element('#addressGroupError');
   }
 
+  /*
   get addressLineOneSummaryError() {
     return browser.element('.govuk-error-summary__list [href="#addressLineOne"]');
   }
@@ -116,6 +127,7 @@ class YourDetailsAddressPage extends Page {
   get addressPostcodeDetailedError() {
     return browser.element('#addressPostcode-error');
   }
+  */
 }
 
 module.exports = YourDetailsAddressPage;

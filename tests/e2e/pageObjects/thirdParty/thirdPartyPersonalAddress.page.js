@@ -40,6 +40,16 @@ class ThirdPartyPersonalAddressPage extends Page {
   get addressTownDetailedError() {
     return browser.element('#addressTown-error');
   }
+
+  confirmYes() {
+    const selectedElement = browser.element('[name="addressConfirm"][value="Yes"]');
+    selectedElement.click();
+  }
+
+  confirmNo() {
+    const selectedElement = browser.element('[name="addressConfirm"][value="No"]');
+    selectedElement.click();
+  }
 }
 
 module.exports = ThirdPartyPersonalAddressPage;

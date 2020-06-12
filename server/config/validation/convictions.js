@@ -12,7 +12,7 @@
           allowEmpty: false,
           message: {
             summary: filters.translate('VALIDATION.QUALIFY.CONVICTION' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.QUALIFY.CONVICTION' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             summaryLink: 'convicted-Yes'
           }
         },
@@ -22,15 +22,15 @@
           field: 'convicted',
           value: (req.session.ulang === 'cy' ? texts_cy.QUALIFY_PAGE.YES : texts_en.QUALIFY_PAGE.YES),
           message: {
-            summary: filters.translate('VALIDATION.QUALIFY.CONVICTION' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.QUALIFY.CONVICTION_DETAILS' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.QUALIFY.CONVICTION_DETAILS' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
           },
         },
         length: {
           maximum: 1000,
           message: {
-            summary: filters.translate('VALIDATION.QUALIFY.CONVICTION_LENGTH', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.DEFERRAL.CONVICTION_LENGTH_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            summary: filters.translate('VALIDATION.QUALIFY.CONVICTION_LENGTH' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.QUALIFY.CONVICTION_LENGTH' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         }
       },

@@ -168,6 +168,8 @@
       postObj.thirdParty.useJurorPhoneDetails = false;
     }
 
+
+    // Copies third party contact details over juror details if 'Use Juror Details' flag is false
     if (isThirdParty === true) {
       if (postObj.thirdParty.useJurorPhoneDetails === false) {
         postObj.primaryPhone = postObj.thirdParty.mainPhone;
@@ -178,8 +180,8 @@
         postObj.emailAddress = postObj.thirdParty.emailAddress;
       }
     }
-
-
+    
+    
     // CJS employer
     // -----------------------
     if (typeof responseObject.cjsEmployer !== 'undefined') {
@@ -752,5 +754,32 @@
 
     return redirectUrl;
   };
+
+  module.exports.getCurrencyValue = function(inputValue){
+    var newValue = inputValue
+
+    // Strip out currency symbol and commas
+    newValue = newValue.replace(/£/g, '');
+    newValue = newValue.replace(/,/g, '');
+
+    return newValue;
+
+  }
+
+  module.exports.formatCurrencyValue = function(inputValue){
+    var newNumber
+      , result;
+
+    newNumber = parseFloat(inputValue);
+
+    if (isNaN(newNumber)){
+      result = newNumber;
+    } else {
+      result = newNumber.toFixed(2);
+    }
+
+    return result;
+
+  }
 
 })();

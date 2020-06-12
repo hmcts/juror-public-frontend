@@ -26,7 +26,7 @@ class ResponderTypePage extends Page {
   //
   get responderTypeError() {
     // return browser.element('.error-summary-list [href="#thirdParty"]');
-    return browser.element('.govuk-error-summary__list [href="#thirdParty"]');
+    return browser.element('.govuk-error-summary__list [href="#thirdParty_No"]');
   }
 
   pageErrors() {

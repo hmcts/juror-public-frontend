@@ -23,21 +23,26 @@ Feature: First person your details
 
     # Your Details Name Page
     Then I confirm that I am on the Your Details Name page
+    Then I confirm that my name is correct
     Then I submit my name details
 
-    # Your Details Address Page
-    Then I confirm that I am on the Your Details Address page
-
+    
 
     # Start Scenarios
     # -------------------------------------
     @JDB-1945 @JDB-836 @AC1 @bug
     Scenario: Address line one is now no longer optional
-      When I choose to provide new details for my address
+
+      # Your Details Address Page
+      Then I confirm that I am on the Your Details Address page
+      Then I confirm that my address is incorrect
+      Then I submit my address details
+
+      Then I confirm that I am on the Your Details Address Change page
         And I enter "" as the first line of my address
         And I enter "London" as the second line of my address
         And I enter "England" as the third line of my address
-        And I submit my address details
+        And I submit my address change details
 
       Then the summary error for my address line one is "Please check your address"
         And the detailed error for my address line one is "Please provide the first line of your address"
@@ -49,7 +54,7 @@ Feature: First person your details
       When I enter "14 Sugar Street" as the first line of my address
         And I enter "London" as the second line of my address
         And I enter "England" as the third line of my address
-        And I submit my address details
+        And I submit my address change details
 
       Then there is no error message summary for my address line two
         And there is no error message details for my address line one
@@ -60,57 +65,86 @@ Feature: First person your details
 
     @JDB-1945 @JDB-836 @AC1 @bug
     Scenario: At least one of the address lines must be provided
-      When I choose to provide new details for my address
+
+      # Your Details Address Page
+      Then I confirm that I am on the Your Details Address page
+      Then I confirm that my address is incorrect
+      Then I submit my address details
+
+      Then I confirm that I am on the Your Details Address Change page
         And I enter "" as the first line of my address
         And I enter "" as the second line of my address
         And I enter "" as the third line of my address
-        And I submit my address details
+        And I submit my address change details
 
       Then the summary error for my address line one is "Please check your address"
 
     @JDB-1945 @JDB-836 @AC2
     Scenario: Address town is no longer optional
-      When I choose to provide new details for my address
+
+      # Your Details Address Page
+      Then I confirm that I am on the Your Details Address page
+      Then I confirm that my address is incorrect
+      Then I submit my address details
+
+      Then I confirm that I am on the Your Details Address Change page
         And I enter "" as the town of my address
-        And I submit my address details
+        And I submit my address change details
 
       Then the summary error for my town is "Please check your town or city"
         And the detailed error for my town is "Please provide the town or city you live in"
 
       When I enter "Town" as the town of my address
-        And I submit my address details
+        And I submit my address change details
 
       Then there is no error message summary for my address town
         And there is no error message details for my address town
 
     @JDB-1945 @JDB-836 @AC3
     Scenario: Address county is optional
-      When I choose to provide new details for my address
+
+      # Your Details Address Page
+      Then I confirm that I am on the Your Details Address page
+      Then I confirm that my address is incorrect
+      Then I submit my address details
+
+      Then I confirm that I am on the Your Details Address Change page
         And I enter "" as the county of my address
-        And I submit my address details
+        And I submit my address change details
 
         Then there is no error message summary for my address county
           And there is no error message details for my address county
           
-        Then I click the back button
+      Then I click the back link
 
-      When I choose to provide new details for my address
+      Then I confirm that I am on the Your Details Address Change page
         And I enter "County" as the county of my address
-        And I submit my address details
+        And I submit my address change details
 
         Then there is no error message summary for my address county
           And there is no error message details for my address county
 
     @JDB-1945 @JDB-836 @AC4
     Scenario: Address postcode is mandatory
-      When I choose to provide new details for my address
+
+    # Your Details Address Page
+    Then I confirm that I am on the Your Details Address page
+    Then I confirm that my address is incorrect
+    Then I submit my address details
+
+    Then I click the back link
+    Then I confirm that I am on the Your Details Address page
+    Then I confirm that my address is incorrect
+    Then I submit my address details
+
+      Then I confirm that I am on the Your Details Address Change page
         And I enter "" as the postcode of my address
-        And I submit my address details
+        And I submit my address change details
 
       Then the summary error for my postcode is "Please check your postcode"
         And the detailed error for my postcode is "Please enter your postcode"
         And I enter "AB21 3RY" as the postcode of my address
-        And I submit my address details
+        And I submit my address change details
 
         Then there is no error message summary for my address postcode
           And there is no error message details for my address postcode
@@ -118,7 +152,9 @@ Feature: First person your details
     @JDB-1801 @bug
     Scenario: As a respondant I cannot enter quotes or pipes for my name
       # Your Details Address Page
+
       Then I confirm that I am on the Your Details Address page
+      Then I confirm that my address is correct
       Then I submit my address details
 
       # Your Details Phone Page
@@ -186,11 +222,11 @@ Feature: First person your details
       # Confirm Information Page
       Then I confirm that I am on the Confirm Information page
         And I click the link to change my name
-        And I confirm that I am on the Your Details Name page
+        And I confirm that I am on the Your Details Name Change page
 
-      When I choose to provide new details for my name
+      # Change First Name
         And I enter "Jose|" as my first name
-        Then I submit my name details
+        Then I submit my name change details
 
       Then I click the back link
         And I click the back link
@@ -201,6 +237,7 @@ Feature: First person your details
     Scenario: As a respondant I should be warned when I have not entered a date of birth
       # Your Details Address Page
       Then I confirm that I am on the Your Details Address page
+      Then I confirm that my address is correct
       Then I submit my address details
 
       # Your Details Phone Page
@@ -231,6 +268,7 @@ Feature: First person your details
     Scenario Outline: As a respondant I should be warned when my date of birth is incorrect
       # Your Details Address Page
       Then I confirm that I am on the Your Details Address page
+      Then I confirm that my address is correct
       Then I submit my address details
 
       # Your Details Phone Page
@@ -273,6 +311,7 @@ Feature: First person your details
     Scenario: As a respondant I must enter valid phone numbers for myself
       # Your Details Address Page
       Then I confirm that I am on the Your Details Address page
+      Then I confirm that my address is correct
       Then I submit my address details
 
       # Your Details Phone Page
@@ -316,6 +355,7 @@ Feature: First person your details
     Scenario Outline: I am warned if either of my phone numbers <condition>
       # Your Details Address Page
       Then I confirm that I am on the Your Details Address page
+      Then I confirm that my address is correct
       Then I submit my address details
 
       # Your Details Phone Page
@@ -340,6 +380,7 @@ Feature: First person your details
 
       # Your Details Address Page
       Then I confirm that I am on the Your Details Address page
+      Then I confirm that my address is correct
       Then I submit my address details
 
       # Your Details Phone Page
@@ -363,6 +404,7 @@ Feature: First person your details
 
     # Your Details Address Page
     Then I confirm that I am on the Your Details Address page
+    Then I confirm that my address is correct
     Then I submit my address details
 
     # Your Details Phone Page
@@ -385,10 +427,13 @@ Feature: First person your details
 
     @JDB-1490 @bug
     Scenario: Last name presence check is correct
+    Then I confirm that I am on the Your Details Address page
     Then I click the back button
-      When I choose to provide new details for my name
+    Then I confirm that my name is incorrect
+    Then I submit my name details
+    Then I confirm that I am on the Your Details Name Change page
         And I enter "" as my last name
-        Then I submit my name details
+        Then I submit my name change details
 
       Then the summary error for my last name is "Please check your last name"
         And the detailed error for my last name is "Please enter your last name"

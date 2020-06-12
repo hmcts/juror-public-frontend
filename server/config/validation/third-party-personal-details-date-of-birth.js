@@ -10,8 +10,20 @@
 
   module.exports = function(req) {
     return {
+      dobDay: {
+        dateOfBirthDay: req
+      },
+      dobMonth: {
+        dateOfBirthMonth: req
+      },
+      dobYear: {
+        dateOfBirthYear: req
+      },
       dateOfBirth: {
-        dateOfBirth: req,
+        dateOfBirthLimits: req,
+      },
+      /*
+      dateOfBirth: {
         presence: {
           allowEmpty: false,
           message: {
@@ -28,6 +40,7 @@
           },
         },
       }
+      */
     };
   };
 })();

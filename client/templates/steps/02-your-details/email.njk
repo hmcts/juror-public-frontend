@@ -6,7 +6,7 @@
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
-  {{ texts.YOUR_DETAILS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING_EMAIL }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}Personal Details Email{% endblock %}
@@ -93,8 +93,8 @@
 
         {# Info about email address #}
         <details class="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we need your email address?')"{% endif %}>
+          <summary class="govuk-details__summary ga-details-email-address">
+            <span class="govuk-details__summary-text ga-details-email-address" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we need your email address?')"{% endif %}>
               {{- texts.YOUR_DETAILS_PAGE.FORM_EMAIL_HELPER_TITLE -}}
             </span>
           </summary>

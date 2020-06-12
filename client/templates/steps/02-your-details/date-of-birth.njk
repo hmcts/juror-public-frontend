@@ -6,7 +6,7 @@
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
-  {{ texts.YOUR_DETAILS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING_DATE_OF_BIRTH }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}Personal Details Date Of Birth{% endblock %}
@@ -27,28 +27,49 @@
 
       {# Set Date of birth error #}
       {% set dobError = undefined %}
-      {% if errors.items['dateOfBirth'][0].fields %}
+      {% if errors.items %}
         {% set dobErrorHTML %}
-          {% for errorField in errors.items['dateOfBirth'][0].fields %}
-            {% if errorField !== 'dateOfBirth' %}
-              <span class="govuk-error-message dateOfBirthErrorMessage" id="{{ errorField }}ErrorMessage">
-                <span class="govuk-visually-hidden">{{texts.ERRORS.HIDDEN_ERROR}}: </span>
-                {{ errors.items['dateOfBirth'][0].details[loop.index0] }}
-              </span>
-            {% endif %}
-          {% endfor %}
+          {% if errors.items['dobDay'] %}
+            <span class="govuk-error-message dateOfBirthErrorMessage" id="dobDayErrorMessage">
+            <span class="govuk-visually-hidden">{{texts.ERRORS.TITLE_ERROR}}</span>{{ errors.items['dobDay'][0].details }}
+            </span>
+          {% endif %}
+          {% if errors.items['dobMonth'] %}
+            <span class="govuk-error-message dateOfBirthErrorMessage" id="dobMonthErrorMessage">
+            <span class="govuk-visually-hidden">{{texts.ERRORS.TITLE_ERROR}}</span>{{ errors.items['dobMonth'][0].details }}
+            </span>
+          {% endif %}
+          {% if errors.items['dobYear'] %}
+            <span class="govuk-error-message dateOfBirthErrorMessage" id="dobYearErrorMessage">
+            <span class="govuk-visually-hidden">{{texts.ERRORS.TITLE_ERROR}}</span>{{ errors.items['dobYear'][0].details }}
+            </span>
+          {% endif %}
+          {% if errors.items['dateOfBirth'] %}
+            <span class="govuk-error-message dateOfBirthErrorMessage" id="dateOfBirthErrorMessage">
+            <span class="govuk-visually-hidden">{{texts.ERRORS.TITLE_ERROR}}</span>{{ errors.items['dateOfBirth'][0].details }}
+            </span>
+          {% endif %}
         {% endset %}
         {% set dobError = {"html": dobErrorHTML} %}
-      {% else %}
-        {% if errors.items['dateOfBirth'] %}
-          {% set dobErrorHTML %}
-            <span class="govuk-error-message dateOfBirthErrorMessage" id="dateOfBirthErrorMessage">{{ errors.items['dateOfBirth'][0].details }}</span>
-          {% endset %}
-          {% set dobError = {"html": dobErrorHTML} %}
-        {% endif %}
       {% endif %}
 
-      <div class="govuk-form-group {% if errors.items['dateOfBirth'] %}govuk-form-group--error{% endif %}" id="dateOfBirthGroup">
+      {% set dobDayClass = "govuk-input--width-2" %}
+      {% if errors.items['dobDay']  or errors.items['dateOfBirth'] %}
+          {% set dobDayClass = "govuk-input--width-2 govuk-input--error" %}
+      {% endif %}
+
+      {% set dobMonthClass = "govuk-input--width-2" %}
+      {% if errors.items['dobMonth']  or errors.items['dateOfBirth'] %}
+          {% set dobMonthClass = "govuk-input--width-2 govuk-input--error" %}
+      {% endif %}
+
+      {% set dobYearClass = "govuk-input--width-4" %}
+      {% if errors.items['dobYear'] or errors.items['dateOfBirth'] %}
+          {% set dobYearClass = "govuk-input--width-4 govuk-input--error" %}
+      {% endif %}
+
+      {#<div class="govuk-form-group {% if errors.items['dateOfBirth'] %}govuk-form-group--error{% endif %}" id="dateOfBirthGroup">#}
+      <div class="govuk-form-group {% if dobError %}govuk-form-group--error{% endif %}" id="dateOfBirthGroup">
 
         <fieldset class="govuk-fieldset">
 
@@ -71,7 +92,7 @@
               {
                 id: "dobDay",
                 name: "dobDay",
-                classes: "govuk-input--width-2",
+                classes: dobDayClass,
                 autocomplete: "off",
                 label: texts.YOUR_DETAILS_PAGE.FORM_DOB_DAY_LABEL,
                 attributes: {
@@ -86,7 +107,7 @@
               {
                 id: "dobMonth",
                 name: "dobMonth",
-                classes: "govuk-input--width-2",
+                classes: dobMonthClass,
                 autocomplete: "off",
                 label: texts.YOUR_DETAILS_PAGE.FORM_DOB_MONTH_LABEL,
                 attributes: {
@@ -100,7 +121,7 @@
               {
                 id: "dobYear",
                 name: "dobYear",
-                classes: "govuk-input--width-4",
+                classes: dobYearClass,
                 autocomplete: "off",
                 label: texts.YOUR_DETAILS_PAGE.FORM_DOB_YEAR_LABEL,
                 attributes: {
@@ -118,8 +139,8 @@
 
       {# Info about DOB #}
         <details class="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text" {% if trackingCode %}onclick="trackVirtualPageViews('Help with date of birth')"{% endif %}>
+          <summary class="govuk-details__summary ga-details-dob">
+            <span class="govuk-details__summary-text ga-details-dob" {% if trackingCode %}onclick="trackVirtualPageViews('Help with date of birth')"{% endif %}>
               {{- texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER_TITLE -}}
             </span>
           </summary>

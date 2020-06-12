@@ -14,13 +14,13 @@
         presence: {
           allowEmpty: false,
           message: {
-            summary: filters.translate('VALIDATION.YOUR_DETAILS.EMAIL_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.YOUR_DETAILS.EMAIL_CHECK_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.YOUR_DETAILS.EMAIL_CHECK_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         },
         email: {
           message: {
-            summary: filters.translate('VALIDATION.YOUR_DETAILS.EMAIL_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.YOUR_DETAILS.EMAIL_CHECK_INVALID', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.YOUR_DETAILS.EMAIL_CHECK_INVALID', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         },
@@ -30,14 +30,14 @@
         presenceIf: {
           field: 'emailAddress',
           message: {
-            summary: filters.translate('VALIDATION.YOUR_DETAILS.EMAIL_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.YOUR_DETAILS.EMAIL_CONFIRM_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.YOUR_DETAILS.EMAIL_CHECK_EQUALITY', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.YOUR_DETAILS.EMAIL_CHECK_EQUALITY', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         },
         equality: {
           attribute: 'emailAddress',
           message: {
-            summary: filters.translate('VALIDATION.YOUR_DETAILS.EMAIL_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.YOUR_DETAILS.EMAIL_CHECK_EQUALITY', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.YOUR_DETAILS.EMAIL_CHECK_EQUALITY', (req.session.ulang === 'cy' ? texts_cy : texts_en))
           },
         },

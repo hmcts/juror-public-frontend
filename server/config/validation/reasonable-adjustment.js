@@ -11,8 +11,8 @@
         presence: {
           allowEmpty: false,
           message: {
-            summary: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.ASSISTANCE.ASSISTANCE_REQUIRED' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.ASSISTANCE.ASSISTANCE_REQUIRED' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             summaryLink: 'assistanceNeeded-Yes'
           }
         },
@@ -23,8 +23,8 @@
           field: 'assistanceNeeded',
           value: 'Yes',
           message: {
-            summary: filters.translate('VALIDATION.ASSISTANCE.ASSISTANCE_GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.ASSISTANCE.ASSISTANCE_GIVE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.ASSISTANCE.DISSABILITY_OR_IMPAIRMENT' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.ASSISTANCE.DISSABILITY_OR_IMPAIRMENT' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             summaryLink: 'assistanceType-mobility'
           }
         }
@@ -35,13 +35,29 @@
           field: 'assistanceType',
           value: 'Other',
           message: {
-            summary: filters.translate('VALIDATION.ASSISTANCE.DISSABILITY_OR_IMPAIRMENT'
-              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.ASSISTANCE.DISSABILITY_OR_IMPAIRMENT'
-              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.ASSISTANCE.ASSISTANCE_GIVE_DETAILS' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.ASSISTANCE.ASSISTANCE_GIVE_DETAILS' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+          }
+        },
+        length: {
+          maximum: 1000,
+          message: {
+            summary: filters.translate('VALIDATION.ASSISTANCE.ASSISTANCE_OTHER_LENGTH' + (req.session.user.thirdParty === 'Yes' ? '_OB': ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.ASSISTANCE.ASSISTANCE_OTHER_LENGTH' + (req.session.user.thirdParty === 'Yes' ? '_OB': ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
+          }
+        }
+      },
+
+      assistanceSpecialArrangements: {
+        length: {
+          maximum: 1000,
+          message: {
+            summary: filters.translate('VALIDATION.ASSISTANCE.SPECIAL_ARRANGEMENTS_LENGTH' + (req.session.user.thirdParty === 'Yes' ? '_OB': ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.ASSISTANCE.SPECIAL_ARRANGEMENTS_LENGTH' + (req.session.user.thirdParty === 'Yes' ? '_OB': ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         }
       }
+
     };
   }
 

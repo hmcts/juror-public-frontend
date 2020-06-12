@@ -60,7 +60,7 @@ class ThirdPartyDetailsContactPage extends Page {
   // ============
   mainPhoneErrors() {
     // return browser.elements('.error-summary-list > li > a[href="#mainPhone"]').value;
-    return browser.element('(//div[contains(@class, "govuk-error-summary")]/ul/li/a[contains(@href, "#mainPhone")])[1]');
+    return browser.element('(//div[contains(@class, "govuk-error-summary__body")]/ul/li/a[contains(@href, "#mainPhone")])[1]');
   }
 
   get thirdPartyContactPhoneSummaryError() {

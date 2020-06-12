@@ -87,8 +87,9 @@
 
     "FORM_ADDRESS_LABEL": "Address",
     "FORM_ADDRESS_LINE_ONE_LABEL": "Building and street",
-    "FORM_ADDRESS_LINE_TWO_LABEL": "Address line two",
-    "FORM_ADDRESS_LINE_THREE_LABEL": "Address line three",
+    "FORM_ADDRESS_LINE_1_OF_3": "line 1 of 3",
+    "FORM_ADDRESS_LINE_TWO_LABEL": "Building and street line 2 of 3",
+    "FORM_ADDRESS_LINE_THREE_LABEL": "Building and street line 3 of 3",
     "FORM_ADDRESS_TOWN_LABEL": "Town or city",
     "FORM_ADDRESS_COUNTY_LABEL": "County (optional)",
     "FORM_ADDRESS_POSTCODE_LABEL": "Postcode",
@@ -117,7 +118,7 @@
 
   "THIRD_PARTY_CONTACT_DETAILS": {
     "CAPTION": "Juror Details",
-    "HEADER": "We might need to get in touch with the person to ask them more questions or give them information about their jury service.",
+    "HEADER": "We might need to get in touch with the person to ask them more questions or give them information about their jury service",
   
     "CONTACT": "How we get in touch",
     "CONTACT_PARAGRAPH": "Please tell us how we can get in touch with the person you're replying for. Or we can use your contact information, if you're going to carry on acting for them.",

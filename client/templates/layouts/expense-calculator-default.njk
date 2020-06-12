@@ -1,0 +1,45 @@
+{% extends "./expense-calculator-template.njk" %}
+
+
+{% block head %}
+  <!--[if !IE 8]><!-->
+    <link href="../../../css/govuk-frontend.css" rel="stylesheet" />
+    <!--<link href="../../css/juror-digital.css" rel="stylesheet" />-->
+    <!--<link href="../../css/style.css" rel="stylesheet" />-->
+    <link href="../../../css/jd-style.css" rel="stylesheet" />
+  <!--<![endif]-->
+
+  <script type="text/javascript" src="{{ assetPath }}js/html5shiv.min.js"></script>
+  <script type="text/javascript" src="{{ assetPath }}js/respond.min.js"></script>
+
+  {# For Internet Explorer 8, you need to compile specific stylesheet #}
+  {# see https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/supporting-internet-explorer-8.md #}
+  <!--[if IE 8]>
+    <link href="/govuk-frontend/all-ie8.css" rel="stylesheet" />
+  <![endif]-->
+
+  {# For older browsers to allow them to recognise HTML5 elements such as `<header>` #}
+  <!--[if lt IE 9]>
+    <script src="/html5-shiv/html5shiv.js"></script>
+  <![endif]-->
+{% endblock %}
+
+{% block cookie_message %}
+  <p>{{cookieText | safe }}</p>
+{% endblock %}
+
+
+{% block content %}
+  <h1 class="govuk-heading-xl">Default page template</h1>
+{% endblock %}
+
+{% block bodyEnd %}
+  {# Run JavaScript at end of the <body>, to avoid blocking the initial render. #}
+  
+  {% include "../includes/scripts-gds.njk" %}
+  
+  <script src="../../../js/all.js"></script>
+  <script>GOVUKFrontend.initAll()</script>
+
+{% endblock %}
+

@@ -209,3 +209,14 @@ table#cal td.empty:hover {
     }
   }
 
+  /* style for ASIDE element */
+  .govuk-related-items {
+    padding-top: 10px;
+    border-top: 10px solid #1d70b8;
+  }
+
+  /* style for Deferral Dates errors */
+  .deferral-date-error {
+    padding-left: 15px;
+  }
+

@@ -8,6 +8,8 @@
   "IMAGE_TITLE": "Juror number can be found at the top of the summons letter",
 
   "FIELD_JUROR_NUMBER_TITLE": "9-digit juror number",
+  "FIELD_JUROR_NUMBER_HINT": "You can find your juror number at the top of your jury summons letter.",
+  "FIELD_JUROR_NUMBER_HINT_OB": "You can find the juror number at the top of the jury summons letter.",
 
   "GUIDANCE_TITLE": "I don't have a juror number",
   "GUIDANCE_TITLE_OB": "I don't have a juror number for the person",
@@ -25,12 +27,12 @@
   "GUIDANCE_ADDRESS_LINE_4": "SE1 0BJ",
 
   "FIELD_LAST_NAME_TITLE": "Juror last name",
-  "FIELD_LAST_NAME_HINT": "Please enter your last name as it is printed on the jury summons letter, even if this might be incorrect. You can change it further on.",
-  "FIELD_LAST_NAME_HINT_OB": "Please enter the last name as it is printed on the jury summons letter, even if this might be incorrect. You can change it further on.",
+  "FIELD_LAST_NAME_HINT": "Enter your last name as it is printed on the jury summons letter, even if this might be wrong. You can change it later.",
+  "FIELD_LAST_NAME_HINT_OB": "Enter the person's last name as it is printed on the jury summons letter, even if this might be wrong. You can change it later.",
 
   "FIELD_POSTCODE_TITLE": "Juror postcode",
-  "FIELD_POSTCODE_HINT": "Please enter your postcode as it is printed on the jury summons letter, even if this might be incorrect. You can change it further on.",
-  "FIELD_POSTCODE_HINT_OB": "Please enter the person's postcode as it is printed on the jury summons letter, even if this might be incorrect. You can change it further on.",
+  "FIELD_POSTCODE_HINT": "Enter your postcode as it is printed on the jury summons letter, even if this is wrong. You can change it later.",
+  "FIELD_POSTCODE_HINT_OB": "Enter the person's postcode as it is printed on the jury summons letter, even if this is wrong. You can change it later.",
 
   "FIELD_THIRD_PARTY_LABEL": "I'm replying on behalf of someone else"
 }

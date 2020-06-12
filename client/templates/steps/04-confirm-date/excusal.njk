@@ -1,15 +1,16 @@
 {% extends "../../layouts/default-gds.njk" %}
 
 {% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/character-count/macro.njk" import govukCharacterCount %}
 {% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
 {% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
-    {{ texts.EXCUSAL_PAGE.PROMPT_OB }}
+    {{ texts.EXCUSAL_PAGE.PROMPT_OB }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-    {{ texts.EXCUSAL_PAGE.PROMPT }}
+    {{ texts.EXCUSAL_PAGE.PROMPT }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 
@@ -53,28 +54,23 @@
           </h1>
 
           <div class="govuk-character-count">
-            {{ govukTextarea({
+            {{ govukCharacterCount({
               name: "excusalReason",
               id: "excusalReason",
+              maxlength: "1000",
               label: {
                 text: labelText
               },
-              attributes: {
-                cols: "30",
-                rows: "4",
-                maxlength: "1000"
-              },
+              rows: "4",
               errorMessage: excusalReasonError,
               value: user.excusal.reason
             }) }}
-            <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
-
         </div>
 
         <details class="govuk-details">
-          <summary class="govuk-details__summary" {% if trackingCode %}onclick="trackVirtualPageViews('What evidence will I need to provide')"{% endif %}>
-            <span class="govuk-details__summary-text">
+          <summary class="govuk-details__summary ga-details-excusal-evidence" {% if trackingCode %}onclick="trackVirtualPageViews('What evidence will I need to provide')"{% endif %}>
+            <span class="govuk-details__summary-text ga-details-excusal-evidence">
               {% if user.thirdParty == 'Yes' %}
                 {{ texts.EXCUSAL_PAGE.EVIDENCE_QUESTION_OB }}
               {% else %}

@@ -106,6 +106,7 @@
         break;
       default:
         delete req.session.user.deferral;
+        delete req.session.user.excusal;
         if (req.session.lastValidConfirmedDate.selection === req.body['confirmedDate']){
           returnObj = res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
         } else {

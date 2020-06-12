@@ -21,11 +21,18 @@
         presenceIf: {
           field: 'thirdPartyReason',
           value: 'other',
-          message: filters.translate('VALIDATION.PROVIDE_DETAILS', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+          message: { 
+            summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_REASON.OTHER_DETAILS_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_REASON.OTHER_DETAILS_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+          }
         },
         length: {
-          maximum: 100
-        }
+          maximum: 100,
+          message: {
+            summary: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_REASON.OTHER_DETAILS_LENGTH', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.ON_BEHALF.THIRD_PARTY_REASON.OTHER_DETAILS_LENGTH', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+          }
+        },
       },
     };
   };

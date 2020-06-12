@@ -24,30 +24,31 @@
   "MAX_TEXT_CHARS_HUNDRED": "Gall eich ateb gynnwys hyd at 100 o nodau.",
 
   "RESPONDER_TYPE": {
-    "MISSING": "Dewiswch un o'r opsiynau canlynol"
+    "MISSING": "Dewiswch a ydych yn ymateb dros eich hun neu ar ran rhywun arall"
   },
 
   "LOGIN": {
-    "JUROR_NUMBER_CHECK_SUM": "Gwiriwch eich rhif rheithiwr",
-    "JUROR_NUMBER_CHECK_SUM_OB": "Gwiriwch eich rhif rheithiwr",
-    "JUROR_NUMBER_CHECK_DETAILS": "Nodwch eich rhif rheithiwr - 9 digid Mae'r rhif ar frig eich llythyr gwŷs rheithgor",
+    "JUROR_NUMBER_CHECK_SUM": "Nodwch eich rhif rheithiwr 9 digid. Mae'r rhif ar frig eich llythyr gwŷs rheithgor",
+    "JUROR_NUMBER_CHECK_SUM_OB": "Nodwch y rhif rheithiwr 9 digid. Mae'r rhif ar dop y llythyr gwŷs rheithgor",
+    "JUROR_NUMBER_CHECK_DETAILS": "Nodwch eich rhif rheithiwr 9 digid. Mae'r rhif ar frig eich llythyr gwŷs rheithgor",
     "JUROR_NUMBER_CHECK_DETAILS_OB": "Nodwch y rhif rheithiwr 9 digid. Mae'r rhif ar dop y llythyr gwŷs rheithgor",
-    "JUROR_CHECK_LAST_NAME_SUM": "Gwiriwch eich cyfenw",
-    "JUROR_CHECK_LAST_NAME_SUM_OB": "Gwiriwch gyfenw’r rheithiwr",
+    "JUROR_CHECK_LAST_NAME_SUM": "Rhowch eich cyfenw",
+    "JUROR_CHECK_LAST_NAME_SUM_OB": "Nodwch gyfenw'r unigolyn sy'n cael ei wysio",
     "JUROR_CHECK_LAST_NAME_DETAILS": "Rhowch eich cyfenw",
-    "JUROR_CHECK_LAST_NAME_DETAILS_OB": "Nodwch gyfenw'r unigolyn sy’n cael ei wysio",
-    "JUROR_CHECK_LAST_NAME_INVALID": "Gwiriwch eich bod wedi rhoi eich cyfenw. Cofiwch ei roi yn union fel y mae’n ymddangos ar y llythyr gwŷs rheithgor. Os yw'r enw'n anghywir, gallwch ei newid yn hwyrach ymlaen.",
-    "JUROR_CHECK_LAST_NAME_INVALID_OB": "Nodwch gyfenw'r unigolyn sy’n cael ei wysio",
-    "JUROR_CHECK_POSTCODE_SUM": "Gwiriwch eich cod post",
-    "JUROR_CHECK_POSTCODE_SUM_OB": "Gwiriwch god post y rheithiwr",
+    "JUROR_CHECK_LAST_NAME_DETAILS_OB": "Nodwch gyfenw'r unigolyn sy'n cael ei wysio",
+    "JUROR_CHECK_LAST_NAME_INVALID": "Nodwch eich cyfenw. Nodwch eich cyfenw yn union fel y mae'n ymddangos ar y llythyr gwŷs rheithgor. Os yw'r enw'n anghywir, gallwch ei newid yn nes ymlaen.",
+    "JUROR_CHECK_LAST_NAME_INVALID_OB": "Nodwch gyfenw'r unigolyn sydd wedi cael gwŷs rheithgor. Nodwch y cyfenw yn union fel y mae'n ymddangos ar y llythyr gwŷs rheithgor. Os yw'r enw’n anghywir, gallwch ei newid yn nes ymlaen.",
+    "JUROR_CHECK_POSTCODE_SUM": "Rhowch eich cod post",
+    "JUROR_CHECK_POSTCODE_SUM_OB": "Nodwch god post y person sy'n cael ei wysio",
     "JUROR_CHECK_POSTCODE_DETAILS": "Rhowch eich cod post",
-    "JUROR_CHECK_POSTCODE_DETAILS_OB": "Nodwch god post y person sy’n cael ei wysio.",
-    "JUROR_CHECK_POSTCODE_DETAILS_FORMAT": "Nodwch god post y person sy’n cael ei wysio. Cofiwch ei nodi yn union fel y mae’n ymddangos ar y llythyr gwŷs rheithgor. Os yw’n anghywir, gallwch ei newid hwyrach ymlaen."
+    "JUROR_CHECK_POSTCODE_DETAILS_OB": "Nodwch god post y person sy'n cael ei wysio",
+    "JUROR_CHECK_POSTCODE_DETAILS_FORMAT": "Nodwch eich cod post.  Nodwch y cod post yn union fel y mae'n ymddangos ar y llythyr gwŷs rheithgor. Os yw'n anghywir, gallwch ei newid yn nes ymlaen.",
+    "JUROR_CHECK_POSTCODE_DETAILS_FORMAT_OB": "Nodwch god post yr unigolyn sydd wedi cael gwŷs rheithgor. Nodwch y cod post yn union fel y mae'n ymddangos ar y llythyr gwŷs rheithgor. Os yw'n anghywir, gallwch ei newid yn nes ymlaen."
   },
 
   "YOUR_DETAILS": {
-    "TITLE_CHECK": "Please enter a valid title",
-    "TITLE_CHECK_INVALID": "Please enter a valid title",
+    "TITLE_CHECK": "Gwiriwch eich teitl",
+    "TITLE_CHECK_INVALID": "Gwiriwch eich teitl",
     "FIRST_NAME_CHECK": "Gwiriwch eich enw cyntaf",
     "FIRST_NAME_CHECK_OB": "Gwiriwch enw cyntaf yr unigolyn",
     "FIRST_NAME_MISSING": "Nodwch eich enw cyntaf",
@@ -56,38 +57,40 @@
     "LAST_NAME_CHECK_OB": "Gwiriwch enw cyntaf yr unigolyn",
     "LAST_NAME_MISSING": "Nodwch eich cyfenw",
     "LAST_NAME_MISSING_OB": "Nodwch gyfenw’r unigolyn",
-    "NAME_CONFIRM_MISSING": "Dewiswch un o'r opsiynau canlynol",
+    "NAME_CONFIRM_MISSING": "Dewiswch 'Nac ydy' os yw eich enw’n anghywir",
     "ADDRESS_CONFIRM_MISSING": "Dewiswch un o'r opsiynau canlynol",
-    "ADDRESS_LINE_ONE_CHECK": "Gwiriwch eich cyfeiriad",
+    "ADDRESS_LINE_ONE_CHECK": "Gwiriwch linell gyntaf eich cyfeiriad",
     "ADDRESS_LINE_ONE_CHECK_OB": "Gwiriwch y cyfeiriad",
     "ADDRESS_LINE_ONE_MISSING": "Nodwch linell gyntaf eich cyfeiriad",
     "ADDRESS_LINE_ONE_MISSING_OB": "Nodwch linell gyntaf eich cyfeiriad",
-    "ADDRESS_LINE_TWO_CHECK": "Please enter your building and street",
-    "ADDRESS_TOWN_CHECK": "Gwiriwch eich tref neu ddinas",
+    "ADDRESS_LINE_TWO_CHECK": "Gwiriwch ail linell eich cyfeiriad",
+    "ADDRESS_LINE_THREE_CHECK": "Gwiriwch drydedd linell eich cyfeiriad",
+    "ADDRESS_TOWN_CHECK": "Gwiriwch y dref neu'r ddinas lle rydych yn byw",
     "ADDRESS_TOWN_CHECK_OB": "Gwiriwch y dref neu'r ddinas",
-    "ADDRESS_TOWN_MISSING": "Nodwch y dref neu’r ddinas lle rydych yn byw",
-    "ADDRESS_TOWN_MISSING_OB": "Gwiriwch y dref neu'r ddinas",
-    "ADDRESS_TOWN_INVALID": "Gwiriwch eich tref neu ddinas",
-    "ADDRESS_COUNTY_CHECK": "Gwiriwch eich gwlad",
+    "ADDRESS_TOWN_MISSING": "Nodwch y dref neu'r ddinas lle rydych yn byw",
+    "ADDRESS_TOWN_MISSING_OB": "Nodwch y dref neu'r ddinas",
+    "ADDRESS_TOWN_INVALID": "Gwiriwch y dref neu'r ddinas lle rydych yn byw",
+    "ADDRESS_COUNTY_CHECK": "Gwiriwch eich sir",
     "POSTCODE_MISSING": "Nodwch eich cod post",
     "POSTCODE_MISSING_OB": "Nodwch y cod post",
     "POSTCODE_CHECK": "Gwiriwch eich cod post",
     "POSTCODE_CHECK_OB": "Gwiriwch y cod post",
     "MAIN_PHONE_CHECK": "Gwiriwch eich prif rif ffôn",
     "MAIN_PHONE_CHECK_OB": "Gwiriwch y prif rif ffôn",
-    "MAIN_PHONE_MISSING": "Nodwch y rhif ffôn byddwch yn ei ddefnyddio fwyaf.",
-    "MAIN_PHONE_MISSING_OB": "Nodwch y rhif ffôn byddwch yn ei ddefnyddio fwyaf.",
-    "OTHER_PHONE_CHECK": "Please check your other phone number",
+    "MAIN_PHONE_MISSING": "Nodwch eich prif rif ffôn",
+    "MAIN_PHONE_MISSING_OB": "Nodwch y prif rif ffôn ",
+    "OTHER_PHONE_CHECK": "Gwiriwch eich rhif ffôn arall",
     "EMAIL_CHECK": "Gwiriwch eich cyfeiriad e-bost.",
     "EMAIL_CHECK_OB": "Gwiriwch y cyfeiriad e-bost",
     "EMAIL_CHECK_MISSING": "Nodwch eich cyfeiriad e-bost.",
     "EMAIL_CHECK_MISSING_OB": "Nodwch gyfeiriad e-bost er mwyn i ni gysylltu â chi",
     "EMAIL_CHECK_INVALID": "Gwiriwch eich cyfeiriad e-bost",
     "EMAIL_CHECK_INVALID_OB": "Gwiriwch y cyfeiriad e-bost",
-    "EMAIL_CONFIRM_MISSING": "Nid yw'r cyfeiriad e-bost rydych wedi ei chofnodi yn cyfateb â'r cyfeiriad e-bost yn y blwch uchod.",
-    "EMAIL_CONFIRM_MISSING_OB": "Nid yw'r cyfeiriad e-bost rydych wedi ei chofnodi yn cyfateb â'r cyfeiriad e-bost yn y blwch uchod.",
-    "EMAIL_CHECK_EQUALITY": "Nid yw'r cyfeiriad e-bost rydych wedi ei chofnodi yn cyfateb â'r cyfeiriad e-bost yn y blwch uchod.",
-    "EMAIL_CHECK_EQUALITY_OB": "Nid yw'r cyfeiriad e-bost rydych wedi ei chofnodi yn cyfateb â'r cyfeiriad e-bost yn y blwch uchod.",
+    "EMAIL_CONFIRM_CHECK": "Nodwch eich cyfeiriad e-bost a gwiriwch eich fod yr un fath â beth sydd yn y blwch cyntaf",
+    "EMAIL_CONFIRM_MISSING": "Nodwch eich cyfeiriad e-bost a gwiriwch eich fod yr un fath â beth sydd yn y blwch cyntaf",
+    "EMAIL_CONFIRM_MISSING_OB": "Nodwch gyfeiriad e-bost a gwiriwch eich fod yr un fath â beth sydd yn y blwch cyntaf",
+    "EMAIL_CHECK_EQUALITY": "Nodwch eich cyfeiriad e-bost a gwiriwch eich fod yr un fath â beth sydd yn y blwch cyntaf",
+    "EMAIL_CHECK_EQUALITY_OB": "Nodwch gyfeiriad e-bost a gwiriwch eich fod yr un fath â beth sydd yn y blwch cyntaf",
     "DATETIME_CHECK": "Gwiriwch eich dyddiad geni",
     "DATETIME_PAST_CHECK": "Gwiriwch eich dyddiad geni"
   },
@@ -101,78 +104,96 @@
     "MONTH_INVALID": "Nodwch y mis y cawsoch eich geni. Er enghraifft, for December, enter 12",
     "YEAR_MISSING": "Nodwch y flwyddyn y cawsoch eich geni",
     "YEAR_INVALID": "Nodwch y flwyddyn y cawsoch eich geni fel rhif pedwar digid. Er enghraifft, 1982",
-    "DAY_MISSING_OB": "Nodwch y diwrnod gafodd yr unigolyn ei eni.",
-    "DAY_INVALID_OB": "Nodwch y diwrnod gafodd yr unigolyn ei eni.  Er enghraifft, 06",
-    "MONTH_MISSING_OB": "Nodwch y mis gafodd yr unigolyn ei eni.",
-    "MONTH_INVALID_OB": "Nodwch y mis gafodd yr unigolyn ei eni. Er enghraifft, for December, enter 12",
+    "DAY_MISSING_OB": "Nodwch y diwrnod gafodd yr unigolyn ei eni",
+    "DAY_INVALID_OB": "Nodwch y diwrnod y cawsoch eich geni fel dyddiad. Er enghraifft, 06",
+    "MONTH_MISSING_OB": "Nodwch y mis gafodd yr unigolyn ei eni",
+    "MONTH_INVALID_OB": "Nodwch y mis y cafodd yr unigolyn ei eni fel rhif. Er enghraifft, ar gyfer mis Rhagfyr, rhowch 12",
     "YEAR_MISSING_OB": "Nodwch y flwyddyn gafodd yr unigolyn ei eni",
-    "YEAR_INVALID_OB": "Nodwch y flwyddyn gafodd yr unigolyn ei eni fel rhif pedwar digid. Er enghraifft, 1982",
+    "YEAR_INVALID_OB": "Nodwch y flwyddyn y cafodd yr unigolyn ei eni fel rhif pedwar digid. Er enghraifft, 1982",
     "INVALID_DATE": "Gwiriwch eich dyddiad geni",
     "INVALID_DATE_OB": "Nodwch ddydiad geni'r unigolyn"
   },
 
   "QUALIFY": {
-    "WHERE_YOU_LIVE": "Rhowch wybod i ni lle'r ydych yn byw neu wedi byw",
-    "WHERE_YOU_LIVE_OB": "Dywedwch wrthym am le mae'r unigolyn yr ydych yn ymateb ar ei ran yn byw neu wedi byw.",
-    "WHERE_YOU_LIVE_DETAILS": "Rhowch fanylion am eich cartref",
-    "WHERE_YOU_LIVE_DETAILS_OB": "Rhowch fanylion am gartref yr unigolyn",
-    "WHERE_YOU_LIVE_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
-    "WHERE_YOU_LIVE_LENGTH_ERROR": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
-    "MENTAL_HEALTH_CAPACITY": "Atebwch y cwestiwn ynghylch y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
-    "MENTAL_HEALTH_CAPACITY_OB": "Atebwch y cwestiwn ynghylch y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
-    "MENTAL_HEALTH_CAPACITY_DETAILS": "Rhowch fanylion am y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
-    "MENTAL_HEALTH_CAPACITY_DETAILS_OB": "Rhowch fanylion am y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
-    "MENTAL_HEALTH_CAPACITY_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
-    "MENTAL_HEALTH_CAPACITY_LENGTH_ERROR": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
-    "MENTAL_HEALTH_SECTIONED": "Atebwch y cwestiwn ynghylch y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
-    "MENTAL_HEALTH_SECTIONED_OB": "Atebwch y cwestiwn ynghylch y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
-    "MENTAL_HEALTH_SECTIONED_DETAILS": "Rhowch fanylion am y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
-    "MENTAL_HEALTH_SECTIONED_DETAILS_OB": "Rhowch fanylion am y Deddfau Iechyd Meddwl a Galluedd Meddyliol",
-    "MENTAL_HEALTH_SECTIONED_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
-    "MENTAL_HEALTH_SECTIONED_LENGTH_ERROR": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
-    "ON_BAIL": "Rhowch wybod inni os ydych ar fechnïaeth am gyflawni trosedd",
-    "ON_BAIL_OB": "Rhowch wybod inni os yw'r unigolyn rydych yn ymateb ar ei ran ar fechnïaeth am gyflawni trosedd",
-    "ON_BAIL_DETAILS": "Rhowch fanylion am eich mechnïaeth",
-    "ON_BAIL_DETAILS_OB": "Rhowch fanylion am fechnïaeth yr unigolyn",
-    "ON_BAIL_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
-    "CONVICTION": "Rhowch wybod inni os ydych wedi'ch cael yn euog o drosedd ac wedi cael dedfryd o garchar, gorchymyn cymunedol neu ddedfryd o garchar wedi'i gohirio.",
-    "CONVICTION_OB": "Rhowch wybod inni os ydy'r unigolyn rydych yn ymateb ar ei ran wedi'i gael yn euog o drosedd ac wedi cael dedfryd o garchar, gorchymyn cymunedol neu ddedfryd o garchar wedi'i gohirio.",
+    "WHERE_YOU_LIVE": "Dewiswch 'Naddo' os nad ydych wedi byw yn y Deyrnas Unedig, Ynysoedd y Sianel neu Ynys Manaw am gyfnod parhaus o bum mlynedd ers eich pen-blwydd yn 13 oed",
+    "WHERE_YOU_LIVE_OB": "Dewiswch 'Naddo' os nad yw'r unigolyn yr ydych chi'n ymateb ar ei ran wedi byw yn y Deyrnas Unedig, Ynysoedd y Sianel neu Ynys Manaw am bum mlynedd yn olynol ers eu pen-blwydd yn 13 oed",
+    "WHERE_YOU_LIVE_DETAILS": "Rhowch fanylion am ble rydych wedi byw ers eich pen-blwydd yn 13 mlwydd oed",
+    "WHERE_YOU_LIVE_DETAILS_OB": "Rhowch fanylion am ble mae'r unigolyn rydych yn ymateb ar ei ran wedi byw ers ei ben-blwydd/ei phen-blwydd yn 13 mlwydd oed",
+    "WHERE_YOU_LIVE_LENGTH": "Rydych wedi defnyddio gormod o nodau i ddisgrifio ble rydych wedi byw ers eich pen-blwydd yn 13 mlwydd oed",
+    "WHERE_YOU_LIVE_LENGTH_OB": "Rydych wedi defnyddio gormod o nodau i ddisgrifio ble mae'r unigolyn rydych yn ymateb ar ei ran wedi byw ers ei ben-blwydd/ei phen-blwydd yn 13 mlwydd oed",
+
+    "MENTAL_HEALTH_CAPACITY": "Dewiswch 'Ydi' os yw'r unigolyn yn glaf dan orchymyn, neu'n debygol o fod yn glaf dan orchymyn dan Ddeddf Iechyd Meddwl 1983",
+    "MENTAL_HEALTH_CAPACITY_OB": "Dewiswch 'Oes' os oes gan yr unigolyn ddiffyg galluedd meddyliol fel y nodir yn Neddf Galluedd Meddyliol 2005",
+    "MENTAL_HEALTH_CAPACITY_DETAILS": "Disgrifiwch sut mae gennych ddiffyg galluedd meddyliol fel y nodir yn Neddf Galluedd Meddyliol 2005",
+    "MENTAL_HEALTH_CAPACITY_DETAILS_OB": "Disgrifiwch sut mae gan yr unigolyn rydych yn ymateb ar ei ran ddiffyg galluedd meddyliol fel y nodir yn Neddf Galluedd Meddyliol 2005",
+    "MENTAL_HEALTH_CAPACITY_LENGTH": "Rydych wedi defnyddio gormod o nodau i ddisgrifio sut mae gennych ddiffyg galluedd meddyliol fel y nodir yn Neddf Galluedd Meddyliol 2005",
+    "MENTAL_HEALTH_CAPACITY_LENGTH_OB": "Rydych wedi defnyddio gormod o nodau i ddisgrifio sut mae gan yr unigolyn rydych yn ymateb ar ei ran ddiffyg galluedd meddyliol fel y nodir yn Neddf Galluedd Meddyliol 2005",
+
+    "MENTAL_HEALTH_SECTIONED": "Dewiswch 'Ydw' os ydych chi’n glaf dan orchymyn, neu'n debygol o fod yn glaf dan orchymyn dan Ddeddf Iechyd Meddwl 1983",
+    "MENTAL_HEALTH_SECTIONED_OB": "Dewiswch 'Ydi' os yw'r unigolyn yn glaf dan orchymyn, neu'n debygol o fod yn glaf dan orchymyn dan Ddeddf Iechyd Meddwl 1983",
+    "MENTAL_HEALTH_SECTIONED_DETAILS": "Rhowch fanylion am sut rydych yn glaf dan orchymyn, neu'n debygol o fod yn glaf dan orchymyn dan Ddeddf Iechyd Meddwl 1983",
+    "MENTAL_HEALTH_SECTIONED_DETAILS_OB": "Rhowch fanylion am sut mae'r unigolyn rydych yn ymateb ar ei ran yn glaf dan orchymyn, neu'n debygol o fod yn glaf dan orchymyn dan Ddeddf Iechyd Meddwl 1983",
+    "MENTAL_HEALTH_SECTIONED_LENGTH": "Rydych wedi defnyddio gormod o nodau i ddisgrifio sut rydych yn glaf dan orchymyn, neu'n debygol o fod yn glaf dan orchymyn dan Ddeddf Iechyd Meddwl 1983",
+    "MENTAL_HEALTH_SECTIONED_LENGTH_OB": "Rydych wedi defnyddio gormod o nodau i ddisgrifio sut mae'r unigolyn rydych yn ymateb ar ei ran yn glaf dan orchymyn, neu'n debygol o fod yn glaf dan orchymyn dan Ddeddf Iechyd Meddwl 1983",
+
+    "ON_BAIL": "Dewiswch 'Ydw' os ydych chi ar fechnïaeth ar hyn o bryd am gyflawni trosedd",
+    "ON_BAIL_OB": "Dewiswch 'Ydi' os yw'r unigolyn ar fechnïaeth am gyflawni trosedd",
+    "ON_BAIL_DETAILS": "Rhowch fanylion am eich mechnïaeth a'ch trosedd",
+    "ON_BAIL_DETAILS_OB": "Rhowch fanylion am fechnïaeth a throsedd yr unigolyn",
+    "ON_BAIL_LENGTH": "Rydych wedi defnyddio gormod o nodau i ddisgrifio manylion eich mechnïaeth a'ch trosedd",
+    "ON_BAIL_LENGTH_OB": "Rydych wedi defnyddio gormod o nodau i ddisgrifio manylion mechnïaeth a throsedd yr unigolyn",
+
+    "CONVICTION": "Dewiswch 'Do' os ydych wedi'ch cael yn euog o gyflawni trosedd",
+    "CONVICTION_OB": "Dewiswch 'Ydi' os yw'r unigolyn wedi'i gael yn euog o gyflawni trosedd",
     "CONVICTION_DETAILS": "Rhowch fanylion am eich trosedd",
     "CONVICTION_DETAILS_OB": "Rhowch fanylion am drosedd yr unigolyn",
-    "CONVICTION_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm"
+    "CONVICTION_LENGTH": "Rydych wedi defnyddio gormod o nodau i ddisgrifio manylion eich trosedd",
+    "CONVICTION_LENGTH_OB": "Rydych wedi defnyddio gormod o nodau i ddisgrifio manylion trosedd yr unigolyn"
   },
 
   "CONFIRM_DATE": {
-    "CONFIRM": "Cadarnhewch ddyddiad eich gwasanaeth rheithgor",
-    "CONFIRM_OB": "Cadarnhewch ddyddiad gwasanaeth rheithgor yr unigolyn"
+    "CONFIRM": "Dewiswch os allwch chi wasanaethu ar reithgor ar y dyddiad a nodir, os ydych chi angen newid y dyddiad neu eisiau cael eich esgusodi ",
+    "CONFIRM_OB": "Dewiswch os all yr unigolyn rydych yn ymateb ar ei ran wasanaethu ar reithgor ar y dyddiad a nodir, os yw angen newid y dyddiad neu eisiau cael ei esgusodi"
   },
 
   "CJS_EMPLOYED": {
-    "EMPLOYED": "Atebwch Ydw os oeddech wedi’ch cyflogi’n uniongyrchol gan unrhyw un o’r sefydliadau hyn. Os oeddech yn gweithio i is-gontractwr trydydd parti, atebwch Nac ydw.",
-    "EMPLOYED_OB": "Atebwch 'Oedd' os oedd yr unigolyn wedi'i gyflogi'n uniongyrchol gan unrhyw un o'r sefydliadau hyn. Os oeddent yn gweithio i is-gontractwr trydydd parti, atebwch 'Na'",
-    "WORKED_FOR": "Rhowch dic wrth ymyl unrhyw sefydliadau rydych wedi gweithio iddynt yn uniongyrchol (dim fel trydydd parti neu is-gontractwr)",
-    "WORKED_FOR_OB": "Rhowch dic wrth ymyl unrhyw sefydliadau mae'r unigolyn wedi gweithio iddynt yn uniongyrchol (dim fel trydydd parti neu is-gontractwr)",
-    "CHOOSE_ONE_OR_MORE": "Dewiswch un neu fwy",
-    "POLICE": "Rhowch fanylion am ble a phryd roeddech yn gweithio i’r Heddlu",
-    "POLICE_OB": "Rhowch fanylion am ble a phryd roedd yr unigolyn yn gweithio i’r Heddlu",
+    "EMPLOYED": "Dewiswch 'Ydw' os ydych chi erioed wedi gweithio i'r System Cyfiawnder Troseddol",
+    "EMPLOYED_OB": "Dewiswch 'Do' os yw'r unigolyn rydych yn ymateb ar ei ran erioed wedi gweithio i'r System Cyfiawnder Troseddol",
+    "WORKED_FOR": "Ticiwch unrhyw sefydliadau rydych wedi gweithio iddynt yn uniongyrchol (nid fel trydydd parti neu is-gontractwr)",
+    "WORKED_FOR_OB": "Ticiwch unrhyw sefydliadau mae'r unigolyn wedi gweithio iddynt yn uniongyrchol (nid fel trydydd parti neu is-gontractwr)",
+    "CHOOSE_ONE_OR_MORE": "Ticiwch unrhyw sefydliadau rydych wedi gweithio iddynt yn uniongyrchol (nid fel trydydd parti neu is-gontractwr)",
+    "CHOOSE_ONE_OR_MORE_OB": "Ticiwch unrhyw sefydliadau mae'r unigolyn wedi gweithio iddynt yn uniongyrchol (nid fel trydydd parti neu is-gontractwr)",
+    
+    "POLICE": "Rhowch fanylion am ble a phryd roeddech yn gweithio i'r Heddlu",
+    "POLICE_OB": "Rhowch fanylion am ble a phryd roedd yr unigolyn yn gweithio i'r Heddlu",
+    "POLICE_DETAILS_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
+    "POLICE_DETAILS_LENGTH_OB": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
+
     "PRISON_SERVICE": "Rhowch fanylion am ble a phryd roeddech yn gweithio i Wasanaeth Carchardai EM",
     "PRISON_SERVICE_OB": "Rhowch fanylion am ble a phryd roedd yr unigolyn yn gweithio i Wasanaeth Carchardai EM",
+    "PRISON_SERVICE_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
+    "PRISON_SERVICE_LENGTH_OB": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
+
     "OTHER": "Rhowch fanylion am ble a phryd roeddech yn gweithio i gyflogwr arall y System Cyfiawnder Troseddol",
     "OTHER_OB": "Rhowch fanylion am ble a phryd roedd yr unigolyn yn gweithio i gyflogwr arall y System Cyfiawnder Troseddol",
-    "CJS_EMPLOYED_LENGTH": "(MISSING)Please ensure that your response is not too long",
-    "CJS_GIVE_DETAILS": "Rhowch fanylion os gwelwch yn dda"
+    "OTHER_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
+    "OTHER_LENGTH_OB": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
+
+    "CJS_EMPLOYED_LENGTH": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
+    "CJS_GIVE_DETAILS": "Rhowch fanylion os gwelwch yn dda",
+    "CJS_GIVE_DETAILS_OB": "Rhowch fanylion os gwelwch yn dda"
   },
 
   "CONFIRM_INFO": {
-    "CONFIRM_CORRECT": "Cadarnhewch fod eich gwybodaeth yn gywir cyn ichi anfon eich ymateb i’r wŷs",
-    "CONFIRM_CORRECT_OB": "Cadarnhewch fod eich gwybodaeth yn gywir cyn ichi anfon eich ymateb i’r wŷs"
+    "CONFIRM_CORRECT": "Cadarnhewch fod eich gwybodaeth yn gywir cyn ichi anfon eich ymateb",
+    "CONFIRM_CORRECT_OB": "Cadarnhewch fod eich gwybodaeth yn gywir cyn ichi anfon eich ymateb"
   },
 
   "DEFERRAL": {
-    "CHECK_REASON": "Gwiriwch eich rheswm dros ofyn am ddyddiad diweddarach ar gyfer eich gwasanaeth rheithgor",
-    "CHECK_REASON_OB": "Gwiriwch y rheswm dros ofyn am ddyddiad diweddarach ar gyfer gwasanaeth rheithgor yr unigolyn",
-    "CHECK_REASON_MISSING": "Rhowch reswm dros ofyn am ddyddiad diweddarach ar gyfer eich gwasanaeth rheithgor",
-    "CHECK_REASON_MISSING_OB": "Rhowch reswm dros ofyn am ddyddiad diweddarach ar gyfer gwasanaeth rheithgor yr unigolyn",
+    "CHECK_REASON": "Rhowch reswm dros ofyn am ddyddiad arall ar gyfer eich gwasanaeth rheithgor",
+    "CHECK_REASON_OB": "Rhowch reswm dros ofyn am ddyddiad arall ar gyfer gwasanaeth rheithgor yr unigolyn",
+    "CHECK_REASON_MISSING": "Rhowch reswm dros ofyn am ddyddiad arall ar gyfer eich gwasanaeth rheithgor",
+    "CHECK_REASON_MISSING_OB": "Rhowch reswm dros ofyn am ddyddiad arall ar gyfer gwasanaeth rheithgor yr unigolyn",
     "CHECK_DATES_ONE":"Nodwch y dyddiad cyntaf rydych ar gael ar gyfer eich gwasanaeth rheithgor",
     "CHECK_DATES_ONE_OB":"Nodwch y dyddiad cyntaf y bydd y rheithiwr ar gael ar gyfer gwasanaeth rheithgor",
     "CHECK_DATES_TWO":"Nodwch yr ail ddyddiad rydych ar gael ar gyfer eich gwasanaeth rheithgor",
@@ -191,47 +212,54 @@
     "CHECK_DATE_FUTURE_ERROR_TWO": "Darparwch ail ddyddiad sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
     "CHECK_DATE_FUTURE_THREE": "Darparwch drydydd dyddiad sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
     "CHECK_DATE_FUTURE_ERROR_THREE": "Darparwch drydydd dyddiad sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
-    "CHECK_REASON_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
-    "CHECK_REASON_LENGTH_ERROR": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
-    "CHECK_DATE_AGE": "Os gwelwch yn dda, rhowch ddyddiad arall.  Mi fyddwch yn hŷn na 76 ar y dyddiad hwn ac ni fyddwch yn gymwys ar gyfer gwasanaeth rheithgor",
-    "CHECK_DATE_AGE_OB": "Os gwelwch yn dda, rhowch ddyddiad arall. Bydd y Rheithiwr yn hŷn na 76 ar y dyddiad hwn ac ni fyddwch yn gymwys ar gyfer gwasanaeth rheithgor.",
+    "CHECK_REASON_LENGTH": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
+    "CHECK_REASON_LENGTH_OB": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
+    "CHECK_DATE_AGE": "Darparwch ddyddiad arall. Byddwch yn hŷn na 76 oed ar y dyddiad hwn ac ni fyddwch yn gymwys i wasanaethu ar reithgor",
+    "CHECK_DATE_AGE_OB": "Darparwch ddyddiad arall. Bydd yr unigolyn yn hŷn na 76 oed ar y dyddiad hwn ac ni fydd yn gymwys i wasanaethu ar reithgor",
     "CHECK_DATE_AGE_ERROR": "Os gwelwch yn dda, rhowch ddyddiad arall"
   },
 
   "EXCUSAL": {
-    "CHECK_REASON": "Gwiriwch eich rheswm dros ofyn i gael eich esgusodi",
-    "CHECK_REASON_OB": "Gwiriwch y rheswm am ofyn i gael eich esgusodi",
+    "CHECK_REASON": "Dywedwch pam eich bod angen cael eich esgusodi",
+    "CHECK_REASON_OB": "Dywedwch pam fod yr unigolyn angen cael ei esgusodi",
     "CHECK_REASON_MISSING": "Dywedwch pam eich bod angen cael eich esgusodi",
     "CHECK_REASON_MISSING_OB": "Dywedwch pam fod yr unigolyn angen cael ei esgusodi",
-    "CHECK_REASON_LENGTH": "Os gwelwch yn dda, gwiriwch hyd y rheswm",
-    "CHECK_REASON_LENGTH_ERROR": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau"
+    "CHECK_REASON_LENGTH": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
+    "CHECK_REASON_LENGTH_OB": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau"
   },
 
   "ASSISTANCE": {
-    "DISSABILITY_OR_IMPAIRMENT": "Rhowch fanylion am eich anabledd neu nam",
-    "DISSABILITY_OR_IMPAIRMENT_OB": "Rhowch fanylion am anabledd neu nam yr unigolyn rydych yn ymateb ar ei ran.",
-    "ASSISTANCE_GIVE_DETAILS": "Rhowch fanylion os gwelwch yn dda"
+    "ASSISTANCE_REQUIRED": "Dewiswch 'Oes' os byddwch chi angen cymorth pan fyddwch yn y llys",
+    "ASSISTANCE_REQUIRED_OB": "Dewiswch 'Oes' os bydd yr unigolyn rydych yn ymateb ar ei ran angen cymorth pan fydd yn y llys",
+    "DISSABILITY_OR_IMPAIRMENT": "Dewiswch os oes gennych symudedd cyfyngedig, nam ar y clyw, clefyd siwgr, nam difrifol ar eich golwg neu anabledd neu nam o fath arall",
+    "DISSABILITY_OR_IMPAIRMENT_OB": "Dewiswch os oes ganddynt symudedd cyfyngedig, nam ar y clyw, clefyd siwgr, nam difrifol ar eu golwg neu anabledd neu nam o fath arall",
+    "ASSISTANCE_GIVE_DETAILS": "Rhowch fanylion am eich anabledd neu nam",
+    "ASSISTANCE_GIVE_DETAILS_OB": "Rhowch fanylion am anabledd neu nam yr unigolyn rydych yn ymateb ar ei ran",
+    "ASSISTANCE_OTHER_LENGTH": "Rydych wedi defnyddio gormod o nodau i ddisgrifio’ch anabledd neu nam",
+    "ASSISTANCE_OTHER_LENGTH_OB": "Rydych wedi defnyddio gormod o nodau i ddisgrifio anabledd neu nam yr unigolyn",
+    "SPECIAL_ARRANGEMENTS_LENGTH": "Rydych wedi defnyddio gormod o nodau i ddisgrifio'r trefniadau arbennig neu gymorth y bydd arnoch angen tra byddwch chi’n gwasanaethu ar reithgor",
+    "SPECIAL_ARRANGEMENTS_LENGTH_OB": "Rydych wedi defnyddio gormod o nodau i ddisgrifio'r trefniadau arbennig neu gymorth y bydd yr unigolyn rydych yn ymateb ar ei ran ei angen tra bydd yn gwasanaethu ar reithgor"
   },
 
   "ON_BEHALF": {
     "THIRD_PARTY_DETAILS": {
-      "FIRST_NAME_CHECK": "Gwiriwch eich enw cyntaf",
+      "FIRST_NAME_CHECK": "Nodwch eich enw cyntaf",
       "FIRST_NAME_CHECK_MISSING": "Nodwch eich enw cyntaf",
       "FIRST_NAME_CHECK_INVALID": "Gwiriwch eich enw cyntaf",
 
-      "LAST_NAME_CHECK": "Gwiriwch eich cyfenw",
+      "LAST_NAME_CHECK": "Nodwch eich cyfenw",
       "LAST_NAME_CHECK_MISSING": "Nodwch eich cyfenw",
       "LAST_NAME_CHECK_INVALID": "Gwiriwch eich cyfenw",
 
       "ADDRESS_TOWN_CHECK": "Gwiriwch y dref neu'r ddinas",
       "ADDRESS_TOWN_CHECK_INVALID": "Gwiriwch y dref neu'r ddinas",
 
-      "RELATIONSHIP_CHECK": "Gwiriwch eich perthynas â'r unigolyn",
-      "RELATIONSHIP_CHECK_MISSING": "Nodwch eich perthynas â'r unigolyn",
-      "RELATIONSHIP_CHECK_INVALID": "Gwiriwch eich perthynas â'r unigolyn",
+      "RELATIONSHIP_CHECK": "Nodwch sut ydych chi'n adnabod yr unigolyn sydd wedi cael gwŷs i wasanaethu ar reithgor",
+      "RELATIONSHIP_CHECK_MISSING": "Nodwch sut ydych chi'n adnabod yr unigolyn sydd wedi cael gwŷs i wasanaethu ar reithgor",
+      "RELATIONSHIP_CHECK_INVALID": "Nodwch sut ydych chi'n adnabod yr unigolyn sydd wedi cael gwŷs i wasanaethu ar reithgor",
 
-      "CONTACT_CHECK": "Dewiswch y dull mwyaf priodol i gysylltu â chi",
-      "CONTACT_CHECK_MISSING": "Dewiswch ffordd i ni gysylltu â chi",
+      "CONTACT_CHECK": "Dewiswch sut yr hoffech i ni gysylltu â chi",
+      "CONTACT_CHECK_MISSING": "Dewiswch sut yr hoffech i ni gysylltu â chi",
 
       "MAIN_PHONE_CHECK": "Gwiriwch eich prif rif ffôn",
       "MAIN_PHONE_CHECK_MISSING": "Nodwch eich prif rif ffôn",
@@ -244,50 +272,52 @@
       "EMAIL_CHECK_MISSING": "Nodwch eich cyfeiriad e-bost",
       "EMAIL_CHECK_INVALID": "Gwiriwch eich cyfeiriad e-bost",
 
-      "EMAIL_CONFIRMATION_CHECK": "Gwiriwch eich cyfeiriad e-bost",
-      "EMAIL_CONFIRMATION_CHECK_MISSING": "Gwiriwch eich cyfeiriad e-bost. Mae'n rhaid iddo fod yr un fath â'r un yn y blwch uchod.",
-      "EMAIL_CONFIRMATION_CHECK_INVALID": "Nid yw'r cyfeiriad e-bost a nodwyd gennych yr un fath â'r cyfeiriad e-bost yn y blwch uchod."
+      "EMAIL_CONFIRMATION_CHECK": "Nodwch eich cyfeiriad e-bost a gwiriwch ei fod yr un fath â'r un rydych eisoes wedi'i roi",
+      "EMAIL_CONFIRMATION_CHECK_MISSING": "Nodwch eich cyfeiriad e-bost a gwiriwch ei fod yr un fath â'r un rydych eisoes wedi'i roi",
+      "EMAIL_CONFIRMATION_CHECK_INVALID": "Nodwch eich cyfeiriad e-bost a gwiriwch ei fod yr un fath â'r un rydych eisoes wedi'i roi"
     },
 
     "THIRD_PARTY_REASON": {
-      "REASON_CHECK": "Dywedwch pam yr ydych yn ymateb ar ran yr unigolyn a enwir ar y wŷs rheithgor",
-      "REASON_CHECK_MISSING": "Dywedwch pam yr ydych yn ymateb ar ran yr unigolyn a enwir ar y wŷs rheithgor"
+      "REASON_CHECK": "Dywedwch wrthym pam ydych chi'n ymateb ar ran yr unigolyn a enwir ar y wŷs rheithgor",
+      "REASON_CHECK_MISSING": "Dywedwch wrthym pam ydych chi'n ymateb ar ran yr unigolyn a enwir ar y wŷs rheithgor",
+      "OTHER_DETAILS_MISSING": "DRhowch fanylion ynglŷn â pham eich bod yn ymateb ar ran yr unigolyn",
+      "OTHER_DETAILS_LENGTH": "Rydych wedi defnyddio gormod o nodau i ddisgrifio pam eich bod yn ymateb ar ran unigolyn arall"
     },
 
     "THIRD_PARTY_PERSONAL_DETAILS": {
       "NAME_CONFIRM_MISSING": "Dewiswch un o'r opsiynau canlynol",
 
-      "TITLE_CHECK": "Please check the person's title",
-      "TITLE_CHECK_INVALID": "Please enter a valid title",
+      "TITLE_CHECK": "gwirio teitl y person",
+      "TITLE_CHECK_INVALID": "gwirio teitl y person",
 
-      "FIRST_NAME_CHECK": "Gwiriwch enw cyntaf yr unigolyn",
+      "FIRST_NAME_CHECK": "Nodwch enw cyntaf yr unigolyn",
       "FIRST_NAME_CHECK_MISSING": "Nodwch enw cyntaf yr unigolyn",
       "FIRST_NAME_CHECK_INVALID": "Gwiriwch enw cyntaf yr unigolyn",
 
-      "LAST_NAME_CHECK": "Gwiriwch enw cyntaf yr unigolyn",
-      "LAST_NAME_CHECK_MISSING": "Nodwch gyfenw’r unigolyn",
+      "LAST_NAME_CHECK": "Nodwch gyfenw'r unigolyn",
+      "LAST_NAME_CHECK_MISSING": "Nodwch gyfenw'r unigolyn",
       "LAST_NAME_CHECK_INVALID": "Gwiriwch enw cyntaf yr unigolyn",
 
       "ADDRESS_CONFIRM_MISSING": "Dewiswch un o'r opsiynau canlynol",
 
-      "ADDRESS_LINE_ONE_CHECK": "Gwiriwch y cyfeiriad",
-      "ADDRESS_LINE_ONE_CHECK_INVALID": "Gwiriwch y cyfeiriad",
-      "ADDRESS_LINE_ONE_MISSING": "Nodwch linell gyntaf eich cyfeiriad",
+      "ADDRESS_LINE_ONE_CHECK": "Nodwch linell gyntaf y cyfeiriad",
+      "ADDRESS_LINE_ONE_CHECK_INVALID": "Gwiriwch linell gyntaf y cyfeiriad",
+      "ADDRESS_LINE_ONE_MISSING": "Nodwch linell gyntaf y cyfeiriad",
 
-      "ADDRESS_LINE_TWO_CHECK": "Please check the second line of the address",
-      "ADDRESS_LINE_TWO_CHECK_INVALID": "Please check the second line of the address",
+      "ADDRESS_LINE_TWO_CHECK": "Gwiriwch ail linell y cyfeiriad",
+      "ADDRESS_LINE_TWO_CHECK_INVALID": "Gwiriwch ail linell y cyfeiriad",
 
-      "ADDRESS_LINE_THREE_CHECK": "Please check the third line of the address",
-      "ADDRESS_LINE_THREE_CHECK_INVALID": "Please check the third line of the address",
+      "ADDRESS_LINE_THREE_CHECK": "Gwiriwch drydedd linell y cyfeiriad",
+      "ADDRESS_LINE_THREE_CHECK_INVALID": "Gwiriwch drydedd linell y cyfeiriad",
 
-      "ADDRESS_TOWN_CHECK": "Gwiriwch y dref neu'r ddinas",
-      "ADDRESS_TOWN_CHECK_MISSING": "Nodwch y dref neu'r ddinas lle rydych yn byw",
+      "ADDRESS_TOWN_CHECK": "Nodwch y dref neu'r ddinas",
+      "ADDRESS_TOWN_CHECK_MISSING": "Nodwch y dref neu'r ddinas",
       "ADDRESS_TOWN_CHECK_INVALID": "Gwiriwch y dref neu'r ddinas",
 
       "ADDRESS_COUNTY_CHECK": "Gwiriwch y sir",
       "ADDRESS_COUNTY_CHECK_INVALID": "Gwiriwch y sir",
 
-      "ADDRESS_POSTCODE_CHECK": "Gwiriwch y cod post",
+      "ADDRESS_POSTCODE_CHECK": "Nodwch y cod post",
       "ADDRESS_POSTCODE_CHECK_MISSING": "Nodwch y cod post",
       "ADDRESS_POSTCODE_CHECK_INVALID": "Gwiriwch y cod post",
 
@@ -297,24 +327,24 @@
 
     "THIRD_PARTY_CONTACT": {
       "CANNOT_USE_OWN_PHONE": "Nodwch rif ffôn cyswllt",
-      "CANNOT_USE_OWN_PHONE_INLINE": "Nid ydych wedi darparu cyfeiriad e-bost. Dewiswch yr opsiwn arall.",
+      "CANNOT_USE_OWN_PHONE_INLINE": "Nid ydych wedi darparu rhif ffon. Dewiswch yr opsiwn arall.",
       "CANNOT_USE_OWN_EMAIL": "Nodwch gyfeiriad e-bost cyswllt",
       "CANNOT_USE_OWN_EMAIL_INLINE": "Nid ydych wedi darparu cyfeiriad e-bost. Dewiswch yr opsiwn arall.",
 
-      "USE_PHONE_CHECK": "Nodwch rif ffôn cyswllt",
-      "PHONE_NUMBER_CHECK": "Nodwch rif ffôn cyswllt",
+      "USE_PHONE_CHECK": "Dewiswch rif ffôn cyswllt i ni ei ddefnyddio i gysylltu â chi neu'r rheithiwr",
+      "PHONE_NUMBER_CHECK": "Dewiswch rif ffôn cyswllt i ni ei ddefnyddio i gysylltu â chi neu'r rheithiwr",
       "PHONE_NUMBER_CHECK_MISSING": "Nodwch y prif rif ffôn",
       "PHONE_NUMBER_CHECK_INVALID": "Gwiriwch y prif rif ffôn",
       "PHONE_NUMBER_OTHER_CHECK": "Gwiriwch y rhif ffôn arall",
       "PHONE_NUMBER_OTHER_CHECK_INVALID": "Gwiriwch y rhif ffôn arall",
 
-      "USE_EMAIL_CHECK": "Nodwch gyfeiriad e-bost cyswllt",
-      "EMAIL_CHECK": "Gwiriwch y cyfeiriad e-bost",
-      "EMAIL_CHECK_MISSING": "Nodwch gyfeiriad e-bost er mwyn i ni gysylltu â chi",
+      "USE_EMAIL_CHECK": "Dewiswch gyfeiriad e-bost i ni ei ddefnyddio i gysylltu â chi neu’r rheithiwr",
+      "EMAIL_CHECK": "Dewiswch gyfeiriad e-bost i ni ei ddefnyddio i gysylltu â chi neu’r rheithiwr",
+      "EMAIL_CHECK_MISSING": "Nodwch gyfeiriad e-bost cyswllt",
       "EMAIL_CHECK_INVALID": "Gwiriwch y cyfeiriad e-bost",
-      "EMAIL_CONFIRMATION_CHECK": "Gwiriwch y cyfeiriad e-bost",
-      "EMAIL_CONFIRMATION_CHECK_MISSING": "Gwiriwch y cyfeiriad e-bost. Mae'n rhaid iddo fod yr un fath a'r un yn y blwch uchod.",
-      "EMAIL_CONFIRMATION_CHECK_INVALID": "Gwiriwch y cyfeiriad e-bost. Mae'n rhaid iddo fod yr un fath a'r un yn y blwch uchod."
+      "EMAIL_CONFIRMATION_CHECK": "Nodwch gyfeiriad e-bost a gwiriwch eich fod yr un fath â beth sydd yn y blwch cyntaf",
+      "EMAIL_CONFIRMATION_CHECK_MISSING": "Nodwch gyfeiriad e-bost a gwiriwch eich fod yr un fath â beth sydd yn y blwch cyntaf",
+      "EMAIL_CONFIRMATION_CHECK_INVALID": "Nodwch gyfeiriad e-bost a gwiriwch eich fod yr un fath â beth sydd yn y blwch cyntaf"
     }
   }
 }

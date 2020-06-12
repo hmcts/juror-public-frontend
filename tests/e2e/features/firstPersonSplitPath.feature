@@ -23,10 +23,12 @@ Feature: Test full happy path for first person responses after splitting the qua
 
     # Your Details Name Page
     Then I confirm that I am on the Your Details Name page
+    Then I confirm that my name is correct
     Then I submit my name details
     
     # Your Details Address Page
     Then I confirm that I am on the Your Details Address page
+    Then I confirm that my address is correct
     Then I submit my address details
 
     # Your Details Phone Page
@@ -119,10 +121,12 @@ Feature: Test full happy path for first person responses after splitting the qua
 
     # Your Details Name Page
     Then I confirm that I am on the Your Details Name page
+    Then I confirm that my name is correct
     Then I submit my name details
     
     # Your Details Address Page
     Then I confirm that I am on the Your Details Address page
+    Then I confirm that my address is correct
     Then I submit my address details
 
     # Your Details Phone Page
@@ -221,10 +225,12 @@ Feature: Test full happy path for first person responses after splitting the qua
 
     # Your Details Name Page
     Then I confirm that I am on the Your Details Name page
+    Then I confirm that my name is correct
     Then I submit my name details
     
     # Your Details Address Page
     Then I confirm that I am on the Your Details Address page
+    Then I confirm that my address is correct
     Then I submit my address details
 
     # Your Details Phone Page

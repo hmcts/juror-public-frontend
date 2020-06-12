@@ -1,0 +1,52 @@
+{% extends "../../layouts/expense-calculator-default.njk" %}
+
+{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+    {{ texts.EXPENSE_CALCULATOR.TRAVEL_PARKING_AMOUNT.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Expense Calculator Travel Parking Amount{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "../../includes/errors-gds.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="{{ url('expense.calculator.travel.parking.amount.post') }}" method="post">
+
+        <h1 class="govuk-heading-xl">
+            {{ texts.EXPENSE_CALCULATOR.TRAVEL_PARKING_AMOUNT.HEADING }}
+        </h1>
+
+        {{ govukInput({
+          hint: {
+            text: texts.EXPENSE_CALCULATOR.TRAVEL_PARKING_AMOUNT.HINT
+          },
+          classes: "govuk-!-width-one-third",
+          id: "parkingAmount",
+          name: "parkingAmount"
+        }) }}
+
+        {# Submit form #}
+        {{ govukButton({
+            text: texts.EXPENSE_CALCULATOR.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

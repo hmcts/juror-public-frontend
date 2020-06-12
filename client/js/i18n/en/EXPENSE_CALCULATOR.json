@@ -1,0 +1,314 @@
+{
+  "INTERFACE": {
+    "GOV": "GOV.UK",
+    "SERVICE_TITLE": "Check what you can claim for jury service",
+    "BUTTON_TEXT_CONTINUE": "Continue",
+    "LINK_OPENS_NEW_WINDOW": "Opens in a new window",
+    "BETA_BANNER_TEXT_1": "Juror Expenses Calculator"
+  },
+
+  "START": {
+    "HEADING": "Check what you can claim for jury service",
+    "PARAGRAPH_1": "Use this calculator to work out what you can claim for doing 10 days of jury service.",
+    "PARAGRAPH_2": "This calculator:",
+    "LIST_1_ITEM_1": "will give you an estimate of what you can claim",
+    "LIST_1_ITEM_2": "is for your information only",
+    "LIST_1_ITEM_3": "does not send a claim or your details to the courts",
+    "PARAGRAPH_3": "You'll need to make your actual expenses claim by filling in a paper form at the end of your jury service.",
+
+    "INFO_INDENT": "This calculator is also available in",
+    "INFO_INDENT_LINK": "Welsh (Cymraeg).",
+    "CLANG_LINK": "/expense-calculator/?clang=cy",
+
+    "SUBHEADING_2": "Before you start",
+    "PARAGRAPH_4": "You will need details about:",
+    "LIST_2_ITEM_1": "your income",
+    "LIST_2_ITEM_2": "what you expect to spend travelling to court",
+    "LIST_2_ITEM_3": "other expenses such as childcare or carer costs",
+
+    "NAV_HEADING_1": "Subsection",
+    "NAV_ITEM_1": "Related Link",
+    "NAV_ITEM_2": "Related Link",
+    "NAV_HEADING_2": "Other links",
+    "NAV_ITEM_3": "Related Link",
+    "NAV_ITEM_4": "Related Link"
+  },
+
+  "EMPLOYMENT_STATUS": {
+    "HEADING": "What will be your employment status on the day your jury service starts?",
+    "HINT": "Select one option",
+    "STATUS_EMPLOYED_FULL_TIME": "Employed (Full-time)",
+    "STATUS_EMPLOYED_PART_TIME": "Employed (Part-time)",
+    "STATUS_SELF_EMPLOYED": "Self-employed or company director",
+    "STATUS_UNEMPLOYED": "Unemployed",
+    "STATUS_CARER": "Carer or homemaker",
+    "STATUS_RETIRED": "Retired",
+    "ERROR_SUMMARY" : "Employment Status Summary Error",
+    "ERROR_DETAIL": "Employment Status Detail Error"
+  },
+
+  "EMPLOYER": {
+    "HEADING": "Will your employer continue to pay you during your jury service?",
+    "YES": "Yes",
+    "NO": "No",
+    "GUIDANCE_HEADING": "My employer has told me they will claim the money back from the court",
+    "GUIDANCE_TEXT": "PLACEHOLDER TEXT - AWAITING CONTENT",
+    "ERROR_SUMMARY": "Employer Summary Error",
+    "ERROR_DETAIL": "Employer Detail Error"
+  },
+
+  "INCOME": {
+    "HEADING": "Will you lose any income while doing jury service?",
+    "YES": "Yes",
+    "NO": "No",
+    "GUIDANCE_HEADING_1": "My employer has told me they will pay me and claim the money back from the court",
+    "GUIDANCE_TEXT_1": "Expenses and loss of earnings can only be reimbursed to the juror if they've suffered financial loss as a direct result of doing jury service. The court will not pay compensation to third parties like employers. If your employer will pay you, then you cannot make a claim for loss of earnings.",
+    "ERROR_SUMMARY": "Income Summary Error",
+    "ERROR_DETAIL": "Income Detail Error"
+  },
+
+  "EARNINGS": {
+    "HEADING": "Will you lose any income while doing jury service?",
+    "HINT": "This means income from an employer or self-employment. Benefits like Jobseeker's Allowance will not be affected unless you do more than 8 weeks of jury service.",
+    "YES": "Yes",
+    "NO": "No",
+    "GUIDANCE_HEADING_1": "My employer has told me they will pay me and then claim the money back from the court",
+    "GUIDANCE_TEXT_1": "Expenses and loss of earnings can only be reimbursed to the juror if they've suffered financial loss as a direct result of doing jury service. The court will not pay compensation to third parties like employers. If your employer will pay you, then you cannot make a claim for loss of earnings.",
+    "ERROR_SUMMARY": "Please select yes or no",
+    "ERROR_DETAIL": "Please select yes or no"
+  },
+
+  "EARNINGS_THRESHOLD": {
+    "HEADING": "Do you earn more than £64.95 each day on the days you work?",
+    "HINT": "If you earn a different amount on different days, use the largest amount to find out the maximum that you can claim.",
+    "YES": "Yes",
+    "NO": "No",
+    "ERROR_SUMMARY": "Please select yes or no",
+    "ERROR_DETAIL": "Please select yes or no"
+  },
+
+  "EARNINGS_AMOUNT": {
+    "HEADING": "How much do you earn each day?",
+    "HINT": "Enter the amount you receive from all employment, self employment or as a company director, each day. This should be the amount you receive after you have paid tax, also known as your Net Pay.",
+    "GUIDANCE_HEADING": "Where can I find this information?",
+    "GUIDANCE_TEXT": "You can find this on your payslip, P60 or tax return. It will be shown as 'Net Pay'.",
+    
+    "AMOUNT_LABEL": "£ each day",
+
+    "ERROR_SUMMARY_MISSING": "Enter how much you earn each day",
+    "ERROR_DETAIL_MISSING": "Enter how much you earn each day",
+    "ERROR_SUMMARY_INVALID": "Enter how much you earn each day",
+    "ERROR_DETAIL_INVALID": "Enter how much you earn each day"
+  },
+
+  "BENEFITS": {
+    "HEADING": "Are you claiming any benefits?",
+    "HINT": "This may include financial support like Jobseeker's Allowance. This does not include any state pension payments.",
+    "YES": "Yes",
+    "NO" : "No",
+    "ERROR_SUMMARY": "Please select one of the options",
+    "ERROR_DETAIL": "Please select one of the options",
+    "INFO_HEADING": "Financial support and benefits",
+    "INFO_PARAGRAPH": "Financial support and benefits (like Jobseeker's Allowance) are unaffected for the first 8 weeks you're on jury service."
+  },
+
+  "EXTRA_COSTS": {
+    "HEADING": "Will doing jury service mean you have extra costs that you wouldn't normally have?",
+    "HINT_PARAGRAPH_1": "Include costs for childcare or care for an elderly or vulnerable adult. You can only claim for extra costs incurred by doing jury service and not costs that you’d normally pay for.",
+    "HINT_PARAGRAPH_2": "Do not include travel costs. We'll ask you for those later.",
+    "INFO_LINK_HEADING": "Claiming Expenses for childcare or care of elderly or vulnerable adults",
+    "YES": "Yes",
+    "NO" : "No",
+    "ERROR_SUMMARY": "Please select yes or no",
+    "ERROR_DETAIL": "Please select yes or no"
+  },
+
+  "EXTRA_COSTS_INFO": {
+    "HEADING": "Claiming expenses for childcare or care for an elderly or vulnerable adult",
+    "INFO_PARAGRAPH_1": "You can claim for extra costs you incur for childcare or the care of an elderly or vulnerable adult during your jury service.",
+    "SECTION_1_HEADING": "You cannot claim back costs that you'd normally pay for",
+    "SECTION_1_PARAGRAPH_1": "For example, if:",
+    "SECTION_1_PARAGRAPH_2": "- you work and usually use a childminder, you cannot claim this childcare cost for the days you'd normally work.",
+    "SECTION_1_PARAGRAPH_3": "- your child normally attends an afterschool club or other activities, you cannot claim childcare for those hours.",
+    "SECTION_1_PARAGRAPH_4": "In both cases, this is because you've not incurred any extra childcare costs as a direct result of jury service. These are costs you'd pay anyway.",
+
+    "SECTION_2_HEADING": "If someone takes annual leave to look after your child",
+    "SECTION_2_PARAGRAPH_1": "You cannot claim their salary back because their employer will normally pay them during their annual leave.",
+    "SECTION_2_PARAGRAPH_2": "In addition, the court does not pay compensation to third parties. This is because there's no direct loss to you as a result of jury service.",
+
+    "SECTION_3_HEADING": "If friends or family provide care and charge you for this",
+    "SECTION_3_PARAGRAPH_1": "You can claim up to £2.50 per hour, per child or adult towards this cost.",
+    "SECTION_3_PARAGRAPH_2": "You can claim this for up to 8 hours for each day at court.",
+    "SECTION_3_PARAGRAPH_3": "This person must provide a letter to the court with their full details, days and times they've cared for your child or any adult before the expenses will be paid."
+  },
+
+  "EXTRA_COSTS_AMOUNT": {
+    "HEADING": "What will the total be for these extra costs each day?",
+    "HINT": "You'll need to provide evidence of these costs when making a claim. These might include invoices or a copy of your child's birth certificate. A full list of evidence needed is on the claim form.",
+    "AMOUNT_LABEL": "£ each day",
+    "ERROR_SUMMARY_MISSING": "Enter the total value of these extra costs each day",
+    "ERROR_DETAIL_MISSING": "Enter the total value of these extra costs each day",
+    "ERROR_SUMMARY_INVALID": "Enter the total value of these extra costs each day",
+    "ERROR_DETAIL_INVALID": "Enter the total value of these extra costs each day"
+  },
+
+  "TRAVEL_TYPE": {
+    "HEADING": "How will you travel to the court?",
+    "HINT": "Select all that apply. For example, you may need to drive to a station before taking public transport.",
+    "TRAVEL_TYPE_BICYCLE": "Bicycle",
+    "TRAVEL_TYPE_CAR": "Car",
+    "TRAVEL_TYPE_MOTORCYCLE": "Motorcycle",
+    "TRAVEL_TYPE_PUBLIC_TRANSPORT": "Public transport",
+    "TRAVEL_TYPE_WALKING": "Walking",
+    "GUIDANCE_HEADING": "Taxis",
+    "GUIDANCE_TEXT": "You cannot usually claim for taxis. If you have no alternative apart from taking a taxi to court, contact the court to discuss this.",
+    "ERROR_SUMMARY": "Please select at least one method of getting to the court",
+    "ERROR_DETAIL": "Please select at least one method of getting to the court"
+  },
+
+  "TRAVEL_BICYCLE": {
+    "HEADING": "Total miles you'll cycle each day",
+    "LABEL": "Miles each day",
+    "ERROR_SUMMARY_MISSING": "Enter how many miles you'll cycle each day",
+    "ERROR_DETAIL_MISSING": "Enter how many miles you'll cycle each day",
+    "ERROR_SUMMARY_INVALID": "Enter how many miles you'll cycle each day",
+    "ERROR_DETAIL_INVALID": "Enter how many miles you'll cycle each day"
+  },
+
+  "TRAVEL_CAR": {
+    "HEADING": "Total miles you'll travel each day by car",
+    "LABEL": "Miles each day",
+    "ERROR_SUMMARY_MISSING": "Enter how many miles you'll travel by car each day",
+    "ERROR_DETAIL_MISSING": "Enter how many miles you'll travel by car each day",
+    "ERROR_SUMMARY_INVALID": "Enter how many miles you'll travel by car each day",
+    "ERROR_DETAIL_INVALID": "Enter how many miles you'll travel by car each day"
+  },
+
+  "TRAVEL_MOTORCYCLE": {
+    "HEADING": "Total miles you'll travel each day by motorcycle",
+    "LABEL": "Miles each day",
+    "ERROR_SUMMARY_MISSING": "Enter how many miles you'll travel by motorcycle each day",
+    "ERROR_DETAIL_MISSING": "Enter how many miles you'll travel by motorcycle each day",
+    "ERROR_SUMMARY_INVALID": "Enter how many miles you'll travel by motorcycle each day",
+    "ERROR_DETAIL_INVALID": "Enter how many miles you'll travel by motorcycle each day"
+  },
+
+  "TRAVEL_PUBLIC_TRANSPORT": {
+    "HEADING": "Total cost of public transport each day",
+    "HINT": "You should not buy a weekly, fortnightly or monthly ticket for your jury service. This is because you might not need to serve for 10 working days, and you will not be able to claim for the full cost of the ticket. Buy tickets each day instead. You'll need to provide receipts for your travel when you make a claim.",
+    "LABEL": "Cost of all your tickets in £ each day",
+    "GUIDANCE_HEADING": "I have a season ticket that I can use",
+    "GUIDANCE_PARAGRAPH_1": "If you've got an existing season ticket for travel, you cannot claim any part of this back because it is not an extra cost you'll need to pay.",
+    "GUIDANCE_PARAGRAPH_2": "If you do not have any extra public transport costs to claim, enter £0.",
+    "ERROR_SUMMARY_MISSING": "Enter the cost of all your tickets each day",
+    "ERROR_DETAIL_MISSING": "Enter the cost of all your tickets each day",
+    "ERROR_SUMMARY_INVALID": "Enter the cost of all your tickets each day",
+    "ERROR_DETAIL_INVALID": "Enter the cost of all your tickets each day"
+  },
+
+  "TRAVEL_PARKING": {
+    "HEADING": "Will you need to pay for parking?",
+    "YES": "Yes",
+    "NO" : "No",
+    "ERROR_SUMMARY": "Please select yes or no",
+    "ERROR_DETAIL": "Please select yes or no"
+  },
+
+  "TRAVEL_PARKING_INFO": {
+    "HEADING": "Claiming for parking",
+    "HINT": "Not all courts will pay for parking. There may be a maximum amount that a court will pay per day. Check with the court for permission before you claim for parking."
+  },
+
+  "TRAVEL_PARKING_AMOUNT": {
+    "HEADING": "How much will parking cost you per day?",
+    "AMOUNT_LABEL_1": "£",
+    "ERROR_SUMMARY": "Travel Parking Amount Summary Error",
+    "ERROR_DETAIL": "Travel Parking Amount Detail Error"
+  },
+
+  "CHECK_ANSWERS": {
+    "HEADING": "Check your answers",
+
+    "CHANGE_LINK": "Change",
+    "CURRENCY": "£",
+    "PER_DAY": "per day",
+    "MILES": "miles",
+    "EACH_DAY": "each day",
+
+    "EARNINGS_HEADING": "Loss of earnings",
+    "EARNINGS_1": "Will you lose income?",
+    "EARNINGS_2": "Do you earn more than £64.95 each day?",
+    "EARNINGS_3": "How much do you earn each day?",
+
+    "EXPENSES_HEADING": "Other expenses",
+    "EXPENSES_1": "Extra costs you wouldn't normally have?",
+    "EXPENSES_2": "Total value of extra costs",
+    
+    "TRAVEL_HEADING": "Travel",
+    "TRAVEL_TYPE": "How will you travel to court?",
+    "TRAVEL_BICYCLE": "Miles by bicycle each day",
+    "TRAVEL_CAR": "Miles by car each day",
+    "TRAVEL_MOTORCYCLE": "Miles by motorcycle each day",
+    "TRAVEL_PUBLIC_TRANSPORT": "Cost of public transport each day"
+  },
+
+  "CALCULATED_TOTAL": {
+    "HEADING": "You should be able to claim",
+
+    "ASSUMPTIONS": "This is assuming:",
+    "ASSUMPTION_1": "the details you have entered are correct",
+    "ASSUMPTION_2": "your jury service lasts up to 10 days",
+    "ASSUMPTION_3": "each day you will be at court for at least 4 hours",
+
+    "SUB_HEADING": "How we calculated this",
+    "YOU_CAN_CLAIM": "You can claim",
+    "PER_DAY": "per day",
+    "EACH_DAY": "each day",
+    "MILES_AT": "miles at",
+    "PER_MILE": "per mile",
+
+    "EXPENSES_HEADING": "Loss of earnings and other expenses",
+    "EXPENSES_SUMMARY_1": "You can claim",
+    "EXPENSES_SUMMARY_2": "for each day you'll lose income or have extra costs from doing jury service.",
+    "EXPENSES_DETAILS_HEADING": "How have my loss of earnings and expenses been calculated?",
+    "EXPENSES_DETAILS_LOSS_OF_EARNINGS": "Loss of earnings",
+    "EXPENSES_DETAILS_OTHER_EXPENSES": "Other expenses",
+    "EXPENSES_DETAILS_TOTAL": "Total",
+    "EXPENSES_DETAILS_INFO": "is the maximum amount that you can claim per day within the first 10 days of jury service. For days shorter than 4 hours this is reduced to",
+
+    "TRAVEL_HEADING": "Travel",
+    "TRAVEL_SUMMARY_1": "You can claim",
+    "TRAVEL_SUMMARY_2": "for each day you travel to court.",
+    "TRAVEL_DETAILS_HEADING": "How have my travel expenses been calculated?",
+
+    "TRAVEL_DETAILS_BICYCLE": "Bicycle mileage",
+    "TRAVEL_DETAILS_CAR": "Car mileage",
+    "TRAVEL_DETAILS_MOTORCYCLE": "Motorcycle mileage",
+    "TRAVEL_DETAILS_TICKETS": "Travel tickets",
+    "TRAVEL_DETAILS_TOTAL": "Total",
+    "TRAVEL_DETAILS_INFO_1": "This does not include parking costs because you'll need to check with the court first if they will pay for your parking.",
+    "TRAVEL_DETAILS_INFO_2": "Once your jury service has started, if you offer to bring other jurors to court in your car, you can claim an additional 4.2p per mile for the first passenger, and another 3.2p per mile for every other passenger.",
+
+    "FOOD_AND_DRINK_HEADING": "Food and drink",
+    "FOOD_AND_DRINK_SUMMARY_1": "You can claim ",
+    "FOOD_AND_DRINK_SUMMARY_2": "each day, even if you bring in your own food and drink.",
+
+    "START_AGAIN": "Start again",
+
+    "GUIDANCE_1": "For more information about how expenses are calculated and how changes in your jury service can affect the amount you can claim, read ",
+    "GUIDANCE_1_LINK": "what you can claim",
+    "GUIDANCE_1_URL": "https://www.gov.uk/jury-service/what-you-can-claim",
+    "GUIDANCE_2": "If you have any questions about the amount you can claim, contact the court where you will be serving. To find the contact details use the",
+    "GUIDANCE_2_LINK": "court and tribunal finder",
+    "GUIDANCE_2_URL": "https://courttribunalfinder.service.gov.uk/search/",
+
+    "CLAIM_FORMS_HEADING": "Claim forms",
+    "CLAIM_FORM_1_HEADING": "Certificate of loss of earnings (for employees)",
+    "CLAIM_FORM_1_URL": "https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/687809/certificate-of-loss-eng.pdf",
+    "CLAIM_FORM_2_HEADING": "Certificate of loss of earnings (for self-employed or company directors)",
+    "CLAIM_FORM_2_URL": "https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/689221/certificate-of-loss-of-earnings-for-self-employed-or-company-directors-eng.pdf",
+    "CLAIM_FORM_3_HEADING": "Juror's childcare, vulnerable care, elderly care provision expenses form",
+    "CLAIM_FORM_3_URL": "https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/689220/juror-s-childcare-vulnerable-adult-elderly-care-provision-expenses-claim-eng.pdf"
+  }
+  
+}  

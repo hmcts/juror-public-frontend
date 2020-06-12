@@ -11,7 +11,7 @@
         deferralDateValid: {
           message: {
             summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_ONE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_ERROR_ONE', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_ONE', (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         },
         dateFuture: {
@@ -44,7 +44,7 @@
         deferralDateValid: {
           message: {
             summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_TWO' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_ERROR_TWO', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_TWO', (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         },
         dateFuture: {
@@ -77,7 +77,7 @@
         deferralDateValid: {
           message: {
             summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_THREE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_ERROR_THREE', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_THREE', (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         },
         dateFuture: {

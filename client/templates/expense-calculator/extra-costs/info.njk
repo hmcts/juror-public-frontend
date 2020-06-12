@@ -1,0 +1,55 @@
+{% extends "../../layouts/expense-calculator-default.njk" %}
+
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  {{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.HEADING}} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Expense Calculator Extra Costs Info{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-body govuk-grid-column-three-quarters">
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+        <h1 class="govuk-fieldset__heading">
+          {{- texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.HEADING -}}
+        </h1>
+      </legend>
+
+      <p>{{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.INFO_PARAGRAPH_1 }}</p>
+
+      <h3 class="govuk-heading-m">
+        {{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.SECTION_1_HEADING }}
+      </h3>
+      <p>{{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.SECTION_1_PARAGRAPH_1 }}</p>
+      <p>{{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.SECTION_1_PARAGRAPH_2 }}</p>
+      <p>{{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.SECTION_1_PARAGRAPH_3 }}</p>
+      <p>{{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.SECTION_1_PARAGRAPH_4 }}</p>
+
+      <h3 class="govuk-heading-m">
+        {{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.SECTION_2_HEADING }}
+      </h3>
+      <p>{{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.SECTION_2_PARAGRAPH_1 }}</p>
+      <p>{{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.SECTION_2_PARAGRAPH_2 }}</p>
+
+      <h3 class="govuk-heading-m">
+        {{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.SECTION_3_HEADING }}
+      </h3>
+      <p>{{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.SECTION_3_PARAGRAPH_1 }}</p>
+      <p>{{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.SECTION_3_PARAGRAPH_2 }}</p>
+      <p>{{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_INFO.SECTION_3_PARAGRAPH_3 }}</p>
+
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+    </div>
+  </div>
+
+{% endblock %}

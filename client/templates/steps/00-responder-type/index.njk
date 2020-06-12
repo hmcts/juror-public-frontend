@@ -6,7 +6,7 @@
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
-  {{ texts.REPLY_TYPE.HEADER }} - {{ texts.INTERFACE.GOV }}
+  {{ texts.REPLY_TYPE.HEADER }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}Responder Type{% endblock %}
@@ -55,12 +55,6 @@
             }
           ]}) }}
 
-        {#
-        {{ govukDetails({
-          summaryText: texts.REPLY_TYPE.NEED_HELP,
-          text: texts.REPLY_TYPE.NEED_HELP_TEXT
-        }) }}
-        #}
         <details class="govuk-details">
           <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">
@@ -71,7 +65,6 @@
             {{ texts.REPLY_TYPE.NEED_HELP_TEXT }}
           </div>
         </details>
-
 
         {# Submit form #}
         {{ govukButton({

@@ -1,0 +1,101 @@
+{% extends "../../layouts/expense-calculator-default.njk" %}
+
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+    {{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Expense Calculator Extra Costs{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "../../includes/errors-gds.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="{{ url('expense.calculator.extra.costs.post') }}" method="post">
+
+        {# Set error text #}
+        {% set radioAnswerError = undefined %}
+        {% if errors.items['extraCosts']%}
+          {% set radioAnswerError = {"text": errors.items['extraCosts'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+        {# Set hint text #}
+        {% set hintHTML %}
+          <p>{{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS.HINT_PARAGRAPH_1 }}</p>
+          <p>{{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS.HINT_PARAGRAPH_2 }}</p>
+        {% endset %}
+
+        {# Set radio checked #}
+        {% set radioYesChecked = undefined %}
+        {% set radioNoChecked = undefined %}
+        {% if user.extraCosts === "Yes" %}
+          {% set radioYesChecked = 'checked="checked"' %}
+        {% endif %}
+        {% if user.extraCosts === "No" %}
+          {% set radioNoChecked = 'checked="checked"' %}
+        {% endif %}
+
+        {{ govukRadios({
+            id: "extraCosts",
+            name: "extraCosts",
+            hint: {
+              html: hintHTML
+            },
+            errorMessage: radioAnswerError,
+            fieldset: {
+              legend: {
+                text: texts.EXPENSE_CALCULATOR.EXTRA_COSTS.HEADING,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
+            items: [
+              {
+                id: "extraCostsYes",
+                name: "extraCosts",
+                value: "Yes" ,
+                text: texts.EXPENSE_CALCULATOR.EXTRA_COSTS.YES,
+                checked: radioYesChecked
+              },
+              {
+                id: "extraCostsNo",
+                name: "extraCosts",
+                value: "No",
+                text: texts.EXPENSE_CALCULATOR.EXTRA_COSTS.NO,
+                checked: radioNoChecked
+              }
+            ]
+          }) }}
+
+
+        {# Submit form #}
+        {{ govukButton({
+            text: texts.EXPENSE_CALCULATOR.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
+        <br/>
+
+        <p class="govuk-body">
+          <a class="govuk-link" href="{{ url('expense.calculator.extra.costs.info') }}">
+            {{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS.INFO_LINK_HEADING }}<span class="govuk-visually-hidden">{{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS.INFO_LINK_HEADING }}</span>
+          </a>
+        </p>
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

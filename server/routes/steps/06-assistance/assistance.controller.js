@@ -87,9 +87,10 @@
       delete req.session.errors;
       delete req.session.formFields;
 
-      // clear checkboxes if no is selected
+      // clear checkboxes / text boxes if no is selected
       if (req.body['assistanceNeeded'] === 'No'){
         delete req.body['assistanceType'];
+        delete req.body['assistanceSpecialArrangements'];
         req.body['assistanceTypeDetails'] = '';
       } else if (req.body.hasOwnProperty('assistanceType')){
         if (req.body['assistanceType'].indexOf('Other') < 0){
