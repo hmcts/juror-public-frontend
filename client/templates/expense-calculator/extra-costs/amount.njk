@@ -1,0 +1,74 @@
+{% extends "../../layouts/expense-calculator-default.njk" %}
+
+{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+    {{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_AMOUNT.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Expense Calculator Extra Costs Amount{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "../../includes/errors-gds.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="{{ url('expense.calculator.extra.costs.amount.post') }}" method="post">
+
+        {# Set error text #}
+        {% set amountError = undefined %}
+        {% if errors.items['extraCostsAmount']%}
+          {% set amountError = {"text": errors.items['extraCostsAmount'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+        <div class="govuk-form-group {% if amountError %}govuk-form-group--error{% endif %}" id="extraCostsAmountGroup">
+
+          <fieldset class="govuk-fieldset" id="extraCostsAmountFieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                {{- texts.EXPENSE_CALCULATOR.EXTRA_COSTS_AMOUNT.HEADING -}}
+              </h1>
+            </legend>
+
+            <div class="govuk-hint">
+              {{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS_AMOUNT.HINT }}
+            </div>
+
+            {{ govukInput({
+              id: "extraCostsAmount",
+              name: "extraCostsAmount",
+              errorMessage: amountError,
+              label: {
+                text: texts.EXPENSE_CALCULATOR.EXTRA_COSTS_AMOUNT.AMOUNT_LABEL
+              },
+              classes: "govuk-!-width-one-third",
+              value: user.extraCostsAmount
+            }) }}
+            
+
+          </fieldset>
+        </div>
+
+        {# Submit form #}
+        {{ govukButton({
+            text: texts.EXPENSE_CALCULATOR.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

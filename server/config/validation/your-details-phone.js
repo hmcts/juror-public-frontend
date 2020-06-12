@@ -14,7 +14,7 @@
         presence: {
           allowEmpty: false,
           message: {
-            summary: filters.translate('VALIDATION.YOUR_DETAILS.MAIN_PHONE_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.YOUR_DETAILS.MAIN_PHONE_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.YOUR_DETAILS.MAIN_PHONE_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         },

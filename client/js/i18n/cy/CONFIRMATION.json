@@ -1,5 +1,5 @@
 {
-  "TITLE": "Diolch yn fawr. Rydych wedi cwblhau'r broses ymateb",
+  "TITLE": "Rydych wedi cwblhau'r broses ymateb",
   "NEXT_INFO": "Beth fydd yn digwydd nesaf",
   "RECEIVE_LIST": "O leiaf pythefnos cyn i'ch gwasanaeth rheithgor ddechrau byddwn yn anfon y dogfennau canlynol atoch:",
   "RECEIVE_LIST_OB": "O leiaf pythefnos cyn i'r gwasanaeth rheithgor ddechrau, byddwn yn anfon y dogfennau canlynol at yr unigolyn rydych wedi ymateb ar ei ran:",
@@ -18,18 +18,36 @@
   "YOU_CAN": "Gallwch ",
   "YOU_CAN_OB": "Gallwch chi, neu'r unigolyn rydych wedi ymateb ar ei ran, ",
   "WATCH_VIDEO_LINK": "wylio fideo am beth sy'n digwydd wrth fod yn rheithiwr ar YouTube",
+  "WATCH_VIDEO_LINK_URL": "https://www.youtube.com/watch?v=yQGekF-72xQ&t=2s",
   "WATCH_VIDEO": ", fel eich bod yn gwybod beth i'w ddisgwyl. Mae'r fideo'n para 13 munud.",
   "WATCH_VIDEO_OB": ", fel eu bod yn gwybod beth i'w ddisgwyl. Mae'r fideo'n para 13 munud.",
+
   "WHAT_TO_EXPECT": ", fel eich bod yn gwybod beth i'w ddisgwyl.",
   "WHAT_TO_EXPECT_OB": ", er mwyn gwybod beth i ddisgwyl",
-  "LEARN_MORE": "Dysgwch fwy am wasanaethu ar reithgor. ",    
-  "LEARN_MORE_OB": "Dysgwch fwy am wasanaethu ar reithgor. ",
-  "DISCUSSING_LINK": "Darllenwch y rheolau ynghylch trafod y treial",
-  "DISCUSSING_LINK_OB": "Darllenwch y rheolau ynghylch trafod y treial",
+
+  "LEARN_MORE_LINK": "Rhagor o wybodaeth am wasanaethu ar reithgor",    
+  "LEARN_MORE_LINK_OB": "Rhagor o wybodaeth am wasanaethu ar reithgor",
+  "LEARN_MORE_LINK_URL": "https://www.gov.uk/jury-service",
+
+  "YOU_CAN_READ": "Gallwch ddarllen y ddogfen ",
+  "YOU_CAN_READ_THE": " Gallwch darllenwch y ",
+
+  "DISCUSSING_LINK": "rheolau ynghylch trafod y treial",
+  "DISCUSSING_LINK_OB": "rheolau ynghylch trafod y treial",
+  "DISCUSSING_LINK_URL": "https://www.gov.uk/jury-service/discussing-the-trial",
+
+  "AND": " a ",
+
   "FIND_OUT": "a chanfod",
   "FIND_OUT_OB": "a chanfod",
-  "CLAIM_EXPENSES_LINK": "sut i hawlio am gostau",
-  "CLAIM_EXPENSES_LINK_OB": "sut i hawlio am gostau",
+  "EXPENSES_INFO_LINK": "sut i hawlio am gostau",
+  "EXPENSES_INFO_LINK_OB": "sut i hawlio am gostau",
+  "EXPENSES_INFO_LINK_URL": "https://www.gov.uk/jury-service/how-to-claim-expenses",
+  
+  "CALCULATE_EXPENSES_LINK": "Chyfrifo pa dreuliau a lwfansau y gallwch eu hawlio",
+  "CALCULATE_EXPENSES_LINK_OB": "Chyfrifo pa dreuliau a lwfansau y gallwch eu hawlio",
+  "CALCULATE_EXPENSES_LINK_URL": "/expense-calculator",
+
   "DOWNLOAD_PDF": "Lawrlwytho PDF",
 
   "DOWNLOAD_A_COPY_1": "Gallwch ",
@@ -37,7 +55,8 @@
   "DOWNLOAD_A_COPY_3": " o'ch ymateb i'r wŷs ar gyfer eich cofnodion.",
   "DOWNLOAD_A_COPY_3_OB": " o'ch ymateb i'r wŷs ar gyfer eich cofnodion.",
 
-  "SERVICE_GUIDE": "Eich Canllaw i'r Gwasanaeth Rheithgor (PDF)",
+  "SERVICE_GUIDE": "Eich Canllaw i'r Gwasanaeth Rheithgor (PDF 85KB)",
+  "SERVICE_GUIDE_LINK": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/709895/canllawiau-i-wys-rheithgor-guide-to-jury-summons-bil.pdf",
   "JUROR_CHARTER": "Y Siarter Rheithwyr (PDF)",
   "SUPPORTING_YOU": "Bod yn Gefn ichi Drwy'ch Gwasanaeth Rheithgor (PDF)",
   "SURVEY_LINK": "Beth yw eich barn am y gwasanaeth hwn?",
@@ -56,7 +75,7 @@
     "GETTING_IN_TOUCH_OB": "Os byddwn yn cysylltu â nhw, efallai bydd angen iddynt ddarparu eu rhif rheithiwr. Mae'r rhif hefyd ar y llythyr bu inni anfon atynt.",
     "EMAIL_SUMMONS": "Rydym wedi anfon neges e-bost atoch i gadarnhau eich bod wedi ymateb i’ch gwŷs rheithgor.",
     "EMAIL_SUMMONS_OB": "Rydym wedi anfon e-bost i ddweud eich bod wedi ymateb i'r wŷs hon.",
-    "DOWNLOAD_LINK": "Lawrlwythwch gopi o'ch ymateb i'r wŷs"
+    "DOWNLOAD_LINK": "Lawrlwythwch gopi o'ch ymateb i'r wŷs PDF (65KB)"
   },
   "AGE": {
     "DISQUALIFICATION": "Mae eich oed yn golygu na allwch wasanaethu ar reithgor",

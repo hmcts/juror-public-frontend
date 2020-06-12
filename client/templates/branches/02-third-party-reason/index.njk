@@ -1,12 +1,13 @@
 {% extends "../../layouts/default-gds.njk" %}
 
 {% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/character-count/macro.njk" import govukCharacterCount %}
 {% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
 {% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
-  {{ texts.ON_BEHALF.THIRD_PARTY_REASON.HEADER }} - {{ texts.INTERFACE.GOV }}
+  {{ texts.ON_BEHALF.THIRD_PARTY_REASON.HEADER }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}3rd Party Reason{% endblock %}
@@ -62,7 +63,7 @@
 
         {# Set other reason details error #}
         {% if errors.items['thirdPartyOtherReason'] %}
-          {% set otherReasonDetailsError = {"text": errors.items['thirdPartyOtherReason'][0]} %}
+          {% set otherReasonDetailsError = {"text": errors.items['thirdPartyOtherReason'][0].details} %}
         {% else %}
           {% set otherReasonDetailsError = undefined %}
         {% endif %}
@@ -70,21 +71,18 @@
         {# Set Other details HTML #}
         {% set otherDetailsHTML %}
           <div class="govuk-character-count">
-            {{ govukTextarea({
+            {{ govukCharacterCount({
               name: "thirdPartyOtherReason",
               id: "thirdPartyOtherReason",
+              maxlength: "100",
               label: {
                 text: texts.ON_BEHALF.THIRD_PARTY_REASON.REASONS.OTHER_INFO
               },
               rows: "3",
               classes: "govuk-!-width-two-thirds",
-              attributes: {
-                maxlength: "100"
-              },
               errorMessage: otherReasonDetailsError,
               value: user.thirdPartyDetails.thirdPartyOtherReason
             }) }}
-            <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS_HUNDRED }}</span>
           </div>
         {% endset %}
 

@@ -6,7 +6,7 @@
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
-  {{ texts.YOUR_DETAILS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING_ADDRESS_CHANGE }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}Personal Details Address Change{% endblock %}
@@ -94,7 +94,7 @@
               {# Address Line 1 #}
               {{ govukInput({
                 label: {
-                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_ONE_LABEL
+                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_ONE_LABEL + '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_1_OF_3 + '</span>'
                 },
                 id: "addressLineOne",
                 name: "addressLineOne",
@@ -109,7 +109,7 @@
               {# Address Line 2 #}
               {{ govukInput({
                 label: {
-                  html: '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_TWO_LABEL
+                  html: '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_TWO_LABEL + '</span>'
                 },
                 id: "addressLineTwo",
                 name: "addressLineTwo",
@@ -124,7 +124,7 @@
               {# Address Line 3 #}
               {{ govukInput({
                 label: {
-                  html: '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_THREE_LABEL
+                  html: '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_THREE_LABEL + '</span>'
                 },
                 id: "addressLineThree",
                 name: "addressLineThree",
@@ -187,8 +187,8 @@
 
         {# Info about change of address #}
         <details class="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my address?')"{% endif %}>
+          <summary class="govuk-details__summary ga-details-change-address">
+            <span class="govuk-details__summary-text ga-details-change-address" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my address?')"{% endif %}>
               {{ texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_ADDRESS_TITLE }}
             </span>
           </summary>

@@ -1,0 +1,84 @@
+{% extends "../../layouts/expense-calculator-default.njk" %}
+
+{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+    {{ texts.EXPENSE_CALCULATOR.EARNINGS_AMOUNT.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Expense Calculator Earnings Amount{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "../../includes/errors-gds.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="{{ url('expense.calculator.earnings.amount.post') }}" method="post">
+
+        {# Set errors #}
+        {% set amountError = undefined %}
+
+        {% if errors.items['earningsAmount']%}
+          {% set amountError = {"text": errors.items['earningsAmount'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+
+        <div class="govuk-form-group {% if amountError %}govuk-form-group--error{% endif %}" id="earningsAmountGroup">
+
+          <fieldset class="govuk-fieldset" id="earningsAmountFieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                {{- texts.EXPENSE_CALCULATOR.EARNINGS_AMOUNT.HEADING -}}
+              </h1>
+            </legend>
+
+            <p class="govuk-hint">
+              {{texts.EXPENSE_CALCULATOR.EARNINGS_AMOUNT.HINT}}
+            </p>
+
+            {{ govukInput({
+              label: {
+                text: texts.EXPENSE_CALCULATOR.EARNINGS_AMOUNT.AMOUNT_LABEL
+              },
+              id: "earningsAmount",
+              name: "earningsAmount",
+              classes: "govuk-input govuk-!-width-one-third",
+              errorMessage: amountError,
+              value: user.earningsAmount
+            }) }}
+
+            <br />
+
+            {{ govukDetails({
+              summaryText: texts.EXPENSE_CALCULATOR.EARNINGS_AMOUNT.GUIDANCE_HEADING,
+              text: texts.EXPENSE_CALCULATOR.EARNINGS_AMOUNT.GUIDANCE_TEXT
+            }) }}
+
+          </fieldset>
+
+        </div>
+
+        {# Submit form #}
+        {{ govukButton({
+            text: texts.EXPENSE_CALCULATOR.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

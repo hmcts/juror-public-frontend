@@ -54,6 +54,7 @@ Feature: Third Party Personal Details
 
     # 3rd Party Personal Details Address
     Then I confirm that I am on the 3rd Party Personal Address page
+    Then I confirm that the summoned person's address is correct
     And I submit my 3rd Party Personal Address Details
 
     # 3rd Party Personal Details DOB
@@ -76,13 +77,13 @@ Feature: Third Party Personal Details
         And the error message details for the year of birth is "Please enter the year the person was born"
 
     @JDB-1714 @bug
-    Scenario Outline: As a respondant I should be warned when my date of birth is incorrect
-      When I enter "<day>" as my day of birth
-        And I enter "<month>" as my month of birth
-        And I enter "<year>" as my year of birth
+    Scenario Outline: As a respondant I should be warned when the date of birth is incorrect
+      When I enter "<day>" as the day of birth
+        And I enter "<month>" as the month of birth
+        And I enter "<year>" as the year of birth
         And I submit my 3rd Party Personal DOB Details
 
-      Then the error message summary for my Date of birth is "Please check the person's date of birth"
+      Then the error message summary for the confirmed Date of birth is "Please check the person's date of birth"
         And the error message details for my Date of birth is "<error>"
 
       Examples:

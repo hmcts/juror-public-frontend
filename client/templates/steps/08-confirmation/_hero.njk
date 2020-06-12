@@ -14,7 +14,7 @@
       {% else %}
         {{ texts.CONFIRMATION.HERO.YOUR_NUMBER }}<br>
       {% endif %}
-      <strong class="bold-small">{{ user.jurorNumber }}</strong>
+      <strong>{{ user.jurorNumber }}</strong>
     </span>
   </div>
 </div>
@@ -40,7 +40,7 @@
 
 {{ govukButton({
   text: texts.CONFIRMATION.HERO.DOWNLOAD_LINK,
-  classes: "govuk-button--secondary",
+  classes: "govuk-button--secondary ga-download-summons-reply-pdf",
   href: "/steps/08-confirmation/download"
 }) }}
 

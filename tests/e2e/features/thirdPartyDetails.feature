@@ -67,7 +67,7 @@ Feature: Third Party Details
       # Clear a field
       Then I enter "" as my main phone number
         And I submit my 3rd Party Contact Details
-        And I confirm that the Personal Details error box contains the main phone number error
+        And the error message summary for my third party contact Phone number is "Please check your main phone number"
         And I enter "12345678911" as my main phone number
         And I submit my 3rd Party Contact Details
 
@@ -228,6 +228,7 @@ Feature: Third Party Details
 
       # 3rd Party Personal Details Address
       Then I confirm that I am on the 3rd Party Personal Address page
+      Then I confirm that the summoned person's address is correct
       And I submit my 3rd Party Personal Address Details
 
       # 3rd Party Personal Details DOB
@@ -342,6 +343,7 @@ Feature: Third Party Details
 
       # 3rd Party Personal Details Address
       Then I confirm that I am on the 3rd Party Personal Address page
+      Then I confirm that the summoned person's address is correct
       And I submit my 3rd Party Personal Address Details
 
       # 3rd Party Personal Details DOB
@@ -476,9 +478,11 @@ Feature: Third Party Details
 
       # 3rd Party Personal Details Address
       Then I confirm that I am on the 3rd Party Personal Address page
-      When I click the link to change the summoned person's address
+      Then I confirm that the summoned person's address is incorrect
+      Then I submit my 3rd Party Personal Address Details
+      Then I confirm that I am on the 3rd Party Personal Address Change page
       And I enter "" as the first line of the address
-      And I submit my 3rd Party Personal Address Details
+      And I submit my 3rd Party Personal Address Change details
       And the summary error for address line one is "Please check the address"
       And the detailed error for address line one is "Please provide the first line of the address"
       When I enter "14 Sugar Street" as the first line of the address
@@ -521,9 +525,11 @@ Feature: Third Party Details
 
         # 3rd Party Personal Details Address
         Then I confirm that I am on the 3rd Party Personal Address page
-        When I click the link to change the summoned person's address
+        Then I confirm that the summoned person's address is incorrect
+        Then I submit my 3rd Party Personal Address Details
+        Then I confirm that I am on the 3rd Party Personal Address Change page
         And I enter "" as the town
-        And I submit my 3rd Party Personal Address Details
+        And I submit my 3rd Party Personal Address Change details
         Then the summary error for the town is "Please check the town or city"
         And the detailed error for the town is "Please provide the town or city"
         When I enter "Town" as the town

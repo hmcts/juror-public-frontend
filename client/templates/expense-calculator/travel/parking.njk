@@ -1,0 +1,84 @@
+{% extends "../../layouts/expense-calculator-default.njk" %}
+
+{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+    {{ texts.EXPENSE_CALCULATOR.TRAVEL_PARKING.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Expense Calculator Travel Parking{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "../../includes/errors-gds.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="{{ url('expense.calculator.travel.parking.post') }}" method="post">
+
+        {# Set error text #}
+        {% set radioAnswerError = undefined %}
+        {% if errors.items['parking']%}
+          {% set radioAnswerError = {"text": errors.items['parking'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+        {# Set radio checked #}
+        {% set radioYesChecked = undefined %}
+        {% set radioNoChecked = undefined %}
+        {% if user.parking === "Yes" %}
+          {% set radioYesChecked = 'checked="checked"' %}
+        {% endif %}
+        {% if user.parking === "No" %}
+          {% set radioNoChecked = 'checked="checked"' %}
+        {% endif %}
+
+        {{ govukRadios({
+            id: "parking",
+            name: "parking",
+            fieldset: {
+              legend: {
+                text: texts.EXPENSE_CALCULATOR.TRAVEL_PARKING.HEADING,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
+            errorMessage: radioAnswerError,
+            items: [
+              {
+                id: "parkingYes",
+                name: "parking",
+                value: "Yes" ,
+                text: texts.EXPENSE_CALCULATOR.TRAVEL_PARKING.YES,
+                checked: radioYesChecked
+              },
+              {
+                id: "parkingNo",
+                name: "parking",
+                value: "No",
+                text: texts.EXPENSE_CALCULATOR.TRAVEL_PARKING.NO,
+                checked: radioNoChecked
+              }
+            ]
+          }) }}
+
+        {# Submit form #}
+        {{ govukButton({
+            text: texts.EXPENSE_CALCULATOR.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

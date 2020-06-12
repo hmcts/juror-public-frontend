@@ -98,9 +98,28 @@
       // clear checkboxes if no is selected
       if ((req.body['cjsEmployed'] === 'No') || (req.body['cjsEmployed'] === 'Nac ydw') || (req.body['cjsEmployed'] === 'Naddo')){
         delete req.body['cjsEmployer'];
+        delete req.body['cjsEmployerDetails'];
+        delete req.body['cjsPoliceDetails'];
+        delete req.body['cjsPrisonDetails'];
         req.session.user.cjsEmployerDetails = '';
         req.session.user.cjsPoliceDetails = '';
         req.session.user.cjsPrisonDetails = '';
+      } else if (typeof req.body['cjsEmployer'] !== 'undefined'){
+        cjsTmpArr = _.clone(
+          (_.isArray(req.body['cjsEmployer'])) ?
+            req.body['cjsEmployer'] :
+            [req.body['cjsEmployer']]);
+
+        // delete down any non-selected item details
+        if (cjsTmpArr.indexOf('Police Force') < 0){
+          delete req.body['cjsPoliceDetails'];
+        }
+        if (cjsTmpArr.indexOf('HM Prison Service') < 0){
+          delete req.body['cjsPrisonDetails'];
+        }
+        if (cjsTmpArr.indexOf('Other') < 0){
+          delete req.body['cjsEmployerDetails'];
+        }
       }
 
       // Validate form submission
@@ -117,6 +136,7 @@
       // Store new info
       req.session.user.cjsEmployed = req.body['cjsEmployed'];
       req.session.user.cjsEmployer = req.body['cjsEmployer'];
+
       
       if (typeof req.session.user.cjsEmployer !== 'undefined') {
         cjsTmpArr = _.clone(
@@ -141,6 +161,7 @@
           req.session.user.cjsEmployerDetails = '';
         }
       }
+      
 
       // Redirect as appropriate
       if (req.session.change === true){

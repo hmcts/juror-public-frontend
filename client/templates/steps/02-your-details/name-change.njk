@@ -6,7 +6,7 @@
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
-  {{ texts.YOUR_DETAILS_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {{ texts.YOUR_DETAILS_PAGE.HEADING_NAME_CHANGE }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}Personal Details Name Change{% endblock %}
@@ -131,8 +131,8 @@
 
         {# Info about change of name #}
         <details class="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my name?')"{% endif %}>
+          <summary class="govuk-details__summary ga-details-change-name">
+            <span class="govuk-details__summary-text ga-details-change-name" {% if trackingCode %}onclick="trackVirtualPageViews('What happens if I change my name?')"{% endif %}>
               {{- texts.YOUR_DETAILS_PAGE.HELPER_CHANGE_NAME_TITLE -}}
             </span>
           </summary>

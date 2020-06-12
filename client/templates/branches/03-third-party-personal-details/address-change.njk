@@ -6,7 +6,7 @@
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
-  {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.HEADER }} - {{ texts.INTERFACE.GOV }}
+  {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.ADDRESS_CHANGE_HEADER }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}3rd Party Personal Details Address Change{% endblock %}
@@ -85,7 +85,7 @@
               {# Address Line 1 #}
               {{ govukInput({
                 label: {
-                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_ONE_LABEL + '<span class="govuk-visually-hidden">line 1 of 3</span>'
+                  html: texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_LINE_ONE_LABEL + '<span class="govuk-visually-hidden">' + texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_LINE_1_OF_3 + '</span>'
                 },
                 id: "addressLineOne",
                 name: "addressLineOne",
@@ -100,7 +100,7 @@
               {# Address Line 2 #}
               {{ govukInput({
                 label: {
-                  html: '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_TWO_LABEL + ' line 2 of 3</span>'
+                  html: '<span class="govuk-visually-hidden">' + texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_LINE_TWO_LABEL + '</span>'
                 },
                 id: "addressLineTwo",
                 name: "addressLineTwo",
@@ -115,7 +115,7 @@
               {# Address Line 3 #}
               {{ govukInput({
                 label: {
-                  html: '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_THREE_LABEL + ' line 3 of 3</span>'
+                  html: '<span class="govuk-visually-hidden">' + texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_LINE_THREE_LABEL + '</span>'
                 },
                 id: "addressLineThree",
                 name: "addressLineThree",
@@ -130,7 +130,7 @@
               {# Town or City #}
               {{ govukInput({
                 label: {
-                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_TOWN_LABEL
+                  html: texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_TOWN_LABEL
                 },
                 id: "addressTown",
                 name: "addressTown",
@@ -145,7 +145,7 @@
               {# County #}
               {{ govukInput({
                 label: {
-                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_COUNTY_LABEL
+                  html: texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_COUNTY_LABEL
                 },
                 id: "addressCounty",
                 name: "addressCounty",
@@ -160,7 +160,7 @@
               {# Postcode #}
               {{ govukInput({
                 label: {
-                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_POSTCODE_LABEL
+                  html: texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_ADDRESS_POSTCODE_LABEL
                 },
                 id: "addressPostcode",
                 name: "addressPostcode",

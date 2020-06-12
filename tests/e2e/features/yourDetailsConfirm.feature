@@ -23,10 +23,12 @@ Feature: Confirm date of birth
 
     # Your Details Name Page
     Then I confirm that I am on the Your Details Name page
+    Then I confirm that my name is correct
     Then I submit my name details
     
     # Your Details Address Page
     Then I confirm that I am on the Your Details Address page
+    Then I confirm that my address is correct
     Then I submit my address details
 
     # Your Details Phone Page
@@ -93,7 +95,7 @@ Feature: Confirm date of birth
         | day | month | year  | error                                                                                 |
         | 18  | 09    |       | Please enter the year you were born                                                   |
         | 18  | 09    | 89    | Please enter the year you were born as a four digit number. For example, 1982         |
-        | 18  | 09    | 0000  | Please enter the year you were born as a four digit number. For example, 1982         |
+        | 18  | 09    | 0000  | Please check your date of birth                                                       |
 
         | 18  |       | 1989  | Please enter the month you were born                                                  |
         | 18  | 21    | 1989  | Please enter the month you were born as a number. For example, for December, enter 12 |

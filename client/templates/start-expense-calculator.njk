@@ -1,0 +1,94 @@
+{% extends "./layouts/expense-calculator-default.njk" %}
+
+{% from "./govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  {{ texts.EXPENSE_CALCULATOR.START.HEADING}} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Expense Calculator Landing{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      <h1 class="govuk-fieldset__heading">
+        {{- texts.EXPENSE_CALCULATOR.START.HEADING -}}
+      </h1>
+    </legend>
+
+    <div class="govuk-form-group govuk-body">
+      <p>{{ texts.EXPENSE_CALCULATOR.START.PARAGRAPH_1 }}</p>
+
+      <p>{{ texts.EXPENSE_CALCULATOR.START.PARAGRAPH_2 }}</p>
+
+      <ul class="list list-bullet">
+        <li>{{ texts.EXPENSE_CALCULATOR.START.LIST_1_ITEM_1 }}</li>
+        <li>{{ texts.EXPENSE_CALCULATOR.START.LIST_1_ITEM_2 }}</li>
+        <li>{{ texts.EXPENSE_CALCULATOR.START.LIST_1_ITEM_3 }}</li>
+      </ul>
+
+      <p><span>{{ texts.EXPENSE_CALCULATOR.START.PARAGRAPH_3 }}</span></p>
+
+      <br>
+      
+      {# SubStart button #}
+      {{ govukButton({
+          href: url('expense.calculator.earnings.get'),
+          text: texts.START_PAGE.BUTTON_TEXT
+      }) }}
+        
+      <br/>
+      <br/>
+      
+      <strong class="bold-medium"> {{ texts.EXPENSE_CALCULATOR.START.SUBHEADING_2 }} </strong>
+      <br>
+
+      <p>
+        {{ texts.EXPENSE_CALCULATOR.START.PARAGRAPH_4 }}
+      </p>
+      <ul class="list list-bullet">
+        <li>{{ texts.EXPENSE_CALCULATOR.START.LIST_2_ITEM_1 }}</li>
+        <li>{{ texts.EXPENSE_CALCULATOR.START.LIST_2_ITEM_2 }}</li>
+        <li>{{ texts.EXPENSE_CALCULATOR.START.LIST_2_ITEM_3 }}</li>
+      </ul>
+
+      {#
+      <p>{{ texts.EXPENSE_CALCULATOR.START.INFO_INDENT }}
+      <a href="{{ texts.EXPENSE_CALCULATOR.START.CLANG_LINK }}">{{ texts.EXPENSE_CALCULATOR.START.INFO_INDENT_LINK }}</a></p>
+      #}
+    </div>
+
+  </div>
+
+  {#
+  <div class="govuk-grid-column-one-third">
+      <aside class="govuk-related-items govuk-body" role="complementary">
+      <h2 class="govuk-heading-m" id="subsection-title">{{ texts.EXPENSE_CALCULATOR.START.NAV_HEADING_1 }}</h2>
+      <nav aria-labelledby="subsection-title">
+        <ul class="govuk-!-font-size-16">
+          <li><a href="#">{{ texts.EXPENSE_CALCULATOR.START.NAV_ITEM_1 }}</a></li>
+          <li><a href="#">{{ texts.EXPENSE_CALCULATOR.START.NAV_ITEM_2 }}</a></li>
+        </ul>
+      </nav>
+      <br>
+      <h2 class="govuk-heading-m" id="elsewhere-title">{{ texts.EXPENSE_CALCULATOR.START.NAV_HEADING_2 }}</h2>
+      <nav aria-labelledby="elsewhere-title">
+        <ul class="govuk-!-font-size-16">
+          <li><a href="#">{{ texts.EXPENSE_CALCULATOR.START.NAV_ITEM_3 }}</a></li>
+          <li><a href="#">{{ texts.EXPENSE_CALCULATOR.START.NAV_ITEM_4 }}</a></li>
+        </ul>
+      </nav>
+    </aside>
+  </div>
+  #}
+  
+</div>
+
+{% endblock %}

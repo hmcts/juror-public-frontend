@@ -24,10 +24,12 @@ Feature: Age Ineligible
 
     # Your Details Name Page
     Then I confirm that I am on the Your Details Name page
+    Then I confirm that my name is correct
     Then I submit my name details
     
     # Your Details Address Page
     Then I confirm that I am on the Your Details Address page
+    Then I confirm that my address is correct
     Then I submit my address details
 
     # Your Details Phone Page
@@ -161,10 +163,12 @@ Feature: Age Ineligible
 
     # 3rd Party Personal Name
     Then I confirm that I am on the 3rd Party Personal Name page
+    Then I confirm that the juror's name is correct
       And I submit my 3rd Party Personal Name Details
 
     # 3rd Party Personal Address
     Then I confirm that I am on the 3rd Party Personal Address page
+    Then I confirm that the juror's address is correct
       And I submit my 3rd Party Personal Address Details
 
     # 3rd Party DOB 

@@ -1,0 +1,264 @@
+{% extends "../../layouts/expense-calculator-default.njk" %}
+
+{% from "../../govuk-frontend/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  {% include "../../includes/title-error.njk" %}
+  {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Expense Calculator Confirm Information{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.HEADING }}
+      </h1>
+
+      {# Loss of Earnings section #}
+      <div class="govuk-body govuk-table__cell" >
+          <h3 class="govuk-heading-m">{{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EARNINGS_HEADING }}</h3>
+      </div>
+
+      <dl class="govuk-summary-list">
+
+        {# Loss of Income / Earnings #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionEarnings">
+            {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EARNINGS_1 }}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="earnings">
+            {{ user.incomeAffected }}
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            <a class="govuk-link" href="{{ changeLinks.earnings }}" id="changeEarnings" aria-describedby="questionEarnings">
+              {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
+              <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.NAME_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if user.incomeAffected == 'Yes'%}
+
+          {# Earnings Threshold #}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" id="questionEarningsThreshold">
+              {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EARNINGS_2 }}
+            </dt>
+            <dd class="govuk-summary-list__value" id="earningsThreshold">
+              {{ user.earningsThreshold }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="{{ changeLinks.earningsThreshold }}" id="changeEarningsThreshold" aria-describedby="questionEarningsThreshold">
+                {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
+                <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+              </a>
+            </dd>
+          </div>
+
+          {% if user.earningsThreshold == 'No'%}
+            {# Earnings Employee #}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key" id="questionEarningsAmount">
+                {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EARNINGS_3 }}
+              </dt>
+              <dd class="govuk-summary-list__value" id="earningsAmount">
+                {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CURRENCY }}{{ user.earningsAmount }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="{{ changeLinks.earningsAmount }}" id="changeEarningsAmount" aria-describedby="questionEarningsAmount" {% if trackingCode %}onclick="trackVirtualPageViews('Change Earnings amount')"{% endif %}>
+                  {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
+                  <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+
+        {% endif %}
+
+      </dl>
+
+      {# Other Expenses section #}
+      <div class="govuk-body govuk-table__cell" >
+          <h3 class="govuk-heading-m">{{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EXPENSES_HEADING }}</h3>
+      </div>
+
+      <dl class="govuk-summary-list">
+
+        {# Other Expenses / Extra Costs #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionExtraCosts">
+            {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EXPENSES_1 }}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="extraCosts">
+            {{ user.extraCosts }}
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            <a class="govuk-link" href="{{ changeLinks.extraCosts }}" id="changeExtraCosts" aria-describedby="questionExtraCosts">
+              {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
+              <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.NAME_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
+
+        {% if user.extraCosts == 'Yes'%}
+        {# Other Expenses total #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key" id="questionExtraCostsAmount">
+            {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EXPENSES_2 }}
+          </dt>
+          <dd class="govuk-summary-list__value" id="extraCostsAmount">
+            {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CURRENCY }}{{ user.extraCostsAmount }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="{{ changeLinks.extraCostsAmount }}" id="changeExtraCostsAmount" aria-describedby="questionExtraCostsAmount" {% if trackingCode %}onclick="trackVirtualPageViews('Change Extra Costs amount')"{% endif %}>
+              {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
+              <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+      </dl>
+
+      {# Travel section #}
+      <div class="govuk-body govuk-table__cell" >
+          <h3 class="govuk-heading-m">{{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_HEADING }}</h3>
+      </div>
+
+      <dl class="govuk-summary-list">
+
+        {# Travel Types #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionTravelType">
+            {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_TYPE }}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="travelType">
+            {{ user.travelType }}
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            <a class="govuk-link" href="{{ changeLinks.travel }}" id="changeTravelType" aria-describedby="questionTravelType">
+              {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
+              <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.NAME_LABEL }}</span>
+            </a>
+          </dd>
+        </div>
+
+        {# Travel Bicycle #}
+        {% if user.travelBicycle %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" id="questionTravelBicycle">
+              {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_BICYCLE }}
+            </dt>
+            <dd class="govuk-summary-list__value" id="travelBicycle">
+              {{ user.bicycleMiles }} {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.MILES }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="{{ changeLinks.travelBicycle }}" id="changeTravelBicycle" aria-describedby="questionTravelBicycle" {% if trackingCode %}onclick="trackVirtualPageViews('Change Bicycle miles')"{% endif %}>
+                {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
+                <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+        {# Travel Car #}
+        {% if user.travelCar %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" id="questionTravelCar">
+              {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_CAR }}
+            </dt>
+            <dd class="govuk-summary-list__value" id="travelCar">
+              {{ user.carMiles }} {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.MILES }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="{{ changeLinks.travelCar }}" id="changeTravelCar" aria-describedby="questionTravelCar" {% if trackingCode %}onclick="trackVirtualPageViews('Change Car miles')"{% endif %}>
+                {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
+                <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+        {# Travel Motorcycle #}
+        {% if user.travelMotorcycle %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" id="questionTravelMotorcycle">
+              {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_MOTORCYCLE }}
+            </dt>
+            <dd class="govuk-summary-list__value" id="travelMotorcycle">
+              {{ user.motorcycleMiles }} {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.MILES }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="{{ changeLinks.travelMotorcycle }}" id="changeTravelMotorcycle" aria-describedby="questionTravelMotorcycle" {% if trackingCode %}onclick="trackVirtualPageViews('Change Motorcycle miles')"{% endif %}>
+                {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
+                <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+        {# Travel Parking #}
+        {% if user.travelParking %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" id="questionTravelParking">
+              {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_PARKING }}
+            </dt>
+            <dd class="govuk-summary-list__value" id="travelParking">
+              {{ user.travelParking }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="{{ changeLinks.travelParking }}" id="changeTravelParking" aria-describedby="questionTravelParking">
+                {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
+                <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+        {# Travel Public Transport #}
+        {% if user.travelPublicTransport%}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" id="questionTravelPublicTransport">
+              {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_PUBLIC_TRANSPORT }}
+            </dt>
+            <dd class="govuk-summary-list__value" id="travelPublicTransport">
+              {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CURRENCY }}{{ user.publicTransportAmount }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="{{ changeLinks.travelPublicTransport }}" id="changeTravelPublicTransport" aria-describedby="questionTravelPublicTransport" {% if trackingCode %}onclick="trackVirtualPageViews('Change Public Transport amount')"{% endif %}>
+                {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
+                <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+
+      </dl>
+
+      <br>
+
+    
+      <form action="{{ url('expense.calculator.confirm.information.post') }}" method="post">
+
+        <div class="govuk-form-group {% if errors.items['informationConfirmed'] %}govuk-form-group--error{% endif %}">
+        </div>
+
+        {# Submit form #}
+        {{ govukButton({
+            text: texts.EXPENSE_CALCULATOR.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
+
+  </div>
+</div>
+
+{% endblock %}

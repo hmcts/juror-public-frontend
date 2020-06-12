@@ -1,6 +1,7 @@
 {% extends "../../layouts/default-gds.njk" %}
 
 {% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/character-count/macro.njk" import govukCharacterCount %}
 {% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
 {% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
 {% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
@@ -8,9 +9,9 @@
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
-    {{ texts.DEFERRAL_PAGE.REASON_HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.DEFERRAL_PAGE.REASON_HEADING_OB }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-    {{ texts.DEFERRAL_PAGE.REASON_HEADING }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.DEFERRAL_PAGE.REASON_HEADING }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 
@@ -54,27 +55,24 @@
           </h1>
 
           <div class="govuk-character-count">
-            {{ govukTextarea({
+            {{ govukCharacterCount({
               name: "deferralReason",
               id: "deferralReason",
+               maxlength: "1000",
               label: {
                 text: deferralReasonLabel
               },
               rows: "4",
-              attributes: {
-                maxlength: "1000"
-              },
               errorMessage: deferralReasonError,
               value: user.deferral.reason
             }) }}
-            <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
 
         </div>
 
         <details class="govuk-details">
-          <summary class="govuk-details__summary" {% if trackingCode %}onclick="trackVirtualPageViews('What is an acceptable reason?')"{% endif %}>
-            <span class="govuk-details__summary-text">
+          <summary class="govuk-details__summary ga-details-deferral-reason" {% if trackingCode %}onclick="trackVirtualPageViews('What is an acceptable reason?')"{% endif %}>
+            <span class="govuk-details__summary-text ga-details-deferral-reason">
               {{ texts.DEFERRAL_PAGE.ACCEPTABLE_SUMMARY }}
             </span>
           </summary>

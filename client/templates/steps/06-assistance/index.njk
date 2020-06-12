@@ -3,6 +3,7 @@
 {% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
 {% from "../../govuk-frontend/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/character-count/macro.njk" import govukCharacterCount %}
 {% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
 {% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
 
@@ -10,9 +11,9 @@
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
-    {{ texts.REASONABLE_ADJUSTMENT_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.REASONABLE_ADJUSTMENT_PAGE.HEADING_OB }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-    {{ texts.REASONABLE_ADJUSTMENT_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.REASONABLE_ADJUSTMENT_PAGE.HEADING }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 
@@ -31,6 +32,13 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form action="{{ url('steps.assistance.post') }}" method="post">
+
+        {# Set heading text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set pageHeadingText = texts.REASONABLE_ADJUSTMENT_PAGE.HEADING_OB %}
+        {% else %}
+          {% set pageHeadingText = texts.REASONABLE_ADJUSTMENT_PAGE.HEADING %}
+        {% endif %}
 
         {# Set radio labels #}
         {% set radioYesLabel = texts.REASONABLE_ADJUSTMENT_PAGE.YES  %}
@@ -115,23 +123,26 @@
           {% set otherDetailsError = {"text": errors.items['assistanceTypeDetails'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
         {% endif %}
 
+        {# Set Special Arrangements details error #}
+        {% set specialArrangementsError = undefined %}
+        {% if errors.items['assistanceSpecialArrangements'] %}
+          {% set specialArrangementsError = {"text": errors.items['assistanceSpecialArrangements'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
         {# Set Other details HTML #}
         {% set otherDetailsHTML %}
           <div class="govuk-character-count">
-            {{ govukTextarea({
+            {{ govukCharacterCount({
               name: "assistanceTypeDetails",
               id: "assistanceTypeDetails",
+              maxlength: "1000",
               label: {
                 text: otherDetailsLabel
               },
               rows: "5",
-              attributes: {
-                maxlength: "1000"
-              },
               errorMessage: otherDetailsError,
               value: user.assistanceTypeDetails
             }) }}
-            <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
         {% endset %}
 
@@ -195,37 +206,33 @@
           }) }}
 
           <div class="govuk-character-count">
-            {{ govukTextarea({
+            {{ govukCharacterCount({
               name: "assistanceSpecialArrangements",
               id: "assistanceSpecialArrangements",
+              maxlength: "1000",
               label: {
                 html: specialArrangementsLabel
               },
               rows: "5",
-              attributes: {
-                maxlength: "1000"
-              },
               errorMessage: specialArrangementsError,
               value: user.assistanceSpecialArrangements
             }) }}
-            <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
 
         {% endset %}
 
         <div class="govuk-form-group {% if errors.items['assistanceNeeded'] or errors.items['assistanceType'] or errors.items['assistanceTypeDetails'] %}govuk-form-group--error{% endif %}">
 
-          <h1 class="govuk-heading-xl">
-            {% if user.thirdParty == 'Yes' %}
-              {{ texts.REASONABLE_ADJUSTMENT_PAGE.HEADING_OB }}
-            {% else %}
-              {{ texts.REASONABLE_ADJUSTMENT_PAGE.HEADING }}
-            {% endif %}
-          </h1>
-
           {{ govukRadios({
             id: "assistanceNeeded",
             name: "assistanceNeeded",
+            fieldset: {
+              legend: {
+                text: pageHeadingText,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
             hint: {
               html: radiosHintHTML
             },
@@ -254,8 +261,8 @@
         </div>
 
         <details class="govuk-details">
-          <summary class="govuk-details__summary" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask for this - reasonable adjustment')"{% endif %}>
-            <span class="govuk-details__summary-text">
+          <summary class="govuk-details__summary ga-details-assistance" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask for this - reasonable adjustment')"{% endif %}>
+            <span class="govuk-details__summary-text ga-details-assistance">
               {{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_SUMMARY }}
             </span>
           </summary>

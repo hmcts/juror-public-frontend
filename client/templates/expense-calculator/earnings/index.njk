@@ -1,0 +1,93 @@
+{% extends "../../layouts/expense-calculator-default.njk" %}
+
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails%}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+    {{ texts.EXPENSE_CALCULATOR.EARNINGS.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Expense Calculator Earnings{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "../../includes/errors-gds.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="{{ url('expense.calculator.earnings.post') }}" method="post">
+
+        {# Set error text #}
+        {% set radioAnswerError = undefined %}
+        {% if errors.items['incomeAffected']%}
+          {% set radioAnswerError = {"text": errors.items['incomeAffected'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+        {# Set rtadios checked #}
+        {% set radioYesChecked = undefined %}
+        {% set radioNoChecked = undefined %}
+        {% if user.incomeAffected === "Yes" %}
+          {% set radioYesChecked = 'checked="checked"' %}
+        {% endif %}
+        {% if user.incomeAffected === "No" %}
+          {% set radioNoChecked = 'checked="checked"' %}
+        {% endif %}
+
+        {{ govukRadios({
+            id: "incomeAffected",
+            name: "incomeAffected",
+            errorMessage: radioAnswerError,
+            fieldset: {
+              legend: {
+                text: texts.EXPENSE_CALCULATOR.EARNINGS.HEADING,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
+            hint: {
+              text: texts.EXPENSE_CALCULATOR.EARNINGS.HINT
+            },
+            items: [
+              {
+                id: "incomeAffectedYes",
+                name: "incomeAffected",
+                value: "Yes" ,
+                text: texts.EXPENSE_CALCULATOR.EARNINGS.YES,
+                checked: radioYesChecked
+              },
+              {
+                id: "incomeAffectedNo",
+                name: "incomeAffected",
+                value: "No",
+                text: texts.EXPENSE_CALCULATOR.EARNINGS.NO,
+                checked: radioNoChecked
+              }
+            ]
+          }) }}
+
+          {{ govukDetails({
+            id: "earningsGuidance1",
+            summaryText: texts.EXPENSE_CALCULATOR.EARNINGS.GUIDANCE_HEADING_1,
+            text: texts.EXPENSE_CALCULATOR.EARNINGS.GUIDANCE_TEXT_1
+          }) }}
+          
+        {# Submit form #}
+        {{ govukButton({
+            text: texts.EXPENSE_CALCULATOR.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

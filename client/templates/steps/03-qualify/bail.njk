@@ -1,15 +1,16 @@
 {% extends "../../layouts/default-gds.njk" %}
 
 {% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/character-count/macro.njk" import govukCharacterCount %}
 {% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
 {% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
-    {{ texts.QUALIFY_PAGE.BAIL_TITLE_OB }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.QUALIFY_PAGE.BAIL_TITLE_OB }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-    {{ texts.QUALIFY_PAGE.BAIL_TITLE }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.QUALIFY_PAGE.BAIL_TITLE }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 
@@ -88,7 +89,7 @@
               </a>
             </span>
             
-            <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
 
               {% if radioAnswerError %}
                 <span id="onBailError" class="govuk-error-message">
@@ -107,19 +108,16 @@
 
               {# Details #}
               <div class="govuk-character-count govuk-radios__conditional" id="onBailDetailsGroup">
-                {{ govukTextarea({
+                {{ govukCharacterCount({
                   name: "onBailDetails",
                   id: "onBailDetails",
+                  maxlength: "1000",
                   label: {
                     text: texts.QUALIFY_PAGE.DETAILS
-                  },
-                  attributes: {
-                    maxlength: "1000"
                   },
                   errorMessage: radioDetailsError,
                   value: user.qualify.onBail.details
                 }) }}
-                <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
               </div>
 
               {# Radio NO #}

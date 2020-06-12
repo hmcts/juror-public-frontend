@@ -77,10 +77,10 @@
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/stylesheets/', src: ['**'], dest: 'dist/client/css'},
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/images/', src: ['**'], dest: 'dist/client/img'},
 
-            {expand: true, cwd: 'node_modules/govuk-frontend', src: ['*/**'], dest: 'dist/client/templates/govuk-frontend'},
-            {expand: true, cwd: 'node_modules/govuk-frontend', src: ['all.js'], dest: 'dist/client/js'},
-            {expand: true, cwd: 'node_modules/govuk-frontend/assets/fonts', src: ['**'], dest: 'dist/client/assets/fonts'},
-            {expand: true, cwd: 'node_modules/govuk-frontend/assets/images', src: ['**'], dest: 'dist/client/assets/images'}
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk', src: ['*/**'], dest: 'dist/client/templates/govuk-frontend'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk', src: ['all.js'], dest: 'dist/client/js'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/fonts', src: ['**'], dest: 'dist/client/assets/fonts'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images', src: ['**'], dest: 'dist/client/assets/images'}
           ]
         },
         dev: {
@@ -96,10 +96,10 @@
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/stylesheets/', src: ['**'], dest: 'dev/client/css'},
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/images/', src: ['**'], dest: 'dev/client/img'},
 
-            {expand: true, cwd: 'node_modules/govuk-frontend', src: ['*/**'], dest: 'dev/client/templates/govuk-frontend'},
-            {expand: true, cwd: 'node_modules/govuk-frontend', src: ['all.js'], dest: 'dev/client/js'},
-            {expand: true, cwd: 'node_modules/govuk-frontend/assets/fonts', src: ['**'], dest: 'dev/client/assets/fonts'},
-            {expand: true, cwd: 'node_modules/govuk-frontend/assets/images', src: ['**'], dest: 'dev/client/assets/images'}
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk', src: ['*/**'], dest: 'dev/client/templates/govuk-frontend'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk', src: ['all.js'], dest: 'dev/client/js'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/fonts', src: ['**'], dest: 'dev/client/assets/fonts'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images', src: ['**'], dest: 'dev/client/assets/images'}
           ]
         },
         test: {
@@ -115,10 +115,10 @@
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/stylesheets/', src: ['**'], dest: 'test/client/css'},
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/images/', src: ['**'], dest: 'test/client/img'},
 
-            {expand: true, cwd: 'node_modules/govuk-frontend', src: ['*/**'], dest: 'test/client/templates/govuk-frontend'},
-            {expand: true, cwd: 'node_modules/govuk-frontend', src: ['all.js'], dest: 'test/client/js'},
-            {expand: true, cwd: 'node_modules/govuk-frontend/assets/fonts', src: ['**'], dest: 'test/client/assets/fonts'},
-            {expand: true, cwd: 'node_modules/govuk-frontend/assets/images', src: ['**'], dest: 'test/client/assets/images'}
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk', src: ['*/**'], dest: 'test/client/templates/govuk-frontend'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk', src: ['all.js'], dest: 'test/client/js'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/fonts', src: ['**'], dest: 'test/client/assets/fonts'},
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images', src: ['**'], dest: 'test/client/assets/images'}
           ]
         },
         govuk: {
@@ -185,7 +185,7 @@
           files: { 
             'client/css/style.css': 'client/scss/main.scss',
             'client/css/jd-style.css': 'client/scss/jd-main.scss',
-            'client/css/govuk-frontend.css': 'node_modules/govuk-frontend/all.scss'
+            'client/css/govuk-frontend.css': 'node_modules/govuk-frontend/govuk/all.scss'
           }
         },
         dev: {
@@ -193,7 +193,7 @@
           files: { 
             'client/css/style.css': 'client/scss/main.scss',
             'client/css/jd-style.css': 'client/scss/jd-main.scss',
-            'client/css/govuk-frontend.css': 'node_modules/govuk-frontend/all.scss'
+            'client/css/govuk-frontend.css': 'node_modules/govuk-frontend/govuk/all.scss'
           }
         },
         test: {
@@ -201,7 +201,7 @@
           files: { 
             'client/css/style.css': 'client/scss/main.scss',
             'client/css/jd-style.css': 'client/scss/jd-main.scss',
-            'client/css/govuk-frontend.css': 'node_modules/govuk-frontend/all.scss'
+            'client/css/govuk-frontend.css': 'node_modules/govuk-frontend/govuk/all.scss'
            }
         },
       },

@@ -36,6 +36,14 @@
     require('./branches/03-third-party-personal-details')(app);
     require('./branches/04-third-party-contact-details')(app);
 
+    // Temp Expense Calculator modules
+    require('./start-expense-calculator')(app);
+    require('./expense-calculator/earnings')(app);
+    require('./expense-calculator/extra-costs')(app);
+    require('./expense-calculator/travel')(app);
+    require('./expense-calculator/confirm-information')(app);
+    require('./expense-calculator/total')(app);
+
 
     // Configuration screen by default requires javascript to autopopulate
     // Fallback without JS will be to go to this page which prepopulates the

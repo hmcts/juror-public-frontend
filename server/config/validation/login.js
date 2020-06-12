@@ -46,7 +46,7 @@
         format: {
           pattern: '^$|^[^|"]+$',
           message: {
-            summary: filters.translate('VALIDATION.LOGIN.JUROR_CHECK_LAST_NAME_SUM'
+            summary: filters.translate('VALIDATION.LOGIN.JUROR_CHECK_LAST_NAME_INVALID'
             + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.LOGIN.JUROR_CHECK_LAST_NAME_INVALID'
             + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
@@ -68,8 +68,10 @@
           // eslint-disable-next-line max-len
           pattern: '^$|(([gG][iI][rR] {0,}0[aA]{2})|((([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y]?[0-9][0-9]?)|(([a-pr-uwyzA-PR-UWYZ][0-9][a-hjkstuwA-HJKSTUW])|([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y][0-9][abehmnprv-yABEHMNPRV-Y]))) {0,}[0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2}))$',
           message: {
-            summary: filters.translate('VALIDATION.LOGIN.JUROR_CHECK_POSTCODE_SUM', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.LOGIN.JUROR_CHECK_POSTCODE_DETAILS_FORMAT', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.LOGIN.JUROR_CHECK_POSTCODE_DETAILS_FORMAT'
+            + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.LOGIN.JUROR_CHECK_POSTCODE_DETAILS_FORMAT'
+            + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           },
         },
       },

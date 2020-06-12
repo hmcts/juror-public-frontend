@@ -1,0 +1,137 @@
+{% extends "../../layouts/expense-calculator-default.njk" %}
+
+{% from "../../govuk-frontend/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+
+{% block pageTitle %}
+    {{ texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Expense Calculator Travel{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "../../includes/errors-gds.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="{{ url('expense.calculator.travel.post') }}" method="post">
+
+        {# Set error text #}
+        {% set selectionError = undefined %}
+        {% if errors.items['travelType']%}
+          {% set selectionError = {"text": errors.items['travelType'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+        {# Set checked values #}
+        {% if travelTypes.bicycle %}
+          {% set checkboxBicycle = true %}
+        {% else %}
+          {% set checkboxBicycle = false %}
+        {% endif %}
+
+        {% if travelTypes.car %}
+          {% set checkboxCar = true %}
+        {% else %}
+          {% set checkboxCar = false %}
+        {% endif %}
+
+        {% if travelTypes.motorcycle %}
+          {% set checkboxMotorcycle = true %}
+        {% else %}
+          {% set checkboxMotorcycle = false %}
+        {% endif %}
+
+        {% if travelTypes.publicTransport %}
+          {% set checkboxPublicTransport = true %}
+        {% else %}
+          {% set checkboxPublicTransport = false %}
+        {% endif %}
+
+        {% if travelTypes.walking %}
+          {% set checkboxWalking = true %}
+        {% else %}
+          {% set checkboxWalking = false %}
+        {% endif %}
+
+        {% set radioYesChecked = 'checked="checked"' %}
+
+        {{ govukCheckboxes({
+            id: "travelType",
+            name: "travelType",
+            hint: {
+              text: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.HINT
+            },
+            errorMessage: selectionError,
+            fieldset: {
+              legend: {
+                text: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.HEADING,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
+            items: [
+              {
+                id: "travelTypeBicycle",
+                name: "travelType",
+                value: "Bicycle" ,
+                text: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_BICYCLE,
+                checked: checkboxBicycle
+              },
+              {
+                id: "travelTypeCar",
+                name: "travelType",
+                value: "Car",
+                text: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_CAR,
+                checked: checkboxCar
+              },
+              {
+                id: "travelTypeMotorcycle",
+                name: "travelType",
+                value: "Motorcycle",
+                text: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_MOTORCYCLE,
+                checked: checkboxMotorcycle
+              },
+              {
+                id: "travelTypePublicTransport",
+                name: "travelType",
+                value: "Public transport",
+                text: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_PUBLIC_TRANSPORT,
+                checked: checkboxPublicTransport
+              },
+              {
+                id: "travelTypeWalking",
+                name: "travelType",
+                value: "Walking",
+                text: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_WALKING,
+                checked: checkboxWalking
+              }
+            ]
+          }) }}
+
+        {# Submit form #}
+        {{ govukButton({
+            text: texts.EXPENSE_CALCULATOR.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
+        {{ govukDetails({
+          summaryText: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.GUIDANCE_HEADING,
+          text: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.GUIDANCE_TEXT
+        }) }}
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -11,17 +11,15 @@
         presence: {
           allowEmpty: false,
           message: {
-            summary: filters.translate('VALIDATION.EXCUSAL.CHECK_REASON'
-              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.EXCUSAL.CHECK_REASON_MISSING'
-              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            summary: filters.translate('VALIDATION.EXCUSAL.CHECK_REASON' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.EXCUSAL.CHECK_REASON_MISSING' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         },
         length: {
           maximum: 1000,
           message: {
-            summary: filters.translate('VALIDATION.EXCUSAL.CHECK_REASON_LENGTH', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.EXCUSAL.CHECK_REASON_LENGTH_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.EXCUSAL.CHECK_REASON_LENGTH' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.EXCUSAL.CHECK_REASON_LENGTH' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         }
       },

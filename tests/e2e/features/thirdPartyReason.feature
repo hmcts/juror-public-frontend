@@ -67,6 +67,7 @@ Feature: Third party reason
 
     # 3rd Party Personal Details Address
     Then I confirm that I am on the 3rd Party Personal Address page
+    Then I confirm that the summoned person's address is correct
     And I submit my 3rd Party Personal Address Details
 
     # 3rd Party Personal Details DOB

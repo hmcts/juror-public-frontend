@@ -87,8 +87,9 @@
 
     "FORM_ADDRESS_LABEL": "Cyfeiriad",
     "FORM_ADDRESS_LINE_ONE_LABEL": "Adeilad a'r stryd",
-    "FORM_ADDRESS_LINE_TWO_LABEL": "Cyfeiriad llinell 2",
-    "FORM_ADDRESS_LINE_THREE_LABEL": "Cyfeiriad llinell 3",
+    "FORM_ADDRESS_LINE_1_OF_3": "llinell 1 o 3",
+    "FORM_ADDRESS_LINE_TWO_LABEL": "Adeilad a’r stryd llinell 2 o 3",
+    "FORM_ADDRESS_LINE_THREE_LABEL": "Adeilad a’r stryd llinell 3 o 3",
     "FORM_ADDRESS_TOWN_LABEL": "Tref neu ddinas",
     "FORM_ADDRESS_COUNTY_LABEL": "Sir (dewisol)",
     "FORM_ADDRESS_POSTCODE_LABEL": "Cod post",
@@ -117,7 +118,7 @@
 
   "THIRD_PARTY_CONTACT_DETAILS": {
     "CAPTION": "Manylion y Rheithiwr",
-    "HEADER": "Efallai bydd yn rhaid inni gysylltu â'r unigolyn i ofyn rhagor o gwestiynau neu roi rhagor o wybodaeth iddynt am eu gwasanaeth rheithgor.",
+    "HEADER": "Efallai bydd yn rhaid inni gysylltu â'r unigolyn i ofyn rhagor o gwestiynau neu roi rhagor o wybodaeth iddynt am eu gwasanaeth rheithgor",
 
     "CONTACT": "Sut y gallwn gysylltu â'r rheithiwr",
     "CONTACT_PARAGRAPH": "Dywedwch wrthym sut y gallwn gysylltu â'r unigolyn yr ydych yn ymateb ar ei ran. Neu gallwn ni ddefnyddio eich manylion cyswllt chi, os ydych am barhau i weithredu ar ran yr unigolyn.",

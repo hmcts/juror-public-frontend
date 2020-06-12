@@ -12,7 +12,7 @@
           allowEmpty: false,
           message: {
             summary: filters.translate('VALIDATION.QUALIFY.MENTAL_HEALTH_SECTIONED' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.QUALIFY.MENTAL_HEALTH_SECTIONED' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             summaryLink: 'mentalHealthSectioned-Yes'
           }
         },
@@ -22,15 +22,15 @@
           field: 'mentalHealthSectioned',
           value: (req.session.ulang === 'cy' ? texts_cy.QUALIFY_PAGE.YES : texts_en.QUALIFY_PAGE.YES),
           message: {
-            summary: filters.translate('VALIDATION.QUALIFY.MENTAL_HEALTH_SECTIONED' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.QUALIFY.MENTAL_HEALTH_SECTIONED_DETAILS' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.QUALIFY.MENTAL_HEALTH_SECTIONED_DETAILS' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
           },
         },
         length: {
           maximum: 1000,
           message: {
-            summary: filters.translate('VALIDATION.QUALIFY.MENTAL_HEALTH_SECTIONED_LENGTH', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.DEFERRAL.MENTAL_HEALTH_SECTIONED_LENGTH_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            summary: filters.translate('VALIDATION.QUALIFY.MENTAL_HEALTH_SECTIONED_LENGTH' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.QUALIFY.MENTAL_HEALTH_SECTIONED_LENGTH' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         },
       },

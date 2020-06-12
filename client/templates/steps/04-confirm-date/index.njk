@@ -7,9 +7,9 @@
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
-    {{ texts.CONFIRM_DATE_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.CONFIRM_DATE_PAGE.HEADING_OB }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-    {{ texts.CONFIRM_DATE_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.CONFIRM_DATE_PAGE.HEADING }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 

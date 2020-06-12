@@ -38,7 +38,8 @@ class ConfirmDateOfBirthPage extends Page {
   // ===========
   //
   get dateOfBirthSummaryError() {
-    return browser.element('.govuk-error-summary__list [href="#dateOfBirth"]');
+    // return browser.element('.govuk-error-summary__list [href="#dateOfBirth"]');
+    return browser.element('.govuk-error-summary__list li a');
   }
 
   get dateOfBirthDetailedError() {

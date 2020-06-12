@@ -71,7 +71,7 @@ class ThirdPartyPersonalContactPage extends Page {
   }
 
   get useJurorPhoneDetailsSummaryError() {
-    return browser.element('.govuk-error-summary__list [href="#useJurorPhoneDetails"]');
+    return browser.element('.govuk-error-summary__list [href="#phoneNumber_existing"]');
   }
 
   get useJurorPhoneDetailsDetailedError() {
@@ -79,7 +79,7 @@ class ThirdPartyPersonalContactPage extends Page {
   }
 
   get useJurorEmailDetailsSummaryError() {
-    return browser.element('.govuk-error-summary__list [href="#useJurorEmailDetails"]');
+    return browser.element('.govuk-error-summary__list [href="#emailAddress_existing"]');
   }
 
   get useJurorEmailDetailsDetailedError() {

@@ -2,9 +2,9 @@
 
 {% block pageTitle %}
   {% if user.thirdParty == 'Yes' %}
-    {{ texts.INFO_PAGE.RESIDENCY.HEADING_THIRD_PARTY }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.INFO_PAGE.RESIDENCY.HEADING_THIRD_PARTY }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-    {{ texts.INFO_PAGE.RESIDENCY.HEADING }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.INFO_PAGE.RESIDENCY.HEADING }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 

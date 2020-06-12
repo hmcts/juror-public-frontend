@@ -6,8 +6,19 @@ class ThirdPartyPersonalNamePage extends Page {
   }
 
   get name() {
-    return browser.element('//div[@id="name"]');
+    return browser.element('//div[@id="fullName"]');
   }
+
+  confirmYes() {
+    const selectedElement = browser.element('[name="nameConfirm"][value="Yes"]');
+    selectedElement.click();
+  }
+
+  confirmNo() {
+    const selectedElement = browser.element('[name="nameConfirm"][value="No"]');
+    selectedElement.click();
+  }
+
 }
 
 module.exports = ThirdPartyPersonalNamePage;

@@ -14,6 +14,14 @@ module.exports = function steps() {
     this.yourDetailsNamePage.changeNameButton.click();
   });
 
+  this.When(/^I confirm that my name is correct$/, () => {
+    this.yourDetailsNamePage.confirmYes();
+  });
+
+  this.When(/^I confirm that my name is incorrect$/, () => {
+    this.yourDetailsNamePage.confirmNo();
+  });
+
   this.When(/^I submit my name details$/, () => {
     this.yourDetailsNamePage.submit();
   });
@@ -21,13 +29,4 @@ module.exports = function steps() {
 
   // Errors
   // ==============
-
-  this.Then(/^the summary error for my last name is "([^"]*)"$/, (expectedValue) => {
-    expect(this.yourDetailsNamePage.lastNameSummaryError.getText()).to.equal(expectedValue);
-  });
-
-  this.Then(/^the detailed error for my last name is "([^"]*)"$/, (expectedValue) => {
-    expect(this.yourDetailsNamePage.lastNameDetailedError.getText()).to.contains(expectedValue);
-  });
-
 };

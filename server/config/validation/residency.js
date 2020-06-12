@@ -12,7 +12,7 @@
           allowEmpty: false,
           message: {
             summary: filters.translate('VALIDATION.QUALIFY.WHERE_YOU_LIVE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.PLEASE_ANSWER', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.QUALIFY.WHERE_YOU_LIVE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             summaryLink: 'livedConsecutive-Yes'
           }
         },
@@ -22,15 +22,15 @@
           field: 'livedConsecutive',
           value: (req.session.ulang === 'cy' ? texts_cy.QUALIFY_PAGE.NO : texts_en.QUALIFY_PAGE.NO),
           message: {
-            summary: filters.translate('VALIDATION.QUALIFY.WHERE_YOU_LIVE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.QUALIFY.WHERE_YOU_LIVE_DETAILS' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.QUALIFY.WHERE_YOU_LIVE_DETAILS' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
           },
         },
         length: {
           maximum: 1000,
           message: {
-            summary: filters.translate('VALIDATION.QUALIFY.WHERE_YOU_LIVE_LENGTH', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.QUALIFY.WHERE_YOU_LIVE_LENGTH_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            summary: filters.translate('VALIDATION.QUALIFY.WHERE_YOU_LIVE_LENGTH' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.QUALIFY.WHERE_YOU_LIVE_LENGTH' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en))
           }
         }
       },

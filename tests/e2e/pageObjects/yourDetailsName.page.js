@@ -9,7 +9,16 @@ class YourDetailsNamePage extends Page {
     return browser.element('.inline-edit-toggle[href="#nameGroup"]');
   }
 
-  
+
+  confirmYes() {
+    const selectedElement = browser.element('[name="nameConfirm"][value="Yes"]');
+    selectedElement.click();
+  }
+
+  confirmNo() {
+    const selectedElement = browser.element('[name="nameConfirm"][value="No"]');
+    selectedElement.click();
+  }
 
   // Errors
   // ===========
@@ -22,8 +31,6 @@ class YourDetailsNamePage extends Page {
   get lastNameDetailedError() {
     return browser.element('#lastName-error');
   }
-
-  
 }
 
 module.exports = YourDetailsNamePage;

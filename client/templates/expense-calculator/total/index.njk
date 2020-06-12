@@ -1,0 +1,284 @@
+{% extends "../../layouts/expense-calculator-default.njk" %}
+
+{% from "../../govuk-frontend/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+
+{% block pageTitle %}
+    {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Expense Calculator Total{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "../../includes/errors-gds.njk" %}
+
+  {# Loss of Earnings / Other Expenses #}
+  {% set expensesDetailsHTML %}
+
+    {# Loss of earnings #}
+    {% if user.earningsAmount > 0 %}
+      <p class="govuk-body govuk-!-font-weight-bold">
+        {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.EXPENSES_DETAILS_LOSS_OF_EARNINGS}}
+      </p>
+      <p class="govuk-body" id="lossOfEarningsClaim">
+       £{{ user.earningsAmount }} {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.EACH_DAY}}
+      </p>
+    {% endif%}
+
+    {# Other expenses #}
+    {% if user.extraCostsAmount > 0 %}
+      <p class="govuk-body govuk-!-font-weight-bold">
+        {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.EXPENSES_DETAILS_OTHER_EXPENSES}}
+      </p>
+      <p class="govuk-body" id="extraCostsClaim">
+        £{{ user.extraCostsAmount }} {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.EACH_DAY}}
+      </p>
+    {% endif %}
+
+    {# Total #}
+    <p class="govuk-body govuk-!-font-weight-bold">
+      {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.EXPENSES_DETAILS_TOTAL}}
+    </p>
+    <p class="govuk-body" id="lossOfEarningsTotal">
+      £{{ user.calculatedEstimate.dailyLossOfEarningsTotal }} {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.EACH_DAY}}
+    </p>
+
+
+    <p class="govuk-body">
+    £{{ user.calculatedEstimate.lossOfEarningsTenDaysFourHrsMore }} {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.EXPENSES_DETAILS_INFO}} £{{ user.calculatedEstimate.lossOfEarningsTenDaysFourHrsLess }}.
+    </p>
+
+  {% endset %}
+
+  {# Travel Expenses #}
+  {% set travelDetailsHTML %}
+    {% for travelItem in user.calculatedEstimate.travellingModes %}
+    
+      {% if travelItem.modeOfTravel === 'bicycle' %}
+        <p class="govuk-body govuk-!-font-weight-bold">
+          {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.TRAVEL_DETAILS_BICYCLE }}
+        </p>
+        <p class="govuk-body" id="travelBicycle">
+          {{ travelItem.dailyMiles }} {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.MILES_AT }} {{ travelItem.ratePerMile }}p {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.PER_MILE }} = £{{ travelItem.dailyCost }}
+        </p>
+      {% endif %}
+
+      {% if travelItem.modeOfTravel === 'car' %}
+        <p class="govuk-body govuk-!-font-weight-bold">
+        {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.TRAVEL_DETAILS_CAR }}
+        </p>
+        <p class="govuk-body" id="travelCar">
+          {{ travelItem.dailyMiles }} {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.MILES_AT }} {{ travelItem.ratePerMile }}p {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.PER_MILE }}  = £{{ travelItem.dailyCost }}
+        </p>
+      {% endif %}
+
+      {% if travelItem.modeOfTravel === 'motorcycle' %}
+        <p class="govuk-body govuk-!-font-weight-bold">
+        {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.TRAVEL_DETAILS_MOTORCYCLE }}
+        </p>
+        <p class="govuk-body" id="travelMotorcycle">
+          {{ travelItem.dailyMiles }} {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.MILES_AT }} {{ travelItem.ratePerMile }}p {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.PER_MILE }}  = £{{ travelItem.dailyCost }}
+        </p>
+      {% endif %}
+
+      {% if travelItem.modeOfTravel === 'public' %}
+        <p class="govuk-body govuk-!-font-weight-bold">
+          {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.TRAVEL_DETAILS_TICKETS }}
+        </p>
+        <p class="govuk-body" id="travelPublicTransport">
+          £{{ travelItem.dailyCost }} {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.EACH_DAY }}
+        </p>
+      {% endif %}
+
+    {% endfor %}
+
+    <p class="govuk-body govuk-!-font-weight-bold">
+      {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.TRAVEL_DETAILS_TOTAL }}
+    </p>
+    <p class="govuk-body" id="travelTotal">
+      £{{ user.calculatedEstimate.dailyTravelTotal }} {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.EACH_DAY }}
+    </p>
+
+    <p class="govuk-body">
+      {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.TRAVEL_DETAILS_INFO_1 }}
+    </p>
+    <p class="govuk-body">
+      {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.TRAVEL_DETAILS_INFO_2 }}
+    </p>
+    
+
+  {% endset %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="{{ url('expense.calculator.total.post') }}" method="post">
+
+        <div class="govuk-form-group">
+
+          <fieldset class="govuk-fieldset" aria-describedby="">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+              <h1 class="govuk-fieldset__heading">
+                {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.HEADING}}
+              </h1>
+            </legend>
+            <br/>
+            <div class="govuk-body govuk-!-font-size-80 govuk-!-font-weight-bold" id="calculatedTotal">
+              £{{ user.calculatedEstimate.dailyTotal }} <span class="govuk-!-font-size-36 govuk-!-font-weight-bold">{{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.PER_DAY}}</span>
+            </div>
+
+            <div class="govuk-body govuk-table__cell">
+              <p>
+                {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.ASSUMPTIONS}}
+                <br/>
+                <ul <ul class="govuk-list govuk-list--bullet">
+                  <li>
+                    {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.ASSUMPTION_1}}
+                  </li>
+                  <li>
+                    {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.ASSUMPTION_2}}
+                  </li>
+                  <li>
+                    {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.ASSUMPTION_3}}
+                  </li>
+                </ul>
+              </p>
+            </div>
+
+            <br />
+            <br />
+
+            <h2 class="govuk-heading-l">
+              {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.SUB_HEADING}}
+            </h2>
+
+            {# Loss of earnings and other expenses #}
+            {% if user.calculatedEstimate.dailyLossOfEarningsTotal > 0 %}
+              <h3 class="govuk-heading-m">
+                {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.EXPENSES_HEADING}}
+              </h3>
+              <span class="govuk-body-l">
+                {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.EXPENSES_SUMMARY_1}}
+                <strong>£{{user.calculatedEstimate.dailyLossOfEarningsClaim}}</strong>
+                {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.EXPENSES_SUMMARY_2}}
+              </span>
+
+              <br/>
+              <br/>
+
+              {{ govukDetails({
+                id: "earningsDetails",
+                summaryText: texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.EXPENSES_DETAILS_HEADING,
+                html: expensesDetailsHTML
+              }) }}
+            {% endif %}
+
+            {# Travel expenses #}
+            
+            {% if user.calculatedEstimate.dailyTravelTotal > 0 %}
+              <h3 class="govuk-heading-m">
+                {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.TRAVEL_HEADING}}
+              </h3>
+              <span class="govuk-body-l">
+                {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.TRAVEL_SUMMARY_1}}
+                <strong>£{{user.calculatedEstimate.dailyTravelTotal}}</strong>
+                {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.TRAVEL_SUMMARY_2}}
+              </span>
+
+              <br/>
+              <br/>
+
+              {{ govukDetails({
+                id: "travelDetails",
+                summaryText: texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.TRAVEL_DETAILS_HEADING,
+                html: travelDetailsHTML
+              }) }}
+            {% endif %}
+
+            {# Food and Drink expenses #}
+            
+            <h3 class="govuk-heading-m">
+              {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.FOOD_AND_DRINK_HEADING}}
+            </h3>
+            <span class="govuk-body-l">
+              {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.FOOD_AND_DRINK_SUMMARY_1}}
+              <strong>£{{user.calculatedEstimate.subsistence}}</strong>
+              {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.FOOD_AND_DRINK_SUMMARY_2}}
+            </span>
+
+            <br />
+            <br />
+
+            <div class="govuk-body-l govuk-table__cell">
+              {# Submit form #}
+              {{ govukButton({
+                  text: texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.START_AGAIN
+              }) }}
+            </div>
+
+            <div class="govuk-body" id="guidance">
+              <p>
+                {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.GUIDANCE_1}}
+                <a href="{{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.GUIDANCE_1_URL}}" class="govuk-link">
+                  {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.GUIDANCE_1_LINK}}
+                </a>.
+              </p>
+              <p>
+                {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.GUIDANCE_2}}
+                <a href="{{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.GUIDANCE_2_URL}}" class="govuk-link">
+                  {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.GUIDANCE_2_LINK}}
+                </a>.
+              </p>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+      </form>
+
+    </div>
+
+    {# Right hand column - claim form links #}
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="govuk-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          {{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.CLAIM_FORMS_HEADING}}
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a class="govuk-link" href="{{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.CLAIM_FORM_1_URL}}">
+                {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.CLAIM_FORM_1_HEADING }}
+              </a>
+            </li>
+            <li>
+              <a class="govuk-link" href="{{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.CLAIM_FORM_2_URL}}">
+                {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.CLAIM_FORM_2_HEADING }}
+              </a>
+            </li>
+            <li>
+              <a class="govuk-link" href="{{texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.CLAIM_FORM_3_URL}}">
+                {{ texts.EXPENSE_CALCULATOR.CALCULATED_TOTAL.CLAIM_FORM_3_HEADING }}
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    <div>
+
+  </div>
+
+{% endblock %}

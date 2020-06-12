@@ -8,9 +8,9 @@
 {% block pageTitle %}
   {% include "../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
-  {{ texts.LOGIN_PAGE.HEADING_OB }} - {{ texts.INTERFACE.GOV }}
+  {{ texts.LOGIN_PAGE.HEADING_OB }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-  {{ texts.LOGIN_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+  {{ texts.LOGIN_PAGE.HEADING }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 
@@ -65,6 +65,14 @@
           {% set postcodeHintText = texts.LOGIN_PAGE.FIELD_POSTCODE_HINT %}
         {% endif %}
 
+        {# Set Juror Number hint #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set jurorNumberHintText = texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_HINT_OB %}
+        {% else %}
+          {% set jurorNumberHintText = texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_HINT %}
+        {% endif %}
+        
+
         <div class="govuk-form-group {% if jurorNumberError or lastNameError or postcodeError %}govuk-form-group--error{% endif %}" id="loginGroup">
 
           <fieldset class="govuk-fieldset">
@@ -81,24 +89,17 @@
               </h1>
             </legend>
               
-            <span class="govuk-hint" id="login-hint">
-              <p class="govuk-body">             
-                {% if user.thirdParty == 'Yes' %}
-                  {{ texts.LOGIN_PAGE.SAMPLE_TITLE_OB }}
-                {% else %}
-                  {{ texts.LOGIN_PAGE.SAMPLE_TITLE }}
-                {% endif %}
-              </p>
-
-              <img src="/img/example-juror-number.png" alt="{{ texts.LOGIN_PAGE.SAMPLE_IMAGE_ALT }}" title="{{ texts.LOGIN_PAGE.IMAGE_TITLE }}">
-              <br><br>
-            </span>
-              
+            {# Juror number example image #}
+            <img src="/img/juror-number-example-1x.png" alt="{{ texts.LOGIN_PAGE.IMAGE_TITLE }}" title="{{ texts.LOGIN_PAGE.IMAGE_TITLE }}">
+            <br><br>
 
             {# Juror Number #}
             {{ govukInput({
               label: {
                 text: texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_TITLE
+              },
+              hint: {
+                text: jurorNumberHintText
               },
               classes: "govuk-!-width-one-third",
               id: "jurorNumber",
@@ -114,10 +115,10 @@
               }
             }) }}
 
-            <details class="govuk-details">
+            <details class="govuk-details ga-no-juror-number">
 
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text" {% if trackingCode %}onclick="trackVirtualPageViews('I don\'t have a juror number')"{% endif %}>
+              <summary class="govuk-details__summary ga-details-no-juror-number">
+                <span class="govuk-details__summary-text ga-details-no-juror-number" {% if trackingCode %}onclick="trackVirtualPageViews('I don\'t have a juror number')"{% endif %}>
                   {% if user.thirdParty == 'Yes' %}
                     {{ texts.LOGIN_PAGE.GUIDANCE_TITLE_OB }}
                     {% else %}

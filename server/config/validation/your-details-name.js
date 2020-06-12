@@ -13,14 +13,14 @@
         format: {
           pattern: '^$|^[^|"]+$',
           message: {
-            summary: filters.translate('VALIDATION.YOUR_DETAILS.TITLE_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.YOUR_DETAILS.TITLE_CHECK_INVALID', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.YOUR_DETAILS.TITLE_CHECK_INVALID', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           },
         },
         length: {
           maximum: 10,
           message: {
-            summary: filters.translate('VALIDATION.YOUR_DETAILS.TITLE_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.YOUR_DETAILS.TITLE_CHECK_INVALID', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.YOUR_DETAILS.TITLE_CHECK_INVALID', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           },
         },
@@ -30,7 +30,7 @@
         presence: {
           allowEmpty: false,
           message: {
-            summary: filters.translate('VALIDATION.YOUR_DETAILS.FIRST_NAME_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.YOUR_DETAILS.FIRST_NAME_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.YOUR_DETAILS.FIRST_NAME_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         },
@@ -54,7 +54,7 @@
         presence: {
           allowEmpty: false,
           message: {
-            summary: filters.translate('VALIDATION.YOUR_DETAILS.LAST_NAME_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.YOUR_DETAILS.LAST_NAME_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.YOUR_DETAILS.LAST_NAME_MISSING', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         },

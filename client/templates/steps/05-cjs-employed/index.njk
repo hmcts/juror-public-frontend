@@ -2,6 +2,7 @@
 
 {% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
 {% from "../../govuk-frontend/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "../../govuk-frontend/components/character-count/macro.njk" import govukCharacterCount %}
 {% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
 {% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
 {% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
@@ -9,9 +10,9 @@
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
-    {{ texts.EMPLOYED_PAGE.HEADER_OB }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.EMPLOYED_PAGE.HEADER_OB }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-    {{ texts.EMPLOYED_PAGE.HEADER }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.EMPLOYED_PAGE.HEADER }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 
@@ -30,6 +31,13 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form action="{{ url('steps.cjs.employed.post') }}" method="post">
+
+        {# Set heading text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set pageHeadingText = texts.EMPLOYED_PAGE.HEADER_OB %}
+        {% else %}
+          {% set pageHeadingText = texts.EMPLOYED_PAGE.HEADER %}
+        {% endif %}
 
         {# Set radio labels #}
         {% if user.thirdParty == 'Yes' %}
@@ -102,20 +110,17 @@
         {# Set Police details HTML #}
         {% set policeDetailsHTML %}
           <div class="govuk-character-count">
-            {{ govukTextarea({
+            {{ govukCharacterCount({
               name: "cjsPoliceDetails",
               id: "cjsPoliceDetails",
+              maxlength: "1000",
               label: {
                 text: texts.EMPLOYED_PAGE.WHICH_FORCE
               },
               rows: "2",
-              attributes: {
-                maxlength: "1000"
-              },
               errorMessage: policeDetailsError,
               value: user.cjsPoliceDetails
             }) }}
-            <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
         {% endset %}
 
@@ -135,20 +140,17 @@
         {# Set Prison details HTML #}
         {% set prisonDetailsHTML %}
           <div class="govuk-character-count">
-            {{ govukTextarea({
+            {{ govukCharacterCount({
               name: "cjsPrisonDetails",
               id: "cjsPrisonDetails",
+              maxlength: "1000",
               label: {
                 text: texts.EMPLOYED_PAGE.WHICH_PRISON
               },
               rows: "2",
-              attributes: {
-                maxlength: "1000"
-              },
               errorMessage: prisonDetailsError,
               value: user.cjsPrisonDetails
             }) }}
-            <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
         {% endset %}
 
@@ -175,20 +177,17 @@
         {# Set Other details HTML #}
         {% set otherDetailsHTML %}
           <div class="govuk-character-count">
-            {{ govukTextarea({
+            {{ govukCharacterCount({
               name: "cjsEmployerDetails",
               id: "cjsEmployerDetails",
+              maxlength: "1000",
               label: {
                 text: texts.EMPLOYED_PAGE.DETAILS
               },
               rows: "2",
-              attributes: {
-                maxlength: "1000"
-              },
               errorMessage: otherDetailsError,
               value: user.cjsEmployerDetails
             }) }}
-            <span class="govuk-hint govuk-character-count__message">{{ texts.VALIDATION.MAX_TEXT_CHARS }}</span>
           </div>
         {% endset %}
 
@@ -246,17 +245,16 @@
 
         <div class="govuk-form-group {% if errors.items['cjsEmployed'] or errors.items['cjsEmployer'] or policeDetailsError or prisonDetailsError or otherDetailsError %}govuk-form-group--error{% endif %}" id="cjsEmployedGroup">
           
-          <h1 class="govuk-heading-xl">
-            {% if user.thirdParty == 'Yes' %}
-              {{ texts.EMPLOYED_PAGE.HEADER_OB }}
-            {% else %}
-              {{ texts.EMPLOYED_PAGE.HEADER }}
-            {% endif %}
-          </h1>
-          
           {{ govukRadios({
             id: "cjsEmployed",
             name: "cjsEmployed",
+            fieldset: {
+              legend: {
+                text: pageHeadingText,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
             hint: {
               html: radiosHintHTML
             },
@@ -285,8 +283,8 @@
         </div>
 
         <details class="govuk-details">
-          <summary class="govuk-details__summary" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask for this?')"{% endif %}>
-            <span class="govuk-details__summary-text">
+          <summary class="govuk-details__summary ga-details-cjs-employed" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask for this?')"{% endif %}>
+            <span class="govuk-details__summary-text ga-details-cjs-employed">
               {{ texts.EMPLOYED_PAGE.MORE_INFO_LINK }}
             </span>
           </summary>

@@ -50,8 +50,9 @@
 
   "FORM_ADDRESS_LABEL": "Cyfeiriad",
   "FORM_ADDRESS_LINE_ONE_LABEL": "Adeilad a’r stryd",
-  "FORM_ADDRESS_LINE_TWO_LABEL": "Cyfeiriad llinell 2",
-  "FORM_ADDRESS_LINE_THREE_LABEL": "Cyfeiriad llinell 3",
+  "FORM_ADDRESS_LINE_1_OF_3": "llinell 1 o 3",
+  "FORM_ADDRESS_LINE_TWO_LABEL": "Adeilad a’r stryd llinell 2 o 3",
+  "FORM_ADDRESS_LINE_THREE_LABEL": "Adeilad a’r stryd llinell 3 o 3",
   "FORM_ADDRESS_TOWN_LABEL": "Tref neu ddinas",
   "FORM_ADDRESS_COUNTY_LABEL": "Sir (dewisol)",
   "FORM_ADDRESS_POSTCODE_LABEL": "Cod post",
