@@ -75,7 +75,12 @@
     "GETTING_IN_TOUCH_OB": "Os byddwn yn cysylltu â nhw, efallai bydd angen iddynt ddarparu eu rhif rheithiwr. Mae'r rhif hefyd ar y llythyr bu inni anfon atynt.",
     "EMAIL_SUMMONS": "Rydym wedi anfon neges e-bost atoch i gadarnhau eich bod wedi ymateb i’ch gwŷs rheithgor.",
     "EMAIL_SUMMONS_OB": "Rydym wedi anfon e-bost i ddweud eich bod wedi ymateb i'r wŷs hon.",
-    "DOWNLOAD_LINK": "Lawrlwythwch gopi o'ch ymateb i'r wŷs PDF (65KB)"
+    "OPEN_REPLY": "You can open, and then print or save a copy of your summons reply for your records.",
+    "OPEN_REPLY_ASSISTIVE": "If you use assistive technology, such as a screen reader, you may prefer your copy as HTML.",
+    "OPEN_PDF_HIDDEN": "Lawrlwythwch gopi o'ch ymateb i'r wŷs PDF (65KB)",
+    "OPEN_HTML_HIDDEN": "Lawrlwythwch gopi o'ch ymateb i'r wŷs HTML (15KB)",
+    "OPEN_PDF": "Lawrlwythwch gopi o'ch ymateb i'r wŷs PDF (65KB)",
+    "OPEN_HTML": "Lawrlwythwch gopi o'ch ymateb i'r wŷs HTML (15KB)"
   },
   "AGE": {
     "DISQUALIFICATION": "Mae eich oed yn golygu na allwch wasanaethu ar reithgor",

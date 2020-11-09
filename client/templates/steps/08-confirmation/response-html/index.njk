@@ -1,0 +1,145 @@
+{% extends "../../../layouts/default-html.njk" %}
+
+{% block page_identifier %}Response Download HTML{% endblock %}
+
+{% block pageTitle %}
+  {{ texts.PDF.sharedText.mainHeader }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      {# page header #}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <h1 class="govuk-heading-xl">{{ texts.PDF.sharedText.mainHeader }}</h1>
+        </div>
+
+        <div class="govuk-grid-column-one-quarter">
+            &nbsp;
+        </div>
+
+        <div class="govuk-grid-column-one-quarter">
+         <img src="../../../img/pdflogo.jpg" alt="{{ texts.PDF.sharedText.logoAlt }}" width="200px">
+        </div>
+      </div>
+
+      {# name / juror number / date reply #}
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="col" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.sharedText.nameHeader }}</th>
+            <td class="govuk-table__cell">{{ user.nameRender }}</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="col" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.sharedText.jurorNumberHeader }}</th>
+            <td class="govuk-table__cell">{{ user.jurorNumber }}</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="col" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.sharedText.dateOfReply }}</th>
+            <td class="govuk-table__cell">{{ user.replyDate }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      {# Your jury summons details #}
+      <table class="govuk-table">
+        <h2 class="govuk-heading-l">{{ texts.PDF.sharedText.detailsHeader }}</h2>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.sharedText.court }}</th>
+            <td class="govuk-table__cell">{{ user.courtAddress | safe }}</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.sharedText.date }}</th>
+            <td class="govuk-table__cell">{{ user.hearingDate }}</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.sharedText.startTime }}</th>
+            <td class="govuk-table__cell">{{ user.hearingTime }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br/>
+
+      {% if user.ineligibleAge === true %}
+        <p class="govuk-body-l">{{ texts.PDF.ageIneligiblePDF.ageIneligibleInfo }} </p>
+      {% endif %}
+
+      {% if user.ineligibleDeceased === true %}
+        <p class="govuk-body-l">{{ texts.PDF.deceasedPDF.jurorDeceased }} </p>
+      {% endif %}
+
+      {# Confirm date / Deferral / Excusal #}
+      <p class="govuk-body">
+        {% if user.deferral %}
+          {{ texts.PDF.jurorPDF.excusalOne }}
+        {% endif %}
+        {% if user.excusal %}
+          {{ texts.PDF.jurorPDF.excusalThree }}
+        {% endif %}
+        {% if user.confirmedDate === 'Yes' %}
+          {{ texts.PDF.jurorPDF.confirmOne }}
+        {% endif %}
+
+        {% if user.confirmedDate === 'Yes'%}
+          {{ texts.PDF.jurorPDF.can }}
+        {% endif %}
+        {% if user.excusal %}
+          {{ texts.PDF.jurorPDF.cannot }}
+        {% endif %}
+        {% if user.deferral %}
+          {{ texts.PDF.jurorPDF.changeDate }}
+        {% endif %}
+
+        {% if user.confirmedDate === 'Yes'%}
+          {{ texts.PDF.jurorPDF.confirmTwo }}
+        {% endif %}
+        {% if user.excusal %}
+          {{ texts.PDF.jurorPDF.excusalTwo }}
+        {% endif %}
+        {% if user.deferral %}
+          {{ texts.PDF.jurorPDF.deferralOne }}
+        {% endif %}
+      </p>
+
+      <br/>
+      <hr>
+      <br>
+
+      {# What happens next #}
+      {% include "./next.njk" %}
+
+      <br/>
+      <hr>
+      <br/>
+
+      {% if user.ineligibleDeceased !== true %}
+        {# How you replied #}
+        {% include "./response.njk" %}
+
+        <br/>
+        <hr>
+        <br/>
+      {% endif %}
+
+      {% if user.ineligibleDeceased !== true and user.ineligibleAge !== true %}
+        {# Getting ready #}
+        {% include "./get-ready.njk" %}
+
+        <br/>
+        <hr>
+        <br/>
+      {% endif %}
+
+      {# Contacting the Jury Central Summoning Bureau #}
+      {% include "./contact.njk" %}
+      <br />
+    
+    </div>
+  </div>
+
+{% endblock %}

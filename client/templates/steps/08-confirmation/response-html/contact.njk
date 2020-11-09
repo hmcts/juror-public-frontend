@@ -1,0 +1,32 @@
+{# contacting the bureau #}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l">{{ texts.PDF.sharedText.contactingHeader }}</h2>
+
+    {% if user.ineligibleDeceased === true %}
+      <p class="govuk-body">
+      {{ texts.PDF.deceasedPDF.contactDetailsOne }}<br/>
+      {{ texts.PDF.deceasedPDF.contactDetailsTwo }}<br/>
+      {{ texts.PDF.deceasedPDF.contactDetailsThree }}<br/>
+      {{ texts.PDF.deceasedPDF.contactDetailsFour }}
+      </p>
+    {% else %}
+      {% if user.ineligibleAge === true %}
+        <p class="govuk-body">
+        {{ texts.PDF.ageIneligiblePDF.anyQuestionsOne }}<br/>
+        {{ texts.PDF.ageIneligiblePDF.anyQuestionsTwo }}<br/>
+        {{ texts.PDF.ageIneligiblePDF.anyQuestionsThree }}<br/>
+        {{ texts.PDF.ageIneligiblePDF.anyQuestionsFour }}
+        </p>
+      {% else %}
+        <p class="govuk-body">
+          {{ texts.PDF.sharedText.contactingInfoOne }}<br/>
+          {{ texts.PDF.sharedText.contactingInfoTwo }}<br/>
+          {{ texts.PDF.sharedText.contactingInfoThree }}<br/>
+          {{ texts.PDF.sharedText.contactingInfoFour }}
+        </p>
+      {% endif %}
+    {% endif %}
+    
+  </div>
+</div>

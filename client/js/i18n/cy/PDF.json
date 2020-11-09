@@ -2,6 +2,7 @@
   "sharedText": {
     "mainHeader": "Copi o’ch ymateb i wŷs rheithgor",
     "logo": "./client/img/pdflogo-cy.jpg",
+    "logoAlt": "Logo for Her Majesty's Courts and Tribunals Service",
     "pageNumber": " / ",
     "detailsHeader": "Manylion eich gwŷs rheithgor",
     "court": "Llys",

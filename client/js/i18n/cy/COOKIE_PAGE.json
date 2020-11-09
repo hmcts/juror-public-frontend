@@ -30,19 +30,22 @@
   "NAME_TWO": "_ga",
   "NAME_THREE": "sessionID",
   "NAME_FOUR": "ApplicationGatewayAffinity",
+  "NAME_FIVE": "_gid",
   "PURPOSE_TITLE": "Diben",
   "PURPOSE_ONE": "Mae’r rhain yn ein helpu i weld sut yr ydych chi’n defnyddio GOV.UK er mwyn gwella’r wefan",
   "PURPOSE_TWO": "Mae’r rhain yn ein helpu i weld sut yr ydych chi’n defnyddio GOV.UK er mwyn gwella’r wefan",
   "PURPOSE_THREE": "Nodi p’un a ydych wedi mewngofnodi ai peidio",
   "PURPOSE_FOUR": "Fe’i defnyddir i’ch cyfeirio’n ôl at yr un gweinyddwr ar gyfer pob cais",
+  "PURPOSE_FIVE": "Mae’r rhain yn ein helpu i weld sut yr ydych chi’n defnyddio GOV.UK er mwyn gwella’r wefan",
   "EXPIRES_TITLE": "Daw i ben",
-  "EXPIRES_ONE": "10 munud",
+  "EXPIRES_ONE": "1 munud",
   "EXPIRES_TWO": "2 flynedd",
   "EXPIRES_THREE": "Pan fyddwch chi’n cau’ch porwr",
   "EXPIRES_FOUR": "Pan fyddwch chi’n cau’ch porwr",
+  "EXPIRES_FIVE": "24 awr",
   "OPT_OUT_START": "Gallwch chi",
   "OPT_OUT_END": "ddewis peidio derbyn cwcis Google Analytics.",
-  "OPT_OUT_LINK": "https://tools.google.com/dlpage/gaoptout",
+  "OPT_OUT_LINK": "/cookie-settings",
 
   "SESSIONS": "Sesiynau",
   "SESSION_SUMMARY": "Mae cwci yn cael ei osod i gofnodi eich gweithgaredd yn ystod y sesiwn.",
@@ -53,5 +56,10 @@
   "FEEDBACK_SURVEY_RESULTS": "Byddwn yn defnyddio canlyniadau’r ymatebion i’r arolwg i roi gwybodaeth inni am eich profiad o ddefnyddio'r gwasanaeth, bydd hyn yn ein galluogi i ystyried sut allwn wella'r gwasanaeth ymhellach.",
   "FEEDBACK_SURVEY_DATA": "Mae’r holl ddata rydym yn eu casglu yn ddienw, ac nid oes gennym fynediad at unrhyw ddata all eich adnabod yn bersonol.",
   "FEEDBACK_SURVEY_COOKIES": "Os byddwch yn cymryd rhan, bydd SmartSurvey yn cadw rhagor o gwcis ar eich cyfrifiadur i ddilyn eich cynnydd trwy'r arolwg. Mae SmartSurvey yn cael ei ddefnyddio i gasglu’r ymatebion i’r arolwg. Os byddwch yn cymryd rhan, bydd SmartSurvey yn cadw rhagor o gwcis ar eich cyfrifiadur i ddilyn eich cynnydd trwy'r arolwg. Ceir gwybodaeth am sut mae SmartSurvey yn defnyddio Cwcis yn:",
-  "FEEDBACK_SURVEY_COOKIES_LINK": "https://www.smartsurvey.co.uk/how-we-use-cookies"
+  "FEEDBACK_SURVEY_COOKIES_LINK": "https://www.smartsurvey.co.uk/how-we-use-cookies",
+
+  "CHANGE_SETTINGS_HEADING": "Change your settings",
+  "CHANGE_SETTINGS_GUIDANCE": "You can",
+  "CHANGE_SETTINGS_LINK_TEXT": "change which cookies you're happy for us to use",
+  "CHANGE_SETTINGS_LINK_URL": "/cookie-settings"
 }

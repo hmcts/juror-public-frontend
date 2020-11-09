@@ -4,8 +4,8 @@
   "INTRO_PARAGRAPH": "Do you have a disability or impairment that means you’ll need extra support or facilities in the court building where you are doing your Jury Service?",
   "INTRO_PARAGRAPH_OB": "Does the person have a disability or impairment that means they’ll need extra support or facilities in the court building where they are doing jury service?",
 
-  "ADJUSTMENT_DESCRIPTION": "Please describe your disability or impairment.",
-  "ADJUSTMENT_DESCRIPTION_OB": "Please describe the person's disability or impairment.",
+  "ADJUSTMENT_DESCRIPTION": "Describe your disability or impairment.",
+  "ADJUSTMENT_DESCRIPTION_OB": "Describe the person's disability or impairment.",
 
   "ADJUSTMENT_ANSWER_MOBILITY": "Limited mobility",
   "ADJUSTMENT_ANSWER_HEARING": "Hearing impairment",
@@ -15,11 +15,11 @@
   "ADJUSTMENT_ANSWER_LEARNING_DISABILITY": "Learning disability",
   "ADJUSTMENT_ANSWER_OTHER": "Other",
 
-  "ADJUSTMENT_OTHER_DESCRIPTION": "Please provide details",
-  "ADJUSTMENT_OTHER_DESCRIPTION_OB": "Please provide details",
+  "ADJUSTMENT_OTHER_DESCRIPTION": "Provide details",
+  "ADJUSTMENT_OTHER_DESCRIPTION_OB": "Provide details",
 
-  "ADJUSTMENT_SPECIAL_DESCRIPTION": "Please tell us about any special arrangements or help you need while you're doing jury service. ",
-  "ADJUSTMENT_SPECIAL_DESCRIPTION_OB": "Please tell us about any special arrangements or help the person you're answering for needs while they're doing jury service.",
+  "ADJUSTMENT_SPECIAL_DESCRIPTION": "Tell us about any special arrangements or help you need while you're doing jury service. ",
+  "ADJUSTMENT_SPECIAL_DESCRIPTION_OB": "Tell us about any special arrangements or help the person you're answering for needs while they're doing jury service.",
 
   "GUIDANCE_SUMMARY": "Why do we ask for this?",
   "GUIDANCE_PARAGRAPH_1": "If you tell us you have an impairment or disability, we'll do all we can to help you and meet your needs in the court building when you do jury service. Sometimes we arrange for you to visit the court beforehand to plan what help and facilities you need. We'll do our best to help with getting around the court, seeing, hearing or any other special help you need.",

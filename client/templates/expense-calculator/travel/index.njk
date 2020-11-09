@@ -27,7 +27,7 @@
 
         {# Set error text #}
         {% set selectionError = undefined %}
-        {% if errors.items['travelType']%}
+        {% if errors.items['travelType'] %}
           {% set selectionError = {"text": errors.items['travelType'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
         {% endif %}
 
@@ -82,35 +82,35 @@
               {
                 id: "travelTypeBicycle",
                 name: "travelType",
-                value: "Bicycle" ,
+                value: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_BICYCLE,
                 text: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_BICYCLE,
                 checked: checkboxBicycle
               },
               {
                 id: "travelTypeCar",
                 name: "travelType",
-                value: "Car",
+                value: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_CAR,
                 text: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_CAR,
                 checked: checkboxCar
               },
               {
                 id: "travelTypeMotorcycle",
                 name: "travelType",
-                value: "Motorcycle",
+                value: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_MOTORCYCLE,
                 text: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_MOTORCYCLE,
                 checked: checkboxMotorcycle
               },
               {
                 id: "travelTypePublicTransport",
                 name: "travelType",
-                value: "Public transport",
+                value: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_PUBLIC_TRANSPORT,
                 text: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_PUBLIC_TRANSPORT,
                 checked: checkboxPublicTransport
               },
               {
                 id: "travelTypeWalking",
                 name: "travelType",
-                value: "Walking",
+                value: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_WALKING,
                 text: texts.EXPENSE_CALCULATOR.TRAVEL_TYPE.TRAVEL_TYPE_WALKING,
                 checked: checkboxWalking
               }

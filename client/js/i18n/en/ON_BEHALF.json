@@ -20,7 +20,7 @@
       "LABEL_BY_PHONE": "By phone (UK Numbers only)",
       "LABEL_BY_EMAIL": "By email",
 
-      "INFO_PHONE": "Please provide a UK phone number that we can use to reach you between 9AM and 5PM, Monday to Friday.",
+      "INFO_PHONE": "Provide a UK phone number that we can use to reach you between 9AM and 5PM, Monday to Friday.",
       "LABEL_MAIN_PHONE": "Main phone",
       "LABEL_OTHER_PHONE": "Another phone (optional)",
       "LABEL_EMAIL": "Enter your email address",
@@ -48,7 +48,7 @@
       "DECEASED": "The person has died",
 
       "OTHER": "Other",
-      "OTHER_INFO": "Please provide the reason."
+      "OTHER_INFO": "Provide the reason."
     }
   },
 
@@ -102,7 +102,7 @@
     "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_1": "If the person's name has changed and is different from the name on their jury summons letter, enter the correct name here. We'll get in touch later to check this. For instance, we might want to see a marriage certificate or deed poll certificate. Please carry on with the online form now.",
     "HELPER_CHANGE_NAME_ADDRESS_PARAGRAPH_2": "If the person's address has changed, we might be able to move their jury service to a court nearer to the new address. We'll get in touch later about this. Please carry on with the online form now.",
 
-    "DOB_HEADER": "Please give the date of birth for the person you're replying for",
+    "DOB_HEADER": "Give the date of birth for the person you're replying for",
     "FORM_DOB_HELPER": "For example, 15 03 1982",
     "FORM_DOB_DAY_LABEL": "Day",
     "FORM_DOB_MONTH_LABEL": "Month",
@@ -121,9 +121,9 @@
     "HEADER": "We might need to get in touch with the person to ask them more questions or give them information about their jury service",
   
     "CONTACT": "How we get in touch",
-    "CONTACT_PARAGRAPH": "Please tell us how we can get in touch with the person you're replying for. Or we can use your contact information, if you're going to carry on acting for them.",
+    "CONTACT_PARAGRAPH": "Tell us how we can get in touch with the person you're replying for. Or we can use your contact information, if you're going to carry on acting for them.",
     "PHONE": "Phone",
-    "PHONE_PARAGRAPH": "Please give phone numbers that we can use to call you or the juror between 9AM and 5PM, Monday to Friday.",
+    "PHONE_PARAGRAPH": "Give phone numbers that we can use to call you or the juror between 9AM and 5PM, Monday to Friday.",
     "MAIN_PHONE" :"Main phone number",
     "OTHER_PHONE" :"Another phone number (optional)",
     "PHONE_USE_PREVIOUS": "Use the phone number that you have already given to contact you",
@@ -133,7 +133,7 @@
     "EMAIL_GIVE_NEW": "Give a different email address for the juror",
 
     "EMAIL": "Email",
-    "EMAIL_PARAGRAPH": "Please give an email address that we can use to contact you or the juror. It can be your email address or one that they use themselves.",
+    "EMAIL_PARAGRAPH": "Give an email address that we can use to contact you or the juror. It can be your email address or one that they use themselves.",
     "EMAIL_ENTER": "Enter email address",
     "EMAIL_ENTER_CONFIRM": "Enter the email address again",
     "EMAIL_HELPER_TITLE": "Why do we need an email address?",

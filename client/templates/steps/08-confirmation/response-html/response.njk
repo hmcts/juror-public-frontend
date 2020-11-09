@@ -1,0 +1,423 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <h2 class="govuk-heading-l">{{ texts.PDF.sharedText.howYouReplied }}</h2>
+
+      {% if user.ineligibleDeceased !== true %}
+        <br/>
+        {% include "./personal.njk" %}
+      {% endif %}
+
+      {% if user.ineligibleAge !== true and user.ineligibleDeceased !== true %}
+        {% if user.thirdPartyDetails %}
+
+          {# third party #}
+
+          <h3 class="govuk-heading-m">{{ texts.PDF.thirdPartyPDF.qualifyHeader }}</h3>
+
+          <table class="govuk-table">
+            <tbody class="govuk-table__body">
+
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.residencyQuestion }}</th>
+                <td class="govuk-table__cell">
+                  {% if user.qualify.livedConsecutive.details !== "" %}
+                    {{ texts.PDF.thirdPartyPDF.residencyNo }} <br/>
+                    {{ user.qualify.livedConsecutive.details }}
+                  {% else %}
+                    {{ texts.PDF.thirdPartyPDF.residencyYes }}
+                  {% endif %}
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.mentalHealthSectioned }}</th>
+                <td class="govuk-table__cell">
+                  {% if user.qualify.mentalHealthSectioned.details !== "" %}
+                    {{ texts.PDF.thirdPartyPDF.mentalHealthSectionedYes }} <br/>
+                    {{ user.qualify.mentalHealthSectioned.details }}
+                  {% else %}
+                    {{ texts.PDF.thirdPartyPDF.mentalHealthSectionedNo }}
+                  {% endif %}
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.mentalHealthCapacity }}</th>
+                <td class="govuk-table__cell">
+                  {% if user.qualify.mentalHealthCapacity.details !== "" %}
+                    {{ texts.PDF.thirdPartyPDF.mentalHealthCapacityYes }} <br/>
+                    {{ user.qualify.mentalHealthCapacity.details }}
+                  {% else %}
+                    {{ texts.PDF.thirdPartyPDF.mentalHealthCapacityNo }}
+                  {% endif %}
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.bailQuestion }}</th>
+                <td class="govuk-table__cell">
+                  {% if user.qualify.onBail.details !== "" %}
+                    {{ texts.PDF.thirdPartyPDF.bailYes }} <br/>
+                    {{ user.qualify.onBail.details }}
+                  {% else %}
+                    {{ texts.PDF.thirdPartyPDF.bailNo }}
+                  {% endif %}
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.convictionsQuestion }}</th>
+                <td class="govuk-table__cell">
+                  {% if user.qualify.convicted.details !== "" %}
+                    {{ texts.PDF.thirdPartyPDF.convictionsYes }} <br/>
+                    {{ user.qualify.convicted.details }}
+                  {% else %}
+                    {{ texts.PDF.thirdPartyPDF.convictionsNo }}
+                  {% endif %}
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <h3 class="govuk-heading-m">{{ texts.PDF.thirdPartyPDF.dateResponseHeader }}</h3>
+          <table class="govuk-table">
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.confirmDateQuestion }}</th>
+                <td class="govuk-table__cell">
+                  {% if user.confirmedDate === 'Yes' %}
+                    {{ texts.PDF.thirdPartyPDF.dateConfirmed }}
+                  {% endif %}
+                  {% if user.excusal %}
+                    {{ texts.PDF.thirdPartyPDF.requireExcusal }}
+                  {% endif %}
+                  {% if user.deferral %}
+                    {{ texts.PDF.thirdPartyPDF.requireDeferral }}
+                  {% endif %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          {% if user.excusal %}
+            <h3 class="govuk-heading-m">{{ texts.PDF.thirdPartyPDF.excusalHeader }}</h3>
+            <table class="govuk-table">
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.excusalReason }}</th>
+                  <td class="govuk-table__cell">
+                      {{ user.excusal.reason }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          {% endif %}
+
+          {% if user.deferral %}
+            <h3 class="govuk-heading-m">{{ texts.PDF.thirdPartyPDF.deferralHeader }}</h3>
+            <table class="govuk-table">
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.deferralReason }}</th>
+                  <td class="govuk-table__cell">
+                      {{ user.deferral.reason }}
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.deferralDates }}</th>
+                  <td class="govuk-table__cell">
+                      {{ user.deferral.dates }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          {% endif %}
+
+          <h3 class="govuk-heading-m">{{ texts.PDF.thirdPartyPDF.employmentHeader }}</h3>
+          <table class="govuk-table">
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.employmentQuestion }}</th>
+                <td class="govuk-table__cell">
+                  {{ user.cjsEmployed }}
+                  <br />
+                  {% if user.cjsPoliceDetails %}
+                    <br/>
+                    {{ texts.PDF.sharedText.policeForce }}<br/>{{ user.cjsPoliceDetails }}
+                    <br/>
+                  {% endif %}
+                  {% if user.cjsPrisonDetails %}
+                    <br/>
+                    {{ texts.PDF.sharedText.prisonService }}<br/>{{ user.cjsPrisonDetails }}
+                    <br/>
+                  {% endif %}
+                  {% if user.cjsNca %}
+                    <br/>
+                    {{ texts.PDF.sharedText.nationalCrimeAgency }}
+                    <br/>
+                  {% endif %}
+                  {% if user.cjsEmployerDetails %}
+                    <br/>
+                    {{ texts.PDF.sharedText.other }}<br/>{{ user.cjsEmployerDetails }}
+                    <br/>
+                  {% endif %}
+                </td>
+              </tr>
+                
+            </tbody>
+          </table>
+
+          <h3 class="govuk-heading-m">{{ texts.PDF.thirdPartyPDF.assistanceHeader }}</h3>
+          <table class="govuk-table">
+            <tbody class="govuk-table__body">
+
+              {# Assistance #}
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.disabilityQuestion }}</th>
+                <td class="govuk-table__cell">
+                
+                  {% if user.assistanceTypeOutput %}
+                    {{ texts.PDF.thirdPartyPDF.disabilityQuestionYes }}
+                  {% else %}
+                    {{ texts.PDF.thirdPartyPDF.disabilityQuestionNo }}
+                  {% endif %}
+                
+                  <br />
+
+                  {% if user.assistanceTypeOutput %}
+                    <br/>
+                    {{ user.assistanceTypeOutput }}<br/>
+                  {% endif %}
+                  {% if user.assistanceTypeDetails %}
+                    <br/>
+                    {{ texts.PDF.sharedText.other }}
+                    <br/>
+                    {{ user.assistanceTypeDetails }}<br/>
+                    <br/>
+                  {% endif %}
+                </td>
+              </tr>
+
+              {# Special arrangements #}
+              {% if user.assistanceSpecialArrangements %}
+                <tr class="govuk-table__row">
+                  <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.specialArrangements }}</th>
+                  <td class="govuk-table__cell">
+                      {{ user.assistanceSpecialArrangements }}  
+                  </td>
+                </tr>
+              {% endif %}
+                
+            </tbody>
+          </table>
+
+        {% else %}
+
+          {# first person #}
+
+          <h3 class="govuk-heading-m">{{ texts.PDF.jurorPDF.qualifyQuestionsHeader }}</h3>
+
+          <table class="govuk-table">
+            <tbody class="govuk-table__body">
+
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.residencyQuestion }}</th>
+                <td class="govuk-table__cell">
+                  {% if user.qualify.livedConsecutive.details !== "" %}
+                    {{ texts.PDF.jurorPDF.residencyNo }} <br/>
+                    {{ user.qualify.livedConsecutive.details }}
+                  {% else %}
+                    {{ texts.PDF.jurorPDF.residencyYes }}
+                  {% endif %}
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.mentalHealthSectioned }}</th>
+                <td class="govuk-table__cell">
+                  {% if user.qualify.mentalHealthSectioned.details !== "" %}
+                    {{ texts.PDF.jurorPDF.mentalHealthSectionedYes }} <br/>
+                    {{ user.qualify.mentalHealthSectioned.details }}
+                  {% else %}
+                    {{ texts.PDF.jurorPDF.mentalHealthSectionedNo }}
+                  {% endif %}
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.mentalHealthCapacity }}</th>
+                <td class="govuk-table__cell">
+                  {% if user.qualify.mentalHealthCapacity.details !== "" %}
+                    {{ texts.PDF.jurorPDF.mentalHealthCapacityYes }} <br/>
+                    {{ user.qualify.mentalHealthCapacity.details }}
+                  {% else %}
+                    {{ texts.PDF.jurorPDF.mentalHealthCapacityNo }}
+                  {% endif %}
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.bailQuestion }}</th>
+                <td class="govuk-table__cell">
+                  {% if user.qualify.onBail.details !== "" %}
+                    {{ texts.PDF.jurorPDF.bailYes }} <br/>
+                    {{ user.qualify.onBail.details }}
+                  {% else %}
+                    {{ texts.PDF.jurorPDF.bailNo }}
+                  {% endif %}
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.convictionsQuestion }}</th>
+                <td class="govuk-table__cell">
+                  {% if user.qualify.convicted.details !== "" %}
+                    {{ texts.PDF.jurorPDF.convictionsYes }} <br/>
+                    {{ user.qualify.convicted.details }}
+                  {% else %}
+                    {{ texts.PDF.jurorPDF.convictionsNo }}
+                  {% endif %}
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <h3 class="govuk-heading-m">{{ texts.PDF.jurorPDF.dateResponse }}</h3>
+          <table class="govuk-table">
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.confirmDate }}</th>
+                <td class="govuk-table__cell">
+                  {% if user.confirmedDate === 'Yes' %}
+                    {{ texts.PDF.jurorPDF.dateConfirmed }}
+                  {% endif %}
+                  {% if user.excusal %}
+                    {{ texts.PDF.jurorPDF.requireExcusal }}
+                  {% endif %}
+                  {% if user.deferral %}
+                    {{ texts.PDF.jurorPDF.requireDeferral }}
+                  {% endif %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          {% if user.excusal %}
+            <p class="govuk-heading-m">{{ texts.PDF.jurorPDF.excusalDetailsHeader }}</p>
+            <table class="govuk-table">
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.excusalReason }}</th>
+                  <td class="govuk-table__cell">
+                      {{ user.excusal.reason }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          {% endif %}
+
+          {% if user.deferral %}
+            <p class="govuk-heading-m">{{ texts.PDF.jurorPDF.deferralDetailsHeader }}</p>
+            <table class="govuk-table">
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.deferralReason }}</th>
+                  <td class="govuk-table__cell">
+                      {{ user.deferral.reason }}
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.threeDates }}</th>
+                  <td class="govuk-table__cell">
+                      {{ user.deferral.dates }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          {% endif %}
+
+          <h3 class="govuk-heading-m">{{ texts.PDF.jurorPDF.employmentHeader }}</h3>
+          <table class="govuk-table">
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.employmentQuestion }}</th>
+                <td class="govuk-table__cell">
+                  {{ user.cjsEmployed }}
+                  <br />
+                  {% if user.cjsPoliceDetails %}
+                    <br/>
+                    {{ texts.PDF.sharedText.policeForce }}<br/>{{ user.cjsPoliceDetails }}
+                    <br/>
+                  {% endif %}
+                  {% if user.cjsPrisonDetails %}
+                    <br/>
+                    {{ texts.PDF.sharedText.prisonService }}<br/>{{ user.cjsPrisonDetails }}
+                    <br/>
+                  {% endif %}
+                  {% if user.cjsNca %}
+                    <br/>
+                    {{ texts.PDF.sharedText.nationalCrimeAgency }}
+                    <br/>
+                  {% endif %}
+                  {% if user.cjsEmployerDetails %}
+                    <br/>
+                    {{ texts.PDF.sharedText.other }}<br/>{{ user.cjsEmployerDetails }}
+                    <br/>
+                  {% endif %}
+                </td>
+              </tr>
+                
+            </tbody>
+          </table>
+
+          <h3 class="govuk-heading-m">{{ texts.PDF.jurorPDF.helpHeader }}</h3>
+          <table class="govuk-table">
+            <tbody class="govuk-table__body">
+
+              {# Assistance #}
+              <tr class="govuk-table__row">
+                <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.helpDetails }}</th>
+                <td class="govuk-table__cell">
+                
+                  {% if user.assistanceTypeOutput %}
+                    {{ texts.PDF.jurorPDF.helpDetailsYes }}
+                  {% else %}
+                    {{ texts.PDF.jurorPDF.helpDetailsNo }}
+                  {% endif %}
+                
+                  <br />
+
+                  {% if user.assistanceTypeOutput %}
+                    <br/>
+                    {{ user.assistanceTypeOutput }}<br/>
+                  {% endif %}
+                  {% if user.assistanceTypeDetails %}
+                    <br/>
+                    {{ texts.PDF.sharedText.other }}
+                    <br/>
+                    {{ user.assistanceTypeDetails }}<br/>
+                    <br/>
+                  {% endif %}
+                </td>
+              </tr>
+
+              {# Special arrangements #}
+              {% if user.assistanceSpecialArrangements %}
+                <tr class="govuk-table__row">
+                  <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.specialArrangementDetails }}</th>
+                  <td class="govuk-table__cell">
+                      {{ user.assistanceSpecialArrangements }}
+                  </td>
+                </tr>
+              {% endif %}
+                
+            </tbody>
+          </table>
+
+        {% endif %}
+      {% endif %}
+
+  </div>
+</div>

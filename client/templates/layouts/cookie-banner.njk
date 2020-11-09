@@ -1,0 +1,56 @@
+{% from "../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+<div id="cookie-banner" class="govuk-clearfix cookie-banner" role="region" aria-label="cookie banner" data-nosnippet>
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full-width">
+
+        <form action="{{ url('cookie-banner.post') }}" method="post">
+          <div class="govuk-body">
+            <p class="govuk-heading-m">{{ texts.COOKIE_BANNER.HEADING }}</p>
+            <p>{{ texts.COOKIE_BANNER.GUIDANCE_1 }}<a class="govuk-link" id="cookieInfoLink" href="{{ url('cookie.get') }}" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.COOKIE_BANNER.GUIDANCE_LINK }}</a> {{ texts.COOKIE_BANNER.GUIDANCE_2 }}</p>
+          </div>
+
+          {{ govukButton({
+            text: texts.COOKIE_BANNER.BUTTON_ACCEPT,
+            classes: "govuk-!-width-one-third govuk-!-margin-right-2 cookieAcceptButton",
+            attributes: {
+              id: "cookieAcceptButton"
+            }
+          }) }}
+
+          {{ govukButton({
+            text: texts.COOKIE_BANNER.BUTTON_PREFERENCES,
+            classes: "govuk-!-width-one-third cookieSetButton",
+            attributes: {
+              id: "cookieSetButton"
+            }
+          }) }}
+
+          <input type="hidden" id="cookieReturnPage" name="cookieReturnPage" value="{{ request.url }}">
+          <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../../js/cookies.js"></script>
+
+<script>
+    document.querySelector('#cookieAcceptButton').addEventListener('click', function(event){
+      // set the usage consent cookie to true
+      window.GOVUK.setConsentCookie({'usage': true});
+      window.location.reload(true);
+      event.preventDefault();
+    });
+
+    document.querySelector('#cookieSetButton').addEventListener('click', function(event){
+      // default the usage consent cookie to false
+      window.GOVUK.setConsentCookie({'usage': false});
+      cookieReturnPage.value = window.location.pathname;
+
+      return true;
+    });
+</script>

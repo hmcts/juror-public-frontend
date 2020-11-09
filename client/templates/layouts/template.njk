@@ -14,14 +14,15 @@
     {# Ensure that older IE versions always render with the correct rendering engine #}
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    {% if trackingCode %}
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','{{trackingCode}}');</script>
-    <!-- End Google Tag Manager -->
+    {# Only send analytics if a tracking code has been set and cookie preferences allow #}
+    {% if trackingCode and allowAnalytics %}
+      <!-- Google Tag Manager -->
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','{{trackingCode}}');</script>
+      <!-- End Google Tag Manager -->
     {% endif %}
     
     {% block headIcons %}
@@ -32,6 +33,10 @@
       <link rel="apple-touch-icon" sizes="152x152" href="{{ assetPath | default('/assets') }}assets/images/govuk-apple-touch-icon-152x152.png">
       <link rel="apple-touch-icon" href="{{ assetPath | default('/assets') }}assets/images/govuk-apple-touch-icon.png">
     {% endblock %}
+
+    {% if showCookieBanner %}
+      {% include "./cookie-banner.njk" %}
+    {% endif %}
 
     {% block head %}{% endblock %}
     {# The default og:image is added below head so that scrapers see any custom metatags first, and this is just a fallback #}
@@ -51,10 +56,12 @@
   </head>
   <body class="govuk-template__body {{ bodyClasses }}">
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{trackingCode}}"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    {% if trackingCode and allowAnalytics %}
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{trackingCode}}"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+    {% endif %}
 
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
@@ -142,4 +149,8 @@
 
     {% block bodyEnd %}{% endblock %}
   </body>
+
+
+
+
 </html>

@@ -34,11 +34,11 @@
       // Check what is active based on merger between user stored values and form submitted values
       if (typeof mergedUser !== 'undefined' && typeof mergedUser.travelType !== 'undefined') {
         travelTypes = {
-          bicycle: (mergedUser.travelType.indexOf('Bicycle') !== -1),
-          car: (mergedUser.travelType.indexOf('Car') !== -1),
-          motorcycle: (mergedUser.travelType.indexOf('Motorcycle') !== -1),
-          publicTransport: (mergedUser.travelType.indexOf('Public transport') !== -1),
-          walking: (mergedUser.travelType.indexOf('Walking') !== -1)
+          bicycle: mergedUser.travelBicycle,
+          car: mergedUser.travelCar,
+          motorcycle: mergedUser.travelMotorcycle,
+          publicTransport: mergedUser.travelPublicTransport,
+          walking: mergedUser.travelWalking
         };
       }
 
@@ -118,7 +118,7 @@
       req.session.user['travelType'] = req.body['travelType'];
       req.session.user['travelTypes'] = travelArr;
 
-      if (travelArr.includes('Bicycle')){
+      if (travelArr.includes('Bicycle') || travelArr.includes('Beic')){
         req.session.user['travelBicycle'] = true;
       } else {
         req.session.user['travelBicycle'] = false;
@@ -132,7 +132,7 @@
         delete req.session.user['carMiles'];
       }
 
-      if (travelArr.includes('Motorcycle')){
+      if (travelArr.includes('Motorcycle') || travelArr.includes('Beic modur')){
         req.session.user['travelMotorcycle'] = true;
       } else {
         req.session.user['travelMotorcycle'] = false;
@@ -143,14 +143,14 @@
         delete req.session.user['parking'];
       }
 
-      if (travelArr.includes('Public transport')){
+      if (travelArr.includes('Public transport') || travelArr.includes('Trafnidiaeth gyhoeddus')){
         req.session.user['travelPublicTransport'] = true;
       } else {
         req.session.user['travelPublicTransport'] = false;
         delete req.session.user['publicTransportAmount'];
       }
 
-      if (travelArr.includes('Walking')){
+      if (travelArr.includes('Walking') || travelArr.includes('Cerdded')){
         req.session.user['travelWalking'] = true;
       } else {
         req.session.user['travelWalking'] = false;

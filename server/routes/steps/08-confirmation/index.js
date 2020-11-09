@@ -13,6 +13,9 @@
     app.get('/steps/08-confirmation/download', 'steps.confirmation.download.get', auth.verify, utils.checkPageAccess(app, 8), controller.download(app));
     app.get('/steps/08-confirmation/download/tp', 'steps.confirmation.download.tp.get', auth.verify, utils.checkPageAccess(app, 8), controller.download(app));
 
+    app.get('/steps/08-confirmation/download-html', 'steps.confirmation.download-html.get', auth.verify, utils.checkPageAccess(app, 8), controller.downloadHTML(app));
+    app.get('/steps/08-confirmation/download-html/tp', 'steps.confirmation.download-html.tp.get', auth.verify, utils.checkPageAccess(app, 8), controller.downloadHTML(app));
+
     app.get('/steps/08-confirmation/excusal', 'steps.confirmation.excusal.get', auth.verify, utils.checkPageAccess(app, 8), controller.excusal(app));
     app.get('/steps/08-confirmation/excusal/tp', 'steps.confirmation.excusal.tp.get', auth.verify, utils.checkPageAccess(app, 8), controller.excusal(app));
 
@@ -24,6 +27,7 @@
 
     app.get('/steps/08-confirmation/deceased', 'steps.confirmation.deceased.get', auth.verify, utils.checkPageAccess(app, 8), controller.deceased(app));
     app.get('/steps/08-confirmation/deceased/tp', 'steps.confirmation.deceased.tp.get', auth.verify, utils.checkPageAccess(app, 8), controller.deceased(app));
+
   };
 
 })();

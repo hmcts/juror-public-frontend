@@ -1,0 +1,42 @@
+
+{# specify absolute url for the static assets folder e.g. http://wwww.domain.com/assets #}
+{%- set assetUrl = assetUrl | default(assetPath) -%}
+<!DOCTYPE html>
+<html lang="{{ texts.INTERFACE.HTML_LANG|default('en') }}" class="govuk-template {{ htmlClasses }}">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block pageTitle %}GOV.UK - The best place to find government services and information{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="{{ themeColor | default('#0b0c0c') }}" /> {# Hardcoded value of $govuk-black #}
+    {# Ensure that older IE versions always render with the correct rendering engine #}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    {% block head %}{% endblock %}
+    {# The default og:image is added below head so that scrapers see any custom metatags first, and this is just a fallback #}
+    {# image url needs to be absolute e.g. http://wwww.domain.com/.../govuk-opengraph-image.png #}
+    <meta property="og:image" content="{{ assetUrl | default('/assets') }}/images/govuk-opengraph-image.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="pageIdentifier" content="{% block page_identifier %}{% endblock %}">
+    <meta name="robots" content="noindex, nofollow">
+
+  </head>
+  <body class="govuk-template__body {{ bodyClasses }}">
+
+    {% block bodyStart %}{% endblock %}
+
+    {% block header %}{% endblock %}
+
+    {% block main %}
+      <div class="govuk-width-container">
+        {% block beforeContent %}
+        {% endblock %}
+        <main class="govuk-main-wrapper {{ mainClasses }}" id="main-content" role="main">
+            {% block content %}{% endblock %}
+        </main>
+      </div>
+    {% endblock %}
+
+    {% block bodyEnd %}{% endblock %}
+  </body>
+
+</html>
