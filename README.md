@@ -9,7 +9,6 @@ Provides a front-end for responding to jury summons
 
 
 
-
 ## Development Environment
 
 ### Installation
