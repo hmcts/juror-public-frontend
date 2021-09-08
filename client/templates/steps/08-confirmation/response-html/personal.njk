@@ -1,0 +1,107 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      {% if user.thirdPartyDetails %}
+        {# Third Person personal details #}
+        <p class="govuk-heading-m">{{ texts.PDF.thirdPartyPDF.jurorDetailsHeader }}</p>
+
+        {# Juror details #}
+        <table class="govuk-table">
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.nameHeader }}</th>
+              <td class="govuk-table__cell">{{ user.nameRender | safe }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.addressHeader }}</th>
+              <td class="govuk-table__cell">{{ user.addressRender | safe}}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.dobHeader }}</th>
+              <td class="govuk-table__cell">{{ user.dobFormatted }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.mainPhoneHeader }}</th>
+              <td class="govuk-table__cell">{{ user.primaryPhone }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.otherPhoneHeader }}</th>
+              <td class="govuk-table__cell">{{ user.secondaryPhone }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.emailHeader }}</th>
+              <td class="govuk-table__cell">{{ user.emailAddress }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="govuk-heading-m">{{ texts.PDF.thirdPartyPDF.thirdPartyDetailsHeader }}</p>
+
+        {# responder details #}
+        <table class="govuk-table">
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.thirdPartyName }}</th>
+              <td class="govuk-table__cell">{{ user.thirdPartyDetails.nameRender | safe }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.thirdPartyRelationship }}</th>
+              <td class="govuk-table__cell">{{ user.thirdPartyDetails.relationship }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.thirdPartyMainPhone }}</th>
+              <td class="govuk-table__cell">{{ user.thirdPartyDetails.mainPhone }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.thirdPartyAlternativePhone }}</th>
+              <td class="govuk-table__cell">{{ user.thirdPartyDetails.otherPhone }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.thirdPartyEmail }}</th>
+              <td class="govuk-table__cell">{{ user.thirdPartyDetails.emailAddress }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.thirdPartyReason }}</th>
+              <td class="govuk-table__cell">{{ user.thirdPartyDetails.reasonText }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      {% else %}
+        {# First Person personal details #}
+        <p class="govuk-heading-m">{{ texts.PDF.jurorPDF.jurorDetails }}</p>
+
+        {# Your jury summons details #}
+        <table class="govuk-table">
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.nameHeader }}</th>
+              <td class="govuk-table__cell">{{ user.nameRender | safe }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.addressHeader }}</th>
+              <td class="govuk-table__cell">{{ user.addressRender | safe }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.dobHeader }}</th>
+              <td class="govuk-table__cell">{{ user.dobFormatted }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.mainPhoneHeader }}</th>
+              <td class="govuk-table__cell">{{ user.primaryPhone }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.otherPhoneHeader }}</th>
+              <td class="govuk-table__cell">{{ user.secondaryPhone }}</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.emailHeader }}</th>
+              <td class="govuk-table__cell">{{ user.emailAddress }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      {% endif %}
+
+  </div>
+</div>

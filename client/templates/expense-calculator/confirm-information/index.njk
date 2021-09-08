@@ -32,7 +32,11 @@
             {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EARNINGS_1 }}
           </dt>
           <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="earnings">
-            {{ user.incomeAffected }}
+            {% if user.incomeAffected == 'Yes' %}
+              {{ texts.EXPENSE_CALCULATOR.EARNINGS.YES }}
+            {% else %}
+              {{ texts.EXPENSE_CALCULATOR.EARNINGS.NO }}
+            {% endif %} 
           </dd>
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             <a class="govuk-link" href="{{ changeLinks.earnings }}" id="changeEarnings" aria-describedby="questionEarnings">
@@ -50,7 +54,11 @@
               {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EARNINGS_2 }}
             </dt>
             <dd class="govuk-summary-list__value" id="earningsThreshold">
-              {{ user.earningsThreshold }}
+              {% if user.earningsThreshold == 'Yes' %}
+                {{ texts.EXPENSE_CALCULATOR.EARNINGS_THRESHOLD.YES }}
+              {% else %}
+                {{ texts.EXPENSE_CALCULATOR.EARNINGS_THRESHOLD.NO }}
+              {% endif %} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="{{ changeLinks.earningsThreshold }}" id="changeEarningsThreshold" aria-describedby="questionEarningsThreshold">
@@ -95,7 +103,11 @@
             {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EXPENSES_1 }}
           </dt>
           <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="extraCosts">
-            {{ user.extraCosts }}
+            {% if user.extraCosts == 'Yes' %}
+              {{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS.YES }}
+            {% else %}
+              {{ texts.EXPENSE_CALCULATOR.EXTRA_COSTS.NO }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             <a class="govuk-link" href="{{ changeLinks.extraCosts }}" id="changeExtraCosts" aria-describedby="questionExtraCosts">

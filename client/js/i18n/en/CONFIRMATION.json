@@ -75,7 +75,12 @@
     "GETTING_IN_TOUCH_OB": "If we get in touch with them, they may need to give their juror number. It's also on the letter we sent them.",
     "EMAIL_SUMMONS": "We have sent you an email to say you have replied to your jury summons.",
     "EMAIL_SUMMONS_OB": "We have sent an email to say you have replied to this jury summons.",
-    "DOWNLOAD_LINK": "Download a copy of your summons reply PDF (65KB)"
+    "OPEN_REPLY": "You can open, and then print or save a copy of your summons reply for your records.",
+    "OPEN_REPLY_ASSISTIVE": "If you use assistive technology, such as a screen reader, you may prefer your copy as HTML.",
+    "OPEN_PDF_HIDDEN": "Download a copy of your jury summons reply as a PDF (65KB)",
+    "OPEN_HTML_HIDDEN": "Download a copy of your jury summons reply as HTML (15KB)",
+    "OPEN_PDF": "Download a copy of your summons reply PDF (65KB)",
+    "OPEN_HTML": "Download a copy of your summons reply HTML (15KB)"
   },
   "AGE": {
     "DISQUALIFICATION": "Your age means you cannot do jury service",

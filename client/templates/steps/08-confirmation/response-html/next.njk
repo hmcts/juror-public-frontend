@@ -1,0 +1,113 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <h2 class="govuk-heading-l">{{ texts.PDF.whatHappensNext.header }}</h2>
+
+      {% if user.ineligibleAge === true %}
+        <p class="govuk-body">{{ texts.PDF.ageIneligiblePDF.pointOne }} </p>
+        <p class="govuk-body">{{ texts.PDF.ageIneligiblePDF.pointTwo }} </p>
+        <p class="govuk-body">{{ texts.PDF.ageIneligiblePDF.pointThree }} </p>
+      {% endif %}
+
+      {% if user.ineligibleDeceased === true %}
+        <p class="govuk-body">{{ texts.PDF.deceasedPDF.nothingElse }} </p>
+        <br />
+        <br />
+        <p class="govuk-heading-l">{{ texts.PDF.deceasedPDF.distressTitle }}</p>
+        <p class="govuk-body">{{ texts.PDF.deceasedPDF.distressApology }}</p>
+      {% endif %}
+
+      {% if user.ineligibleAge !== true and user.ineligibleDeceased !== true %}
+
+          {# excusal, ineligible + adjustment #}
+          {% if user.excusal and user.ineligible == 'Yes' and user.assistanceNeeded === 'Yes' %}
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.excusalOrDeferralAndIneligibleLineOne }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.excusalIneligibleAdjustmentLineTwo }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.inTouchInSevenDays }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.ifMustLastLine }}</p>
+          {% endif %}
+
+          {# deferral, ineligible + adjustment #}
+          {% if user.deferral and user.ineligible == 'Yes' and user.assistanceNeeded === 'Yes' %}
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.excusalOrDeferralAndIneligibleLineOne }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.excusalIneligibleAdjustmentLineTwo }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.inTouchInSevenDays }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.ifAbleLastLine }}</p>
+          {% endif %}
+
+          {# ST, eligible + no adjustment #}
+          {% if user.confirmedDate == 'Yes' and user.ineligible == 'No' and user.assistanceNeeded === 'No' %}
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.straightThroughEligibleNoAdjustment }}</p>
+          {% endif %}
+
+          {# ST, eligible + adjustment #}
+          {% if user.confirmedDate == 'Yes' and user.ineligible == 'No' and user.assistanceNeeded === 'Yes' %}
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.straightThroughOrDeferralWithAdjustmentLineOne }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.ifAbleLastLine }}</p>
+          {% endif %}
+
+          {# ST, ineligible + no adjustment #}
+          {% if user.confirmedDate == 'Yes' and user.ineligible == 'Yes' and user.assistanceNeeded === 'No' %}
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.straightThroughIneligibleLineOne }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.straightThroughIneligibleLineTwo }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.straightThroughIneligibleLineThree }}</p>
+          {% endif %}
+
+          {# ST, ineligible + adjustment #}
+          {% if user.confirmedDate == 'Yes' and user.ineligible == 'Yes' and user.assistanceNeeded === 'Yes' %}
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.straightThroughIneligibleLineOne }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.straightThroughIneligibleLineTwo }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.straightThroughIneligibleWithAdjustmentLineThree }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.ifAbleLastLine }}</p>
+          {% endif %}
+
+          {# deferral, eligible + adjustment #}
+          {% if user.deferral and user.ineligible == 'No' and user.assistanceNeeded === 'Yes' %}
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.straightThroughOrDeferralWithAdjustmentLineOne }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.deferralWithAdjustmentLineTwo }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.deferralLastLine }}</p>
+          {% endif %}
+
+          {# deferral, eligible + no adjustment #}
+          {% if user.deferral and user.ineligible == 'No' and user.assistanceNeeded === 'No' %}
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.deferralLineOne }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.deferralLastLine }}</p>
+          {% endif %}
+
+          {# deferral, ineligible + no adjustment #}
+          {% if user.deferral and user.ineligible == 'Yes' and user.assistanceNeeded === 'No' %}
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.excusalOrDeferralAndIneligibleLineOne }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.deferralIneligibleLineTwo }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.inTouchInSevenDays }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.ifAbleLastLine }}</p>
+          {% endif %}
+
+          {# excusal, eligible + adjustment #}
+          {% if user.excusal and user.ineligible == 'No' and user.assistanceNeeded === 'Yes' %}
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.excusalEligibleLineOne }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.excusalWithAdjustmentLineTwo }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.ifMustLastLine }}</p>
+          {% endif %}
+
+          {# excusal, eligible + no adjustment #}
+          {% if user.excusal and user.ineligible == 'No' and user.assistanceNeeded === 'No' %}
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.excusalEligibleLineOne }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.ifMustLastLine }}</p>
+          {% endif %}
+
+          {# excusal, ineligible + no adjustment #}
+          {% if user.excusal and user.ineligible == 'Yes' and user.assistanceNeeded === 'No' %}
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.excusalOrDeferralAndIneligibleLineOne }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.excusalIneligibleLineTwo }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.inTouchInSevenDays }}</p>
+            <p class="govuk-body">{{ texts.PDF.whatHappensNext.ifMustLastLine }}</p>
+          {% endif %}
+
+          <ul class="govuk-list govuk-list--bullet govuk-body">
+            <li>{{ texts.PDF.whatHappensNext.bulletPointOne }}</li>
+            <li>{{ texts.PDF.whatHappensNext.bulletPointTwo }}</li>
+          </ul>
+
+      {% endif %}
+
+  </div>
+</div>

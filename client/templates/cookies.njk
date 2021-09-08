@@ -1,4 +1,4 @@
-{% extends "./layouts/default.njk" %}
+{% extends "./layouts/default-gds.njk" %}
 
 {% block page_title %}
   {{ texts.COOKIE_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
@@ -9,9 +9,9 @@
 
 {% block content %}
 
-<div class="grid-row">
-  <div class="column-two-thirds">
-    <h1 class="heading-xlarge">{{ texts.COOKIE_PAGE.HEADING }}</h1>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-body">
+    <h1 class="govuk-heading-xl">{{ texts.COOKIE_PAGE.HEADING }}</h1>
 
     <p>{{ texts.COOKIE_PAGE.SUMMARY }}</p>
 
@@ -33,11 +33,11 @@
     <a href="{{ texts.COOKIE_PAGE.MORE_INFO_LINK }}" id="moreInfoLink">{{ texts.COOKIE_PAGE.MORE_INFO_END }}</a>
     </p>
 
-    <h3 class="heading-medium">
+    <h3 class="govuk-heading-m">
     {{ texts.COOKIE_PAGE.COOKIE_USAGE }}
     </h3>
 
-    <h4 class="heading-small">
+    <h4 class="govuk-heading-s">
     {{ texts.COOKIE_PAGE.MEASURE_HEADING }}
     </h4>
     <p>
@@ -62,63 +62,68 @@
       {{ texts.COOKIE_PAGE.USED_COOKIES }}
     </p>
 
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">{{ texts.COOKIE_PAGE.NAME_TITLE }}</th>
-          <th scope="col">{{ texts.COOKIE_PAGE.PURPOSE_TITLE }}</th>
-          <th scope="col">{{ texts.COOKIE_PAGE.EXPIRES_TITLE }}</th>
-        </tr>
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">{{ texts.COOKIE_PAGE.NAME_TITLE }}</th>
+          <th scope="col" class="govuk-table__header">{{ texts.COOKIE_PAGE.PURPOSE_TITLE }}</th>
+          <th scope="col" class="govuk-table__header">{{ texts.COOKIE_PAGE.EXPIRES_TITLE }}</th>
+        </tr class="govuk-table__row">
       </thead>
-      <tbody>
+      <tbody class="govuk-table__body">
         <tr>
-          <td>{{ texts.COOKIE_PAGE.NAME_ONE }}</td>
-          <td>{{ texts.COOKIE_PAGE.PURPOSE_ONE }}</td>
-          <td>{{ texts.COOKIE_PAGE.EXPIRES_ONE }}</td>
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.NAME_ONE }}</td>
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.PURPOSE_ONE }}</td>
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.EXPIRES_ONE }}</td>
         </tr>
         <tr>
-          <td>{{ texts.COOKIE_PAGE.NAME_TWO }}</td>
-          <td>{{ texts.COOKIE_PAGE.PURPOSE_TWO }}</td>
-          <td>{{ texts.COOKIE_PAGE.EXPIRES_TWO }}</td>
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.NAME_TWO }}</td>
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.PURPOSE_TWO }}</td>
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.EXPIRES_TWO }}</td>
+        </tr>
+        <tr>
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.NAME_FIVE }}</td>
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.PURPOSE_FIVE }}</td>
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.EXPIRES_FIVE }}</td>
         </tr>
       </tbody>
     </table>
-
-    </br>
 
     <p>{{ texts.COOKIE_PAGE.OPT_OUT_START }}
       <a href="{{ texts.COOKIE_PAGE.OPT_OUT_LINK }}" id="optOutLink">{{ texts.COOKIE_PAGE.OPT_OUT_END }}</a>
     </p>
 
-    <h4 class="heading-small">
+    </br>
+
+    <h4 class="govuk-heading-s">
     {{ texts.COOKIE_PAGE.SESSIONS }}</p>
     </h4>
 
     <p>{{ texts.COOKIE_PAGE.SESSION_SUMMARY }}</p>
 
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">{{ texts.COOKIE_PAGE.NAME_TITLE }}</th>
-          <th scope="col">{{ texts.COOKIE_PAGE.PURPOSE_TITLE }}</th>
-          <th scope="col">{{ texts.COOKIE_PAGE.EXPIRES_TITLE }}</th>
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">{{ texts.COOKIE_PAGE.NAME_TITLE }}</th>
+          <th scope="col" class="govuk-table__header">{{ texts.COOKIE_PAGE.PURPOSE_TITLE }}</th>
+          <th scope="col" class="govuk-table__header">{{ texts.COOKIE_PAGE.EXPIRES_TITLE }}</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>{{ texts.COOKIE_PAGE.NAME_THREE }}</td>
-          <td>{{ texts.COOKIE_PAGE.PURPOSE_THREE }}</td>
-          <td>{{ texts.COOKIE_PAGE.EXPIRES_THREE }}</td>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.NAME_THREE }}</td>
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.PURPOSE_THREE }}</td>
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.EXPIRES_THREE }}</td>
         </tr>
-        <tr>
-          <td>{{ texts.COOKIE_PAGE.NAME_FOUR }}</td>
-          <td>{{ texts.COOKIE_PAGE.PURPOSE_FOUR }}</td>
-          <td>{{ texts.COOKIE_PAGE.EXPIRES_FOUR }}</td>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.NAME_FOUR }}</td>
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.PURPOSE_FOUR }}</td>
+          <td class="govuk-table__cell">{{ texts.COOKIE_PAGE.EXPIRES_FOUR }}</td>
         </tr>
       </tbody>
     </table>
     </br>
-    <h4 class="heading-small">
+    <h4 class="govuk-heading-s">
       {{ texts.COOKIE_PAGE.FEEDBACK_SURVEY_HEADER }}</p>
     </h4>
 
@@ -144,6 +149,17 @@
     <a href="{{ texts.COOKIE_PAGE.FEEDBACK_SURVEY_COOKIES_LINK }}">
       {{ texts.COOKIE_PAGE.FEEDBACK_SURVEY_COOKIES_LINK }}
     </a>
+    
+    <br/>
+    <br/>
+
+    <p class="govuk-heading-m">
+      {{ texts.COOKIE_PAGE.CHANGE_SETTINGS_HEADING }}
+    </p>
+    <p>
+    {{ texts.COOKIE_PAGE.CHANGE_SETTINGS_GUIDANCE}} <a href="{{ texts.COOKIE_PAGE.CHANGE_SETTINGS_LINK_URL }}" id="cookieSettingsLink">{{ texts.COOKIE_PAGE.CHANGE_SETTINGS_LINK_TEXT }}</a>
+    </p>
+
 
   </div>
 </div>

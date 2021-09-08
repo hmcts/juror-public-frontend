@@ -38,9 +38,35 @@
   {% endif %}
 </p>
 
+{#
+<p class="govuk-body">
+    {{ texts.CONFIRMATION.HERO.OPEN_REPLY }}
+</p>
+#}
+
+{% set PDFButtonText %}
+  <span class="govuk-visually-hidden">{{texts.CONFIRMATION.HERO.OPEN_PDF_HIDDEN}}</span>{{texts.CONFIRMATION.HERO.OPEN_PDF}}
+{% endset %}
+
 {{ govukButton({
-  text: texts.CONFIRMATION.HERO.DOWNLOAD_LINK,
+  html: PDFButtonText,
   classes: "govuk-button--secondary ga-download-summons-reply-pdf",
   href: "/steps/08-confirmation/download"
+}) }}
+
+{#
+<p class="govuk-body">
+    {{ texts.CONFIRMATION.HERO.OPEN_REPLY_ASSISTIVE }}
+</p>
+#}
+
+{% set HTMLButtonText %}
+  <span class="govuk-visually-hidden">{{texts.CONFIRMATION.HERO.OPEN_HTML_HIDDEN}}</span>{{texts.CONFIRMATION.HERO.OPEN_HTML}}
+{% endset %}
+
+{{ govukButton({
+  html: HTMLButtonText,
+  classes: "govuk-button--secondary ga-download-summons-reply-html",
+  href: "/steps/08-confirmation/download-html"
 }) }}
 
