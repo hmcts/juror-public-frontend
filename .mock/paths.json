@@ -1,0 +1,23 @@
+[
+  {
+    "url": "/auth",
+    "parameters": ["jurorNumber"],
+    "wrapSingleton": "data",
+    "customModule": {
+      "module": "auth"
+    }
+  },
+  {
+    "url": "/respond",
+    "parameters": ["jurorNumber"],
+    "wrapSingleton": "data",
+    "customModule": {
+      "module": "respond"
+    }
+  },
+  {
+    "url": "/juror-detail",
+    "parameters": ["jurorNumber"],
+    "wrapSingleton": "data"
+  }
+]

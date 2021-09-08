@@ -1,0 +1,8 @@
+{
+  "exceptions": [
+     "https://nodesecurity.io/advisories/566"
+  ],
+  "reasons-for-exceptions": [
+     "566 - Only relevant to OSX"
+  ]
+}

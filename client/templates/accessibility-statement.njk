@@ -1,0 +1,125 @@
+{% extends "./layouts/default-gds.njk" %}
+
+{% block page_title %}
+  {{ texts.COOKIE_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Accessibility Statement{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters govuk-body">
+
+    {# section 1 #}
+    <h1 class="govuk-heading-xl">
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.HEADING }}
+    </h1>
+
+    <p>
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.GUIDANCE_1 }}
+      <a class="govuk-link" href="{{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.SERVICE_URL }}" id="serviceLink">{{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.SERVICE_LINK }}</a>
+    </p>
+
+    <p>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.GUIDANCE_2 }}</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.LIST_ITEM_1 }}</li>
+      <li>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.LIST_ITEM_2 }}</li>
+      <li>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.LIST_ITEM_3 }}</li>
+      <li>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.LIST_ITEM_4 }}</li>
+      <li>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.LIST_ITEM_5 }}</li>
+    </ul>
+    <p>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.GUIDANCE_3 }}</p>
+    <p>
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.GUIDANCE_4 }}
+      <a class="govuk-link" href="{{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.ABILITY_NET_URL }}" id="abilitynetLink">{{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.ABILITY_NET_LINK }}</a>
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_1.GUIDANCE_5 }}
+    </p>
+
+    {# section 2 #}
+    <h3 class="govuk-heading-m">
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_2.HEADING }}
+    </h3>
+    <p>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_2.GUIDANCE_1 }}</p>
+
+    {# section 3 #}
+    <h3 class="govuk-heading-m">
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_3.HEADING }}
+    </h3>
+
+    <p>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_3.GUIDANCE_1 }}</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_3.LIST_ITEM_1 }}
+        <a class="govuk-link" href="{{ "mailto:" + texts.ACCESSIBILITY_STATEMENT.SECTION_3.EMAIL_ADDRESS }}" id="emailLink1">{{ texts.ACCESSIBILITY_STATEMENT.SECTION_3.EMAIL_ADDRESS }}</a>
+      </li>
+      <li>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_3.LIST_ITEM_2 }}</li>
+      <li>
+        {{ texts.ACCESSIBILITY_STATEMENT.SECTION_3.LIST_ITEM_3 }}
+        <br/>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_3.ADDRESS_1 }}
+        <br/>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_3.ADDRESS_2 }}
+        <br/>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_3.ADDRESS_3 }}
+        <br/>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_3.ADDRESS_4 }}
+        <br/>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_3.ADDRESS_5 }}
+      </li>
+    </ul>
+
+    {# section 4 #}
+    <h3 class="govuk-heading-m">
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_4.HEADING }}
+    </h3>
+    <p>
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_4.GUIDANCE_1 }}
+      <a class="govuk-link" href="{{ texts.ACCESSIBILITY_STATEMENT.SECTION_4.EASS_URL}}" id="eassLink">{{ texts.ACCESSIBILITY_STATEMENT.SECTION_4.EASS_LINK }}</a>.
+    </p>
+
+    {# section 5 #}
+    <h3 class="govuk-heading-m">
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_5.HEADING }}
+    </h3>
+    <p>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_5.GUIDANCE_1 }}</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_5.LIST_ITEM_1 }}
+        <a class="govuk-link" href="{{ "mailto:" + texts.ACCESSIBILITY_STATEMENT.SECTION_5.EMAIL_ADDRESS }}" id="emailLink2">{{ texts.ACCESSIBILITY_STATEMENT.SECTION_5.EMAIL_ADDRESS }}</a>
+      </li>
+      <li>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_5.LIST_ITEM_2 }}</li>
+    </ul>
+
+    {# section 6 #}
+    <h3 class="govuk-heading-m">
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_6.HEADING }}
+    </h3>
+
+    <p>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_6.GUIDANCE_1 }}</p>
+
+    {# section 7 #}
+    <h3 class="govuk-heading-m">
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_7.HEADING }}
+    </h3>
+
+    <p>
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_7.GUIDANCE_1 }}
+      <a class="govuk-link" href="{{ texts.ACCESSIBILITY_STATEMENT.SECTION_7.WCAG_URL}}" id="wcagLink">{{ texts.ACCESSIBILITY_STATEMENT.SECTION_7.WCAG_LINK }}</a>
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_7.GUIDANCE_2 }}
+    </p>
+
+    {# section 8 #}
+    <h3 class="govuk-heading-m">
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_8.HEADING }}
+    </h3>
+
+    <p>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_8.GUIDANCE_1 }}</p>
+    <p>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_8.GUIDANCE_2 }}</p>
+
+    <p>
+      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_8.REPORT_GUIDANCE }}
+      {#<a class="govuk-link" href="{{ url('accessibility-statement-report.get') }}" id="accessibilityReportLink">{{ texts.ACCESSIBILITY_STATEMENT.SECTION_8.REPORT_PDF_LINK }}</a>.#}
+      <a class="govuk-link" href="{{ texts.ACCESSIBILITY_STATEMENT.SECTION_8.REPORT_URL }}" id="accessibilityReportLink">{{ texts.ACCESSIBILITY_STATEMENT.SECTION_8.REPORT_LINK }}</a>.
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}
