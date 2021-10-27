@@ -3,6 +3,31 @@
   "JAVASCROPTR_ITEM_1": "reloading the page",
   "JAVASCROPTR_ITEM_2": "turning on Javascript in your browser",
 
+  "HEADING": "Cwcis",
+  "COOKIE_GUIDANCE_1": "Ffeiliau a gedwir ar eich ffôn, eich tabled neu'ch cyfrifiadur pan fyddwch chi'n ymweld â gwefan yw cwcis.",
+  "COOKIE_GUIDANCE_2": "Rydym yn defnyddio cwcis i storio gwybodaeth am sut rydych yn defnyddio gwefan GOV.UK, megis y tudalennau yr ydych yn ymweld â hwy.",
+  
+  "COOKIE_SETTINGS_HEADING": "Gosodiadau cwcis",
+  "COOKIE_SETTINGS_GUIDANCE": "Rydym yn defnyddio 2 fath o gwcis. Gallwch ddewis pa gwcis yr ydych yn hapus inni eu defnyddio.",
+
+  "COOKIE_ANALYTICS_HEADING": "Cwcis sy'n mesur y defnydd a wneir o wefan",
+  "COOKIE_ANALYTICS_HINT_1": "Rydym yn defnyddio Google Analytics i fesur sut rydych yn defnyddio'r wefan fel y gallwn ei gwella yn seiliedig ar anghenion defnyddwyr. Nid ydym yn caniatáu i Google ddefnyddio neu rannu'r data am sut rydych yn defnyddio'r wefan hon.",
+  "COOKIE_ANALYTICS_HINT_2": "Mae Google Analytics yn gosod cwcis sy'n storio gwybodaeth gyffredinol am:",
+
+  "COOKIE_ANALYTICS_ITEM_1": "sut y daethoch i'r wefan hon",
+  "COOKIE_ANALYTICS_ITEM_2": "y tudalennau rydych chi'n ymweld â nhw ar GOV.UK a gwasanaethau digidol y Llywodraeth, a pha mor hir rydych chi'n ei dreulio ar bob tudalen",
+  "COOKIE_ANALYTICS_ITEM_3": "beth rydych chi'n clicio arno tra byddwch yn ymweld â'r wefan",
+  
+  "COOKIE_ANALYTICS_BUTTON_YES": "Derbyn cwcis sy'n mesur sut wyf yn defnyddio'r wefan",
+  "COOKIE_ANALYTICS_BUTTON_NO": "Peidio â derbyn cwcis sy'n mesur sut wyf yn defnyddio'r wefan",
+
+  "COOKIE_NECESSARY_HEADING": "Cwcis hanfodol yn unig",
+  "COOKIE_NECESSARY_GUIDANCE_1": "Mae'r cwcis hanfodol hyn yn gwneud pethau fel cofio lle'r oeddech wedi cyrraedd wrth lenwi ffurflen (er enghraifft cais am drwydded)",
+  "COOKIE_NECESSARY_GUIDANCE_2": "Mae'n rhaid iddynt fod ymlaen drwy'r amser.",
+
+  "COOKIE_LINK_TEXT": "Sut rydym yn defnyddio cwcis",
+  
+  "SAVE_BUTTON_TEXT": "Arbed newidiadau"
   "HEADING": "Cookies",
   "COOKIE_GUIDANCE_1": "Cookies are files saved on your phone, tablet or computer when you visit a website.",
   "COOKIE_GUIDANCE_2": "We use cookies to store information about how you use the GOV.UK website, such as the pages you visit.",

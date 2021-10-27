@@ -1,4 +1,10 @@
 {
+  "HEADING": "A ydych yn derbyn cwcis?",
+  "GUIDANCE_1": "Rydym yn defnyddio ",
+  "GUIDANCE_LINK": "cwcis i gasglu gwybodaeth",
+  "GUIDANCE_2": "am sut rydych yn defnyddio GOV.UK. Rydym yn defnyddio'r wybodaeth hon i sicrhau bod y wefan yn gweithio yn y ffordd orau bosib a gwella gwasanaethau'r llywodraeth.",
+  "BUTTON_ACCEPT": "Derbyn pob cwci",
+  "BUTTON_PREFERENCES": "Gosod dewisiadau cwcis"
   "HEADING": "Tell us whether you accept cookies",
   "GUIDANCE_1": "We use ",
   "GUIDANCE_LINK": "cookies to collect information",
