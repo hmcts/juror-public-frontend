@@ -10,7 +10,6 @@ Feature: Third party contact details
 
     # Juror Portal Page
     When I navigate to the Juror Portal
-      And I click the Start Now button
 
     # Responder Type Page
     Then I confirm that I am on the Responder Type page
@@ -612,7 +611,7 @@ Feature: Third party contact details
         And I submit my 3rd Party Personal Contact Details
 
       Then I confirm that I am on the 3rd Party Personal Contact page
-        And the error message summary for using third party respondants contact Phone is "Please provide a contact number"
+        And the error message summary for using third party respondants contact Phone is "Provide a contact number"
         And the error message details for using third party respondants contact Phone is "You have not provided any phone number information. Please select the other option."
 
     @ThirdParty @JDB-1963 @bug
@@ -661,7 +660,7 @@ Feature: Third party contact details
         And I submit my 3rd Party Personal Contact Details
 
       Then I confirm that I am on the 3rd Party Personal Contact page
-        And the error message summary for using third party respondants contact Email Address is "Please provide a contact email address"
+        And the error message summary for using third party respondants contact Email Address is "Provide a contact email address"
         And the error message details for using third party respondants contact Email Address is "You have not provided any email address information. Please select the other option."
 
     @ThirdParty @JDB-1843
@@ -1072,10 +1071,10 @@ Feature: Third party contact details
         And I submit my 3rd Party Personal Contact Details
 
       Then I confirm that I am on the 3rd Party Personal Contact page
-        And the error message summary for the jurors contact Phone number is "Please provide a contact number"
-        And the error message details for the jurors contact Phone number is "Please check the main phone number"
-        And the error message summary for the jurors other contact Phone number is "Please check the other phone number"
-        And the error message details for the jurors other contact Phone number is "Please check the other phone number"
+        And the error message summary for the jurors contact Phone number is "Check their main phone number"
+        And the error message details for the jurors contact Phone number is "Check their main phone number"
+        And the error message summary for the jurors other contact Phone number is "Check their other phone number"
+        And the error message details for the jurors other contact Phone number is "Check their other phone number"
 
       Examples:
       | mainPhone         | otherPhone        | condition                                     |

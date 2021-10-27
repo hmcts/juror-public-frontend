@@ -9,7 +9,6 @@ Feature: Third Party Details
 
     # Juror Portal Page
     When I navigate to the Juror Portal
-      And I click the Start Now button
 
     # Responder Type Page
     Then I confirm that I am on the Responder Type page
@@ -67,7 +66,7 @@ Feature: Third Party Details
       # Clear a field
       Then I enter "" as my main phone number
         And I submit my 3rd Party Contact Details
-        And the error message summary for my third party contact Phone number is "Please check your main phone number"
+        And the error message summary for my third party contact Phone number is "Enter your main phone number"
         And I enter "12345678911" as my main phone number
         And I submit my 3rd Party Contact Details
 
@@ -100,28 +99,28 @@ Feature: Third Party Details
         And I submit my 3rd Party Contact Details
 
       Then I confirm that I am on the 3rd Party Details Contact page
-        And the error message summary for my third party contact Phone number is "Please check your main phone number"
-        And the error message details for my third party contact Phone number is "Please check your main phone number"
-        And the error message summary for my other third party contact Phone number is "Please check your optional phone number"
-        And the error message details for my other third party contact Phone number is "Please check your optional phone number"
+        And the error message summary for my third party contact Phone number is "Check your main phone number"
+        And the error message details for my third party contact Phone number is "Check your main phone number"
+        And the error message summary for my other third party contact Phone number is "Check your other phone number"
+        And the error message details for my other third party contact Phone number is "Check your other phone number"
 
       When I enter "999999999a8" as my main phone number
         And I enter "999999999a9" as my other phone number
         And I submit my 3rd Party Contact Details
 
       Then I confirm that I am on the 3rd Party Details Contact page
-        And the error message summary for my third party contact Phone number is "Please check your main phone number"
-        And the error message details for my third party contact Phone number is "Please check your main phone number"
-        And the error message summary for my other third party contact Phone number is "Please check your optional phone number"
-        And the error message details for my other third party contact Phone number is "Please check your optional phone number"
+        And the error message summary for my third party contact Phone number is "Check your main phone number"
+        And the error message details for my third party contact Phone number is "Check your main phone number"
+        And the error message summary for my other third party contact Phone number is "Check your other phone number"
+        And the error message details for my other third party contact Phone number is "Check your other phone number"
 
       When I enter "" as my main phone number
         And I enter "" as my other phone number
         And I submit my 3rd Party Contact Details
 
       Then I confirm that I am on the 3rd Party Details Contact page
-        And the error message summary for my third party contact Phone number is "Please check your main phone number"
-        And the error message details for my third party contact Phone number is "Please enter your main phone number"
+        And the error message summary for my third party contact Phone number is "Enter your main phone number"
+        And the error message details for my third party contact Phone number is "Enter your main phone number"
         And there is no error message details for my other third party contact Phone number
 
       When I enter "9999999998" as my main phone number
@@ -150,10 +149,10 @@ Feature: Third Party Details
         And I submit my 3rd Party Contact Details
 
       Then I confirm that I am on the 3rd Party Details Contact page
-        And the error message summary for my third party contact Phone number is "Please check your main phone number"
-        And the error message details for my third party contact Phone number is "Please check your main phone number"
-        And the error message summary for my other third party contact Phone number is "Please check your optional phone number"
-        And the error message details for my other third party contact Phone number is "Please check your optional phone number"
+        And the error message summary for my third party contact Phone number is "Check your main phone number"
+        And the error message details for my third party contact Phone number is "Check your main phone number"
+        And the error message summary for my other third party contact Phone number is "Check your other phone number"
+        And the error message details for my other third party contact Phone number is "Check your other phone number"
 
       Examples:
       | mainPhone         | otherPhone        | condition                                     |
@@ -441,8 +440,8 @@ Feature: Third Party Details
       Then I confirm that I am on the 3rd Party Details Contact page
         And I submit my 3rd Party Contact Details
 
-      Then the error message summary for my third party contact preference is "Please choose which contact method to use"
-        And the error message details for my third party contact preference is "Please choose a way to contact you"
+      Then the error message summary for my third party contact preference is "Choose a way for us to contact you"
+        And the error message details for my third party contact preference is "Choose a way for us to contact you"
 
     @JDB-1995 @bug
     Scenario: First line of address is required
@@ -483,8 +482,8 @@ Feature: Third Party Details
       Then I confirm that I am on the 3rd Party Personal Address Change page
       And I enter "" as the first line of the address
       And I submit my 3rd Party Personal Address Change details
-      And the summary error for address line one is "Please check the address"
-      And the detailed error for address line one is "Please provide the first line of the address"
+      And the summary error for address line one is "Provide the first line of the address"
+      And the detailed error for address line one is "Provide the first line of the address"
       When I enter "14 Sugar Street" as the first line of the address
       And I submit my 3rd Party Personal Address Details
 
@@ -530,8 +529,8 @@ Feature: Third Party Details
         Then I confirm that I am on the 3rd Party Personal Address Change page
         And I enter "" as the town
         And I submit my 3rd Party Personal Address Change details
-        Then the summary error for the town is "Please check the town or city"
-        And the detailed error for the town is "Please provide the town or city"
+        Then the summary error for the town is "Provide the town or city"
+        And the detailed error for the town is "Provide the town or city"
         When I enter "Town" as the town
         And I submit my 3rd Party Personal Address Details
 

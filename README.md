@@ -1,11 +1,12 @@
 Juror Public Front End
-===================
+======================
 - Author: ODSC
 - Technologies: NodeJS, Express, Nunjucks
 - Summary: A front-end for responding to jury summons
 
 ### What is it?
 Provides a front-end for responding to jury summons
+
 
 
 
@@ -153,3 +154,4 @@ grunt build:dist
 ```
 
 This command will not run tests, as it is assumed that running the distribution build process will be triggered after tests have passed, coverage thresholds are maintained and linters and SonarQube checks have been made.
+

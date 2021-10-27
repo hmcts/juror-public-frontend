@@ -25,7 +25,7 @@
   
   "HELPER_CONFIRM_ADDRESS_TITLE": "A fydd eich cyfeiriad chi yn newid yn fuan? ",
   "HELPER_CONFIRM_ADDRESS_PARAGRAPH_1": "Os bydd eich cyfeiriad yn newid yn fuan, nodwch eich cyfeiriad presennol, er mwyn i ni allu cysylltu â chi.",
-  "HELPER_CONFIRM_ADDRESS_PARAGRAPH_2": "Ar ôl i chi symud, cysylltwch â'r Swyddfa Wysio Rheithgorau i ddarparu eich cyfeiriad newydd.",
+  "HELPER_CONFIRM_ADDRESS_PARAGRAPH_2": "Ar ôl i chi symud, cysylltwch â'r swyddfa wysio rheithgorau ganolog trwy ffonio 0300 456 1024, a rhoi eich cyfeiriad newydd iddynt.",
   "HELPER_CONFIRM_ADDRESS_PARAGRAPH_3": "Os ydych yn symud o'r ardal lle'r ydych yn byw ar hyn o bryd, mae'n bosibl y byddwn yn newid lleoliad eich gwasanaeth rheithgor.",
 
   "HELPER_CHANGE_ADDRESS_TITLE": "Beth fydd yn digwydd os ydw i wedi newid fy nghyfeiriad?",
@@ -69,7 +69,7 @@
   "FORM_DOB_HELPER_PARAGRAPH_4": "os oes arnoch angen cyngor am hyn.",
 
   "FORM_PHONE_SUBTITLE": "Ffôn",
-  "FORM_PHONE_DESCRIPTION": "Darparwch rif ffôn yn y DU y gallwn ei ddefnyddio i gysylltu â chi rhwng 9AM a 5PM, dydd Llun i ddydd Gwener.",
+  "FORM_PHONE_DESCRIPTION": "Darparwch rif ffôn yn y DU y gallwn ei ddefnyddio i gysylltu â chi rhwng 9am a 5pm, dydd Llun i ddydd Gwener.",
   "FORM_PHONE_PRIMARY_LABEL": "Prif rif ffôn",
   "FORM_PHONE_SECONDARY_LABEL": "Rhif ffôn arall (dewisol)",
 

@@ -1,0 +1,82 @@
+{
+  "SECTION_1": {
+    "HEADING": "Datganiad hygyrchedd ar gyfer y gwasanaeth Ymateb i Wŷs Rheithg",
+    "GUIDANCE_1": "Datganiad hygyrchedd ar gyfer y gwasanaeth Ymateb i Wŷs Rheithgor yn",
+    "SERVICE_LINK": "gov.uk/reply-jury-summons",
+    "SERVICE_URL": "https://www.gov.uk/reply-jury-summons",
+    "GUIDANCE_2": "Gwasanaeth Llysoedd a Thribiwnlysoedd ei Mawrhydi (GLlTEM) sy'n gyfrifol am y wefan hon. Rydym eisiau i gynifer o bobl â phosibl allu defnyddio'r wefan hon. Er enghraifft, mae hynny'n golygu y dylech allu:",
+    "LIST_ITEM_1": "newid lliwiau, lefelau cyferbyniad a ffontiau",
+    "LIST_ITEM_2": "gwneud y testun hyd at 300% yn fwy heb iddo ddiflannu oddi ar y sgrin",
+    "LIST_ITEM_3": "defnyddio'r rhan fwyaf o'r wefan gan ddefnyddio bysellfwrdd yn unig",
+    "LIST_ITEM_4": "defnyddio'r rhan fwyaf o'r wefan gan ddefnyddio meddalwedd adnabod llais",
+    "LIST_ITEM_5": "gwrando ar y rhan fwyaf o'r testun ar y wefan gan ddefnyddio darllenydd sgrin (gan gynnwys y fersiynau diweddaraf o JAWS, NVDA a VoiceOver)",
+    "GUIDANCE_3": "Rydym hefyd wedi sicrhau ein bod wedi defnyddio iaith syml.",
+    "GUIDANCE_4": "Gall",
+    "ABILITY_NET_LINK": "AbilityNet",
+    "ABILITY_NET_URL": "https://mcmw.abilitynet.org.uk/",
+    "GUIDANCE_5": "roi cyngor ichi ar sut i wneud eich dyfais yn haws i'w defnyddio os oes gennych anabledd."
+  },
+
+  "SECTION_2": {
+    "HEADING": "Pa mor hygyrch yw'r wefan hon?",
+    "GUIDANCE_1": "Mae'r wefan hon wedi cael ei harchwilio'n annibynnol ar gyfer hygyrchedd ac nid ydym yn ymwybodol o unrhyw rannau o'r wefan hon nad ydynt yn gwbl hygyrch."
+  },
+
+  "SECTION_3": {
+    "HEADING": "Riportio problemau hygyrchedd gyda'r wefan hon",
+    "GUIDANCE_1": "Rydym bob amser yn ceisio gwella hygyrchedd y wefan hon. Os ydych yn dod o hyd i unrhyw broblemau nad ydynt wedi'u rhestru ar y dudalen hon neu'n credu nad ydym yn bodloni gofynion hygyrchedd:",
+    "LIST_ITEM_1": "anfonwch e-bost i",
+    "EMAIL_ADDRESS": "jurysummoning@justice.gov.uk",
+    "LIST_ITEM_2": "ffoniwch 0300 303 5173",
+    "LIST_ITEM_3": "neu ysgrifennwch atom yn:",
+    "ADDRESS_1": "Jury Central Summoning Bureau",
+    "ADDRESS_2": "Phoenix House",
+    "ADDRESS_3": "Rushton Avenue",
+    "ADDRESS_4": "Bradford",
+    "ADDRESS_5": "BD3 7BH"
+  },
+
+  "SECTION_4": {
+    "HEADING": "Y Weithdrefn Orfodi",
+    "GUIDANCE_1": "Y Comisiwn Cydraddoldeb a Hawliau Dynol (EHRC) sy’n gyfrifol am orfodi Rheoliadau Hygyrchedd Cyrff y Sector Cyhoeddus (Gwefannau ac Apiau Ffonau Symudol) (Rhif 2) 2018 (y 'rheoliadau hygyrchedd'). Os nad ydych yn hapus â'r ffordd rydym yn ymateb i'ch cwyn,",
+    "EASS_LINK": "cysylltwch â'r Gwasanaeth Cynghori a Chefnogi Cydraddoldeb (EASS)",
+    "EASS_URL": "https://www.equalityadvisoryservice.com/"
+  },
+
+  "SECTION_5": {
+    "HEADING": "Cysylltu â ni drwy e-bost neu dros y ffôn",
+    "GUIDANCE_1": "Gallwch gysylltu â'n tîm gwasanaeth cwsmeriaid yn y Swyddfa Ganolog Gwysio Rheithgor drwy:",
+    "LIST_ITEM_1": "anfon e-bost i",
+    "EMAIL_ADDRESS": "jurysummoning@justice.gov.uk",
+    "LIST_ITEM_2": "ffonio 0300 303 5173"
+  },
+
+  "SECTION_6": {
+    "HEADING": "Gwybodaeth dechnegol am hygyrchedd y wefan hon",
+    "GUIDANCE_1": "Mae GLlTEM wedi ymrwymo i sicrhau bod y wefan yn hygyrch, yn unol â Rheoliadau Hygyrchedd Cyrff y Sector Cyhoeddus (Gwefannau ac Apiau Ffonau Symudol) (Rhif 2) 2018."
+  },
+
+  "SECTION_7": {
+    "HEADING": "Statws Cydymffurfio",
+    "GUIDANCE_1": "Mae'r wefan hon yn cydymffurfio'n llwyr â",
+    "WCAG_LINK": "Chanllawiau Hygyrchedd Cynnwys y We fersiwn 2.1",
+    "WCAG_URL": "https://www.w3.org/TR/WCAG21/",
+    "GUIDANCE_2": "safon AA."
+
+  },
+
+  "SECTION_8": {
+    "HEADING": "Paratoi'r datganiad hygyrchedd hwn",
+    "GUIDANCE_1": "Paratowyd y datganiad hwn ar y 27ain o Awst 2020. Fe'i adolygwyd ddiwethaf ar y 3ydd o Orffennaf 2020.",
+    "GUIDANCE_2": "Cafodd y wefan hon ei phrofi diwethaf ar yr 17eg o Fawrth 2020. Cynhaliwyd y prawf gan Digital Accessibility Centre Ltd.",
+    
+    "REPORT_PDF_GUIDANCE": "Gallwch",
+    "REPORT_PDF_LINK": "ddarllen adroddiad llawn y prawf hygyrchedd yma",
+    "REPORT_PDF_URL": "",
+
+    "REPORT_GUIDANCE": "If you require a copy of the full accessibility test report please",
+    "REPORT_LINK": "contact Janet Healey",
+    "REPORT_URL": "mailto:janet.healey1@justice.gov.uk"
+  }
+
+}

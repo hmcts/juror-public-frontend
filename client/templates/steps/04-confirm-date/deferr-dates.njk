@@ -2,13 +2,14 @@
 
 {% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
 {% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+{% from "./deferral-date-macro.njk" import deferralDate %}
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
   {% if user.thirdParty == 'Yes' %}
-    {{ texts.DEFERRAL_PAGE.HEADING_OB }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.DEFERRAL_PAGE.DATES.HEADING_OB }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% else %}
-    {{ texts.DEFERRAL_PAGE.HEADING }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
+    {{ texts.DEFERRAL_PAGE.DATES.HEADING }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
   {% endif %}
 {% endblock %}
 
@@ -30,238 +31,120 @@
 
     <form action="{{ url('steps.confirm.date.deferral-dates.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
       
-      <div class="govuk-form-group {% if errors.items['dates'] or errors.items['date1'] or errors.items['date1Error'] or errors.items['date2'] or errors.items['date2Error'] or errors.items['date3'] or errors.items['date3Error']%}govuk-form-group--error{% endif %}">
+      {# {% if errors.items['dates'] or errors.items['date1'] or errors.items['date1Error'] or errors.items['date2'] or errors.items['date2Error'] or errors.items['date3'] or errors.items['date3Error']%}govuk-form-group--error{% endif %} #}
+      <div class="govuk-form-group ">
         
         <h1 class="govuk-heading-xl">
           {% if user.thirdParty == 'Yes' %}
-            {{ texts.DEFERRAL_PAGE.HEADING_OB }}
+            {{ texts.DEFERRAL_PAGE.DATES.HEADING_OB }}
           {% else %}
-            {{ texts.DEFERRAL_PAGE.HEADING }}
+            {{ texts.DEFERRAL_PAGE.DATES.HEADING }}
           {% endif %}
         </h1>
 
-        <strong class="govuk-body">
+        <p class="govuk-body">{{ texts.DEFERRAL_PAGE.DATES.GUIDANCE_P1 }} {{deferralDateRange.earliestDateMed}} {{ texts.DEFERRAL_PAGE.DATES.GUIDANCE_AND }} {{deferralDateRange.latestDateMed}}</p>
+
+        <p class="govuk-body">
           {% if user.thirdParty == 'Yes' %}
-          {{ texts.DEFERRAL_PAGE.DATE_FIELD_TITLE_OB }}
+            {{ texts.DEFERRAL_PAGE.DATES.GUIDANCE_P2_OB }}
           {% else %}
-          {{ texts.DEFERRAL_PAGE.DATE_FIELD_TITLE }}
+            {{ texts.DEFERRAL_PAGE.DATES.GUIDANCE_P2 }}
           {% endif %}
-        </strong>
-        {#
-        <span class="govuk-body">
-            {% if user.thirdParty == 'Yes' %}
-              {{ texts.DEFERRAL_PAGE.DATE_FIELD_HINT_OB }}
-            {% else %}
-              {{ texts.DEFERRAL_PAGE.DATE_FIELD_HINT }}
-            {% endif %}
-        </span>
-        #}
-
-        <br /><br />
+        </p>
       
-        <div class="background-grey {% if errors.items['dates'] %}govuk-error{% endif %}" id="datesGroup">
-          <strong class="govuk-body">
-            {% if user.thirdParty == 'Yes' %}
-            {{ texts.DEFERRAL_PAGE.DATE_INFO_OB }}
-            {% else %}
-            {{ texts.DEFERRAL_PAGE.DATE_INFO }}
-            {% endif %}
-          </strong>
-          <br />
-          {% if errors.items['dates'] %}
-            <div class="govuk-error-message">
-              {{ errors.items['dates'][0].details }}
-            </div>
-          {% elif errors.items['date1'] or errors.items['date2'] or errors.items['date3'] %}
+        <div class="{% if errors.items['dates'] %}govuk-error{% endif %}" id="datesGroup">
 
+          {% if errors.items['date1'] %}
+            {% set dateError1 = errors.items['date1'][0].summary %}
           {% endif %}
-          <br />
-          
-            <div class="govuk-grid-row govuk-body">
-              <div class="govuk-error-message deferral-date-error" id="date1ErrorMessage">
-                {% if errors.items['date1'] %}<span class="govuk-visually-hidden">{{texts.ERRORS.TITLE_ERROR}}</span>{{ errors.items['date1'][0].details }}<br>{% endif %}
-              </div>
-              <div class="govuk-grid-column-one-third" id="date1Group">
-                <div class="{% if errors.items['date1'] or errors.items['date1Error'] %}govuk-error{% endif %}">
-                  <label class="form-label" for="date1">
-                    <strong class="bold-small">
-                      {{ texts.DEFERRAL_PAGE.DATE1 }}
-                    </strong>              
-                  </label>
-                  <div class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</div>
-                  <input class="form-control fill govuk-body" name="date1" id="date1" type="text" value="{{ user.date1 }}" autocomplete="off" {% if errors.items['date1'] or errors.items['date1Error'] %}aria-describedby="date1ErrorMessage"{% endif %} />
-                  <button id="btn_date1" class="calendar-button noscript" aria-hidden="true"><img class="ga-defer-datepicker-1" src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_1 }}" /></button>
 
-                  <div id="dp1" class="datepicker" aria-hidden="true">
-                    <div id="month-wrap">
-                      <div id="bn_prev" role="button" aria-labelledby="bn_prev-label" tabindex="0">
-                        {# <img class="bn_img" src="prev.png" alt="<<"/> #}
-                        <span>&lt;</span>
-                      </div>
-                      <div id="month" role="heading" aria-live="assertive" aria-atomic="true"></div>
-                      <div id="bn_next" role="button" aria-labelledby="bn_next-label" tabindex="0">
-                        {# <img class="bn_img" src="next.png" alt=">>"/> #}
-                        <span>&gt;</span>
-                      </div>
-                    </div>
-                    <table id="cal" role="grid" aria-activedescendant="errMsg" aria-labelledby="month" tabindex="0">
-                      <thead>
-                          <tr id="weekdays">
-                            <th id="Sunday"><abbr title="{{ texts.DEFERRAL_PAGE.SUNDAY }}">{{ texts.DEFERRAL_PAGE.SU }}</abbr></th>
-                            <th id="Monday"><abbr title="{{ texts.DEFERRAL_PAGE.MONDAY }}">{{ texts.DEFERRAL_PAGE.MO }}</abbr></th>
-                            <th id="Tuesday"><abbr title="{{ texts.DEFERRAL_PAGE.TUESDAY }}">{{ texts.DEFERRAL_PAGE.TU }}</abbr></th>
-                            <th id="Wednesday"><abbr title="{{ texts.DEFERRAL_PAGE.WEDNESDAY }}">{{ texts.DEFERRAL_PAGE.WE }}</abbr></th>
-                            <th id="Thursday"><abbr title="{{ texts.DEFERRAL_PAGE.THURSDAY }}">{{ texts.DEFERRAL_PAGE.TH }}</abbr></th>
-                            <th id="Friday"><abbr title="{{ texts.DEFERRAL_PAGE.FRIDAY }}">{{ texts.DEFERRAL_PAGE.FR }}</abbr></th>
-                            <th id="Saturday"><abbr title="{{ texts.DEFERRAL_PAGE.SATURDAY }}">{{ texts.DEFERRAL_PAGE.SA }}</abbr></th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr><td id="errMsg" colspan="7">Javascript must be enabled</td></tr>
-                      </tbody>
-                    </table>
-                    <div id="bn_prev-label" class="offscreen">Go to previous month</div>
-                    <div id="bn_next-label" class="offscreen">Go to next month</div>
-                  </div>
-                </div>
-              </div>
+          {% if errors.items['date2'] %}
+            {% set dateError2 = errors.items['date2'][0].summary %}
+          {% endif %}
+
+          {% if errors.items['date3'] %}
+            {% set dateError3 = errors.items['date3'][0].summary %}
+          {% endif %}
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full deferral-datepicker">
+              {{ deferralDate({
+                id: "firstChoice",
+                heading: texts.DEFERRAL_PAGE.DATES.DATE1_LABEL,
+                hint: texts.DEFERRAL_PAGE.DATES.DATE_EXAMPLE_HINT + deferralDateRange.earliestDateShort,
+                texts: texts.DEFERRAL_PAGE,
+                datepickerId: "datepicker1",
+                dateFieldId: "date1",
+                dateFieldDefault: datepickerDefaults['date1'],
+                buttonId: "btn_date1",
+                dayValue: user.date1Day,
+                monthValue: user.date1Month,
+                yearValue: user.date1Year,
+                dateError: dateError1
+              }) }}
             </div>
+          </div>
 
-            <div class="govuk-grid-row govuk-body">
-              <div class="govuk-error-message deferral-date-error" id="date2ErrorMessage">
-                {% if errors.items['date2'] %}<span class="govuk-visually-hidden">{{texts.ERRORS.TITLE_ERROR}}</span>{{ errors.items['date2'][0].details }}<br>{% endif %}
-              </div>
-              <div class="govuk-grid-column-one-third" id="date2Group">
-                <div class="{% if errors.items['date2'] or errors.items['date2Error'] %}govuk-error{% endif %}">
-                  <label class="form-label" for="date2">
-                    <strong class="bold-small">
-                      {{ texts.DEFERRAL_PAGE.DATE2 }}
-                    </strong>
-                  </label>
-                  <div class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</div>
-                  <input class="form-control fill govuk-body" name="date2" id="date2" type="text" value="{{ user.date2 }}" autocomplete="off" {% if errors.items['date2'] or errors.items['date2Error'] %}aria-describedby="date2ErrorMessage"{% endif %} />
-                  <button id="btn_date2" class="calendar-button noscript" aria-hidden="true"><img class="ga-defer-datepicker-2" src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_2 }}" /></button>
-
-                  <div id="dp2" class="datepicker" aria-hidden="true">
-                    <div id="month-wrap">
-                      <div id="bn_prev" role="button" aria-labelledby="bn_prev-label" tabindex="0">
-                        {# <img class="bn_img" src="prev.png" alt="<<"/> #}
-                        <span class="bn_img">&lt;</span>
-                      </div>
-                      <div id="month" role="heading" aria-live="assertive" aria-atomic="true"></div>
-                      <div id="bn_next" role="button" aria-labelledby="bn_next-label" tabindex="0">
-                        {# <img class="bn_img" src="next.png" alt=">>"/> #}
-                        <span class="bn_img">&gt;</span>
-                      </div>
-                    </div>
-                    <table id="cal" role="grid" aria-activedescendant="errMsg" aria-labelledby="month" tabindex="0">
-                      <thead>
-                          <tr id="weekdays">
-                            <th id="Sunday"><abbr title="{{ texts.DEFERRAL_PAGE.SUNDAY }}">{{ texts.DEFERRAL_PAGE.SU }}</abbr></th>
-                            <th id="Monday"><abbr title="{{ texts.DEFERRAL_PAGE.MONDAY }}">{{ texts.DEFERRAL_PAGE.MO }}</abbr></th>
-                            <th id="Tuesday"><abbr title="{{ texts.DEFERRAL_PAGE.TUESDAY }}">{{ texts.DEFERRAL_PAGE.TU }}</abbr></th>
-                            <th id="Wednesday"><abbr title="{{ texts.DEFERRAL_PAGE.WEDNESDAY }}">{{ texts.DEFERRAL_PAGE.WE }}</abbr></th>
-                            <th id="Thursday"><abbr title="{{ texts.DEFERRAL_PAGE.THURSDAY }}">{{ texts.DEFERRAL_PAGE.TH }}</abbr></th>
-                            <th id="Friday"><abbr title="{{ texts.DEFERRAL_PAGE.FRIDAY }}">{{ texts.DEFERRAL_PAGE.FR }}</abbr></th>
-                            <th id="Saturday"><abbr title="{{ texts.DEFERRAL_PAGE.SATURDAY }}">{{ texts.DEFERRAL_PAGE.SA }}</abbr></th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr><td id="errMsg" colspan="7">Javascript must be enabled</td></tr>
-                      </tbody>
-                    </table>
-                    <div id="bn_prev-label" class="offscreen">Go to previous month</div>
-                    <div id="bn_next-label" class="offscreen">Go to next month</div>
-                  </div>
-                </div>
-              </div>
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full deferral-datepicker">
+              {{ deferralDate({
+                id: "secondChoice",
+                heading: texts.DEFERRAL_PAGE.DATES.DATE2_LABEL,
+                hint: texts.DEFERRAL_PAGE.DATES.DATE_EXAMPLE_HINT + deferralDateRange.earliestDateShort,
+                texts: texts.DEFERRAL_PAGE,
+                datepickerId: "datepicker2",
+                dateFieldId: "date2",
+                dateFieldDefault: datepickerDefaults['date2'],
+                buttonId: "btn_date2",
+                dayValue: user.date2Day,
+                monthValue: user.date2Month,
+                yearValue: user.date2Year,
+                dateError: dateError2
+              }) }}
             </div>
+          </div>
 
-            <div class="govuk-grid-row govuk-body">
-              <div class="govuk-error-message deferral-date-error" id="date3ErrorMessage">
-                {% if errors.items['date3'] %}<span class="govuk-visually-hidden">{{texts.ERRORS.TITLE_ERROR}}</span>{{ errors.items['date3'][0].details }}<br>{% endif %}
-              </div>
-              <div class="govuk-grid-column-one-third" id="date3Group">
-                <div class="{% if errors.items['date3'] or errors.items['date3Error'] %}govuk-error{% endif %}">
-                  <label class="form-label" for="date3">
-                    <strong class="bold-small">
-                      {{ texts.DEFERRAL_PAGE.DATE3 }}
-                    </strong>
-                  </label>
-                  <div class="form-hint">{{ texts.DEFERRAL_PAGE.DATE_EG }}</div>
-                  <input class="form-control fill govuk-body" name="date3" id="date3" type="text" value="{{ user.date3 }}" autocomplete="off" {% if errors.items['date3'] or errors.items['date3Error'] %}aria-describedby="date3ErrorMessage"{% endif %} />
-                  <button id="btn_date3" class="calendar-button noscript" aria-hidden="true"><img class="ga-defer-datepicker-3" src="{{ assetPath }}img/icons/icon-calendar.png" alt="{{ texts.DEFERRAL_PAGE.DATEPICKER_ALT_3 }}" /></button>
-
-                  <div id="dp3" class="datepicker" aria-hidden="true">
-                    <div id="month-wrap">
-                      <div id="bn_prev" role="button" aria-labelledby="bn_prev-label" tabindex="0">
-                        {# <img class="bn_img" src="prev.png" alt="<<"/> #}
-                        <span class="bn_img">&lt;</span>
-                      </div>
-                      <div id="month" role="heading" aria-live="assertive" aria-atomic="true"></div>
-                      <div id="bn_next" role="button" aria-labelledby="bn_next-label" tabindex="0">
-                        {# <img class="bn_img" src="next.png" alt=">>"/> #}
-                        <span class="bn_img">&gt;</span>
-                      </div>
-                    </div>
-                    <table id="cal" role="grid" aria-activedescendant="errMsg" aria-labelledby="month" tabindex="0">
-                      <thead>
-                          <tr id="weekdays">
-                            <th id="Sunday"><abbr title="{{ texts.DEFERRAL_PAGE.SUNDAY }}">{{ texts.DEFERRAL_PAGE.SU }}</abbr></th>
-                            <th id="Monday"><abbr title="{{ texts.DEFERRAL_PAGE.MONDAY }}">{{ texts.DEFERRAL_PAGE.MO }}</abbr></th>
-                            <th id="Tuesday"><abbr title="{{ texts.DEFERRAL_PAGE.TUESDAY }}">{{ texts.DEFERRAL_PAGE.TU }}</abbr></th>
-                            <th id="Wednesday"><abbr title="{{ texts.DEFERRAL_PAGE.WEDNESDAY }}">{{ texts.DEFERRAL_PAGE.WE }}</abbr></th>
-                            <th id="Thursday"><abbr title="{{ texts.DEFERRAL_PAGE.THURSDAY }}">{{ texts.DEFERRAL_PAGE.TH }}</abbr></th>
-                            <th id="Friday"><abbr title="{{ texts.DEFERRAL_PAGE.FRIDAY }}">{{ texts.DEFERRAL_PAGE.FR }}</abbr></th>
-                            <th id="Saturday"><abbr title="{{ texts.DEFERRAL_PAGE.SATURDAY }}">{{ texts.DEFERRAL_PAGE.SA }}</abbr></th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr><td id="errMsg" colspan="7">Javascript must be enabled</td></tr>
-                      </tbody>
-                    </table>
-                    <div id="bn_prev-label" class="offscreen">Go to previous month</div>
-                    <div id="bn_next-label" class="offscreen">Go to next month</div>
-                  </div>
-                </div>
-              </div>
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full deferral-datepicker">
+              {{ deferralDate({
+                id: "thirdChoice",
+                heading: texts.DEFERRAL_PAGE.DATES.DATE3_LABEL,
+                hint: texts.DEFERRAL_PAGE.DATES.DATE_EXAMPLE_HINT + deferralDateRange.earliestDateShort,
+                texts: texts.DEFERRAL_PAGE,
+                datepickerId: "datepicker3",
+                dateFieldId: "date3",
+                dateFieldDefault: datepickerDefaults['date3'],
+                buttonId: "btn_date3",
+                dayValue: user.date3Day,
+                monthValue: user.date3Month,
+                yearValue: user.date3Year,
+                dateError: dateError3
+              }) }}
             </div>
-
-        
+          </div>
 
         </div>
 
       </div>
-      
-      
-      <details class="govuk-details">
-        <summary class="govuk-details__summary ga-details-deferral-dates">
-          {% if user.thirdParty == 'Yes' %}
-            <span class="govuk-details__summary-text ga-details-deferral-dates" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask this?')"{% endif %}>{{ texts.DEFERRAL_PAGE.WHY_ASK_SUMMARY_OB }}</span>
-          {% else %}
-            <span class="govuk-details__summary-text ga-details-deferral-dates" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask this?')"{% endif %}>{{ texts.DEFERRAL_PAGE.WHY_ASK_SUMMARY }}</span>
-          {% endif %}
-        </summary>
-          <div class="govuk-details__text" id="details-content-1">
-            <p>
-              {% if user.thirdParty == 'Yes' %}
-              {{ texts.DEFERRAL_PAGE.WHY_ASK_INFO_OB }}
-              {% else %}
-              {{ texts.DEFERRAL_PAGE.WHY_ASK_INFO }}
-              {% endif %}
-            </p>
-          </div>
-      </details>
-      
+
+      {# guidance details sections #}
+      {% include "./defer-guidance-1.njk" %}
+
+      {% include "./defer-guidance-2.njk" %}
 
       {# Submit form #}
       {{ govukButton({
           text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
       }) }}
 
+      
       <input type="hidden" name="_csrf" value="{{ csrftoken }}">
 
     </form>
+
+    <input type="hidden" id="dpDefaultDay" value="15">
+    <input type="hidden" id="dpDefaultMonth" value="7">
+    <input type="hidden" id="dpDefaultYEar" value="2021">
 
   </div>
 </div>
@@ -271,14 +154,14 @@
 
 {% block bodyEnd %}
   {{ super() }}
-  <script src="{{ assetPath }}js/govuk-template.js?0.17.3"></script>
+  {#<script src="{{ assetPath }}js/govuk-template.js?0.17.3"></script>#}
   <script src="{{ assetPath }}js/datepicker.js"></script>
   
   <script type="text/javascript">
     $(document).ready(function(){
-      var dp1 = new calendar.datepicker('dp1', 'date1', true);
-      var dp2 = new calendar.datepicker('dp2', 'date2', true);
-      var dp3 = new calendar.datepicker('dp3', 'date3', true);
+      var dp1 = new calendar.datepicker('datepicker1', 'date1', true);
+      var dp2 = new calendar.datepicker('datepicker2', 'date2', true);
+      var dp3 = new calendar.datepicker('datepicker3', 'date3', true);
 
       $('#btn_date1').removeClass('noscript').click(function(e) {
         dp1.showDlg();
@@ -298,16 +181,16 @@
         return false;
       });
 
+      // close date pickers on click outside
       $('#datesGroup').click(function(e){
         //Check for click in the container div and hide the date-picker dialogs
         $(document).unbind('click mousedown mouseup mousemove mouseover');
-        $('#dp1').attr('aria-hidden', 'true');
-        $('#dp2').attr('aria-hidden', 'true');
-        $('#dp3').attr('aria-hidden', 'true');
+        $('#datepicker1').attr('aria-hidden', 'true');
+        $('#datepicker2').attr('aria-hidden', 'true');
+        $('#datepicker3').attr('aria-hidden', 'true');
       });
 
     });
-
 
   </script>
 {% endblock %}

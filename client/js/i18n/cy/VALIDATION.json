@@ -57,7 +57,7 @@
     "LAST_NAME_CHECK_OB": "Gwiriwch enw cyntaf yr unigolyn",
     "LAST_NAME_MISSING": "Nodwch eich cyfenw",
     "LAST_NAME_MISSING_OB": "Nodwch gyfenw’r unigolyn",
-    "NAME_CONFIRM_MISSING": "Dewiswch 'Nac ydy' os yw eich enw’n anghywir",
+    "NAME_CONFIRM_MISSING": "Mae arnoch angen dweud wrthym a oes gennym yr enw cywir ar eich cyfer",
     "ADDRESS_CONFIRM_MISSING": "Dewiswch un o'r opsiynau canlynol",
     "ADDRESS_LINE_ONE_CHECK": "Gwiriwch linell gyntaf eich cyfeiriad",
     "ADDRESS_LINE_ONE_CHECK_OB": "Gwiriwch y cyfeiriad",
@@ -103,20 +103,20 @@
     "MONTH_MISSING": "Nodwch y mis y cawsoch eich geni",
     "MONTH_INVALID": "Nodwch y mis y cawsoch eich geni. Er enghraifft, for December, enter 12",
     "YEAR_MISSING": "Nodwch y flwyddyn y cawsoch eich geni",
-    "YEAR_INVALID": "Nodwch y flwyddyn y cawsoch eich geni fel rhif pedwar digid. Er enghraifft, 1982",
+    "YEAR_INVALID": "Rhowch y flwyddyn y cawsoch eich geni fel rhif 4 digid. Er enghraifft, 1982",
     "DAY_MISSING_OB": "Nodwch y diwrnod gafodd yr unigolyn ei eni",
     "DAY_INVALID_OB": "Nodwch y diwrnod y cawsoch eich geni fel dyddiad. Er enghraifft, 06",
     "MONTH_MISSING_OB": "Nodwch y mis gafodd yr unigolyn ei eni",
     "MONTH_INVALID_OB": "Nodwch y mis y cafodd yr unigolyn ei eni fel rhif. Er enghraifft, ar gyfer mis Rhagfyr, rhowch 12",
     "YEAR_MISSING_OB": "Nodwch y flwyddyn gafodd yr unigolyn ei eni",
-    "YEAR_INVALID_OB": "Nodwch y flwyddyn y cafodd yr unigolyn ei eni fel rhif pedwar digid. Er enghraifft, 1982",
+    "YEAR_INVALID_OB": "Rhowch y flwyddyn y ganwyd yr unigolyn fel rhif 4 digid. Er enghraifft, 1982",
     "INVALID_DATE": "Gwiriwch eich dyddiad geni",
     "INVALID_DATE_OB": "Nodwch ddydiad geni'r unigolyn"
   },
 
   "QUALIFY": {
-    "WHERE_YOU_LIVE": "Dewiswch 'Naddo' os nad ydych wedi byw yn y Deyrnas Unedig, Ynysoedd y Sianel neu Ynys Manaw am gyfnod parhaus o bum mlynedd ers eich pen-blwydd yn 13 oed",
-    "WHERE_YOU_LIVE_OB": "Dewiswch 'Naddo' os nad yw'r unigolyn yr ydych chi'n ymateb ar ei ran wedi byw yn y Deyrnas Unedig, Ynysoedd y Sianel neu Ynys Manaw am bum mlynedd yn olynol ers eu pen-blwydd yn 13 oed",
+    "WHERE_YOU_LIVE": "Dewiswch na os nad ydych wedi byw yn y DU, yn Ynysoedd y Sianel neu yn Ynys Manaw am 5 mlynedd yn olynol ers eich pen-blwydd yn 13 oed",
+    "WHERE_YOU_LIVE_OB": "Dewiswch na os nad yw'r unigolyn yr ydych yn ateb drosto wedi byw yn y DU, yn Ynysoedd y Sianel neu yn Ynys Manaw am 5 mlynedd yn olynol ers ei ben-blwydd yn 13 oed",
     "WHERE_YOU_LIVE_DETAILS": "Rhowch fanylion am ble rydych wedi byw ers eich pen-blwydd yn 13 mlwydd oed",
     "WHERE_YOU_LIVE_DETAILS_OB": "Rhowch fanylion am ble mae'r unigolyn rydych yn ymateb ar ei ran wedi byw ers ei ben-blwydd/ei phen-blwydd yn 13 mlwydd oed",
     "WHERE_YOU_LIVE_LENGTH": "Rydych wedi defnyddio gormod o nodau i ddisgrifio ble rydych wedi byw ers eich pen-blwydd yn 13 mlwydd oed",
@@ -152,8 +152,8 @@
   },
 
   "CONFIRM_DATE": {
-    "CONFIRM": "Dewiswch os allwch chi wasanaethu ar reithgor ar y dyddiad a nodir, os ydych chi angen newid y dyddiad neu eisiau cael eich esgusodi ",
-    "CONFIRM_OB": "Dewiswch os all yr unigolyn rydych yn ymateb ar ei ran wasanaethu ar reithgor ar y dyddiad a nodir, os yw angen newid y dyddiad neu eisiau cael ei esgusodi"
+    "CONFIRM": "Dewiswch os ydych yn gallu dechrau eich gwasanaeth rheithgor ar y dyddiad hwn ai peidio",
+    "CONFIRM_OB": "Dewiswch os ydi'r unigolyn yn gallu dechrau gwasanaeth rheithgor ar y dyddiad hwn ai peidio"
   },
 
   "CJS_EMPLOYED": {
@@ -190,33 +190,48 @@
   },
 
   "DEFERRAL": {
-    "CHECK_REASON": "Rhowch reswm dros ofyn am ddyddiad arall ar gyfer eich gwasanaeth rheithgor",
-    "CHECK_REASON_OB": "Rhowch reswm dros ofyn am ddyddiad arall ar gyfer gwasanaeth rheithgor yr unigolyn",
-    "CHECK_REASON_MISSING": "Rhowch reswm dros ofyn am ddyddiad arall ar gyfer eich gwasanaeth rheithgor",
-    "CHECK_REASON_MISSING_OB": "Rhowch reswm dros ofyn am ddyddiad arall ar gyfer gwasanaeth rheithgor yr unigolyn",
-    "CHECK_DATES_ONE":"Nodwch y dyddiad cyntaf rydych ar gael ar gyfer eich gwasanaeth rheithgor",
-    "CHECK_DATES_ONE_OB":"Nodwch y dyddiad cyntaf y bydd y rheithiwr ar gael ar gyfer gwasanaeth rheithgor",
-    "CHECK_DATES_TWO":"Nodwch yr ail ddyddiad rydych ar gael ar gyfer eich gwasanaeth rheithgor",
-    "CHECK_DATES_TWO_OB":"Nodwch yr ail ddyddiad y bydd y rheithiwr ar gael ar gyfer gwasanaeth rheithgor",
-    "CHECK_DATES_THREE":"Nodwch y trydydd dyddiad rydych ar gael ar gyfer eich gwasanaeth rheithgor",
-    "CHECK_DATES_THREE_OB":"Nodwch y trydydd dyddiad y bydd y rheithiwr ar gael ar gyfer gwasanaeth rheithgor",
-    "CHECK_DATES_ERROR_ONE": "Dewiswch ddyddiad cyntaf",
-    "CHECK_DATES_ERROR_TWO": "Dewiswch ail ddyddiad",
-    "CHECK_DATES_ERROR_THREE": "Dewiswch trydydd ddyddiad",
-    "CHECK_DATES_UNIQUE": "Nodwch dri dyddiad gwahanol",
-    "CHECK_DATES_UNIQUE_OB": "Nodwch dri dyddiad gwahanol",
-    "CHECK_DATES_UNIQUE_ERROR": "Dewiswch dri dyddiad gwahanol",
-    "CHECK_DATE_FUTURE_ONE": "Darparwch ddyddiad cyntaf sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
-    "CHECK_DATE_FUTURE_ERROR_ONE": "Darparwch ddyddiad cyntaf sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
-    "CHECK_DATE_FUTURE_TWO": "Darparwch ail ddyddiad sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
-    "CHECK_DATE_FUTURE_ERROR_TWO": "Darparwch ail ddyddiad sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
-    "CHECK_DATE_FUTURE_THREE": "Darparwch drydydd dyddiad sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
-    "CHECK_DATE_FUTURE_ERROR_THREE": "Darparwch drydydd dyddiad sydd o fewn 12 mis o ddyddiad y wŷs wreiddiol.",
+    "CHECK_REASON": "Nodwch y rheswm dros fod angen dyddiad arall ar gyfer eich gwasanaeth rheithgor",
+    "CHECK_REASON_OB": "Nodwch eu rheswm dros fod angen dyddiad arall ar gyfer eu gwasanaeth rheithgor",
+    "CHECK_REASON_MISSING": "Nodwch y rheswm dros fod angen dyddiad arall ar gyfer eich gwasanaeth rheithgor",
+    "CHECK_REASON_MISSING_OB": "Nodwch eu rheswm dros fod angen dyddiad arall ar gyfer eu gwasanaeth rheithgor",
+
+    "CHECK_DATES_ONE":"Rhowch y dydd Llun cyntaf y byddai'n well gennych ddechrau gwasanaeth rheithgor",
+    "CHECK_DATES_ONE_OB":"Rhowch y dydd Llun cyntaf y byddai'n well ganddynt ddechrau gwasanaeth rheithgor",
+    "CHECK_DATES_TWO":"Rhowch yr ail ddewis o ddydd Llun y byddai'n well gennych ddechrau gwasanaeth rheithgor",
+    "CHECK_DATES_TWO_OB":"Rhowch yr ail ddydd Llun y byddai'n well ganddynt ddechrau gwasanaeth rheithgor",
+    "CHECK_DATES_THREE":"Rhowch y trydydd dewis o ddydd Llun y byddai'n well gennych ddechrau gwasanaeth rheithgor",
+    "CHECK_DATES_THREE_OB":"Rhowch y trydydd dydd Llun y byddai'n well ganddynt ddechrau gwasanaeth rheithgor",
+
+    "CHECK_DATES_ERROR_ONE": "Rhaid i'ch dewis cyntaf fod yn ddydd Llun rhwng [earliestDate] a [latestDate]",
+    "CHECK_DATES_ERROR_ONE_OB": "Rhaid i'w dewis cyntaf fod yn ddydd Llun rhwng [earliestDate] a [latestDate]",
+    "CHECK_DATES_ERROR_TWO": "Rhaid i'ch ail ddewis fod yn ddydd Llun rhwng [earliestDate] a [latestDate]",
+    "CHECK_DATES_ERROR_TWO_OB": "Rhaid i'w hail ddewis fod yn ddydd Llun rhwng [earliestDate] a [latestDate]",
+    "CHECK_DATES_ERROR_THREE": "Rhaid i'ch trydydd dewis fod yn ddydd Llun rhwng [earliestDate] a [latestDate]",
+    "CHECK_DATES_ERROR_THREE_OB": "Rhaid i'w trydydd dewis fod yn ddydd Llun rhwng [earliestDate] a [latestDate]",
+
+    "CHECK_DATES_UNIQUE": "Nodwch ddyddiad sy'n wahanol i'ch dewisiadau eraill",
+    "CHECK_DATES_UNIQUE_OB": "Rhowch ddyddiad sy'n wahanol i'r dewisiadau eraill",
+
+    "CHECK_DATE_FUTURE_ONE": "Ni all y dyddiad cyntaf a ddarperir fod yn fwy na 12 mis ar ôl y dyddiad gwysio gwreiddiol, sef [summons-date]",
+    "CHECK_DATE_BEFORE_HEARING_ONE": "Ni all y dyddiad cyntaf a ddarperir fod cyn y dyddiad gwysio gwreiddiol, sef [summons-date]",
+    "CHECK_DATE_HEARING_ONE": "Rhaid I'r dyddiad cyntaf a ddarperir fod ar ôl y dyddiad gwysio gwreiddiol, sef [summons-date]",
+    
+    "CHECK_DATE_FUTURE_TWO": "Ni all yr ail ddyddiad a ddarperir fod yn fwy na 12 mis ar ôl y dyddiad gwysio gwreiddiol, sef [summons-date]",
+    "CHECK_DATE_BEFORE_HEARING_TWO": "Ni all yr ail ddyddiad a ddarperir fod cyn y dyddiad gwysio gwreiddiol, sef [summons-date]",
+    "CHECK_DATE_HEARING_TWO": "Rhaid I'r ail ddyddiad a ddarperir fod ar ôl y dyddiad gwysio gwreiddiol, sef [summons-date]",
+    
+    "CHECK_DATE_FUTURE_THREE": "Ni all y trydydd dyddiad a ddarperir fod yn fwy na 12 mis ar ôl y dyddiad gwysio gwreiddiol, sef [summons-date]",
+    "CHECK_DATE_BEFORE_HEARING_THREE": "Ni all y trydydd dyddiad a ddarperir fod cyn y dyddiad gwysio gwreiddiol, sef [summons-date]",
+    "CHECK_DATE_HEARING_THREE": "Rhaid I'r trydydd dyddiad a ddarperir fod ar ôl y dyddiad gwysio gwreiddiol, sef [summons-date]",
+
     "CHECK_REASON_LENGTH": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
     "CHECK_REASON_LENGTH_OB": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
     "CHECK_DATE_AGE": "Darparwch ddyddiad arall. Byddwch yn hŷn na 76 oed ar y dyddiad hwn ac ni fyddwch yn gymwys i wasanaethu ar reithgor",
     "CHECK_DATE_AGE_OB": "Darparwch ddyddiad arall. Bydd yr unigolyn yn hŷn na 76 oed ar y dyddiad hwn ac ni fydd yn gymwys i wasanaethu ar reithgor",
-    "CHECK_DATE_AGE_ERROR": "Os gwelwch yn dda, rhowch ddyddiad arall"
+    "CHECK_DATE_AGE_ERROR": "Os gwelwch yn dda, rhowch ddyddiad arall",
+
+    "CHECK_DATES_PROCEED": "Cadarnhewch a ydych am fwrw ymlaen â'r dyddiadau hyn",
+    "CHECK_DATES_PROCEED_OB": "Dewiswch a ydych am fwrw ymlaen â'r dyddiadau hyn ai peidio"
   },
 
   "EXCUSAL": {
@@ -285,7 +300,7 @@
     },
 
     "THIRD_PARTY_PERSONAL_DETAILS": {
-      "NAME_CONFIRM_MISSING": "Dewiswch un o'r opsiynau canlynol",
+      "NAME_CONFIRM_MISSING": "Mae arnoch angen dweud wrthym a oes gennym yr enw cywir ar eu cyfer",
 
       "TITLE_CHECK": "gwirio teitl y person",
       "TITLE_CHECK_INVALID": "gwirio teitl y person",

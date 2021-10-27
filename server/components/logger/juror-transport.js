@@ -11,6 +11,7 @@
     , moment = require('moment')
     , jwt = require('jsonwebtoken')
     , config = require('../../config/environment')()
+    , secretsConfig = require('config')
 
     , JurorLogger = winston.transports.CustomLogger = function(options) {
       //
@@ -61,7 +62,7 @@
 
     this.latestLog = logstashOutput;
 
-    this.jwtToken = jwt.sign({}, config.jwtNoAuthKey, { expiresIn: config.jwtTTL });
+    this.jwtToken = jwt.sign({}, secretsConfig.get('secrets.juror-digital-vault.public-jwtNoAuthKey'), { expiresIn: secretsConfig.get('secrets.juror-digital-vault.public-jwtTTL') });
 
     options = {
       url: urljoin(config.apiEndpoint, 'auth/public/log'),

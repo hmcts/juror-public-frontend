@@ -23,6 +23,7 @@
     , filters = require('../components/filters')
     , texts_en = require('../../client/js/i18n/en.json')
     , texts_cy = require('../../client/js/i18n/cy.json')
+    , secretsConfig = require('config')
     , config = require('./environment')()
     , utils = require('../lib/utils.js')
     , menuBuilder = require(__dirname + '/../menubuilder')
@@ -79,7 +80,7 @@
     sessionExpires = 10 * (60 * 60);
 
     sessionConfig = {
-      secret: config.sessionSecret,
+      secret: secretsConfig.get('secrets.juror-digital-vault.public-sessionSecret'),
       resave: false,
       saveUninitialized: false,
       maxAge: sessionExpires,
@@ -207,6 +208,10 @@
       // eslint-disable-next-line
       res.locals.cookieText = filters.translate('INTERFACE.COOKIE_MESSAGE', (req.session.ulang === 'cy' ? texts_cy : texts_en));
 
+      if (req.url.startsWith('/expense-calculator')){
+        return res.render('start-expense-calculator.njk');
+      }
+
       // handle CSRF token errors here
       return res.render('_errors/403.njk');
     });
@@ -223,6 +228,11 @@
       // check if client sent cookie
       var cookie = req.cookies.cookies_policy,
         objCookie = null;
+
+      // store return url used on cookie-settings page
+      if (!(req.url.endsWith('cookie-settings') || req.url.endsWith('cookie-banner') || req.url.endsWith('cookies'))){
+        req.session.cookieReturnUrl = req.url;
+      }
 
       if (typeof cookie === 'undefined'){
         // consent cookie does not currently exist - show the cookie banner

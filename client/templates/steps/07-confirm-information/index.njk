@@ -278,7 +278,7 @@
         {% endif %}
       </div>
 
-      {# Qualify - Residency Lived Consecutive#}
+      {# Eligibility - Residency Lived Consecutive #}
       <dl class="govuk-summary-list govuk-body">
 
         <div class="govuk-summary-list__row">
@@ -320,87 +320,78 @@
         </div>
         
 
-        {# Qualify - Mental Health Sectioned #}
+        {# Eligibility - CJS Employed #}
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionMentalHealthSectioned">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionCJSEmployed">
             {% if user.thirdParty == 'Yes' %}
-              {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH_SECTIONED }}
+              {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_QUESTION }}
             {% else %}
-              {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_MENTAL_HEALTH_SECTIONED }}
+              {{ texts.CHECK_ANSWERS_PAGE.JUROR_EMPLOYED_QUESTION }}
             {% endif %}
           </dt>
-          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerMentalHealthSectioned">
-            {% if user.qualify.mentalHealthSectioned.details.length > 0 and user.qualify.mentalHealthSectioned.answer == texts.QUALIFY_PAGE.YES %}
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerCJSEmployed">
+            {% if (user.cjsEmployed == texts.CHECK_ANSWERS_PAGE.EMPLOYED_YES) or (user.cjsEmployed == texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_YES) %}
               {% if user.thirdParty == 'Yes' %}
-                <span id="mentalHealthSectionedAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES_OB }} - {{ user.qualify.mentalHealthSectioned.details }}</span>
+                {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_YES }}
               {% else %}
-                <span id="mentalHealthSectionedAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES }} - {{ user.qualify.mentalHealthSectioned.details }}</span>
+                {{ texts.CHECK_ANSWERS_PAGE.EMPLOYED_YES }}
+              {% endif %}
+              
+              {% if user.cjsPolice %}
+                <br><br>
+                {{ texts.CHECK_ANSWERS_PAGE.POLICE }}<br>{{ user.cjsPoliceDetails }}
+              {% endif %}
+              {% if user.cjsPrison %}
+                <br><br>
+                {{ texts.CHECK_ANSWERS_PAGE.PRISON_SERVICE }}<br>{{ user.cjsPrisonDetails }}
+              {% endif %}
+              {% if user.cjsNca %}
+                <br><br>
+                {{ texts.CHECK_ANSWERS_PAGE.NCA }}
+              {% endif %}
+              {% if user.cjsJudiciary %}
+                <br><br>
+                {{ texts.CHECK_ANSWERS_PAGE.JUDICIARY }}
+              {% endif %}
+              {% if user.cjsHMCTS %}
+                <br><br>
+                {{ texts.CHECK_ANSWERS_PAGE.HMCTS }}
+              {% endif %}
+              {% for employer in user.cjsEmployer %}
+                {% if employer === 'Other' %}
+                  <br><br>
+                  {{ texts.CHECK_ANSWERS_PAGE.OTHER }}<br>{{ user.cjsEmployerDetails }}
+                {% endif %}
+              {% endfor %}
+              {% if user.cjsEmployer === 'Other' %}
+                <br><br>
+                {{ texts.CHECK_ANSWERS_PAGE.OTHER }}<br>{{ user.cjsEmployerDetails }}
               {% endif %}
             {% else %}
               {% if user.thirdParty == 'Yes' %}
-                <span id="mentalHealthSectionedAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO_OB }}</span>
+                {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_NO }}
               {% else %}
-                <span id="mentalHealthSectionedAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO }}</span>
+                {{ texts.CHECK_ANSWERS_PAGE.EMPLOYED_NO }}
               {% endif %}
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             {% if user.thirdParty == 'Yes' %}
-              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.sectioned.change.tp.get') }}" id="changeMentalHealthSectioned" aria-describedby="question-mentalhealth">
+              <a class="govuk-link" href="{{ url('steps.qualify.cjs.employed.change.tp.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
-                <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH_SECTIONED_READER }}</span>
+                <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_QUESTION_READER }}</span>
               </a>
             {% else %}
-              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.sectioned.change.get') }}" id="changeMentalHealthSectioned" aria-describedby="question-mentalhealth">
+              <a class="govuk-link" href="{{ url('steps.qualify.cjs.employed.change.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
-                <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_MENTAL_HEALTH_SECTIONED_READER }}</span>
+                <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_EMPLOYED_QUESTION_READER }}</span>
               </a>
             {% endif %}
           </dd>
         </div>
 
 
-        {# Qualify - Mental Health Capacity #}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionMentalHealthCapacity">
-            {% if user.thirdParty == 'Yes' %}
-              {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY }}
-            {% else %}
-              {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY }}
-            {% endif %}
-          </dt>
-          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerMentalHealthCapacity">
-            {% if user.qualify.mentalHealthCapacity.details.length > 0 and user.qualify.mentalHealthCapacity.answer == texts.QUALIFY_PAGE.YES %}
-              {% if user.thirdParty == 'Yes' %}
-                <span id="mentalHealthCapacityAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_YES_OB }} - {{ user.qualify.mentalHealthCapacity.details }}</span>
-              {% else %}
-                <span id="mentalHealthCapacityAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_YES }} - {{ user.qualify.mentalHealthCapacity.details }}</span>
-              {% endif %}
-            {% else %}
-              {% if user.thirdParty == 'Yes' %}
-                <span id="mentalHealthCapacityAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_NO_OB }}</span>
-              {% else %}
-                <span id="mentalHealthCapacityAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_NO }}</span>
-              {% endif %}
-            {% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
-            {% if user.thirdParty == 'Yes' %}
-              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.capacity.change.tp.get') }}" id="changeMentalHealthCapacity" aria-describedby="question-mentalhealth">
-                {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
-                <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY_READER }}</span>
-              </a>
-            {% else %}
-              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.capacity.change.get') }}" id="changeMentalHealthCapacity" aria-describedby="question-mentalhealth">
-                {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
-                <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY_READER }}</span>
-              </a>
-            {% endif %}
-          </dd>
-        </div>
-
-
-        {# Qualify - On Bail #}
+        {# Eligibility - On Bail #}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionOnBail">
             {% if user.thirdParty == 'Yes' %}
@@ -440,7 +431,7 @@
         </div>
 
 
-        {# Qualify - Convictions #}
+        {# Eligibility - Convictions #}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionConvictions">
             {% if user.thirdParty == 'Yes' %}
@@ -474,6 +465,86 @@
               <a class="govuk-link" href="{{ url('steps.qualify.convictions.change.get') }}" id="changeConvictions" aria-describedby="question-conviction">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_CONVICTED_READER }}</span>
+              </a>
+            {% endif %}
+          </dd>
+        </div>
+
+
+        {# Eligibility - Mental Health Sectioned #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionMentalHealthSectioned">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH_SECTIONED }}
+            {% else %}
+              {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_MENTAL_HEALTH_SECTIONED }}
+            {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerMentalHealthSectioned">
+            {% if user.qualify.mentalHealthSectioned.details.length > 0 and user.qualify.mentalHealthSectioned.answer == texts.QUALIFY_PAGE.YES %}
+              {% if user.thirdParty == 'Yes' %}
+                <span id="mentalHealthSectionedAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES_OB }} - {{ user.qualify.mentalHealthSectioned.details }}</span>
+              {% else %}
+                <span id="mentalHealthSectionedAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_YES }} - {{ user.qualify.mentalHealthSectioned.details }}</span>
+              {% endif %}
+            {% else %}
+              {% if user.thirdParty == 'Yes' %}
+                <span id="mentalHealthSectionedAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO_OB }}</span>
+              {% else %}
+                <span id="mentalHealthSectionedAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_NO }}</span>
+              {% endif %}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            {% if user.thirdParty == 'Yes' %}
+              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.sectioned.change.tp.get') }}" id="changeMentalHealthSectioned" aria-describedby="question-mentalhealth">
+                {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
+                <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH_SECTIONED_READER }}</span>
+              </a>
+            {% else %}
+              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.sectioned.change.get') }}" id="changeMentalHealthSectioned" aria-describedby="question-mentalhealth">
+                {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
+                <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_MENTAL_HEALTH_SECTIONED_READER }}</span>
+              </a>
+            {% endif %}
+          </dd>
+        </div>
+
+
+        {# Eligibility - Mental Health Capacity #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionMentalHealthCapacity">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY }}
+            {% else %}
+              {{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY }}
+            {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerMentalHealthCapacity">
+            {% if user.qualify.mentalHealthCapacity.details.length > 0 and user.qualify.mentalHealthCapacity.answer == texts.QUALIFY_PAGE.YES %}
+              {% if user.thirdParty == 'Yes' %}
+                <span id="mentalHealthCapacityAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_YES_OB }} - {{ user.qualify.mentalHealthCapacity.details }}</span>
+              {% else %}
+                <span id="mentalHealthCapacityAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_YES }} - {{ user.qualify.mentalHealthCapacity.details }}</span>
+              {% endif %}
+            {% else %}
+              {% if user.thirdParty == 'Yes' %}
+                <span id="mentalHealthCapacityAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_NO_OB }}</span>
+              {% else %}
+                <span id="mentalHealthCapacityAnswer">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_NO }}</span>
+              {% endif %}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
+            {% if user.thirdParty == 'Yes' %}
+              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.capacity.change.tp.get') }}" id="changeMentalHealthCapacity" aria-describedby="question-mentalhealth">
+                {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
+                <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY_READER }}</span>
+              </a>
+            {% else %}
+              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.capacity.change.get') }}" id="changeMentalHealthCapacity" aria-describedby="question-mentalhealth">
+                {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
+                <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY_READER }}</span>
               </a>
             {% endif %}
           </dd>
@@ -591,7 +662,35 @@
               {% endif %}
             </dt>
             <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerDeferralDates">
-              {{ user.deferral.dates }}
+
+              {# Deferral dates summary list #}
+              <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    {{ texts.DEFERRAL_PAGE.DATES.DATE1_LABEL }}
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ deferralDisplayDates['date1'] }}
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    {{ texts.DEFERRAL_PAGE.DATES.DATE2_LABEL }}
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ deferralDisplayDates['date2'] }}
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    {{ texts.DEFERRAL_PAGE.DATES.DATE3_LABEL }}
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ deferralDisplayDates['date3'] }}
+                  </dd>
+                </div>
+              </dl>
+
             </dd>
             <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
               {% if user.thirdParty == 'Yes' %}
@@ -659,6 +758,7 @@
       <br>
 
       {# CJS Employment #}
+      {#
       <div class="govuk-body govuk-table__cell" >
         {% if user.thirdParty == 'Yes' %}
           <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_HEADER }}</h3>
@@ -696,6 +796,14 @@
                 <br><br>
                 {{ texts.CHECK_ANSWERS_PAGE.NCA }}
               {% endif %}
+              {% if user.cjsJudiciary %}
+                <br><br>
+                {{ texts.CHECK_ANSWERS_PAGE.JUDICIARY }}
+              {% endif %}
+              {% if user.cjsHMCTS %}
+                <br><br>
+                {{ texts.CHECK_ANSWERS_PAGE.HMCTS }}
+              {% endif %}
               {% for employer in user.cjsEmployer %}
                 {% if employer === 'Other' %}
                   <br><br>
@@ -716,12 +824,12 @@
           </dd>
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             {% if user.thirdParty == 'Yes' %}
-              <a class="govuk-link" href="{{ url('steps.cjs.employed.change.tp.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">
+              <a class="govuk-link" href="{{ url('steps.qualify.cjs.employed.change.tp.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_QUESTION_READER }}</span>
               </a>
             {% else %}
-              <a class="govuk-link" href="{{ url('steps.cjs.employed.change.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">
+              <a class="govuk-link" href="{{ url('steps.qualify.cjs.employed.change.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_EMPLOYED_QUESTION_READER }}</span>
               </a>
@@ -731,6 +839,8 @@
       </dl>
 
       <br>
+
+      #}
 
       {# Assistance in Court (Reasonable Adustments) #}
       <div class="govuk-body govuk-table__cell" >
@@ -828,20 +938,13 @@
           <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
           <strong class="govuk-warning-text__text">
             <span class="govuk-warning-text__icon govuk-warning-text__assistive">{{ texts.CHECK_ANSWERS_PAGE.WARNING }}</span>
-            {{ texts.CHECK_ANSWERS_PAGE.WARNING_TEXT_1 }}
+              {% if user.thirdParty == 'Yes' %}
+                {{ texts.CHECK_ANSWERS_PAGE.OB_WARNING_TEXT }}
+              {% else %}
+                {{ texts.CHECK_ANSWERS_PAGE.WARNING_TEXT }}
+              {% endif %}
           </strong>
         </div>
-        <div class="govuk-warning-text__text govuk-body">
-        <ul class="govuk-list govuk-list--bullet">
-            {% if user.thirdParty == 'Yes' %}
-            <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.OB_WARNING_TEXT_2 }}</strong></li>
-            <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.OB_WARNING_TEXT_3 }}</strong></li>
-            {% else %}
-            <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.JUROR_WARNING_TEXT_2 }}</strong></li>
-            <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.JUROR_WARNING_TEXT_3 }}</strong></li>
-            {% endif %}
-          </ul>
-          </div>
 
         {# Confirm panel #}
         <div class="{% if errors.items['informationConfirmed'] %} panel panel-border-narrow govuk-error {% endif %}" id="informationConfirmedGroup">

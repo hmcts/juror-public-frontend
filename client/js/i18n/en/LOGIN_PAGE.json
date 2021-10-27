@@ -8,13 +8,13 @@
   "IMAGE_TITLE": "Juror number can be found at the top of the summons letter",
 
   "FIELD_JUROR_NUMBER_TITLE": "9-digit juror number",
-  "FIELD_JUROR_NUMBER_HINT": "You can find your juror number at the top of your jury summons letter.",
-  "FIELD_JUROR_NUMBER_HINT_OB": "You can find the juror number at the top of the jury summons letter.",
+  "FIELD_JUROR_NUMBER_HINT": "You can find your juror number on your jury summons letter.",
+  "FIELD_JUROR_NUMBER_HINT_OB": "You can find the juror number on the jury summons letter.",
 
-  "GUIDANCE_TITLE": "I don't have a juror number",
-  "GUIDANCE_TITLE_OB": "I don't have a juror number for the person",
-  "GUIDANCE_INTRO": "If you don't have a juror number, please contact:",
-  "GUIDANCE_INTRO_OB": "If you don't have a juror number for the person you are replying for, please contact:",
+  "GUIDANCE_TITLE": "I do not have a juror number",
+  "GUIDANCE_TITLE_OB": "I do not have a juror number for the person",
+  "GUIDANCE_INTRO": "If you do not have a juror number, please contact:",
+  "GUIDANCE_INTRO_OB": "If you do not have a juror number for the person you are replying for, please contact:",
 
   "GUIDANCE_COMPANY_NAME": "Jury Central Summoning Bureau",
   "GUIDANCE_OPENING_TIMES": "Monday to Thursday 9am to 5pm",

@@ -1,0 +1,52 @@
+{% extends "../../layouts/default-gds.njk" %}
+
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+    {{ texts.DEFERRAL_PAGE.PUBLIC_HOLIDAY.HEADING}} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Deferral Public Holiday{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "../../includes/errors-gds.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      <h1 class="govuk-heading-xl">
+          {{ texts.DEFERRAL_PAGE.PUBLIC_HOLIDAY.HEADING }}
+      </h1>
+      
+      <div class="govuk-body">
+        <p>{{ texts.DEFERRAL_PAGE.PUBLIC_HOLIDAY.GUIDANCE_1 }}</p>
+        {% if user.thirdParty == 'Yes' %}
+          <p>{{ texts.DEFERRAL_PAGE.PUBLIC_HOLIDAY.GUIDANCE_2_OB }}</p>
+          <p>{{ texts.DEFERRAL_PAGE.PUBLIC_HOLIDAY.GUIDANCE_3_OB }}</p>
+        {% else %}
+          <p>{{ texts.DEFERRAL_PAGE.PUBLIC_HOLIDAY.GUIDANCE_2 }}</p>
+          <p>{{ texts.DEFERRAL_PAGE.PUBLIC_HOLIDAY.GUIDANCE_3 }}</p>
+        {% endif %}
+      <div>
+
+      <br/>
+
+      {# Navigate to next page #}
+      {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE,
+          href: url(continueUrl),
+          attributes: {
+            id: "continueButton"
+          }
+        }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

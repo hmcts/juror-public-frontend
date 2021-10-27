@@ -20,13 +20,14 @@
     require('./start')(app);
     require('./cookies')(app);
     require('./privacy')(app);
+    require('./accessibility-statement')(app);
 
     require('./steps/00-responder-type')(app);
     require('./steps/01-login')(app);
     require('./steps/02-your-details')(app);
     require('./steps/03-qualify')(app);
     require('./steps/04-confirm-date')(app);
-    require('./steps/05-cjs-employed')(app);
+    //require('./steps/05-cjs-employed')(app); // Moved to Qualify
     require('./steps/06-assistance')(app);
     require('./steps/07-confirm-information')(app);
     require('./steps/08-confirmation')(app);

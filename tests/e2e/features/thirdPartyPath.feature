@@ -11,8 +11,7 @@ Feature: Third Party
       And I add the "basic_valid_login" data
 
     # Juror Portal Page
-    When I navigate to the Juror Portal
-      And I click the Start Now button
+    When I navigate to the Juror Portal 
 
     # Responder Type Page
     Then I confirm that I am on the Responder Type page

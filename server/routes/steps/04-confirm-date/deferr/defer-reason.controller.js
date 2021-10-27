@@ -13,6 +13,7 @@
     , texts_cy = require('../../../../../client/js/i18n/cy.json')
     , utils = require('../../../../lib/utils');
 
+    
   module.exports.index = function() {
     return function(req, res) {
       var tmpErrors
@@ -48,53 +49,6 @@
         backLinkUrl: backLinkUrl,
       });
     };
-  };
-
-  module.exports.getDates = function() {
-    return function(req, res) {
-      var tmpErrors
-        , tmpDates = {}
-        , mergedUser
-        , backLinkUrl;
-
-
-
-      if (req.session.user.deferral.dates) {
-        req.session.user.deferral.dates.split(',')
-          .forEach(function(dateStr, index) {
-            tmpDates['date' + (index + 1)] = dateStr;
-          });
-      }
-
-      mergedUser = _.merge(_.cloneDeep(req.session.user), tmpDates, _.cloneDeep(req.session.formFields));
-      tmpErrors = _.cloneDeep(req.session.errors);
-
-      delete req.session.errors;
-      delete req.session.formFields;
-
-      // Set back link URL
-      if (req.session.change === true){
-        if (req.session.user.confirmedDate === req.session.lastValidConfirmedDate.selection){
-          backLinkUrl = utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty);
-        } else {
-          backLinkUrl = utils.getRedirectUrl('steps.confirm.date.deferral', req.session.user.thirdParty);
-        }
-      } else {
-        backLinkUrl = utils.getRedirectUrl('steps.confirm.date.deferral', req.session.user.thirdParty);
-      }
-
-      return res.render('steps/04-confirm-date/deferr-dates.njk', {
-        user: mergedUser,
-        errors: {
-          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-          message: '',
-          count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
-          items: tmpErrors,
-        },
-        backLinkUrl: backLinkUrl,
-        ulang: req.session.ulang
-      });
-    }
   };
 
   module.exports.create = function(app) {
@@ -154,53 +108,6 @@
     };
   };
 
-  module.exports.createDates = function(app) {
-    return function(req, res) {
-
-      // Validate form submission
-      var validatorResult
-        , moments
-
-      // Reset error and saved field sessions
-      delete req.session.errors;
-      delete req.session.formFields;
-
-      moments = [req.body['date1'], req.body['date2'], req.body['date3']];
-
-      // Validate form submission
-      validatorResult = validate(req.body, require('../../../../config/validation/deferral-dates')(req));
-      if (typeof validatorResult !== 'undefined') {
-        req.session.errors = validatorResult;
-        req.session.formFields = req.body;
-
-        if (validatorResult['dates']) {
-          validatorResult['dates'].forEach(function(datesError) {
-            datesError.fields.forEach(function(field) {
-              req.session.errors[field + 'Error'] = true;
-            });
-          });
-        }
-        return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.date.deferral-dates', req.session.user.thirdParty)));
-      }
-
-      // If we previously answered an excusal, wipe that information
-      if (typeof req.session.user.excusal !== 'undefined') {
-        delete req.session.user.excusal;
-      }
-
-      req.session.user.deferral.dates = moments.join(', ');
-
-      req.session.lastValidConfirmedDate.selection = 'Change';
-      req.session.lastValidConfirmedDate.data = req.session.user.deferral;
-
-      // Move on
-      if (req.session.change === true) {
-        return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
-      }
-      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.cjs.employed', req.session.user.thirdParty)));
-    };
-  };
-
   module.exports.change = function(app){
     return function(req, res) {
       req.session.change = true;
@@ -208,10 +115,4 @@
     };
   };
 
-  module.exports.changeDates = function(app) {
-    return function(req, res) {
-      req.session.change = true;
-      res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.date.deferral-dates', req.session.user.thirdParty)));
-    };
-  };
 })();

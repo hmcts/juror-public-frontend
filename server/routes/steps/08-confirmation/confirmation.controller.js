@@ -61,7 +61,7 @@ var _ = require('lodash')
     return function(req, res) {
       var template = 'deferral.njk';
 
-      req.session.user.completed = utils.getRedirectUrl('steps.confirmation.deferral.get', req.session.user.thirdParty);
+      req.session.user.completed = utils.getRedirectUrl('steps.confirmation.deferral', req.session.user.thirdParty);
 
       return res.render('steps/08-confirmation/' + template, {
         user: req.session.user

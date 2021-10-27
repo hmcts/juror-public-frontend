@@ -1,0 +1,351 @@
+{% extends "../../layouts/default-gds.njk" %}
+
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "../../govuk-frontend/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  {% include "../../includes/title-error.njk" %}
+  {% if user.thirdParty == 'Yes' %}
+    {{ texts.EMPLOYED_PAGE.HEADER_OB }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+    {{ texts.EMPLOYED_PAGE.HEADER }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Eligibility Employment{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "../../includes/errors-gds.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="{{ url('steps.qualify.cjs.employed.post') }}" method="post">
+
+        {# Set heading text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set pageHeadingText = texts.EMPLOYED_PAGE.HEADER_OB %}
+        {% else %}
+          {% set pageHeadingText = texts.EMPLOYED_PAGE.HEADER %}
+        {% endif %}
+
+        {# Set radio labels #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set radioYesLabel = texts.EMPLOYED_PAGE.YES_OB  %}
+          {% set radioNoLabel = texts.EMPLOYED_PAGE.NO_OB %}
+          {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES_OB %}
+            {% set radioYesChecked = true %}
+          {% endif %}
+          {% if user.cjsEmployed == texts.EMPLOYED_PAGE.NO_OB %}
+            {% set radioNoChecked = true %}
+          {% endif %}
+        {% else %}
+          {% set radioYesLabel = texts.EMPLOYED_PAGE.YES %}
+          {% set radioNoLabel = texts.EMPLOYED_PAGE.NO %}
+          {% if user.cjsEmployed == texts.EMPLOYED_PAGE.YES %}
+            {% set radioYesChecked = true %}
+          {% endif %}
+          {% if user.cjsEmployed == texts.EMPLOYED_PAGE.NO %}
+            {% set radioNoChecked = true %}
+          {% endif %}
+        {% endif %}
+
+        {# Set radios hint html #}
+        {% set radiosHintHTML %}
+          <p class="govuk-body">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.EMPLOYED_PAGE.QUESTION_OB }}
+            {% else %}
+              {{ texts.EMPLOYED_PAGE.QUESTION }}
+            {% endif %}
+          </p>
+        {% endset %}
+
+        {# Set radios answer error #}
+        {% set radiosAnswerError = undefined %}
+        {% if errors.items['cjsEmployed'] %}
+          {% set radiosAnswerError = {"text": errors.items['cjsEmployed'][0].details} %}
+        {% endif %}
+
+        {# Set checkboxes hint html #}
+        {% set checkboxesHintHTML %}
+          <p class="govuk-body">
+          {% if user.thirdParty == 'Yes' %}
+            {{ texts.EMPLOYED_PAGE.SELECT_PROMPT_OB }}
+          {% else %}
+            {{ texts.EMPLOYED_PAGE.SELECT_PROMPT }}
+          {% endif %}
+          </p>
+        {% endset %}
+
+        {# Set checkboxes answer error #}
+        {% set checkboxesAnswerError = undefined %}
+        {% if errors.items['cjsEmployer'] %}
+          {% set checkboxesAnswerError = {"text":  errors.items['cjsEmployer'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+        {# Set Police checked #}
+        {% if cjsActive.police %}
+          {% set checkboxPoliceChecked = true %}
+        {% else %}
+          {% set checkboxPoliceChecked = false %}
+        {% endif %}
+
+        {# Set Police details error #}
+        {% set policeDetailsError = undefined %}
+        {% if errors.items['cjsPoliceDetails'] %}
+          {% set policeDetailsError = {"text": errors.items['cjsPoliceDetails'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+        {# Set Police details HTML #}
+        {% set policeDetailsHTML %}
+          <div class="govuk-character-count">
+            {{ govukCharacterCount({
+              name: "cjsPoliceDetails",
+              id: "cjsPoliceDetails",
+              maxlength: "1000",
+              label: {
+                text: texts.EMPLOYED_PAGE.WHICH_FORCE
+              },
+              rows: "2",
+              errorMessage: policeDetailsError,
+              value: user.cjsPoliceDetails
+            }) }}
+          </div>
+        {% endset %}
+
+        {# Set Prison checked #}
+        {% if cjsActive.prison %}
+          {% set checkboxPrisonChecked = true %}
+        {% else %}
+          {% set checkboxPrisonChecked = false %}
+        {% endif %}
+
+        {# Set Prison details error #}
+        {% set prisonDetailsError = undefined %}
+        {% if errors.items['cjsPrisonDetails'] %}
+          {% set prisonDetailsError = {"text": errors.items['cjsPrisonDetails'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+        {# Set Prison details HTML #}
+        {% set prisonDetailsHTML %}
+          <div class="govuk-character-count">
+            {{ govukCharacterCount({
+              name: "cjsPrisonDetails",
+              id: "cjsPrisonDetails",
+              maxlength: "1000",
+              label: {
+                text: texts.EMPLOYED_PAGE.WHICH_PRISON
+              },
+              rows: "2",
+              errorMessage: prisonDetailsError,
+              value: user.cjsPrisonDetails
+            }) }}
+          </div>
+        {% endset %}
+
+        {# Set NCA checked #}
+        {% if cjsActive.nca %}
+          {% set checkboxNCAChecked = true %}
+        {% else %}
+          {% set checkboxNCAChecked = false %}
+        {% endif %}
+
+        {# Set Judiciary checked #}
+        {% if cjsActive.judiciary %}
+          {% set checkboxJudiciaryChecked = true %}
+        {% else %}
+          {% set checkboxJudiciaryChecked = false %}
+        {% endif %}
+
+        {# Set HM Courts & Tribunal Service checked #}
+        {% if cjsActive.hmcts %}
+          {% set checkboxHMCTSChecked = true %}
+        {% else %}
+          {% set checkboxHMCTSChecked = false %}
+        {% endif %}
+
+        {# Set Other checked #}
+        {% if cjsActive.other %}
+          {% set checkboxOtherChecked = true %}
+        {% else %}
+          {% set checkboxOtherChecked = false %}
+        {% endif %}
+
+        {# Set Other details error #}
+        {% set otherDetailsError = undefined %}
+        {% if errors.items['cjsEmployerDetails'] %}
+          {% set otherDetailsError = {"text": errors.items['cjsEmployerDetails'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+        {% endif %}
+
+        {# Set Other details HTML #}
+        {% set otherDetailsHTML %}
+          <div class="govuk-character-count">
+            {{ govukCharacterCount({
+              name: "cjsEmployerDetails",
+              id: "cjsEmployerDetails",
+              maxlength: "1000",
+              label: {
+                text: texts.EMPLOYED_PAGE.DETAILS
+              },
+              rows: "2",
+              errorMessage: otherDetailsError,
+              value: user.cjsEmployerDetails
+            }) }}
+          </div>
+        {% endset %}
+
+        {# Set organisations HTML #}
+        {% set organisationsHTML%}
+          {{ govukCheckboxes({
+            name: "cjsEmployer",
+            fieldset: {
+            },  
+            hint: {
+              html: checkboxesHintHTML
+            },
+            errorMessage: checkboxesAnswerError,
+            items: [
+              {
+                id: "cjsEmployer-police",
+                name: "cjsEmployer",
+                value: "Police Force",
+                text: texts.EMPLOYED_PAGE.POLICE,
+                conditional: {
+                  html: policeDetailsHTML
+                },
+                checked: checkboxPoliceChecked
+              },
+              {
+                id: "cjsEmployer-prison",
+                name: "cjsEmployer",
+                value: "HM Prison Service",
+                text: texts.EMPLOYED_PAGE.HM,
+                conditional: {
+                  html: prisonDetailsHTML
+                },
+                checked: checkboxPrisonChecked
+              },
+              {
+                id: "cjsEmployer-nca",
+                name: "cjsEmployer",
+                value: "National Crime Agency",
+                text: texts.EMPLOYED_PAGE.NCA,
+                checked: checkboxNCAChecked
+              },
+              {
+                id: "cjsEmployer-juduiciary",
+                name: "cjsEmployer",
+                value: "Judiciary",
+                text: texts.EMPLOYED_PAGE.JUDICIARY,
+                checked: checkboxJudiciaryChecked
+              },
+              {
+                id: "cjsEmployer-hmcts",
+                name: "cjsEmployer",
+                value: "HMCTS",
+                text: texts.EMPLOYED_PAGE.HMCTS,
+                checked: checkboxHMCTSChecked
+              },
+              {
+                id: "cjsEmployer-other",
+                name: "cjsEmployer",
+                value: "Other",
+                text: texts.EMPLOYED_PAGE.OTHER,
+                conditional: {
+                  html: otherDetailsHTML
+                },
+                checked: checkboxOtherChecked
+              }
+            ]
+          }) }}
+        {% endset %}
+
+        <div class="govuk-form-group {% if errors.items['cjsEmployed'] or errors.items['cjsEmployer'] or policeDetailsError or prisonDetailsError or otherDetailsError %}govuk-form-group--error{% endif %}" id="cjsEmployedGroup">
+          
+          <span class="govuk-caption-xl">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.QUALIFY_PAGE.CAPTION_OB }}
+            {% else %}
+              {{ texts.QUALIFY_PAGE.CAPTION }}
+            {% endif %}
+          </span>
+
+          {{ govukRadios({
+            id: "cjsEmployed",
+            name: "cjsEmployed",
+            fieldset: {
+              legend: {
+                text: pageHeadingText,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
+            hint: {
+              html: radiosHintHTML
+            },
+            errorMessage: radiosAnswerError,
+            items: [
+              {
+                id: "employedCjs-Yes",
+                name: "cjsEmployed",
+                value: radioYesLabel ,
+                text: radioYesLabel,
+                checked: radioYesChecked,
+                conditional: {
+                  html: organisationsHTML
+                }
+              },
+              {
+                id: "employedCjs-No",
+                name: "cjsEmployed",
+                value: radioNoLabel,
+                text: radioNoLabel,
+                checked: radioNoChecked
+              }
+            ]
+          }) }}
+          
+        </div>
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary ga-details-cjs-employed">
+            <span class="govuk-details__summary-text ga-details-cjs-employed">
+              {{ texts.EMPLOYED_PAGE.MORE_INFO_LINK }}
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p>
+                {% if user.thirdParty == 'Yes' %}
+                  {{ texts.EMPLOYED_PAGE.MORE_INFO_1_OB }}
+                {% else %}
+                  {{ texts.EMPLOYED_PAGE.MORE_INFO_1 }}
+                {% endif %}
+              </p>
+          </div>
+        </details>
+
+
+        {# Submit form #}
+        {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+        }) }}
+
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

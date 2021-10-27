@@ -503,12 +503,16 @@
       , formattedDob
       , errMessage = '';
 
+
     // Check for limits
     formattedDob = moment([attributes.dobYear, attributes.dobMonth, attributes.dobDay].filter(function(val) {
       return val;
     }).join('-'), 'YYYY-MM-DD');
 
-    if (message.fields.length > 0 && moment().diff(formattedDob, 'days') <= 0) {
+    if (!formattedDob.isValid()) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.INVALID_DATE'
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    } else if (message.fields.length > 0 && moment().diff(formattedDob, 'days') <= 0) {
       errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.INVALID_DATE'
           + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
     }
@@ -521,6 +525,112 @@
     return null;
   };
 
+  // Deferral date checks
+
+  validate.validators.deferralDate = function(value, req, key, attributes, options) {
+    var message = {
+        summary: '',
+        summaryLink: 'dobDay',
+        fields: 'dobDay',
+        details: [],
+      }
+      , dayMonthRegex = /^[0-9]{1,2}$/
+      , errMessage = '';
+
+    if (attributes.date1Day.length === 0) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.DAY_MISSING'
+        + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    } else if ((attributes.date1Day > 31 || attributes.date1Day < 1) || !dayMonthRegex.test(attributes.date1Day)) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.DAY_INVALID'
+        + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    }
+    if (errMessage){
+      message.details.push(errMessage);
+      message.summary = errMessage;
+      return message;
+    }
+
+    return null;
+  };
+
+  validate.validators.deferralDateDay = function(value, req, key, attributes) {
+    var message = {
+        summary: '',
+        summaryLink: 'dobDay',
+        fields: 'dobDay',
+        details: [],
+      }
+      , dayMonthRegex = /^[0-9]{1,2}$/
+      , errMessage = '';
+
+    if (attributes.date1Day.length === 0) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.DAY_MISSING'
+        + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    } else if ((attributes.date1Day > 31 || attributes.date1Day < 1) || !dayMonthRegex.test(attributes.date1Day)) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.DAY_INVALID'
+        + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    }
+    if (errMessage){
+      message.details.push(errMessage);
+      message.summary = errMessage;
+      return message;
+    }
+
+    return null;
+  };
+
+  validate.validators.deferralDateMonth = function(value, req, key, attributes) {
+    var message = {
+        summary: '',
+        summaryLink: 'dobMonth',
+        fields: 'dobMonth',
+        details: []
+      }
+      , dayMonthRegex = /^[0-9]{1,2}$/
+      , errMessage = '';
+
+    if (attributes.dobMonth.length === 0) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.MONTH_MISSING'
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    } else if ((attributes.dobMonth > 12 || attributes.dobMonth < 1) || !dayMonthRegex.test(attributes.dobMonth)) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.MONTH_INVALID'
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    }
+    if (errMessage){
+      message.details.push(errMessage);
+      message.summary = errMessage;
+      return message;
+    }
+
+    return null;
+  };
+
+  validate.validators.deferralDateYear = function(value, req, key, attributes) {
+    var message = {
+        summary: '',
+        summaryLink: 'dobYear',
+        fields: 'dobYear',
+        details: []
+      }
+      , formattedDob
+      , yearRegex = /^[0-9]{4}$/
+      , errMessage = '';
+
+    if (attributes.dobYear.length === 0) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.YEAR_MISSING'
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    } else if (attributes.dobYear.length !== 4 || !yearRegex.test(attributes.dobYear)) {
+      errMessage = filters.translate('VALIDATION.YOUR_DETAILS_CONFIRM.YEAR_INVALID'
+          + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en));
+    }
+    if (errMessage){
+      message.details.push(errMessage);
+      message.summary = errMessage;
+      return message;
+    }
+
+    return null;
+  };
 
   validate.validators.datesDistinct = function(value, options, key, attributes) {
     var message = {
@@ -551,24 +661,161 @@
 
   };
 
-  validate.validators.deferralDateValid = function(value, req) {
+  validate.validators.deferralDateValid = function(value, options, key, attributes) {
     var dateRegex = /^[0-9]{1,2}\/[0-9]{1,2}(\/[0-9]{2}|\/[0-9]{4})$/
-      , asMoment = moment(value, 'DD/MM/YYYY');
+      , dayMonthRegex = /^[0-9]{1,2}$/
+      , yearRegex = /^[0-9]{4}$/
+      , deferMoment = moment(value, 'DD/MM/YYYY')
+      , jurorDOB
+      , ageUnit = 'years'
+      , ageLimit = attributes['ageLimit']
+      , ageDateLimit
+      , dayKey = key + 'Day'
+      , monthKey = key + 'Month'
+      , yearKey = key + 'Year'
+      , compDate1
+      , compDate2
+      , compDate3
+      , errMessage = ''
 
-    return dateRegex.test(value) && asMoment.isValid() ? null : req.message;
+      , message = {
+        summary: '',
+        summaryLink: '',
+        fields: '',
+        details: [],
+      }
+
+    // Check DAY value
+    if (attributes[dayKey].length === 0) {
+      errMessage = options.message['invalidDay'];
+    } else if ((attributes[dayKey] > 31 || attributes[dayKey] < 1) || !dayMonthRegex.test(attributes[dayKey])) {
+      errMessage =options.message['invalidDay'];
+    }
+    if (errMessage){
+      message.details.push(errMessage);
+      message.summary = errMessage;
+      message.summaryLink = dayKey;
+      return message;
+    }
+
+    // Check MONTH value
+    if (attributes[monthKey].length === 0) {
+      errMessage = options.message['invalidMonth'];
+    } else if ((attributes[monthKey] > 12 || attributes[monthKey] < 1) || !dayMonthRegex.test(attributes[monthKey])) {
+      errMessage = options.message['invalidMonth'];
+    }
+    if (errMessage){
+      message.details.push(errMessage);
+      message.summary = errMessage;
+      message.summaryLink = monthKey;
+      return message;
+    }
+
+    // Check YEAR value
+    if (attributes[yearKey].length === 0) {
+      errMessage = options.message['invalidYear'];
+    } else if (attributes[yearKey].length !== 4 || !yearRegex.test(attributes[yearKey])) {
+      errMessage = options.message['invalidYear'];
+    }
+    if (errMessage){
+      message.details.push(errMessage);
+      message.summary = errMessage;
+      message.summaryLink = yearKey;
+      return message;
+    }
+
+    // Check DATE value
+    if (!(dateRegex.test(value) && deferMoment.isValid())){
+      errMessage = options.message['invalidDate'];
+      message.details.push(errMessage);
+      message.summary = errMessage;
+      message.summaryLink = dayKey;
+      return message;
+    }
+
+    // Check DATE lower limit
+    if (dateRegex.test(value) && deferMoment.isValid()){
+      if (deferMoment.isBefore(attributes['earliestDate'])){
+        errMessage = options.message['dateLowerLimit'];
+        message.details.push(errMessage);
+        message.summary = errMessage;
+        message.summaryLink = dayKey;
+        return message;
+      }
+    }
+
+    // Check DATE upper limit
+    if (dateRegex.test(value) && deferMoment.isValid()){
+      if (deferMoment.isAfter(attributes['latestDate'])){
+        errMessage = options.message['dateUpperLimit'];
+        message.details.push(errMessage);
+        message.summary = errMessage;
+        message.summaryLink = dayKey;
+        return message;
+      }
+    }
+
+    // Check DATE is a MONDAY
+    if (dateRegex.test(value) && deferMoment.isValid()){
+      if (deferMoment.isoWeekday() !== 1){
+        errMessage = options.message['invalidDate'];
+        message.details.push(errMessage);
+        message.summary = errMessage;
+        message.summaryLink = dayKey;
+        return message;
+      }
+    }
+
+    // Check age at deferred date
+    jurorDOB = moment(options.jurorDOB)
+    ageDateLimit = jurorDOB.clone().add(ageLimit, ageUnit)
+
+    if ((deferMoment === ageDateLimit) || (deferMoment.isSameOrAfter(ageDateLimit))){
+      errMessage = options.message['dateAgeLimit'];
+      message.details.push(errMessage);
+      message.summary = errMessage;
+      message.summaryLink = dayKey;
+      return message;
+    }
+
+    // Check dates are unique
+    compDate1 = moment(attributes['date1'], 'DD/MM/YYYY');
+    compDate2 = moment(attributes['date2'], 'DD/MM/YYYY');
+    compDate3 = moment(attributes['date3'], 'DD/MM/YYYY');
+
+    if (key === 'date2' && compDate1.isValid() && compDate2.isValid()){
+      if (compDate2.isSame(compDate1)){
+        errMessage = options.message['dateUnique'];
+        message.details.push(errMessage);
+        message.summary = errMessage;
+        message.summaryLink = 'date2Day';
+        return message;
+      }
+    }
+
+    if (key === 'date3' && compDate1.isValid() && compDate2.isValid() && compDate3.isValid()){
+      if (compDate3.isSame(compDate1) || compDate3.isSame(compDate2)){
+        errMessage = options.message['dateUnique'];
+        message.details.push(errMessage);
+        message.summary = errMessage;
+        message.summaryLink = 'date3Day';
+        return message;
+      }
+    }
+
+    return null;
   };
 
-
-  validate.validators.dateFuture = function(value, options) {
-    var summonsDate = moment(options.checkDate)
-      , dateLimit = summonsDate.clone().add(options.limit.multiplier, options.limit.unit)
+  validate.validators.deferralDateFuture = function(value, options) {
+    var latestDate = moment(options.checkDate)
       , checkValue = moment(value, 'DD/MM/YYYY');
 
-    if (checkValue.isBefore(summonsDate) || checkValue.isAfter(dateLimit)){
+    if (checkValue.isAfter(latestDate)){
       return options.message
     }
     return null;
   };
+
 
   validate.validators.ageDeferredDate = function(value, options) {
     var jurorDOB = moment(options.jurorDOB)

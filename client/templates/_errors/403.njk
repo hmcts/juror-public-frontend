@@ -1,13 +1,13 @@
-{% extends "../layouts/default.njk" %}
+{% extends "../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% block pageTitle %}
   {{ texts.ERRORS['403'] }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}Forbidden{% endblock %}
 
 {% block content %}
-<h1 class="heading-xlarge">{{ texts.ERRORS.FORBIDDEN }}</h1>
-<p>{{ texts.ERRORS.NO_PERMISSION }}</p>
-<p>{{ texts.INTERFACE.YOU_CAN }} <a href="/">{{ texts.INTERFACE.RETURN_HOME }}</a>.</p>
+<h1 class="govuk-heading-xl">{{ texts.ERRORS.FORBIDDEN }}</h1>
+<p class="govuk-body">{{ texts.ERRORS.NO_PERMISSION }}</p>
+<p class="govuk-body">{{ texts.INTERFACE.YOU_CAN }} <a href="/">{{ texts.INTERFACE.RETURN_HOME }}</a>.</p>
 {% endblock %}

@@ -10,7 +10,6 @@ Feature: First person your details
 
     # Juror Portal Page
     When I navigate to the Juror Portal
-      And I click the Start Now button
 
     # Responder Type Page
     Then I confirm that I am on the Responder Type page
@@ -44,8 +43,8 @@ Feature: First person your details
         And I enter "England" as the third line of my address
         And I submit my address change details
 
-      Then the summary error for my address line one is "Please check your address"
-        And the detailed error for my address line one is "Please provide the first line of your address"
+      Then the summary error for my address line one is "Provide the first line of your address"
+        And the detailed error for my address line one is "Provide the first line of your address"
         And there is no error message summary for my address line two
         And there is no error message details for my address line two
         And there is no error message summary for my address line three
@@ -77,7 +76,7 @@ Feature: First person your details
         And I enter "" as the third line of my address
         And I submit my address change details
 
-      Then the summary error for my address line one is "Please check your address"
+      Then the summary error for my address line one is "Provide the first line of your address"
 
     @JDB-1945 @JDB-836 @AC2
     Scenario: Address town is no longer optional
@@ -91,8 +90,8 @@ Feature: First person your details
         And I enter "" as the town of my address
         And I submit my address change details
 
-      Then the summary error for my town is "Please check your town or city"
-        And the detailed error for my town is "Please provide the town or city you live in"
+      Then the summary error for my town is "Provide the town or city you live in"
+        And the detailed error for my town is "Provide the town or city you live in"
 
       When I enter "Town" as the town of my address
         And I submit my address change details
@@ -141,8 +140,8 @@ Feature: First person your details
         And I enter "" as the postcode of my address
         And I submit my address change details
 
-      Then the summary error for my postcode is "Please check your postcode"
-        And the detailed error for my postcode is "Please enter your postcode"
+      Then the summary error for my postcode is "Enter your postcode"
+        And the detailed error for my postcode is "Enter your postcode"
         And I enter "AB21 3RY" as the postcode of my address
         And I submit my address change details
 
@@ -259,10 +258,10 @@ Feature: First person your details
       And I enter "" as my year of birth
       Then I submit my DOB details
 
-      Then the error message summary for the confirmed Date of birth is "Please check your date of birth"
-        And the error message details for my day of birth is "Please enter the day you were born"
-        And the error message details for my month of birth is "Please enter the month you were born"
-        And the error message details for my year of birth is "Please enter the year you were born"
+      Then the error message summary for the confirmed Date of birth is "Enter the day you were born"
+        And the error message details for my day of birth is "Enter the day you were born"
+        #And the error message details for my month of birth is "Please enter the month you were born"
+        #And the error message details for my year of birth is "Please enter the year you were born"
 
     @JDB-1714 @bug
     Scenario Outline: As a respondant I should be warned when my date of birth is incorrect
@@ -290,22 +289,22 @@ Feature: First person your details
         And I enter "<year>" as my year of birth
       Then I submit my DOB details
 
-      Then the error message summary for my Date of birth is "Please check your date of birth"
+      Then the error message summary for my Date of birth is "<error>"
         And the error message details for my Date of birth is "<error>"
 
       Examples:
         | day | month | year  | error                                                                                 |
-        | 18  | 09    |       | Please enter the year you were born                                                   |
-        | 18  | 09    | 89    | Please enter the year you were born as a four digit number. For example, 1982         |
-        | 18  | 09    | 0     | Please enter the year you were born as a four digit number. For example, 1982         |
+        | 18  | 09    |       | Enter the year you were born                                                   |
+        | 18  | 09    | 89    | Enter the year you were born as a 4 digit number. For example, 1982         |
+        | 18  | 09    | 0     | Enter the year you were born as a 4 digit number. For example, 1982         |
 
-        | 18  |       | 1989  | Please enter the month you were born                                                  |
-        | 18  | 21    | 1989  | Please enter the month you were born as a number. For example, for December, enter 12 |
-        | 18  | 0     | 1989  | Please enter the month you were born as a number. For example, for December, enter 12 |
+        | 18  |       | 1989  | Enter the month you were born                                                  |
+        | 18  | 21    | 1989  | Enter the month you were born as a number. For example, for December, enter 12 |
+        | 18  | 0     | 1989  | Enter the month you were born as a number. For example, for December, enter 12 |
 
-        |     | 09    | 1989  | Please enter the day you were born                                                    |
-        | 34  | 09    | 1989  | Please enter the day you were born as a date. For example, 06                         |
-        | 0   | 09    | 1989  | Please enter the day you were born as a date. For example, 06                         |
+        |     | 09    | 1989  | Enter the day you were born                                                    |
+        | 34  | 09    | 1989  | Enter the day you were born as a date. For example, 06                         |
+        | 0   | 09    | 1989  | Enter the day you were born as a date. For example, 06                         |
 
     @JDB-1994 @bug
     Scenario: As a respondant I must enter valid phone numbers for myself
@@ -364,10 +363,10 @@ Feature: First person your details
       And I enter "<otherPhone>" as My Secondary Phone Number
       Then I submit my phone details
 
-      Then the error message summary for my Phone number is "Please check your main phone"
-        And the error message summary for my other Phone number is "Please check your other phone number"
-        And the error message details for my Phone number is "Please check your main phone"
-        And the error message details for my other Phone number is "Please check your other phone number"
+      Then the error message summary for my Phone number is "Check your main phone number"
+        And the error message summary for my other Phone number is "Check your other phone number"
+        And the error message details for my Phone number is "Check your main phone number"
+        And the error message details for my other Phone number is "Check your other phone number"
 
       Examples:
       | mainPhone         | otherPhone        | condition                                     |
@@ -435,5 +434,5 @@ Feature: First person your details
         And I enter "" as my last name
         Then I submit my name change details
 
-      Then the summary error for my last name is "Please check your last name"
-        And the detailed error for my last name is "Please enter your last name"
+      Then the summary error for my last name is "Enter your last name"
+        And the detailed error for my last name is "Enter your last name"

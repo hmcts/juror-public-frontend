@@ -7,7 +7,6 @@ Feature: Log In
 
     # Juror Portal Page
     When I navigate to the Juror Portal
-      And I click the Start Now button
 
     Then I confirm that I am on the Responder Type page
 
@@ -214,14 +213,14 @@ Feature: Log In
       Then I confirm that I am on the Login page
       When I submit "", "" and "" as my login credentials
 
-      Then the error message summary for Juror number is "Please check your juror number"
-        And the error message details for Juror number is "Please enter your 9-digit juror number. You can find it at the top of your jury summons letter"
+      Then the error message summary for Juror number is "Enter your 9-digit juror number. You can find it at the top of your jury summons letter"
+        And the error message details for Juror number is "Enter your 9-digit juror number. You can find it at the top of your jury summons letter"
 
-        And the error message summary for Juror last name is "Please check your last name"
-        And the error message details for Juror last name is "Please enter your last name"
+        And the error message summary for Juror last name is "Enter your last name"
+        And the error message details for Juror last name is "Enter your last name"
 
-        And the error message summary for Juror postcode is "Please check your postcode"
-        And the error message details for Juror postcode is "Please enter your postcode"
+        And the error message summary for Juror postcode is "Enter your postcode"
+        And the error message details for Juror postcode is "Enter your postcode"
 
       # Attempt two
       When I click the back link
@@ -257,7 +256,6 @@ Feature: Log In
 
       # Juror Portal Page
       When I navigate to the Juror Portal
-        And I click the Start Now button
 
       # Responder Type Page
       Then I confirm that I am on the Responder Type page
@@ -352,7 +350,6 @@ Feature: Log In
       # Round #2
       # -------------
       When I navigate to the Juror Portal
-        And I click the Start Now button
 
       # Responder Type Page
       Then I confirm that I am on the Responder Type page

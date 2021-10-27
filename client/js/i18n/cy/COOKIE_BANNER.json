@@ -1,8 +1,15 @@
 {
-  "HEADING": "Tell us whether you accept cookies",
-  "GUIDANCE_1": "We use ",
-  "GUIDANCE_LINK": "cookies to collect information",
-  "GUIDANCE_2": "about how you use GOV.UK. We use this information to make the website work as well as possible and improve government services.",
-  "BUTTON_ACCEPT": "Accept all cookies",
-  "BUTTON_PREFERENCES": "Set cookie preferences"
+  "HEADING": "Cwcis ar ffurflen Ymateb i wŷs rheithgor",
+  "GUIDANCE_1": "Rydym yn defnyddio rhai cwcis hanfodol i wneud i'r gwasanaeth hwn weithio.",
+  "GUIDANCE_2": "Hoffem hefyd ddefnyddio cwcis dadansoddol fel y gallwn ddeall sut rydych yn defnyddio'r gwasanaeth a gwneud gwelliannau.",
+  "BUTTON_ACCEPT": "Derbyn cwcis dadansoddol",
+  "BUTTON_REJECT": "Gwrthod cwcis dadansoddol",
+  "BUTTON_VIEW_COOKIES": "Gweld cwcis",
+
+  "ACCEPTED_MESSAGE": "Rydych wedi derbyn cwcis dadansoddol.",
+  "REJECTED_MESSAGE": "Rydych wedi gwrthod cwcis dadansoddol.",
+  "SETTINGS_LINK_TEXT_1": "Gallwch ",
+  "SETTINGS_LINK_TEXT_2": "newid eich gosodiadau cwcis",
+  "SETTINGS_LINK_TEXT_3": "ar unrhyw adeg.",
+  "BUTTON_HIDE": "Cuddio'r neges hon"
 }

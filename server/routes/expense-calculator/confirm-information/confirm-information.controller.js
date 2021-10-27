@@ -7,7 +7,7 @@
   'use strict';
   var _ = require('lodash')
     , jwt = require('jsonwebtoken')
-    , config = require('../../../config/environment')()
+    , secretsConfig = require('config')
     , expenseCalculatorObj = require('../../../objects/expenseCalculator').object
     , validate = require('validate.js')
     , filters = require('../../../components/filters')
@@ -19,7 +19,6 @@
     return function(req, res) {
       var tmpErrors
         , mergedUser
-        , backLinkUrl
         , changeLinks;
 
       // Merge and then delete form fields and errors, prevents retention after pressing back link
@@ -76,7 +75,7 @@
             response.travellingModes[index].ratePerMile = response.travellingModes[index].ratePerMile * 100;
             response.travellingModes[index].dailyCost = response.travellingModes[index].dailyCost.toFixed(2);
           }
-          
+
           // Format currency values for display
           response['dailyTotal'] = response['dailyTotal'].toFixed(2);
           response['dailyTravelTotal'] = response['dailyTravelTotal'].toFixed(2);
@@ -178,7 +177,7 @@
       }
 
       // Create JWT
-      jwtToken = jwt.sign(apiUserObj, config.jwtKeyBureau, { expiresIn: config.jwtTTL });
+      jwtToken = jwt.sign(apiUserObj, secretsConfig.get('secrets.juror-digital-vault.public-jwtKeyBureau'), { expiresIn: secretsConfig.get('secrets.juror-digital-vault.public-jwtTTL') });
 
       // Send the calculation request to the api
       expenseCalculatorObj.create(require('request-promise'), app, jwtToken, expenseData)

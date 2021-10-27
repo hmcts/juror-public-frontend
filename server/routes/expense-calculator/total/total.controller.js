@@ -44,18 +44,22 @@
   module.exports.create = function(app) {
     return function(req, res) {
 
+      try {
+        // Reset error and saved field sessions
+        delete req.session.errors;
+        delete req.session.formFields;
 
-      // Reset error and saved field sessions
-      delete req.session.errors;
-      delete req.session.formFields;
+        // Reset change flag
+        req.session.change = false;
 
-      // Reset change flag
-      req.session.change = false;
-      
-      // Reset session data
-      // req.session.user = {};
+        return res.redirect(app.namedRoutes.build('expense.calculator.earnings.get'));
 
-      return res.redirect(app.namedRoutes.build('expense.calculator.earnings.get'));
+      } catch (err){
+        console.error(err.message)
+
+        // Return to start page
+        return res.redirect(app.namedRoutes.build('start-expense-calculator.get'));
+      }
 
     };
   };

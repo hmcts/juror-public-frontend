@@ -1,0 +1,145 @@
+{% extends "../../layouts/default-gds.njk" %}
+
+{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
+{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
+{% from "../../govuk-frontend/components/summary-list/macro.njk" import govukSummaryList %}
+
+
+{% block pageTitle %}
+  {% include "../../includes/title-error.njk" %}
+  {% if user.thirdParty == 'Yes' %}
+    {{ texts.DEFERRAL_PAGE.CHECK_DATES.HEADING_OB }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
+  {% else %}
+    {{ texts.DEFERRAL_PAGE.CHECK_DATES.HEADING }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
+  {% endif %}
+{% endblock %}
+
+{% block page_identifier %}Deferral Check Dates{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {% include "../../includes/back-link-gds.njk" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "../../includes/errors-gds.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+    <form action="{{ url('steps.confirm.date.deferral-check.post') }}" method="post">
+      
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+        
+          <h1 class="govuk-heading-xl">
+            {% if user.thirdParty == 'Yes' %}
+              {{ texts.DEFERRAL_PAGE.CHECK_DATES.HEADING_OB }}
+            {% else %}
+              {{ texts.DEFERRAL_PAGE.CHECK_DATES.HEADING }}
+            {% endif %}
+          </h1>
+
+          <div class="govuk-summary-list__row">
+            <span class="govuk-heading-m">
+              {% if user.thirdParty == 'Yes' %}
+                {{ texts.DEFERRAL_PAGE.CHECK_DATES.SUMMARY_HEADING_OB }}
+              {% else %}
+                {{ texts.DEFERRAL_PAGE.CHECK_DATES.SUMMARY_HEADING }}
+              {% endif %}
+            </span>
+          </div>
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                {{ texts.DEFERRAL_PAGE.DATES.DATE1_LABEL }}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ displayDates['date1'] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                {{ texts.DEFERRAL_PAGE.DATES.DATE2_LABEL }}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ displayDates['date2'] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                {{ texts.DEFERRAL_PAGE.DATES.DATE3_LABEL }}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ displayDates['date3'] }}
+              </dd>
+            </div>
+          </dl>
+
+        </div>
+      </div>
+
+      <div class="govuk-body">
+        {% if user.thirdParty == 'Yes' %}
+          <p>{{ texts.DEFERRAL_PAGE.CHECK_DATES.GUIDANCE_P1_OB }}</p>
+        {% else %}
+          <p>{{ texts.DEFERRAL_PAGE.CHECK_DATES.GUIDANCE_P1 }}</p>
+        {% endif %}
+        {% if user.thirdParty == 'Yes' %}
+          <p>{{ texts.DEFERRAL_PAGE.CHECK_DATES.GUIDANCE_P2_OB }}</p>
+        {% else %}
+          <p>{{ texts.DEFERRAL_PAGE.CHECK_DATES.GUIDANCE_P2 }}</p>
+        {% endif %}
+        <p>{{ texts.DEFERRAL_PAGE.CHECK_DATES.GUIDANCE_P3 }}</p>
+      </div>
+
+      {# Set radio error #}
+      {% set radioError = undefined %}
+      {% if errors.items['deferralDateCheck']%}
+        {% set radioError = {"text": errors.items['deferralDateCheck'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+      {% endif %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "deferralDateCheck",
+        name: "deferralDateCheck",
+        fieldset: {
+          legend: {
+            text: texts.DEFERRAL_PAGE.CHECK_DATES.QUESTION,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: texts.DEFERRAL_PAGE.CHECK_DATES.YES
+          },
+          {
+            value: "no",
+            text: texts.DEFERRAL_PAGE.CHECK_DATES.NO
+          }
+        ],
+        errorMessage:radioError
+      }) }}
+
+      {# Guidance details sections #}
+      {% include "./defer-guidance-1.njk" %}
+
+      {% include "./defer-guidance-2.njk" %}
+
+      {# Submit form #}
+      {{ govukButton({
+          text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
+      }) }}
+
+      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

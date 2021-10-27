@@ -30,7 +30,7 @@
       if (req.session.change === true){
         backLinkUrl = utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty);
       } else {
-        backLinkUrl = utils.getRedirectUrl('steps.qualify.convictions', req.session.user.thirdParty);
+        backLinkUrl = utils.getRedirectUrl('steps.qualify.mental.health.capacity', req.session.user.thirdParty);
       }
 
       return res.render('steps/04-confirm-date/index.njk', {
@@ -89,7 +89,7 @@
           returnObj = res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
         } else {
           delete req.session.user.deferral;
-          returnObj = res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.cjs.employed', req.session.user.thirdParty)));
+          returnObj = res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.assistance', req.session.user.thirdParty)));
         }
         break;
       case 'Change':

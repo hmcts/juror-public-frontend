@@ -55,16 +55,28 @@
             }
           ]}) }}
 
-        <details class="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              {{ texts.REPLY_TYPE.NEED_HELP }}
-            </span>
-          </summary>
-          <div class="govuk-details__text">
-            {{ texts.REPLY_TYPE.NEED_HELP_TEXT }}
-          </div>
-        </details>
+          {% if texts.INTERFACE.HTML_LANG === "cy" %}
+            {% set guidanceText %}
+              {{ texts.REPLY_TYPE.NEED_HELP_TEXT }}
+              <br>
+              {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+                {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+              {% endif %}
+              <br>
+              {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+                {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+              {% endif %}
+            {% endset %}
+          {% else %}
+            {% set guidanceText %}
+              {{ texts.REPLY_TYPE.NEED_HELP_TEXT }}
+            {% endset %}
+          {% endif %}
+
+        {{ govukDetails({
+          summaryText: texts.REPLY_TYPE.NEED_HELP,
+          html: guidanceText
+        }) }}
 
         {# Submit form #}
         {{ govukButton({

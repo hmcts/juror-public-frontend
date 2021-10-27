@@ -25,5 +25,11 @@
   "COOKIE_NECESSARY_GUIDANCE_1": "These essential cookies do things like remember your progress through a form (for example a licence application)",
   "COOKIE_NECESSARY_GUIDANCE_2": "They always need to be on.",
 
-  "COOKIE_LINK_TEXT": "How we use cookies"
+  "COOKIE_LINK_TEXT": "How we use cookies",
+
+  "SAVE_BUTTON_TEXT": "Save changes",
+
+  "SAVE_SUCCESS_HEADING": "Success",
+  "SAVE_SUCCESS_MESSAGE": "You’ve set your cookie preferences.",
+  "SAVE_SUCCESS_LINK_TEXT": "Go back to the page you were looking at"
 }

@@ -10,14 +10,14 @@ Feature: Responder Type Page
 
     # Responder Type Error Rendered
     When I navigate to the Juror Portal
-      And I click the Start Now button
+      # And I click the Start Now button
       And I confirm that I am on the Responder Type page
       And I submit my Responder Type
     Then I confirm that I am on the Responder Type page
-      And the responder type error is "Please select one of the options"
+      And the responder type error is "Select if you are replying for yourself or for someone else"
 
     # Responder Type Error Rendered
     When I navigate to the Juror Portal
-      And I click the Start Now button
+      # And I click the Start Now button
     Then I confirm that I am on the Responder Type page
       And the error summary list is empty on the Responder Type screen
