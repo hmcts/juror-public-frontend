@@ -1,8 +1,8 @@
 {
-  "HEADING": "Please give us three dates you could start jury service during the next 12 months",
-  "HEADING_OB": "Please give us three dates the person you're replying for could do jury service during the next 12 months",
-  "REASON_HEADING": "Please say why you need another date for your jury service",
-  "REASON_HEADING_OB": "Please say why the person you're answering for needs another date for their jury service",
+  "HEADING": "Give us three dates you could start jury service during the next 12 months",
+  "HEADING_OB": "Give us three dates the person you're replying for could do jury service during the next 12 months",
+  "REASON_HEADING": "Say why you need another date for your jury service",
+  "REASON_HEADING_OB": "Say why the person you're answering for needs another date for their jury service",
 
   "REASON_FIELD_TITLE": "Please say why you need another date for your jury service",
   "REASON_FIELD_TITLE_OB": "Please say why the person you're answering for needs another date for their jury service",

@@ -30,19 +30,22 @@
   "NAME_TWO": "_ga",
   "NAME_THREE": "sessionID",
   "NAME_FOUR": "ApplicationGatewayAffinity",
+  "NAME_FIVE": "_gid",
   "PURPOSE_TITLE": "Purpose",
   "PURPOSE_ONE": "This helps us identify how you use GOV.UK so we can make the site better",
   "PURPOSE_TWO": "This helps us identify unique users  of GOV.UK so we can make the site better",
   "PURPOSE_THREE": "Keeps track of whether you're logged in or not",
   "PURPOSE_FOUR": "Used to direct you to the same server for each request",
+  "PURPOSE_FIVE": "This helps us identify unique users  of GOV.UK so we can make the site better",
   "EXPIRES_TITLE": "Expires",
-  "EXPIRES_ONE": "10 minutes",
+  "EXPIRES_ONE": "1 minute",
   "EXPIRES_TWO": "2 years",
   "EXPIRES_THREE": "When you close your browser",
   "EXPIRES_FOUR": "When you close your browser",
+  "EXPIRES_FIVE": "24 hours",
   "OPT_OUT_START": "You can",
   "OPT_OUT_END": "opt out of Google Analytics cookies",
-  "OPT_OUT_LINK": "https://tools.google.com/dlpage/gaoptout",
+  "OPT_OUT_LINK": "/cookie-settings",
 
   "SESSIONS": "Sessions",
   "SESSION_SUMMARY": "A cookie is set to record your session activity.",
@@ -53,5 +56,10 @@
   "FEEDBACK_SURVEY_RESULTS": "We will use the results from completed survey responses to give us information from your experience of using the service, this will enable us to consider how we further improve the service.",
   "FEEDBACK_SURVEY_DATA": "All data we capture is anonymous and there is no personally identifiable data available to us.",
   "FEEDBACK_SURVEY_COOKIES": "If you take part, SmartSurvey will save extra cookies to your computer to track your progress through it. SmartSurvey is used to collect responses to the survey. If you take part, SmartSurvey will save extra cookies to your computer to track your progress through it.  Information on how SmartSurvey uses Cookies can be found at:",
-  "FEEDBACK_SURVEY_COOKIES_LINK": "https://www.smartsurvey.co.uk/how-we-use-cookies"
+  "FEEDBACK_SURVEY_COOKIES_LINK": "https://www.smartsurvey.co.uk/how-we-use-cookies",
+
+  "CHANGE_SETTINGS_HEADING": "Change your settings",
+  "CHANGE_SETTINGS_GUIDANCE": "You can",
+  "CHANGE_SETTINGS_LINK_TEXT": "change which cookies you're happy for us to use",
+  "CHANGE_SETTINGS_LINK_URL": "/cookie-settings"
 }

@@ -1,30 +1,32 @@
 {
   "INTERFACE": {
     "GOV": "GOV.UK",
-    "SERVICE_TITLE": "Check what you can claim for jury service",
-    "BUTTON_TEXT_CONTINUE": "Continue",
-    "LINK_OPENS_NEW_WINDOW": "Opens in a new window",
-    "BETA_BANNER_TEXT_1": "Juror Expenses Calculator"
+    "SERVICE_TITLE": "Gwiriwch beth allwch chi ei hawlio ar gyfer gwasanaethu ar reithgor",
+    "BUTTON_TEXT_CONTINUE": "Parhau",
+    "LINK_OPENS_NEW_WINDOW": "Agor mewn ffenestr newydd",
+    "BETA_BANNER_TEXT_1": "Cyfrifo Treuliau Rheithiwr"
   },
 
   "START": {
-    "HEADING": "Check what you can claim for jury service",
-    "PARAGRAPH_1": "Use this calculator to work out what you can claim for doing 10 days of jury service.",
-    "PARAGRAPH_2": "This calculator:",
-    "LIST_1_ITEM_1": "will give you an estimate of what you can claim",
-    "LIST_1_ITEM_2": "is for your information only",
-    "LIST_1_ITEM_3": "does not send a claim or your details to the courts",
-    "PARAGRAPH_3": "You'll need to make your actual expenses claim by filling in a paper form at the end of your jury service.",
+    "HEADING": "Gwiriwch beth allwch chi ei hawlio ar gyfer gwasanaethu ar reithgor",
+    "PARAGRAPH_1": "Defnyddiwch yr adnodd hwn i gyfrifo beth allwch chi ei hawlio am wasanaethu ar reithgor am 10 diwrnod.",
+    "PARAGRAPH_2": "Mae'r adnodd hwn:",
+    "LIST_1_ITEM_1": "yn rhoi amcangyfrif ichi o'r hyn y gallwch ei hawlio",
+    "LIST_1_ITEM_2": "er gwybodaeth ichi yn unig",
+    "LIST_1_ITEM_3": "ni fydd yn anfon hawliad / eich manylion i'r llys",
+    "PARAGRAPH_3": "Bydd rhaid ichi wneud hawliad trwy lenwi ffurflen bapur ar ddiwrnod olaf eich gwasanaeth rheithgor.",
 
-    "INFO_INDENT": "This calculator is also available in",
-    "INFO_INDENT_LINK": "Welsh (Cymraeg).",
-    "CLANG_LINK": "/expense-calculator/?clang=cy",
+    "INFO_INDENT": "Mae'r adnodd hwn hefyd ar gael yn",
+    "INFO_INDENT_LINK": "Saesneg (English)",
+    "CLANG_LINK": "/expense-calculator/?clang=en",
 
-    "SUBHEADING_2": "Before you start",
-    "PARAGRAPH_4": "You will need details about:",
-    "LIST_2_ITEM_1": "your income",
-    "LIST_2_ITEM_2": "what you expect to spend travelling to court",
-    "LIST_2_ITEM_3": "other expenses such as childcare or carer costs",
+    "SUBHEADING_2": "Cyn ichi ddechrau",
+    "PARAGRAPH_4": "Byddwch angen manylion am:",
+    "LIST_2_ITEM_1": "eich incwm",
+    "LIST_2_ITEM_2": "y swm rydych yn rhagweld y byddwch yn ei wario i deithio i'r llys",
+    "LIST_2_ITEM_3": "treuliau eraill fel costau gofal plant neu gostau gofalu am rywun arall",
+
+    "START_BUTTON_TEXT": "Cychwyn arni",
 
     "NAV_HEADING_1": "Subsection",
     "NAV_ITEM_1": "Related Link",
@@ -68,37 +70,37 @@
   },
 
   "EARNINGS": {
-    "HEADING": "Will you lose any income while doing jury service?",
-    "HINT": "This means income from an employer or self-employment. Benefits like Jobseeker's Allowance will not be affected unless you do more than 8 weeks of jury service.",
-    "YES": "Yes",
-    "NO": "No",
-    "GUIDANCE_HEADING_1": "My employer has told me they will pay me and then claim the money back from the court",
-    "GUIDANCE_TEXT_1": "Expenses and loss of earnings can only be reimbursed to the juror if they've suffered financial loss as a direct result of doing jury service. The court will not pay compensation to third parties like employers. If your employer will pay you, then you cannot make a claim for loss of earnings.",
-    "ERROR_SUMMARY": "Please select yes or no",
-    "ERROR_DETAIL": "Please select yes or no"
+    "HEADING": "A fyddwch yn colli unrhyw incwm wrth ichi wasanaethu ar reithgor?",
+    "HINT": "Mae hyn yn golygu incwm gan gyflogwr neu eich incwm os ydych yn hunangyflogedig. Ni fydd budd-daliadau fel y Lwfans Ceisio Gwaith yn cael ei effeithio oni bai eich bod yn gwasanaethu ar reithgor am fwy na 8 wythnos.",
+    "YES": "Byddaf",
+    "NO": "Na fyddaf",
+    "GUIDANCE_HEADING_1": "Mae fy nghyflogwr wedi dweud y byddant yn fy nhalu ac yn hawlio'r arian yn ôl gan y llys",
+    "GUIDANCE_TEXT_1": "Gellir ad-dalu costau treuliau ac unrhyw enillion a gollwyd i'r rheithiwr dim ond os yw'r rheithiwr wedi profi colled ariannol o ganlyniad uniongyrchol i wasanaethu ar reithgor. Ni fydd y llys yn talu iawndal i drydydd partïon fel cyflogwyr. Os bydd eich cyflogwr yn eich talu, ni allwch wneud hawliad am golli enillion.",
+    "ERROR_SUMMARY": "Dewiswch byddaf neu na fyddaf",
+    "ERROR_DETAIL": "Dewiswch byddaf neu na fyddaf "
   },
 
   "EARNINGS_THRESHOLD": {
-    "HEADING": "Do you earn more than £64.95 each day on the days you work?",
-    "HINT": "If you earn a different amount on different days, use the largest amount to find out the maximum that you can claim.",
-    "YES": "Yes",
-    "NO": "No",
-    "ERROR_SUMMARY": "Please select yes or no",
-    "ERROR_DETAIL": "Please select yes or no"
+    "HEADING": "A ydych yn ennill mwy na £64.95 y dydd ar y dyddiau pan fyddwch yn gweithio?",
+    "HINT": "Os ydych yn ennill symiau gwahanol o arian ar ddyddiau gwahanol, defnyddiwch y swm mwyaf i ganfod beth yw'r uchafswm y gallwch ei hawlio.",
+    "YES": "Ydw",
+    "NO": "Nac ydw",
+    "ERROR_SUMMARY": "Dewiswch ydw neu nac ydw",
+    "ERROR_DETAIL": "Dewiswch ydw neu nac ydw"
   },
 
   "EARNINGS_AMOUNT": {
-    "HEADING": "How much do you earn each day?",
-    "HINT": "Enter the amount you receive from all employment, self employment or as a company director, each day. This should be the amount you receive after you have paid tax, also known as your Net Pay.",
-    "GUIDANCE_HEADING": "Where can I find this information?",
-    "GUIDANCE_TEXT": "You can find this on your payslip, P60 or tax return. It will be shown as 'Net Pay'.",
+    "HEADING": "Faint o arian ydych chi'n ennill bob dydd?",
+    "HINT": "Nodwch gyfanswm yr arian yr ydych yn ei ennill ar gyfer unrhyw gyflogaeth, hunangyflogaeth neu fel cyfarwyddwr cwmni pob dydd. Dylai hyn fod y swm rydych yn ei gael ar ôl talu treth, a elwir hefyd yn Gyflog Net.",
+    "GUIDANCE_HEADING": "Lle galla i ddod o hyd i'r wybodaeth hon?",
+    "GUIDANCE_TEXT": "Gallwch ddod o hyd iddi ar eich taflen gyflog, P60 neu'ch ffurflen dreth. Bydd yn ymddangos fel 'Net Pay.'",
     
-    "AMOUNT_LABEL": "£ each day",
+    "AMOUNT_LABEL": "£ y dydd",
 
-    "ERROR_SUMMARY_MISSING": "Enter how much you earn each day",
-    "ERROR_DETAIL_MISSING": "Enter how much you earn each day",
-    "ERROR_SUMMARY_INVALID": "Enter how much you earn each day",
-    "ERROR_DETAIL_INVALID": "Enter how much you earn each day"
+    "ERROR_SUMMARY_MISSING": "Nodwch faint rydych yn ei ennill bob dydd",
+    "ERROR_DETAIL_MISSING": "Nodwch faint rydych yn ei ennill bob dydd",
+    "ERROR_SUMMARY_INVALID": "Gwiriwch faint rydych yn ei ennill bob dydd",
+    "ERROR_DETAIL_INVALID": "Gwiriwch faint rydych yn ei ennill bob dydd"
   },
 
   "BENEFITS": {
@@ -113,110 +115,110 @@
   },
 
   "EXTRA_COSTS": {
-    "HEADING": "Will doing jury service mean you have extra costs that you wouldn't normally have?",
-    "HINT_PARAGRAPH_1": "Include costs for childcare or care for an elderly or vulnerable adult. You can only claim for extra costs incurred by doing jury service and not costs that you’d normally pay for.",
-    "HINT_PARAGRAPH_2": "Do not include travel costs. We'll ask you for those later.",
-    "INFO_LINK_HEADING": "Claiming Expenses for childcare or care of elderly or vulnerable adults",
-    "YES": "Yes",
-    "NO" : "No",
-    "ERROR_SUMMARY": "Please select yes or no",
-    "ERROR_DETAIL": "Please select yes or no"
+    "HEADING": "A fydd gwasanaethu ar reithgor yn golygu y bydd gennych gostau ychwanegol na fyddai'n codi fel arfer?",
+    "HINT_PARAGRAPH_1": "Cofiwch gynnwys costau gofal plant neu gostau gofal ar gyfer oedolyn hŷn neu oedolyn bregus. Gallwch ond hawlio am y costau ychwanegol sy'n codi wrth ichi wasanaethu ar reithgor ac nid y costau y byddech yn talu amdanynt fel arfer.",
+    "HINT_PARAGRAPH_2": "Peidiwch â chynnwys costau teithio. Byddwn yn gofyn ichi am y costau hynny yn hwyrach ymlaen.",
+    "INFO_LINK_HEADING": "Hawlio Treuliau ar gyfer gofal plant neu gofal ar gyfer oedolion hŷn / bregus",
+    "YES": "Bydd",
+    "NO" : "Na fydd",
+    "ERROR_SUMMARY": "Dewiswch bydd neu na fydd",
+    "ERROR_DETAIL": "Dewiswch bydd neu na fydd"
   },
 
   "EXTRA_COSTS_INFO": {
-    "HEADING": "Claiming expenses for childcare or care for an elderly or vulnerable adult",
-    "INFO_PARAGRAPH_1": "You can claim for extra costs you incur for childcare or the care of an elderly or vulnerable adult during your jury service.",
-    "SECTION_1_HEADING": "You cannot claim back costs that you'd normally pay for",
-    "SECTION_1_PARAGRAPH_1": "For example, if:",
-    "SECTION_1_PARAGRAPH_2": "- you work and usually use a childminder, you cannot claim this childcare cost for the days you'd normally work.",
-    "SECTION_1_PARAGRAPH_3": "- your child normally attends an afterschool club or other activities, you cannot claim childcare for those hours.",
-    "SECTION_1_PARAGRAPH_4": "In both cases, this is because you've not incurred any extra childcare costs as a direct result of jury service. These are costs you'd pay anyway.",
+    "HEADING": "Hawlio Treuliau ar gyfer gofal plant neu gofal ar gyfer oedolyn hŷn / bregus",
+    "INFO_PARAGRAPH_1": "Gallwch hawlio am gostau ychwanegol sy'n codi ar gyfer gofal plant neu gostau gofal ar gyfer oedolyn hŷn / bregus yn ystod y cyfnod pan fyddwch yn gwasanaethu ar reithgor.",
+    "SECTION_1_HEADING": "Ni allwch wneud hawliad am gostau y byddwch yn eu talu fel arfer",
+    "SECTION_1_PARAGRAPH_1": "Er enghraifft:",
+    "SECTION_1_PARAGRAPH_2": "- os ydych yn gweithio ac yn talu am ofalwr plant fel arfer, ni allwch wneud hawliad am y dyddiau y byddwch yn gweithio fel arfer.",
+    "SECTION_1_PARAGRAPH_3": "- os yw eich plentyn fel arfer yn mynd i glwb ar ôl ysgol neu weithgareddau eraill, ni allwch hawlio costau gofal plant am yr oriau hynny.",
+    "SECTION_1_PARAGRAPH_4": "Yn y ddau achos, mae hyn oherwydd nad oes unrhyw gostau gofal plant ychwanegol wedi codi o ganlyniad uniongyrchol i wasanaethu ar reithgor. Mae'r rhain yn gostau y byddwch yn eu talu beth bynnag.",
 
-    "SECTION_2_HEADING": "If someone takes annual leave to look after your child",
-    "SECTION_2_PARAGRAPH_1": "You cannot claim their salary back because their employer will normally pay them during their annual leave.",
-    "SECTION_2_PARAGRAPH_2": "In addition, the court does not pay compensation to third parties. This is because there's no direct loss to you as a result of jury service.",
+    "SECTION_2_HEADING": "Os bydd rhywun yn cymryd gwyliau blynyddol i ofalu am eich plentyn",
+    "SECTION_2_PARAGRAPH_1": "Ni allwch hawlio eu cyflog yn ôl oherwydd byddai eu cyflogwr fel arfer yn eu talu ar gyfer eu gwyliau blynyddol.",
+    "SECTION_2_PARAGRAPH_2": "Hefyd, nid yw'r llys yn talu iawndal i drydydd partïon. Mae hyn oherwydd nid oes colled uniongyrchol ichi o ganlyniad i wasanaethu ar reithgor.",
 
-    "SECTION_3_HEADING": "If friends or family provide care and charge you for this",
-    "SECTION_3_PARAGRAPH_1": "You can claim up to £2.50 per hour, per child or adult towards this cost.",
-    "SECTION_3_PARAGRAPH_2": "You can claim this for up to 8 hours for each day at court.",
-    "SECTION_3_PARAGRAPH_3": "This person must provide a letter to the court with their full details, days and times they've cared for your child or any adult before the expenses will be paid."
+    "SECTION_3_HEADING": "Os bydd eich ffrindiau neu'ch teulu yn darparu gofal ac yn codi tâl arnoch am wneud hynny",
+    "SECTION_3_PARAGRAPH_1": "Gallwch hawlio hyd at £2.50 yr awr, fesul plentyn neu oedolyn tuag at y gost hon.",
+    "SECTION_3_PARAGRAPH_2": "Gallwch hawlio hyd at 8 awr ar gyfer pob diwrnod rydych chi yn y llys.",
+    "SECTION_3_PARAGRAPH_3": "Rhaid i'r unigolyn hwn ddarparu llythyr i'r llys sy'n nodi eu manylion llawn a'r dyddiadau a'r amseroedd mae'n nhw wedi gofalu am eich plentyn neu unrhyw oedolyn cyn y bydd y treuliau yn cael eu talu."
   },
 
   "EXTRA_COSTS_AMOUNT": {
-    "HEADING": "What will the total be for these extra costs each day?",
-    "HINT": "You'll need to provide evidence of these costs when making a claim. These might include invoices or a copy of your child's birth certificate. A full list of evidence needed is on the claim form.",
-    "AMOUNT_LABEL": "£ each day",
-    "ERROR_SUMMARY_MISSING": "Enter the total value of these extra costs each day",
-    "ERROR_DETAIL_MISSING": "Enter the total value of these extra costs each day",
-    "ERROR_SUMMARY_INVALID": "Enter the total value of these extra costs each day",
-    "ERROR_DETAIL_INVALID": "Enter the total value of these extra costs each day"
+    "HEADING": "Beth fyddai cyfanswm y costau ychwanegol hyn fesul dydd?",
+    "HINT": "Bydd arnoch angen darparu tystiolaeth o'r costau hyn wrth wneud hawliad. Gallai'r rhain gynnwys anfonebau neu gopi o dystysgrif geni eich plentyn. Ceir rhestr lawn o'r dystiolaeth sydd ei hangen ar y ffurflen hawlio.",
+    "AMOUNT_LABEL": "£ y dydd",
+    "ERROR_SUMMARY_MISSING": "Nodwch gyfanswm y costau ychwanegol hyn fesul dydd",
+    "ERROR_DETAIL_MISSING": "Nodwch gyfanswm y costau ychwanegol hyn fesul dydd",
+    "ERROR_SUMMARY_INVALID": "Gwiriwch gyfanswm y costau ychwanegol hyn fesul dydd",
+    "ERROR_DETAIL_INVALID": "Gwiriwch gyfanswm y costau ychwanegol hyn fesul dydd"
   },
 
   "TRAVEL_TYPE": {
-    "HEADING": "How will you travel to the court?",
-    "HINT": "Select all that apply. For example, you may need to drive to a station before taking public transport.",
-    "TRAVEL_TYPE_BICYCLE": "Bicycle",
+    "HEADING": "Sut byddwch yn teithio i'r llys?",
+    "HINT": "Dewiswch bob un sy'n berthnasol. Er enghraifft, efallai y byddwch angen gyrru i orsaf cyn defnyddio trafnidiaeth gyhoeddus.",
+    "TRAVEL_TYPE_BICYCLE": "Beic",
     "TRAVEL_TYPE_CAR": "Car",
-    "TRAVEL_TYPE_MOTORCYCLE": "Motorcycle",
-    "TRAVEL_TYPE_PUBLIC_TRANSPORT": "Public transport",
-    "TRAVEL_TYPE_WALKING": "Walking",
-    "GUIDANCE_HEADING": "Taxis",
-    "GUIDANCE_TEXT": "You cannot usually claim for taxis. If you have no alternative apart from taking a taxi to court, contact the court to discuss this.",
-    "ERROR_SUMMARY": "Please select at least one method of getting to the court",
-    "ERROR_DETAIL": "Please select at least one method of getting to the court"
+    "TRAVEL_TYPE_MOTORCYCLE": "Beic modur",
+    "TRAVEL_TYPE_PUBLIC_TRANSPORT": "Trafnidiaeth gyhoeddus",
+    "TRAVEL_TYPE_WALKING": "Cerdded",
+    "GUIDANCE_HEADING": "Tacsis",
+    "GUIDANCE_TEXT": "Fel arfer, ni allwch hawlio costau tacsi. Os nad oes gennych unrhyw ddewis arall oni bai am gael tacsi i ddod i'r llys, cysylltwch â'r llys i drafod hyn.",
+    "ERROR_SUMMARY": "Dewiswch o leiaf un dull ar gyfer teithio i'r llys",
+    "ERROR_DETAIL": "Dewiswch o leiaf un dull ar gyfer teithio i'r llys"
   },
 
   "TRAVEL_BICYCLE": {
-    "HEADING": "Total miles you'll cycle each day",
-    "LABEL": "Miles each day",
-    "ERROR_SUMMARY_MISSING": "Enter how many miles you'll cycle each day",
-    "ERROR_DETAIL_MISSING": "Enter how many miles you'll cycle each day",
-    "ERROR_SUMMARY_INVALID": "Enter how many miles you'll cycle each day",
-    "ERROR_DETAIL_INVALID": "Enter how many miles you'll cycle each day"
+    "HEADING": "Cyfanswm y milltiroedd rydych yn teithio ar feic fesul dydd",
+    "LABEL": "Milltiroedd y dydd",
+    "ERROR_SUMMARY_MISSING": "Nodwch faint o filltiroedd rydych yn teithio ar feic fesul dydd",
+    "ERROR_DETAIL_MISSING": "Nodwch faint o filltiroedd rydych yn teithio ar feic fesul dydd",
+    "ERROR_SUMMARY_INVALID": "Gwiriwch faint o filltiroedd rydych yn teithio ar feic fesul dydd",
+    "ERROR_DETAIL_INVALID": "Gwiriwch faint o filltiroedd rydych yn teithio ar feic fesul dydd"
   },
 
   "TRAVEL_CAR": {
-    "HEADING": "Total miles you'll travel each day by car",
-    "LABEL": "Miles each day",
-    "ERROR_SUMMARY_MISSING": "Enter how many miles you'll travel by car each day",
-    "ERROR_DETAIL_MISSING": "Enter how many miles you'll travel by car each day",
-    "ERROR_SUMMARY_INVALID": "Enter how many miles you'll travel by car each day",
-    "ERROR_DETAIL_INVALID": "Enter how many miles you'll travel by car each day"
+    "HEADING": "Cyfanswm y milltiroedd rydych yn teithio mewn car fesul dydd",
+    "LABEL": "Milltiroedd y dydd",
+    "ERROR_SUMMARY_MISSING": "Nodwch faint o filltiroedd rydych yn teithio mewn car fesul dydd",
+    "ERROR_DETAIL_MISSING": "Nodwch faint o filltiroedd rydych yn teithio mewn car fesul dydd",
+    "ERROR_SUMMARY_INVALID": "Gwiriwch faint o filltiroedd rydych yn teithio mewn car fesul dydd",
+    "ERROR_DETAIL_INVALID": "Gwiriwch faint o filltiroedd rydych yn teithio mewn car fesul dydd"
   },
 
   "TRAVEL_MOTORCYCLE": {
-    "HEADING": "Total miles you'll travel each day by motorcycle",
-    "LABEL": "Miles each day",
-    "ERROR_SUMMARY_MISSING": "Enter how many miles you'll travel by motorcycle each day",
-    "ERROR_DETAIL_MISSING": "Enter how many miles you'll travel by motorcycle each day",
-    "ERROR_SUMMARY_INVALID": "Enter how many miles you'll travel by motorcycle each day",
-    "ERROR_DETAIL_INVALID": "Enter how many miles you'll travel by motorcycle each day"
+    "HEADING": "Cyfanswm y milltiroedd rydych yn teithio ar feic modur fesul dydd",
+    "LABEL": "Milltiroedd y dydd",
+    "ERROR_SUMMARY_MISSING": "Nodwch faint o filltiroedd rydych yn teithio ar feic modur fesul dydd",
+    "ERROR_DETAIL_MISSING": "Nodwch faint o filltiroedd rydych yn teithio ar feic modur fesul dydd",
+    "ERROR_SUMMARY_INVALID": "Gwiriwch faint o filltiroedd rydych yn teithio ar feic modur fesul dydd",
+    "ERROR_DETAIL_INVALID": "Gwiriwch faint o filltiroedd rydych yn teithio ar feic modur fesul dydd"
   },
 
   "TRAVEL_PUBLIC_TRANSPORT": {
-    "HEADING": "Total cost of public transport each day",
-    "HINT": "You should not buy a weekly, fortnightly or monthly ticket for your jury service. This is because you might not need to serve for 10 working days, and you will not be able to claim for the full cost of the ticket. Buy tickets each day instead. You'll need to provide receipts for your travel when you make a claim.",
-    "LABEL": "Cost of all your tickets in £ each day",
-    "GUIDANCE_HEADING": "I have a season ticket that I can use",
-    "GUIDANCE_PARAGRAPH_1": "If you've got an existing season ticket for travel, you cannot claim any part of this back because it is not an extra cost you'll need to pay.",
-    "GUIDANCE_PARAGRAPH_2": "If you do not have any extra public transport costs to claim, enter £0.",
-    "ERROR_SUMMARY_MISSING": "Enter the cost of all your tickets each day",
-    "ERROR_DETAIL_MISSING": "Enter the cost of all your tickets each day",
-    "ERROR_SUMMARY_INVALID": "Enter the cost of all your tickets each day",
-    "ERROR_DETAIL_INVALID": "Enter the cost of all your tickets each day"
+    "HEADING": "Cyfanswm cost trafnidiaeth gyhoeddus fesul dydd",
+    "HINT": "Ni ddylech brynu tocyn wythnos, tocyn pythefnos na thocyn mis ar gyfer eich gwasanaeth rheithgor. Mae hyn oherwydd efallai ni fydd rhaid ichi wasanaethu am 10 diwrnod ac ni fyddwch yn gallu gwneud hawliad am gost llawn y tocyn. Yn hytrach, prynwch docyn fesul dydd. Bydd rhaid ichi ddarparu derbynebau ar gyfer y costau teithio pan fyddwch yn gwneud hawliad.",
+    "LABEL": "Cost eich holl docynnau mewn £ fesul dydd",
+    "GUIDANCE_HEADING": "Mae gen i docyn tymor y gallaf ei ddefnyddio",
+    "GUIDANCE_PARAGRAPH_1": "Os oes gennych docyn tymor ar gyfer teithio yn barod, ni allwch hawlio ar gyfer unrhyw ran o'r gost hwn oherwydd nid yw'n gost ychwanegol y mae'n rhaid ichi ei dalu.",
+    "GUIDANCE_PARAGRAPH_2": "Os nad oes gennych unrhyw gostau trafnidiaeth gyhoeddus ychwanegol i'w hawlio, nodwch £0.",
+    "ERROR_SUMMARY_MISSING": "Nodwch gost eich holl docynnau fesul dydd",
+    "ERROR_DETAIL_MISSING": "Nodwch gost eich holl docynnau fesul dydd",
+    "ERROR_SUMMARY_INVALID": "Gwiriwch gost eich holl docynnau fesul dydd",
+    "ERROR_DETAIL_INVALID": "Gwiriwch gost eich holl docynnau fesul dydd"
   },
 
   "TRAVEL_PARKING": {
-    "HEADING": "Will you need to pay for parking?",
-    "YES": "Yes",
-    "NO" : "No",
-    "ERROR_SUMMARY": "Please select yes or no",
-    "ERROR_DETAIL": "Please select yes or no"
+    "HEADING": "A fydd rhaid i chi dalu costau parcio?",
+    "YES": "Bydd",
+    "NO" : "Na fydd",
+    "ERROR_SUMMARY": "Dewiswch bydd neu na fydd",
+    "ERROR_DETAIL": "Dewiswch bydd neu na fydd"
   },
 
   "TRAVEL_PARKING_INFO": {
-    "HEADING": "Claiming for parking",
-    "HINT": "Not all courts will pay for parking. There may be a maximum amount that a court will pay per day. Check with the court for permission before you claim for parking."
+    "HEADING": "Hawlio costau parcio",
+    "HINT": "Ni fydd pob llys yn talu am gostau parcio. Gall fod uchafswm y bydd y llys yn talu fesul dydd. Cysylltwch â'r llys i gael caniatâd cyn gwneud hawliad am gostau parcio."
   },
 
   "TRAVEL_PARKING_AMOUNT": {
@@ -227,87 +229,87 @@
   },
 
   "CHECK_ANSWERS": {
-    "HEADING": "Check your answers",
+    "HEADING": "Gwiriwch eich atebion",
 
-    "CHANGE_LINK": "Change",
+    "CHANGE_LINK": "Newid",
     "CURRENCY": "£",
-    "PER_DAY": "per day",
-    "MILES": "miles",
-    "EACH_DAY": "each day",
+    "PER_DAY": "fesul dydd",
+    "MILES": "milltiroedd",
+    "EACH_DAY": "fesul dydd",
 
-    "EARNINGS_HEADING": "Loss of earnings",
-    "EARNINGS_1": "Will you lose income?",
-    "EARNINGS_2": "Do you earn more than £64.95 each day?",
-    "EARNINGS_3": "How much do you earn each day?",
+    "EARNINGS_HEADING": "Colli enillion",
+    "EARNINGS_1": "A fyddwch yn colli incwm?",
+    "EARNINGS_2": "A ydych yn ennill mwy na £64.95 y dydd?",
+    "EARNINGS_3": "Faint ydych chi'n ennill fesul dydd?",
 
-    "EXPENSES_HEADING": "Other expenses",
-    "EXPENSES_1": "Extra costs you wouldn't normally have?",
-    "EXPENSES_2": "Total value of extra costs",
+    "EXPENSES_HEADING": "Treuliau eraill",
+    "EXPENSES_1": "A oes gennych gostau ychwanegol na fyddai'n codi fel arfer?",
+    "EXPENSES_2": "Cyfanswm y costau ychwanegol",
     
-    "TRAVEL_HEADING": "Travel",
-    "TRAVEL_TYPE": "How will you travel to court?",
-    "TRAVEL_BICYCLE": "Miles by bicycle each day",
-    "TRAVEL_CAR": "Miles by car each day",
-    "TRAVEL_MOTORCYCLE": "Miles by motorcycle each day",
-    "TRAVEL_PUBLIC_TRANSPORT": "Cost of public transport each day"
+    "TRAVEL_HEADING": "Teithio",
+    "TRAVEL_TYPE": "Sut byddwch yn teithio i'r llys?",
+    "TRAVEL_BICYCLE": "Milltiroedd ar feic fesul dydd",
+    "TRAVEL_CAR": "Milltiroedd mewn car fesul dydd",
+    "TRAVEL_MOTORCYCLE": "Milltiroedd ar feic modur fesul dydd",
+    "TRAVEL_PUBLIC_TRANSPORT": "Costau trafnidiaeth gyhoeddus fesul dydd"
   },
 
   "CALCULATED_TOTAL": {
-    "HEADING": "You should be able to claim",
+    "HEADING": "Dylech fod yn gallu hawlio",
 
-    "ASSUMPTIONS": "This is assuming:",
-    "ASSUMPTION_1": "the details you have entered are correct",
-    "ASSUMPTION_2": "your jury service lasts up to 10 days",
-    "ASSUMPTION_3": "each day you will be at court for at least 4 hours",
+    "ASSUMPTIONS": "Mae cyfrifiad hwn yn seiliiedig ar y canlynol:",
+    "ASSUMPTION_1": "bod y manylion rydych wedi'u rhoi yn gywir",
+    "ASSUMPTION_2": "bod eich gwasanaeth rheithgor yn para hyd at 10 diwrnod",
+    "ASSUMPTION_3": "byddwch yn y llys am o leiaf 4 awr pob dydd",
 
-    "SUB_HEADING": "How we calculated this",
-    "YOU_CAN_CLAIM": "You can claim",
-    "PER_DAY": "per day",
-    "EACH_DAY": "each day",
-    "MILES_AT": "miles at",
-    "PER_MILE": "per mile",
+    "SUB_HEADING": "Sut wnaethom ni gyfrifo hwn",
+    "YOU_CAN_CLAIM": "Gallwch hawlio",
+    "PER_DAY": "y dydd",
+    "EACH_DAY": "fesul dydd",
+    "MILES_AT": "o filltiroedd ar raddfa o",
+    "PER_MILE": "y filltir",
 
-    "EXPENSES_HEADING": "Loss of earnings and other expenses",
-    "EXPENSES_SUMMARY_1": "You can claim",
-    "EXPENSES_SUMMARY_2": "for each day you'll lose income or have extra costs from doing jury service.",
-    "EXPENSES_DETAILS_HEADING": "How have my loss of earnings and expenses been calculated?",
-    "EXPENSES_DETAILS_LOSS_OF_EARNINGS": "Loss of earnings",
-    "EXPENSES_DETAILS_OTHER_EXPENSES": "Other expenses",
-    "EXPENSES_DETAILS_TOTAL": "Total",
-    "EXPENSES_DETAILS_INFO": "is the maximum amount that you can claim per day within the first 10 days of jury service. For days shorter than 4 hours this is reduced to",
+    "EXPENSES_HEADING": "Colli enillion ac unrhyw gostau eraill",
+    "EXPENSES_SUMMARY_1": "Gallwch hawlio",
+    "EXPENSES_SUMMARY_2": "ar gyfer pob dydd y byddwch yn colli incwm neu bob dydd lle mae gennych gostau ychwanegol oherwydd eich bod yn gwasanaethu ar reithgor.",
+    "EXPENSES_DETAILS_HEADING": "Sut mae fy nhreuliau a faint o fy enillion yr wyf wedi eu colli wedi cael eu cyfrifo?",
+    "EXPENSES_DETAILS_LOSS_OF_EARNINGS": "Colli enillion",
+    "EXPENSES_DETAILS_OTHER_EXPENSES": "Treuliau eraill",
+    "EXPENSES_DETAILS_TOTAL": "Cyfanswm",
+    "EXPENSES_DETAILS_INFO": "yw'r uchafswm y gallwch ei hawlio fesul dydd o fewn y 10 diwrnod o wasanaethu ar reithgor. Ar gyfer dyddiau sy'n fyrrach na 4 awr, mae'r swm hwn yn llai, sef",
 
-    "TRAVEL_HEADING": "Travel",
-    "TRAVEL_SUMMARY_1": "You can claim",
-    "TRAVEL_SUMMARY_2": "for each day you travel to court.",
-    "TRAVEL_DETAILS_HEADING": "How have my travel expenses been calculated?",
+    "TRAVEL_HEADING": "Teithio",
+    "TRAVEL_SUMMARY_1": "Gallwch hawlio",
+    "TRAVEL_SUMMARY_2": "ar gyfer pob dydd rydych yn teithio i'r llys.",
+    "TRAVEL_DETAILS_HEADING": "Sut mae fy nhreuliau teithio wedi cael eu cyfrifo?",
 
-    "TRAVEL_DETAILS_BICYCLE": "Bicycle mileage",
-    "TRAVEL_DETAILS_CAR": "Car mileage",
-    "TRAVEL_DETAILS_MOTORCYCLE": "Motorcycle mileage",
-    "TRAVEL_DETAILS_TICKETS": "Travel tickets",
-    "TRAVEL_DETAILS_TOTAL": "Total",
-    "TRAVEL_DETAILS_INFO_1": "This does not include parking costs because you'll need to check with the court first if they will pay for your parking.",
-    "TRAVEL_DETAILS_INFO_2": "Once your jury service has started, if you offer to bring other jurors to court in your car, you can claim an additional 4.2p per mile for the first passenger, and another 3.2p per mile for every other passenger.",
+    "TRAVEL_DETAILS_BICYCLE": "Milltiroedd ar feic",
+    "TRAVEL_DETAILS_CAR": "Milltiroedd mewn car",
+    "TRAVEL_DETAILS_MOTORCYCLE": "Milltiroedd ar feic modur",
+    "TRAVEL_DETAILS_TICKETS": "Tocynnau teithio",
+    "TRAVEL_DETAILS_TOTAL": "Cyfanswm",
+    "TRAVEL_DETAILS_INFO_1": "Nid yw hyn yn cynnwys costau parcio oherwydd byddwch angen cysylltu â'r llys yn gyntaf i ofyn a fyddant yn talu am eich costau parcio.",
+    "TRAVEL_DETAILS_INFO_2": "Pan fyddwch wedi cychwyn gwasanaethu ar reithgor, os byddwch yn cynnig dod â rheithwyr eraill i'r llys yn eich car, gallwch hawlio 4.2c ychwanegol fesul milltir ar gyfer y teithiwr cyntaf, a 3.2c ychwanegol eto ar gyfer pob teithiwr ychwanegol ar ôl hynny.",
 
-    "FOOD_AND_DRINK_HEADING": "Food and drink",
-    "FOOD_AND_DRINK_SUMMARY_1": "You can claim ",
-    "FOOD_AND_DRINK_SUMMARY_2": "each day, even if you bring in your own food and drink.",
+    "FOOD_AND_DRINK_HEADING": "Bwyd a diod",
+    "FOOD_AND_DRINK_SUMMARY_1": "Gallwch hawlio ",
+    "FOOD_AND_DRINK_SUMMARY_2": "pob dydd, hyd yn oed os ydych yn dod â bwyd a diod eich hun gyda chi.",
 
-    "START_AGAIN": "Start again",
+    "START_AGAIN": "Cychwyn eto",
 
-    "GUIDANCE_1": "For more information about how expenses are calculated and how changes in your jury service can affect the amount you can claim, read ",
-    "GUIDANCE_1_LINK": "what you can claim",
+    "GUIDANCE_1": "I gael rhagor o wybodaeth am sut mae treuliau yn cael eu cyfrifo a sut gall newidiadau i'ch gwasanaeth rheithgor effeithio ar y swm y gallwch ei hawlio, darllenwch y ddogfen ",
+    "GUIDANCE_1_LINK": "beth allwch chi ei hawlio",
     "GUIDANCE_1_URL": "https://www.gov.uk/jury-service/what-you-can-claim",
-    "GUIDANCE_2": "If you have any questions about the amount you can claim, contact the court where you will be serving. To find the contact details use the",
-    "GUIDANCE_2_LINK": "court and tribunal finder",
+    "GUIDANCE_2": "os oes gennych unrhyw gwestiynau ynghylch y swm y gallwch ei hawlio, cysylltwch â'r llys lle byddwch yn gwasanaethu ar reithgor. I ddod o hyd i fanylion cyswllt y llys perthnasol, defnyddiwch ein adnodd ar-lein",
+    "GUIDANCE_2_LINK": "'Court and Tribunal Finder'",
     "GUIDANCE_2_URL": "https://courttribunalfinder.service.gov.uk/search/",
 
-    "CLAIM_FORMS_HEADING": "Claim forms",
-    "CLAIM_FORM_1_HEADING": "Certificate of loss of earnings (for employees)",
+    "CLAIM_FORMS_HEADING": "Ffurflenni hawlio",
+    "CLAIM_FORM_1_HEADING": "Tystysgrif o golli enillion (ar gyfer cyflogwyr)",
     "CLAIM_FORM_1_URL": "https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/687809/certificate-of-loss-eng.pdf",
-    "CLAIM_FORM_2_HEADING": "Certificate of loss of earnings (for self-employed or company directors)",
+    "CLAIM_FORM_2_HEADING": "Tystysgrif o golli enillion (ar gyfer unigolion hunangyflogedig neu gyfarwyddwyr cwmni)",
     "CLAIM_FORM_2_URL": "https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/689221/certificate-of-loss-of-earnings-for-self-employed-or-company-directors-eng.pdf",
-    "CLAIM_FORM_3_HEADING": "Juror's childcare, vulnerable care, elderly care provision expenses form",
+    "CLAIM_FORM_3_HEADING": "Ffurflen treuliau rheithiwr ar gyfer gofal plant, gofalu am unigolyn bregus neu ofalu am unigolyn hŷn",
     "CLAIM_FORM_3_URL": "https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/689220/juror-s-childcare-vulnerable-adult-elderly-care-provision-expenses-claim-eng.pdf"
   }
   

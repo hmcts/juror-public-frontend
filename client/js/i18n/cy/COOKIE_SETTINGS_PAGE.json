@@ -28,4 +28,27 @@
   "COOKIE_LINK_TEXT": "Sut rydym yn defnyddio cwcis",
   
   "SAVE_BUTTON_TEXT": "Arbed newidiadau"
+  "HEADING": "Cookies",
+  "COOKIE_GUIDANCE_1": "Cookies are files saved on your phone, tablet or computer when you visit a website.",
+  "COOKIE_GUIDANCE_2": "We use cookies to store information about how you use the GOV.UK website, such as the pages you visit.",
+  
+  "COOKIE_SETTINGS_HEADING": "Cookie settings",
+  "COOKIE_SETTINGS_GUIDANCE": "We use 2 types of cookie. You can choose which cookies you're happy for us to use.",
+
+  "COOKIE_ANALYTICS_HEADING": "Cookies that measure website use",
+  "COOKIE_ANALYTICS_HINT_1": "We use Google Analytics to measure how you use the website so we can improve it based on user needs. We do not allow Google to use or share the data about how you use this site.",
+  "COOKIE_ANALYTICS_HINT_2": "Google Analytics sets cookies that store anonymised information about:",
+
+  "COOKIE_ANALYTICS_ITEM_1": "how you got to the site",
+  "COOKIE_ANALYTICS_ITEM_2": "the pages you visit on GOV.UK and government digital services, and how long you spend on each page",
+  "COOKIE_ANALYTICS_ITEM_3": "what you click on while you're visiting the site",
+  
+  "COOKIE_ANALYTICS_BUTTON_YES": "Use cookies that measure my website use",
+  "COOKIE_ANALYTICS_BUTTON_NO": "Do not use cookies that measure my website use",
+
+  "COOKIE_NECESSARY_HEADING": "Strictly necessary cookies",
+  "COOKIE_NECESSARY_GUIDANCE_1": "These essential cookies do things like remember your progress through a form (for example a licence application)",
+  "COOKIE_NECESSARY_GUIDANCE_2": "They always need to be on.",
+
+  "COOKIE_LINK_TEXT": "How we use cookies"
 }

@@ -5,4 +5,10 @@
   "GUIDANCE_2": "am sut rydych yn defnyddio GOV.UK. Rydym yn defnyddio'r wybodaeth hon i sicrhau bod y wefan yn gweithio yn y ffordd orau bosib a gwella gwasanaethau'r llywodraeth.",
   "BUTTON_ACCEPT": "Derbyn pob cwci",
   "BUTTON_PREFERENCES": "Gosod dewisiadau cwcis"
+  "HEADING": "Tell us whether you accept cookies",
+  "GUIDANCE_1": "We use ",
+  "GUIDANCE_LINK": "cookies to collect information",
+  "GUIDANCE_2": "about how you use GOV.UK. We use this information to make the website work as well as possible and improve government services.",
+  "BUTTON_ACCEPT": "Accept all cookies",
+  "BUTTON_PREFERENCES": "Set cookie preferences"
 }

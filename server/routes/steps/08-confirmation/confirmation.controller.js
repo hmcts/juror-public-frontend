@@ -5,7 +5,8 @@ var _ = require('lodash')
   , pdfExport = require('../../../lib/pdfExport')
   , englishLanguageText = require('../../../../client/js/i18n/en.json')
   , welshLanguageText = require('../../../../client/js/i18n/cy.json')
-  , utils = require('../../../lib/utils');
+  , utils = require('../../../lib/utils')
+  , moment = require('moment');
 
 
 ;(function(){
@@ -134,6 +135,20 @@ var _ = require('lodash')
         res.send(result);
       })
       pdfDoc.end();
+    }
+  }
+
+  module.exports.downloadHTML = function(app) {
+    return function(req, res) {
+
+      req.session.user.replyDate = moment().format('DD/MM/YYYY');
+      req.session.user.dobFormatted = moment(req.session.user.dateOfBirth).format('DD/MM/YYYY');
+
+      return res.render('steps/08-confirmation/response-html/index.njk', {
+        user: req.session.user
+      });
+
+
     }
   }
 

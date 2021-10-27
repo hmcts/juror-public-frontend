@@ -217,6 +217,39 @@
       app.use(errorHandler());
     }
 
+
+    // Check cookie preferences
+    app.use(function(req, res, next) {
+      // check if client sent cookie
+      var cookie = req.cookies.cookies_policy,
+        objCookie = null;
+
+      if (typeof cookie === 'undefined'){
+        // consent cookie does not currently exist - show the cookie banner
+        res.locals.showCookieBanner = true;
+        res.locals.allowAnalytics = false;
+      } else {
+        // consent cookie exists - check analytics setting
+        res.locals.showCookieBanner = false;
+        res.locals.allowAnalytics = false;
+
+        objCookie = JSON.parse(cookie);
+
+        if (objCookie){
+          if (objCookie['usage']){
+            res.locals.allowAnalytics = true;
+          } else {
+            res.locals.allowAnalytics = false;
+          }
+        }
+      }
+
+      //console.log('Cookie: ', cookie);
+      //console.log('usage', objCookie['usage']);
+
+      next(); // <-- important!
+    });
+
   };
 
 })();
