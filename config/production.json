@@ -1,0 +1,11 @@
+{
+  "secrets": {
+    "juror-digital-vault": {
+      "public-sessionSecret" : "[super-secret-key]",
+      "public-jwtKey": "[super-secret-key]",
+      "public-jwtNoAuthKey": "[super-secret-key-login]",
+      "public-jwtKeyBureau": "[super-secret-key-bureau]",
+      "public-jwtTTL": "8h"
+    }
+  }
+ }
