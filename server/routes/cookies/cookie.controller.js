@@ -7,6 +7,9 @@
         delete req.session.errors;
         req.session.back = false;
       }
+
+      delete req.session.cookieSettingsSaved
+
       return res.render('cookies.njk');
     };
   };
@@ -17,15 +20,15 @@
         delete req.session.errors;
         req.session.back = false;
       }
-      req.session.cookieReturnPage = req.body.cookieReturnPage;
       res.redirect(app.namedRoutes.build('cookie-settings.get'));
     };
   };
 
-  module.exports.getCookeSettings = function() {
+  module.exports.getCookieSettings = function() {
     return function(req, res) {
       var analyticsCookie = 'no'
-        , objCookie = null;
+        , objCookie = null
+        , returnUrl = null;
 
       if (req.session.back === true){
         delete req.session.errors;
@@ -40,8 +43,16 @@
         }
       }
 
+      if (req.session.cookieSettingsSaved === true){
+        returnUrl = req.session.cookieReturnUrl;
+        delete req.session.cookieSettingsSaved;
+      } else {
+        returnUrl = null;
+      }
+
       return res.render('cookie-settings.njk', {
-        analyticsCookie: analyticsCookie
+        analyticsCookie: analyticsCookie,
+        returnUrl: returnUrl
       });
     };
   };
@@ -49,25 +60,14 @@
   module.exports.submitCookieSettings = function(app) {
     return function(req, res) {
 
-      var returnPage;
-
       if (req.session.back === true){
         delete req.session.errors;
         req.session.back = false;
       }
 
-      // default return to the cookie information page (cookie settings was displayed via footer link)
-      returnPage = app.namedRoutes.build('cookie.get');
+      req.session.cookieSettingsSaved = true;
 
-      // set the return page (cookie settings was displayed via the cookie banner link)
-      if (typeof(req.session.cookieReturnPage) != 'undefined'){
-        if (req.session.cookieReturnPage !== ''){
-          returnPage = req.session.cookieReturnPage;
-          delete req.session.cookieReturnPage;
-        }
-      }
-
-      res.redirect(returnPage);
+      res.redirect(app.namedRoutes.build('cookie-settings.get'));
 
     };
   };

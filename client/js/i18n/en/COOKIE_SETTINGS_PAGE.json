@@ -27,5 +27,9 @@
 
   "COOKIE_LINK_TEXT": "How we use cookies",
 
-  "SAVE_BUTTON_TEXT": "Save changes"
+  "SAVE_BUTTON_TEXT": "Save changes",
+
+  "SAVE_SUCCESS_HEADING": "Success",
+  "SAVE_SUCCESS_MESSAGE": "You’ve set your cookie preferences.",
+  "SAVE_SUCCESS_LINK_TEXT": "Go back to the page you were looking at"
 }

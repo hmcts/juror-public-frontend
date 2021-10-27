@@ -11,6 +11,15 @@ var calendar = (function() {
     this.$next = this.$id.find('#bn_next');
     this.$grid = this.$id.find('#cal');
     this.$target = $('#' + target); // div or text box that will receive the selected date string and focus (if modal)
+
+    this.$targetDay = $('#' + target + 'Day');
+    this.$targetMonth = $('#' + target + 'Month');
+    this.$targetYear = $('#' + target + 'Year');
+
+    this.targetDayVal = this.$targetDay.val;
+    this.targetMonthVal = this.$targetMonth.val;
+    this.targetYearVal = this.$targetYear.val;
+
     this.bModal = modal; // true if datepicker should appear in a modal dialog box.
     this.lang = $('#_lang');
 
@@ -23,7 +32,7 @@ var calendar = (function() {
 
     this.dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-    this.dateObj = new Date();
+    this.dateObj = new Date(this.$target.val());
 
     this.curYear = this.dateObj.getFullYear();
     this.year = this.curYear;
@@ -80,7 +89,8 @@ var calendar = (function() {
       , curDay = 1
       , rowCount = 1
       , $tbody = this.$grid.find('tbody')
-      , gridCells = '\t<tr id="row1">\n';
+      , gridCells = '\t<tr id="row1">\n'
+      , classes = '';
 
     // clear the grid
     $tbody.empty();
@@ -95,15 +105,29 @@ var calendar = (function() {
     // insert the days of the month.
     for (curDay = 1; curDay <= numDays; curDay++) {
 
+      classes = '';
+
       if (curDay === this.date && this.currentDate === true) {
 
-        gridCells += '\t\t<td id="day' + curDay + '" class="today" headers="row' +
-          rowCount + ' ' + this.dayNames[weekday] + '" role="gridcell" aria-selected="false">' + curDay + '</td>';
+        classes += 'today ';
 
+        //gridCells += '\t\t<td id="day' + curDay + '" class="today" headers="row' +
+        //  rowCount + ' ' + this.dayNames[weekday] + '" role="gridcell" aria-selected="false">' + curDay + '</td>';
+
+      } else if (weekday === 1) {
+        classes += 'datepicker-select ';
       } else {
-        gridCells += '\t\t<td id="day' + curDay + '" headers="row' +
-          rowCount + ' ' + this.dayNames[weekday] + '" role="gridcell" aria-selected="false">' + curDay + '</td>';
+        classes += 'datepicker-noselect ';
+        //gridCells += '\t\t<td id="day' + curDay + '" headers="row' +
+        //  rowCount + ' ' + this.dayNames[weekday] + '" role="gridcell" aria-selected="false">' + curDay + '</td>';
       }
+
+      if (curDay === this.targetDayVal && this.month === this.targetMonthVal && this.year === this.targetYearVal){
+        classes += 'currentSelection ';
+      }
+
+      gridCells += '\t\t<td id="day' + curDay + '" class="' + classes.trim() + '" headers="row' +
+          rowCount + ' ' + this.dayNames[weekday] + '" role="gridcell" aria-selected="false">' + curDay + '</td>';
 
 
       if (weekday === 6 && curDay < numDays) {
@@ -502,6 +526,10 @@ var calendar = (function() {
         // update the target box
         this.$target.val((+$curDay.html() < 9 ? '0' : '') + $curDay.html() + '/' + (this.month < 9 ? '0' : '') + (this.month + 1) + '/' + this.year);
 
+        this.$targetDay.val((+$curDay.html() < 9 ? '0' : '') + $curDay.html());
+        this.$targetMonth.val((this.month < 9 ? '0' : '') + (this.month + 1));
+        this.$targetYear.val(this.year);
+
         // fall through
       }
       case this.keys.esc: {
@@ -759,6 +787,10 @@ var calendar = (function() {
     // update the target box
     // this.$target.val((this.month < 9 ? '0' : '') + (this.month + 1) + '/' + $curDay.html() + '/' + this.year);
     this.$target.val((+$curDay.html() < 9 ? '0' : '') + $curDay.html() + '/' + (this.month < 9 ? '0': '') + (this.month + 1) + '/' + this.year);
+
+    this.$targetDay.val((+$curDay.html() < 9 ? '0' : '') + $curDay.html());
+    this.$targetMonth.val((this.month < 9 ? '0' : '') + (this.month + 1));
+    this.$targetYear.val(this.year);
 
     // dismiss the dialog box
     this.hideDlg();

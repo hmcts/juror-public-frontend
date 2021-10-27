@@ -90,7 +90,11 @@
             </legend>
               
             {# Juror number example image #}
-            <img src="/img/juror-number-example-1x.png" alt="{{ texts.LOGIN_PAGE.IMAGE_TITLE }}" title="{{ texts.LOGIN_PAGE.IMAGE_TITLE }}">
+            {% if user.thirdParty == 'Yes' %}
+              <img src="/img/juror-number-example-1x.png" alt="{{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_HINT_OB }}" title="{{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_HINT_OB }}">
+            {% else %}
+              <img src="/img/juror-number-example-1x.png" alt="{{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_HINT }}" title="{{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_HINT }}">
+            {% endif %}
             <br><br>
 
             {# Juror Number #}

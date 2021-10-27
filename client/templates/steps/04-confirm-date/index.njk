@@ -24,158 +24,151 @@
 
   {% include "../../includes/errors-gds.njk" %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  {# Set radio labels #}
+  {% if user.thirdParty == 'Yes' %}
+    {% set radioHint %}
+      <h2>{{ texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HINT_OB }}</h2>
+    {% endset %}
 
-      <form action="{{ url('steps.confirm.date.post') }}" method="post">
+    {% set radioYesLabel %}
+      {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES_1_OB | safe }}
+      {{ user.hearingDate }}
+      {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES_2_OB | safe }}
+    {% endset %}
 
-          {# Set radio labels #}
+    {% set radioDeferralLabel = texts.CONFIRM_DATE_PAGE.ANSWER_DEFERRAL_OB | safe %}
+
+    {% set radioExcusalLabel = texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL_OB | safe %}
+
+  {% else %}
+    {% set radioHint %}
+      <h2>{{texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HINT }}</h2>
+    {% endset %}
+
+    {% set radioYesLabel %}
+      {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES_1  | safe }}
+      {{ user.hearingDate }}
+      {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES_2  | safe }}
+    {% endset %}
+
+    {% set radioDeferralLabel = texts.CONFIRM_DATE_PAGE.ANSWER_DEFERRAL | safe %}
+
+    {% set radioExcusalLabel = texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL | safe %}
+  {% endif %}
+
+  {# Set radio values #}
+  {% set radioYesChecked = '' %}
+  {% set radioDeferralChecked = '' %}
+  {% set radioExcusalChecked = '' %}
+  {% if user.confirmedDate == 'Yes' %}
+    {% set radioYesChecked = 'checked="checked"' %}
+  {% endif %}
+  {% if user.confirmedDate == 'Change' %}
+    {% set radioDeferralChecked = 'checked="checked"' %}
+  {% endif %}
+  {% if user.confirmedDate == 'No' %}
+    {% set radioExcusalChecked = 'checked="checked"' %}
+  {% endif %}
+  
+  {# Set radio errors #}
+  {% set radioAnswerError = undefined %}
+  {% if errors.items['confirmedDate'] %}
+    {% set radioAnswerError = {"text": errors.items['confirmedDate'][0].details} %}
+  {% endif %}
+
+  <form action="{{ url('steps.confirm.date.post') }}" method="post">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <h1 class="govuk-heading-xl">
           {% if user.thirdParty == 'Yes' %}
-            {% set radioHint = texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HEADING_OB  %}
-
-            {% set radioYesLabel = texts.CONFIRM_DATE_PAGE.ANSWER_YES_OB  %}
-
-            {% set radioDeferralLabel = texts.CONFIRM_DATE_PAGE.ANSWER_DEFERRAL_OB %}
-            {% set radioDeferralHint = texts.CONFIRM_DATE_PAGE.ANSWER_DEFERRAL_HINT_OB %}
-
-            {% set radioExcusalLabel = texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL_OB %}
-            {% set radioExcusalHint = texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL_HINT_OB %}
+            {{ texts.CONFIRM_DATE_PAGE.HEADING_OB }}
           {% else %}
-            {% set radioHint = texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HEADING  %}
-
-            {% set radioYesLabel = texts.CONFIRM_DATE_PAGE.ANSWER_YES  %}
-
-            {% set radioDeferralLabel = texts.CONFIRM_DATE_PAGE.ANSWER_DEFERRAL %}
-            {% set radioDeferralHint = texts.CONFIRM_DATE_PAGE.ANSWER_DEFERRAL_HINT %}
-
-            {% set radioExcusalLabel = texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL %}
-            {% set radioExcusalHint = texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL_HINT %}
+            {{ texts.CONFIRM_DATE_PAGE.HEADING }}
           {% endif %}
+        </h1>
 
-          {# Set radio values #}
-          {% set radioYesChecked = '' %}
-          {% set radioDeferralChecked = '' %}
-          {% set radioExcusalChecked = '' %}
-          {% if user.confirmedDate == 'Yes' %}
-            {% set radioYesChecked = 'checked="checked"' %}
-          {% endif %}
-          {% if user.confirmedDate == 'Change' %}
-            {% set radioDeferralChecked = 'checked="checked"' %}
-          {% endif %}
-          {% if user.confirmedDate == 'No' %}
-            {% set radioExcusalChecked = 'checked="checked"' %}
-          {% endif %}
-          
-          {# Set radio errors #}
-          {% set radioAnswerError = undefined %}
-          {% if errors.items['confirmedDate'] %}
-            {% set radioAnswerError = {"text": errors.items['confirmedDate'][0].details} %}
-          {% endif %}
-
-        <div class="govuk-form-group {% if errors.items['confirmedDate'] %}govuk-form-group--error{% endif %}" id="convictedGroup">
-
-          <h1 class="govuk-heading-xl">
-            {% if user.thirdParty == 'Yes' %}
-              {{ texts.CONFIRM_DATE_PAGE.HEADING_OB }}
-            {% else %}
-              {{ texts.CONFIRM_DATE_PAGE.HEADING }}
-            {% endif %}
-          </h1>
-
-          <div class="govuk-body">
-
-            <p>
+        <div class="govuk-body">
+          {# summons info panel #}
+          <div class="govuk-panel confirm-date-panel">
+            <p class="govuk-panel__body govuk-!-font-size-24">
               {% if user.thirdParty == 'Yes' %}
-                {{ texts.CONFIRM_DATE_PAGE.INTRO_PARAGRAPH_OB  }}
+                {{ texts.CONFIRM_DATE_PAGE.PANEL_INTRO_OB }}
               {% else %}
-                {{ texts.CONFIRM_DATE_PAGE.INTRO_PARAGRAPH }}
+                {{ texts.CONFIRM_DATE_PAGE.PANEL_INTRO }}
               {% endif %}
             </p>
-
-            <p>
-              {% if user.thirdParty == 'Yes' %}
-                {{ texts.CONFIRM_DATE_PAGE.REQUIRED_OB }}
-              {% else %}
-                {{ texts.CONFIRM_DATE_PAGE.REQUIRED }}
-              {% endif %}
-            </p>
-
-            {% set courtDateHtml %}
-              <div class="govuk-!-font-weight-bold">
-              <span id="hearingDate">{{ user.hearingDate }}</span>
-                at
-              <span id="hearingTime">{{ user.hearingTime }}</span>
-              </div>
-            {% endset %}
-
-            {% set courtAddressHtml %}
-              <div class="govuk-!-font-weight-bold">
-                {{ user.courtAddress | safe }}
-              </div>
-            {% endset %}
-
-            {{ govukInsetText({
-              html: courtDateHtml
-            }) }}
-
-            <p>{{ texts.CONFIRM_DATE_PAGE.AT }}</p>
-
-            {{ govukInsetText({
-              html: courtAddressHtml
-            }) }}
+            <h1 class="govuk-panel__title govuk-!-font-size-36">
+              {{ user.hearingDate }}
+            </h1>
+            <div class="govuk-panel__body govuk-!-font-size-24">
+              {{ user.hearingTime }}<br>
+              {{ texts.CONFIRM_DATE_PAGE.AT }}<br>
+              {{ user.courtAddress | safe }}
+            </div>
           </div>
 
-          {{ govukRadios({
-            id: "confirmedDate",
-            name: "confirmedDate",
-            hint: {
-              text: radioHint
-            },
-            errorMessage: radioAnswerError,
-            items: [
-              {
-                id: "confirmedDate",
-                name: "confirmedDate",
-                value: "Yes" ,
-                text: radioYesLabel,
-                checked: radioYesChecked
+          {# radio buttons #}
+          <div class="govuk-form-group {% if errors.items['confirmedDate'] %}govuk-form-group--error{% endif %}" id="convictedGroup">
+
+            {{ govukRadios({
+              id: "confirmedDate",
+              name: "confirmedDate",
+              hint: {
+                html: radioHint
               },
-              {
-                id: "changeDates",
-                name: "confirmedDate",
-                value: "Change",
-                text: radioDeferralLabel,
-                hint: {
-                  text: radioDeferralHint
+              errorMessage: radioAnswerError,
+              items: [
+                {
+                  id: "confirmedDate",
+                  name: "confirmedDate",
+                  value: "Yes" ,
+                  text: radioYesLabel,
+                  checked: radioYesChecked
                 },
-                checked: radioDeferralChecked
-              },
-              {
-                id: "declineDates",
-                name: "confirmedDate",
-                value: "No",
-                text: radioExcusalLabel,
-                hint: {
-                  text: radioExcusalHint
+                {
+                  id: "changeDates",
+                  name: "confirmedDate",
+                  value: "Change",
+                  text: radioDeferralLabel,
+                  checked: radioDeferralChecked
                 },
-                checked: radioExcusalChecked
-              }
-            ]
+                {
+                  id: "declineDates",
+                  name: "confirmedDate",
+                  value: "No",
+                  text: radioExcusalLabel,
+                  checked: radioExcusalChecked
+                }
+              ]
+            }) }}
+
+          </div>
+
+          {# submit form button #}
+          {{ govukButton({
+              text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
           }) }}
 
         </div>
 
-        {# Submit form #}
-        {{ govukButton({
-            text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
-        }) }}
-        
-        <input type="hidden" id="hearingDateTimestamp" value="{{ user.hearingDateTimestamp }}">
-        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+      </div>
+    </div>
 
-      </form>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
 
-  </div>
-</div>
+        {# guidance details sections #}
+        {% include "./defer-guidance-1.njk" %}
+
+        {% include "./defer-guidance-2.njk" %}
+
+      </div>
+    </div>
+
+    <input type="hidden" id="hearingDateTimestamp" value="{{ user.hearingDateTimestamp }}">
+    <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+  </form>
 
 {% endblock %}

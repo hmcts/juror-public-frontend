@@ -41,7 +41,7 @@
   "OB_WHY_QUESTION": "Eich rheswm dros ymateb ar ran y rheithiwr",
   "OB_WHY_READER": "eich rheswm dros ymateb ar ran yr unigolyn sydd wedi cael gwŷs i wasanaethu ar reithgor",
 
-  "JUROR_QUALIFY_QUESTION": "Bu ichi ateb y cwestiynau cymhwyso",
+  "JUROR_QUALIFY_QUESTION": "Mi wnaethoch ateb y cwestiynau cymhwysedd",
   "JUROR_QUALIFY_QUESTION_LIVED_CONSECUTIVE": "A ydych chi wedi byw yn y DU, Ynysoedd y Sianel neu Ynys Manaw am 5 mlynedd yn olynol ers eich pen-blwydd yn 13 oed?",
   "JUROR_QUALIFY_QUESTION_LIVED_CONSECUTIVE_READER": "eich ateb i'r cwestiwn, 'Ydych chi wedi byw yn y Deyrnas Unedig, Ynysoedd y Sianel neu Ynys Manaw am gyfnod parhaus o bum mlynedd ers eich pen-blwydd yn 13 oed?'",
   "JUROR_QUALIFY_QUESTION_MENTAL_HEALTH": "A ydych yn glaf dan orchymyn neu'n debygol o fod yn glaf dan orchymyn dan Ddeddf Iechyd Meddwl 1982 neu a oes gennych ddiffyg galluedd fel y nodir yn Neddf Galluedd Meddyliol 2005?",
@@ -53,7 +53,10 @@
   "JUROR_QUALIFY_QUESTION_BAIL_READER": "eich ateb i'r cwestiwn, 'A ydych chi ar fechnïaeth ar hyn o bryd am gyflawni trosedd?'",
   "JUROR_QUALIFY_QUESTION_CONVICTED": "A ydych wedi'ch cael yn euog o gyflawni trosedd?",
   "JUROR_QUALIFY_QUESTION_CONVICTED_READER": "eich ateb i'r cwestiwn, 'A ydych wedi'ch cael yn euog o gyflawni trosedd ac wedi cael dedfryd?'",
-  "OB_QUALIFY_QUESTION": "Bu ichi ymateb y cwestiynau cymhwyso ar ran yr unigolyn rydych yn ymateb ar ei ran:",
+
+  
+  "OB_QUALIFY_QUESTION": "Mi wnaethoch ateb y cwestiynau cymhwysedd ar gyfer yr unigolyn yr ydych yn ymateb ar ei ran",
+
   "OB_QUALIFY_QUESTION_LIVED_CONSECUTIVE": "A yw'r unigolyn yr ydych chi'n ateb drosto wedi byw yn y DU, Ynysoedd y Sianel neu Ynys Manaw am 5 mlynedd yn olynol ers ei ben-blwydd yn 13 oed?",
   "OB_QUALIFY_QUESTION_LIVED_CONSECUTIVE_READER": "your answer to the question, 'Has the person you're answering for lived in the UK, Channel Islands or Isle of Man for five consecutive years since their 13th birthday?'",
   "OB_QUALIFY_QUESTION_MENTAL_HEALTH": "A ydy'r person yn glaf, neu'n debygol o ddod yn glaf, dan orchymyn Deddf Iechyd Meddwl 1983 neu a oes ganddo ddiffyg galluedd fel y nodir yn Neddf Galluedd Meddyliol 2005?",
@@ -78,16 +81,18 @@
   "JUROR_EXCUSAL_REQUEST": "Na allaf wasanaethu ar reithgor a hoffwn gael fy esgusodi.",
   "OB_LATER_DATE_REQUEST": "Rydw i angen newid dyddiad y gwasanaeth rheithgor ar gyfer yr unigolyn rwy'n ymateb ar ei ran",
   "OB_EXCUSAL_REQUEST": "Nid yw'r unigolyn rwy'n ymateb ar ei ran yn gallu gwasanaethu ar reithgor a hoffai gael ei esgusodi",
-  "JUROR_CHANGE_DATE_HEADER": "Gan eich bod wedi gofyn i gyflawni eich gwasanaeth rheithgor ar ddyddiad gwahanol, bu ichi ddweud",
 
-  "OB_CHANGE_DATE_HEADER": "Gan eich bod wedi gofyn i'r unigolyn gael cyflawni ei wasanaeth rheithgor ar ddyddiad gwahanol, bu ichi ddweud ",
-  "OB_CHANGE_DATE_QUESTION_1": "Eglurwch pam fod yr unigolyn angen newid dyddiad ei wasanaeth rheithgor",
-  "OB_CHANGE_DATE_QUESTION_1_READER": "eich rheswm dros pam fod yr unigolyn rydych yn ymateb ar ei ran angen dyddiad arall ar gyfer eu gwasanaeth rheithgor",
-  "JUROR_CHANGE_DATE_QUESTION_1": "Eglurwch pam eich bod angen newid dyddiad eich gwasanaeth rheithgor",
+  "JUROR_CHANGE_DATE_HEADER": "Gan eich bod wedi gofyn i gyflawni eich gwasanaeth rheithgor ar ddyddiad gwahanol, bu ichi ddweud",
+  "JUROR_CHANGE_DATE_QUESTION_1": "Dywedwch wrthym pam fod angen dyddiad arall arnoch i wneud eich gwasanaeth rheithgor",
   "JUROR_CHANGE_DATE_QUESTION_1_READER": "eich rheswm dros pam eich bod angen dyddiad arall ar gyfer eich gwasanaeth rheithgor",
-  "JUROR_CHANGE_DATE_QUESTION_2": "Rhowch 3 dyddiad i ni pan y gallech chi ddechrau gwasanaeth rheithgor yn ystod y 12 mis nesaf",
+  "OB_CHANGE_DATE_HEADER": "Gan eich bod wedi gofyn i'r unigolyn gael cyflawni ei wasanaeth rheithgor ar ddyddiad gwahanol, bu ichi ddweud ",
+  "OB_CHANGE_DATE_QUESTION_1": "Dywedwch wrthym pam fod angen dyddiad arall arnynt ar gyfer y gwasanaeth rheithgor",
+  "OB_CHANGE_DATE_QUESTION_1_READER": "eich rheswm dros pam fod yr unigolyn rydych yn ymateb ar ei ran angen dyddiad arall ar gyfer eu gwasanaeth rheithgor",
+
+
+  "JUROR_CHANGE_DATE_QUESTION_2": "Dewiswch 3 dydd Llun pan allwch ddechrau gwasanaeth rheithgor",
   "JUROR_CHANGE_DATE_QUESTION_2_READER": "y dyddiadau pan fyddwch yn gallu gwasanaethu ar reithgor yn y 12 mis nesaf",
-  "OB_CHANGE_DATE_QUESTION_2": "Rhowch 3 dyddiad i ni pan  gallai'r unigolyn yr ydych chi'n ateb drosto ddechrau gwasanaeth rheithgor yn ystod y 12 mis nesaf",
+  "OB_CHANGE_DATE_QUESTION_2": "Dewiswch 3 dydd Llun pan allant ddechrau gwasanaeth rheithgor",
   "OB_CHANGE_DATE_QUESTION_2_READER": "y dyddiadau pan fydd yr unigolyn rydych yn ymateb ar ei ran yn gallu gwasanaethu ar reithgor yn y 12 mis nesaf",
 
   "JUROR_EXCUSAL_HEADER": "Gan eich bod wedi gofyn am gael eich esgusodi rhag gwasanaethu ar reithgor, bu ichi ddweud",

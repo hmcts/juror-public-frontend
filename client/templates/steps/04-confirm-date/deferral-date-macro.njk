@@ -1,0 +1,95 @@
+{% macro deferralDate(params) %}
+
+  {# Deferral date input field with datepicker #}
+
+  <div class="govuk-form-group {%if params.dateError%}govuk-form-group--error{% endif %}">
+    <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        <h1 class="govuk-fieldset__heading">
+         {{params.heading}}
+        </h1>
+      </legend>
+      <div id="datepicker-group-hint" class="govuk-hint">
+        {{params.hint}}
+      </div>
+
+      <span id="passport-issued-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span> {{params.dateError}}
+      </span>
+
+      <div class="govuk-date-input datepicker-group" id="datepicker-group">
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="{{params.dateFieldId}}Day">
+              {{params.texts.DAY}}
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2 {%if params.dateError%}govuk-input--error{% endif %}" id="{{params.dateFieldId}}Day" name="{{params.dateFieldId}}Day" type="text" pattern="[0-9]*" inputmode="numeric" value="{{params.dayValue}}"></div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="{{params.dateFieldId}}Month">
+              {{params.texts.MONTH}}
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2 {%if params.dateError%}govuk-input--error{% endif %}" id="{{params.dateFieldId}}Month" name="{{params.dateFieldId}}Month" type="text" pattern="[0-9]*" inputmode="numeric" value="{{params.monthValue}}"></div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="{{params.dateFieldId}}Year">
+              {{params.texts.YEAR}}
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4 {%if params.dateError%}govuk-input--error{% endif %}" id="{{params.dateFieldId}}Year" name="{{params.dateFieldId}}Year" type="text" pattern="[0-9]*" inputmode="numeric" value="{{params.yearValue}}"></div>
+        </div>
+
+        <button id="{{params.buttonId}}" class="datepicker-button noscript" aria-hidden="true"><img class="" src="/img/icons/icon-calendar.png" /></button>
+
+        
+
+        <div id="{{params.datepickerId}}" class="govuk-body datepicker" aria-hidden="true">
+          <div id="month-wrap">
+            <div id="bn_prev" role="button" aria-labelledby="bn_prev-label" tabindex="0">
+              {# <img class="bn_img" src="prev.png" alt="<<"/> #}
+              <span>&lt;</span>
+            </div>
+            <div id="month" role="heading" aria-live="assertive" aria-atomic="true"></div>
+            <div id="bn_next" role="button" aria-labelledby="bn_next-label" tabindex="0">
+              {# <img class="bn_img" src="next.png" alt=">>"/> #}
+              <span>&gt;</span>
+            </div>
+          </div>
+          <table id="cal" role="grid" aria-activedescendant="errMsg" aria-labelledby="month" tabindex="0">
+            <thead>
+                <tr id="weekdays">
+                  {#
+                  <th id="Sunday"><abbr title="Sunday">SU</abbr></th>
+                  <th id="Monday"><abbr title="Monday">MO</abbr></th>
+                  <th id="Tuesday"><abbr title="Tuesday">TU</abbr></th>
+                  <th id="Wednesday"><abbr title="Wednesday">WE</abbr></th>
+                  <th id="Thursday"><abbr title="Thursday">TH</abbr></th>
+                  <th id="Friday"><abbr title="Friday">FR</abbr></th>
+                  <th id="Saturday"><abbr title="Saturday">SA</abbr></th>
+                  #}
+                  <th id="Sunday"><abbr title="{{ params.texts.SUNDAY }}">{{ params.texts.SU }}</abbr></th>
+                  <th id="Monday"><abbr title="{{ params.texts.MONDAY }}">{{ params.texts.MO }}</abbr></th>
+                  <th id="Tuesday"><abbr title="{{ params.texts.TUESDAY }}">{{ params.texts.TU }}</abbr></th>
+                  <th id="Wednesday"><abbr title="{{ params.texts.WEDNESDAY }}">{{ params.texts.WE }}</abbr></th>
+                  <th id="Thursday"><abbr title="{{ params.texts.THURSDAY }}">{{ params.texts.TH }}</abbr></th>
+                  <th id="Friday"><abbr title="{{ params.texts.FRIDAY }}">{{ params.texts.FR }}</abbr></th>
+                  <th id="Saturday"><abbr title="{{ params.texts.SATURDAY }}">{{ params.texts.SA }}</abbr></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td id="errMsg" colspan="7">Javascript must be enabled</td></tr>
+            </tbody>
+          </table>
+          <div id="bn_prev-label" class="offscreen">Go to previous month</div>
+          <div id="bn_next-label" class="offscreen">Go to next month</div>
+        </div>
+
+        <input class="datepicker-date-field" name="{{params.dateFieldId}}" id="{{params.dateFieldId}}" value="{{params.dateFieldDefault}}" autocomplete="off" />
+
+      </div>
+
+    </fieldset>
+  </div>
+
+{% endmacro %}

@@ -27,7 +27,7 @@
     require('./steps/02-your-details')(app);
     require('./steps/03-qualify')(app);
     require('./steps/04-confirm-date')(app);
-    require('./steps/05-cjs-employed')(app);
+    //require('./steps/05-cjs-employed')(app); // Moved to Qualify
     require('./steps/06-assistance')(app);
     require('./steps/07-confirm-information')(app);
     require('./steps/08-confirmation')(app);

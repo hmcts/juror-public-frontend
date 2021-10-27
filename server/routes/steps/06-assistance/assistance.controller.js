@@ -34,12 +34,27 @@
       ) {
         delete merged.assistanceType;
       }
-
+      
       // Set back link URL
       if (req.session.change === true){
         backLinkUrl = utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty);
       } else {
-        backLinkUrl = utils.getRedirectUrl('steps.cjs.employed', req.session.user.thirdParty);
+        switch (req.session.user.confirmedDate){
+        case 'Change':
+          //Deferral
+          if (req.session.user.deferral['deferralDatesPublicHoliday'] === true){
+            backLinkUrl = utils.getRedirectUrl('steps.confirm.date.deferral-holiday', req.session.user.thirdParty);
+          } else {
+            backLinkUrl = utils.getRedirectUrl('steps.confirm.date.deferral-check', req.session.user.thirdParty);
+          }
+          break;
+        case 'No':
+          //Excusal
+          backLinkUrl = utils.getRedirectUrl('steps.confirm.date.excusal', req.session.user.thirdParty);
+          break;
+        default:
+          backLinkUrl = utils.getRedirectUrl('steps.confirm.date', req.session.user.thirdParty);
+        }
       }
 
       // Check what is active based on merger between user stored values and form submitted values

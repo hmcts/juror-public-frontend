@@ -1,21 +1,78 @@
 {
-  "HEADING": "Rhowch 3 dyddiad i ni pan y gallech chi ddechrau gwasanaeth rheithgor yn ystod y 12 mis nesaf",
-  "HEADING_OB": "Rhowch 3 dyddiad i ni pan  gallai'r unigolyn yr ydych chi'n ateb drosto ddechrau gwasanaeth rheithgor yn ystod y 12 mis nesaf",
-  "REASON_HEADING": "Dywedwch pam eich bod angen dyddiad arall ar gyfer eich gwasanaeth rheithgor",
-  "REASON_HEADING_OB": "Dywedwch pam bod yr unigolyn rydych yn ymateb ar ei ran angen dyddiad arall ar gyfer ei wasanaeth rheithgor",
+  "REASON": {
+    "REASON_HEADING": "Dywedwch wrthym pam fod angen dyddiad arall arnoch i wneud eich gwasanaeth rheithgor",
+    "REASON_HEADING_OB": "Dywedwch wrthym pam fod angen dyddiad arall arnynt ar gyfer y gwasanaeth rheithgor",
 
-  "REASON_FIELD_TITLE": "Dywedwch pam eich bod angen dyddiad arall ar gyfer eich gwasanaeth rheithgor",
-  "REASON_FIELD_TITLE_OB": "Dywedwch pam bod yr unigolyn rydych yn ymateb ar ei ran angen dyddiad arall ar gyfer ei wasanaeth rheithgor",
-  "REASON_FIELD_HINT": "Dim ond unwaith y gallwch newid dyddiad eich gwasanaeth rheithgor.",
-  "REASON_FIELD_HINT_OB": "Dim ond unwaith y gallwch newid dyddiad y gwasanaeth rheithgor.",
+    "ACCEPTABLE_INFO": "Mae'n rhaid i chi gael rheswm da dros newid dyddiad, er enghraifft:",
+    "ACCEPTABLE_INFO_OB": "Mae'n rhaid iddynt gael rheswm da dros newid dyddiad, er enghraifft:",
+    "ACCEPTABLE_LIST_ITEM_1": "gwyliau wedi'i drefnu",
+    "ACCEPTABLE_LIST_ITEM_2": "llawdriniaeth",
+    "ACCEPTABLE_LIST_ITEM_3": "arholiad",
+    "ACCEPTABLE_LIST_ITEM_4": "nid yw eich cyflogwr yn fodlon rhoi amser i ffwrdd o'r gwaith i chi",
+    "ACCEPTABLE_LIST_ITEM_4_OB": "nid yw eu cyflogwr yn fodlon rhoi amser i ffwrdd o'r gwaith iddynt",
 
-  "ACCEPTABLE_SUMMARY": "Beth yw rheswm derbyniol?",
-  "ACCEPTABLE_INFO": "Efallai bydd modd i ni newid dyddiad eich gwasanaeth rheithgor os oes gennych reswm da. Dyma ychydig o esiamplau - neu efallai bydd gennych reswm da arall:",
-  "ACCEPTABLE_INFO_OB": "Efallai bydd modd i ni newid dyddiad y gwasanaeth rheithgor os oes gan yr unigolyn rydych yn ymateb ar ei ran reswm da. Dyma enghreifftiau - neu efallai bydd ganddynt reswm da arall:",
-  "ACCEPTABLE_LIST_ITEM_1": "wedi bwcio gwyliau",
-  "ACCEPTABLE_LIST_ITEM_2": "cael llawdriniaeth",
-  "ACCEPTABLE_LIST_ITEM_3": "sefyll arholiad",
+    "REASON_FIELD_HINT": "Dim ond unwaith y gallwch newid y dyddiad.",
+    "REASON_FIELD_HINT_OB": "Dim ond unwaith y gallant newid y dyddiad."
+  },
 
+  "DATES": {
+    "HEADING": "Dewiswch 3 dydd Llun pan allwch ddechrau gwasanaeth rheithgor",
+    "HEADING_OB": "Dewiswch 3 dydd Llun pan allant ddechrau gwasanaeth rheithgor",
+
+    "GUIDANCE_P1": "Rhaid i'r rhain fod rhwng",
+    "GUIDANCE_AND": "a",
+
+    "GUIDANCE_P2": "Rhaid i chi fod ar gael i wasanaethu am o leiaf pythefnos.",
+    "GUIDANCE_P2_OB": "Rhaid iddynt fod ar gael i wasanaethu am o leiaf pythefnos.",
+
+    "DATE1_LABEL": "Dewis cyntaf",
+    "DATE2_LABEL": "Ail ddewis",
+    "DATE3_LABEL": "Trydydd dewis",
+    "DATE_EXAMPLE_HINT": "Er enghraifft, "
+  },
+
+  "CHECK_DATES": {
+    "HEADING": "Gwiriwch eich dyddiadau",
+    "HEADING_OB": "Gwirio dyddiadau",
+    "SUMMARY_HEADING": "Dyddiadau y gallwch ddechrau gwasanaeth rheithgor",
+    "SUMMARY_HEADING_OB": "Dyddiadau y gallant ddechrau gwasanaeth rheithgor",
+
+    "GUIDANCE_P1": "Nid oes angen i chi ddweud wrthym yr holl ddyddiadau eraill rydych ar gael.",
+    "GUIDANCE_P1_OB": "Nid oes angen i chi ddweud wrthym yr holl ddyddiadau eraill y maent ar gael.",
+    "GUIDANCE_P2": "Byddwn yn dewis un o'r 3 dyddiad sydd orau gennych.",
+    "GUIDANCE_P2_OB": "Byddwn yn dewis un o'r 3 dyddiad hyn.",
+    "GUIDANCE_P3": "Os na allwn ddefnyddio un o'r dyddiadau hyn am unrhyw reswm, byddwn yn cysylltu â chi.",
+
+    "QUESTION": "Ydych chi am fwrw ymlaen â'r dyddiadau hyn?",
+    "YES": "Ydw",
+    "NO": "Nac ydw"
+  },
+
+  "PUBLIC_HOLIDAY": {
+    "HEADING": "Mae o leiaf un dydd Llun a ddewiswyd gennych yn ŵyl banc",
+    "GUIDANCE_1": "Rydych chi wedi dewis o leiaf un dydd Llun sy'n ŵyl banc yn y DU.",
+    "GUIDANCE_2": "Os byddwn yn dewis hwn fel eich dyddiad dechrau, bydd eich gwasanaeth rheithgor yn dechrau ar y dydd Mawrth canlynol ar y cynharaf",
+    "GUIDANCE_2_OB":"Os byddwn yn dewis hwn fel eu dyddiad dechrau, bydd eu gwasanaeth rheithgor yn dechrau ar y dydd Mawrth canlynol ar y cynharaf.",
+    "GUIDANCE_3": "Byddwn yn anfon cadarnhad atoch o'ch dyddiad dechrau maes o law.",
+    "GUIDANCE_3_OB":"Byddwn yn anfon cadarnhad o'r dyddiad dechrau maes o law."
+  },
+
+  "GUIDANCE_SUMMARY_1": "A fydd angen i mi wasanaethu'n hirach na phythefnos?",
+  "GUIDANCE_DETAIL_1_P1": "Dim ond pythefnos y mae angen i'r rhan fwyaf o bobl wasanaethu ar reithgor.",
+  "GUIDANCE_DETAIL_1_P2": "Efallai y bydd y llys yn gofyn i chi wasanaethu am fwy o amser pan fyddwch yn cyrraedd y llys.",
+  "GUIDANCE_DETAIL_1_P3": "Os nad ydych yn gallu gwasanaethu am fwy na phythefnos, gallwch drafod hyn gyda rheolwr y rheithgor yn y llys.",
+
+  "GUIDANCE_SUMMARY_1_OB": "A fydd angen i'r unigolyn wasanaethu am fwy na phythefnos?",
+  "GUIDANCE_DETAIL_1_P1_OB": "Dim ond pythefnos y mae angen i'r rhan fwyaf o bobl wasanaethu ar reithgor.",
+  "GUIDANCE_DETAIL_1_P2_OB": "Efallai y bydd y llys yn gofyn iddynt wasanaethu am fwy o amser pan fyddant yn cyrraedd y llys.",
+  "GUIDANCE_DETAIL_1_P3_OB": "Os nad ydynt yn gallu gwasanaethu am fwy na phythefnos, gallant drafod hyn gyda rheolwr y rheithgor yn y llys.",
+
+  "GUIDANCE_SUMMARY_2": "Beth os oes problem yn nes at yr amser ac nid wyf yn gallu gwasanaethu?",
+  "GUIDANCE_DETAIL_2_P1": "Rhaid i chi gysylltu â ni bryd hynny i roi gwybod i ni.",
+
+  "GUIDANCE_SUMMARY_2_OB": "Beth os oes problem yn nes at yr amser ac nid ydynt yn gallu gwasanaethu?",
+  "GUIDANCE_DETAIL_2_P1_OB": "Rhaid i chi neu nhw gysylltu â ni bryd hynny i roi gwybod i ni.",
+  
   "DATE_FIELD_TITLE": "Gan amlaf mae gwasanaeth rheithgor yn cychwyn ar ddydd Llun ac yn para hyd at 10 diwrnod gwaith, ond gall fod yn hirach. Nid yw gwasanaeth rheithgor yn cael ei gynnal ar wyliau banc.",
   "DATE_FIELD_TITLE_OB": "Gan amlaf mae gwasanaeth rheithgor yn cychwyn ar ddydd Llun ac yn para hyd at 10 diwrnod gwaith, ond gall fod yn hirach. Nid yw gwasanaeth rheithgor yn cael ei gynnal ar wyliau banc.",
   "DATE_FIELD_HINT": "Efallai bydd yn bosibl ichi gychwyn eich gwasanaeth rheithgor ar ddyddiad arall sy'n fwy addas.",
@@ -26,18 +83,15 @@
   "WHY_ASK_INFO": "Efallai bydd yn bosibl ichi gychwyn eich gwasanaeth rheithgor ar ddyddiad arall sy'n fwy addas.",
   "WHY_ASK_INFO_OB": "Efallai bydd yn bosibl i'r unigolyn gychwyn ei wasanaeth rheithgor ar ddyddiad arall sy'n fwy addas.",
 
-  "DATE1": "Y dyddiad cyntaf",
-  "DATE2": "Yr ail ddyddiad",
-  "DATE3": "Y trydydd dyddiad",
-  "DATE_EG": "ee 08/10/2017",
-
   "DAY": "Diwrnod",
   "MONTH": "Mis",
   "YEAR": "Blwyddyn",
 
-  "DATE_INFO": "Gallaf ddechrau gwasanaeth rheithgor o leiaf 10 diwrnod gwaith o:",
-  "DATE_INFO_OB": "Gall yr unigolyn yr wyf yn ateb drosto ddechrau gwasanaeth rheithgor am o leiaf 10 diwrnod gwaith o:",
 
+  "DATEPICKER_ALT_1": "",
+  "DATEPICKER_ALT_2": "",
+  "DATEPICKER_ALT_3": "",
+  
   "MONDAY": "Dydd Llun",
   "TUESDAY": "Dydd Mawrth",
   "WEDNESDAY": "Dydd Mercher",
@@ -47,10 +101,11 @@
   "SUNDAY": "Dydd Sul",
 
   "MO": "Ll",
-  "TU": "M",
-  "WE": "M",
-  "TH": "I",
-  "FR": "G",
-  "SA": "S",
-  "SU": "S"
+  "TU": "Ma",
+  "WE": "Me",
+  "TH": "Ia",
+  "FR": "Gw",
+  "SA": "Sa",
+  "SU": "Su"
+   
 }

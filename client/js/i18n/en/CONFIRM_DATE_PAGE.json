@@ -1,21 +1,21 @@
 {
-  "HEADING": "Confirm the date of your jury service",
-  "HEADING_OB": "Confirm the date of the person's jury service",
-  "INTRO_PARAGRAPH": "Jury service usually lasts up to 10 working days (Monday to Friday) but it can be longer. You might take part in more than one trial.",
-  "INTRO_PARAGRAPH_OB": "Jury service usually lasts up to 10 working days (Monday to Friday) but it can be longer. The juror might take part in more than one trial.",
-  "REQUIRED": "You are summoned to do jury service starting on:",
-  "REQUIRED_OB": "The person you are replying for is summoned to do jury service starting on:",
-  "AT": "At:",
-  "DATE_CONFIRMATION_HEADING": "Confirm the date of your jury service",
-  "DATE_CONFIRMATION_HEADING_OB": "Confirm the date of the person's jury service",
-  "ANSWER_YES": "I can do jury service on the date shown",
-  "ANSWER_YES_OB": "The person I'm answering for can do jury service on the date shown",
-  "ANSWER_DEFERRAL": "I need to change the date of my jury service",
-  "ANSWER_DEFERRAL_OB": "I need to change the date of jury service for the person I'm answering for",
-  "ANSWER_DEFERRAL_HINT": "You can choose another date within the next 12 months. You can only change the date of your jury service once.",
-  "ANSWER_DEFERRAL_HINT_OB": "You can choose another date within the next 12 months. You can only change the date of the person's jury service once.",
-  "ANSWER_EXCUSAL": "I cannot do jury service and would like to be excused",
-  "ANSWER_EXCUSAL_OB": "The person I'm answering for cannot do jury service and would like to be excused",
-  "ANSWER_EXCUSAL_HINT": "You may not have to do jury service if there's a good reason why you cannot do it in the next 12 months, or if you've done jury service in the last 2 years.",
-  "ANSWER_EXCUSAL_HINT_OB": "The person may not have to do jury service if there's a good reason why they cannot do it in the next 12 months, or if they've done jury service in the last 2 years."
+  "HEADING": "Check your start date",
+  "HEADING_OB": "Check your start date",
+  
+  "PANEL_INTRO": "You are summoned to start jury service on",
+  "PANEL_INTRO_OB": "The person you're replying for is summoned to start jury service on",
+  "AT": "at",
+  "DATE_CONFIRMATION_HINT": "Can you start jury service on this date?",
+  "DATE_CONFIRMATION_HINT_OB": "Can they start jury service on this date?",
+
+  "ANSWER_YES_1": "Yes, I can start on ",
+  "ANSWER_YES_2": " and serve for at least 2 weeks",
+  "ANSWER_YES_1_OB": "Yes, they can start on ",
+  "ANSWER_YES_2_OB": " and serve for at least 2 weeks",
+
+  "ANSWER_DEFERRAL": "No, I need to change the date ",
+  "ANSWER_DEFERRAL_OB": "No, we need to change the date",
+  
+  "ANSWER_EXCUSAL": "No, I cannot do jury service and need to be excused",
+  "ANSWER_EXCUSAL_OB": "No, they cannot do jury service and need to be excused"
 }

@@ -26,6 +26,10 @@
   "COOKIE_NECESSARY_GUIDANCE_2": "Mae'n rhaid iddynt fod ymlaen drwy'r amser.",
 
   "COOKIE_LINK_TEXT": "Sut rydym yn defnyddio cwcis",
-  
-  "SAVE_BUTTON_TEXT": "Arbed newidiadau"
+
+  "SAVE_BUTTON_TEXT": "Arbed newidiadau",
+
+  "SAVE_SUCCESS_HEADING": "Llwyddiant",
+  "SAVE_SUCCESS_MESSAGE": "Rydych wedi gosod eich dewisiadau cwcis.",
+  "SAVE_SUCCESS_LINK_TEXT": "Ewch yn ôl i'r dudalen yr oeddech yn edrych arni gynt"
 }

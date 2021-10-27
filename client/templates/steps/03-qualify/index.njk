@@ -31,14 +31,26 @@
           {{ texts.QUALIFY_PAGE.HEADING }}
         {% endif %}
       </h1>
+      
+      {% if user.thirdParty == 'Yes' %}
+        <p class="govuk-body">{{ texts.QUALIFY_PAGE.MAIN_PARA_1_OB }}</p>
+        <p class="govuk-body">{{ texts.QUALIFY_PAGE.MAIN_PARA_2_OB }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ texts.QUALIFY_PAGE.MAIN_ITEM_1_OB }}</li>
+          <li>{{ texts.QUALIFY_PAGE.MAIN_ITEM_2_OB }}</li>
+        </ul>
+        <p class="govuk-body">{{ texts.QUALIFY_PAGE.MAIN_PARA_3_OB }}</p>
+      {% else %}
+        <p class="govuk-body">{{ texts.QUALIFY_PAGE.MAIN_PARA_1 }}</p>
+        <p class="govuk-body">{{ texts.QUALIFY_PAGE.MAIN_PARA_2 }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ texts.QUALIFY_PAGE.MAIN_ITEM_1 }}</li>
+          <li>{{ texts.QUALIFY_PAGE.MAIN_ITEM_2 }}</li>
+        </ul>
+        <p class="govuk-body">{{ texts.QUALIFY_PAGE.MAIN_PARA_3 }}</p>
+      {% endif %}
 
-      <p class="govuk-body" >
-        {% if user.thirdParty == 'Yes' %}
-          {{ texts.QUALIFY_PAGE.MAIN_OB }}
-        {% else %}
-          {{ texts.QUALIFY_PAGE.MAIN }}
-        {% endif %}
-      </p>
+      <br/>
 
       {# Submit form #}
       {% if user.thirdParty == 'Yes' %}

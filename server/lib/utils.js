@@ -208,6 +208,14 @@
           details = 'National Crime Agency';
         }
 
+        if (employer === 'Judiciary') {
+          details = 'Judiciary';
+        }
+
+        if (employer === 'HMCTS') {
+          details = 'HMCTS';
+        }
+
         if (details === '') {
           details = ' ';
         }
@@ -555,20 +563,24 @@
             return res.redirect(app.namedRoutes.build('steps.qualify.residency.get'));
           }
 
-          if (checkQualifyCompletedMentalHealthSectioned(req.session.user) === false && activeStep >= 3.2) {
-            return res.redirect(app.namedRoutes.build('steps.qualify.mental.health.sectioned.get'));
+          if (typeof req.session.user.cjsEmployed === 'undefined' && activeStep >= 3.2) {
+            return res.redirect(app.namedRoutes.build('steps.qualify.cjs.employed.get'));
           }
 
-          if (checkQualifyCompletedMentalHealthCapacity(req.session.user) === false && activeStep >= 3.3) {
-            return res.redirect(app.namedRoutes.build('steps.qualify.mental.health.capacity.get'));
-          }
-
-          if (checkQualifyCompletedBail(req.session.user) === false && activeStep >= 3.4) {
+          if (checkQualifyCompletedBail(req.session.user) === false && activeStep >= 3.3) {
             return res.redirect(app.namedRoutes.build('steps.qualify.bail.get'));
           }
 
-          if (checkQualifyCompletedConvictions(req.session.user) === false && activeStep >= 4) {
+          if (checkQualifyCompletedConvictions(req.session.user) === false && activeStep >= 3.4) {
             return res.redirect(app.namedRoutes.build('steps.qualify.convictions.get'));
+          }
+
+          if (checkQualifyCompletedMentalHealthSectioned(req.session.user) === false && activeStep >= 3.5) {
+            return res.redirect(app.namedRoutes.build('steps.qualify.mental.health.sectioned.get'));
+          }
+
+          if (checkQualifyCompletedMentalHealthCapacity(req.session.user) === false && activeStep >= 3.6) {
+            return res.redirect(app.namedRoutes.build('steps.qualify.mental.health.capacity.get'));
           }
 
           if (checkDeferral(req.session.user) === false && activeStep >= 4.11) {
@@ -585,10 +597,6 @@
 
           if (typeof req.session.user.confirmedDate === 'undefined' && activeStep >= 5) {
             return res.redirect(app.namedRoutes.build('steps.confirm.date.get'));
-          }
-
-          if (typeof req.session.user.cjsEmployed === 'undefined' && activeStep >= 6) {
-            return res.redirect(app.namedRoutes.build('steps.cjs.employed.get'));
           }
 
           if (typeof req.session.user.assistanceNeeded === 'undefined' && activeStep >= 7) {
@@ -678,10 +686,10 @@
     
     // Extract the time value when the hearing datetime is coming from the UNIQUE_POOL table
     if (moment(req.session.user['hearingTime'], 'YYYY-MM-DD HH:mm:ss').isValid()) {
-      req.session.user['hearingTime'] = moment(req.session.user['hearingTime'], 'YYYY-MM-DD HH:mm:ss').format('HH:mm a');
+      req.session.user['hearingTime'] = moment(req.session.user['hearingTime'], 'YYYY-MM-DD HH:mm:ss').format('H:mma');
     } else if (moment(req.session.user['hearingTime'], 'HH:mm').isValid()) {
     // Extract the time value when the hearing datetime is coming from the COURT_LOCATION table
-      req.session.user['hearingTime'] = moment(req.session.user['hearingTime'], 'HH:mm').format('HH:mm a');
+      req.session.user['hearingTime'] = moment(req.session.user['hearingTime'], 'HH:mm').format('H:mma');
     }
     
     
@@ -706,8 +714,8 @@
       if (!moment(apiResponse['hearingDate']).isValid()) {
         throw 'Invalid hearing date format. MomentJS could not parse: "' + apiResponse['hearingDate'] + '"';
       }
-      req.session.user['hearingDate'] = moment(apiResponse['hearingDate']).format('dddd Do MMMM YYYY');
-      req.session.user['hearingDateMedium'] = moment(apiResponse['hearingDate']).format('DD MMMM YYYY');
+      req.session.user['hearingDate'] = moment(apiResponse['hearingDate']).format('dddd D MMMM YYYY');
+      req.session.user['hearingDateMedium'] = moment(apiResponse['hearingDate']).format('D MMMM YYYY');
       req.session.user['hearingDateShort'] = moment(apiResponse['hearingDate']).format('DD/MM/YYYY');
     } catch (err) {
       app.logger.debug('Hearing date could not be parsed by momentjs', err);
@@ -784,6 +792,28 @@
     }
 
     return result;
+
+  }
+
+  module.exports.getDeferralDateRange = function(summonsDateTimestamp){
+
+    var dates={}
+      , firstMoment
+      , lastMoment;
+
+    firstMoment = moment(summonsDateTimestamp).add(1, 'weeks');
+    lastMoment = moment(summonsDateTimestamp).add(52, 'weeks');
+
+    dates={
+      "earliestMoment": firstMoment,
+      "latestMoment": lastMoment,
+      "earliestDateShort": firstMoment.format('D MM YYYY'),
+      "latestDateShort": lastMoment.format('D MM YYYY'),
+      "earliestDateMed": firstMoment.format('D MMMM YYYY'),
+      "latestDateMed": lastMoment.format('D MMMM YYYY'),
+    }
+
+    return dates;
 
   }
 

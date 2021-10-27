@@ -1,56 +1,113 @@
-{% from "../govuk-frontend/components/button/macro.njk" import govukButton %}
+<div id="cookieBannerContainer" class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on [name of service]" hidden>
 
-<div id="cookie-banner" class="govuk-clearfix cookie-banner" role="region" aria-label="cookie banner" data-nosnippet>
-  <div class="govuk-width-container">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full-width">
+  <form id="cookieBannerForm" action="{{ url('cookie-banner.post') }}" method="post">
+    <div id="cookieBannerMessage" class="govuk-cookie-banner__message govuk-width-container" >
 
-        <form action="{{ url('cookie-banner.post') }}" method="post">
-          <div class="govuk-body">
-            <p class="govuk-heading-m">{{ texts.COOKIE_BANNER.HEADING }}</p>
-            <p>{{ texts.COOKIE_BANNER.GUIDANCE_1 }}<a class="govuk-link" id="cookieInfoLink" href="{{ url('cookie.get') }}" alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.COOKIE_BANNER.GUIDANCE_LINK }}</a> {{ texts.COOKIE_BANNER.GUIDANCE_2 }}</p>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-cookie-banner__heading govuk-heading-m">{{ texts.COOKIE_BANNER.HEADING }}</h2>
+
+          <div class="govuk-cookie-banner__content">
+            <p>{{ texts.COOKIE_BANNER.GUIDANCE_1 }}</p>
+            <p>{{ texts.COOKIE_BANNER.GUIDANCE_2 }}</p>
           </div>
+        </div>
+      </div>
 
-          {{ govukButton({
-            text: texts.COOKIE_BANNER.BUTTON_ACCEPT,
-            classes: "govuk-!-width-one-third govuk-!-margin-right-2 cookieAcceptButton",
-            attributes: {
-              id: "cookieAcceptButton"
-            }
-          }) }}
+      <div class="govuk-button-group">
+        <button id="cookieAcceptButton" type="button" class="govuk-button" data-module="govuk-button">
+          {{ texts.COOKIE_BANNER.BUTTON_ACCEPT }}
+        </button>
+        <button id="cookieRejectButton" type="button" class="govuk-button" data-module="govuk-button">
+          {{ texts.COOKIE_BANNER.BUTTON_REJECT }}
+        </button>
 
-          {{ govukButton({
-            text: texts.COOKIE_BANNER.BUTTON_PREFERENCES,
-            classes: "govuk-!-width-one-third cookieSetButton",
-            attributes: {
-              id: "cookieSetButton"
-            }
-          }) }}
-
-          <input type="hidden" id="cookieReturnPage" name="cookieReturnPage" value="{{ request.url }}">
-          <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-        </form>
-
+        <a class="govuk-link" href="#" onclick="document.getElementById('cookieBannerForm').submit();">{{ texts.COOKIE_BANNER.BUTTON_VIEW_COOKIES }}</a>
       </div>
     </div>
-  </div>
+
+    {# Accepted cookies message #}
+    <div id="cookieAcceptMessage" class="govuk-cookie-banner__message govuk-width-container" role="alert" hidden>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <div class="govuk-cookie-banner__content">
+            <p>{{ texts.COOKIE_BANNER.ACCEPTED_MESSAGE }} {{ texts.COOKIE_BANNER.SETTINGS_LINK_TEXT_1 }} <a class="govuk-link" href="{{ url('cookie-settings.get') }}">{{ texts.COOKIE_BANNER.SETTINGS_LINK_TEXT_2 }}</a> {{ texts.COOKIE_BANNER.SETTINGS_LINK_TEXT_3 }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-button-group">
+        <button id="hideAcceptedMessageButton" name="hideButton" class="govuk-button" data-module="govuk-button">
+          {{ texts.COOKIE_BANNER.BUTTON_HIDE }}
+        </button>
+      </div>
+    </div>
+
+    {# Rejected cookies message #}
+    <div id="cookieRejectMessage" class="govuk-cookie-banner__message govuk-width-container" role="alert" hidden>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <div class="govuk-cookie-banner__content">
+            <p>{{ texts.COOKIE_BANNER.REJECTED_MESSAGE }} {{ texts.COOKIE_BANNER.SETTINGS_LINK_TEXT_1 }} <a class="govuk-link" href="{{ url('cookie-settings.get') }}">{{ texts.COOKIE_BANNER.SETTINGS_LINK_TEXT_2 }}</a> {{ texts.COOKIE_BANNER.SETTINGS_LINK_TEXT_3 }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-button-group">
+        <button id="hideRejectedMessageButton" name="hideButton" class="govuk-button" data-module="govuk-button">
+          {{ texts.COOKIE_BANNER.BUTTON_HIDE }}
+        </button>
+      </div>
+    </div>
+
+    <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+  </form>
+
 </div>
 
 <script src="../../js/cookies.js"></script>
 
 <script>
+
+    // ensure cookie banner is only shown if JS is enabled
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('#cookieBannerContainer').removeAttribute("hidden");
+    });
+
     document.querySelector('#cookieAcceptButton').addEventListener('click', function(event){
       // set the usage consent cookie to true
       window.GOVUK.setConsentCookie({'usage': true});
-      window.location.reload(true);
+      document.querySelector('#cookieBannerMessage').style.display = "none";
+      document.querySelector('#cookieAcceptMessage').removeAttribute("hidden");
+      //window.location.reload(true);
+      //event.preventDefault();
+    });
+
+    document.querySelector('#cookieRejectButton').addEventListener('click', function(event){
+      // set the usage consent cookie to false
+      window.GOVUK.setConsentCookie({'usage': false});
+      document.querySelector('#cookieBannerMessage').style.display = "none";
+      document.querySelector('#cookieRejectMessage').removeAttribute("hidden");
+      //window.location.reload(true);
+      //event.preventDefault();
+    });
+
+    document.querySelector('#hideAcceptedMessageButton').addEventListener('click', function(event){
+      /* hide message panels */
+      document.querySelector('#cookieRejectMessage').style.display = "none";
+      document.querySelector('#cookieAcceptMessage').style.display = "none";
       event.preventDefault();
     });
 
-    document.querySelector('#cookieSetButton').addEventListener('click', function(event){
-      // default the usage consent cookie to false
-      window.GOVUK.setConsentCookie({'usage': false});
-      cookieReturnPage.value = window.location.pathname;
-
-      return true;
+    document.querySelector('#hideRejectedMessageButton').addEventListener('click', function(event){
+      /* hide message panels */
+      document.querySelector('#cookieRejectMessage').style.display = "none";
+      document.querySelector('#cookieAcceptMessage').style.display = "none";
+      event.preventDefault();
     });
+
 </script>

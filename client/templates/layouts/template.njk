@@ -114,17 +114,31 @@
           items: [
             {
               id: "cookiesLink",
-              href: url('cookie.get'),
-              text: texts.INTERFACE.FOOTER_LINKS.COOKIES,
+              href: url('cookie-settings.get'),
+              text: texts.INTERFACE.FOOTER_LINKS.COOKIES
+            },
+            {
+              id: "privacyPolicyLink",
+              href: url('privacy.get'),
+              text: texts.INTERFACE.FOOTER_LINKS.PRIVACY,
               attributes: {
                 target: "_blank",
                 alt: texts.INTERFACE.LINK_OPENS_NEW_WINDOW
               }
             },
             {
-              id: "privacyPolicyLink",
-              href: url('privacy.get'),
-              text: texts.INTERFACE.FOOTER_LINKS.PRIVACY,
+              id: "accessibilityStatementLink",
+              href: url('accessibility-statement.get'),
+              text: texts.INTERFACE.FOOTER_LINKS.ACCESSIBILITY_STATEMENT,
+              attributes: {
+                target: "_blank",
+                alt: texts.INTERFACE.LINK_OPENS_NEW_WINDOW
+              }
+            },
+            {
+              id: "feedbackSurveyLink",
+              href: texts.INTERFACE.SMART_SURVEY_SUMMONS_RESPONSE_URL,
+              text: texts.INTERFACE.FOOTER_LINKS.FEEDBACK,
               attributes: {
                 target: "_blank",
                 alt: texts.INTERFACE.LINK_OPENS_NEW_WINDOW

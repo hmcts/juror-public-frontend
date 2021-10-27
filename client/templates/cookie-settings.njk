@@ -34,6 +34,21 @@
             {% set radioAnalyticsNoChecked = true %}
           {% endif %}
 
+          {% if returnUrl %}
+            <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+              <div class="govuk-notification-banner__header">
+                <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                  {{ texts.COOKIE_SETTINGS_PAGE.SAVE_SUCCESS_HEADING }}
+                </h2>
+              </div>
+              <div class="govuk-notification-banner__content">
+                <p class="govuk-notification-banner__heading">
+                  {{ texts.COOKIE_SETTINGS_PAGE.SAVE_SUCCESS_MESSAGE }} <a class="govuk-notification-banner__link" href="{{returnUrl}}">{{ texts.COOKIE_SETTINGS_PAGE.SAVE_SUCCESS_LINK_TEXT }}</a>.
+                </p>
+              </div>
+            </div>
+          {% endif %}
+
           <h1 class="govuk-heading-xl">
             {{ texts.COOKIE_SETTINGS_PAGE.HEADING }}
           </h1>

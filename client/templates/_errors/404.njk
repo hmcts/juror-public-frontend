@@ -1,13 +1,13 @@
-{% extends "../layouts/default.njk" %}
+{% extends "../layouts/default-gds.njk" %}
 
-{% block page_title %}
+{% block pageTitle %}
   {{ texts.ERRORS['404'] }} - {{ texts.INTERFACE.GOV }}
 {% endblock %}
 
 {% block page_identifier %}Not found{% endblock %}
 
 {% block content %}
-<h1 class="heading-xlarge">{{ texts.ERRORS.NOT_FOUND }}</h1>
-<p>{{ texts.ERRORS.CHECK_CORRECT }}</p>
-<p>{{ texts.INTERFACE.YOU_CAN }} <a href="/">{{ texts.INTERFACE.BROWSE_FROM_HOME }}</a> {{ texts.INTERFACE.FIND_INFO }}</p>
+<h1 class="govuk-heading-xl">{{ texts.ERRORS.NOT_FOUND }}</h1>
+<p class="govuk-body">{{ texts.ERRORS.CHECK_CORRECT }}</p>
+<p class="govuk-body">{{ texts.INTERFACE.YOU_CAN }} <a href="/">{{ texts.INTERFACE.BROWSE_FROM_HOME }}</a> {{ texts.INTERFACE.FIND_INFO }}</p>
 {% endblock %}

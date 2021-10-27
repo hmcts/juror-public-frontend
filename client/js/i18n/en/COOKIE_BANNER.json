@@ -1,8 +1,15 @@
 {
-  "HEADING": "Tell us whether you accept cookies",
-  "GUIDANCE_1": "We use ",
-  "GUIDANCE_LINK": "cookies to collect information",
-  "GUIDANCE_2": "about how you use GOV.UK. We use this information to make the website work as well as possible and improve government services.",
-  "BUTTON_ACCEPT": "Accept all cookies",
-  "BUTTON_PREFERENCES": "Set cookie preferences"
+  "HEADING": "Cookies on Reply to a jury summons",
+  "GUIDANCE_1": "We use some essential cookies to make this service work.",
+  "GUIDANCE_2": "We’d also like to use analytics cookies so we can understand how you use the service and make improvements.",
+  "BUTTON_ACCEPT": "Accept analytics cookies",
+  "BUTTON_REJECT": "Reject analytics cookies",
+  "BUTTON_VIEW_COOKIES": "View cookies",
+
+  "ACCEPTED_MESSAGE": "You’ve accepted analytics cookies.",
+  "REJECTED_MESSAGE": "You’ve rejected analytics cookies.",
+  "SETTINGS_LINK_TEXT_1": "You can ",
+  "SETTINGS_LINK_TEXT_2": "change your cookie settings",
+  "SETTINGS_LINK_TEXT_3": "at any time.",
+  "BUTTON_HIDE": "Hide this message"
 }

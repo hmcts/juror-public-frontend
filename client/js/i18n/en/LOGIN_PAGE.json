@@ -8,8 +8,8 @@
   "IMAGE_TITLE": "Juror number can be found at the top of the summons letter",
 
   "FIELD_JUROR_NUMBER_TITLE": "9-digit juror number",
-  "FIELD_JUROR_NUMBER_HINT": "You can find your juror number at the top of your jury summons letter.",
-  "FIELD_JUROR_NUMBER_HINT_OB": "You can find the juror number at the top of the jury summons letter.",
+  "FIELD_JUROR_NUMBER_HINT": "You can find your juror number on your jury summons letter.",
+  "FIELD_JUROR_NUMBER_HINT_OB": "You can find the juror number on the jury summons letter.",
 
   "GUIDANCE_TITLE": "I do not have a juror number",
   "GUIDANCE_TITLE_OB": "I do not have a juror number for the person",

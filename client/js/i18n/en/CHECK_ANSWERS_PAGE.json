@@ -41,7 +41,8 @@
   "OB_WHY_QUESTION": "Your reason for replying on behalf of the person summoned for jury service",
   "OB_WHY_READER": "your reason for replying on behalf of the person summoned for jury service",
 
-  "JUROR_QUALIFY_QUESTION": "You answered the qualifying questions",
+  "JUROR_QUALIFY_QUESTION": "You answered the eligibility questions",
+
   "JUROR_QUALIFY_QUESTION_LIVED_CONSECUTIVE": "Have you lived in the UK, Channel Islands or Isle of Man for 5 consecutive years since your 13th birthday?",
   "JUROR_QUALIFY_QUESTION_LIVED_CONSECUTIVE_READER": "your answer to the question, 'Have you lived in the UK, Channel Islands or Isle of Man for 5 consecutive years since your 13th birthday?'",
   "JUROR_QUALIFY_QUESTION_MENTAL_HEALTH": "Are you currently or likely to be detained under the Mental Health Act 1983 or lack capacity as stated in the Mental Capacity Act 2005?",
@@ -53,7 +54,9 @@
   "JUROR_QUALIFY_QUESTION_BAIL_READER": "your answer to the question, 'Are you currently on bail for a criminal offence?'",
   "JUROR_QUALIFY_QUESTION_CONVICTED": "Have you been convicted of a criminal offence and been given a sentence?",
   "JUROR_QUALIFY_QUESTION_CONVICTED_READER": "your answer to the question, 'Have you been convicted of a criminal offence and been given a sentence?'",
-  "OB_QUALIFY_QUESTION": "You answered the qualifying questions for the person you're replying for",
+
+  
+  "OB_QUALIFY_QUESTION": "You answered the eligibility questions for the person you're replying for",
   "OB_QUALIFY_QUESTION_LIVED_CONSECUTIVE": "Has the person you're answering for lived in the UK, Channel Islands or Isle of Man for 5 consecutive years since their 13th birthday?",
   "OB_QUALIFY_QUESTION_LIVED_CONSECUTIVE_READER": "your answer to the question, 'Has the person you're answering for lived in the UK, Channel Islands or Isle of Man for 5 consecutive years since their 13th birthday?'",
   "OB_QUALIFY_QUESTION_MENTAL_HEALTH": "Is the person currently or likely to be detained under the Mental Health Act 1983 or lack capacity as stated in the Mental Capacity Act 2005?",
@@ -78,16 +81,17 @@
   "JUROR_EXCUSAL_REQUEST": "I cannot do jury service and would like to be excused",
   "OB_LATER_DATE_REQUEST": "I need to change the date of jury service for the person I'm answering for",
   "OB_EXCUSAL_REQUEST": "The person I'm answering for cannot do jury service and would like to be excused",
-  "JUROR_CHANGE_DATE_HEADER": "As you asked to do your jury service on a different date you told us",
   
-  "OB_CHANGE_DATE_HEADER": "As you asked for the person to do jury service on a different date you told us ",
-  "OB_CHANGE_DATE_QUESTION_1": "Explain why the person you're replying for wishes to change the date of their jury service",
-  "OB_CHANGE_DATE_QUESTION_1_READER": "your explanation for why the person needs to change the date of their jury service",
-  "JUROR_CHANGE_DATE_QUESTION_1": "Explain why you wish to change the date of your jury service",
+  "JUROR_CHANGE_DATE_HEADER": "As you asked to do your jury service on a different date you told us",
+  "JUROR_CHANGE_DATE_QUESTION_1": "Tell us why you need another date for your jury service",
   "JUROR_CHANGE_DATE_QUESTION_1_READER": "your explanation for why you need to change the date of your jury service",
-  "JUROR_CHANGE_DATE_QUESTION_2": "Give us 3 dates you could start jury service during the next 12 months",
+  "OB_CHANGE_DATE_HEADER": "As you asked for the person to do jury service on a different date you told us ",
+  "OB_CHANGE_DATE_QUESTION_1": "Tell us why they need another date for their jury service",
+  "OB_CHANGE_DATE_QUESTION_1_READER": "your explanation for why the person needs to change the date of their jury service",
+  
+  "JUROR_CHANGE_DATE_QUESTION_2": "Choose 3 Mondays when you can start jury service",
   "JUROR_CHANGE_DATE_QUESTION_2_READER": "the dates you gave for when you can do jury service in the next 12 months",
-  "OB_CHANGE_DATE_QUESTION_2": "Give us 3 dates the person you're replying for could start jury service during the next 12 months",
+  "OB_CHANGE_DATE_QUESTION_2": "Choose 3 Mondays when they can start jury service",
   "OB_CHANGE_DATE_QUESTION_2_READER": "the dates you gave for when the person can do jury service in the next 12 months",
 
   "JUROR_EXCUSAL_HEADER": "Because you asked to be excused from jury service, you told us",

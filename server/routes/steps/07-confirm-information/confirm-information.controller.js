@@ -56,6 +56,8 @@
         , cjsTmpArr
         , tmpArr
         , assistanceTmp
+        , deferralDate
+        , deferralDisplayDates={}
         // , personalDetailsChangeLink
         , personalDetailsChangeNameLink
         , personalDetailsChangeAddressLink
@@ -361,6 +363,16 @@
 
       }
 
+      // Retrieve and format the deferral dates
+      if (req.session.user.deferral) {
+        req.session.user.deferral.dates.split(',')
+          .forEach(function(dateStr, index) {
+            deferralDate = moment(dateStr, 'DD/MM/YYYY');
+            deferralDisplayDates['date' + (index + 1)] = deferralDate.format('dddd D MMMM YYYY');
+          });
+        req.session.user.deferral['displayDates'] = deferralDisplayDates;
+      }
+
       // Merge and then delete form fields and errors, prevents retention after pressing back link
       tmpErrors = _.cloneDeep(req.session.errors);
 
@@ -391,6 +403,7 @@
           // contactDetailsChangeLink: contactDetailsChangeLink,
           contactDetailsChangePhoneLink: contactDetailsChangePhoneLink,
           contactDetailsChangeEmailLink: contactDetailsChangeEmailLink,
+          deferralDisplayDates: deferralDisplayDates,
           errors: {
             title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             message: '',

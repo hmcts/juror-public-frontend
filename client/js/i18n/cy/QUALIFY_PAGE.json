@@ -1,10 +1,24 @@
 {
-  "HEADING": "Cymhwyso ar gyfer gwasanaeth rheithgor",
-  "HEADING_OB": "A yw'r unigolyn rydych chi'n ymateb ar ei ran yn gymwys i wasanaethu ar reithgor?",
+  "HEADING": "Cadarnhau a ydych yn gymwys i wasanaethu ar reithgor",
+  "MAIN_PARA_1": "Bydd eich atebion yn yr adran nesaf yn ein helpu i wirio a ydych yn gallu gwasanaethu ar reithgor ai peidio.",
+  "MAIN_PARA_2": "Rhaid ichi ateb y cwestiynau hyd yn oed os ydych:",
+  "MAIN_ITEM_1": "yn meddwl nad ydych yn gymwys",
+  "MAIN_ITEM_2": "eisiau cael eich esgusodi",
+  "MAIN_PARA_3": "Gallwch ofyn i gael eich esgusodi ar ôl yr adran hon, os bydd angen.",
+
+  "HEADING_OB": "Cadarnhau a yw'r unigolyn yn gymwys i wasanaethu ar reithgor",
+  "MAIN_PARA_1_OB": "Bydd eich atebion yn yr adran nesaf yn ein helpu i wirio a yw'r unigolyn yr ydych yn ateb ar ei ran yn gallu gwasanaethu ar reithgor ai peidio.",
+  "MAIN_PARA_2_OB": "Rhaid ichi ateb y cwestiynau hyd yn oed os ydych:",
+  "MAIN_ITEM_1_OB": "yn meddwl nad ydynt yn gymwys",
+  "MAIN_ITEM_2_OB": "eisiau gofyn iddynt gael eu hesgusodi",
+  "MAIN_PARA_3_OB": "Gallwch ofyn iddynt gael eu hesgusodi ar ôl yr adran hon, os bydd angen.",
+
   "MAIN": "Efallai bydd eich atebion yn yr adran hon yn golygu na allwch wasanaethu ar reithgor. Ond hyd yn oed os ydych yn meddwl na fyddwch yn gallu gwasanaethu, rydym ni dal angen ichi lenwi gweddill y ffurflen arlein. Mae angen gweddill y wybodaeth arnom er mwyn i ni wneud yn siŵr p'un a ydych yn cael gwasanaethu ar reithgor neu beidio.",
   "MAIN_OB": "Gall eich atebion olygu efallai na fydd yr unigolyn rydych yn ymateb ar ei ran yn gallu gwasanaethu ar reithgor. Ond hyd yn oed os ydych yn meddwl na allant wasanaethu ar reithgor, rydym dal angen ichi lenwi gweddill y ffurflen ar-lein. Rydym ni angen gweddill yr wybodaeth er mwyn i ni wneud yn siŵr p'un a ydynt yn cael gwasanaethu ar reithgor ai peidio.",
-  "CAPTION": "Cymhwyso ar gyfer gwasanaeth rheithgor",
-  "CAPTION_OB": "Cymhwyso ar gyfer gwasanaeth rheithgor",
+  
+  "CAPTION": "Cymhwysedd",
+  "CAPTION_OB": "Cymhwysedd",
+  
   "RESIDENCY_TITLE": "A ydych chi wedi byw yn y DU, Ynysoedd y Sianel neu Ynys Manaw am 5 mlynedd yn olynol ers eich pen-blwydd yn 13 oed?",
   "RESIDENCY_TITLE_OB": "A yw'r unigolyn yr ydych chi'n ateb drosto wedi byw yn y DU, Ynysoedd y Sianel neu Ynys Manaw am 5 mlynedd yn olynol ers ei ben-blwydd yn 13 oed?",
   "RESIDENCY_YES": "Do",

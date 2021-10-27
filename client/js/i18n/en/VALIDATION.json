@@ -57,7 +57,7 @@
     "LAST_NAME_CHECK_OB": "Check the person's last name",
     "LAST_NAME_MISSING": "Enter your last name",
     "LAST_NAME_MISSING_OB": "Enter the person's last name",
-    "NAME_CONFIRM_MISSING": "Select no if your name is not correct",
+    "NAME_CONFIRM_MISSING": "You need to tell us if we have the correct name for you",
     "ADDRESS_CONFIRM_MISSING": "Select no if you have a different address",
     "ADDRESS_LINE_ONE_CHECK": "Check the first line of your address",
     "ADDRESS_LINE_ONE_CHECK_OB": "Check the first line of the address",
@@ -152,8 +152,8 @@
   },
 
   "CONFIRM_DATE": {
-    "CONFIRM": "Select if you can do the date, need to change the date, or would like to be excused",
-    "CONFIRM_OB": "Select if the person you are replying for can do the date, needs to change the date, or would like to be excused"
+    "CONFIRM": "Select whether you can start jury service on this date",
+    "CONFIRM_OB": "Select whether the person can start jury service on this date"
   },
 
   "CJS_EMPLOYED": {
@@ -190,22 +190,27 @@
   },
 
   "DEFERRAL": {
-    "CHECK_REASON": "Give a reason for asking for a later date for your jury service",
-    "CHECK_REASON_OB": "Give a reason for asking for a later date for the person's jury service",
-    "CHECK_REASON_MISSING": "Give a reason for asking for a later date for your jury service",
-    "CHECK_REASON_MISSING_OB": "Give a reason for asking for a later date for the person's jury service",
-    "CHECK_DATES_ONE":"Provide the first date you are available for your jury service",
-    "CHECK_DATES_ONE_OB":"Provide the first date the juror will be available for jury service",
-    "CHECK_DATES_TWO":"Provide a second date you are available for your jury service",
-    "CHECK_DATES_TWO_OB":"Provide a second date the juror will be available for jury service",
-    "CHECK_DATES_THREE":"Provide a third date you are available for your jury service",
-    "CHECK_DATES_THREE_OB":"Provide a third date the juror will be available for jury service",
-    "CHECK_DATES_ERROR_ONE": "Choose a first date",
-    "CHECK_DATES_ERROR_TWO": "Choose a second date",
-    "CHECK_DATES_ERROR_THREE": "Choose a third date",
-    "CHECK_DATES_UNIQUE": "Provide 3 different dates",
-    "CHECK_DATES_UNIQUE_OB": "Provide 3 different dates",
-    "CHECK_DATES_UNIQUE_ERROR": "Provide 3 different dates",
+    "CHECK_REASON": "Enter your reason for needing another date for jury service",
+    "CHECK_REASON_OB": "Enter their reason for needing another date for jury service",
+    "CHECK_REASON_MISSING": "Enter your reason for needing another date for jury service",
+    "CHECK_REASON_MISSING_OB": "Enter their reason for needing another date for jury service",
+
+    "CHECK_DATES_ONE":"Enter the first Monday you'd prefer to start jury service",
+    "CHECK_DATES_ONE_OB":"Enter the first Monday they'd prefer to start jury service",
+    "CHECK_DATES_TWO":"Enter the second Monday you'd prefer to start jury service",
+    "CHECK_DATES_TWO_OB":"Enter the second Monday they'd prefer to start jury service",
+    "CHECK_DATES_THREE":"Enter the third Monday you'd prefer to start jury service",
+    "CHECK_DATES_THREE_OB":"Enter the third Monday they'd prefer to start jury service",
+
+    "CHECK_DATES_ERROR_ONE": "Your first choice must be a Monday between [earliestDate] and [latestDate]",
+    "CHECK_DATES_ERROR_ONE_OB": "Their first choice must be a Monday between [earliestDate] and [latestDate]",
+    "CHECK_DATES_ERROR_TWO": "Your second choice must be a Monday between [earliestDate] and [latestDate]",
+    "CHECK_DATES_ERROR_TWO_OB": "Their second choice must be a Monday between [earliestDate] and [latestDate]",
+    "CHECK_DATES_ERROR_THREE": "Your third choice must be a Monday between [earliestDate] and [latestDate]",
+    "CHECK_DATES_ERROR_THREE_OB": "Their third choice must be a Monday between [earliestDate] and [latestDate]",
+    
+    "CHECK_DATES_UNIQUE": "Enter a date that's different to your other choices",
+    "CHECK_DATES_UNIQUE_OB": "Enter a date that's different to the other choices",
     
     "CHECK_DATE_FUTURE_ONE": "The first date provided cannot be more than 12 months after the original summons date of [summons-date]",
     "CHECK_DATE_BEFORE_HEARING_ONE": "The first date provided cannot be before the original summons date of [summons-date]",
@@ -223,7 +228,10 @@
     "CHECK_REASON_LENGTH_OB": "The reason for asking for a later date for the person's jury service must be fewer characters",
     "CHECK_DATE_AGE": "Give another date, you will be older than 76 on this date and would not qualify for jury service",
     "CHECK_DATE_AGE_OB": "Give another date, the juror will be older than 76 on this date and would not qualify for jury service",
-    "CHECK_DATE_AGE_ERROR": "Give another date"
+    "CHECK_DATE_AGE_ERROR": "Give another date",
+
+    "CHECK_DATES_PROCEED": "Confirm whether you want to proceed with these dates",
+    "CHECK_DATES_PROCEED_OB": "Select whether you want to proceed with these dates"
   },
 
   "EXCUSAL": {
@@ -292,7 +300,7 @@
     },
 
     "THIRD_PARTY_PERSONAL_DETAILS": {
-      "NAME_CONFIRM_MISSING": "Select no if their name is not correct",
+      "NAME_CONFIRM_MISSING": "You need to tell us if we have the correct name for them",
 
       "TITLE_CHECK": "Enter a valid title",
       "TITLE_CHECK_INVALID": "Enter a valid title",

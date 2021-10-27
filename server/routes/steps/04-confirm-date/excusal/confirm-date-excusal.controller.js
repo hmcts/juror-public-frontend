@@ -87,7 +87,7 @@
       if (req.session.change === true){
         return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
       }
-      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.cjs.employed', req.session.user.thirdParty)));
+      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.assistance', req.session.user.thirdParty)));
     };
   };
 

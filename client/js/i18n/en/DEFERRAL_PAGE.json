@@ -1,21 +1,79 @@
 {
-  "HEADING": "Give us 3 dates you could start jury service during the next 12 months",
-  "HEADING_OB": "Give us 3 dates the person you're replying for could do jury service during the next 12 months",
-  "REASON_HEADING": "Say why you need another date for your jury service",
-  "REASON_HEADING_OB": "Say why the person you're answering for needs another date for their jury service",
+  "REASON": {
+    "REASON_HEADING": "Tell us why you need another date for your jury service",
+    "REASON_HEADING_OB": "Tell us why they need another date for their jury service",
+  
+    "ACCEPTABLE_INFO": "You must have a good reason for changing, for example:",
+    "ACCEPTABLE_INFO_OB": "They must have a good reason for changing, for example:",
+    "ACCEPTABLE_LIST_ITEM_1": "a booked holiday",
+    "ACCEPTABLE_LIST_ITEM_2": "an operation",
+    "ACCEPTABLE_LIST_ITEM_3": "an exam",
+    "ACCEPTABLE_LIST_ITEM_4": "your employer will not give you time off work",
+    "ACCEPTABLE_LIST_ITEM_4_OB": "their employer will not give them time off work",
 
-  "REASON_FIELD_TITLE": "Please say why you need another date for your jury service",
-  "REASON_FIELD_TITLE_OB": "Please say why the person you're answering for needs another date for their jury service",
-  "REASON_FIELD_HINT": "You can only change the date of your jury service once.",
-  "REASON_FIELD_HINT_OB": "You can only change the date of the jury service once.",
 
-  "ACCEPTABLE_SUMMARY": "What is an acceptable reason?",
-  "ACCEPTABLE_INFO": "We may be able to change the date of your jury service if you have a good reason. These are some examples - or you might have a different good reason:",
-  "ACCEPTABLE_INFO_OB": "We may be able to change the date of jury service if the person you're answering for has a good reason. These are some examples - or they might have a different good reason:",
-  "ACCEPTABLE_LIST_ITEM_1": "having a holiday booked",
-  "ACCEPTABLE_LIST_ITEM_2": "having an operation",
-  "ACCEPTABLE_LIST_ITEM_3": "taking an exam",
+    "REASON_FIELD_HINT": "You can only change the date once.",
+    "REASON_FIELD_HINT_OB": "They can only change the date once."
+  },
 
+  "DATES": {
+    "HEADING": "Choose 3 Mondays when you can start jury service",
+    "HEADING_OB": "Choose 3 Mondays when they can start jury service",
+
+    "GUIDANCE_P1": "These must be between",
+    "GUIDANCE_AND": "and",
+
+    "GUIDANCE_P2": "You must be available to serve at least 2 weeks.",
+    "GUIDANCE_P2_OB": "They must be available to serve at least 2 weeks.",
+  
+    "DATE1_LABEL": "First choice",
+    "DATE2_LABEL": "Second choice",
+    "DATE3_LABEL": "Third choice",
+    "DATE_EXAMPLE_HINT": "For example, "
+  },
+
+  "CHECK_DATES": {
+    "HEADING": "Check your dates",
+    "HEADING_OB": "Check dates",
+    "SUMMARY_HEADING": "Dates you can start jury service",
+    "SUMMARY_HEADING_OB": "Dates they can start jury service",
+
+    "GUIDANCE_P1": "You do not need to tell us all other dates you're available.",
+    "GUIDANCE_P1_OB": "You do not need to tell us all other dates they're available.",
+    "GUIDANCE_P2": "We'll choose one of your 3 dates.",
+    "GUIDANCE_P2_OB": "We'll choose one of these 3 dates.",
+    "GUIDANCE_P3": "In the unlikely event that we cannot use one of these dates, we'll contact you.",
+
+    "QUESTION": "Do you want to proceed with these dates?",
+    "YES": "Yes",
+    "NO": "No"
+  },
+
+  "PUBLIC_HOLIDAY": {
+    "HEADING": "At least one of the Mondays you selected is a bank holiday",
+    "GUIDANCE_1": "You've selected at least one Monday that's a UK bank holiday.",
+    "GUIDANCE_2": "If we choose this as your start date, your jury service will start on the Tuesday at the earliest.",
+    "GUIDANCE_2_OB": "If we choose this as their start date, their jury service will start on the Tuesday at the earliest.",
+    "GUIDANCE_3": "We'll send you confirmation of your start date.",
+    "GUIDANCE_3_OB": "We'll send confirmation of the start date."
+  },
+
+  "GUIDANCE_SUMMARY_1": "Will I need to serve longer than 2 weeks?",
+  "GUIDANCE_DETAIL_1_P1": "Most jurors only need to serve 2 weeks.",
+  "GUIDANCE_DETAIL_1_P2": "You may be asked to serve for longer when you arrive at court.",
+  "GUIDANCE_DETAIL_1_P3": "If you cannot serve for more than 2 weeks, you'll be able to discuss this with the jury manager at court.",
+
+  "GUIDANCE_SUMMARY_1_OB": "Will they need to serve longer than 2 weeks?",
+  "GUIDANCE_DETAIL_1_P1_OB": "Most jurors only need to serve 2 weeks.",
+  "GUIDANCE_DETAIL_1_P2_OB": "They may be asked to serve for longer when they arrive at court.",
+  "GUIDANCE_DETAIL_1_P3_OB": "If they cannot serve for more than 2 weeks, they'll be able to discuss this with the jury manager at court.",
+
+  "GUIDANCE_SUMMARY_2": "What if there's a problem nearer the time and I cannot serve?",
+  "GUIDANCE_DETAIL_2_P1": "You must contact us at that time to let us know.",
+
+  "GUIDANCE_SUMMARY_2_OB": "What if there's a problem nearer the time and they cannot serve?",
+  "GUIDANCE_DETAIL_2_P1_OB": "You or they must contact us at that time to let us know.",
+  
   "DATE_FIELD_TITLE": "Jury service usually starts on a Monday and lasts up to 10 working days but can be longer. Jury service does not take place on bank holidays.",
   "DATE_FIELD_TITLE_OB": "Jury service usually starts on a Monday and lasts up to 10 working days but can be longer. Jury service does not take place on bank holidays.",
   "DATE_FIELD_HINT": "It may be possible to start your jury service on another more suitable date.",
@@ -26,21 +84,14 @@
   "WHY_ASK_INFO": "It may be possible to start your jury service on another more suitable date.",
   "WHY_ASK_INFO_OB": "It may be possible to start the person's jury service on another more suitable date.",
 
-  "DATE1": "First date",
-  "DATE2": "Second date",
-  "DATE3": "Third date",
-  "DATE_EG": "eg 08/10/2017",
 
   "DAY": "Day",
   "MONTH": "Month",
   "YEAR": "Year",
 
-  "DATE_INFO": "I can start jury service for at least 10 working days from:",
-  "DATE_INFO_OB": "The person I'm replying for can start jury service for at least 10 working days from:",
-
-  "DATEPICKER_ALT_1": "open date 1 calendar",
-  "DATEPICKER_ALT_2": "open date 2 calendar",
-  "DATEPICKER_ALT_3": "open date 3 calendar",
+  "DATEPICKER_ALT_1": "open first date calendar",
+  "DATEPICKER_ALT_2": "open second date calendar",
+  "DATEPICKER_ALT_3": "open third date calendar",
 
   "MONDAY": "Monday",
   "TUESDAY": "Tuesday",
@@ -57,5 +108,5 @@
   "FR": "FR",
   "SA": "SA",
   "SU": "SU"
-
+  
 }

@@ -594,6 +594,134 @@ var moment = require('moment');
           }],
           marginBottom: 10
         },
+
+        //Qualify - CJS Employment
+        {
+          text: texts.jurorPDF.employmentQuestion,
+          style: 'smallDull',
+          marginBottom: 10
+        },
+        {
+          text: juror.cjsEmployed === texts.jurorPDF.employmentQuestionYes ? texts.jurorPDF.employmentQuestionYes : texts.jurorPDF.employmentQuestionNo,
+          style: 'textReg',
+          marginBottom: 5
+        },
+        {
+          text: juror.cjsPoliceDetails ? texts.sharedText.policeForce : '',
+          style: 'smallBold',
+          marginBottom: 0
+        },
+        {
+          text: juror.cjsPoliceDetails,
+          style: 'textReg',
+          marginBottom: juror.cjsPoliceDetails ? 5 : 0
+        },
+        {
+          text: juror.cjsPrisonDetails ? texts.sharedText.prisonService : '',
+          style: 'smallBold',
+          marginBottom: 0
+        },
+        {
+          text: juror.cjsPrisonDetails,
+          style: 'textReg',
+          marginBottom: juror.cjsPrisonDetails ? 5 : 0
+        },
+        {
+          text: juror.cjsNca ? texts.sharedText.nationalCrimeAgency : '',
+          style: 'smallBold',
+          marginBottom: juror.cjsNca ? 5 : 0
+        },
+        {
+          text: juror.cjsJudiciary ? texts.sharedText.judiciary : '',
+          style: 'smallBold',
+          marginBottom: juror.cjsJudiciary ? 5 : 0
+        },
+        {
+          text: juror.cjsHMCTS ? texts.sharedText.hmcts : '',
+          style: 'smallBold',
+          marginBottom: juror.cjsHMCTS ? 5 : 0
+        },
+        {
+          text: juror.cjsEmployerDetails ? texts.sharedText.other : '',
+          style: 'smallBold',
+          marginBottom: 0
+        },
+        {
+          text: juror.cjsEmployerDetails,
+          style: 'textReg',
+          marginBottom: juror.cjsEmployerDetails ? 5 : 0
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 10
+        },
+
+        //Qualify - Bail
+        {
+          text: texts.jurorPDF.bailQuestion,
+          style: 'smallDull',
+          marginBottom: 10
+        },
+        {
+          text: juror.qualify.onBail.details ? texts.jurorPDF.bailYes : texts.jurorPDF.bailNo,
+          style: 'textReg',
+          marginBottom: 10
+        },
+        {
+          text: juror.qualify.onBail.details ? juror.qualify.onBail.details : '',
+          style: 'textReg',
+          marginBottom: 5
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 10
+        },
+
+        //Qualify - Convictions
+        {
+          text: texts.jurorPDF.convictionsQuestion,
+          style: 'smallDull',
+          marginBottom: 10
+        },
+        {
+          text: juror.qualify.convicted.details ? texts.jurorPDF.convictionsYes : texts.jurorPDF.convictionsNo,
+          style: 'textReg',
+          marginBottom: 10
+        },
+        {
+          text: juror.qualify.convicted.details ? juror.qualify.convicted.details : '',
+          style: 'textReg',
+          marginBottom: 5
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 10
+        },
+
         //Qualify - Mental Health Sectioned
         {
           text: texts.jurorPDF.mentalHealthSectioned,
@@ -635,62 +763,6 @@ var moment = require('moment');
         },
         {
           text: juror.qualify.mentalHealthCapacity.details ? juror.qualify.mentalHealthCapacity.details : '',
-          style: 'textReg',
-          marginBottom: 5
-        },
-        {
-          canvas: [{
-            type: 'line',
-            x1: 0,
-            y1: 5,
-            x2: 595 - 2 * 40,
-            y2: 5,
-            lineWidth: 1,
-            lineColor: '#ccc'
-          }],
-          marginBottom: 10
-        },
-        //Qualify - Bail
-        {
-          text: texts.jurorPDF.bailQuestion,
-          style: 'smallDull',
-          marginBottom: 10
-        },
-        {
-          text: juror.qualify.onBail.details ? texts.jurorPDF.bailYes : texts.jurorPDF.bailNo,
-          style: 'textReg',
-          marginBottom: 10
-        },
-        {
-          text: juror.qualify.onBail.details ? juror.qualify.onBail.details : '',
-          style: 'textReg',
-          marginBottom: 5
-        },
-        {
-          canvas: [{
-            type: 'line',
-            x1: 0,
-            y1: 5,
-            x2: 595 - 2 * 40,
-            y2: 5,
-            lineWidth: 1,
-            lineColor: '#ccc'
-          }],
-          marginBottom: 10
-        },
-        //Qualify - Convictions
-        {
-          text: texts.jurorPDF.convictionsQuestion,
-          style: 'smallDull',
-          marginBottom: 10
-        },
-        {
-          text: juror.qualify.convicted.details ? texts.jurorPDF.convictionsYes : texts.jurorPDF.convictionsNo,
-          style: 'textReg',
-          marginBottom: 10
-        },
-        {
-          text: juror.qualify.convicted.details ? juror.qualify.convicted.details : '',
           style: 'textReg',
           marginBottom: 5
         },
@@ -813,7 +885,7 @@ var moment = require('moment');
           marginBottom: juror.deferral ? 10 : 0
         },
         {
-          text: juror.deferral ? juror.deferral.dates : '',
+          text: juror.deferral ? texts.jurorPDF.deferralDate1Label + '\n' + juror.deferral.displayDates['date1'] + '\n\n' + texts.jurorPDF.deferralDate2Label + '\n' + juror.deferral.displayDates['date2'] + '\n\n' + texts.jurorPDF.deferralDate3Label + '\n' + juror.deferral.displayDates['date3']  : '',
           style: 'textReg',
           marginBottom: juror.deferral ? 5 : 0
         },
@@ -829,80 +901,10 @@ var moment = require('moment');
           } : {}],
           marginBottom: juror.deferral ? 20 : 0
         },
-        {
-          text: texts.jurorPDF.employmentHeader,
-          style: 'smallBold',
-          marginBottom: 10
-        },
-        {
-          canvas: [{
-            type: 'line',
-            x1: 0,
-            y1: 5,
-            x2: 595 - 2 * 40,
-            y2: 5,
-            lineWidth: 1,
-            lineColor: '#ccc'
-          }],
-          marginBottom: 10
-        },
-        {
-          text: texts.jurorPDF.employmentQuestion,
-          style: 'smallDull',
-          marginBottom: 10
-        },
-        {
-          text: juror.cjsEmployed === texts.jurorPDF.employmentQuestionYes ? texts.jurorPDF.employmentQuestionYes : texts.jurorPDF.employmentQuestionNo,
-          style: 'textReg',
-          marginBottom: 5
-        },
-        {
-          text: juror.cjsPoliceDetails ? texts.sharedText.policeForce : '',
-          style: 'smallBold',
-          marginBottom: 0
-        },
-        {
-          text: juror.cjsPoliceDetails,
-          style: 'textReg',
-          marginBottom: juror.cjsPoliceDetails ? 5 : 0
-        },
-        {
-          text: juror.cjsPrisonDetails ? texts.sharedText.prisonService : '',
-          style: 'smallBold',
-          marginBottom: 0
-        },
-        {
-          text: juror.cjsPrisonDetails,
-          style: 'textReg',
-          marginBottom: juror.cjsPrisonDetails ? 5 : 0
-        },
-        {
-          text: juror.cjsNca ? texts.sharedText.nationalCrimeAgency : '',
-          style: 'smallBold',
-          marginBottom: juror.cjsNca ? 5 : 0
-        },
-        {
-          text: juror.cjsEmployerDetails ? texts.sharedText.other : '',
-          style: 'smallBold',
-          marginBottom: 0
-        },
-        {
-          text: juror.cjsEmployerDetails,
-          style: 'textReg',
-          marginBottom: juror.cjsEmployerDetails ? 5 : 0
-        },
-        {
-          canvas: [{
-            type: 'line',
-            x1: 0,
-            y1: 5,
-            x2: 595 - 2 * 40,
-            y2: 5,
-            lineWidth: 1,
-            lineColor: '#ccc'
-          }],
-          marginBottom: 20
-        },
+
+        //CJS Employment moved to Eligibility
+
+        //Assistance in court
         {
           text: texts.jurorPDF.helpHeader,
           style: 'smallBold',
@@ -977,7 +979,7 @@ var moment = require('moment');
             lineColor: juror.assistanceSpecialArrangements ? '#ccc' : '#fff'
           }],
           marginBottom: 20,
-          // pageBreak: 'after'
+          pageBreak: 'after'
         },
         //////////////////////////////////////////////////////
         // Section 4
@@ -1812,6 +1814,7 @@ var moment = require('moment');
           }],
           marginBottom: 20
         },
+
         //Qualify - Header
         {
           text: texts.thirdPartyPDF.qualifyHeader,
@@ -1830,6 +1833,7 @@ var moment = require('moment');
           }],
           marginBottom: 10
         },
+
         //Qualify - Residency
         {
           text: texts.thirdPartyPDF.residencyQuestion,
@@ -1858,6 +1862,135 @@ var moment = require('moment');
           }],
           marginBottom: 10
         },
+
+        //CJS Employed
+        {
+          text: texts.thirdPartyPDF.employmentQuestion,
+          style: 'smallDull',
+          marginBottom: 10
+        },
+        {
+          text: juror.cjsEmployed === texts.thirdPartyPDF.employmentQuestionYes ? texts.thirdPartyPDF.employmentQuestionYes : texts.thirdPartyPDF.employmentQuestionNo,
+          style: 'textReg',
+          marginBottom: 5
+        },
+        {
+          text: juror.cjsPoliceDetails ? texts.sharedText.policeForce : '',
+          style: 'smallBold',
+          marginBottom: 0
+        },
+        {
+          text: juror.cjsPoliceDetails,
+          style: 'textReg',
+          marginBottom: juror.cjsPoliceDetails ? 5 : 0
+        },
+        {
+          text: juror.cjsPrisonDetails ? texts.sharedText.prisonService : '',
+          style: 'smallBold',
+          marginBottom: 0
+        },
+        {
+          text: juror.cjsPrisonDetails,
+          style: 'textReg',
+          marginBottom: juror.cjsPrisonDetails ? 5 : 0
+        },
+        {
+          text: juror.cjsNca ? texts.sharedText.nationalCrimeAgency : '',
+          style: 'smallBold',
+          marginBottom: juror.cjsNca ? 5 : 0
+        },
+        {
+          text: juror.cjsJudiciary ? texts.sharedText.judiciary : '',
+          style: 'smallBold',
+          marginBottom: juror.cjsJudiciary ? 5 : 0
+        },
+        {
+          text: juror.cjsHMCTS ? texts.sharedText.hmcts : '',
+          style: 'smallBold',
+          marginBottom: juror.cjsHMCTS ? 5 : 0
+        },
+        {
+          text: juror.cjsEmployerDetails ? texts.sharedText.other : '',
+          style: 'smallBold',
+          marginBottom: 0
+        },
+        {
+          text: juror.cjsEmployerDetails,
+          style: 'textReg',
+          marginBottom: juror.cjsEmployerDetails ? 5 : 0
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 20,
+          pageBreak: juror.assistanceTypeOutput ? 'after' : 'none'
+        },
+
+        //Qualify - Bail
+        {
+          text: texts.thirdPartyPDF.bailQuestion,
+          style: 'smallDull',
+          marginBottom: 10
+        },
+        {
+          text: juror.qualify.onBail.details ? texts.thirdPartyPDF.bailYes : texts.thirdPartyPDF.bailNo,
+          style: 'textReg',
+          marginBottom: 10
+        },
+        {
+          text: juror.qualify.onBail.details ? juror.qualify.onBail.details : '',
+          style: 'textReg',
+          marginBottom: 5
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 10
+        },
+
+        //Qualify - Convictions
+        {
+          text: texts.thirdPartyPDF.convictionsQuestion,
+          style: 'smallDull',
+          marginBottom: 10
+        },
+        {
+          text: juror.qualify.convicted.details ? texts.thirdPartyPDF.convictionsYes : texts.thirdPartyPDF.convictionsNo,
+          style: 'textReg',
+          marginBottom: 10
+        },
+        {
+          text: juror.qualify.convicted.details ? juror.qualify.convicted.details : '',
+          style: 'textReg',
+          marginBottom: 5
+        },
+        {
+          canvas: [{
+            type: 'line',
+            x1: 0,
+            y1: 5,
+            x2: 595 - 2 * 40,
+            y2: 5,
+            lineWidth: 1,
+            lineColor: '#ccc'
+          }],
+          marginBottom: 10
+        },
+
         //Qualify - Mental Health Sectioned
         {
           text: texts.thirdPartyPDF.mentalHealthSectioned,
@@ -1899,62 +2032,6 @@ var moment = require('moment');
         },
         {
           text: juror.qualify.mentalHealthCapacity.details ? juror.qualify.mentalHealthCapacity.details : '',
-          style: 'textReg',
-          marginBottom: 5
-        },
-        {
-          canvas: [{
-            type: 'line',
-            x1: 0,
-            y1: 5,
-            x2: 595 - 2 * 40,
-            y2: 5,
-            lineWidth: 1,
-            lineColor: '#ccc'
-          }],
-          marginBottom: 10
-        },
-        //Qualify - Bail
-        {
-          text: texts.thirdPartyPDF.bailQuestion,
-          style: 'smallDull',
-          marginBottom: 10
-        },
-        {
-          text: juror.qualify.onBail.details ? texts.thirdPartyPDF.bailYes : texts.thirdPartyPDF.bailNo,
-          style: 'textReg',
-          marginBottom: 10
-        },
-        {
-          text: juror.qualify.onBail.details ? juror.qualify.onBail.details : '',
-          style: 'textReg',
-          marginBottom: 5
-        },
-        {
-          canvas: [{
-            type: 'line',
-            x1: 0,
-            y1: 5,
-            x2: 595 - 2 * 40,
-            y2: 5,
-            lineWidth: 1,
-            lineColor: '#ccc'
-          }],
-          marginBottom: 10
-        },
-        //Qualify - Convictions
-        {
-          text: texts.thirdPartyPDF.convictionsQuestion,
-          style: 'smallDull',
-          marginBottom: 10
-        },
-        {
-          text: juror.qualify.convicted.details ? texts.thirdPartyPDF.convictionsYes : texts.thirdPartyPDF.convictionsNo,
-          style: 'textReg',
-          marginBottom: 10
-        },
-        {
-          text: juror.qualify.convicted.details ? juror.qualify.convicted.details : '',
           style: 'textReg',
           marginBottom: 5
         },
@@ -2076,7 +2153,7 @@ var moment = require('moment');
           marginBottom: juror.deferral ? 10 : 0
         },
         {
-          text: juror.deferral ? juror.deferral.dates : '',
+          text: juror.deferral ? texts.jurorPDF.deferralDate1Label + '\n' + juror.deferral.displayDates['date1'] + '\n\n' + texts.jurorPDF.deferralDate2Label + '\n' + juror.deferral.displayDates['date2'] + '\n\n' + texts.jurorPDF.deferralDate3Label + '\n' + juror.deferral.displayDates['date3']  : '',
           style: 'textReg',
           marginBottom: juror.deferral ? 10 : 0
         },
@@ -2092,82 +2169,10 @@ var moment = require('moment');
           } : {}],
           marginBottom: juror.deferral ? 20 : 0
         },
-        {
-          text: texts.thirdPartyPDF.employmentHeader,
-          style: 'smallBold',
-          marginBottom: 10
-        },
-        {
-          canvas: [{
-            type: 'line',
-            x1: 0,
-            y1: 5,
-            x2: 595 - 2 * 40,
-            y2: 5,
-            lineWidth: 1,
-            lineColor: '#ccc'
-          }],
-          marginBottom: 10
-        },
-        //CJS Employed
-        {
-          text: texts.thirdPartyPDF.employmentQuestion,
-          style: 'smallDull',
-          marginBottom: 10
-        },
-        {
-          text: juror.cjsEmployed === texts.thirdPartyPDF.employmentQuestionYes ? texts.thirdPartyPDF.employmentQuestionYes : texts.thirdPartyPDF.employmentQuestionNo,
-          style: 'textReg',
-          marginBottom: 5
-        },
-        {
-          text: juror.cjsPoliceDetails ? texts.sharedText.policeForce : '',
-          style: 'smallBold',
-          marginBottom: 0
-        },
-        {
-          text: juror.cjsPoliceDetails,
-          style: 'textReg',
-          marginBottom: juror.cjsPoliceDetails ? 5 : 0
-        },
-        {
-          text: juror.cjsPrisonDetails ? texts.sharedText.prisonService : '',
-          style: 'smallBold',
-          marginBottom: 0
-        },
-        {
-          text: juror.cjsPrisonDetails,
-          style: 'textReg',
-          marginBottom: juror.cjsPrisonDetails ? 5 : 0
-        },
-        {
-          text: juror.cjsNca ? texts.sharedText.nationalCrimeAgency : '',
-          style: 'smallBold',
-          marginBottom: juror.cjsNca ? 5 : 0
-        },
-        {
-          text: juror.cjsEmployerDetails ? texts.sharedText.other : '',
-          style: 'smallBold',
-          marginBottom: 0
-        },
-        {
-          text: juror.cjsEmployerDetails,
-          style: 'textReg',
-          marginBottom: juror.cjsEmployerDetails ? 5 : 0
-        },
-        {
-          canvas: [{
-            type: 'line',
-            x1: 0,
-            y1: 5,
-            x2: 595 - 2 * 40,
-            y2: 5,
-            lineWidth: 1,
-            lineColor: '#ccc'
-          }],
-          marginBottom: 20,
-          pageBreak: juror.assistanceTypeOutput ? 'after' : 'none'
-        },
+
+        //CJS Employment moved to Qualify
+
+        //Assistance in court
         {
           text: juror.assistanceTypeOutput ? texts.sharedText.howYouReplied : '',
           style: 'bigBold'
