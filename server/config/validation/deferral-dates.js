@@ -11,7 +11,23 @@
         deferralDateValid: {
           message: {
             summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_ONE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_ONE', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_ONE'+ (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+          }
+        },
+        dateBeforeHearing: {
+          texts: req.session.ulang === 'cy' ? texts_cy : texts_en,
+          checkDate: req.session.user.hearingDateTimestamp,
+          message: {
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_BEFORE_HEARING_ONE', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_BEFORE_HEARING_ONE', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
+          }
+        },
+        dateSameAsHearing: {
+          texts: req.session.ulang === 'cy' ? texts_cy : texts_en,
+          checkDate: req.session.user.hearingDateTimestamp,
+          message: {
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_HEARING_ONE', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_HEARING_ONE', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
           }
         },
         dateFuture: {
@@ -22,8 +38,8 @@
             multiplier: 12,
           },
           message: {
-            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_ONE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_ERROR_ONE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_ONE', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_ONE', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
           }
         },
         ageDeferredDate: {
@@ -34,9 +50,8 @@
             multiplier: 76,
           },
           message: {
-            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE'
-              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         }
       },
@@ -44,7 +59,23 @@
         deferralDateValid: {
           message: {
             summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_TWO' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_TWO', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_TWO' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+          }
+        },
+        dateBeforeHearing: {
+          texts: req.session.ulang === 'cy' ? texts_cy : texts_en,
+          checkDate: req.session.user.hearingDateTimestamp,
+          message: {
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_BEFORE_HEARING_TWO', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_BEFORE_HEARING_TWO', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
+          }
+        },
+        dateSameAsHearing: {
+          texts: req.session.ulang === 'cy' ? texts_cy : texts_en,
+          checkDate: req.session.user.hearingDateTimestamp,
+          message: {
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_HEARING_TWO', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_HEARING_TWO', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
           }
         },
         dateFuture: {
@@ -55,8 +86,8 @@
             multiplier: 12,
           },
           message: {
-            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_TWO', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_ERROR_TWO', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_TWO', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_TWO', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
           }
         },
         ageDeferredDate: {
@@ -67,9 +98,8 @@
             multiplier: 76,
           },
           message: {
-            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE'
-              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         }
       },
@@ -77,7 +107,23 @@
         deferralDateValid: {
           message: {
             summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_THREE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_THREE', (req.session.ulang === 'cy' ? texts_cy : texts_en))
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_THREE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+          }
+        },
+        dateBeforeHearing: {
+          texts: req.session.ulang === 'cy' ? texts_cy : texts_en,
+          checkDate: req.session.user.hearingDateTimestamp,
+          message: {
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_BEFORE_HEARING_THREE', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_BEFORE_HEARING_THREE', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
+          }
+        },
+        dateSameAsHearing: {
+          texts: req.session.ulang === 'cy' ? texts_cy : texts_en,
+          checkDate: req.session.user.hearingDateTimestamp,
+          message: {
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_HEARING_THREE', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_HEARING_THREE', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
           }
         },
         dateFuture: {
@@ -88,8 +134,8 @@
             multiplier: 12,
           },
           message: {
-            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_THREE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_ERROR_THREE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_THREE', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_FUTURE_THREE', (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[summons-date]', req.session.user.hearingDateMedium),
           },
         },
         ageDeferredDate: {
@@ -100,9 +146,8 @@
             multiplier: 76,
           },
           message: {
-            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE'
-              + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE_ERROR', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            summary: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+            details: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
           }
         }
       },

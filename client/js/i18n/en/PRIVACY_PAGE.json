@@ -4,8 +4,8 @@
   "TERMS_AND_CONDITIONS_HEADER": "Terms and conditions",
 
   "GENERAL_HEADER": "General",
-  "GENERAL_TEXT_PARAGRAPH_ONE": "These terms and conditions affect your rights and liabilities under the law. They govern your use of, and relationship with, the Reply to Jury Summons service. They don’t apply to other services provided by the Ministry of Justice (MOJ), or to any other department or service linked to in this service.",
-  "GENERAL_TEXT_PARAGRAPH_TWO": "If you don't agree to these terms and conditions and the privacy policy, do not use this service. Instead, please complete the forms sent to you by post (the Juror summons letter pack) and return them to the Juror Central Summonsing Bureau 7 days from the date from which you received your juror summons letter.",
+  "GENERAL_TEXT_PARAGRAPH_ONE": "These terms and conditions affect your rights and liabilities under the law. They govern your use of, and relationship with, the Reply to Jury Summons service. They do not apply to other services provided by the Ministry of Justice (MOJ), or to any other department or service linked to in this service.",
+  "GENERAL_TEXT_PARAGRAPH_TWO": "If you do not agree to these terms and conditions and the privacy policy, do not use this service. Instead, please complete the forms sent to you by post (the Juror summons letter pack) and return them to the Juror Central Summonsing Bureau 7 days from the date from which you received your juror summons letter.",
 
   "APPLICABLE_LAW_HEADER": "Applicable law",
   "APPLICABLE_LAW_TEXT": "Your use of this service and any dispute arising from its use will be governed by and construed in accordance with the laws of England and Wales, including but not limited to the:",
@@ -33,7 +33,7 @@
   "PRIVACY_POLICY_HEADER": "Privacy policy",
 
   "INFORMATION_PROVIDED_SUBHEADER": "Information provided by this service",
-  "INFORMATION_PROVIDED_TEXT_PARAGRAPH_ONE": "We work hard to ensure that information within this Reply to Jury Summons service is accurate. However, we can’t guarantee the accuracy and completeness of any information at all times.",
+  "INFORMATION_PROVIDED_TEXT_PARAGRAPH_ONE": "We work hard to ensure that information within this Reply to Jury Summons service is accurate. However, we cannot guarantee the accuracy and completeness of any information at all times.",
   "INFORMATION_PROVIDED_TEXT_PARAGRAPH_TWO": "While we make every effort to ensure this service is accessible at all times, we are not liable if it is unavailable for any period of time.",
 
   "HOW_WE_USE_YOUR_INFORMATION_SUBHEADER": "How we use your information",
@@ -72,11 +72,11 @@
   "WHERE_IS_YOUR_DATA_STORED_TEXT": "We store your data on our secure servers in the UK and the European Economic Area (EEA). By submitting your personal data, you agree to this.",
 
   "KEEPING_DATA_SECURED_HEADER": "Keeping your data secure",
-  "KEEPING_DATA_SECURED_TEXT": "Transmitting information over the internet is generally not completely secure, and we can’t guarantee the security of your data. We do, however, use SSL (secure sockets layer) to encrypt all data transferred to, and received from, our server. We take data security very seriously and take every step to ensure that your data remains private and secure.",
+  "KEEPING_DATA_SECURED_TEXT": "Transmitting information over the internet is generally not completely secure, and we cannot guarantee the security of your data. We do, however, use SSL (secure sockets layer) to encrypt all data transferred to, and received from, our server. We take data security very seriously and take every step to ensure that your data remains private and secure.",
 
   "TRANSMIT_DATA_HEADER": "Transmit data at your own risk",
   "TRANSMIT_DATA_TEXT_PARAGRAPH_ONE": "We have procedures and security features in place to try and keep your data secure once we receive it.",
-  "TRANSMIT_DATA_TEXT_PARAGRAPH_TWO": "We won’t share your information with any other organisations for marketing, market research or commercial purposes, and we don’t pass on your details to other websites.",
+  "TRANSMIT_DATA_TEXT_PARAGRAPH_TWO": "We will not share your information with any other organisations for marketing, market research or commercial purposes, and we do not pass on your details to other websites.",
 
   "DISCLOSING_INFORMATION_HEADER": "Disclosing your information",
   "DISCLOSING_INFORMATION_TEXT": "We may pass on your personal information if we have a legal obligation to do so.",

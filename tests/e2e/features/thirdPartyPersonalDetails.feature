@@ -10,7 +10,6 @@ Feature: Third Party Personal Details
 
     # Juror Portal Page
     When I navigate to the Juror Portal
-      And I click the Start Now button
 
     # Responder Type Page
     Then I confirm that I am on the Responder Type page
@@ -64,17 +63,38 @@ Feature: Third Party Personal Details
 
     # Start Scenarios
     # -------------------------------------
-    @JDB-1714 @bug
+    @JDB-1714 @bug @dob-test
     Scenario: As a third party respondant I should be warned when I have not entered a date of birth for the person who has been summoned
       When I enter "" as the day of birth
         And I enter "" as the month of birth
         And I enter "" as the year of birth
         And I submit my 3rd Party Personal DOB Details
 
-      Then the error message summary for the confirmed Date of birth is "Please check the person's date of birth"
-        And the error message details for the day of birth is "Please enter the day the person was born"
-        And the error message details for the month of birth is "Please enter the month the person was born"
-        And the error message details for the year of birth is "Please enter the year the person was born"
+      Then the error message summary for the confirmed Date of birth is "Enter the day the person was born"
+        And the error message details for the day of birth is "Enter the day the person was born"
+        #And the error message details for the month of birth is "Please enter the month the person was born"
+        #And the error message details for the year of birth is "Please enter the year the person was born"
+
+    @JDB-1714 @bug @dob-test
+    Scenario: As a third party respondant I should be warned when I have not entered a date of birth for the person who has been summoned
+      When I enter "1" as the day of birth
+        And I enter "" as the month of birth
+        And I enter "" as the year of birth
+        And I submit my 3rd Party Personal DOB Details
+
+      Then the error message summary for the confirmed Date of birth is "Enter the month the person was born"
+        And the error message details for the month of birth is "Enter the month the person was born"
+
+    @JDB-1714 @bug @dob-test
+    Scenario: As a third party respondant I should be warned when I have not entered a date of birth for the person who has been summoned
+      When I enter "1" as the day of birth
+        And I enter "8" as the month of birth
+        And I enter "" as the year of birth
+        And I submit my 3rd Party Personal DOB Details
+
+      Then the error message summary for the confirmed Date of birth is "Enter the year the person was born"
+        And the error message details for the year of birth is "Enter the year the person was born"
+
 
     @JDB-1714 @bug
     Scenario Outline: As a respondant I should be warned when the date of birth is incorrect
@@ -83,22 +103,23 @@ Feature: Third Party Personal Details
         And I enter "<year>" as the year of birth
         And I submit my 3rd Party Personal DOB Details
 
-      Then the error message summary for the confirmed Date of birth is "Please check the person's date of birth"
+      #Then the error message summary for the confirmed Date of birth is "Please check the person's date of birth"
+      Then the error message summary for the confirmed Date of birth is "<error>"
         And the error message details for my Date of birth is "<error>"
 
       Examples:
         | day | month | year  | error                                                                                       |
-        | 18  | 09    |       | Please enter the year the person was born                                                   |
-        | 18  | 09    | 89    | Please enter the year the person was born as a four digit number. For example, 1982         |
-        | 18  | 09    | 0     | Please enter the year the person was born as a four digit number. For example, 1982         |
+        | 18  | 09    |       | Enter the year the person was born                                                   |
+        | 18  | 09    | 89    | Enter the year the person was born as a 4 digit number. For example, 1982         |
+        | 18  | 09    | 0     | Enter the year the person was born as a 4 digit number. For example, 1982         |
 
-        | 18  |       | 1989  | Please enter the month the person was born                                                  |
-        | 18  | 21    | 1989  | Please enter the month the person was born as a number. For example, for December, enter 12 |
-        | 18  | 00    | 1989  | Please enter the month the person was born as a number. For example, for December, enter 12 |
+        | 18  |       | 1989  | Enter the month the person was born                                                  |
+        | 18  | 21    | 1989  | Enter the month the person was born as a number. For example, for December, enter 12 |
+        | 18  | 00    | 1989  | Enter the month the person was born as a number. For example, for December, enter 12 |
 
-        |     | 09    | 1989  | Please enter the day the person was born                                                    |
-        | 34  | 09    | 1989  | Please enter the day the person was born as a date. For example, 06                         |
-        | 00  | 09    | 1989  | Please enter the day the person was born as a date. For example, 06                         |
+        |     | 09    | 1989  | Enter the day the person was born                                                    |
+        | 34  | 09    | 1989  | Enter the day the person was born as a date. For example, 06                         |
+        | 00  | 09    | 1989  | Enter the day the person was born as a date. For example, 06                         |
 
     @JDB-2575 @bug
     Scenario: As a third party respondant I should be warned when I have not entered a date of birth for the person who has been summoned

@@ -9,7 +9,6 @@ Feature: Check for the correct date of jury service
 
     # Juror Portal Page
     When I navigate to the Juror Portal
-      And I click the Start Now button
 
     # Responder Type Page
     Then I confirm that I am on the Responder Type page
@@ -110,9 +109,9 @@ Feature: Check for the correct date of jury service
     Then I confirm that I am on the Deferral Dates page
       When I submit my Dates
 
-    Then I confirm that the date1 error message reads "Please provide the first date you are available for your jury service"
-    Then I confirm that the date2 error message reads "Please provide a second date you are available for your jury service"
-    Then I confirm that the date3 error message reads "Please provide a third date you are available for your jury service"
+    Then I confirm that the date1 error message reads "Provide the first date you are available for your jury service"
+    Then I confirm that the date2 error message reads "Provide a second date you are available for your jury service"
+    Then I confirm that the date3 error message reads "Provide a third date you are available for your jury service"
 
   @JDB-2479 @ALWAYS
   Scenario: Entering a duplicate date should result in an error
@@ -126,7 +125,7 @@ Feature: Check for the correct date of jury service
       When I enter a duplicate date
       And I submit my Dates
 
-    Then I confirm that the datesGroup error message reads "Please provide three different dates"
+    Then I confirm that the datesGroup error message reads "Provide 3 different dates"
 
   @JDB-2671 @ALWAYS @bug
   Scenario Outline: Entering a date more than one year from the summons date into input <inputErr> should show an error
@@ -142,7 +141,7 @@ Feature: Check for the correct date of jury service
       When I enter the date 1 years, 0 months, and 1 days from summons into Date <inputErr>
       And I submit my Dates
 
-    Then I confirm that the "date<inputErr>" error message reads "Please provide a <msgText> date that is within 12 months of the original summons date"
+    Then I confirm that the "date<inputErr>" error message reads "Provide a <msgText> date that is within 12 months of the original summons date"
 
 
     Examples:
@@ -166,7 +165,7 @@ Feature: Check for the correct date of jury service
       When I enter the date 0 years, 0 months, and -1 days from summons into Date <inputErr>
       And I submit my Dates
 
-    Then I confirm that the "date<inputErr>" error message reads "Please provide a <msgText> date that is within 12 months of the original summons date"
+    Then I confirm that the "date<inputErr>" error message reads "Provide a <msgText> date that is within 12 months of the original summons date"
 
     Examples:
     | input1 | input2 | inputErr | msgText |
@@ -187,9 +186,9 @@ Feature: Check for the correct date of jury service
         And I enter "<day>", "<month>", and "<year>" into Date 3
         And I submit my Dates
 
-    Then I confirm that the date1 error message reads "Please provide the first date you are available for your jury service"
-    Then I confirm that the date2 error message reads "Please provide a second date you are available for your jury service"
-    Then I confirm that the date3 error message reads "Please provide a third date you are available for your jury service"
+    Then I confirm that the date1 error message reads "Provide the first date you are available for your jury service"
+    Then I confirm that the date2 error message reads "Provide a second date you are available for your jury service"
+    Then I confirm that the date3 error message reads "Provide a third date you are available for your jury service"
 
     Examples:
       | day | month | year |

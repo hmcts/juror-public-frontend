@@ -1,6 +1,6 @@
 {
-  "HEADING": "Nodwch dri dyddiad yn y 12 mis nesaf pan fyddwch ar gael i ddechrau gwasanaethu ar reithgor",
-  "HEADING_OB": "Nodwch dri dyddiad yn y 12 mis nesaf ble all yr unigolyn rydych yn ymateb ar ei ran wasanaethu ar reithgor",
+  "HEADING": "Rhowch 3 dyddiad i ni pan y gallech chi ddechrau gwasanaeth rheithgor yn ystod y 12 mis nesaf",
+  "HEADING_OB": "Rhowch 3 dyddiad i ni pan  gallai'r unigolyn yr ydych chi'n ateb drosto ddechrau gwasanaeth rheithgor yn ystod y 12 mis nesaf",
   "REASON_HEADING": "Dywedwch pam eich bod angen dyddiad arall ar gyfer eich gwasanaeth rheithgor",
   "REASON_HEADING_OB": "Dywedwch pam bod yr unigolyn rydych yn ymateb ar ei ran angen dyddiad arall ar gyfer ei wasanaeth rheithgor",
 
@@ -26,17 +26,17 @@
   "WHY_ASK_INFO": "Efallai bydd yn bosibl ichi gychwyn eich gwasanaeth rheithgor ar ddyddiad arall sy'n fwy addas.",
   "WHY_ASK_INFO_OB": "Efallai bydd yn bosibl i'r unigolyn gychwyn ei wasanaeth rheithgor ar ddyddiad arall sy'n fwy addas.",
 
-  "DATE1": "Dyddiad 1",
-  "DATE2": "Dyddiad 2",
-  "DATE3": "Dyddiad 3",
+  "DATE1": "Y dyddiad cyntaf",
+  "DATE2": "Yr ail ddyddiad",
+  "DATE3": "Y trydydd dyddiad",
   "DATE_EG": "ee 08/10/2017",
 
   "DAY": "Diwrnod",
   "MONTH": "Mis",
   "YEAR": "Blwyddyn",
 
-  "DATE_INFO": "Gallaf ddechrau gwasanaethu ar reithgor am o leiaf deg diwrnod gwaith o:",
-  "DATE_INFO_OB": "Gall yr unigolyn rwy'n ymateb ar ei ran ddechrau gwasanaethu ar reithgor am o leiaf deg diwrnod gwaith o:",
+  "DATE_INFO": "Gallaf ddechrau gwasanaeth rheithgor o leiaf 10 diwrnod gwaith o:",
+  "DATE_INFO_OB": "Gall yr unigolyn yr wyf yn ateb drosto ddechrau gwasanaeth rheithgor am o leiaf 10 diwrnod gwaith o:",
 
   "MONDAY": "Dydd Llun",
   "TUESDAY": "Dydd Mawrth",

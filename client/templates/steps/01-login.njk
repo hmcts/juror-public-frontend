@@ -115,10 +115,10 @@
               }
             }) }}
 
-            <details class="govuk-details ga-no-juror-number">
+            <details class="govuk-details ga-no-juror-number" data-module="govuk-details">
 
               <summary class="govuk-details__summary ga-details-no-juror-number">
-                <span class="govuk-details__summary-text ga-details-no-juror-number" {% if trackingCode %}onclick="trackVirtualPageViews('I don\'t have a juror number')"{% endif %}>
+                <span class="govuk-details__summary-text ga-details-no-juror-number">
                   {% if user.thirdParty == 'Yes' %}
                     {{ texts.LOGIN_PAGE.GUIDANCE_TITLE_OB }}
                     {% else %}

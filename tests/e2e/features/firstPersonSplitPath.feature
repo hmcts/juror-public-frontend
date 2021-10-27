@@ -10,7 +10,6 @@ Feature: Test full happy path for first person responses after splitting the qua
 
     # Juror Portal Page
     When I navigate to the Juror Portal
-      And I click the Start Now button
 
     # Responder Type Page
     Then I confirm that I am on the Responder Type page
@@ -110,7 +109,6 @@ Feature: Test full happy path for first person responses after splitting the qua
       And I add the "basic_valid_login" data
 
     When I navigate to the Juror Portal
-      And I click the Start Now button
 
     Then I confirm that I am on the Responder Type page
       And I state that I am replying on behalf of myself
@@ -212,7 +210,6 @@ Feature: Test full happy path for first person responses after splitting the qua
 
     # Juror Portal Page
     When I navigate to the Juror Portal
-      And I click the Start Now button
 
     # Responder Type Page
     Then I confirm that I am on the Responder Type page

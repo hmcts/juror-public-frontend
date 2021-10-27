@@ -58,8 +58,8 @@
   "FEEDBACK_SURVEY_COOKIES": "Os byddwch yn cymryd rhan, bydd SmartSurvey yn cadw rhagor o gwcis ar eich cyfrifiadur i ddilyn eich cynnydd trwy'r arolwg. Mae SmartSurvey yn cael ei ddefnyddio i gasglu’r ymatebion i’r arolwg. Os byddwch yn cymryd rhan, bydd SmartSurvey yn cadw rhagor o gwcis ar eich cyfrifiadur i ddilyn eich cynnydd trwy'r arolwg. Ceir gwybodaeth am sut mae SmartSurvey yn defnyddio Cwcis yn:",
   "FEEDBACK_SURVEY_COOKIES_LINK": "https://www.smartsurvey.co.uk/how-we-use-cookies",
 
-  "CHANGE_SETTINGS_HEADING": "Change your settings",
-  "CHANGE_SETTINGS_GUIDANCE": "You can",
-  "CHANGE_SETTINGS_LINK_TEXT": "change which cookies you're happy for us to use",
+  "CHANGE_SETTINGS_HEADING": "Newid eich gosodiadau",
+  "CHANGE_SETTINGS_GUIDANCE": "Gallwch",
+  "CHANGE_SETTINGS_LINK_TEXT": "newid pa gwcis yr ydych yn hapus inni eu defnyddio",
   "CHANGE_SETTINGS_LINK_URL": "/cookie-settings"
 }

@@ -13,7 +13,6 @@ Feature: Auto Processing Third Party Deceased Response
 
     # Juror Portal Page
     When I navigate to the Juror Portal
-      And I click the Start Now button
 
     # Responder Type Page
     # Third Party Response Type

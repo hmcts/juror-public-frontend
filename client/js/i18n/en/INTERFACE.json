@@ -31,9 +31,13 @@
   "CONTACT_TELEPHONE_2": "",
   "CONTACT_TELEPHONE_LINK_2": "",
   "CONTACT_EMAIL": "jurysummoning@justice.gov.uk",
+  "SMART_SURVEY_SUMMONS_RESPONSE_URL": "https://www.smartsurvey.co.uk/s/DL1RCF/",
+  "SMART_SURVEY_EXPENSE_CALCULATOR_URL": "https://www.smartsurvey.co.uk/s/FO8HDU/",
 
   "FOOTER_LINKS": {
     "COOKIES": "Cookies",
-    "PRIVACY": "Privacy policy"
+    "PRIVACY": "Privacy policy",
+    "ACCESSIBILITY_STATEMENT": "Accessibility statement",
+    "FEEDBACK": "Give feedback (opens in a new window or tab)"
   }
 }

@@ -3,7 +3,7 @@
 
   var jwt = require('jsonwebtoken')
 
-    , config = require('../../config/environment')()
+    , secretsConfig = require('config')
     , errors = require('../errors')
     , authObj = require('../../objects/auth').object
     , msgMappingsEn = require('../errors/message-mapping_en')
@@ -11,7 +11,7 @@
 
     , createJWTToken = function(req, body, key) {
       // if user is found create a token
-      var token = jwt.sign(body, key, { expiresIn: config.jwtTTL });
+      var token = jwt.sign(body, key, { expiresIn: secretsConfig.get('secrets.juror-digital-vault.public-jwtTTL') });
 
       // Store in session
       req.session.authToken = token;
@@ -43,7 +43,7 @@
             }
           };
 
-          createJWTToken(req, tokenBody, config.jwtKey);
+          createJWTToken(req, tokenBody, secretsConfig.get('secrets.juror-digital-vault.public-jwtKey'));
           return successCB(resp);
         }
         , authFailure = function(err) {

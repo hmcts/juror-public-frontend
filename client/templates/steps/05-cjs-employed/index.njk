@@ -62,13 +62,13 @@
 
         {# Set radios hint html #}
         {% set radiosHintHTML %}
-          <strong class="govuk-body govuk-!-font-weight-bold">
+          <p class="govuk-body">
             {% if user.thirdParty == 'Yes' %}
               {{ texts.EMPLOYED_PAGE.QUESTION_OB }}
             {% else %}
               {{ texts.EMPLOYED_PAGE.QUESTION }}
             {% endif %}
-          </strong>
+          </p>
         {% endset %}
 
         {# Set radios answer error #}
@@ -79,13 +79,13 @@
 
         {# Set checkboxes hint html #}
         {% set checkboxesHintHTML %}
-          <strong class="govuk-body govuk-!-font-weight-bold">
+          <p class="govuk-body">
           {% if user.thirdParty == 'Yes' %}
             {{ texts.EMPLOYED_PAGE.SELECT_PROMPT_OB }}
           {% else %}
             {{ texts.EMPLOYED_PAGE.SELECT_PROMPT }}
           {% endif %}
-          </strong>
+          </p>
         {% endset %}
 
         {# Set checkboxes answer error #}
@@ -161,6 +161,20 @@
           {% set checkboxNCAChecked = false %}
         {% endif %}
 
+        {# Set Judiciary checked #}
+        {% if cjsActive.judiciary %}
+          {% set checkboxJudiciaryChecked = true %}
+        {% else %}
+          {% set checkboxJudiciaryChecked = false %}
+        {% endif %}
+
+        {# Set HM Courts & Tribunal Service checked #}
+        {% if cjsActive.hmcts %}
+          {% set checkboxHMCTSChecked = true %}
+        {% else %}
+          {% set checkboxHMCTSChecked = false %}
+        {% endif %}
+
         {# Set Other checked #}
         {% if cjsActive.other %}
           {% set checkboxOtherChecked = true %}
@@ -230,6 +244,20 @@
                 checked: checkboxNCAChecked
               },
               {
+                id: "cjsEmployer-juduiciary",
+                name: "cjsEmployer",
+                value: "Judiciary",
+                text: texts.EMPLOYED_PAGE.JUDICIARY,
+                checked: checkboxJudiciaryChecked
+              },
+              {
+                id: "cjsEmployer-hmcts",
+                name: "cjsEmployer",
+                value: "HMCTS",
+                text: texts.EMPLOYED_PAGE.HMCTS,
+                checked: checkboxHMCTSChecked
+              },
+              {
                 id: "cjsEmployer-other",
                 name: "cjsEmployer",
                 value: "Other",
@@ -282,8 +310,8 @@
           
         </div>
 
-        <details class="govuk-details">
-          <summary class="govuk-details__summary ga-details-cjs-employed" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask for this?')"{% endif %}>
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary ga-details-cjs-employed">
             <span class="govuk-details__summary-text ga-details-cjs-employed">
               {{ texts.EMPLOYED_PAGE.MORE_INFO_LINK }}
             </span>

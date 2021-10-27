@@ -23,6 +23,7 @@
     , filters = require('../components/filters')
     , texts_en = require('../../client/js/i18n/en.json')
     , texts_cy = require('../../client/js/i18n/cy.json')
+    , secretsConfig = require('config')
     , config = require('./environment')()
     , utils = require('../lib/utils.js')
     , menuBuilder = require(__dirname + '/../menubuilder')
@@ -79,7 +80,7 @@
     sessionExpires = 10 * (60 * 60);
 
     sessionConfig = {
-      secret: config.sessionSecret,
+      secret: secretsConfig.get('secrets.juror-digital-vault.public-sessionSecret'),
       resave: false,
       saveUninitialized: false,
       maxAge: sessionExpires,

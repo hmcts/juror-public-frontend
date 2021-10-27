@@ -84,6 +84,23 @@
       // Perform validation
       validatorResult = validate(req.body, require('../../../../config/validation/your-details-confirm')(req));
       if (typeof validatorResult !== 'undefined') {
+
+        // Only show 1 error at a time for the DOB
+        // Report the first error item if multiple errors were raised
+
+        if (validatorResult.dobDay){
+          delete validatorResult.dobMonth;
+          delete validatorResult.dobYear;
+          delete validatorResult.dateOfBirth;
+        }
+        if (validatorResult.dobMonth){
+          delete validatorResult.dobYear;
+          delete validatorResult.dateOfBirth;
+        }
+        if (validatorResult.dobYear){
+          delete validatorResult.dateOfBirth;
+        }
+
         req.session.errors = validatorResult;
         req.session.formFields = req.body;
 

@@ -7,11 +7,14 @@
   "BUTTON_TEXT_BACK": "Cliciwch i fynd yn ôl",
   "LABEL_YES": "Oes",
   "LABEL_NO": "Nac oes",
+
   "REPORT_BROKEN": "A oes unrhyw beth yn bod gyda’r dudalen hon?",
   "CONTENT_AVAILABLE_UNDER": "All content is available under the",
   "OPEN_GOV_LICENCE": "Open Government Licence",
   "OPEN_GOV_LICENCE_V": "v3.0",
   "EXCEPT_OTHERWISE": "except where otherwise stated",
+
+
   "COURTS_SENTENCING_TRIBUNALS": "Llysoedd, dedfrydu a thribiwnlysoedd",
   "YOU_CAN": "You can",
   "RETURN_HOME": "return to the homepage",
@@ -28,9 +31,13 @@
   "CONTACT_TELEPHONE_2": "0300 303 5173",
   "CONTACT_TELEPHONE_LINK_2": "tel:03003035173",
   "CONTACT_EMAIL": "jurysummoning@justice.gov.uk",
+  "SMART_SURVEY_SUMMONS_RESPONSE_URL": "https://www.smartsurvey.co.uk/s/DL1RCF/",
+  "SMART_SURVEY_EXPENSE_CALCULATOR_URL": "https://www.smartsurvey.co.uk/s/FO8HDU/",
 
   "FOOTER_LINKS": {
     "COOKIES": "Cwcis",
-    "PRIVACY": "Privacy policy"
+    "PRIVACY": "Privacy policy",
+    "ACCESSIBILITY_STATEMENT": "Datganiad hygyrchedd",
+    "FEEDBACK": "Give feedback (opens in a new window or tab)"
   }
 }

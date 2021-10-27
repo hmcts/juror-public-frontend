@@ -564,7 +564,26 @@
       , dateLimit = summonsDate.clone().add(options.limit.multiplier, options.limit.unit)
       , checkValue = moment(value, 'DD/MM/YYYY');
 
-    if (checkValue.isBefore(summonsDate) || checkValue.isAfter(dateLimit)){
+    if (checkValue.isAfter(dateLimit)){
+      return options.message
+    }
+    return null;
+  };
+
+  validate.validators.dateBeforeHearing = function(value, options) {
+    var summonsDate = moment(options.checkDate)
+      , checkValue = moment(value, 'DD/MM/YYYY');
+
+    if (checkValue.isBefore(summonsDate, 'day')){
+      return options.message
+    }
+    return null;
+  };
+
+  validate.validators.dateSameAsHearing = function(value, options) {
+    var summonsDate = moment(options.checkDate).format('DD/MM/YYYY');
+
+    if (summonsDate === value){
       return options.message
     }
     return null;

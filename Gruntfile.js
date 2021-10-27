@@ -80,7 +80,11 @@
             {expand: true, cwd: 'node_modules/govuk-frontend/govuk', src: ['*/**'], dest: 'dist/client/templates/govuk-frontend'},
             {expand: true, cwd: 'node_modules/govuk-frontend/govuk', src: ['all.js'], dest: 'dist/client/js'},
             {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/fonts', src: ['**'], dest: 'dist/client/assets/fonts'},
-            {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images', src: ['**'], dest: 'dist/client/assets/images'}
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images', src: ['**'], dest: 'dist/client/assets/images'},
+
+            {expand: true, cwd: 'client/documents/', src: ['*.pdf'], dest: 'dist/client/assets/documents'},
+
+            {expand: true, cwd: 'config/', src: ['*.*'], dest: 'dist/config'}
           ]
         },
         dev: {
@@ -99,7 +103,11 @@
             {expand: true, cwd: 'node_modules/govuk-frontend/govuk', src: ['*/**'], dest: 'dev/client/templates/govuk-frontend'},
             {expand: true, cwd: 'node_modules/govuk-frontend/govuk', src: ['all.js'], dest: 'dev/client/js'},
             {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/fonts', src: ['**'], dest: 'dev/client/assets/fonts'},
-            {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images', src: ['**'], dest: 'dev/client/assets/images'}
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images', src: ['**'], dest: 'dev/client/assets/images'},
+
+            {expand: true, cwd: 'client/documents/', src: ['*.pdf'], dest: 'dev/client/assets/documents'},
+
+            {expand: true, cwd: 'config/', src: ['*.*'], dest: 'dev/config'}
           ]
         },
         test: {
@@ -118,7 +126,11 @@
             {expand: true, cwd: 'node_modules/govuk-frontend/govuk', src: ['*/**'], dest: 'test/client/templates/govuk-frontend'},
             {expand: true, cwd: 'node_modules/govuk-frontend/govuk', src: ['all.js'], dest: 'test/client/js'},
             {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/fonts', src: ['**'], dest: 'test/client/assets/fonts'},
-            {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images', src: ['**'], dest: 'test/client/assets/images'}
+            {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images', src: ['**'], dest: 'test/client/assets/images'},
+
+            {expand: true, cwd: 'client/documents/', src: ['*.pdf'], dest: 'test/client/assets/documents'},
+
+            {expand: true, cwd: 'config/', src: ['*.*'], dest: 'test/config'}
           ]
         },
         govuk: {
