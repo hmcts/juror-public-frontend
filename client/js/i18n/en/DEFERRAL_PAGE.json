@@ -11,6 +11,7 @@
     "ACCEPTABLE_LIST_ITEM_4": "your employer will not give you time off work",
     "ACCEPTABLE_LIST_ITEM_4_OB": "their employer will not give them time off work",
 
+
     "REASON_FIELD_HINT": "You can only change the date once.",
     "REASON_FIELD_HINT_OB": "They can only change the date once."
   },
@@ -82,6 +83,7 @@
   "WHY_ASK_SUMMARY_OB": "Why do we ask?",
   "WHY_ASK_INFO": "It may be possible to start your jury service on another more suitable date.",
   "WHY_ASK_INFO_OB": "It may be possible to start the person's jury service on another more suitable date.",
+
 
   "DAY": "Day",
   "MONTH": "Month",

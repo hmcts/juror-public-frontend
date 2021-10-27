@@ -41,7 +41,6 @@
             {{ texts.DEFERRAL_PAGE.DATES.HEADING }}
           {% endif %}
         </h1>
-
         <p class="govuk-body">{{ texts.DEFERRAL_PAGE.DATES.GUIDANCE_P1 }} {{deferralDateRange.earliestDateMed}} {{ texts.DEFERRAL_PAGE.DATES.GUIDANCE_AND }} {{deferralDateRange.latestDateMed}}</p>
 
         <p class="govuk-body">
@@ -104,6 +103,7 @@
             </div>
           </div>
 
+
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-full deferral-datepicker">
               {{ deferralDate({
@@ -131,6 +131,7 @@
       {% include "./defer-guidance-1.njk" %}
 
       {% include "./defer-guidance-2.njk" %}
+
 
       {# Submit form #}
       {{ govukButton({

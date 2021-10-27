@@ -53,8 +53,10 @@
   "JUROR_QUALIFY_QUESTION_BAIL_READER": "eich ateb i'r cwestiwn, 'A ydych chi ar fechnïaeth ar hyn o bryd am gyflawni trosedd?'",
   "JUROR_QUALIFY_QUESTION_CONVICTED": "A ydych wedi'ch cael yn euog o gyflawni trosedd?",
   "JUROR_QUALIFY_QUESTION_CONVICTED_READER": "eich ateb i'r cwestiwn, 'A ydych wedi'ch cael yn euog o gyflawni trosedd ac wedi cael dedfryd?'",
+
   
   "OB_QUALIFY_QUESTION": "Mi wnaethoch ateb y cwestiynau cymhwysedd ar gyfer yr unigolyn yr ydych yn ymateb ar ei ran",
+
   "OB_QUALIFY_QUESTION_LIVED_CONSECUTIVE": "A yw'r unigolyn yr ydych chi'n ateb drosto wedi byw yn y DU, Ynysoedd y Sianel neu Ynys Manaw am 5 mlynedd yn olynol ers ei ben-blwydd yn 13 oed?",
   "OB_QUALIFY_QUESTION_LIVED_CONSECUTIVE_READER": "your answer to the question, 'Has the person you're answering for lived in the UK, Channel Islands or Isle of Man for five consecutive years since their 13th birthday?'",
   "OB_QUALIFY_QUESTION_MENTAL_HEALTH": "A ydy'r person yn glaf, neu'n debygol o ddod yn glaf, dan orchymyn Deddf Iechyd Meddwl 1983 neu a oes ganddo ddiffyg galluedd fel y nodir yn Neddf Galluedd Meddyliol 2005?",
@@ -86,6 +88,7 @@
   "OB_CHANGE_DATE_HEADER": "Gan eich bod wedi gofyn i'r unigolyn gael cyflawni ei wasanaeth rheithgor ar ddyddiad gwahanol, bu ichi ddweud ",
   "OB_CHANGE_DATE_QUESTION_1": "Dywedwch wrthym pam fod angen dyddiad arall arnynt ar gyfer y gwasanaeth rheithgor",
   "OB_CHANGE_DATE_QUESTION_1_READER": "eich rheswm dros pam fod yr unigolyn rydych yn ymateb ar ei ran angen dyddiad arall ar gyfer eu gwasanaeth rheithgor",
+
 
   "JUROR_CHANGE_DATE_QUESTION_2": "Dewiswch 3 dydd Llun pan allwch ddechrau gwasanaeth rheithgor",
   "JUROR_CHANGE_DATE_QUESTION_2_READER": "y dyddiadau pan fyddwch yn gallu gwasanaethu ar reithgor yn y 12 mis nesaf",

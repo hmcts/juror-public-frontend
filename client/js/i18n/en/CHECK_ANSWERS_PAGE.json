@@ -42,6 +42,7 @@
   "OB_WHY_READER": "your reason for replying on behalf of the person summoned for jury service",
 
   "JUROR_QUALIFY_QUESTION": "You answered the eligibility questions",
+
   "JUROR_QUALIFY_QUESTION_LIVED_CONSECUTIVE": "Have you lived in the UK, Channel Islands or Isle of Man for 5 consecutive years since your 13th birthday?",
   "JUROR_QUALIFY_QUESTION_LIVED_CONSECUTIVE_READER": "your answer to the question, 'Have you lived in the UK, Channel Islands or Isle of Man for 5 consecutive years since your 13th birthday?'",
   "JUROR_QUALIFY_QUESTION_MENTAL_HEALTH": "Are you currently or likely to be detained under the Mental Health Act 1983 or lack capacity as stated in the Mental Capacity Act 2005?",
@@ -53,6 +54,7 @@
   "JUROR_QUALIFY_QUESTION_BAIL_READER": "your answer to the question, 'Are you currently on bail for a criminal offence?'",
   "JUROR_QUALIFY_QUESTION_CONVICTED": "Have you been convicted of a criminal offence and been given a sentence?",
   "JUROR_QUALIFY_QUESTION_CONVICTED_READER": "your answer to the question, 'Have you been convicted of a criminal offence and been given a sentence?'",
+
   
   "OB_QUALIFY_QUESTION": "You answered the eligibility questions for the person you're replying for",
   "OB_QUALIFY_QUESTION_LIVED_CONSECUTIVE": "Has the person you're answering for lived in the UK, Channel Islands or Isle of Man for 5 consecutive years since their 13th birthday?",

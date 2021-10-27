@@ -129,6 +129,7 @@
     "excusalHeader": "Because you asked for the person you're replying for to be excused from jury service, you told us",
     "deferralHeader": "As you asked for the person to do jury service on a different date you told us",
     "excusalReason": "Please say why the person needs to be excused from jury service",
+
     "deferralReason": "Tell us why they need another date for their jury service",
     "deferralDates": "Choose 3 Mondays when they can start jury service",
     "employmentHeader": "You told us whether the person had ever worked for the Criminal Justice System",
