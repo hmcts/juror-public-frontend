@@ -25,7 +25,7 @@
   
   "HELPER_CONFIRM_ADDRESS_TITLE": "Will your address change soon?",
   "HELPER_CONFIRM_ADDRESS_PARAGRAPH_1": "If your address will change soon, give us your current address. This is so we can still contact you.",
-  "HELPER_CONFIRM_ADDRESS_PARAGRAPH_2": "After you've moved, contact the jury central summoning bureau to give them your new address.",
+  "HELPER_CONFIRM_ADDRESS_PARAGRAPH_2": "After you've moved, contact the jury central summoning bureau by calling 0300 456 1024, and give them your new address.",
   "HELPER_CONFIRM_ADDRESS_PARAGRAPH_3": "If you are moving away from the area where you currently live, we may change the location of your jury service.",
 
   "HELPER_CHANGE_ADDRESS_TITLE": "What happens if I have changed my address?",
@@ -64,12 +64,12 @@
   "FORM_DOB_YEAR_LABEL": "Year",
   "FORM_DOB_HELPER_TITLE": "Help with date of birth",
   "FORM_DOB_HELPER_PARAGRAPH_1": "You need to tell us your date of birth so we can check you are a suitable age to be on a jury. ",
-  "FORM_DOB_HELPER_PARAGRAPH_2": "If you don’t know your exact date of birth, use the one you put on official documents like your passport or driving licence.",
-  "FORM_DOB_HELPER_PARAGRAPH_3": "If you can’t provide a date of birth, you’ll have to send us copies of identity documents through the post. You need to reply to the summons using the form we sent by post instead of online. Ring us on 0300 456 1024 if you need advice about this.",
+  "FORM_DOB_HELPER_PARAGRAPH_2": "If you do not know your exact date of birth, use the one you put on official documents like your passport or driving licence.",
+  "FORM_DOB_HELPER_PARAGRAPH_3": "If you cannot provide a date of birth, you’ll have to send us copies of identity documents through the post. You need to reply to the summons using the form we sent by post instead of online. Ring us on 0300 456 1024 if you need advice about this.",
   "FORM_DOB_HELPER_PARAGRAPH_4": "",
 
   "FORM_PHONE_SUBTITLE": "Phone",
-  "FORM_PHONE_DESCRIPTION": "Please provide a UK phone number that we can use to reach you between 9AM and 5PM, Monday to Friday.",
+  "FORM_PHONE_DESCRIPTION": "Please provide a UK phone number that we can use to reach you between 9am and 5pm, Monday to Friday.",
   "FORM_PHONE_PRIMARY_LABEL": "Main phone",
   "FORM_PHONE_SECONDARY_LABEL": "Another phone (optional)",
 

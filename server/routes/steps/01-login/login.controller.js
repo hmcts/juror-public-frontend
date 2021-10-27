@@ -8,7 +8,7 @@
 
   var validate = require('validate.js')
     , _ = require('lodash')
-    , config = require('../../../config/environment')()
+    , secretsConfig = require('config')
     , filters = require('../../../components/filters')
     , texts_en = require('../../../../client/js/i18n/en.json')
     , texts_cy = require('../../../../client/js/i18n/cy.json')
@@ -30,7 +30,7 @@
       // On first load of app we want to create a JWT that will be used for all API calls.
       //
       // It will have an empty body to begin with
-      authComponent.createJWTToken(req, {}, config.jwtNoAuthKey);
+      authComponent.createJWTToken(req, {}, secretsConfig.get('secrets.juror-digital-vault.public-jwtNoAuthKey'));
 
 
       // On load of page, we should clear any data

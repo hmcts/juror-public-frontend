@@ -997,6 +997,23 @@
       // Validate form submission
       validatorResult = validate(req.body, require('../../../config/validation/third-party-personal-details-date-of-birth')(req));
       if (typeof validatorResult !== 'undefined') {
+
+        // Only show 1 error at a time for the DOB
+        // Report the first error item if multiple errors were raised
+
+        if (validatorResult.dobDay){
+          delete validatorResult.dobMonth;
+          delete validatorResult.dobYear;
+          delete validatorResult.dateOfBirth;
+        }
+        if (validatorResult.dobMonth){
+          delete validatorResult.dobYear;
+          delete validatorResult.dateOfBirth;
+        }
+        if (validatorResult.dobYear){
+          delete validatorResult.dateOfBirth;
+        }
+
         req.session.errors = validatorResult;
         req.session.formFields = req.body;
 

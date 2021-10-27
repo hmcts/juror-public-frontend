@@ -98,16 +98,16 @@
                 <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE_OB' | translate(texts, { formattedDob: formattedDob }) }}</p>
                 <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE_OB' | translate(texts, { currentAge: currentAge }) }}</p>
               {% endif %}
-              <p><strong class="govuk-body govuk-!-font-weight-bold">{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE_OB }}</strong></p>
+              <p class="govuk-body">{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE_OB }}</p>
             {% else %}
               {% if dobError == undefined %}
                 <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE' | translate(texts, { formattedDob: formattedDob }) }}</p>
                 <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE' | translate(texts, { currentAge: currentAge }) }}</p>
               {% endif %}
-              <p><strong class="govuk-body govuk-!-font-weight-bold">{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE }}</strong></p>
+              <p class="govuk-body">{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE }}</p>
             {% endif %}
 
-            <label class="govuk-label govuk-!-font-weight-bold">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_SUBTITLE }}</label>
+            <label class="govuk-label">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_SUBTITLE }}</label>
 
             <div class="govuk-grid-row inline-section primary {% if errors.items %}closed govuk-error{% endif %} " id="dateOfBirthGroup">
               <div class="govuk-grid-column-one-half govuk-body">{{ formattedDob }}</div>

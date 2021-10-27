@@ -7,6 +7,9 @@
     , texts_cy = require('../../../client/js/i18n/cy.json');
 
   module.exports = function(req) {
+    var phoneRegExOld = '^[0-9 +]{8,15}$'
+      , phoneRegEx = '^$|^(0[012345689][0-9]{8,9})$|(07[0-9]{9})$';
+
     return {
 
       contactPhone: {
@@ -30,7 +33,7 @@
           }
         },
         formatIf: {
-          pattern: '^[0-9 +]{8,15}$',
+          pattern: phoneRegEx,
           field: 'contactPhone',
           value: 'By phone',
           message: {
@@ -42,7 +45,7 @@
 
       otherPhone: {
         formatIf: {
-          pattern: '^([0-9 +]{8,15}|)$',
+          pattern: phoneRegEx,
           field: 'contactPhone',
           value: 'By phone',
           message: {

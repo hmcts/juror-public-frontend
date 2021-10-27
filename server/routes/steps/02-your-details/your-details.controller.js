@@ -895,6 +895,23 @@
       validatorResult = validate(req.body, require('../../../config/validation/your-details-date-of-birth.js')(req));
 
       if (typeof validatorResult !== 'undefined') {
+
+        // Only show 1 error at a time for the DOB
+        // Report the first error item if multiple errors were raised
+
+        if (validatorResult.dobDay){
+          delete validatorResult.dobMonth;
+          delete validatorResult.dobYear;
+          delete validatorResult.dateOfBirth;
+        }
+        if (validatorResult.dobMonth){
+          delete validatorResult.dobYear;
+          delete validatorResult.dateOfBirth;
+        }
+        if (validatorResult.dobYear){
+          delete validatorResult.dateOfBirth;
+        }
+
         req.session.errors = validatorResult;
         req.session.formFields = req.body;
 
@@ -982,8 +999,14 @@
       delete req.session.errors;
       delete req.session.formFields;
 
+      // Create a copy of phone number values for validation without space characters
+      req.body.validate =  {
+        primaryPhone: req.body.primaryPhone.replace(/ /g, ''),
+        secondaryPhone: req.body.secondaryPhone.replace(/ /g, '')
+      }
+
       // Validate form submission
-      validatorResult = validate(req.body, require('../../../config/validation/your-details-phone.js')(req));
+      validatorResult = validate(req.body.validate, require('../../../config/validation/your-details-phone.js')(req));
 
       if (typeof validatorResult !== 'undefined') {
         req.session.errors = validatorResult;

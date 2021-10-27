@@ -40,33 +40,24 @@
           {% endif %}
         </h1>
 
-        <strong class="govuk-body">
-          {% if user.thirdParty == 'Yes' %}
-          {{ texts.DEFERRAL_PAGE.DATE_FIELD_TITLE_OB }}
-          {% else %}
-          {{ texts.DEFERRAL_PAGE.DATE_FIELD_TITLE }}
-          {% endif %}
-        </strong>
-        {#
         <span class="govuk-body">
-            {% if user.thirdParty == 'Yes' %}
-              {{ texts.DEFERRAL_PAGE.DATE_FIELD_HINT_OB }}
-            {% else %}
-              {{ texts.DEFERRAL_PAGE.DATE_FIELD_HINT }}
-            {% endif %}
+          {% if user.thirdParty == 'Yes' %}
+            {{ texts.DEFERRAL_PAGE.DATE_FIELD_TITLE_OB }}
+          {% else %}
+            {{ texts.DEFERRAL_PAGE.DATE_FIELD_TITLE }}
+          {% endif %}
         </span>
-        #}
 
         <br /><br />
       
-        <div class="background-grey {% if errors.items['dates'] %}govuk-error{% endif %}" id="datesGroup">
-          <strong class="govuk-body">
+        <div class="{% if errors.items['dates'] %}govuk-error{% endif %}" id="datesGroup">
+          <span class="govuk-body">
             {% if user.thirdParty == 'Yes' %}
             {{ texts.DEFERRAL_PAGE.DATE_INFO_OB }}
             {% else %}
             {{ texts.DEFERRAL_PAGE.DATE_INFO }}
             {% endif %}
-          </strong>
+          </span>
           <br />
           {% if errors.items['dates'] %}
             <div class="govuk-error-message">
@@ -227,19 +218,17 @@
               </div>
             </div>
 
-        
-
         </div>
 
       </div>
       
       
-      <details class="govuk-details">
+      <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary ga-details-deferral-dates">
           {% if user.thirdParty == 'Yes' %}
-            <span class="govuk-details__summary-text ga-details-deferral-dates" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask this?')"{% endif %}>{{ texts.DEFERRAL_PAGE.WHY_ASK_SUMMARY_OB }}</span>
+            <span class="govuk-details__summary-text ga-details-deferral-dates">{{ texts.DEFERRAL_PAGE.WHY_ASK_SUMMARY_OB }}</span>
           {% else %}
-            <span class="govuk-details__summary-text ga-details-deferral-dates" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask this?')"{% endif %}>{{ texts.DEFERRAL_PAGE.WHY_ASK_SUMMARY }}</span>
+            <span class="govuk-details__summary-text ga-details-deferral-dates">{{ texts.DEFERRAL_PAGE.WHY_ASK_SUMMARY }}</span>
           {% endif %}
         </summary>
           <div class="govuk-details__text" id="details-content-1">

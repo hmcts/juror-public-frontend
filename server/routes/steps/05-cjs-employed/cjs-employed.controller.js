@@ -38,6 +38,8 @@
           police: (mergedUser.cjsEmployer.indexOf('Police Force') !== -1),
           prison: (mergedUser.cjsEmployer.indexOf('HM Prison Service') !== -1),
           nca: (mergedUser.cjsEmployer.indexOf('National Crime Agency') !== -1),
+          judiciary: (mergedUser.cjsEmployer.indexOf('Judiciary') !== -1),
+          hmcts: (mergedUser.cjsEmployer.indexOf('HMCTS') !== -1),
           other: (mergedUser.cjsEmployer.indexOf('Other') !== -1)
         };
       }

@@ -4,6 +4,7 @@
   var _ = require('lodash')
     , urljoin = require('url-join')
     , config = require('../config/environment')()
+    , secretsConfig = require('config')
     , utils = require('../lib/utils')
     , options = {
       uri: config.apiEndpoint,
@@ -25,7 +26,7 @@
       get: function(rp) {
         var reqOptions = _.clone(options);
 
-        reqOptions.headers.Authorization = jwt.sign({}, config.jwtNoAuthKey, { expiresIn: config.jwtTTL });
+        reqOptions.headers.Authorization = jwt.sign({}, secretsConfig.get('secrets.juror-digital-vault.public-jwtNoAuthKey'), { expiresIn: secretsConfig.get('secrets.juror-digital-vault.public-jwtTTL') });
         reqOptions.transform = processData;
         reqOptions.uri = urljoin(reqOptions.uri, this.resource);
 

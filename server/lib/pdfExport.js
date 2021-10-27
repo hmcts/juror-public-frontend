@@ -140,12 +140,7 @@ var moment = require('moment');
         },
         {
           text: [
-            juror.deferral ? texts.jurorPDF.excusalOne : juror.excusal ? texts.jurorPDF.excusalThree : texts.jurorPDF.confirmOne,
-            {
-              text: juror.confirmedDate === 'Yes' ? texts.jurorPDF.can : juror.excusal ? texts.jurorPDF.cannot : texts.jurorPDF.changeDate,
-              style: 'smallBold'
-            },
-            juror.confirmedDate === 'Yes' ? texts.jurorPDF.confirmTwo : juror.excusal ? texts.jurorPDF.excusalTwo : texts.jurorPDF.deferralOne
+            juror.deferral ? texts.jurorPDF.deferral : juror.excusal ? texts.jurorPDF.excusal : texts.jurorPDF.confirmation,
           ],
           marginBottom: 10
         },
@@ -1237,12 +1232,7 @@ var moment = require('moment');
         },
         {
           text: [
-            juror.deferral ? texts.jurorPDF.excusalOne : juror.excusal ? texts.jurorPDF.excusalThree : texts.jurorPDF.confirmOne,
-            {
-              text: juror.confirmedDate === 'Yes' ? texts.jurorPDF.can : juror.excusal ? texts.jurorPDF.cannot : texts.jurorPDF.changeDate,
-              style: 'smallBold'
-            },
-            juror.confirmedDate === 'Yes' ? texts.jurorPDF.confirmTwo : juror.excusal ? texts.jurorPDF.excusalTwo : texts.jurorPDF.deferralOne
+            juror.deferral ? texts.jurorPDF.deferral : juror.excusal ? texts.jurorPDF.excusal : texts.jurorPDF.confirmation,
           ],
           marginBottom: 10
         },

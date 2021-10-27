@@ -90,9 +90,15 @@
         req.session.change = false;
       }
 
-      //reset values incase they are unselected upon change
+      //reset values in case they are unselected upon change
       if (req.session.user.cjsNca){
         delete req.session.user.cjsNca;
+      }
+      if (req.session.user.cjsJudiciary){
+        delete req.session.user.cjsJudiciary;
+      }
+      if (req.session.user.cjsHMCTS){
+        delete req.session.user.cjsHMCTS;
       }
       if (req.session.user.cjsPolice){
         delete req.session.user.cjsPolice;
@@ -122,7 +128,13 @@
         });
 
         if (tmpArr.indexOf('National Crime Agency') > -1){
-          req.session.user.cjsNca = 'National Crime Agency';
+          req.session.user.cjsNca = 'the National Crime Agency';
+        }
+        if (tmpArr.indexOf('Judiciary') > -1){
+          req.session.user.cjsJudiciary = 'the Judiciary';
+        }
+        if (tmpArr.indexOf('HMCTS') > -1){
+          req.session.user.cjsHMCTS = 'HM Courts & Tribunal Service';
         }
         if (tmpArr.indexOf('HM Prison Service') > -1){
           req.session.user.cjsPrison = 'HM Prison Service';

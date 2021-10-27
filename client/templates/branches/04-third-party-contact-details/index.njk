@@ -101,10 +101,11 @@
             name: "primaryPhone",
             errorMessage: primaryPhoneError,
             attributes: {
-              inputmode: "numeric"
+              inputmode: "numeric",
+              maxlength: "15"
             },
-            autocomplete: "off",
             classes: "govuk-!-width-two-thirds",
+            autocomplete: "off",
             value: user.primaryPhone
           }) }}
 
@@ -117,10 +118,11 @@
             name: "secondaryPhone",
             errorMessage: secondaryPhoneError,
             attributes: {
-              inputmode: "numeric"
+              inputmode: "numeric",
+              maxlength: "15"
             },
-            autocomplete: "off",
             classes: "govuk-!-width-two-thirds",
+            autocomplete: "off",
             value: user.secondaryPhone
           }) }}
         {% endset %}
@@ -136,12 +138,12 @@
             name: "emailAddress",
             errorMessage: emailAddressError,
             type: "email",
-            autocomplete: "off",
             attributes: {
               maxlength: "254",
               spellcheck: "false"
             },
             classes: "govuk-!-width-two-thirds",
+            autocomplete: "off",
             value: user.emailAddress
           }) }}
 
@@ -154,12 +156,12 @@
             name: "emailAddressConfirmation",
             errorMessage: emailAddressConfirmationError,
             type: "email",
-            autocomplete: "off",
             attributes: {
               maxlength: "254",
               spellcheck: "false"
             },
             classes: "govuk-!-width-two-thirds",
+            autocomplete: "off",
             value: user.emailAddressConfirmation
           }) }}
         {% endset %}

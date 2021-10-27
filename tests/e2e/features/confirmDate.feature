@@ -10,7 +10,6 @@ Feature: Check for the correct date of jury service
 
     # Juror Portal Page
     When I navigate to the Juror Portal
-      And I click the Start Now button
 
     # Responder Type Page
     Then I confirm that I am on the Responder Type page
@@ -39,7 +38,7 @@ Feature: Check for the correct date of jury service
 
     # Your Details Phone Page - Error Correction
     Then I confirm that I am on the Your Details Phone page
-      And the error message summary for my Phone number is "Please check your main phone"
+      And the error message summary for my Phone number is "Check your main phone number"
       And I enter "11111111111" as my Main Phone Number
       Then I submit my phone details
  
@@ -104,7 +103,6 @@ Feature: Check for the correct date of jury service
 
     # Juror Portal Page
     When I navigate to the Juror Portal
-      And I click the Start Now button
 
     # Responder Type Page
     Then I confirm that I am on the Responder Type page
@@ -134,7 +132,7 @@ Feature: Check for the correct date of jury service
 
      # Your Details Phone Page - Error Correction
     Then I confirm that I am on the Your Details Phone page
-      And the error message summary for my Phone number is "Please check your main phone"
+      And the error message summary for my Phone number is "Check your main phone number"
       And I enter "11111111111" as my Main Phone Number
       And I submit my phone details
  

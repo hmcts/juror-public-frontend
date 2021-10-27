@@ -696,6 +696,14 @@
                 <br><br>
                 {{ texts.CHECK_ANSWERS_PAGE.NCA }}
               {% endif %}
+              {% if user.cjsJudiciary %}
+                <br><br>
+                {{ texts.CHECK_ANSWERS_PAGE.JUDICIARY }}
+              {% endif %}
+              {% if user.cjsHMCTS %}
+                <br><br>
+                {{ texts.CHECK_ANSWERS_PAGE.HMCTS }}
+              {% endif %}
               {% for employer in user.cjsEmployer %}
                 {% if employer === 'Other' %}
                   <br><br>
@@ -828,20 +836,13 @@
           <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
           <strong class="govuk-warning-text__text">
             <span class="govuk-warning-text__icon govuk-warning-text__assistive">{{ texts.CHECK_ANSWERS_PAGE.WARNING }}</span>
-            {{ texts.CHECK_ANSWERS_PAGE.WARNING_TEXT_1 }}
+              {% if user.thirdParty == 'Yes' %}
+                {{ texts.CHECK_ANSWERS_PAGE.OB_WARNING_TEXT }}
+              {% else %}
+                {{ texts.CHECK_ANSWERS_PAGE.WARNING_TEXT }}
+              {% endif %}
           </strong>
         </div>
-        <div class="govuk-warning-text__text govuk-body">
-        <ul class="govuk-list govuk-list--bullet">
-            {% if user.thirdParty == 'Yes' %}
-            <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.OB_WARNING_TEXT_2 }}</strong></li>
-            <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.OB_WARNING_TEXT_3 }}</strong></li>
-            {% else %}
-            <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.JUROR_WARNING_TEXT_2 }}</strong></li>
-            <li><strong class="bold-small">{{ texts.CHECK_ANSWERS_PAGE.JUROR_WARNING_TEXT_3 }}</strong></li>
-            {% endif %}
-          </ul>
-          </div>
 
         {# Confirm panel #}
         <div class="{% if errors.items['informationConfirmed'] %} panel panel-border-narrow govuk-error {% endif %}" id="informationConfirmedGroup">

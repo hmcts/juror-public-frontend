@@ -58,6 +58,7 @@
       }
 
 
+      /*
       // Try to access configuration file for secret values
       try {
         fs.accessSync(__dirname + '/secret.js', fs.F_OK);
@@ -66,6 +67,7 @@
         // It isn't accessible
         winston.error(e);
       }
+      */
 
 
       return merged;

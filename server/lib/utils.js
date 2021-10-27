@@ -675,13 +675,16 @@
     req.session.user['courtName'] = apiResponse['locCourtName'];
     req.session.user['hearingTime'] = apiResponse['courtAttendTime'];
 
-    // Extract the time value when the hearing datetime is coming from the Unique_Pool table
-    if (moment(req.session.user['hearingTime']).isValid()) {
-      req.session.user['hearingTime'] = moment(req.session.user['hearingTime']).format('HH:mm a');
+    
+    // Extract the time value when the hearing datetime is coming from the UNIQUE_POOL table
+    if (moment(req.session.user['hearingTime'], 'YYYY-MM-DD HH:mm:ss').isValid()) {
+      req.session.user['hearingTime'] = moment(req.session.user['hearingTime'], 'YYYY-MM-DD HH:mm:ss').format('HH:mm a');
     } else if (moment(req.session.user['hearingTime'], 'HH:mm').isValid()) {
+    // Extract the time value when the hearing datetime is coming from the COURT_LOCATION table
       req.session.user['hearingTime'] = moment(req.session.user['hearingTime'], 'HH:mm').format('HH:mm a');
     }
-
+    
+    
     // Join parts of address
     req.session.user['courtAddress'] = [
       apiResponse['locCourtName'],
@@ -704,6 +707,8 @@
         throw 'Invalid hearing date format. MomentJS could not parse: "' + apiResponse['hearingDate'] + '"';
       }
       req.session.user['hearingDate'] = moment(apiResponse['hearingDate']).format('dddd Do MMMM YYYY');
+      req.session.user['hearingDateMedium'] = moment(apiResponse['hearingDate']).format('DD MMMM YYYY');
+      req.session.user['hearingDateShort'] = moment(apiResponse['hearingDate']).format('DD/MM/YYYY');
     } catch (err) {
       app.logger.debug('Hearing date could not be parsed by momentjs', err);
       req.session.user['hearingDate'] = '';

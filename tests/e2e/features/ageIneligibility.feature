@@ -11,7 +11,6 @@ Feature: Age Ineligible
 
     # Juror Portal Page
     When I navigate to the Juror Portal
-      And I click the Start Now button
 
     # Responder Type Page
     Then I confirm that I am on the Responder Type page
@@ -124,7 +123,6 @@ Feature: Age Ineligible
 
     # Juror Portal Page
     When I navigate to the Juror Portal
-      And I click the Start Now button
 
     # Responder Type Page
     Then I confirm that I am on the Responder Type page

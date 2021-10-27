@@ -1,6 +1,6 @@
 {
-  "HEADING": "Give us three dates you could start jury service during the next 12 months",
-  "HEADING_OB": "Give us three dates the person you're replying for could do jury service during the next 12 months",
+  "HEADING": "Give us 3 dates you could start jury service during the next 12 months",
+  "HEADING_OB": "Give us 3 dates the person you're replying for could do jury service during the next 12 months",
   "REASON_HEADING": "Say why you need another date for your jury service",
   "REASON_HEADING_OB": "Say why the person you're answering for needs another date for their jury service",
 
@@ -26,17 +26,17 @@
   "WHY_ASK_INFO": "It may be possible to start your jury service on another more suitable date.",
   "WHY_ASK_INFO_OB": "It may be possible to start the person's jury service on another more suitable date.",
 
-  "DATE1": "Date 1",
-  "DATE2": "Date 2",
-  "DATE3": "Date 3",
+  "DATE1": "First date",
+  "DATE2": "Second date",
+  "DATE3": "Third date",
   "DATE_EG": "eg 08/10/2017",
 
   "DAY": "Day",
   "MONTH": "Month",
   "YEAR": "Year",
 
-  "DATE_INFO": "I can start jury service for at least ten working days from:",
-  "DATE_INFO_OB": "The person I'm replying for can start jury service for at least ten working days from:",
+  "DATE_INFO": "I can start jury service for at least 10 working days from:",
+  "DATE_INFO_OB": "The person I'm replying for can start jury service for at least 10 working days from:",
 
   "DATEPICKER_ALT_1": "open date 1 calendar",
   "DATEPICKER_ALT_2": "open date 2 calendar",

@@ -83,14 +83,14 @@
             </legend>
 
             <div class="govuk-hint" id="onBail-hint">
-              <span class="govuk-body govuk-!-font-weight-bold">
+              <span class="govuk-body">
                 {% if user.thirdParty == 'Yes' %}
                   {{texts.QUALIFY_PAGE.QUESTION_4_OB }}
                 {% else %}
                   {{ texts.QUALIFY_PAGE.QUESTION_4 }}
                 {% endif %}
               </span>
-              <br/>
+              <br/><br/>
               <span>
                 {{texts.QUALIFY_PAGE.UNSURE_PROMPT}}
                 <a class="govuk-link" href="{{ url('steps.qualify.convictions.info') }}">

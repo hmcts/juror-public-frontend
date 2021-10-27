@@ -52,13 +52,13 @@
 
         {# Set radios hint html #}
         {% set radiosHintHTML %}
-          <strong class="govuk-body govuk-!-font-weight-bold">
+          <p class="govuk-body">
             {% if user.thirdParty == 'Yes' %}
               {{ texts.REASONABLE_ADJUSTMENT_PAGE.INTRO_PARAGRAPH_OB }}
             {% else %}
               {{ texts.REASONABLE_ADJUSTMENT_PAGE.INTRO_PARAGRAPH }}
             {% endif %}
-          </strong>
+          </p>
         {% endset %}
 
         {# Set radios error #}
@@ -69,13 +69,13 @@
 
         {# Set checkboxes hint html #}
         {% set checkboxesHintHTML %}
-          <strong class="govuk-body govuk-!-font-weight-bold">
+        <p class="govuk-body">
           {% if user.thirdParty == 'Yes' %}
             {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_DESCRIPTION_OB }}
           {% else %}
             {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_DESCRIPTION }}
           {% endif %}
-          </strong>
+        </p>
         {% endset %}
 
         {# Set checkboxes answer error #}
@@ -94,13 +94,11 @@
 
         {# Set special arrangements label #}
         {% set specialArrangementsLabel %}
-          <strong class="govuk-body govuk-!-font-weight-bold">
             {% if user.thirdParty == 'Yes' %}
               {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_SPECIAL_DESCRIPTION_OB }}
             {% else %}
               {{ texts.REASONABLE_ADJUSTMENT_PAGE.ADJUSTMENT_SPECIAL_DESCRIPTION }}
             {% endif %}
-          </strong>
         {% endset %}
 
         {# Set sight impairment label/value #}
@@ -260,8 +258,8 @@
 
         </div>
 
-        <details class="govuk-details">
-          <summary class="govuk-details__summary ga-details-assistance" {% if trackingCode %}onclick="trackVirtualPageViews('Why do we ask for this - reasonable adjustment')"{% endif %}>
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary ga-details-assistance">
             <span class="govuk-details__summary-text ga-details-assistance">
               {{ texts.REASONABLE_ADJUSTMENT_PAGE.GUIDANCE_SUMMARY }}
             </span>

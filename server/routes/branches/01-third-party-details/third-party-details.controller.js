@@ -389,9 +389,19 @@
       req.body.thirdPartyDetails.emailAddress = req.body.emailAddress;
       req.body.thirdPartyDetails.emailAddressConfirmation = req.body.emailAddressConfirmation;
 
+      // Create a copy of phone number values for validation without space characters
+      req.body.validate= {
+        contactPhone:  req.body.contactPhone,
+        contactEmail: req.body.contactEmail,
+        mainPhone: req.body.mainPhone.replace(/ /g, ''),
+        otherPhone: req.body.otherPhone.replace(/ /g, ''),
+        emailAddress: req.body.emailAddress,
+        emailAddressConfirmation: req.body.emailAddressConfirmation
+      }
+
 
       // Validate form submission
-      validatorResult = validate(req.body, require('../../../config/validation/third-party-details-contact')(req));
+      validatorResult = validate(req.body.validate, require('../../../config/validation/third-party-details-contact')(req));
       if (typeof validatorResult !== 'undefined') {
         req.session.errors = validatorResult;
         req.session.formFields = req.body;

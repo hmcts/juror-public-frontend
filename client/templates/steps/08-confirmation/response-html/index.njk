@@ -76,33 +76,13 @@
       {# Confirm date / Deferral / Excusal #}
       <p class="govuk-body">
         {% if user.deferral %}
-          {{ texts.PDF.jurorPDF.excusalOne }}
+          {{ texts.PDF.jurorPDF.deferral }}
         {% endif %}
         {% if user.excusal %}
-          {{ texts.PDF.jurorPDF.excusalThree }}
+          {{ texts.PDF.jurorPDF.excusal }}
         {% endif %}
         {% if user.confirmedDate === 'Yes' %}
-          {{ texts.PDF.jurorPDF.confirmOne }}
-        {% endif %}
-
-        {% if user.confirmedDate === 'Yes'%}
-          {{ texts.PDF.jurorPDF.can }}
-        {% endif %}
-        {% if user.excusal %}
-          {{ texts.PDF.jurorPDF.cannot }}
-        {% endif %}
-        {% if user.deferral %}
-          {{ texts.PDF.jurorPDF.changeDate }}
-        {% endif %}
-
-        {% if user.confirmedDate === 'Yes'%}
-          {{ texts.PDF.jurorPDF.confirmTwo }}
-        {% endif %}
-        {% if user.excusal %}
-          {{ texts.PDF.jurorPDF.excusalTwo }}
-        {% endif %}
-        {% if user.deferral %}
-          {{ texts.PDF.jurorPDF.deferralOne }}
+          {{ texts.PDF.jurorPDF.confirmation }}
         {% endif %}
       </p>
 

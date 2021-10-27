@@ -10,8 +10,8 @@ class Page {
   }
 
   get submitButton() {
-    if (browser.element('input[type="submit"]').isExisting()) {
-      return browser.element('input[type="submit"]');
+    if (browser.element('button[class="govuk-button"]').isExisting()) {
+      return browser.element('button[class="govuk-button"]');
     }
     return browser.element('button[type="submit"]');
   }

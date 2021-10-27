@@ -68,8 +68,8 @@
           </div>
         </div>
 
-        <details class="govuk-details">
-          <summary class="govuk-details__summary ga-details-excusal-evidence" {% if trackingCode %}onclick="trackVirtualPageViews('What evidence will I need to provide')"{% endif %}>
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary ga-details-excusal-evidence">
             <span class="govuk-details__summary-text ga-details-excusal-evidence">
               {% if user.thirdParty == 'Yes' %}
                 {{ texts.EXCUSAL_PAGE.EVIDENCE_QUESTION_OB }}

@@ -9,6 +9,9 @@
   require('./custom-validation');
 
   module.exports = function(req) {
+    var phoneRegExOld = '^[0-9 ]{10,15}$'
+      , phoneRegEx = '^$|^(0[012345689][0-9]{8,9})$|(07[0-9]{9})$';
+
     return {
       primaryPhone: {
         presence: {
@@ -19,7 +22,7 @@
           }
         },
         format: {
-          pattern: '^[0-9 +]{8,15}$',
+          pattern: phoneRegEx,
           message: {
             summary: filters.translate('VALIDATION.YOUR_DETAILS.MAIN_PHONE_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.YOUR_DETAILS.MAIN_PHONE_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
@@ -29,7 +32,7 @@
 
       secondaryPhone: {
         format: {
-          pattern: '^([0-9 +]{8,15}|)$',
+          pattern: phoneRegEx,
           message: {
             summary: filters.translate('VALIDATION.YOUR_DETAILS.OTHER_PHONE_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             details: filters.translate('VALIDATION.YOUR_DETAILS.OTHER_PHONE_CHECK', (req.session.ulang === 'cy' ? texts_cy : texts_en)),

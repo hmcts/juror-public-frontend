@@ -72,8 +72,18 @@
         req.body['emailAddressConfirmation'] = '';
       }
 
+      // Create a copy of phone number values for validation without space characters
+      req.body.validate = {
+        useJurorPhoneDetails: req.body.useJurorPhoneDetails,
+        useJurorEmailDetails: req.body.useJurorEmailDetails,
+        primaryPhone: req.body.primaryPhone.replace(/ /g, ''),
+        secondaryPhone: req.body.secondaryPhone.replace(/ /g, ''),
+        emailAddress: req.body.emailAddress,
+        emailAddressConfirmation: req.body.emailAddressConfirmation
+      }
+
       // Validate form submission
-      validatorResult = validate(req.body, require('../../../config/validation/third-party-contact-details')(req));
+      validatorResult = validate(req.body.validate, require('../../../config/validation/third-party-contact-details')(req));
       if (typeof validatorResult !== 'undefined') {
         req.session.errors = validatorResult;
         req.session.formFields = req.body;
