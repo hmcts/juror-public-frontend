@@ -61,77 +61,112 @@
           {% set radioDetailsError = {"text": errors.items['mentalHealthSectionedDetails'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
         {% endif %}
 
-        <div class="govuk-form-group {% if radioAnswerError or radioDetailsError %}govuk-form-group--error{% endif %}" id="mentalHealthSectionedGroup">
+        {# set Caption text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set captionText = texts.QUALIFY_PAGE.CAPTION_OB %}
+        {% else %}
+          {% set captionText = texts.QUALIFY_PAGE.CAPTION %}
+        {% endif %}
 
-          <fieldset class="govuk-fieldset">
+        {# set Title text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set titleText = texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_TITLE_OB %}
+        {% else %}
+          {% set titleText = texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_TITLE %}
+        {% endif %}
 
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-              <h1 class="govuk-fieldset__heading">
-                <span class="govuk-caption-xl">
-                  {% if user.thirdParty == 'Yes' %}
-                    {{ texts.QUALIFY_PAGE.CAPTION_OB }}
-                  {% else %}
-                    {{ texts.QUALIFY_PAGE.CAPTION }}
-                  {% endif %}
-                </span>
-                {% if user.thirdParty == 'Yes' %}
-                  {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_TITLE_OB }}
-                {% else %}
-                  {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_TITLE }}
-                {% endif %}
-              </h1>
-            </legend>
+        {# set Legend HTML #}
+        {% set legendHTML %}
+          <span class="govuk-caption-xl">
+            {{- captionText -}}
+          </span>
+          {{- titleText -}}
+        {% endset %}
+        
+        {# set Hint HTML #}
+        {% set hintHTML %}
+        <p class="govuk-hint">
+          {% if user.thirdParty == 'Yes' %}
+            {{texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_HINT_OB}}
+          {% else %}
+            {{texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_HINT}}
+          {% endif %}
+        
+          <ul class="govuk-hint govuk-list govuk-list--bullet">
+            <li>{{texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_HINT_LIST_1}}</li>
+            <li>{{texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_HINT_LIST_2}}</li>
+            <li>{{texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_HINT_LIST_3}}</li>
+          </ul>
+        </p>
+        {% endset %}
 
-            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+        {#
+          {{texts.QUALIFY_PAGE.UNSURE_PROMPT}}
+          <a class="govuk-link" href="{{ url('steps.qualify.mental.health.sectioned.info') }}">
+            {{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}<span class="govuk-visually-hidden">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_MORE_INFO_LINK }}</span>
+          </a>
+        #}
 
-              <span class="govuk-hint" id="mentalHealthSectioned-hint">{{texts.QUALIFY_PAGE.UNSURE_PROMPT}}
-                <a class="govuk-link" href="{{ url('steps.qualify.mental.health.sectioned.info') }}">
-                  {{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}<span class="govuk-visually-hidden">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_SECTIONED_MORE_INFO_LINK }}</span>
-                </a>
-              </span>
 
-              {% if radioAnswerError %}
-                <span id="mentalHealthSectionedError" class="govuk-error-message">
-                  <span class="govuk-visually-hidden">{{texts.ERRORS.HIDDEN_ERROR}}: </span>
-                  {{- radioAnswerError.text -}}
-                </span>
-              {% endif%}
-              
-              {# Radio YES #}
-              <div class="govuk-radios__item">    
-                <input class="selection-button-radio govuk-radios__input store-updated-information" id="mentalHealthSectioned-Yes" name="mentalHealthSectioned" type="radio" data-aria-controls="mentalHealthSectionedDetailsGroup" value="{{ texts.QUALIFY_PAGE.YES }}" {{radioYesChecked}}}>
-                <label class="govuk-radios__label" for="mentalHealthSectioned-Yes">
-                  {{ radioYesLabel }}
-                </label>
-              </div>
+        {# set Details HTML #}
+        {% set detailsHTML %}
+          {{ govukCharacterCount({
+            name: "mentalHealthSectionedDetails",
+            id: "mentalHealthSectionedDetails",
+            maxlength: "1000",
+            hint: {
+              text: texts.QUALIFY_PAGE.DETAILS
+            },
+            errorMessage: radioDetailsError,
+            value: user.qualify.mentalHealthSectioned.details
+          }) }}
+        {% endset %}
 
-              {# Details #}
-              <div class="govuk-character-count govuk-radios__conditional" id="mentalHealthSectionedDetailsGroup">
-                {{ govukCharacterCount({
-                  name: "mentalHealthSectionedDetails",
-                  id: "mentalHealthSectionedDetails",
-                  maxlength: "1000",
-                  label: {
-                    text: texts.QUALIFY_PAGE.DETAILS
-                  },
-                  errorMessage: radioDetailsError,
-                  value: user.qualify.mentalHealthSectioned.details
-                }) }}
-              </div>
+        {# set radio group class #}
+        {% if radioAnswerError or radioDetailsError %}
+          {% set radioGroupClass = "govuk-form-group--error" %}
+        {% else %}
+          {% set radioGroupClass = undefined %}
+        {% endif %}
 
-              {# Radio NO #}
-              <div class="govuk-radios__item">
-                <input class="selection-button-radio govuk-radios__input store-updated-information" id="mentalHealthSectioned-No" name="mentalHealthSectioned" type="radio" value="{{ texts.QUALIFY_PAGE.NO }}" {{radioNoChecked}}}>
-                <label class="govuk-label govuk-radios__label" for="mentalHealthSectioned-No">
-                  {{ radioNoLabel }}
-                </label>
-              </div>
-              
-            </div>
+        {{ govukRadios({
+          idPrefix: "mentalHealthSectioned",
+          name: "mentalHealthSectioned",
+          errorMessage: radioAnswerError,
+          hint: {
+            html: hintHTML
+          },
+          formGroup: {
+            id: "mentalHealthSectionedGroup",
+            classes: radioGroupClass
+          },
+          fieldset: {
+            legend: {
+              html: legendHTML,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: texts.QUALIFY_PAGE.YES,
+              text: radioYesLabel,
+              checked: radioYesChecked,
+              id: "mentalHealthSectioned-Yes",
+              conditional: {
+                html: detailsHTML
+              }
+            },
+            {
+              value: texts.QUALIFY_PAGE.NO,
+              text: radioNoLabel,
+              checked: radioNoChecked,
+              id: "mentalHealthSectioned-No"
+            }
+          ]
+        }) }}
 
-          </fieldset>
-
-        </div>
+        {% include "./mental-health-sectioned-info.njk" %}
 
         {# Submit form #}
         {{ govukButton({

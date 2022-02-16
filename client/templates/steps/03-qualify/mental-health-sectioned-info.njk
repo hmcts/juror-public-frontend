@@ -1,40 +1,24 @@
-{% extends "../../layouts/default-gds.njk" %}
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      {{ texts.INFO_PAGE.MENTAL_HEALTH.DETAILS_HEADING }}
+    </span>
+  </summary>
+  <div class="govuk-details__text">
 
-{% block pageTitle %}
-  {{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.HEADING }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
-{% endblock %}
-
-{% block beforeContent %}
-  {{ super() }}
-  {% include "../../includes/back-link-gds.njk" %}
-{% endblock %}
-
-{% block content %}
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      <h1 class="govuk-heading-xl">
-        {{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.HEADING }}
-      </h1>
-
-      <h3 class="govuk-heading-m">
-        {{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.TITLE }}
-      </h3>
-
-      <div class="govuk-body">
-        {% if user.thirdParty == 'Yes' %}
-          <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.FIRST_THIRD_PARTY }}</p>
-          <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.SECOND_THIRD_PARTY }}</p>
-          <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.THIRD_THIRD_PARTY }}</p>
-        {% else %}
-          <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.FIRST_MAIN }}</p>
-          <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.SECOND_MAIN }}</p>
-          <p>{{ texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.THIRD_MAIN }}</p>
-        {% endif %}
-      </div>
-
+    <div class="govuk-body">
+      {% if user.thirdParty == 'Yes' %}
+        {# 3rd party #}
+        <p>{{texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.SECTION_1_1_OB}}</p>
+        <p>{{texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.SECTION_1_2_OB}}</p>
+        <p>{{texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.SECTION_1_3_OB}}</p>
+      {% else %}
+        {# 1st person #}
+        <p>{{texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.SECTION_1_1}}</p>
+        <p>{{texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.SECTION_1_2}}</p>
+        <p>{{texts.INFO_PAGE.MENTAL_HEALTH.SECTIONED.SECTION_1_3}}</p>
+      {% endif %}
     </div>
-  </div>
 
-{% endblock %}
+  </div>
+</details>

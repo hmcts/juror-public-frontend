@@ -60,78 +60,97 @@
         {% if errors.items['mentalHealthCapacityDetails']%}
           {% set radioDetailsError = {"text": errors.items['mentalHealthCapacityDetails'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
         {% endif %}
+
+        {# set Caption text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set captionText = texts.QUALIFY_PAGE.CAPTION_OB %}
+        {% else %}
+          {% set captionText = texts.QUALIFY_PAGE.CAPTION %}
+        {% endif %}
+
+        {# set Title text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set titleText = texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_TITLE_OB %}
+        {% else %}
+          {% set titleText = texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_TITLE %}
+        {% endif %}
+
+        {# set Legend HTML #}
+        {% set legendHTML %}
+          <span class="govuk-caption-xl">
+            {{- captionText -}}
+          </span>
+          {{- titleText -}}
+        {% endset -%}
         
-        <div class="govuk-form-group {% if radioAnswerError or radioDetailsError %}govuk-form-group--error{% endif %}" id="mentalHealthCapacityGroup">
-          
-          <fieldset class="govuk-fieldset">
+        {# set Hint HTML #}
+        {% set hintHTML %}
+          {% if user.thirdParty == 'Yes' %}
+            {{texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_HINT_OB}}
+          {% else %}
+            {{texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_HINT}}
+          {% endif %}
+        {% endset %}
 
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-              <h1 class="govuk-fieldset__heading">
-                <span class="govuk-caption-xl">
-                  {% if user.thirdParty == 'Yes' %}
-                    {{ texts.QUALIFY_PAGE.CAPTION_OB }}
-                  {% else %}
-                    {{ texts.QUALIFY_PAGE.CAPTION }}
-                  {% endif %}
-                </span>
-                {% if user.thirdParty == 'Yes' %}
-                  {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_TITLE_OB }}
-                {% else %}
-                  {{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_TITLE }}
-                {% endif %}
-              </h1>
-            </legend>
+        {# set Details HTML #}
+        {% set detailsHTML %}
+          {{ govukCharacterCount({
+            name: "mentalHealthCapacityDetails",
+            id: "mentalHealthCapacityDetails",
+            maxlength: "1000",
+            hint: {
+              text: texts.QUALIFY_PAGE.DETAILS
+            },
+            errorMessage: radioDetailsError,
+            value: user.qualify.mentalHealthCapacity.details
+          }) }}
+        {% endset %}
 
-            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+        {# set radio group class #}
+        {% if radioAnswerError or radioDetailsError %}
+          {% set radioGroupClass = "govuk-form-group--error" %}
+        {% else %}
+          {% set radioGroupClass = undefined %}
+        {% endif %}
+        
+        {{ govukRadios({
+          idPrefix: "mentalHealthCapacity",
+          name: "mentalHealthCapacity",
+          errorMessage: radioAnswerError,
+          hint: {
+            html: hintHTML
+          },
+          formGroup: {
+            id: "mentalHealthCapacityGroup",
+            classes: radioGroupClass
+          },
+          fieldset: {
+            legend: {
+              html: legendHTML,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: texts.QUALIFY_PAGE.YES,
+              text: radioYesLabel,
+              checked: radioYesChecked,
+              id: "mentalHealthCapacity-Yes",
+              conditional: {
+                html: detailsHTML
+              }
+            },
+            {
+              value: texts.QUALIFY_PAGE.NO,
+              text: radioNoLabel,
+              checked: radioNoChecked,
+              id: "mentalHealthCapacity-No"
+            }
+          ]
+        }) }}
 
-              <span class="govuk-hint" id="mentalHealthCapacity-hint">{{texts.QUALIFY_PAGE.UNSURE_PROMPT}}
-                <a class="govuk-link" href="{{ url('steps.qualify.mental.health.capacity.info') }}">
-                  {{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}<span class="govuk-visually-hidden">{{ texts.QUALIFY_PAGE.MENTAL_HEALTH_CAPACITY_MORE_INFO_LINK }}</span>
-                </a>
-              </span>
-
-              {% if radioAnswerError %}
-                <span id="mentalHealthCapacityError" class="govuk-error-message">
-                  <span class="govuk-visually-hidden">{{texts.ERRORS.HIDDEN_ERROR}}: </span>
-                  {{- radioAnswerError.text -}}
-                </span>
-              {% endif%}
-
-              {# Radio YES #}
-              <div class="govuk-radios__item">    
-                <input class="selection-button-radio govuk-radios__input store-updated-information" id="mentalHealthCapacity-Yes" name="mentalHealthCapacity" type="radio" data-aria-controls="mentalHealthCapacityDetailsGroup" value="{{ texts.QUALIFY_PAGE.YES }}" {{radioYesChecked}}}>
-                <label class="govuk-radios__label" for="mentalHealthCapacity-Yes">
-                  {{ radioYesLabel }}
-                </label>
-              </div>
-
-              {# Details #}
-              <div class="govuk-character-count govuk-radios__conditional" id="mentalHealthCapacityDetailsGroup">
-                {{ govukCharacterCount({
-                  name: "mentalHealthCapacityDetails",
-                  id: "mentalHealthCapacityDetails",
-                  maxlength: "1000",
-                  label: {
-                    text: texts.QUALIFY_PAGE.DETAILS
-                  },
-                  errorMessage: radioDetailsError,
-                  value: user.qualify.mentalHealthCapacity.details
-                }) }}
-              </div>
-
-              {# Radio NO #}
-              <div class="govuk-radios__item">
-                <input class="selection-button-radio govuk-radios__input store-updated-information" id="mentalHealthCapacity-No" name="mentalHealthCapacity" type="radio" value="{{ texts.QUALIFY_PAGE.NO }}" {{radioNoChecked}}}>
-                <label class="govuk-label govuk-radios__label" for="mentalHealthCapacity-No">
-                  {{ radioNoLabel }}
-                </label>
-              </div>
-              
-            </div>
-
-          </fieldset>
-
-        </div>
+        {% include "./mental-health-capacity-info.njk" %}
 
         {# Submit form #}
         {{ govukButton({

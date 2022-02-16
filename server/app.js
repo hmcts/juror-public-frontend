@@ -5,8 +5,7 @@
 ;(function(){
   'use strict';
 
-  var secretsConfig = require('@hmcts/properties-volume').addTo(require('config'))
-    , express = require('express')
+  var express = require('express')
     , path = require('path')
     , _ = require('lodash')
     , config = require('./config/environment')()

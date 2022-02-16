@@ -1,6 +1,6 @@
 {
   "name": "juror-public-front-end",
-  "version": "2.23.486-development",
+  "version": "2.24.499-development",
   "description": "A front-end for responding to jury summons",
   "main": "server/index.js",
   "scripts": {
@@ -27,7 +27,7 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "@hmcts/properties-volume": "0.0.9",
+    "@hmcts/properties-volume": "0.0.13",
     "basic-auth": "^2.0.0",
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",

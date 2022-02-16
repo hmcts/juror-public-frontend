@@ -61,88 +61,115 @@
           {% set radioDetailsError = {"text": errors.items['convictedDetails'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
         {% endif %}
 
-        <div class="govuk-form-group {% if radioAnswerError or radioDetailsError %}govuk-form-group--error{% endif %}" id="convictedGroup">
+        {# set Caption text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set captionText = texts.QUALIFY_PAGE.CAPTION_OB %}
+        {% else %}
+          {% set captionText =  texts.QUALIFY_PAGE.CAPTION %}
+        {% endif %}
 
-          <fieldset class="govuk-fieldset">
+        {# set Title text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set titleText =  texts.QUALIFY_PAGE.CONVICTIONS_TITLE_OB %}
+        {% else %}
+          {% set titleText = texts.QUALIFY_PAGE.CONVICTIONS_TITLE %}
+        {% endif %}
 
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-              <h1 class="govuk-fieldset__heading">
-                <span class="govuk-caption-xl">
-                  {% if user.thirdParty == 'Yes' %}
-                    {{ texts.QUALIFY_PAGE.CAPTION_OB }}
-                  {% else %}
-                    {{ texts.QUALIFY_PAGE.CAPTION }}
-                  {% endif %}
-                </span>
-                {% if user.thirdParty == 'Yes' %}
-                  {{ texts.QUALIFY_PAGE.CONVICTIONS_TITLE_OB }}
-                {% else %}
-                  {{ texts.QUALIFY_PAGE.CONVICTIONS_TITLE }}
-                {% endif %}
-              </h1>
-            </legend>
+        {# set Hint text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set hintText = texts.QUALIFY_PAGE.CONVICTIONS_HINT_OB %}
+        {% else %}
+          {% set hintText = texts.QUALIFY_PAGE.CONVICTIONS_HINT %}
+        {% endif %}
 
-            <div class="govuk-hint" id="onBail-hint">
-              <span class="govuk-body">
-                {% if user.thirdParty == 'Yes' %}
-                  {{texts.QUALIFY_PAGE.QUESTION_4_OB }}
-                {% else %}
-                  {{ texts.QUALIFY_PAGE.QUESTION_4 }}
-                {% endif %}
-              </span>
-              <br/><br/>
-              <span>
-                {{texts.QUALIFY_PAGE.UNSURE_PROMPT}}
-                <a class="govuk-link" href="{{ url('steps.qualify.convictions.info') }}">
-                  {{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}<span class="govuk-visually-hidden">{{ texts.QUALIFY_PAGE.CONVICTIONS_MORE_INFO_LINK }}</span>
-                </a>
-              </span>
-            </div>
+        {# set Details hint HTML #}
+        {% set detailsHintHTML %}
+          {% if user.thirdParty == 'Yes' %}
+            <p class="govuk-body">{{ texts.QUALIFY_PAGE.CONVICTIONS_DETAILS_HINT_OB }}</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>{{ texts.QUALIFY_PAGE.CONVICTIONS_DETAILS_HINT_LIST_1_OB }}</li>
+              <li>{{ texts.QUALIFY_PAGE.CONVICTIONS_DETAILS_HINT_LIST_2_OB }}</li>
+              <li>{{ texts.QUALIFY_PAGE.CONVICTIONS_DETAILS_HINT_LIST_3_OB }}</li>
+              <li>{{ texts.QUALIFY_PAGE.CONVICTIONS_DETAILS_HINT_LIST_4_OB }}</li>
+            </ul>
+          {% else %}
+            <p class="govuk-body">{{ texts.QUALIFY_PAGE.CONVICTIONS_DETAILS_HINT }}</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>{{ texts.QUALIFY_PAGE.CONVICTIONS_DETAILS_HINT_LIST_1 }}</li>
+              <li>{{ texts.QUALIFY_PAGE.CONVICTIONS_DETAILS_HINT_LIST_2 }}</li>
+              <li>{{ texts.QUALIFY_PAGE.CONVICTIONS_DETAILS_HINT_LIST_3 }}</li>
+              <li>{{ texts.QUALIFY_PAGE.CONVICTIONS_DETAILS_HINT_LIST_4 }}</li>
+            </ul>
+          {% endif %}
+        {% endset %}
 
-            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">              
+        {# set Legend HTML #}
+        {% set legendHTML %}
+          <span class="govuk-caption-xl">
+            {{- captionText -}}
+          </span>
+          {{- titleText -}}
+        {% endset %}
 
-              {% if radioAnswerError %}
-                <span id="convictedError" class="govuk-error-message">
-                  <span class="govuk-visually-hidden">{{texts.ERRORS.HIDDEN_ERROR}}: </span>
-                  {{- radioAnswerError.text -}}
-                </span>
-              {% endif%}
+        {# set Details HTML #}
+        {% set detailsHTML %}
+          {{ govukCharacterCount({
+            name: "convictedDetails",
+            id: "convictedDetails",
+            maxlength: "1000",
+            hint: {
+              html: detailsHintHTML
+            },
+            errorMessage: radioDetailsError,
+            value: user.qualify.convicted.details
+          }) }}
+        {% endset %}
 
-              {# Radio YES #}
-              <div class="govuk-radios__item">    
-                <input class="selection-button-radio govuk-radios__input store-updated-information" id="convicted-Yes" name="convicted" type="radio" data-aria-controls="convictedDetailsGroup" value="{{ texts.QUALIFY_PAGE.YES }}" {{radioYesChecked}}}>
-                <label class="govuk-radios__label" for="convicted-Yes">
-                  {{ radioYesLabel }}
-                </label>
-              </div>
+        {# set radio group class #}
+        {% if radioAnswerError or radioDetailsError %}
+          {% set radioGroupClass = "govuk-form-group--error" %}
+        {% else %}
+          {% set radioGroupClass = undefined %}
+        {% endif %}
 
-              {# Details #}
-              <div class="govuk-character-count govuk-radios__conditional" id="convictedDetailsGroup">
-                {{ govukCharacterCount({
-                  name: "convictedDetails",
-                  id: "convictedDetails",
-                  maxlength: "1000",
-                  label: {
-                    text: texts.QUALIFY_PAGE.DETAILS
-                  },
-                  errorMessage: radioDetailsError,
-                  value: user.qualify.convicted.details
-                }) }}
-              </div>
+        {{ govukRadios({
+          idPrefix: "convicted",
+          name: "convicted",
+          errorMessage: radioAnswerError,
+          formGroup: {
+            id: "convictedGroup",
+            classes: radioGroupClass
+          },
+          fieldset: {
+            legend: {
+              html: legendHTML,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: hintText
+          },
+          items: [
+            {
+              value: texts.QUALIFY_PAGE.YES,
+              text: radioYesLabel,
+              checked: radioYesChecked,
+              id: "convicted-Yes",
+              conditional: {
+                html: detailsHTML
+              }
+            },
+            {
+              value: texts.QUALIFY_PAGE.NO,
+              text: radioNoLabel,
+              checked: radioNoChecked,
+              id: "convicted-No"
+            }
+          ]
+        }) }}
 
-              {# Radio NO #}
-              <div class="govuk-radios__item">
-                <input class="selection-button-radio govuk-radios__input store-updated-information" id="convicted-No" name="convicted" type="radio" value="{{ texts.QUALIFY_PAGE.NO }}" {{radioNoChecked}}}>
-                <label class="govuk-label govuk-radios__label" for="convicted-No">
-                  {{ radioNoLabel }}
-                </label>
-              </div>
-              
-            </div>
-
-          </fieldset>
-
-        </div>
+        {% include "./convictions-info.njk" %}
 
         {# Submit form #}
         {{ govukButton({

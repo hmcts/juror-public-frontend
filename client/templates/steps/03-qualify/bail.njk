@@ -61,78 +61,92 @@
           {% set radioDetailsError = {"text": errors.items['onBailDetails'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
         {% endif %}
 
-        <div class="govuk-form-group {% if radioAnswerError or radioDetailsError %}govuk-form-group--error{% endif %}" id="onBailGroup">
+        {# set Caption text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set captionText = texts.QUALIFY_PAGE.CAPTION_OB %}
+        {% else %}
+          {% set captionText = texts.QUALIFY_PAGE.CAPTION %}
+        {% endif %}
 
-          <fieldset class="govuk-fieldset">
+        {# set Title text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set titleText = texts.QUALIFY_PAGE.BAIL_TITLE_OB %}
+        {% else %}
+          {% set titleText = texts.QUALIFY_PAGE.BAIL_TITLE %}
+        {% endif %}
+        
+        {# set Hint text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set hintText = texts.QUALIFY_PAGE.BAIL_HINT_OB %}
+        {% else %}
+          {% set hintText = texts.QUALIFY_PAGE.BAIL_HINT %}
+        {% endif %}
 
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-              <h1 class="govuk-fieldset__heading">
-                <span class="govuk-caption-xl">
-                  {% if user.thirdParty == 'Yes' %}
-                    {{ texts.QUALIFY_PAGE.CAPTION_OB }}
-                  {% else %}
-                    {{ texts.QUALIFY_PAGE.CAPTION }}
-                  {% endif %}
-                </span>
-                {% if user.thirdParty == 'Yes' %}
-                  {{ texts.QUALIFY_PAGE.BAIL_TITLE_OB }}
-                {% else %}
-                  {{ texts.QUALIFY_PAGE.BAIL_TITLE }}
-                {% endif %}
-              </h1>
-            </legend>
+        {# set Legend HTML #}
+        {% set legendHTML %}
+          <span class="govuk-caption-xl">
+            {{- captionText -}}
+          </span>
+          {{- titleText -}}
+        {% endset -%}
 
-            <span class="govuk-hint" id="onBail-hint">
-              {{texts.QUALIFY_PAGE.UNSURE_PROMPT}}
-              <a class="govuk-link" href="{{ url('steps.qualify.bail.info') }}">
-                {{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}<span class="govuk-visually-hidden">{{ texts.QUALIFY_PAGE.BAIL_MORE_INFO_LINK }}</span>
-              </a>
-            </span>
-            
-            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+        {# set Details HTML #}
+        {% set detailsHTML %}
+          {{ govukCharacterCount({
+            name: "onBailDetails",
+            id: "onBailDetails",
+            maxlength: "1000",
+            hint: {
+              text: texts.QUALIFY_PAGE.DETAILS
+            },
+            errorMessage: radioDetailsError,
+            value: user.qualify.onBail.details
+          }) }}
+        {% endset %}
 
-              {% if radioAnswerError %}
-                <span id="onBailError" class="govuk-error-message">
-                  <span class="govuk-visually-hidden">{{texts.ERRORS.HIDDEN_ERROR}}: </span>
-                  {{- radioAnswerError.text -}}
-                </span>
-              {% endif%}
-
-              {# Radio YES #}
-              <div class="govuk-radios__item">    
-                <input class="selection-button-radio govuk-radios__input store-updated-information" id="onBail-Yes" name="onBail" type="radio" data-aria-controls="onBailDetailsGroup" value="{{ texts.QUALIFY_PAGE.YES }}" {{radioYesChecked}}}>
-                <label class="govuk-radios__label" for="onBail-Yes">
-                  {{ radioYesLabel }}
-                </label>
-              </div>
-
-              {# Details #}
-              <div class="govuk-character-count govuk-radios__conditional" id="onBailDetailsGroup">
-                {{ govukCharacterCount({
-                  name: "onBailDetails",
-                  id: "onBailDetails",
-                  maxlength: "1000",
-                  label: {
-                    text: texts.QUALIFY_PAGE.DETAILS
-                  },
-                  errorMessage: radioDetailsError,
-                  value: user.qualify.onBail.details
-                }) }}
-              </div>
-
-              {# Radio NO #}
-              <div class="govuk-radios__item">
-                <input class="selection-button-radio govuk-radios__input store-updated-information" id="onBail-No" name="onBail" type="radio" value="{{ texts.QUALIFY_PAGE.NO }}" {{radioNoChecked}}}>
-                <label class="govuk-label govuk-radios__label" for="onBail-No">
-                  {{ radioNoLabel }}
-                </label>
-              </div>
-              
-            </div>
-
-          </fieldset>
-
-        </div>
+        {# set radio group class #}
+        {% if radioAnswerError or radioDetailsError %}
+          {% set radioGroupClass = "govuk-form-group--error" %}
+        {% else %}
+          {% set radioGroupClass = undefined %}
+        {% endif %}
+        
+        {{ govukRadios({
+          idPrefix: "onBail",
+          name: "onBail",
+          errorMessage: radioAnswerError,
+          formGroup: {
+            id: "onBailGroup",
+            classes: radioGroupClass
+          },
+          fieldset: {
+            legend: {
+              html: legendHTML,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: hintText
+          },
+          items: [
+            {
+              value: texts.QUALIFY_PAGE.YES,
+              text: radioYesLabel,
+              checked: radioYesChecked,
+              id: "onBail-Yes",
+              conditional: {
+                html: detailsHTML
+              }
+            },
+            {
+              value: texts.QUALIFY_PAGE.NO,
+              text: radioNoLabel,
+              checked: radioNoChecked,
+              id: "onBail-No"
+            }
+          ]
+        }) }}
 
         {# Submit form #}
         {{ govukButton({

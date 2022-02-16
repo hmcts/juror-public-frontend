@@ -1,55 +1,69 @@
 {
   "RESIDENCY": {
-    "HEADING": "Cartref – ble rydych yn byw",
-    "HEADING_THIRD_PARTY": "Cartref - ble mae'r rheithiwr yn byw",
-    "FIRST_MAIN": "I wasanaethu ar reithgor, mae'n rhaid eich bod wedi byw yn y DU, Ynysoedd y Sianel (Jersey, Guernsey, Alderney, Sark, Herm, Jethou a Brecqhou) neu Ynys Manaw am 5 mlynedd neu fwy yn ddi-dor. Rhaid i'r cyfnod o 5 mlynedd fod pan oeddech chi'n 13 oed neu'n hŷn.",
-    "SECOND_MAIN": "Os ydych chi wedi gwneud cais i Adran Fisâu a Mewnfudo'r DU ac nid ydynt eto wedi gwneud penderfyniad am p'un a ydych yn cael byw yn y DU neu beidio, efallai na fyddwch yn cael gwasanaethu ar reithgor. Gwiriwch hyn gyda ni trwy ffonio:",
-    "FIRST_THIRD_PARTY": "I wasanaethu ar reithgor, rhaid fod rhywun wedi byw yn y DU, Ynysoedd y Sianel (Jersey, Guernsey, Alderney, Sark, Herm, Jethou a Brecqhou) neu Ynys Manaw am 5 mlynedd neu fwy yn ddi-dor. Rhaid i'r cyfnod 5 mlynedd fod pan oedd yn 13 oed neu'n hŷn.",
-    "SECOND_THIRD_PARTY": "Os ydy'r unigolyn rydych yn ateb ar ei ran wedi gwneud cais i Adran Fisâu a Mewnfudo'r DU ac nid yw'n gwybod hyd yma p'un a ydyw'n cael byw yn y DU, efallai na fydd yn cael gwasanaethu ar reithgor. Gwiriwch hyn trwy ein ffonio ni ar:"
+    "DETAILS_HEADING": "A ydych angen cymorth i ateb hyn?",
+
+    "SECTION_1_1": "I fod yn gymwys ar gyfer gwasanaeth rheithgor, rhaid bod eich prif gyfeiriad wedi bod yn un o'r canlynol am unrhyw gyfnod o 5 mlynedd o leiaf:",
+    "SECTION_1_1_OB": "I fod yn gymwys ar gyfer gwasanaeth rheithgor, rhaid bod eu prif gyfeiriad wedi bod yn un o'r canlynol am unrhyw gyfnod o 5 mlynedd o leiaf:",
+    "SECTION_1_LIST_1": "Y DU",
+    "SECTION_1_LIST_2": "Ynysoedd y Sianel",
+    "SECTION_1_LIST_3": "Ynys Manaw",
+    "SECTION_1_2": "Rhaid bod y cyfnod hwn wedi bod ar ôl eich pen-blwydd yn 13 oed.",
+    "SECTION_1_2_OB": "Rhaid bod y cyfnod hwn wedi bod ar ôl eu pen-blwydd yn 13 oed.",
+
+    "SECTION_2_HEADING": "Beth sy'n cyfrif fel cyfnod o 5 mlynedd",
+    "SECTION_2_1": "Rhaid bod eich prif gyfeiriad wedi bod yma am o leiaf 5 mlynedd yn olynol. Efallai eich bod wedi bod yn gweithio, yn astudio, wedi ymddeol neu'n ddi-waith.",
+    "SECTION_2_1_OB": "Rhaid bod eu prif gyfeiriad wedi bod yma am o leiaf 5 mlynedd yn olynol.  Efallai eu bod wedi bod yn gweithio, yn astudio, wedi ymddeol neu'n ddi-waith.",
+    "SECTION_2_2": "Does dim ots os aethoch chi dramor ar deithiau hir neu wyliau yn ystod y cyfnod hwn, cyn belled â bod eich prif gyfeiriad yma.",
+    "SECTION_2_2_OB": "Nid oes ots os aethant dramor ar deithiau hir neu wyliau dramor yn ystod y cyfnod hwn, cyn belled â bod eu prif gyfeiriad yma.",
+    "SECTION_2_3": "Enghraifft",
+    "SECTION_2_4": "Rhwng 15 a 22 oed, roedd eich prif gyfeiriad yn y DU, Ynysoedd y Sianel neu Ynys Manaw ond, ar ôl hynny, gwnaethoch ymgartrefu mewn gwlad arall.",
+    "SECTION_2_4_OB": "O 15 i 22 oed, roedd eu prif gyfeiriad yn y DU, Ynysoedd y Sianel neu Ynys Manaw ond, ar ôl hynny, fe wnaethant ymgartrefu mewn gwlad arall.",
+    "SECTION_2_5": "Mae hyn yn cyfrif fel cyfnod o 5 mlynedd ac yn eich gwneud yn gymwys i wasanaethu ar reithgor.",
+    "SECTION_2_5_OB": "Mae hyn yn cyfrif fel cyfnod o 5 mlynedd ac yn eu gwneud yn gymwys i wasanaethu ar reithgor.",
+
+    "SECTION_3_HEADING": "Beth sydd ddim yn cyfrif",
+    "SECTION_3_1": "Os oedd gennych brif gyfeiriad yma am gyfnodau byrrach nad oeddent yn olynol, nid yw'r rhain yn cyfrif.",
+    "SECTION_3_1_OB": "Os oedd ganddynt brif gyfeiriad yma am gyfnodau byrrach nad oeddent yn olynol, nid yw'r rhain yn cyfrif.",
+    "SECTION_3_2": "Er enghraifft, roedd gennych brif gyfeiriad yma am 2 flynedd. Yna, ymhellach ymlaen, bu ichi ddychwelyd yma am 3 blynedd arall, yna ni fyddem yn cynnwys y rhain gyda'i gilydd.",
+    "SECTION_3_2_OB": "Er enghraifft, roedd ganddynt brif gyfeiriad yma am 2 flynedd. Yna, ymhellach ymlaen, bu iddynt ddychwelyd yma am 3 blynedd arall, yna ni fyddem yn cynnwys y rhain gyda'i gilydd.",
+    "SECTION_3_3": "Ni fyddai hyn yn cyfrif fel cyfnod o 5 mlynedd ac felly ni fyddech yn gymwys i wasanaethu ar reithgor.",
+    "SECTION_3_3_OB": "Ni fyddai hyn yn cyfrif fel cyfnod o 5 mlynedd ac felly ni fyddent yn gymwys i wasanaethu ar reithgor.",
+
+    "SECTION_4_HEADING": "Os nad ydych yn siŵr o hyd neu os ydych yn aros am benderfyniad gan Deithebau a Mewnfudo'r DU",
+    "SECTION_4_HEADING_OB": "Os nad ydych yn siŵr o hyd neu os ydynt yn aros am benderfyniad gan Deithebau a Mewnfudo'r DU",
+    "SECTION_4_1": "Rhaid i chi gysylltu â ni i gael cyngor ar eich sefyllfa benodol.",
+    "SECTION_4_1_OB": "Rhaid i chi gysylltu â ni i gael cyngor ar eu sefyllfa benodol.",
+
+    "CONTACT_HEADING": "Swyddfa Ganolog Gwysio Rheithgor",
+    "CONTACT_1": "Dydd Llun i ddydd Iau, 9am tan 5pm",
+    "CONTACT_2": "Dydd Gwener, 9am tan 3pm"
   },
 
 
   "MENTAL_HEALTH": {
 
+    "DETAILS_HEADING": "Angen help i ateb hwn?",
+
     "SECTIONED": {
-      "HEADING": "Deddf Iechyd Meddwl 1983",
-      "TITLE": "Anhwylderau meddyliol",
+      "SECTION_1_1": "Ni allwch fod ar reithgor os ydi un o'r datganiadau hyn yn berthnasol i chi.",
+      "SECTION_1_2": "Os oes gennych broblemau iechyd meddwl  (yn cynnwys iselder a phryder) ond nid ydych yn cael eich cadw, eich gwarchod neu'n cael eich trin o dan y Ddeddf Galluedd Meddyliol, gallwch ddal i wasanaethu ar reithgor.",
+      "SECTION_1_3": "(Os ydych yn teimlo na allwch chi gyflawni gwasanaeth rheithgor oherwydd problem iechyd meddwl sylweddol, gallwch barhau i ofyn am gael eich esgusodi neu newid eich dyddiadau.)",
 
-      "FIRST_MAIN": "Dan Ddeddf Iechyd Meddwl 1983, ni all rhai unigolion wasanaethu ar reithgor.",
-      "SECOND_MAIN": "Os ydych yn cael eich cadw (h.y. “sectioned”), mewn ysbyty, dan orchymyn gwarcheidwadaeth neu dan orchymyn triniaeth gymunedol oherwydd anhwylder meddyliol, ni allwch fod ar reithgor.",
-      "THIRD_MAIN": "Os ydych yn dioddef anhwylder meddyliol (gan gynnwys iselder neu bryder) ond nid ydych yn glaf dan orchymyn, neu'n cael gofal neu driniaeth dan y Ddeddf Iechyd Meddwl, gallwch wasanaethu ar reithgor.",
-
-      "FIRST_THIRD_PARTY": "Dan Ddeddf Iechyd Meddwl 1983, ni all rhai unigolion wasanaethu ar reithgor.",
-      "SECOND_THIRD_PARTY": "Os yw'r unigolyn rydych yn ymateb ar ei ran yn cael ei gadw dan orchymyn (h.y. “sectioned”), mewn ysbyty, dan orchymyn gwarcheidiaeth neu dan orchymyn triniaeth gymunedol oherwydd anhwylder meddyliol, ni allant fod ar reithgor.",
-      "THIRD_THIRD_PARTY": "Os yw'r unigolyn yn dioddef anhwylder meddyliol (gan gynnwys iselder a phryder) ond nad ydynt yn cael eu cadw, yn cael gofal neu'n cael triniaeth dan y Ddeddf Iechyd Meddwl, gallant dal wasanaethu ar reithgor."
+      "SECTION_1_1_OB": "Ni all person  fod ar reithgor os yw un o'r datganiadau hyn yn berthnasol.",
+      "SECTION_1_2_OB": "Os oes ganddynt broblemau iechyd meddwl (gan gynnwys iselder a phryder) ond nid ydynt yn cael ei cadw, eu gwarchod neu eu trin o dan y Ddeddf Iechyd Meddwl, gallant barhau i fod ar reithgor.",
+      "SECTION_1_3_OB": "(Os ydynt o'r farn nad ydynt yn gall cwblhau gwasanaeth rheithgor oherwydd problemau iechyd meddwl sylweddol, gallwch ofyn iddynt gael eu hesgusodi neu am gael newid y dyddiad.)"
     },
 
     "CAPACITY": {
-      "HEADING": "Deddf Galluedd Meddyliol 2005",
-      "TITLE": "Galluedd Meddyliol",
+      "SECTION_1_1": "Os nad oes y gallu meddyliol gan rywun, dydyn nhw ddim yn gallu:",
 
-      "FIRST_MAIN": "Os nad oes gennych yr alluedd meddyliol i wasanaethu fel rheithiwr, ni allwch fod ar reithgor. Galluedd meddyliol yw'r gallu i wneud penderfyniad dros eich hun. Dywedir fod gan unigolion nad ydynt yn gallu gwneud hyn ddiffyg galluedd dan Ddeddf Galluedd Meddyliol 2005. Rhaid i'r diffyg galluedd fod oherwydd nam neu broblem gyda'r meddwl neu ymennydd, a allai fod oherwydd salwch, anaf, anabledd dysgu neu broblemau iechyd meddwl.",
-      "LIST_MAIN": {
-        "TITLE": "I fod ar reithgor, mae'n rhaid i unigolyn fod â'r gallu i:",
-        "ITEM_1": "ddeall yr wybodaeth sy'n berthnasol i'r penderfyniad y maent eisiau ei wneud",
-        "ITEM_2": "cofio'r wybodaeth am gyfnod digon hir i allu gwneud penderfyniad",
-        "ITEM_3": "pwyso a mesur yr wybodaeth sydd ar gael i wneud y penderfyniad",
-        "ITEM_4": "cyfathrebu'r penderfyniad drwy unrhyw fodd"
-      },
-      "SECOND_MAIN": "Os nad ydych yn sicr os ydych yn gallu gwasanaethu ar reithgor oherwydd anhwylder meddyliol neu ddiffyg galluedd meddyliol, gallwch ein ffonio ar:",
-      "THIRD_MAIN": "i gael cyngor.",
+      "SECTION_1_LIST_1": "gwneud eu penderfyniadau eu hunain",
+      "SECTION_1_LIST_2": "deall a chadw gwybodaeth",
+      "SECTION_1_LIST_3": "cyfathrebu meddyliau a phenderfyniadau i bobl eraill",
 
-      "FIRST_THIRD_PARTY": "Os nad oes gan yr unigolyn rydych yn ymateb ar ei ran y galluedd meddyliol i fod yn rheithiwr, ni allant fod ar reithgor. Mae galluedd meddyliol yn golygu fod rhaid i unigolyn fod â'r gallu i wneud penderfyniad ei hun. Dywedir fod gan bobl nad ydynt yn gallu gwneud hyn ddiffyg galluedd. Rhaid i'r diffyg galluedd fod oherwydd nam neu broblem gyda'u meddwl neu ymennydd, a allai fod oherwydd salwch, anaf, anabledd dysgu neu broblemau iechyd meddwl.",
-      "LIST_THIRD_PARTY": {
-        "TITLE": "I fod ar reithgor, mae'n rhaid i unigolyn fod â'r gallu i:",
-        "ITEM_1": "ddeall yr wybodaeth sy'n berthnasol i'r penderfyniad y maent eisiau ei wneud",
-        "ITEM_2": "cofio'r wybodaeth am gyfnod digon hir i allu gwneud penderfyniad",
-        "ITEM_3": "pwyso a mesur yr wybodaeth sydd ar gael i wneud y penderfyniad",
-        "ITEM_4": "cyfathrebu'r penderfyniad drwy unrhyw fodd"
-      },
-      "SECOND_THIRD_PARTY": "Os nad ydych yn sicr os yw'r unigolyn rydych yn ymateb ar ei ran yn gallu gwasanaethu ar reithgor oherwydd anhwylder meddyliol neu ddiffyg galluedd meddyliol, gallwch ein ffonio ar:",
-      "CONTACT_TEL": "0300 303 5173",
-      "THIRD_THIRD_PARTY": "i gael cyngor."
+      "SECTION_1_2": "Ardystiwyd rhai pobl yn feddygol o dan Ddeddf Galluedd Meddyliol 1983 nad oes ganddynt y gallu meddyliol oherwydd damwain neu anaf.",
+      "SECTION_1_3": "Efallai bod yn rhaid penodi rhywun arall i wneud penderfyniadau ar eu rhan.",
+      "SECTION_1_4": "Os nad oes gan rywun y gallu meddyliol, ni allant wasanaethu ar reithgor."
     }
   },
 
@@ -61,45 +75,54 @@
   },
 
   "CONVICTIONS": {
-    "HEADING": "Euogfarnau",
+    "DETAILS_HEADING": "Canllawiau mewn perthynas â gwasanaethu ar reithgor os oes gennych euogfarn",
+    "DETAILS_HEADING_OB": "Canllawiau mewn perthynas â gwasanaethu ar reithgor os oes ganddynt euogfarn",
 
-    "FIRST_MAIN": "Rydych chi yn cael gwasanaethu ar reithgor os oes gennych bwyntiau ar eich trwydded yrru, dirwyon goryrru neu wedi bod ar gwrs ymwybyddiaeth cyflymder, cyn belled nad ydych wedi cael unrhyw un o'r dedfrydau isod.",
-    "SECOND_MAIN": "Ni allwch wasanaethu ar reithgor os ydych wedi cael unrhyw un o'r dedfrydau troseddol hyn yn y Deyrnas Unedig, Ynysoedd y Sianel neu Ynys Manaw. Hefyd, ni allwch wasanaethu ar reithgor os ydych wedi cael unrhyw un o'r dedfrydau troseddol hyn am drosedd yn y fyddin dan Ddeddf Lluoedd Arfog 2006 unrhyw le yn y byd.",
-    "LIST_MAIN": {
-      "ITEM_1": "carchar neu gael eich cadw'n gaethiwed am 5 mlynedd neu fwy",
-      "ITEM_2": "carchar er mwyn diogelu'r cyhoedd neu gael eich cadw'n gaethiwed er mwyn diogelu'r cyhoedd",
-      "ITEM_3": "carchar, cadwraeth neu gael eich cadw'n gaethiwed am oes",
-      "ITEM_4": "dedfryd estynedig dan un ai adrannau 226A, 226B, 227 NEU 228 o Ddeddf Cyfiawnder Troseddol 2003, (gan gynnwys dedfryd o'r fath a orfodir o ganlyniad i adran 219A, 220, 221A neu 222 o Ddeddf Lluoedd Arfog 2006) neu adran 210A Deddf Trefniadaeth Droseddol (Yr Alban) 1995",
-      "ITEM_5": "cael eich cadw'n gaethiwed yn ôl mympwy Ei Mawrhydi neu yn ôl mympwy'r Ysgrifennydd Gwladol"
-    },
-    "SECOND_LIST_MAIN": {
-      "TITLE": "Hefyd, ni allwch wasanaethu ar reithgor os ydych wedi cael un o'r dedfrydau troseddol canlynol yn y 10 mlynedd diwethaf:",
-      "ITEM_1": "wedi treulio unrhyw ran o ddedfryd mewn carchar neu dan gaethiwed",
-      "ITEM_2": "wedi cael dedfryd ohiriedig o garchar neu orchymyn cadw ohiriedig"
-    },
-    "THIRD_MAIN": "Hefyd, ni allwch wasanaethu ar reithgor os ydych wedi cael gorchymyn cymunedol yng Nghymru a Lloegr yn y 10 mlynedd diwethaf (gan gynnwys gorchymyn adsefydlu cymunedol, gorchymyn cosb gymunedol, gorchymyn cosb ac adsefydlu cymunedol, gorchymyn trin a phrofi am gyffuriau, neu orchymyn cadw oddi ar gyffuriau).",
-    "FOURTH_MAIN": "Hefyd, ni allwch wasanaethu ar reithgor os ydych chi, yn y 10 mlynedd diwethaf, wedi bod yn destun unrhyw orchymyn cyfatebol dan gyfraith Yr Alban, Gogledd Iwerddon, Ynys Manaw, unrhyw un o Ynysoedd y Sianel, neu orchymyn cymunedol neu orchymyn cymunedol tramor dan Ddeddf Lluoedd Arfog 2006.",
-    "WARNING_MAIN": "Os byddwch yn gwasanaethu ar reithgor a chithau'n gwybod na ddylech wneud hynny oherwydd euogfarn yn eich erbyn, gallwch gael dirwy o hyd at £5,000.",
+    "SECTION_1_HEADING": "Pryd y gallwch wasanaethu ar reithgor",
+    "SECTION_1_HEADING_OB": "Pryd y gallant wasanaethu ar reithgor",
+    "SECTION_1_1": "Gallwch wasanaethu ar reithgor os ydych:",
+    "SECTION_1_1_OB": "Gallant wasanaethu ar reithgor os ydynt:",
+    "SECTION_1_LIST_1": "wedi cael dirwy goryrru",
+    "SECTION_1_LIST_1_OB": "wedi cael dirwy goryrru",
+    "SECTION_1_LIST_2": "wedi cael pwyntiau cosb ar eich trwydded yrru",
+    "SECTION_1_LIST_2_OB": "wedi cael pwyntiau cosb ar eu trwydded yrru",
+    "SECTION_1_LIST_3": "wedi gorfod mynychu cwrs ymwybyddiaeth cyflymder",
+    "SECTION_1_LIST_3_OB": "wedi gorfod mynychu cwrs ymwybyddiaeth cyflymder",
+    "SECTION_1_2": "Mae hyn yn berthnasol ar yr amod na chawsoch unrhyw un o'r dedfrydau isod.",
+    "SECTION_1_2_OB": "Mae hyn yn berthnasol ar yr amod na chawsant unrhyw un o'r dedfrydau isod.",
 
+    "SECTION_2_HEADING": "Pryd na allwch wasanaethu ar reithgor",
+    "SECTION_2_HEADING_OB": "Pryd na allant wasanaethu ar reithgor",
+    "SECTION_2_1": "Ni allwch wasanaethu ar reithgor os ydych wedi cael un o’r dedfrydau troseddol isod yn y DU, Ynysoedd y Sianel neu Ynys Manaw. Ni allwch ychwaith wasanaethu ar reithgor os ydych wedi cael un o'r dedfrydau troseddol hyn am drosedd gwasanaeth o dan Ddeddf y Lluoedd Arfog 2006 yn unrhyw le yn y byd:",
+    "SECTION_2_1_OB": "Ni allant wasanaethu ar reithgor os ydynt wedi cael un o’r dedfrydau troseddol isod yn y DU, Ynysoedd y Sianel neu Ynys Manaw. Ni allant ychwaith wasanaethu ar reithgor os ydynt wedi cael un o'r dedfrydau troseddol hyn am drosedd gwasanaeth o dan Ddeddf y Lluoedd Arfog 2006 yn unrhyw le yn y byd:",
+    "SECTION_2_LIST_1_1": "dedfryd o garchar neu gadw yn y ddalfa am 5 mlynedd neu fwy",
+    "SECTION_2_LIST_1_2": "dedfryd o garchar ar gyfer diogelu'r cyhoedd neu gadw yn y ddalfa er mwyn diogelu'r cyhoedd",
+    "SECTION_2_LIST_1_3": "dedfryd o garchar, y ddalfa neu gadw yn y ddalfa am oes",
+    "SECTION_2_LIST_1_4": "dedfryd estynedig o dan un o adrannau 226A, 226B, 227 neu 228 Deddf Cyfiawnder Troseddol 2003, (gan gynnwys dedfryd o'r fath a osodwyd o ganlyniad i adran 219A, 220, 221A neu 222 Deddf y Lluoedd Arfog 2006) neu adran 210A Deddf Gweithdrefn Droseddol (Yr Alban) 1995",
+    "SECTION_2_LIST_1_5": "cael eich cadw yn y ddalfa yn ôl mympwy ei Mawrhydi neu yn ôl mympwy yr Ysgrifennydd Gwladol",
 
-    "FIRST_THIRD_PARTY": "Mae unigolyn yn cael gwasanaethu ar reithgor os oes ganddynt bwyntiau ar eu trwydded yrru, dirwyon goryrru neu wedi bod ar gwrs ymwybyddiaeth cyflymder, cyn belled nad ydynt wedi cael unrhyw un o’r dedfrydau isod.",
-    "SECOND_THIRD_PARTY": "Ni all unigolyn wasanaethu ar reithgor os ydynt wedi cael unrhyw un o’r dedfrydau troseddol hyn yn y Deyrnas Unedig, Ynysoedd y Sianel neu Ynys Manaw. Hefyd, ni allant wasanaethu ar reithgor os ydynt wedi cael eu dedfrydu am drosedd yn y fyddin dan Ddeddf Lluoedd Arfog 2006 unrhyw le yn y byd.",
-    "LIST_THIRD_PARTY": {
-      "ITEM_1": "carchar neu gael eich cadw yn y ddalfa am 5 mlynedd neu fwy",
-      "ITEM_2": "carchar er mwyn gwarchod y cyhoedd neu gael eich cadw yn y ddalfa er mwyn gwarchod y cyhoedd",
-      "ITEM_3": "carchar, cadwraeth neu gael eich cadw'n gaeth am oes",
-      "ITEM_4": "dedfryd estynedig dan naill ai adrannau 226A, 226B, 227 neu 228 Deddf Cyfiawnder Troseddol 2003, (gan gynnwys dedfryd o’r fath a orfodwyd o ganlyniad i adran 219A, 220, 221A neu 222 Deddf Lluoedd Arfog 2006) neu Adran 210A Deddf Trefniadaeth Droseddol (Yr Alban) 1995",
-      "ITEM_5": "cael eich cadw yn y ddalfa yn ôl mympwy Ei Mawrhydi neu yn ôl mympwy'r Ysgrifennydd Gwladol"
-    },
-    "SECOND_LIST_THIRD_PARTY": {
-      "TITLE": "Yn ogystal, ni all unigolyn wasanaethu ar reithgor os ydynt wedi cael un o'r dedfrydau troseddol canlynol yn y 10 mlynedd diwethaf:",
-      "ITEM_1": "wedi treulio unrhyw ran o ddedfryd mewn carchar neu dan gaethiwed",
-      "ITEM_2": "wedi cael dedfryd ohiriedig o garchar neu orchymyn cadw i’r ddalfa ohiriedig"
-    },
-    "THIRD_THIRD_PARTY": "Hefyd, ni all unigolyn wasanaethu ar reithgor os ydynt wedi cael gorchymyn cymunedol yng Nghymru a Lloegr yn y 10 mlynedd diwethaf (gan gynnwys gorchymyn ailsefydlu cymunedol, gorchymyn cosb gymunedol, gorchymyn cosb ac ailsefydlu cymunedol, gorchymyn trin a phrofi am gyffuriau, neu orchymyn cadw oddi ar gyffuriau).",
-    "FOURTH_THIRD_PARTY": "Ni all unigolyn wasanaethu ar reithgor ychwaith os ydyw,  yn y 10 mlynedd diwethaf, wedi bod yn destun unrhyw orchymyn cyfatebol dan gyfraith Yr Alban, Gogledd Iwerddon, Ynys Manaw, unrhyw un o Ynysoedd y Sianel, neu orchymyn cymunedol neu orchymyn cymunedol tramor dan Ddeddf Lluoedd Arfog 2006.",
-    "FIFTH_THIRD_PARTY": "Os nad ydych yn sicr am y pethau hyn mewn perthynas â'r unigolyn rydych chi'n ymateb ar ei ran, ffoniwch:",
-    "SIXTH_THIRD_PARTY": "i gael cyngor.",
-    "WARNING_THIRD_PARTY": "Os bydd rhywun yn gwasanaethu ar reithgor ac yntau'n gwybod na ddylai wneud hynny oherwydd euogfarn droseddol, gall gael dirwy o hyd at £5,000."
+    "SECTION_2_2": "Ni allwch ychwaith wasanaethu ar reithgor os ydych wedi cael un o'r dedfrydau troseddol hyn yn ystod y 10 mlynedd diwethaf:",
+    "SECTION_2_2_OB": "Ni allant ychwaith wasanaethu ar reithgor os ydynt wedi cael un o'r dedfrydau troseddol hyn yn ystod y 10 mlynedd diwethaf:",
+    "SECTION_2_LIST_2_1": "gwnaethoch wasanaethu unrhyw ran o ddedfryd o garchar neu gadw yn y ddalfa",
+    "SECTION_2_LIST_2_1_OB": "gwnaethant wasanaethu unrhyw ran o ddedfryd o garchar neu gadw yn y ddalfa",
+    "SECTION_2_LIST_2_2": "cawsoch ddedfryd o garchar ohiriedig neu orchymyn atal dros dro ar gyfer cadw yn y ddalfa",
+    "SECTION_2_LIST_2_2_OB": "cawsant ddedfryd o garchar ohiriedig neu orchymyn atal dros dro ar gyfer cadw yn y ddalfa",
+ 
+    "SECTION_2_3": "Ni allwch ychwaith wasanaethu ar reithgor os ydych, yn ystod y 10 mlynedd diwethaf yng Nghymru a Lloegr, wedi cael gorchymyn cymunedol, gan gynnwys unrhyw un o'r canlynol:",
+    "SECTION_2_3_OB": "Ni allant ychwaith wasanaethu ar reithgor os ydynt, yn ystod y 10 mlynedd diwethaf yng Nghymru a Lloegr, wedi cael gorchymyn cymunedol, gan gynnwys unrhyw un o'r canlynol:",
+    "SECTION_2_LIST_3_1": "gorchymyn adsefydlu cymunedol",
+    "SECTION_2_LIST_3_2": "gorchymyn cosb gymunedol",
+    "SECTION_2_LIST_3_3": "gorchymyn cosb ac adsefydlu cymunedol",
+    "SECTION_2_LIST_3_4": "gorchymyn trin a phrofi am gyffuriau",
+    "SECTION_2_LIST_3_5": "gorchymyn ymatal rhag cymryd cyffuriau",
+ 
+    "SECTION_2_4": "Ni allwch ychwaith wasanaethu ar reithgor os ydych, yn ystod y 10 mlynedd diwethaf, wedi cael:",
+    "SECTION_2_4_OB": "Ni allant ychwaith wasanaethu ar reithgor os ydynt, yn ystod y 10 mlynedd diwethaf, wedi cael:",
+    "SECTION_2_LIST_4_1": "unrhyw orchymyn debyg o dan gyfraith yr Alban, Gogledd Iwerddon, Ynys Manaw neu unrhyw un o Ynysoedd y Sianel",
+    "SECTION_2_LIST_4_2": "gorchymyn cymunedol neu gymuned dramor o dan Ddeddf y Lluoedd Arfog 2006",
+
+    "WARNING": "Os byddwch yn gwasanaethu ar reithgor pan fyddwch yn gwybod na ddylech wneud hynny oherwydd euogfarn droseddol, efallai y cewch ddirwy o hyd at £5,000.",
+    "WARNING_OB": "Os bydd rhywun yn gwasanaethu ar reithgor pan fyddant yn gwybod na ddylent wneud hynny oherwydd euogfarn droseddol, efallai y cânt ddirwy o hyd at £5,000.",
+    "WARNING_FALLBACK": "Rhybudd"
   }
 }

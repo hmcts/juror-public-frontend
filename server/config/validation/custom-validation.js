@@ -811,7 +811,6 @@
       , checkValue = moment(value, 'DD/MM/YYYY');
 
     if (checkValue.isAfter(latestDate)){
-
       return options.message
     }
     return null;

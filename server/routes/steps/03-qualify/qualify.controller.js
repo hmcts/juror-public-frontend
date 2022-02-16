@@ -95,6 +95,11 @@
         req.session.user.qualify = {};
       }
 
+      // Clear details text if answer Yes
+      if (req.body['livedConsecutive'] !== 'No'){
+        req.body['livedConsecutiveDetails'] = '';
+      }
+
       // Store new info
       // Has to be first to properly retain answers if feeding back errors
       req.session.user.qualify.livedConsecutive = {
@@ -129,15 +134,6 @@
       req.session.change = true;
       req.session.back = true;
       res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.qualify.residency', req.session.user.thirdParty)));
-    };
-  };
-
-  module.exports.getResidencyInfo = function() {
-    return function(req, res) {
-      return res.render('steps/03-qualify/residency-info.njk', {
-        user: req.session.user,
-        backLinkUrl: utils.getRedirectUrl('steps.qualify.residency', req.session.user.thirdParty)
-      });
     };
   };
 
@@ -415,6 +411,11 @@
       var validatorResult,
         redirectUrl = '';
 
+      // Clear details text if answer No
+      if (req.body['mentalHealthSectioned'] !== 'Yes'){
+        req.body['mentalHealthSectionedDetails'] = '';
+      }
+
       // Store new info
       // Has to be first to properly retain answers if feeding back errors
       req.session.user.qualify.mentalHealthSectioned = {
@@ -503,6 +504,11 @@
     return function(req, res) {
       var validatorResult,
         redirectUrl = '';
+
+      // Clear details text if answer No
+      if (req.body['mentalHealthCapacity'] !== 'Yes'){
+        req.body['mentalHealthCapacityDetails'] = '';
+      }
 
       // Store new info
       // Has to be first to properly retain answers if feeding back errors
@@ -639,6 +645,11 @@
       var validatorResult,
         redirectUrl = '';
 
+      // Clear details text if answer No
+      if (req.body['onBail'] !== 'Yes'){
+        req.body['onBailDetails'] = '';
+      }
+
       // Store new info
       // Has to be first to properly retain answers if feeding back errors
       req.session.user.qualify.onBail = {
@@ -677,16 +688,6 @@
       res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.qualify.bail', req.session.user.thirdParty)));
     };
   };
-
-  module.exports.getBailInfo = function() {
-    return function(req, res) {
-      return res.render('steps/03-qualify/bail-info.njk', {
-        user: req.session.user,
-        backLinkUrl: utils.getRedirectUrl('steps.qualify.bail', req.session.user.thirdParty)
-      });
-    };
-  };
-
 
   //
   // Convictions functions
@@ -729,6 +730,10 @@
       var validatorResult,
         redirectUrl;
 
+      // Clear details text if answer No
+      if (req.body['convicted'] !== 'Yes'){
+        req.body['convictedDetails'] = '';
+      }
 
       // Store new info
       // Has to be first to properly retain answers if feeding back errors
@@ -785,15 +790,6 @@
         req.session.user.qualify[req.body['name'].replace('Details', '')].details = req.body['value'];
       }
       res.status(204).send();
-    };
-  };
-
-  module.exports.getConvictionsInfo = function() {
-    return function(req, res) {
-      return res.render('steps/03-qualify/convictions-info.njk', {
-        user: req.session.user,
-        backLinkUrl: utils.getRedirectUrl('steps.qualify.convictions', req.session.user.thirdParty)
-      });
     };
   };
 

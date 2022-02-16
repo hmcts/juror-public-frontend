@@ -37,7 +37,6 @@
             dateUpperLimit: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_ERROR_TWO' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)).replace('[earliestDate]', req.session.user.deferral.dateRange.earliestDateMed).replace('[latestDate]', req.session.user.deferral.dateRange.latestDateMed),
             dateAgeLimit: filters.translate('VALIDATION.DEFERRAL.CHECK_DATE_AGE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
             dateUnique: filters.translate('VALIDATION.DEFERRAL.CHECK_DATES_UNIQUE' + (req.session.user.thirdParty === 'Yes' ? '_OB' : ''), (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-
           }
         }
       },
