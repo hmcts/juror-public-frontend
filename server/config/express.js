@@ -208,8 +208,9 @@
       // eslint-disable-next-line
       res.locals.cookieText = filters.translate('INTERFACE.COOKIE_MESSAGE', (req.session.ulang === 'cy' ? texts_cy : texts_en));
 
-      if (req.url.startsWith('/expense-calculator')){
-        return res.render('start-expense-calculator.njk');
+      if (req.url.includes('expense-calculator')){
+        //return res.render('start-expense-calculator.njk');
+        return res.redirect(app.namedRoutes.build('start-expense-calculator.get'));
       }
 
       // handle CSRF token errors here

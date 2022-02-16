@@ -22,9 +22,10 @@
   "GUIDANCE_CALL_CHARGE_LABEL": "Canfod mwy am gostau galwadau",
   "GUIDANCE_CALL_CHARGE_LINK": "https://www.gov.uk/costau-galwadau",
   "GUIDANCE_ADDRESS_LINE_1": "Swyddfa Ganolog Gwysio Rheithgor",
-  "GUIDANCE_ADDRESS_LINE_2": "Pocock Street",
-  "GUIDANCE_ADDRESS_LINE_3": "Llundain",
-  "GUIDANCE_ADDRESS_LINE_4": "SE1 0BJ",
+  "GUIDANCE_ADDRESS_LINE_2": "Phoenix House",
+  "GUIDANCE_ADDRESS_LINE_3": "Rushton Avenue",
+  "GUIDANCE_ADDRESS_LINE_4": "Bradford",
+  "GUIDANCE_ADDRESS_LINE_5": "BD3 7BH",
 
   "FIELD_LAST_NAME_TITLE": "Cyfenw'r Rheithiwr",
   "FIELD_LAST_NAME_HINT": "Nodwch eich cyfenw fel y mae’n ymddangos yn y llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir. Gallwch ei newid bellach ymlaen.",

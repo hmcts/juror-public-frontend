@@ -1,66 +1,83 @@
-{% extends "../../layouts/default-gds.njk" %}
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      {{ texts.INFO_PAGE.RESIDENCY.DETAILS_HEADING }}
+    </span>
+  </summary>
+  <div class="govuk-details__text">
 
-{% block pageTitle %}
-  {% if user.thirdParty == 'Yes' %}
-    {{ texts.INFO_PAGE.RESIDENCY.HEADING_THIRD_PARTY }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
-  {% else %}
-    {{ texts.INFO_PAGE.RESIDENCY.HEADING }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
-  {% endif %}
-{% endblock %}
+    <div class="govuk-body">
+      {% if user.thirdParty == 'Yes' %}
+        {# 3rd party #}
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_1_1_OB }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ texts.INFO_PAGE.RESIDENCY.SECTION_1_LIST_1 }}</li>
+          <li>{{ texts.INFO_PAGE.RESIDENCY.SECTION_1_LIST_2 }}</li>
+          <li>{{ texts.INFO_PAGE.RESIDENCY.SECTION_1_LIST_3 }}</li>
+        </ul>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_1_2_OB }}</p>
 
-{% block beforeContent %}
-  {{ super() }}
-  {% include "../../includes/back-link-gds.njk" %}
-{% endblock %}
+        <h2 class="govuk-heading-m">{{ texts.INFO_PAGE.RESIDENCY.SECTION_2_HEADING }}</h2>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_2_1_OB }}</p>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_2_2_OB }}</p>
+        <h3 class="govuk-heading-s">{{ texts.INFO_PAGE.RESIDENCY.SECTION_2_3 }}</h3>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_2_4_OB }}</p>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_2_5_OB }}</p>
 
-{% block content %}
+        <h2 class="govuk-heading-m">{{ texts.INFO_PAGE.RESIDENCY.SECTION_3_HEADING }}</h2>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_3_1_OB }}</p>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_3_2_OB }}</p>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_3_3_OB }}</p>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m">{{ texts.INFO_PAGE.RESIDENCY.SECTION_4_HEADING_OB}}</h2>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_4_1_OB }}</p>
 
-      <h1 class="govuk-heading-xl">
-        {% if user.thirdParty == 'Yes' %}
-          {{ texts.INFO_PAGE.RESIDENCY.HEADING_THIRD_PARTY }}
-        {% else %}
-          {{ texts.INFO_PAGE.RESIDENCY.HEADING }}
-        {% endif %}
-      </h1>
+      {% else %}
+        {# 1st person #}
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_1_1 }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ texts.INFO_PAGE.RESIDENCY.SECTION_1_LIST_1 }}</li>
+          <li>{{ texts.INFO_PAGE.RESIDENCY.SECTION_1_LIST_2 }}</li>
+          <li>{{ texts.INFO_PAGE.RESIDENCY.SECTION_1_LIST_3 }}</li>
+        </ul>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_1_2 }}</p>
 
-      <div class="govuk-body">
-        {% if user.thirdParty == 'Yes' %}
-          <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_THIRD_PARTY }}</p>
-          <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_THIRD_PARTY }}
-          {% if texts.INTERFACE.HTML_LANG === "cy" %}
-            <br>
-            {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
-              {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1 }}.</a>
-            {% endif %}
-            <br>
-            {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
-              {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2 }}.</a>
-            {% endif %}
-          {% else %}
-            <a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1 }}.</a>
+        <h2 class="govuk-heading-m">{{ texts.INFO_PAGE.RESIDENCY.SECTION_2_HEADING }}</h2>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_2_1 }}</p>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_2_2 }}</p>
+        <h3 class="govuk-heading-s">{{ texts.INFO_PAGE.RESIDENCY.SECTION_2_3 }}</h3>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_2_4 }}</p>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_2_5 }}</p>
+
+        <h2 class="govuk-heading-m">{{ texts.INFO_PAGE.RESIDENCY.SECTION_3_HEADING }}</h2>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_3_1 }}</p>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_3_2 }}</p>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_3_3 }}</p>
+
+        <h2 class="govuk-heading-m">{{ texts.INFO_PAGE.RESIDENCY.SECTION_4_HEADING }}</h2>
+        <p>{{ texts.INFO_PAGE.RESIDENCY.SECTION_4_1 }}</p>
+
+      {% endif %}
+        {# contact details #}
+        <span class="govuk-body govuk-!-font-size-19 govuk-!-font-weight-bold">{{ texts.INFO_PAGE.RESIDENCY.CONTACT_HEADING }}</span><br/>
+        <a class="govuk-link" href="{{ "mailto:" + texts.INTERFACE.CONTACT_EMAIL }}" id="emailLink">{{ texts.INTERFACE.CONTACT_EMAIL }}</a><br/>
+        {% if texts.INTERFACE.HTML_LANG === "cy" %}
+          {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+            {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
           {% endif %}
-        {% else %}
-          <p>{{ texts.INFO_PAGE.RESIDENCY.FIRST_MAIN }}</p>
-          <p>{{ texts.INFO_PAGE.RESIDENCY.SECOND_MAIN }}
-          {% if texts.INTERFACE.HTML_LANG === "cy" %}
-            <br>
-            {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
-              {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1 }}.</a>
-            {% endif %}
-            <br>
-            {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
-              {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2 }}.</a>
-            {% endif %}
-          {% else %}
-            <a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1 }}.</a>
+          <br>
+          {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+            {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
           {% endif %}
+          <br>
+        {% else %}
+          {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+        <br>
         {% endif %}
-      </div>
+        {{ texts.INFO_PAGE.RESIDENCY.CONTACT_1 }}<br/>
+        {{ texts.INFO_PAGE.RESIDENCY.CONTACT_2 }}
 
-    </div>  
+    </div>
+
   </div>
-
-{% endblock %}
+</details>

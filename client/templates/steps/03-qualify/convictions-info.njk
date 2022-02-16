@@ -1,114 +1,114 @@
-{% extends "../../layouts/default-gds.njk" %}
-
 {% from "../../govuk-frontend/components/warning-text/macro.njk" import govukWarningText %}
 
-{% block pageTitle %}
-  {{ texts.INFO_PAGE.CONVICTIONS.HEADING }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
-{% endblock %}
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      {{ texts.INFO_PAGE.CONVICTIONS.DETAILS_HEADING }}
+    </span>
+  </summary>
+  <div class="govuk-details__text">
 
-{% block beforeContent %}
-  {{ super() }}
-  {% include "../../includes/back-link-gds.njk" %}
-{% endblock %}
+    <div class="govuk-body">
+      {% if user.thirdParty == 'Yes' %}
+        {# 3rd party #}
 
-{% block content %}
+        <h2 class="govuk-heading-m">{{ texts.INFO_PAGE.CONVICTIONS.SECTION_1_HEADING_OB }}</h2>
+        <p>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_1_1_OB }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_1_LIST_1_OB }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_1_LIST_2_OB }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_1_LIST_3_OB }}</li>
+        </ul>
+        <p>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_1_2_OB }}</p>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m">{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_HEADING_OB }}</h2>
+        <p>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_1_OB }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_1_1 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_1_2 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_1_3 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_1_4 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_1_5 }}</li>
+        </ul>
 
-      <h1 class="govuk-heading-xl">
-        {{ texts.INFO_PAGE.CONVICTIONS.HEADING }}
-      </h1>
+        <p>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_2_OB }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_2_1_OB }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_2_2_OB }}</li>
+        </ul>
 
-      <div class="govuk-body">
+        <p>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_3_OB }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_3_1 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_3_2 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_3_3 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_3_4 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_3_5 }}</li>
+        </ul>
 
-        {% if user.thirdParty == 'Yes' %}
+        <p>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_4_OB }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_4_1 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_4_2 }}</li>
+        </ul>
 
-          <p>{{ texts.INFO_PAGE.CONVICTIONS.FIRST_THIRD_PARTY | safe }}</p>
-          <p>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_THIRD_PARTY | safe }}</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_THIRD_PARTY.ITEM_1 }}</li>
-            <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_THIRD_PARTY.ITEM_2 }}</li>
-            <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_THIRD_PARTY.ITEM_3 }}</li>
-            <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_THIRD_PARTY.ITEM_4 }}</li>
-            <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_THIRD_PARTY.ITEM_5 }}</li>
-          </ul>
+        {{ govukWarningText({
+          text: texts.INFO_PAGE.CONVICTIONS.WARNING_OB,
+          iconFallbackText: texts.INFO_PAGE.CONVICTIONS.WARNING_FALLBACK
+        }) }}
 
-          <p>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_LIST_THIRD_PARTY.TITLE | safe }}</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_LIST_THIRD_PARTY.ITEM_1 }}</li>
-            <li>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_LIST_THIRD_PARTY.ITEM_2 }}</li>
-          </ul>
 
-          <p>{{ texts.INFO_PAGE.CONVICTIONS.THIRD_THIRD_PARTY | safe  }}</p>
-          <p>{{ texts.INFO_PAGE.CONVICTIONS.FOURTH_THIRD_PARTY | safe  }}</p>
+      {% else %}
+        {# 1st person #}
 
-          {{ govukWarningText({
-            text: texts.INFO_PAGE.CONVICTIONS.WARNING_THIRD_PARTY,
-            iconFallbackText: texts.INTERFACE.LABEL_WARNING
-          }) }}
+        <h2 class="govuk-heading-m">{{ texts.INFO_PAGE.CONVICTIONS.SECTION_1_HEADING }}</h2>
+        <p>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_1_1 }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_1_LIST_1 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_1_LIST_2 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_1_LIST_3 }}</li>
+        </ul>
+        <p>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_1_2 }}</p>
 
-          <p>
-          {{ texts.INFO_PAGE.CONVICTIONS.FIFTH_THIRD_PARTY }}
-            {% if texts.INTERFACE.HTML_LANG === "cy" %}
-              <br>
-              {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
-                {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
-              {% endif %}
-              <br>
-              {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
-                {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
-              {% endif %}
-              <br>
-              {{ texts.INFO_PAGE.CONVICTIONS.SIXTH_THIRD_PARTY }}
-            {% else %}
-              <a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
-              {{ texts.INFO_PAGE.CONVICTIONS.SIXTH_THIRD_PARTY }}
-            {% endif %}
-          </p>
+        <h2 class="govuk-heading-m">{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_HEADING }}</h2>
+        <p>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_1 }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_1_1 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_1_2 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_1_3 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_1_4 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_1_5 }}</li>
+        </ul>
 
-        {% else %}
+        <p>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_2 }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_2_1 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_2_2 }}</li>
+        </ul>
 
-          <p>{{ texts.INFO_PAGE.CONVICTIONS.FIRST_MAIN | safe }}</p>
-          <p>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_MAIN | safe }}</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_MAIN.ITEM_1 }}</li>
-            <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_MAIN.ITEM_2 }}</li>
-            <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_MAIN.ITEM_3 }}</li>
-            <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_MAIN.ITEM_4 }}</li>
-            <li>{{ texts.INFO_PAGE.CONVICTIONS.LIST_MAIN.ITEM_5 }}</li>
-          </ul>
+        <p>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_3 }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_3_1 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_3_2 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_3_3 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_3_4 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_3_5 }}</li>
+        </ul>
 
-          <p>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_LIST_MAIN.TITLE | safe }}</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_LIST_MAIN.ITEM_1 }}</li>
-            <li>{{ texts.INFO_PAGE.CONVICTIONS.SECOND_LIST_MAIN.ITEM_2 }}</li>
-          </ul>
+        <p>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_4 }}</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_4_1 }}</li>
+          <li>{{ texts.INFO_PAGE.CONVICTIONS.SECTION_2_LIST_4_2 }}</li>
+        </ul>
 
-          <p>{{ texts.INFO_PAGE.CONVICTIONS.THIRD_MAIN | safe }}</p>
-          <p>{{ texts.INFO_PAGE.CONVICTIONS.FOURTH_MAIN | safe  }}</p>
+        {{ govukWarningText({
+          text: texts.INFO_PAGE.CONVICTIONS.WARNING,
+          iconFallbackText: texts.INFO_PAGE.CONVICTIONS.WARNING_FALLBACK
+        }) }}
 
-          {#
-          <div class="notice">
-            <i class="icon icon-important">
-              <span class="visually-hidden">{{ texts.INTERFACE.LABEL_WARNING }}</span>
-            </i>
-            <p>
-              <strong class="govuk-!-font-weight-bold">{{ texts.INFO_PAGE.CONVICTIONS.WARNING_THIRD_PARTY }}</strong>
-            </p>
-          </div>
-          #}
-
-          {{ govukWarningText({
-            text: texts.INFO_PAGE.CONVICTIONS.WARNING_MAIN,
-            iconFallbackText: texts.INTERFACE.LABEL_WARNING
-          }) }}
-
-        {% endif %}
-
-      </div>
+      {% endif %}
 
     </div>
-  </div>
 
-{% endblock %}
+  </div>
+</details>

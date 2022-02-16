@@ -3,6 +3,7 @@
 {% from "../../govuk-frontend/components/character-count/macro.njk" import govukCharacterCount %}
 {% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
 {% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
@@ -60,78 +61,84 @@
           {% set radioDetailsError = {"text": errors.items['livedConsecutiveDetails'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
         {% endif %}
 
-        <div class="govuk-form-group {% if radioAnswerError or radioDetailsError %}govuk-form-group--error{% endif %}" id="livedConsecutiveGroup">
+        {# set Caption text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set captionText = texts.QUALIFY_PAGE.CAPTION_OB %}
+        {% else %}
+          {% set captionText = texts.QUALIFY_PAGE.CAPTION %}
+        {% endif %}
 
-          <fieldset class="govuk-fieldset">
+        {# set Title text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set titleText = texts.QUALIFY_PAGE.RESIDENCY_TITLE_OB %}
+        {% else %}
+          {% set titleText = texts.QUALIFY_PAGE.RESIDENCY_TITLE %}
+        {% endif %}
 
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-              <h1 class="govuk-fieldset__heading">
-                <span class="govuk-caption-xl">
-                  {% if user.thirdParty == 'Yes' %}
-                    {{ texts.QUALIFY_PAGE.CAPTION_OB }}
-                  {% else %}
-                    {{ texts.QUALIFY_PAGE.CAPTION }}
-                  {% endif %}
-                </span>
-                {% if user.thirdParty == 'Yes' %}
-                  {{ texts.QUALIFY_PAGE.RESIDENCY_TITLE_OB }}
-                {% else %}
-                  {{ texts.QUALIFY_PAGE.RESIDENCY_TITLE }}
-                {% endif %}
-              </h1>
-            </legend>
+        {# set Legend HTML #}
+        {% set legendHTML %}
+          <span class="govuk-caption-xl">
+            {{- captionText -}}
+          </span>
+          {{- titleText -}}
+        {% endset %}
 
-            <span class="govuk-hint" id="livedConsecutive-hint">{{texts.QUALIFY_PAGE.UNSURE_PROMPT}} 
-              <a class="govuk-link" href="{{ url('steps.qualify.residency.info') }}">
-              {{ texts.QUALIFY_PAGE.MORE_INFO_LINK }}<span class="govuk-visually-hidden">{{ texts.QUALIFY_PAGE.RESIDENCY_MORE_INFO_LINK }}</span>
-              </a>
-            </span>
+        {# set Details HTML #}
+        {% set detailsHTML %}
+          {{ govukCharacterCount({
+            name: "livedConsecutiveDetails",
+            id: "livedConsecutiveDetails",
+            maxlength: "1000",
+            hint: {
+              text: texts.QUALIFY_PAGE.DETAILS
+            },
+            errorMessage: radioDetailsError,
+            value: user.qualify.livedConsecutive.details
+          }) }}
+        {% endset %}
 
-            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+        {# set radio group class #}
+        {% if radioAnswerError or radioDetailsError %}
+          {% set radioGroupClass = "govuk-form-group--error" %}
+        {% else %}
+          {% set radioGroupClass = undefined %}
+        {% endif %}
+      
+        {{ govukRadios({
+          idPrefix: "livedConsecutive",
+          name: "livedConsecutive",
+          errorMessage: radioAnswerError,
+          formGroup: {
+            id: "livedConsecutiveGroup",
+            classes: radioGroupClass
+          },
+          fieldset: {
+            legend: {
+              html: legendHTML,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: texts.QUALIFY_PAGE.YES,
+              text: radioYesLabel,
+              checked: radioYesChecked,
+              id: "livedConsecutive-Yes"
+            },
+            {
+              value: texts.QUALIFY_PAGE.NO,
+              text: radioNoLabel,
+              checked: radioNoChecked,
+              id: "livedConsecutive-No",
+              conditional: {
+                html: detailsHTML
+              }
+            }
+          ]
+        }) }}
 
-              {% if radioAnswerError %}
-                <span id="livedConsecutiveError" class="govuk-error-message">
-                  <span class="govuk-visually-hidden">{{texts.ERRORS.HIDDEN_ERROR}}: </span>
-                  {{- radioAnswerError.text -}}
-                </span>
-              {% endif%}
-
-              {# Radio YES #}
-              <div class="govuk-radios__item">    
-                <input class="selection-button-radio govuk-radios__input store-updated-information" id="livedConsecutive-Yes" name="livedConsecutive" type="radio" value="{{ texts.QUALIFY_PAGE.YES }}" {{radioYesChecked}}>
-                <label class="govuk-radios__label" for="livedConsecutive-Yes">
-                  {{ radioYesLabel }}
-                </label>
-              </div>
-
-              {# Radio NO #}
-              <div class="govuk-radios__item">
-                <input class="selection-button-radio govuk-radios__input store-updated-information" id="livedConsecutive-No" name="livedConsecutive" type="radio" data-aria-controls="livedConsecutiveDetailsGroup"  value="{{ texts.QUALIFY_PAGE.NO }}" {{radioNoChecked}}>
-                <label class="govuk-label govuk-radios__label" for="livedConsecutive-No">
-                  {{ radioNoLabel }}
-                </label>
-              </div>
-              
-              {# Details #}
-              <div class="govuk-character-count govuk-radios__conditional" id="livedConsecutiveDetailsGroup">
-                {{ govukCharacterCount({
-                  name: "livedConsecutiveDetails",
-                  id: "livedConsecutiveDetails",
-                  maxlength: "1000",
-                  label: {
-                    text: texts.QUALIFY_PAGE.DETAILS
-                  },
-                  errorMessage: radioDetailsError,
-                  value: user.qualify.livedConsecutive.details
-                }) }}
-
-              </div>
-
-            </div>
-
-          </fieldset>
-
-        </div>
+        {% include "./residency-info.njk" %}
         
         {# Submit form #}
         {{ govukButton({
