@@ -47,7 +47,7 @@
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.15",
     "method-override": "^2.3.6",
-    "moment": "^2.19.3",
+    "moment": "^2.29.2",
     "named-routes": "^2.0.6",
     "nunjucks": "3.2.2",
     "nunjucks-async-loader": "1.1.5",
