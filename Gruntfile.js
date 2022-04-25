@@ -122,7 +122,7 @@
             {expand: true, cwd: 'govuk_modules/govuk_frontend_toolkit/javascripts/govuk/', src: ['**'], dest: 'test/client/js'},
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/stylesheets/', src: ['**'], dest: 'test/client/css'},
             {expand: true, cwd: 'govuk_modules/govuk_template/assets/images/', src: ['**'], dest: 'test/client/img'},
-
+            
             {expand: true, cwd: 'node_modules/govuk-frontend/govuk', src: ['*/**'], dest: 'test/client/templates/govuk-frontend'},
             {expand: true, cwd: 'node_modules/govuk-frontend/govuk', src: ['all.js'], dest: 'test/client/js'},
             {expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/fonts', src: ['**'], dest: 'test/client/assets/fonts'},
@@ -134,21 +134,11 @@
           ]
         },
         govuk: {
-          files: [{
-            cwd: 'node_modules/govuk_frontend_toolkit/',
-            src: '**',
-            dest: 'govuk_modules/govuk_frontend_toolkit/'
-          },
-          {
-            cwd: 'node_modules/govuk_template_jinja/assets/',
-            src: '**',
-            dest: 'govuk_modules/govuk_template/assets/'
-          },
-          {
-            cwd: 'node_modules/govuk-elements-sass/public/sass/',
-            src: '**',
-            dest: 'govuk_modules/govuk-elements-sass/'
-          }]
+          files: [
+            {expand: true, cwd: 'node_modules/govuk_frontend_toolkit/', src: '**', dest: 'govuk_modules/govuk_frontend_toolkit/'},
+            {expand: true, cwd: 'node_modules/govuk_template_jinja/assets/', src: '**', dest: 'govuk_modules/govuk_template/assets/'},
+            {expand: true, cwd: 'node_modules/govuk-elements-sass/public/sass/', src: '**', dest: 'govuk_modules/govuk-elements-sass/'}
+          ]
         }
       },
 
@@ -303,18 +293,27 @@
       // Images
       imagemin: {
         dist: {
+          options: { 
+            svgoPlugins: ['gifsicle', 'jpegtran', 'optipng', 'svgo']
+          },
           files: [
             { expand: true, cwd: 'client/img/', src: '**/*.{png,jpg,jpeg,gif,svg}', dest: 'dist/client/img' },
             { expand: true, cwd: 'govuk_modules/govuk_frontend_toolkit/images/', src: ['**/icon-**.png'], dest: 'dist/client/img/govuk' }
           ]
         },
         dev: {
+          options: { 
+            svgoPlugins: ['gifsicle', 'jpegtran', 'optipng', 'svgo']
+          },
           files: [
             { expand: true, cwd: 'client/img/', src: '**/*.{png,jpg,jpeg,gif,svg}', dest: 'dev/client/img' },
             { expand: true, cwd: 'govuk_modules/govuk_frontend_toolkit/images/', src: ['**/icon-**.png'], dest: 'dev/client/img/govuk' }
           ]
         },
         test: {
+          options: { 
+            svgoPlugins: ['gifsicle', 'jpegtran', 'optipng', 'svgo']
+          },
           files: [
             { expand: true, cwd: 'client/img/', src: '**/*.{png,jpg,jpeg,gif,svg}', dest: 'test/client/img' },
             { expand: true, cwd: 'govuk_modules/govuk_frontend_toolkit/images/', src: ['**/icon-**.png'], dest: 'test/client/img/govuk' }
