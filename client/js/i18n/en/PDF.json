@@ -1,7 +1,7 @@
 {
   "sharedText": {
     "mainHeader": "Copy of your jury summons reply",
-    "logo": "./client/img/pdflogo.jpg",
+    "logo": "./client/assets/images/pdflogo.jpg",
     "logoAlt": "Logo for Her Majesty's Courts and Tribunals Service",
     "pageNumber": " of ",
     "detailsHeader": "Your jury summons details",

@@ -1,7 +1,7 @@
 {% extends "../../layouts/default-gds.njk" %}
 
-{% from "../../govuk-frontend/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
@@ -757,91 +757,6 @@
 
       <br>
 
-      {# CJS Employment #}
-      {#
-      <div class="govuk-body govuk-table__cell" >
-        {% if user.thirdParty == 'Yes' %}
-          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_HEADER }}</h3>
-        {% else %}
-          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_EMPLOYED_HEADER }}</h3>
-        {% endif %}
-      </div>
-
-      <dl class="govuk-summary-list govuk-body">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionCJSEmployed">
-            {% if user.thirdParty == 'Yes' %}
-              {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_QUESTION }}
-            {% else %}
-              {{ texts.CHECK_ANSWERS_PAGE.JUROR_EMPLOYED_QUESTION }}
-            {% endif %}
-          </dt>
-          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerCJSEmployed">
-            {% if (user.cjsEmployed == texts.CHECK_ANSWERS_PAGE.EMPLOYED_YES) or (user.cjsEmployed == texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_YES) %}
-              {% if user.thirdParty == 'Yes' %}
-                {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_YES }}
-              {% else %}
-                {{ texts.CHECK_ANSWERS_PAGE.EMPLOYED_YES }}
-              {% endif %}
-              
-              {% if user.cjsPolice %}
-                <br><br>
-                {{ texts.CHECK_ANSWERS_PAGE.POLICE }}<br>{{ user.cjsPoliceDetails }}
-              {% endif %}
-              {% if user.cjsPrison %}
-                <br><br>
-                {{ texts.CHECK_ANSWERS_PAGE.PRISON_SERVICE }}<br>{{ user.cjsPrisonDetails }}
-              {% endif %}
-              {% if user.cjsNca %}
-                <br><br>
-                {{ texts.CHECK_ANSWERS_PAGE.NCA }}
-              {% endif %}
-              {% if user.cjsJudiciary %}
-                <br><br>
-                {{ texts.CHECK_ANSWERS_PAGE.JUDICIARY }}
-              {% endif %}
-              {% if user.cjsHMCTS %}
-                <br><br>
-                {{ texts.CHECK_ANSWERS_PAGE.HMCTS }}
-              {% endif %}
-              {% for employer in user.cjsEmployer %}
-                {% if employer === 'Other' %}
-                  <br><br>
-                  {{ texts.CHECK_ANSWERS_PAGE.OTHER }}<br>{{ user.cjsEmployerDetails }}
-                {% endif %}
-              {% endfor %}
-              {% if user.cjsEmployer === 'Other' %}
-                <br><br>
-                {{ texts.CHECK_ANSWERS_PAGE.OTHER }}<br>{{ user.cjsEmployerDetails }}
-              {% endif %}
-            {% else %}
-              {% if user.thirdParty == 'Yes' %}
-                {{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_NO }}
-              {% else %}
-                {{ texts.CHECK_ANSWERS_PAGE.EMPLOYED_NO }}
-              {% endif %}
-            {% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
-            {% if user.thirdParty == 'Yes' %}
-              <a class="govuk-link" href="{{ url('steps.qualify.cjs.employed.change.tp.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">
-                {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
-                <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_QUESTION_READER }}</span>
-              </a>
-            {% else %}
-              <a class="govuk-link" href="{{ url('steps.qualify.cjs.employed.change.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">
-                {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
-                <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_EMPLOYED_QUESTION_READER }}</span>
-              </a>
-            {% endif %}
-          </dd>
-        </div>
-      </dl>
-
-      <br>
-
-      #}
-
       {# Assistance in Court (Reasonable Adustments) #}
       <div class="govuk-body govuk-table__cell" >
         {% if user.thirdParty == 'Yes' %}
@@ -959,9 +874,9 @@
             <br style="clear:both">
 
             <fieldset class="govuk-fieldset">
-              <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input input-checkbox-white" id="informationConfirmed" name="informationConfirmed" type="checkbox" value="true">
+                  <input class="govuk-checkboxes__input" id="informationConfirmed" name="informationConfirmed" type="checkbox" value="true">
                   <label class="govuk-label govuk-checkboxes__label" for="informationConfirmed">
                     {% if user.thirdParty == 'Yes' %}
                       {{ texts.CHECK_ANSWERS_PAGE.OB_CONFIRM_TRUE }}

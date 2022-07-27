@@ -3,12 +3,12 @@
 
 {% block head %}
   <!--[if !IE 8]><!-->
-    <link href="../../../css/govuk-frontend.css" rel="stylesheet" />
-    <!--<link href="../../css/juror-digital.css" rel="stylesheet" />-->
-    <!--<link href="../../css/style.css" rel="stylesheet" />-->
-    <link href="../../../css/jd-style.css" rel="stylesheet" />
+    <!--
+    <link href="{{ assetPath }}css/govuk-frontend.css" rel="stylesheet" />
+    <link href="{{ assetPath }}css/jd-style.css" rel="stylesheet" />
+    -->
+    <link href="{{ assetPath }}css/style.css" rel="stylesheet" />
   <!--<![endif]-->
-
 
   {# For Internet Explorer 8, you need to compile specific stylesheet #}
   {# see https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/supporting-internet-explorer-8.md #}

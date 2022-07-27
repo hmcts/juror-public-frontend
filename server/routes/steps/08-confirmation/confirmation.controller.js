@@ -101,8 +101,8 @@ var _ = require('lodash')
       var pdfDoc
         , fonts = {
           OpenSans: {
-            normal: './client/fonts/OpenSans-Regular.ttf',
-            bold: './client/fonts/OpenSans-Bold.ttf'
+            normal: './client/assets/fonts/OpenSans-Regular.ttf',
+            bold: './client/assets/fonts/OpenSans-Bold.ttf'
           }
         }
         , chunks = []

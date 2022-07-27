@@ -1,9 +1,9 @@
 {% extends "../layouts/default-gds.njk" %}
 
-{% from "../govuk-frontend/components/error-summary/macro.njk" import govukErrorSummary %}
-{% from "../govuk-frontend/components/input/macro.njk" import govukInput %}
-{% from "../govuk-frontend/components/details/macro.njk" import govukDetails %}
-{% from "../govuk-frontend/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block pageTitle %}
   {% include "../includes/title-error.njk" %}
@@ -91,9 +91,9 @@
               
             {# Juror number example image #}
             {% if user.thirdParty == 'Yes' %}
-              <img src="/img/juror-number-example-1x.png" alt="{{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_HINT_OB }}" title="{{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_HINT_OB }}">
+              <img src="/assets/images/juror-number-example-1x.png" alt="{{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_HINT_OB }}" title="{{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_HINT_OB }}">
             {% else %}
-              <img src="/img/juror-number-example-1x.png" alt="{{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_HINT }}" title="{{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_HINT }}">
+              <img src="/assets/images/juror-number-example-1x.png" alt="{{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_HINT }}" title="{{ texts.LOGIN_PAGE.FIELD_JUROR_NUMBER_HINT }}">
             {% endif %}
             <br><br>
 
@@ -214,6 +214,55 @@
         {{ govukButton({
           text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
         }) }}
+
+        <details class="govuk-details ga-problems-with-details" data-module="govuk-details">
+
+          <summary class="govuk-details__summary ga-details-problems-with-details">
+            <span class="govuk-details__summary-text ga-details-problems-with-details">
+              {% if user.thirdParty == 'Yes' %}
+                {{ texts.LOGIN_PAGE.FURTHER_GUIDANCE_TITLE_OB }}
+                {% else %}
+                {{ texts.LOGIN_PAGE.FURTHER_GUIDANCE_TITLE }}
+                {% endif %}
+            </span>
+          </summary>
+          
+          <div class="govuk-details__text">
+            <p>
+              {% if user.thirdParty == 'Yes' %}
+              {{ texts.LOGIN_PAGE.FURTHER_GUIDANCE_INTRO_OB }}
+              {% else %}
+              {{ texts.LOGIN_PAGE.FURTHER_GUIDANCE_INTRO }}
+              {% endif %}
+            </p>
+
+            <p>
+              <strong class="bold-small">{{ texts.LOGIN_PAGE.GUIDANCE_COMPANY_NAME }}</strong><br>
+              <a class="govuk-link" href="mailto:{{ texts.INTERFACE.CONTACT_EMAIL }}">{{ texts.INTERFACE.CONTACT_EMAIL }}</a><br>
+
+              {% if texts.INTERFACE.HTML_LANG === "cy" %}
+                {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+                  {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+                {% endif %}
+                <br>
+                {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+                  {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+                {% endif %}
+                <br>
+              {% else %}
+                {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+                <br>
+              {% endif %}
+
+              {{ texts.LOGIN_PAGE.GUIDANCE_OPENING_TIMES }}<br>
+              {{ texts.LOGIN_PAGE.GUIDANCE_OPENING_TIMES_FRIDAY }}<br>
+              <a class="govuk-link" href="{{ texts.LOGIN_PAGE.GUIDANCE_CALL_CHARGE_LINK }}">{{ texts.LOGIN_PAGE.GUIDANCE_CALL_CHARGE_LABEL }}</a>
+            </p>
+
+            
+          </div>
+
+        </details>
 
         <input type="hidden" name="_csrf" value="{{ csrftoken }}">
 

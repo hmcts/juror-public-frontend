@@ -1,6 +1,6 @@
 {
   "HEADING": "Your juror details",
-  "HEADING_OB": "The juror details",
+  "HEADING_OB": "Their juror details",
 
   "SAMPLE_TITLE": "Your juror number can be found on your jury summons letter as shown in the image below.",
   "SAMPLE_TITLE_OB": "The juror number can be found on the jury summons letter as shown in the image below.",
@@ -9,7 +9,7 @@
 
   "FIELD_JUROR_NUMBER_TITLE": "9-digit juror number",
   "FIELD_JUROR_NUMBER_HINT": "You can find your juror number on your jury summons letter.",
-  "FIELD_JUROR_NUMBER_HINT_OB": "You can find the juror number on the jury summons letter.",
+  "FIELD_JUROR_NUMBER_HINT_OB": "You can find their juror number on the jury summons letter.",
 
   "GUIDANCE_TITLE": "I do not have a juror number",
   "GUIDANCE_TITLE_OB": "I do not have a juror number for the person",
@@ -28,12 +28,21 @@
   "GUIDANCE_ADDRESS_LINE_5": "BD3 7BH",
 
   "FIELD_LAST_NAME_TITLE": "Juror last name",
-  "FIELD_LAST_NAME_HINT": "Enter your last name as it is printed on the jury summons letter, even if this might be wrong. You can change it later.",
-  "FIELD_LAST_NAME_HINT_OB": "Enter the person's last name as it is printed on the jury summons letter, even if this might be wrong. You can change it later.",
+  "FIELD_LAST_NAME_HINT": "Enter your last name as it is printed on the jury summons letter, even if it's wrong. You can change it later.",
+  "FIELD_LAST_NAME_HINT_OB": "Enter the person's last name as it is printed on the jury summons letter, even if it's wrong. You can change it later.",
 
   "FIELD_POSTCODE_TITLE": "Juror postcode",
-  "FIELD_POSTCODE_HINT": "Enter your postcode as it is printed on the jury summons letter, even if this is wrong. You can change it later.",
-  "FIELD_POSTCODE_HINT_OB": "Enter the person's postcode as it is printed on the jury summons letter, even if this is wrong. You can change it later.",
+  "FIELD_POSTCODE_HINT": "Enter your postcode as it is printed on the jury summons letter, even if it's wrong. You can change it later.",
+  "FIELD_POSTCODE_HINT_OB": "Enter their postcode as it's printed on their jury summons letter, even if it's wrong. You can change it later.",
 
-  "FIELD_THIRD_PARTY_LABEL": "I'm replying on behalf of someone else"
+  "FIELD_THIRD_PARTY_LABEL": "I'm replying on behalf of someone else",
+
+  "FURTHER_GUIDANCE_TITLE": "Problems entering your details?",
+  "FURTHER_GUIDANCE_TITLE_OB": "Problems entering their details?",
+
+  "FURTHER_GUIDANCE_INTRO": "If you've checked your details and still cannot continue, you can contact us.",
+  "FURTHER_GUIDANCE_INTRO_OB":"If you've checked their details and still cannot continue, you can contact us."
+
+
+
 }

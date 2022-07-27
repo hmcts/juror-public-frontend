@@ -1,8 +1,8 @@
-{% from "./govuk-frontend/components/button/macro.njk" import govukButton %}
-{% from "./govuk-frontend/components/radios/macro.njk" import govukRadios %}
-{% from "./govuk-frontend/components/error-summary/macro.njk" import govukErrorSummary %}
-
 {% extends "./layouts/default-gds.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}
   {{ texts.COOKIE_SETTINGS_PAGE.HEADING }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}

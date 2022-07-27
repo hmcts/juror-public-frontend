@@ -1,9 +1,9 @@
 {% extends "../../layouts/default-gds.njk" %}
 
-{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
-{% from "../../govuk-frontend/components/character-count/macro.njk" import govukCharacterCount %}
-{% from "../../govuk-frontend/components/textarea/macro.njk" import govukTextarea %}
-{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
@@ -30,11 +30,18 @@
 
       <form action="{{ url('steps.confirm.date.excusal.post') }}" method="post">
 
+        {# Set hint text #}
+        {% if user.thirdParty == 'Yes' %}
+          {% set reasonHint =  texts.EXCUSAL_PAGE.HINT_OB %}
+        {% else %}
+          {% set reasonHint =  texts.EXCUSAL_PAGE.HINT %}
+        {% endif %}
+
         {# Set label text #}
         {% if user.thirdParty == 'Yes' %}
-          {% set labelText =  texts.EXCUSAL_PAGE.HINT_OB %}
+          {% set labelText = texts.EXCUSAL_PAGE.PROMPT_OB %}
         {% else %}
-          {% set labelText =  texts.EXCUSAL_PAGE.HINT %}
+          {% set labelText = texts.EXCUSAL_PAGE.PROMPT %}
         {% endif %}
 
         {# Set excusal details error #}
@@ -43,15 +50,8 @@
           {% set excusalReasonError = {"text": errors.items['excusalReason'][0].details} %}
         {% endif %}
 
-        <div class="govuk-form-group {% if errors.items['excusalReason'] %}govuk-form-group--error{% endif %}" id="excusalReasonGroup">
 
-          <h1 class="govuk-heading-xl">
-            {% if user.thirdParty == 'Yes' %}
-              {{ texts.EXCUSAL_PAGE.PROMPT_OB }}
-            {% else %}
-              {{ texts.EXCUSAL_PAGE.PROMPT }}
-            {% endif %}
-          </h1>
+        <div class="govuk-form-group" id="excusalReasonGroup">
 
           <div class="govuk-character-count">
             {{ govukCharacterCount({
@@ -59,7 +59,12 @@
               id: "excusalReason",
               maxlength: "1000",
               label: {
-                text: labelText
+                text: labelText,
+                classes: "govuk-label--xl",
+                isPageHeading: true
+              },
+              hint: {
+                html: reasonHint
               },
               rows: "4",
               errorMessage: excusalReasonError,

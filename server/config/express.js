@@ -111,7 +111,10 @@
 
     // Setup templating engine
     app.set('view engine', 'njk');
-    app.set('views', [path.join(app.get('appPath'), 'templates')]);
+    app.set('views', [
+      'node_modules/govuk-frontend/',
+      path.join(app.get('appPath'), 'templates'),
+    ]);
 
     nunjucks(app, {
       autoescape: true,

@@ -5,7 +5,7 @@
     , auth = require('../../../components/auth')
     , utils = require('../../../lib/utils');
 
-  module.exports = function(app) {  
+  module.exports = function(app) {
     // eslint-disable-next-line max-len
     app.get('/branches/third-party-personal-details/name/change', 'branches.third.party.personal.details.name.change.get', auth.verify, controller.changeName(app));
     // eslint-disable-next-line max-len
