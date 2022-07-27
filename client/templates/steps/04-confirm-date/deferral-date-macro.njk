@@ -3,19 +3,21 @@
   {# Deferral date input field with datepicker #}
 
   <div class="govuk-form-group {%if params.dateError%}govuk-form-group--error{% endif %}">
-    <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+    <fieldset class="govuk-fieldset" role="group" aria-describedby="deferral-date-group-hint">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
         <h1 class="govuk-fieldset__heading">
          {{params.heading}}
         </h1>
       </legend>
-      <div id="datepicker-group-hint" class="govuk-hint">
+      <div id="deferral-date-group-hint" class="govuk-hint">
         {{params.hint}}
       </div>
 
-      <span id="passport-issued-error" class="govuk-error-message">
-        <span class="govuk-visually-hidden">Error:</span> {{params.dateError}}
-      </span>
+      {% if params.dateError %}
+        <p id="defer-date-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> {{-params.dateError-}}
+        </p>
+      {% endif %}
 
       <div class="govuk-date-input datepicker-group" id="datepicker-group">
         <div class="govuk-date-input__item">
@@ -40,7 +42,7 @@
             <input class="govuk-input govuk-date-input__input govuk-input--width-4 {%if params.dateError%}govuk-input--error{% endif %}" id="{{params.dateFieldId}}Year" name="{{params.dateFieldId}}Year" type="text" pattern="[0-9]*" inputmode="numeric" value="{{params.yearValue}}"></div>
         </div>
 
-        <button id="{{params.buttonId}}" class="datepicker-button noscript" aria-hidden="true"><img class="" src="/img/icons/icon-calendar.png" /></button>
+        <button id="{{params.buttonId}}" class="datepicker-button noscript" aria-hidden="true"><img class="" src="/assets/images/icons/icon-calendar.png" alt="{{-params.buttonAlt-}}"/></button>
 
         
 
@@ -59,15 +61,6 @@
           <table id="cal" role="grid" aria-activedescendant="errMsg" aria-labelledby="month" tabindex="0">
             <thead>
                 <tr id="weekdays">
-                  {#
-                  <th id="Sunday"><abbr title="Sunday">SU</abbr></th>
-                  <th id="Monday"><abbr title="Monday">MO</abbr></th>
-                  <th id="Tuesday"><abbr title="Tuesday">TU</abbr></th>
-                  <th id="Wednesday"><abbr title="Wednesday">WE</abbr></th>
-                  <th id="Thursday"><abbr title="Thursday">TH</abbr></th>
-                  <th id="Friday"><abbr title="Friday">FR</abbr></th>
-                  <th id="Saturday"><abbr title="Saturday">SA</abbr></th>
-                  #}
                   <th id="Sunday"><abbr title="{{ params.texts.SUNDAY }}">{{ params.texts.SU }}</abbr></th>
                   <th id="Monday"><abbr title="{{ params.texts.MONDAY }}">{{ params.texts.MO }}</abbr></th>
                   <th id="Tuesday"><abbr title="{{ params.texts.TUESDAY }}">{{ params.texts.TU }}</abbr></th>

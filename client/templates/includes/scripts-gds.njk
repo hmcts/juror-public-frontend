@@ -1,36 +1,14 @@
-{#
-<script src="{{ assetPath }}js/govuk-template.js?0.17.3"></script>
-#}
+
 <script src="{{ assetPath }}js/jquery.min.js"></script>
 
+<!--
 <script src="{{ assetPath }}js/selection-buttons.js"></script>
 <script src="{{ assetPath }}js/shim-links-with-button-role.js"></script>
 <script src="{{ assetPath }}js/show-hide-content.js"></script>
+-->
 
+<!-- needed for confirm DOB -->
 <script src="{{ assetPath }}js/bundle.js"></script>
 
-{#
-{% if trackingCode %}
-<script>
-  var trackOutboundLink = function(url) {
-    ga('send', 'event', 'outbound', 'click', url, {
-      'transport': 'beacon'
-    });
-  }
-
-  var trackVirtualPageViews = function(page) {
-    ga('set', 'page', page);
-    ga('send', 'pageview');
-  }
-
-  var trackEvent = function(eventCategory, eventAction, eventLabel) {
-    ga('send', 'event', {
-      eventCategory: eventCategory,
-      eventAction: eventAction,
-      eventLabel: eventLabel,
-    });
-
-  }
-</script>
-{% endif %}
-#}
+<!-- GDS toolkit -->
+<script src="{{ assetPath }}js/govuk/all.js"></script>

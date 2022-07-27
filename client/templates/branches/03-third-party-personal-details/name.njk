@@ -1,8 +1,9 @@
 {% extends "../../layouts/default-gds.njk" %}
 
-{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
-{% from "../../govuk-frontend/components/input/macro.njk" import govukInput %}
-{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
@@ -25,71 +26,44 @@
 
       <form action="{{ url('branches.third.party.personal.details.name.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-        {# Set radio labels #}
-        {% set radioYesLabel = texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_CONFIRM_NAME_YES_LABEL %}
-        {% set radioNoLabel = texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_CONFIRM_NAME_NO_LABEL %}
-
-        {# Set radio values #}
-        {% if user.nameConfirm === texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.YES %}
-          {% set radioYesChecked = 'checked="checked"' %}
-        {% else %}
-          {% set radioYesChecked = undefined %}
-        {% endif %}
-        {% if user.nameConfirm === texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.NO %}
-          {% set radioNoChecked = 'checked="checked"' %}
-        {% else %}
-          {% set radioNoChecked = undefined %}
-        {% endif %}
-
         {# Set radio errors #}
         {% set radioAnswerError = undefined %}
         {% if errors.items['nameConfirm']%}
           {% set radioAnswerError = {text: errors.items['nameConfirm'][0].details} %}
         {% endif %}
 
-        <div class="govuk-form-group {% if errors.nameError %}govuk-form-group--error{% endif %}" id="nameGroup">
+        {# set legend HTML #}
+        {% set legendHTML %}
+          <span class="govuk-caption-xl">{{- texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.CAPTION -}}</span>
+          <h1 class="govuk-fieldset__heading">{{- texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.NAME_CONFIRM_HEADER -}}</h1>
+        {% endset %}
 
-          <fieldset class="govuk-fieldset" id="nameFieldset">
-
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-              <h1 class="govuk-fieldset__heading">
-                <span class="govuk-caption-xl">
-                  {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.CAPTION }}
-                </span>
-                {{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.NAME_CONFIRM_HEADER }}
-              </h1>
-            </legend>
-
-            <div class="govuk-body" id="fullName">{{ user.nameRender | safe }}</div>
-
-            <div class="govuk-radios" data-module="radios">
-              {% if radioAnswerError %}
-                <span id="nameConfirmError" class="govuk-error-message">
-                  <span class="govuk-visually-hidden">{{texts.ERRORS.HIDDEN_ERROR}}: </span>
-                  {{- radioAnswerError.text -}}
-                </span>
-              {% endif%}
-
-              {# Radio YES #}
-              <div class="govuk-radios__item">    
-                <input class="selection-button-radio govuk-radios__input store-updated-information" id="nameConfirm-Yes" name="nameConfirm" type="radio" value="{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.YES }}" {{radioYesChecked}}}>
-                <label class="govuk-radios__label" for="nameConfirm-Yes">
-                  {{ radioYesLabel }}
-                </label>
-              </div>
-
-              {# Radio NO #}
-              <div class="govuk-radios__item">
-                <input class="selection-button-radio govuk-radios__input store-updated-information" id="nameConfirm-No" name="nameConfirm" type="radio" value="{{ texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.NO }}" {{radioNoChecked}}}>
-                <label class="govuk-label govuk-radios__label" for="nameConfirm-No">
-                  {{ radioNoLabel }}
-                </label>
-              </div>
-            </div>
-
-          </fieldset>
-
-        </div>
+        {{ govukRadios({
+          name: "nameConfirm",
+          fieldset: {
+            legend: {
+              html: legendHTML,
+              classes: "govuk-fieldset__legend--xl",
+              isPageHeading: false
+            }
+          },
+          hint: {
+            text: user.nameRender
+          },
+          errorMessage: radioAnswerError,
+          items: [
+            {
+              id: "nameConfirm-Yes",
+              value: texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.YES,
+              text: texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_CONFIRM_NAME_YES_LABEL
+            },
+            {
+              id: "nameConfirm-No",
+              value: texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.NO,
+              text: texts.ON_BEHALF.THIRD_PARTY_PERSONAL_DETAILS.FORM_CONFIRM_NAME_NO_LABEL
+            }
+          ]
+        }) }}
 
         {# Submit form #}
         {{ govukButton({
@@ -99,6 +73,7 @@
         <input type="hidden" name="_csrf" value="{{ csrftoken }}">
 
       </form>
+      
       
     </div>
   </div>

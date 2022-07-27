@@ -1,6 +1,6 @@
 {
   "name": "juror-public-front-end",
-  "version": "2.25.533-development",
+  "version": "2.26.134-longrunning",
   "description": "A front-end for responding to jury summons",
   "main": "server/index.js",
   "scripts": {
@@ -36,11 +36,11 @@
     "csurf": "^1.9.0",
     "errorhandler": "^1.4.3",
     "express": "^4.14.0",
-    "express-nunjucks": "2.2.3",
+    "express-nunjucks": "2.2.5",
     "express-session": "^1.14.0",
     "fibers": "^1.0.15",
     "fs-extra": "^4.0.3",
-    "govuk-frontend": "^3.7.0",
+    "govuk-frontend": "^4.0.1",
     "helmet": "^3.9.0",
     "i18n-express": "^1.0.4",
     "ip": "^1.1.5",
@@ -58,7 +58,7 @@
     "serve-favicon": "^2.3.0",
     "underscore": "^1.8.3",
     "url-join": "^2.0.2",
-    "validate.js": "^0.12.0",
+    "validate.js": "^0.13.0",
     "winston": "^2.2.0"
   },
   "devDependencies": {

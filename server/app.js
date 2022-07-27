@@ -94,6 +94,8 @@
     stopServer();
   });
 
+  //console.log('process.env:');
+  //console.log(JSON.stringify(process.env));
 
   // Start the app immediately
   setImmediate(startServer);

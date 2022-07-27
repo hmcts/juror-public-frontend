@@ -1,7 +1,7 @@
-{% from "../govuk-frontend/components/skip-link/macro.njk" import govukSkipLink -%}
-{% from "../govuk-frontend/components/header/macro.njk" import govukHeader -%}
-{% from "../govuk-frontend/components/footer/macro.njk" import govukFooter -%}
-{% from "../govuk-frontend/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/skip-link/macro.njk" import govukSkipLink -%}
+{% from "govuk/components/header/macro.njk" import govukHeader -%}
+{% from "govuk/components/footer/macro.njk" import govukFooter -%}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {# specify absolute url for the static assets folder e.g. http://wwww.domain.com/assets #}
 {%- set assetUrl = assetUrl | default(assetPath) -%}
 <!DOCTYPE html>

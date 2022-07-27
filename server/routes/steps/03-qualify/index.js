@@ -6,8 +6,6 @@
     , utils = require('../../../lib/utils');
 
   module.exports = function(app) {
-    app.get('/steps/qualify/mental-health-sectioned/info', 'steps.qualify.mental.health.sectioned.info', controller.getMentalHealthSectionedInfo(app));
-    app.get('/steps/qualify/mental-health-capacity/info', 'steps.qualify.mental.health.capacity.info', controller.getMentalHealthCapacityInfo(app));
 
     app.get('/steps/qualify/residency/change', 'steps.qualify.residency.change.get', auth.verify, auth.completeCheck, controller.changeResidency(app));
     app.get('/steps/qualify/residency/change/tp', 'steps.qualify.residency.change.tp.get', auth.verify, auth.completeCheck, controller.changeResidency(app));

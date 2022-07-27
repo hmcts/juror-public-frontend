@@ -1,8 +1,9 @@
 {% extends "../../layouts/default-gds.njk" %}
 
-{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
-{% from "../../govuk-frontend/components/radios/macro.njk" import govukRadios %}
-{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
@@ -25,71 +26,44 @@
 
       <form action="{{ url('steps.your.details.address.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-        {# Set radio labels #}
-        {% set radioYesLabel = texts.YOUR_DETAILS_PAGE.FORM_CONFIRM_ADDRESS_YES %}
-        {% set radioNoLabel = texts.YOUR_DETAILS_PAGE.FORM_CONFIRM_ADDRESS_NO %}
-
-        {# Set radio values #}
-        {% if user.addressConfirm === texts.YOUR_DETAILS_PAGE.YES %}
-          {% set radioYesChecked = 'checked="checked"' %}
-        {% else %}
-          {% set radioYesChecked = undefined %}
-        {% endif %}
-        {% if user.addressConfirm === texts.YOUR_DETAILS_PAGE.NO %}
-          {% set radioNoChecked = 'checked="checked"' %}
-        {% else %}
-          {% set radioNoChecked = undefined %}
-        {% endif %}
-
         {# Set radio errors #}
         {% set radioAnswerError = undefined %}
         {% if errors.items['addressConfirm']%}
           {% set radioAnswerError = {text: errors.items['addressConfirm'][0].details} %}
         {% endif %}
 
-        <div class="govuk-form-group {% if errors.addressError %}govuk-form-group--error{% endif %}" id="addressGroup">
+        {# set legend HTML #}
+        {% set legendHTML %}
+          <span class="govuk-caption-xl">{{- texts.YOUR_DETAILS_PAGE.CAPTION -}}</span>
+          <h1 class="govuk-fieldset__heading">{{- texts.YOUR_DETAILS_PAGE.HEADING_ADDRESS_CONFIRM -}}</h1>
+        {% endset %}
 
-          <fieldset class="govuk-fieldset" id="addressFieldset">
-
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-              <h1 class="govuk-fieldset__heading">
-                <span class="govuk-caption-xl">
-                  {{- texts.YOUR_DETAILS_PAGE.CAPTION -}}
-                </span>
-                {{- texts.YOUR_DETAILS_PAGE.HEADING_ADDRESS_CONFIRM -}}
-              </h1>
-            </legend>
-
-            <div class="govuk-body">{{ user.addressRender | safe }}</div>
-
-            <div class="govuk-radios" data-module="radios">
-              {% if radioAnswerError %}
-                <span id="addressConfirmError" class="govuk-error-message">
-                  <span class="govuk-visually-hidden">{{texts.ERRORS.HIDDEN_ERROR}}: </span>
-                  {{- radioAnswerError.text -}}
-                </span>
-              {% endif%}
-
-              {# Radio YES #}
-              <div class="govuk-radios__item">    
-                <input class="selection-button-radio govuk-radios__input store-updated-information" id="addressConfirm-Yes" name="addressConfirm" type="radio" value="{{ texts.YOUR_DETAILS_PAGE.YES }}" {{radioYesChecked}}}>
-                <label class="govuk-radios__label" for="addressConfirm-Yes">
-                  {{ radioYesLabel }}
-                </label>
-              </div>
-
-              {# Radio NO #}
-              <div class="govuk-radios__item">
-                <input class="selection-button-radio govuk-radios__input store-updated-information" id="addressConfirm-No" name="addressConfirm" type="radio" value="{{ texts.YOUR_DETAILS_PAGE.NO }}" {{radioNoChecked}}}>
-                <label class="govuk-label govuk-radios__label" for="addressConfirm-No">
-                  {{ radioNoLabel }}
-                </label>
-              </div>
-            </div>
-
-          </fieldset>
-
-        </div>
+        {{ govukRadios({
+          name: "addressConfirm",
+          fieldset: {
+            legend: {
+              html: legendHTML,
+              classes: "govuk-fieldset__legend--xl",
+              isPageHeading: false
+            }
+          },
+          hint: {
+            html: user.addressRender
+          },
+          errorMessage: radioAnswerError,
+          items: [
+            {
+              id: "addressConfirm-Yes",
+              value: texts.YOUR_DETAILS_PAGE.YES,
+              text: texts.YOUR_DETAILS_PAGE.FORM_CONFIRM_ADDRESS_YES
+            },
+            {
+              id: "addressConfirm-No",
+              value: texts.YOUR_DETAILS_PAGE.NO,
+              text: texts.YOUR_DETAILS_PAGE.FORM_CONFIRM_ADDRESS_NO
+            }
+          ]
+        }) }}
 
         {# Info about change of address #}
         <details class="govuk-details" data-module="govuk-details">

@@ -1,7 +1,7 @@
 {% extends "../../layouts/default-gds.njk" %}
 
-{% from "../../govuk-frontend/components/details/macro.njk" import govukDetails %}
-{% from "../../govuk-frontend/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "./deferral-date-macro.njk" import deferralDate %}
 
 {% block pageTitle %}
@@ -54,14 +54,17 @@
       
         <div class="{% if errors.items['dates'] %}govuk-error{% endif %}" id="datesGroup">
 
+          {% set dateError1 = undefined %}
           {% if errors.items['date1'] %}
             {% set dateError1 = errors.items['date1'][0].summary %}
           {% endif %}
 
+          {% set dateError2 = undefined %}
           {% if errors.items['date2'] %}
             {% set dateError2 = errors.items['date2'][0].summary %}
           {% endif %}
 
+          {% set dateError3 = undefined %}
           {% if errors.items['date3'] %}
             {% set dateError3 = errors.items['date3'][0].summary %}
           {% endif %}
@@ -72,6 +75,7 @@
                 id: "firstChoice",
                 heading: texts.DEFERRAL_PAGE.DATES.DATE1_LABEL,
                 hint: texts.DEFERRAL_PAGE.DATES.DATE_EXAMPLE_HINT + deferralDateRange.earliestDateShort,
+                buttonAlt: texts.DEFERRAL_PAGE.DATEPICKER_ALT_1,
                 texts: texts.DEFERRAL_PAGE,
                 datepickerId: "datepicker1",
                 dateFieldId: "date1",
@@ -91,6 +95,7 @@
                 id: "secondChoice",
                 heading: texts.DEFERRAL_PAGE.DATES.DATE2_LABEL,
                 hint: texts.DEFERRAL_PAGE.DATES.DATE_EXAMPLE_HINT + deferralDateRange.earliestDateShort,
+                buttonAlt: texts.DEFERRAL_PAGE.DATEPICKER_ALT_2,
                 texts: texts.DEFERRAL_PAGE,
                 datepickerId: "datepicker2",
                 dateFieldId: "date2",
@@ -110,6 +115,7 @@
                 id: "thirdChoice",
                 heading: texts.DEFERRAL_PAGE.DATES.DATE3_LABEL,
                 hint: texts.DEFERRAL_PAGE.DATES.DATE_EXAMPLE_HINT + deferralDateRange.earliestDateShort,
+                buttonAlt: texts.DEFERRAL_PAGE.DATEPICKER_ALT_3,
                 texts: texts.DEFERRAL_PAGE,
                 datepickerId: "datepicker3",
                 dateFieldId: "date3",
@@ -144,7 +150,7 @@
 
     <input type="hidden" id="dpDefaultDay" value="15">
     <input type="hidden" id="dpDefaultMonth" value="7">
-    <input type="hidden" id="dpDefaultYEar" value="2021">
+    <input type="hidden" id="dpDefaultYear" value="2021">
 
   </div>
 </div>

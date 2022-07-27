@@ -299,78 +299,6 @@
   };
 
   //
-  // Mental Health functions
-  //
-  module.exports.getMentalHealth = function() {
-    return function(req, res) {
-      var tmpErrors
-        , mergedUser;
-
-      // Merge and then delete form fields and errors, prevents retention after pressing back link
-      mergedUser = _.merge(_.cloneDeep(req.session.user), _.cloneDeep(req.session.formFields));
-      tmpErrors = _.cloneDeep(req.session.errors);
-
-      delete req.session.errors;
-      delete req.session.formFields;
-
-      return res.render('steps/03-qualify/mental-health.njk', {
-        user: mergedUser,
-        errors: {
-          title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-          message: '',
-          count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
-          items: tmpErrors,
-        },
-      });
-    };
-  };
-
-  module.exports.createMentalHealth = function(app) {
-    return function(req, res) {
-      var validatorResult;
-
-      // Store new info
-      // Has to be first to properly retain answers if feeding back errors
-      req.session.user.qualify.mentalHealthAct = {
-        answer: req.body['mentalHealthAct'],
-        details: req.body['mentalHealthActDetails']
-      };
-
-      // Reset error and saved field sessions
-      delete req.session.errors;
-      delete req.session.formFields;
-
-      // Validate form submission
-      validatorResult = validate(req.body, require('../../../config/validation/mental-health')(req));
-      if (typeof validatorResult !== 'undefined') {
-        req.session.errors = validatorResult;
-        req.session.formFields = req.body;
-        return res.redirect(app.namedRoutes.build('steps.qualify.mental.health.get'));
-      }
-
-      // Redirect
-      if (req.session.change === true){
-        return res.redirect(app.namedRoutes.build('steps.confirm.information.get'));
-      }
-      return res.redirect(app.namedRoutes.build('steps.qualify.bail.get'));
-    };
-  };
-
-  module.exports.changeMentalHealth = function(app) {
-    return function(req, res) {
-      req.session.change = true;
-      req.session.back = true;
-      res.redirect(app.namedRoutes.build('steps.qualify.mental.health.get'));
-    };
-  };
-
-  module.exports.getMentalHealthInfo = function() {
-    return function(req, res) {
-      return res.render('steps/03-qualify/mental-health-info.njk', { user: req.session.user });
-    };
-  };
-
-  //
   // Mental Health - Sectioned functions
   //
   module.exports.getMentalHealthSectioned = function() {
@@ -452,15 +380,6 @@
       req.session.change = true;
       req.session.back = true;
       res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.qualify.mental.health.sectioned', req.session.user.thirdParty)));
-    };
-  };
-
-  module.exports.getMentalHealthSectionedInfo = function() {
-    return function(req, res) {
-      return res.render('steps/03-qualify/mental-health-sectioned-info.njk', {
-        user: req.session.user,
-        backLinkUrl: utils.getRedirectUrl('steps.qualify.mental.health.sectioned', req.session.user.thirdParty)
-      });
     };
   };
 
@@ -546,15 +465,6 @@
       req.session.change = true;
       req.session.back = true;
       res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.qualify.mental.health.capacity', req.session.user.thirdParty)));
-    };
-  };
-
-  module.exports.getMentalHealthCapacityInfo = function() {
-    return function(req, res) {
-      return res.render('steps/03-qualify/mental-health-capacity-info.njk', {
-        user: req.session.user,
-        backLinkUrl: utils.getRedirectUrl('steps.qualify.mental.health.capacity', req.session.user.thirdParty)
-      });
     };
   };
 

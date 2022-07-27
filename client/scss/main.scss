@@ -1,13 +1,4 @@
-// Import GOV.UK elements from /govuk-modules/, this will import the frontend toolkit and some base styles.
-// Take a look in /govuk-modules/_govuk-elements.scss to see which files are imported.
-@import 'govuk-elements';
+// Import GOV.UK frontend toolkit and some base styles.
 
-// ITCSS Imports
-@import '01-settings/index';
-@import '02-tools/index';
-@import '03-generic/index';
-@import '04-elements/index';
-@import '05-objects/index';
-@import '06-components/index';
-@import '07-trumps/index';
-@import '08-toolkit-mod/index'
+@import "node_modules/govuk-frontend/govuk/all.scss";
+@import "jd-main.scss";

@@ -22,7 +22,11 @@
         </div>
 
         <div class="govuk-grid-column-one-quarter">
-         <img src="../../../img/pdflogo.jpg" alt="{{ texts.PDF.sharedText.logoAlt }}" width="200px">
+        {% if texts.INTERFACE.HTML_LANG === "cy" %}
+          <img src="/assets/images/pdflogo-cy.jpg" alt="{{ texts.PDF.sharedText.logoAlt }}" width="200px">
+        {% else %}
+          <img src="/assets/images/pdflogo.jpg" alt="{{ texts.PDF.sharedText.logoAlt }}" width="200px">
+        {% endif %}
         </div>
       </div>
 

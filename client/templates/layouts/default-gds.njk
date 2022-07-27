@@ -3,10 +3,11 @@
 
 {% block head %}
   <!--[if !IE 8]><!-->
-    <link href="../../../css/govuk-frontend.css" rel="stylesheet" />
-    <!--<link href="../../css/juror-digital.css" rel="stylesheet" />-->
-    <!--<link href="../../css/style.css" rel="stylesheet" />-->
-    <link href="../../../css/jd-style.css" rel="stylesheet" />
+    <!--
+    <link href="{{ assetPath }}css/govuk-frontend.css" rel="stylesheet" />
+    <link href="{{ assetPath }}css/jd-style.css" rel="stylesheet" />
+    -->
+    <link href="{{ assetPath }}css/style.css" rel="stylesheet" />
   <!--<![endif]-->
 
   <script type="text/javascript" src="{{ assetPath }}js/html5shiv.min.js"></script>
@@ -36,9 +37,13 @@
   {# Run JavaScript at end of the <body>, to avoid blocking the initial render. #}
   
   {% include "../includes/scripts-gds.njk" %}
-  
-  <script src="../../../js/all.js"></script>
-  <script>GOVUKFrontend.initAll()</script>
+
+  <!-- Init GDS toolkit =-->
+  <script>
+    $(document).ready(function () {
+      window.GOVUKFrontend.initAll();
+    })
+  </script>
 
 {% endblock %}
 

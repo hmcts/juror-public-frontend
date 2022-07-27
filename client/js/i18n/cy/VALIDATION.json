@@ -28,22 +28,22 @@
   },
 
   "LOGIN": {
-    "JUROR_NUMBER_CHECK_SUM": "Nodwch eich rhif rheithiwr 9 digid. Mae'r rhif ar frig eich llythyr gwŷs rheithgor",
-    "JUROR_NUMBER_CHECK_SUM_OB": "Nodwch y rhif rheithiwr 9 digid. Mae'r rhif ar dop y llythyr gwŷs rheithgor",
-    "JUROR_NUMBER_CHECK_DETAILS": "Nodwch eich rhif rheithiwr 9 digid. Mae'r rhif ar frig eich llythyr gwŷs rheithgor",
-    "JUROR_NUMBER_CHECK_DETAILS_OB": "Nodwch y rhif rheithiwr 9 digid. Mae'r rhif ar dop y llythyr gwŷs rheithgor",
-    "JUROR_CHECK_LAST_NAME_SUM": "Rhowch eich cyfenw",
-    "JUROR_CHECK_LAST_NAME_SUM_OB": "Nodwch gyfenw'r unigolyn sy'n cael ei wysio",
-    "JUROR_CHECK_LAST_NAME_DETAILS": "Rhowch eich cyfenw",
-    "JUROR_CHECK_LAST_NAME_DETAILS_OB": "Nodwch gyfenw'r unigolyn sy'n cael ei wysio",
-    "JUROR_CHECK_LAST_NAME_INVALID": "Nodwch eich cyfenw. Nodwch eich cyfenw yn union fel y mae'n ymddangos ar y llythyr gwŷs rheithgor. Os yw'r enw'n anghywir, gallwch ei newid yn nes ymlaen.",
-    "JUROR_CHECK_LAST_NAME_INVALID_OB": "Nodwch gyfenw'r unigolyn sydd wedi cael gwŷs rheithgor. Nodwch y cyfenw yn union fel y mae'n ymddangos ar y llythyr gwŷs rheithgor. Os yw'r enw’n anghywir, gallwch ei newid yn nes ymlaen.",
-    "JUROR_CHECK_POSTCODE_SUM": "Rhowch eich cod post",
-    "JUROR_CHECK_POSTCODE_SUM_OB": "Nodwch god post y person sy'n cael ei wysio",
-    "JUROR_CHECK_POSTCODE_DETAILS": "Rhowch eich cod post",
-    "JUROR_CHECK_POSTCODE_DETAILS_OB": "Nodwch god post y person sy'n cael ei wysio",
-    "JUROR_CHECK_POSTCODE_DETAILS_FORMAT": "Nodwch eich cod post.  Nodwch y cod post yn union fel y mae'n ymddangos ar y llythyr gwŷs rheithgor. Os yw'n anghywir, gallwch ei newid yn nes ymlaen.",
-    "JUROR_CHECK_POSTCODE_DETAILS_FORMAT_OB": "Nodwch god post yr unigolyn sydd wedi cael gwŷs rheithgor. Nodwch y cod post yn union fel y mae'n ymddangos ar y llythyr gwŷs rheithgor. Os yw'n anghywir, gallwch ei newid yn nes ymlaen."
+    "JUROR_NUMBER_CHECK_SUM": "Nodwch eich rhif rheithiwr 9 digid - gallwch ddod o hyd iddo ar eich llythyr gwŷs rheithgor",
+    "JUROR_NUMBER_CHECK_SUM_OB": "Nodwch eu rhif rheithiwr 9 digid - gallwch ddod o hyd iddo ar eu llythyr gwŷs rheithgor",
+    "JUROR_NUMBER_CHECK_DETAILS": "Nodwch eich rhif rheithiwr 9 digid - gallwch ddod o hyd iddo ar eich llythyr gwŷs rheithgor",
+    "JUROR_NUMBER_CHECK_DETAILS_OB": "Nodwch eu rhif rheithiwr 9 digid - gallwch ddod o hyd iddo ar eu llythyr gwŷs rheithgor",
+    "JUROR_CHECK_LAST_NAME_SUM": "Rhaid i chi nodi eich enw olaf yn union fel y mae'n ymddangos ar eich llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir",
+    "JUROR_CHECK_LAST_NAME_SUM_OB": "Rhaid i chi nodi eu henw olaf yn union fel y mae'n ymddangos ar eu llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir",
+    "JUROR_CHECK_LAST_NAME_DETAILS": "Rhaid i chi nodi eich enw olaf yn union fel y mae'n ymddangos ar eich llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir",
+    "JUROR_CHECK_LAST_NAME_DETAILS_OB": "Rhaid i chi nodi eu henw olaf yn union fel y mae'n ymddangos ar eu llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir",
+    "JUROR_CHECK_LAST_NAME_INVALID": "Rhaid i chi nodi eich enw olaf yn union fel y mae'n ymddangos ar eich llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir",
+    "JUROR_CHECK_LAST_NAME_INVALID_OB": "Rhaid i chi nodi eu henw olaf yn union fel y mae'n ymddangos ar eu llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir",
+    "JUROR_CHECK_POSTCODE_SUM": "Rhaid i chi nodi eich cod post yn union fel y mae'n ymddangos ar eich llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir",
+    "JUROR_CHECK_POSTCODE_SUM_OB": "Rhaid i chi nodi eu cod post yn union fel y mae'n ymddangos ar eu llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir",
+    "JUROR_CHECK_POSTCODE_DETAILS": "Rhaid i chi nodi eich cod post yn union fel y mae'n ymddangos ar eich llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir",
+    "JUROR_CHECK_POSTCODE_DETAILS_OB": "Rhaid i chi nodi eu cod post yn union fel y mae'n ymddangos ar eu llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir",
+    "JUROR_CHECK_POSTCODE_DETAILS_FORMAT": "Rhaid i chi nodi eich cod post yn union fel y mae'n ymddangos ar eich llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir",
+    "JUROR_CHECK_POSTCODE_DETAILS_FORMAT_OB": "Rhaid i chi nodi eu cod post yn union fel y mae'n ymddangos ar eu llythyr gwŷs rheithgor, hyd yn oed os yw'n anghywir"
   },
 
   "YOUR_DETAILS": {

@@ -28,22 +28,22 @@
   },
 
   "LOGIN": {
-    "JUROR_NUMBER_CHECK_SUM": "Enter your 9-digit juror number. You can find it at the top of your jury summons letter",
-    "JUROR_NUMBER_CHECK_SUM_OB": "Enter the 9-digit juror number. You can find it at the top of the jury summons letter",
-    "JUROR_NUMBER_CHECK_DETAILS": "Enter your 9-digit juror number. You can find it at the top of your jury summons letter",
-    "JUROR_NUMBER_CHECK_DETAILS_OB": "Enter the 9-digit juror number. You can find it at the top of the jury summons letter",
-    "JUROR_CHECK_LAST_NAME_SUM": "Enter your last name",
-    "JUROR_CHECK_LAST_NAME_SUM_OB": "Enter the last name of the person summoned",
-    "JUROR_CHECK_LAST_NAME_DETAILS": "Enter your last name",
-    "JUROR_CHECK_LAST_NAME_DETAILS_OB": "Enter the last name of the person summoned",
-    "JUROR_CHECK_LAST_NAME_INVALID": "Enter your last name. Type it exactly as it appears on the jury summons letter. If the name is wrong you can change it later",
-    "JUROR_CHECK_LAST_NAME_INVALID_OB": "Enter the last name of the person summoned. Type it exactly as it appears on the jury summons letter. If the name is wrong you can change it later",
-    "JUROR_CHECK_POSTCODE_SUM": "Enter your postcode",
-    "JUROR_CHECK_POSTCODE_SUM_OB": "Enter the postcode of the person summoned",
-    "JUROR_CHECK_POSTCODE_DETAILS": "Enter your postcode",
-    "JUROR_CHECK_POSTCODE_DETAILS_OB": "Enter the postcode of the person summoned",
-    "JUROR_CHECK_POSTCODE_DETAILS_FORMAT": "Enter your postcode. Type it exactly as it appears on the jury summons letter. If it's wrong, you can change it later",
-    "JUROR_CHECK_POSTCODE_DETAILS_FORMAT_OB": "Enter the postcode of the person summoned. Type it exactly as it appears on the jury summons letter. If it's wrong, you can change it later"
+    "JUROR_NUMBER_CHECK_SUM": "Enter your 9-digit juror number - you can find it on your jury summons letter",
+    "JUROR_NUMBER_CHECK_SUM_OB": "Enter their 9-digit juror number - you can find it on their jury summons letter",
+    "JUROR_NUMBER_CHECK_DETAILS": "Enter your 9-digit juror number - you can find it on your jury summons letter",
+    "JUROR_NUMBER_CHECK_DETAILS_OB": "Enter their 9-digit juror number - you can find it on their jury summons letter",
+    "JUROR_CHECK_LAST_NAME_SUM": "You must enter your last name exactly as it's printed on your jury summons letter, even if it's wrong",
+    "JUROR_CHECK_LAST_NAME_SUM_OB": "You must enter their last name exactly as it's printed on their jury summons letter, even if it's wrong",
+    "JUROR_CHECK_LAST_NAME_DETAILS": "You must enter your last name exactly as it's printed on your jury summons letter, even if it's wrong",
+    "JUROR_CHECK_LAST_NAME_DETAILS_OB": "You must enter their last name exactly as it's printed on their jury summons letter, even if it's wrong",
+    "JUROR_CHECK_LAST_NAME_INVALID": "You must enter your last name exactly as it's printed on your jury summons letter, even if its wrong",
+    "JUROR_CHECK_LAST_NAME_INVALID_OB": "You must enter their last name exactly as it's printed on their jury summons letter, even if it's wrong",
+    "JUROR_CHECK_POSTCODE_SUM": "You must enter your postcode exactly as it's printed on your jury summons letter, even if it's wrong ",
+    "JUROR_CHECK_POSTCODE_SUM_OB": "You must enter their postcode exactly as it's printed on their jury summons letter, even if it's wrong",
+    "JUROR_CHECK_POSTCODE_DETAILS": "You must enter your postcode exactly as it's printed on your jury summons letter, even if it's wrong",
+    "JUROR_CHECK_POSTCODE_DETAILS_OB": "You must enter their postcode exactly as it's printed on their jury summons letter, even if it's wrong",
+    "JUROR_CHECK_POSTCODE_DETAILS_FORMAT": "You must enter your postcode exactly as it's printed on your jury summons letter, even if it's wrong",
+    "JUROR_CHECK_POSTCODE_DETAILS_FORMAT_OB": "You must enter their postcode exactly as it's printed on their jury summons letter, even if it's wrong"
   },
 
   "YOUR_DETAILS": {
