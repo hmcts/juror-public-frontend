@@ -1,8 +1,7 @@
 {% extends "../../layouts/default-gds.njk" %}
 
-{% from "govuk/components/details/macro.njk" import govukDetails %}
-{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
@@ -27,154 +26,65 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="{{ url('steps.your.details.confirm.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
+      <form action="{{ url('steps.your.details.confirm.post') }}" method="post" id="confirmDOBForm" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
-        {# Set error html #}
-        {% set dobError = undefined %}
-        {% if errors.items %}
-          {% set dobErrorHTML %}
-            {% if errors.items['dobDay'] %}
-              <span class="govuk-error-message dateOfBirthErrorMessage" id="dobDayErrorMessage">
-              <span class="govuk-visually-hidden">{{texts.ERRORS.TITLE_ERROR}}</span>{{ errors.items['dobDay'][0].details }}
-              </span>
-            {% endif %}
-            {% if errors.items['dobMonth'] %}
-              <span class="govuk-error-message dateOfBirthErrorMessage" id="dobMonthErrorMessage">
-              <span class="govuk-visually-hidden">{{texts.ERRORS.TITLE_ERROR}}</span>{{ errors.items['dobMonth'][0].details }}
-              </span>
-            {% endif %}
-            {% if errors.items['dobYear'] %}
-              <span class="govuk-error-message dateOfBirthErrorMessage" id="dobYearErrorMessage">
-              <span class="govuk-visually-hidden">{{texts.ERRORS.TITLE_ERROR}}</span>{{ errors.items['dobYear'][0].details }}
-              </span>
-            {% endif %}
-            {% if errors.items['dateOfBirth'] %}
-              <span class="govuk-error-message dateOfBirthErrorMessage" id="dateOfBirthErrorMessage">
-              <span class="govuk-visually-hidden">{{texts.ERRORS.TITLE_ERROR}}</span>{{ errors.items['dateOfBirth'][0].details }}
-              </span>
-            {% endif %}
-          {% endset %}
-          {% set dobError = {"html": dobErrorHTML} %}
+        {# Set radio button error #}
+        {% set radioButtonError = undefined %}
+        {% if errors.items['dobConfirm']%}
+          {% set radioButtonError = {"text": errors.items['dobConfirm'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
         {% endif %}
 
-        {% set dobDayClass = "govuk-input--width-2" %}
-        {% if errors.items['dobDay']  or errors.items['dateOfBirth'] %}
-            {% set dobDayClass = "govuk-input--width-2 govuk-input--error" %}
-        {% endif %}
-
-        {% set dobMonthClass = "govuk-input--width-2" %}
-        {% if errors.items['dobMonth']  or errors.items['dateOfBirth'] %}
-            {% set dobMonthClass = "govuk-input--width-2 govuk-input--error" %}
-        {% endif %}
-
-        {% set dobYearClass = "govuk-input--width-4" %}
-        {% if errors.items['dobYear'] or errors.items['dateOfBirth'] %}
-            {% set dobYearClass = "govuk-input--width-4 govuk-input--error" %}
-        {% endif %}
-
-        <div class="govuk-form-group {% if dobError %}govuk-form-group--error{% endif %}">
-
-          <fieldset class="govuk-fieldset inline-edit" id="dateOfBirthGroup">
-
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-              <h1 class="govuk-fieldset__heading">
-                <span class="govuk-caption-xl">
-                  {% if user.thirdParty == 'Yes' %}
-                    {{ texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION_OB }}
-                  {% else %}
-                    {{ texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION }}
-                  {% endif %}
-                </span>
-                {% if user.thirdParty == 'Yes' %}
-                  {{ texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING_OB }}
-                {% else %}
-                  {{ texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING }}
-                {% endif %}
-              </h1>
-            </legend>
-
-            {% if user.thirdParty == 'Yes' %}
-              {% if dobError == undefined %}
-                <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE_OB' | translate(texts, { formattedDob: formattedDob }) }}</p>
-                <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE_OB' | translate(texts, { currentAge: currentAge }) }}</p>
-              {% endif %}
-              <p class="govuk-body">{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE_OB }}</p>
+        {# Set hint HTML #}
+        {% set hintHTML %}
+          {% if user.thirdParty == 'Yes' %}
+              <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE_OB' | translate(texts, { formattedDob: formattedDob }) }}</p>
+              <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE_OB' | translate(texts, { currentAge: currentAge }) }}</p>
+              <p class="govuk-heading-m">{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE_OB }}</p>
             {% else %}
-              {% if dobError == undefined %}
-                <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE' | translate(texts, { formattedDob: formattedDob }) }}</p>
-                <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE' | translate(texts, { currentAge: currentAge }) }}</p>
-              {% endif %}
-              <p class="govuk-body">{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE }}</p>
+              <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE' | translate(texts, { formattedDob: formattedDob }) }}</p>
+              <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE' | translate(texts, { currentAge: currentAge }) }}</p>
+              <p class="govuk-heading-m">{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE }}</p>
             {% endif %}
+        {% endset %}
 
-            <label class="govuk-label">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_SUBTITLE }}</label>
+        {# Set legend HTML #}
+        {% set legendHTML %}
+          {% if user.thirdParty == 'Yes' %}
+            <span class="govuk-caption-xl">{{- texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION_OB -}}</span>
+            <h1 class="govuk-fieldset__heading">{{- texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING_OB -}}</h1>
+          {% else %}
+            <span class="govuk-caption-xl">{{- texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION -}}</span>
+            <h1 class="govuk-fieldset__heading">{{- texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING -}}</h1>
+          {% endif %}
+        {% endset %}
 
-            <div class="govuk-grid-row inline-section primary {% if errors.items %}closed govuk-error{% endif %} " id="dateOfBirthGroup">
-              <div class="govuk-grid-column-one-half govuk-body">{{ formattedDob }}</div>
-              <div class="govuk-grid-column-one-half govuk-body">
-                <a href="#dateOfBirthGroup" class="govuk-link inline-edit-toggle" id="changeDob">{{ texts.INTERFACE.FORM_CHANGE_LABEL }}<span class="govuk-visually-hidden">{{ texts.YOUR_DETAILS_PAGE.FORM_DOB_SUBTITLE }}</span></a>
-              </div>
-            </div>
-
-            <div class="inline-section {% if errors.items %}show{% else %}hide{% endif %}" id="dateOfBirthGroup">
-
-              {# Confirm date of birth #}
-              {{ govukDateInput({
-                id: "dateOfBirth",
-                hint: {
-                  text: texts.YOUR_DETAILS_PAGE.FORM_DOB_HELPER
-                },
-                errorMessage: dobError,
-                items: [
-                  {
-                    id: "dobDay",
-                    name: "dobDay",
-                    classes: dobDayClass,
-                    autocomplete: "off",
-                    label: texts.YOUR_DETAILS_PAGE.FORM_DOB_DAY_LABEL,
-                    attributes: {
-                      pattern: "[0-9]*",
-                      min: "1",
-                      max: "31",
-                      minlength: "1",
-                      maxlength: "2"
-                    },
-                    value: user.dobDay
-                  },
-                  {
-                    id: "dobMonth",
-                    name: "dobMonth",
-                    classes: dobMonthClass,
-                    autocomplete: "off",
-                    label: texts.YOUR_DETAILS_PAGE.FORM_DOB_MONTH_LABEL,
-                    attributes: {
-                      pattern: "[0-9]*",
-                      min: "1",
-                      max: "12",
-                      maxlength: "2"
-                    },
-                    value: user.dobMonth
-                  },
-                  {
-                    id: "dobYear",
-                    name: "dobYear",
-                    classes: dobYearClass,
-                    autocomplete: "off",
-                    label: texts.YOUR_DETAILS_PAGE.FORM_DOB_YEAR_LABEL,
-                    attributes: {
-                      pattern: "[0-9]*",
-                      maxlength: "4"
-                    },
-                    value: user.dobYear
-                  }
-                ]
-              }) }}
-              
-            </div>
-
-          </fieldset>
-
-        </div>
+        {{ govukRadios({
+          name: "dobConfirm",
+          classes: "govuk-radios--inline",
+          fieldset: {
+            legend: {
+              html: legendHTML,
+              classes: "govuk-fieldset__legend--xl",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            html: hintHTML
+          },
+          errorMessage: radioButtonError,
+          items: [
+            {
+              id: "dobConfirm-Yes",
+              value: texts.YOUR_DETAILS_PAGE.YES,
+              text: texts.YOUR_DETAILS_PAGE.FORM_CONFIRM_ADDRESS_YES
+            },
+            {
+              id: "dobConfirm-No",
+              value: texts.YOUR_DETAILS_PAGE.NO,
+              text: texts.YOUR_DETAILS_PAGE.FORM_CONFIRM_ADDRESS_NO
+            }
+          ]
+        }) }}
 
         {# Submit form #}
         {{ govukButton({
@@ -184,8 +94,8 @@
         <input type="hidden" name="_csrf" value="{{ csrftoken }}">
 
       </form>
+      
     </div>
   </div>
-
 
 {% endblock %}

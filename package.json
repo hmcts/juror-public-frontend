@@ -1,6 +1,6 @@
 {
   "name": "juror-public-front-end",
-  "version": "2.26.134-longrunning",
+  "version": "2.29.150-longrunning",
   "description": "A front-end for responding to jury summons",
   "main": "server/index.js",
   "scripts": {

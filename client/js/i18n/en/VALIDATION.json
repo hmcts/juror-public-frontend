@@ -111,7 +111,9 @@
     "YEAR_MISSING_OB": "Enter the year the person was born",
     "YEAR_INVALID_OB": "Enter the year the person was born as a 4 digit number. For example, 1982",
     "INVALID_DATE": "Check your date of birth",
-    "INVALID_DATE_OB": "Check the person's date of birth"
+    "INVALID_DATE_OB": "Check the person's date of birth",
+    "CONFIRM_MISSING": "Tell us if your date of birth is correct",
+    "CONFIRM_MISSING_OB": "Tell us if their date of birth is correct"
   },
 
   "QUALIFY": {
@@ -235,10 +237,10 @@
   },
 
   "EXCUSAL": {
-    "CHECK_REASON": "Say why you need to be excused",
-    "CHECK_REASON_OB": "Say why the person needs to be excused",
-    "CHECK_REASON_MISSING": "Say why you need to be excused",
-    "CHECK_REASON_MISSING_OB": "Say why the person needs to be excused",
+    "CHECK_REASON": "Enter reason why you cannot do jury service in the next 12 months",
+    "CHECK_REASON_OB": "Enter reason why they cannot do jury service in the next 12 months",
+    "CHECK_REASON_MISSING": "Enter reason why you cannot do jury service in the next 12 months",
+    "CHECK_REASON_MISSING_OB": "Enter reason why they cannot do jury service in the next 12 months",
     "CHECK_REASON_LENGTH": "Your reason for asking to be excused from jury service must be fewer characters",
     "CHECK_REASON_LENGTH_OB": "The reason for asking for the person to be excused from jury service must be fewer characters"
   },

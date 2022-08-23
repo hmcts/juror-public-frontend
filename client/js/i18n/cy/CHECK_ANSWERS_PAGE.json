@@ -92,9 +92,9 @@
 
   "JUROR_EXCUSAL_HEADER": "Gan eich bod wedi gofyn am gael eich esgusodi rhag gwasanaethu ar reithgor, bu ichi ddweud",
   "OB_EXCUSAL_HEADER": "Gan eich bod wedi gofyn i'r unigolyn rydych yn ymateb ar ei ran gael ei esgusodi rhag gwasanaethu ar reithgor, dywedoch wrthym ",
-  "JUROR_EXCUSAL_PROMPT": "Dywedwch pam eich bod angen cael eich esgusodi",
+  "JUROR_EXCUSAL_PROMPT": "Pam fod angen ichi gael eich esgusodi rhag gwasanaethu ar reithgor?",
   "JUROR_EXCUSAL_PROMPT_READER": "y rheswm dros pam yr hoffech chi gael eich esgusodi rhag gwasanaethu ar reithgor",
-  "OB_EXCUSAL_PROMPT": "Dywedwch pam fod yr unigolyn angen cael ei esgusodi rhag gwasanaethu ar reithgor.",
+  "OB_EXCUSAL_PROMPT": "Pam fod angen iddo gael ei esgusodi rhag gwasanaethu ar reithgor?",
   "OB_EXCUSAL_PROMPT_READER": "y rheswm dros pam yr hoffai'r unigolyn rydych yn ymateb ar ei ran gael ei esgusodi rhag gwasanaethu ar reithgor",
 
   "JUROR_EMPLOYED_HEADER": "Bu ichi ddweud wrthym p'un a oeddech erioed wedi gweithio i'r System Cyfiawnder Troseddol ",

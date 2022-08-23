@@ -92,9 +92,9 @@
 
   "JUROR_EXCUSAL_HEADER": "Because you asked to be excused from jury service, you told us",
   "OB_EXCUSAL_HEADER": "Because you asked for the person you're replying for to be excused from jury service, you told us ",
-  "JUROR_EXCUSAL_PROMPT": "Say why you need to be excused from jury service",
+  "JUROR_EXCUSAL_PROMPT": "Why do you need to be excused from jury service?",
   "JUROR_EXCUSAL_PROMPT_READER": "the reason you gave for why you need to be excused from jury service",
-  "OB_EXCUSAL_PROMPT": "Say why the person needs to be excused from jury service",
+  "OB_EXCUSAL_PROMPT": "Why do they need to be excused from jury service?",
   "OB_EXCUSAL_PROMPT_READER": "the reason you gave for why the person needs to be excused from jury service",
 
   "JUROR_EMPLOYED_HEADER": "You told us whether you had worked for the criminal justice system",

@@ -204,28 +204,23 @@ table#cal td.empty:hover {
 
 */
 .background-grey {
-  background-color: #dee0e2;
+  background-color: govuk-colour("light-grey");
   padding-top: 15px;
   padding-bottom: 15px;
   padding-left: 15px;
 }
 
 .background-white {
-  background-color: #ffffff; }
+  background-color: white; }
 
 
 .grey-background-box {
-  background-color: #dee0e2;
+  background-color:  govuk-colour("light-grey");
   padding: 5px 42px 0px 40px; }
 
 .input-checkbox-white {
   background-color: white;
 } 
-
-.pink-background-box {
-  background-color: #fbdeea;
-  padding: 5px 42px 0px 40px; }
-
 
  /*
 

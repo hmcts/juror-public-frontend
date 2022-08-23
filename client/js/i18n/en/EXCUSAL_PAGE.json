@@ -1,12 +1,19 @@
 {
-  "HEADING": "Request to be excused from jury service",
-  "PROMPT": "Why do you need to be excused from jury service?",
-  "PROMPT_OB": "Why does the person you're replying for need to be excused from jury service?",
-  "HINT": "Provide a brief reason why you cannot do jury service in the next 12 months. If we need further information or proof, we will get in touch with you. There is no need to send any additional information at this stage.",
-  "HINT_OB": "Provide a brief reason why the person you're answering for cannot do jury service in the next 12 months. If we need further information or proof, we will get in touch with you. There is no need to send any additional information at this stage.",
+  "HEADING": "Why do you need to be excused from jury service?",
+  "HEADING_OB": "Why do they need to be excused from jury service?",
+  "HINT_1": "Explain why you cannot do jury service in the next 12 months.",
+  "HINT_2": "You do not need to attach or gather evidence before your summons deadline. We'll contact you later if we need this.",
+  "HINT_1_OB": "Explain why they cannot do jury service in the next 12 months.",
+  "HINT_2_OB": "You do not need to attach or gather evidence before their summons deadline. We'll get in touch later if we need this.",
   "ERROR": "Please say why you need to be excused",
-  "EVIDENCE_QUESTION": "What proof will I need to provide?",
-  "EVIDENCE_QUESTION_OB": "What proof might I need to provide?",
-  "EVIDENCE_ANSWER": "You may need to prove your reason for why you cannot do jury service in the next 12 months. For example, if you are too ill, we might ask to see a letter from your doctor.",
-  "EVIDENCE_ANSWER_OB": "You may need to prove the reason for why the person you're answering for cannot do jury service during the next 12 months. For example, if they are too ill, we might ask to see a letter from their doctor."
+  "EVIDENCE_QUESTION": "Will I need to provide evidence soon?",
+  "EVIDENCE_QUESTION_OB": "Will we need to provide evidence soon?",
+  "EVIDENCE_GUIDANCE_1": "If we need evidence, we'll contact you separately to tell you.",
+  "EVIDENCE_GUIDANCE_1_OB": "If we need evidence, we'll contact you separately to tell you.",
+  "EVIDENCE_GUIDANCE_2": "For example, if you're too ill for jury service, we might ask for a letter from your doctor.",
+  "EVIDENCE_GUIDANCE_2_OB": "For example, if they're too ill for jury service, we might ask for a letter from their doctor.",
+  "EVIDENCE_GUIDANCE_3": "You'll be given time to gather any evidence so do not worry about trying to gather this now.",
+  "EVIDENCE_GUIDANCE_3_OB": "They'll be given time to gather any evidence so do not worry about trying to gather this now.",
+  "EVIDENCE_GUIDANCE_4": "You should wait until we've told you what evidence we need, if any.",
+  "EVIDENCE_GUIDANCE_4_OB": "Wait until we've told you what evidence we need, if any."
 }
