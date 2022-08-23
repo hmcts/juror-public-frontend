@@ -3,13 +3,13 @@
   {# Deferral date input field with datepicker #}
 
   <div class="govuk-form-group {%if params.dateError%}govuk-form-group--error{% endif %}">
-    <fieldset class="govuk-fieldset" role="group" aria-describedby="deferral-date-group-hint">
+    <fieldset class="govuk-fieldset" role="group" aria-describedby="{{params.datepickerId}}-group-hint">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
         <h1 class="govuk-fieldset__heading">
          {{params.heading}}
         </h1>
       </legend>
-      <div id="deferral-date-group-hint" class="govuk-hint">
+      <div id="{{params.datepickerId}}-group-hint" class="govuk-hint">
         {{params.hint}}
       </div>
 
@@ -19,7 +19,7 @@
         </p>
       {% endif %}
 
-      <div class="govuk-date-input datepicker-group" id="datepicker-group">
+      <div class="govuk-date-input datepicker-group" id="{{params.datepickerId}}-group">
         <div class="govuk-date-input__item">
           <div class="govuk-form-group">
             <label class="govuk-label govuk-date-input__label" for="{{params.dateFieldId}}Day">
@@ -42,7 +42,7 @@
             <input class="govuk-input govuk-date-input__input govuk-input--width-4 {%if params.dateError%}govuk-input--error{% endif %}" id="{{params.dateFieldId}}Year" name="{{params.dateFieldId}}Year" type="text" pattern="[0-9]*" inputmode="numeric" value="{{params.yearValue}}"></div>
         </div>
 
-        <button id="{{params.buttonId}}" class="datepicker-button noscript" aria-hidden="true"><img class="" src="/assets/images/icons/icon-calendar.png" alt="{{-params.buttonAlt-}}"/></button>
+        <button id="{{params.buttonId}}" class="datepicker-button noscript" ><img class="" src="/assets/images/icons/icon-calendar.png" alt="{{-params.buttonAlt-}}" /></button>
 
         
 

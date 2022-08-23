@@ -33,9 +33,9 @@
 
       <div class="govuk-body govuk-table__cell" >
         {% if user.thirdParty == 'Yes' %}
-          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.DETAILS_HEADER_OB }}</h3>
+          <h2 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.DETAILS_HEADER_OB }}</h2>
         {% else %}
-          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.DETAILS_HEADER_NORMAL }}</h3>
+          <h2 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.DETAILS_HEADER_NORMAL }}</h2>
         {% endif %}
       </div>
 
@@ -168,7 +168,7 @@
       <br>
 
       <div class="govuk-body govuk-table__cell" >
-        <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_HEADING }}</h3>
+        <h2 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_HEADING }}</h2>
       </div>
 
       <dl class="govuk-summary-list">
@@ -306,12 +306,12 @@
           </dd>
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             {% if user.thirdParty == 'Yes' %}
-              <a class="govuk-link" href="{{ url('steps.qualify.residency.change.tp.get') }}" id="changeLivedConsecutive" aria-describedby="question-livedconsecutive">
+              <a class="govuk-link" href="{{ url('steps.qualify.residency.change.tp.get') }}" id="changeLivedConsecutive" aria-describedby="questionLivedConsecutive">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_LIVED_CONSECUTIVE_READER }}</span>
               </a>
             {% else %}
-              <a class="govuk-link" href="{{ url('steps.qualify.residency.change.get') }}" id="changeLivedConsecutive" aria-describedby="question-livedconsecutive">
+              <a class="govuk-link" href="{{ url('steps.qualify.residency.change.get') }}" id="changeLivedConsecutive" aria-describedby="questionLivedConsecutive">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_LIVED_CONSECUTIVE_READER }}</span>
               </a>
@@ -377,12 +377,12 @@
           </dd>
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             {% if user.thirdParty == 'Yes' %}
-              <a class="govuk-link" href="{{ url('steps.qualify.cjs.employed.change.tp.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">
+              <a class="govuk-link" href="{{ url('steps.qualify.cjs.employed.change.tp.get') }}" id="changeCJS" aria-describedby="questionCJSEmployed">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_EMPLOYED_QUESTION_READER }}</span>
               </a>
             {% else %}
-              <a class="govuk-link" href="{{ url('steps.qualify.cjs.employed.change.get') }}" id="changeCJS" aria-describedby="question-cjsemployed">
+              <a class="govuk-link" href="{{ url('steps.qualify.cjs.employed.change.get') }}" id="changeCJS" aria-describedby="questionCJSEmployed">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_EMPLOYED_QUESTION_READER }}</span>
               </a>
@@ -417,12 +417,12 @@
           </dd>
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             {% if user.thirdParty == 'Yes' %}
-              <a class="govuk-link" href="{{ url('steps.qualify.bail.change.tp.get') }}" id="changeOnBail" aria-describedby="question-bail">
+              <a class="govuk-link" href="{{ url('steps.qualify.bail.change.tp.get') }}" id="changeOnBail" aria-describedby="questionOnBail">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_BAIL_READER }}</span>
               </a>
             {% else %}
-              <a class="govuk-link" href="{{ url('steps.qualify.bail.change.get') }}" id="changeOnBail" aria-describedby="question-bail">
+              <a class="govuk-link" href="{{ url('steps.qualify.bail.change.get') }}" id="changeOnBail" aria-describedby="questionOnBail">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_BAIL_READER }}</span>
               </a>
@@ -457,12 +457,12 @@
           </dd>
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             {% if user.thirdParty == 'Yes' %}
-              <a class="govuk-link" href="{{ url('steps.qualify.convictions.change.tp.get') }}" id="changeConvictions" aria-describedby="question-conviction">
+              <a class="govuk-link" href="{{ url('steps.qualify.convictions.change.tp.get') }}" id="changeConvictions" aria-describedby="questionConvictions">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_CONVICTED_READER }}</span>
               </a>
             {% else %}
-              <a class="govuk-link" href="{{ url('steps.qualify.convictions.change.get') }}" id="changeConvictions" aria-describedby="question-conviction">
+              <a class="govuk-link" href="{{ url('steps.qualify.convictions.change.get') }}" id="changeConvictions" aria-describedby="questionConvictions">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_CONVICTED_READER }}</span>
               </a>
@@ -497,12 +497,12 @@
           </dd>
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             {% if user.thirdParty == 'Yes' %}
-              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.sectioned.change.tp.get') }}" id="changeMentalHealthSectioned" aria-describedby="question-mentalhealth">
+              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.sectioned.change.tp.get') }}" id="changeMentalHealthSectioned" aria-describedby="questionMentalHealthSectioned">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH_SECTIONED_READER }}</span>
               </a>
             {% else %}
-              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.sectioned.change.get') }}" id="changeMentalHealthSectioned" aria-describedby="question-mentalhealth">
+              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.sectioned.change.get') }}" id="changeMentalHealthSectioned" aria-describedby="questionMentalHealthSectioned">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_MENTAL_HEALTH_SECTIONED_READER }}</span>
               </a>
@@ -537,12 +537,12 @@
           </dd>
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             {% if user.thirdParty == 'Yes' %}
-              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.capacity.change.tp.get') }}" id="changeMentalHealthCapacity" aria-describedby="question-mentalhealth">
+              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.capacity.change.tp.get') }}" id="changeMentalHealthCapacity" aria-describedby="questionMentalHealthCapacity">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY_READER }}</span>
               </a>
             {% else %}
-              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.capacity.change.get') }}" id="changeMentalHealthCapacity" aria-describedby="question-mentalhealth">
+              <a class="govuk-link" href="{{ url('steps.qualify.mental.health.capacity.change.get') }}" id="changeMentalHealthCapacity" aria-describedby="questionMentalHealthCapacity">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION_MENTAL_HEALTH_CAPACITY_READER }}</span>
               </a>
@@ -596,12 +596,12 @@
           </dd>
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             {% if user.thirdParty == 'Yes' %}
-              <a class="govuk-link" href="{{ url('steps.confirm.date.change.tp.get') }}" id="changeConfirmDate" aria-describedby="question-confirmdate">
+              <a class="govuk-link" href="{{ url('steps.confirm.date.change.tp.get') }}" id="changeConfirmDate" aria-describedby="questionConfirmDate">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_CONFIRM_DATE_READER }}</span>
               </a>
             {% else %}
-              <a class="govuk-link" href="{{ url('steps.confirm.date.change.get') }}" id="changeConfirmDate" aria-describedby="question-confirmdate">
+              <a class="govuk-link" href="{{ url('steps.confirm.date.change.get') }}" id="changeConfirmDate" aria-describedby="questionConfirmDate">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_CONFIRM_DATE_READER }}</span>
               </a>
@@ -639,12 +639,12 @@
             </dd>
             <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
               {% if user.thirdParty == 'Yes' %}
-                <a class="govuk-link" href="{{ url('steps.confirm.date.deferral.change.tp.get') }}" id="changeDeferral" aria-describedby="question-changedate-reason">
+                <a class="govuk-link" href="{{ url('steps.confirm.date.deferral.change.tp.get') }}" id="changeDeferral" aria-describedby="questionDeferralReason">
                   {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                   <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_CHANGE_DATE_QUESTION_1_READER }}</span>
                 </a>
               {% else %}
-                <a class="govuk-link" href="{{ url('steps.confirm.date.deferral.change.get') }}" id="changeDeferral" aria-describedby="question-changedate-reason">
+                <a class="govuk-link" href="{{ url('steps.confirm.date.deferral.change.get') }}" id="changeDeferral" aria-describedby="questionDeferralReason">
                   {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                   <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_CHANGE_DATE_QUESTION_1_READER }}</span>
                 </a>
@@ -694,12 +694,12 @@
             </dd>
             <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
               {% if user.thirdParty == 'Yes' %}
-                <a class="govuk-link" href="{{ url('steps.confirm.date.deferral-dates.change.tp.get') }}" id="changeDeferralDates" aria-describedby="question-changedate-dates">
+                <a class="govuk-link" href="{{ url('steps.confirm.date.deferral-dates.change.tp.get') }}" id="changeDeferralDates" aria-describedby="questionDeferralDates">
                   {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                   <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_CHANGE_DATE_QUESTION_2_READER }}</span>
                 </a>
               {% else %}
-                <a class="govuk-link" href="{{ url('steps.confirm.date.deferral-dates.change.get') }}" id="changeDeferralDates" aria-describedby="question-changedate-dates">
+                <a class="govuk-link" href="{{ url('steps.confirm.date.deferral-dates.change.get') }}" id="changeDeferralDates" aria-describedby="questionDeferralDates">
                   {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                   <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_CHANGE_DATE_QUESTION_2_READER }}</span>
                 </a>
@@ -738,12 +738,12 @@
             </dd>
             <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
               {% if user.thirdParty == 'Yes' %}
-                <a class="govuk-link" href="{{ url('steps.confirm.date.excusal.change.tp.get') }}" id="changeExcusalReason" aria-describedby="question-excusal">
+                <a class="govuk-link" href="{{ url('steps.confirm.date.excusal.change.tp.get') }}" id="changeExcusalReason" aria-describedby="questionExcusalReason">
                   {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                   <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_EXCUSAL_PROMPT_READER }}</span>
                 </a>
               {% else %}
-                <a class="govuk-link" href="{{ url('steps.confirm.date.excusal.change.get') }}" id="changeExcusalReason" aria-describedby="question-excusal">
+                <a class="govuk-link" href="{{ url('steps.confirm.date.excusal.change.get') }}" id="changeExcusalReason" aria-describedby="questionExcusalReason">
                   {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                   <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_EXCUSAL_PROMPT_READER }}</span>
                 </a>
@@ -792,12 +792,12 @@
           </dd>
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             {% if user.thirdParty == 'Yes' %}
-              <a class="govuk-link" href="{{ url('steps.assistance.change.tp.get') }}" id="changeAdjustments" aria-describedby="question-assistance1">
+              <a class="govuk-link" href="{{ url('steps.assistance.change.tp.get') }}" id="changeAdjustments" aria-describedby="questionAdjustments">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_ASSISTANCE_QUESTION_1_READER }}</span>
               </a>
             {% else %}
-              <a class="govuk-link" href="{{ url('steps.assistance.change.get') }}" id="changeAdjustments" aria-describedby="question-assistance1">
+              <a class="govuk-link" href="{{ url('steps.assistance.change.get') }}" id="changeAdjustments" aria-describedby="questionAdjustments">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_ASSISTANCE_QUESTION_1_READER }}</span>
               </a>
@@ -806,14 +806,14 @@
         </div>
 
         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-summary-list__key_jd">
+          <dt class="govuk-summary-list__key govuk-summary-list__key_jd" id="questionSpecialArrangements">
             {% if user.thirdParty == 'Yes' %}
               {{ texts.CHECK_ANSWERS_PAGE.OB_ASSISTANCE_QUESTION_2 }}
             {% else %}
               {{ texts.CHECK_ANSWERS_PAGE.JUROR_ASSISTANCE_QUESTION_2 }}
             {% endif %}
           </dt>
-          <dd class="govuk-summary-list__value govuk-summary-list__value_jd">
+          <dd class="govuk-summary-list__value govuk-summary-list__value_jd" id="answerSpecialArrangements">
             {% if user.assistanceSpecialArrangements and user.assistanceNeeded == 'Yes' %}
               <div id="assistanceSpecialArrangements">{{ user.assistanceSpecialArrangements }}</div>
             {% else %}
@@ -822,12 +822,12 @@
           </dd>
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             {% if user.thirdParty == 'Yes' %}
-              <a class="govuk-link" href="{{ url('steps.assistance.change.tp.get') }}" id="changeSpecialArrangements" aria-describedby="question-assistance2">
+              <a class="govuk-link" href="{{ url('steps.assistance.change.tp.get') }}" id="changeSpecialArrangements" aria-describedby="questionSpecialArrangements">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.OB_ASSISTANCE_QUESTION_2_READER }}</span>
               </a>
             {% else %}
-              <a class="govuk-link" href="{{ url('steps.assistance.change.get') }}" id="changeSpecialArrangements" aria-describedby="question-assistance2">
+              <a class="govuk-link" href="{{ url('steps.assistance.change.get') }}" id="changeSpecialArrangements" aria-describedby="questionSpecialArrangements">
                 {{ texts.CHECK_ANSWERS_PAGE.CHANGE_LINK }}
                 <span class="govuk-visually-hidden">&nbsp;{{ texts.CHECK_ANSWERS_PAGE.JUROR_ASSISTANCE_QUESTION_2_READER }}</span>
               </a>
@@ -869,14 +869,14 @@
             {{ errors.items['informationConfirmed'][0].details }}
           </span>
           {% endif %}
-          <div class="{% if errors.items['informationConfirmed'] %} pink-background-box {% else %} grey-background-box {% endif %}">
+          <div class="grey-background-box">
             
             <br style="clear:both">
 
             <fieldset class="govuk-fieldset">
               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="informationConfirmed" name="informationConfirmed" type="checkbox" value="true">
+                  <input class="govuk-checkboxes__input govuk-error" id="informationConfirmed" name="informationConfirmed" type="checkbox" value="true">
                   <label class="govuk-label govuk-checkboxes__label" for="informationConfirmed">
                     {% if user.thirdParty == 'Yes' %}
                       {{ texts.CHECK_ANSWERS_PAGE.OB_CONFIRM_TRUE }}

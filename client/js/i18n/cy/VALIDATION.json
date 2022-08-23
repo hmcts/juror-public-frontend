@@ -111,7 +111,9 @@
     "YEAR_MISSING_OB": "Nodwch y flwyddyn gafodd yr unigolyn ei eni",
     "YEAR_INVALID_OB": "Rhowch y flwyddyn y ganwyd yr unigolyn fel rhif 4 digid. Er enghraifft, 1982",
     "INVALID_DATE": "Gwiriwch eich dyddiad geni",
-    "INVALID_DATE_OB": "Nodwch ddydiad geni'r unigolyn"
+    "INVALID_DATE_OB": "Nodwch ddydiad geni'r unigolyn",
+    "CONFIRM_MISSING": "Tell us if your date of birth is correct",
+    "CONFIRM_MISSING_OB": "Tell us if their date of birth is correct"
   },
 
   "QUALIFY": {
@@ -235,10 +237,10 @@
   },
 
   "EXCUSAL": {
-    "CHECK_REASON": "Dywedwch pam eich bod angen cael eich esgusodi",
-    "CHECK_REASON_OB": "Dywedwch pam fod yr unigolyn angen cael ei esgusodi",
-    "CHECK_REASON_MISSING": "Dywedwch pam eich bod angen cael eich esgusodi",
-    "CHECK_REASON_MISSING_OB": "Dywedwch pam fod yr unigolyn angen cael ei esgusodi",
+    "CHECK_REASON": "Rhowch y rheswm pam na allwch wasanaethu ar reithgor yn ystod y 12 mis nesaf",
+    "CHECK_REASON_OB": "Rhowch y rheswm pam na all wasanaethu ar reithgor yn ystod y 12 mis nesaf",
+    "CHECK_REASON_MISSING": "Rhowch y rheswm pam na allwch wasanaethu ar reithgor yn ystod y 12 mis nesaf",
+    "CHECK_REASON_MISSING_OB": "Rhowch y rheswm pam na all wasanaethu ar reithgor yn ystod y 12 mis nesaf",
     "CHECK_REASON_LENGTH": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau",
     "CHECK_REASON_LENGTH_OB": "Os gwelwch yn dda, sicrhewch fod hyd y rheswm yn llai na 1000 o nodau"
   },

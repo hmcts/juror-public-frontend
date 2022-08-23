@@ -21,7 +21,7 @@
 
       // This page should not be accessed if we have not passed through the regular your details page and provided
       // a date of birth and a hearing date.
-      if (typeof req.session.user === 'undefined' || req.session.user.dateOfBirth === 'undefined') {
+      if (typeof req.session.user === 'undefined' || typeof req.session.user.dateOfBirth === 'undefined') {
         return res.redirect(app.namedRoutes.build('steps.your.details.get'));
       }
 
@@ -43,7 +43,7 @@
           items: req.session.errors,
         },
         user: getUser,
-        formattedDob: moment(getUser.dateOfBirth).format('DD/MM/YYYY'),
+        formattedDob: moment(getUser.dateOfBirth).format('DD MMMM YYYY'),
         currentAge: moment().diff(moment(getUser.dateOfBirth), 'years'),
         backLinkUrl: backLinkUrl
       });
@@ -52,54 +52,26 @@
 
   module.exports.create = function(app) {
     return function(req, res) {
-      // Join parts of date of birth
-      var dobValue
-        , validatorResult;
+
+      var validatorResult;
 
       // Reset error and saved field sessions
       delete req.session.errors;
       delete req.session.formFields;
 
-      // Add dob fields into single dob object
-      if (req.body['dobDay'].length > 0 && req.body['dobMonth'].length > 0 && req.body['dobYear'].length > 0) {
-        dobValue = moment(
-          [
-            req.body['dobYear'],
-            req.body['dobMonth'],
-            req.body['dobDay']
-          ].filter(function(val) {
-            return val;
-          }).join('-')
-          , 'YYYY-MM-DD');
-
-        // Add dobValue to req.body for validation
-        req.body['dateOfBirth'] = dobValue;
-
+      // Check if we have DOB values
+      if (req.session.user['dateOfBirth'] && req.session.user['dobDay'] && req.session.user['dobMonth'] && req.session.user['dobYear']) {
         req.body['ageTimeOfHearing'] = utils.calculateAgeAtHearing(
           req.body['dateOfBirth'],
           req.session.user['hearingDateTimestamp']
         );
+      } else {
+        return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.your.details.date-of-birth.get', req.session.user.thirdParty)));
       }
 
       // Perform validation
       validatorResult = validate(req.body, require('../../../../config/validation/your-details-confirm')(req));
       if (typeof validatorResult !== 'undefined') {
-
-        // Only show 1 error at a time for the DOB
-        // Report the first error item if multiple errors were raised
-
-        if (validatorResult.dobDay){
-          delete validatorResult.dobMonth;
-          delete validatorResult.dobYear;
-          delete validatorResult.dateOfBirth;
-        }
-        if (validatorResult.dobMonth){
-          delete validatorResult.dobYear;
-          delete validatorResult.dateOfBirth;
-        }
-        if (validatorResult.dobYear){
-          delete validatorResult.dateOfBirth;
-        }
 
         req.session.errors = validatorResult;
         req.session.formFields = req.body;
@@ -107,32 +79,41 @@
         return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.your.details.confirm', req.session.user.thirdParty)));
       }
 
-      // Update date
-      req.session.user['dateOfBirth'] = dobValue;
-      req.session.user['dobDay'] = req.body['dobDay'];
-      req.session.user['dobMonth'] = req.body['dobMonth'];
-      req.session.user['dobYear'] = req.body['dobYear'];
-
-      // reset ineligibleAge
+      // Reset ineligibleAge
       req.session.user['ineligibleAge'] = false;
 
-      // redirect to check your answers if if under lower age limit or above higher age limit
-      // this would mean the person is ineligible
-      if (req.body['ageTimeOfHearing'] < app.ageSettings.lowerAgeLimit || req.body['ageTimeOfHearing'] >= app.ageSettings.upperAgeLimit) {
-        req.session.user['ineligibleAge'] = true;
-        return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
+      if (req.body['dobConfirm'] === 'Yes'){
+
+        // Juror confirmed age correct - determine where to redirect
+
+        // Check if age ineligible - under lower age limit or above higher age limit
+        if (req.body['ageTimeOfHearing'] < app.ageSettings.lowerAgeLimit || req.body['ageTimeOfHearing'] >= app.ageSettings.upperAgeLimit) {
+          req.session.user['ineligibleAge'] = true;
+          return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
+        }
+
+        
+        if (req.session.change === true){
+          return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
+        }
+  
+        // If third party, redirect back onto third party route
+        if (req.session.user['thirdParty'] === 'Yes') {
+          return res.redirect(app.namedRoutes.build('branches.third.party.contact.details.get'));
+        }
+
+        return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.qualify', req.session.user.thirdParty)));
+
       }
 
-      if (req.session.change === true){
-        return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
-      }
-
-      // If third party, redirect back onto third party route
+      // Juror confirmed age incorrect - redirect back to DOB page
       if (req.session.user['thirdParty'] === 'Yes') {
-        return res.redirect(app.namedRoutes.build('branches.third.party.contact.details.get'));
+        return res.redirect(app.namedRoutes.build('branches.third.party.personal.details.date-of-birth.get'));
       }
 
-      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.qualify', req.session.user.thirdParty)));
+      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.your.details.date-of-birth', req.session.user.thirdParty)));
+
+
     };
   };
 
