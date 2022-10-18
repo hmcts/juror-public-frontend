@@ -42,7 +42,7 @@
           {% endif %}
         </h1>
 
-        <p class="govuk-body">{{ texts.DEFERRAL_PAGE.DATES.GUIDANCE_P1 }} {{deferralDateRange.earliestDateMed}} {{ texts.DEFERRAL_PAGE.DATES.GUIDANCE_AND }} {{deferralDateRange.latestDateMed}}</p>
+        <p class="govuk-body">{{ texts.DEFERRAL_PAGE.DATES.GUIDANCE_P1 }} {{deferralDateRange.earliestDateShort | translateDate("D MM YYYY", "D MMMM YYYY", texts.INTERFACE.HTML_LANG)}} {{ texts.DEFERRAL_PAGE.DATES.GUIDANCE_AND }} {{deferralDateRange.latestDateShort | translateDate("D MM YYYY", "D MMMM YYYY", texts.INTERFACE.HTML_LANG)}}</p>
 
         <p class="govuk-body">
           {% if user.thirdParty == 'Yes' %}

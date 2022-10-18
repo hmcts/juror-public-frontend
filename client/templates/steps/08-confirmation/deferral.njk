@@ -160,11 +160,6 @@
           {% endif %}
         </p>
 
-        <br/>
-        <div class="notice">
-          {{texts.CONFIRMATION.YOU_CAN_READ}}<a class="govuk-link" target="_blank" id="service-guide" href="{{ texts.CONFIRMATION.SERVICE_GUIDE_LINK }}"{% if trackingCode %}onclick="trackEvent('PDF guide', 'Download', 'Guide to Jury Service')"{% endif %} alt="{{ texts.INTERFACE.LINK_OPENS_NEW_WINDOW }}">{{ texts.CONFIRMATION.SERVICE_GUIDE }}</a>
-        </div>
-
       </div>
 
       {% include "../../includes/feedback.njk" %}

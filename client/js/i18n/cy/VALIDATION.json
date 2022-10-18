@@ -112,8 +112,8 @@
     "YEAR_INVALID_OB": "Rhowch y flwyddyn y ganwyd yr unigolyn fel rhif 4 digid. Er enghraifft, 1982",
     "INVALID_DATE": "Gwiriwch eich dyddiad geni",
     "INVALID_DATE_OB": "Nodwch ddydiad geni'r unigolyn",
-    "CONFIRM_MISSING": "Tell us if your date of birth is correct",
-    "CONFIRM_MISSING_OB": "Tell us if their date of birth is correct"
+    "CONFIRM_MISSING": "Dywedwch wrthym os yw eich dyddiad geni yn gywir",
+    "CONFIRM_MISSING_OB": "Dywedwch wrthym os yw ei ddyddiad geni yn gywir"
   },
 
   "QUALIFY": {

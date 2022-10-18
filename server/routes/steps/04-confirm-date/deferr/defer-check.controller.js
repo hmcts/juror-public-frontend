@@ -29,8 +29,7 @@
       if (req.session.user.deferral.dates) {
         req.session.user.deferral.dates.split(',')
           .forEach(function(dateStr, index) {
-            deferralDate = moment(dateStr, 'DD/MM/YYYY');
-            displayDates['date' + (index + 1)] = deferralDate.format('dddd D MMMM YYYY');
+            displayDates['date' + (index + 1)] = dateStr;
           });
       }
 

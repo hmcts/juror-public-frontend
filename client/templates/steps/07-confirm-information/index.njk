@@ -82,12 +82,15 @@
         </div>
 
         {# date of birth #}
+        {% set dobValue %}
+          {{- user.dobDay -}}/{{- user.dobMonth -}}/{{- user.dobYear -}}
+        {% endset %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key" id="question-dob">
             {{ texts.CHECK_ANSWERS_PAGE.DOB_LABEL }}
           </dt>
           <dd class="govuk-summary-list__value" id="dateOfBirth">
-            {{ user.dobDay }} / {{ user.dobMonth }} / {{ user.dobYear }}
+            {{ dobValue | translateDate("DD/MM/YYYY", "D MMMM YYYY", texts.INTERFACE.HTML_LANG)}}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="{{ personalDetailsChangeDateOfBirthLink }}" id="changeDob" aria-describedby="question-dob">
@@ -670,7 +673,7 @@
                     {{ texts.DEFERRAL_PAGE.DATES.DATE1_LABEL }}
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{ deferralDisplayDates['date1'] }}
+                    {{ deferralDisplayDates['date1'] | translateDate('DD/MM/YYYY', 'dddd D MMMM YYYY', texts.INTERFACE.HTML_LANG) }}
                   </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -678,7 +681,7 @@
                     {{ texts.DEFERRAL_PAGE.DATES.DATE2_LABEL }}
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{ deferralDisplayDates['date2'] }}
+                    {{ deferralDisplayDates['date2'] | translateDate('DD/MM/YYYY', 'dddd D MMMM YYYY', texts.INTERFACE.HTML_LANG) }}
                   </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -686,7 +689,7 @@
                     {{ texts.DEFERRAL_PAGE.DATES.DATE3_LABEL }}
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    {{ deferralDisplayDates['date3'] }}
+                    {{ deferralDisplayDates['date3'] | translateDate('DD/MM/YYYY', 'dddd D MMMM YYYY', texts.INTERFACE.HTML_LANG) }}
                   </dd>
                 </div>
               </dl>

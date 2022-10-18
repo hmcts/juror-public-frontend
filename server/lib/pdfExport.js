@@ -3,6 +3,8 @@ var moment = require('moment');
 ;(function(){
   'use strict';
 
+  var filters = require('../components/filters')
+
   module.exports.getPdfDocumentDescription = function(juror, texts) {
     return {
       pageSize: 'A4',
@@ -117,7 +119,7 @@ var moment = require('moment');
                 rowSpan: 3
               },
               {
-                text: juror.hearingDate,
+                text: filters.translateDate(juror.hearingDateShort, 'DD/MM/YYYY', 'dddd D MMMM YYYY', texts.sharedText.lang),
                 marginBottom: 15
               }
               ],
@@ -1211,7 +1213,7 @@ var moment = require('moment');
                 rowSpan: 3
               },
               {
-                text: juror.hearingDate,
+                text: filters.translateDate(juror.hearingDateShort, 'DD/MM/YYYY', 'dddd D MMMM YYYY', texts.sharedText.lang),
                 marginBottom: 15
               }
               ],
@@ -2497,7 +2499,7 @@ var moment = require('moment');
                 rowSpan: 3
               },
               {
-                text: juror.hearingDate,
+                text: filters.translateDate(juror.hearingDateShort, 'DD/MM/YYYY', 'dddd D MMMM YYYY', texts.sharedText.lang),
                 marginBottom: 15
               }
               ],
@@ -2723,7 +2725,7 @@ var moment = require('moment');
                 rowSpan: 3
               },
               {
-                text: juror.hearingDate,
+                text: filters.translateDate(juror.hearingDateShort, 'DD/MM/YYYY', 'dddd D MMMM YYYY', texts.sharedText.lang),
                 marginBottom: 15
               }
               ],
