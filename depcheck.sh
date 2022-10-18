@@ -22,6 +22,8 @@ docker run --rm \
     --volume "$REPORT_DIRECTORY":/report \
     owasp/dependency-check \
     --scan ./node_modules \
+    --propertyfile "/src/.properties" \
+    --suppression "/src/depcheck-suppression.xml" \
     --disableNodeAuditCache \
     --nodeAuditSkipDevDependencies \
     --nodePackageSkipDevDependencies \

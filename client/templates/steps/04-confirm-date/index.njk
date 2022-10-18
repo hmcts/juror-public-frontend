@@ -32,7 +32,7 @@
 
     {% set radioYesLabel %}
       {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES_1_OB | safe }}
-      {{ user.hearingDate }}
+      {{ user.hearingDateShort | translateDate("DD/MM/YYYY", "dddd D MMMM YYYY", texts.INTERFACE.HTML_LANG)}}
       {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES_2_OB | safe }}
     {% endset %}
 
@@ -47,7 +47,7 @@
 
     {% set radioYesLabel %}
       {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES_1  | safe }}
-      {{ user.hearingDate }}
+      {{ user.hearingDateShort | translateDate("DD/MM/YYYY", "dddd D MMMM YYYY", texts.INTERFACE.HTML_LANG)}}
       {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES_2  | safe }}
     {% endset %}
 
@@ -99,7 +99,7 @@
               {% endif %}
             </p>
             <h1 class="govuk-panel__title govuk-!-font-size-36">
-              {{ user.hearingDate }}
+              {{ user.hearingDateShort | translateDate("DD/MM/YYYY", "dddd D MMMM YYYY", texts.INTERFACE.HTML_LANG) }}
             </h1>
             <div class="govuk-panel__body govuk-!-font-size-24">
               {{ user.hearingTime }}<br>

@@ -52,6 +52,32 @@
     isString: function(obj) {
       return typeof obj === 'string';
     },
+
+    translateDate: function(dateValue, sourceFormat, displayFormat, lang) {
+
+      var mnt = require('moment')
+        , returnValue
+
+      // Set defaults
+      returnValue = dateValue;
+      mnt.locale('en-gb');
+
+      if (lang === 'en'){
+        lang = 'en-gb';
+      }
+
+      try {
+        mnt.locale(lang);
+        returnValue = mnt(dateValue, sourceFormat).format(displayFormat);
+      } catch (ex){
+        console.error(ex);
+      }
+
+      mnt.locale('en-gb');
+      return returnValue;
+
+    },
+
   };
 
 })();

@@ -57,7 +57,7 @@
                 {{ texts.DEFERRAL_PAGE.DATES.DATE1_LABEL }}
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ displayDates['date1'] }}
+                {{ displayDates['date1'] | translateDate('DD/MM/YYYY', 'dddd D MMMM YYYY', texts.INTERFACE.HTML_LANG) }}
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -65,7 +65,7 @@
                 {{ texts.DEFERRAL_PAGE.DATES.DATE2_LABEL }}
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ displayDates['date2'] }}
+                {{ displayDates['date2'] | translateDate('DD/MM/YYYY', 'dddd D MMMM YYYY', texts.INTERFACE.HTML_LANG) }}
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -73,7 +73,7 @@
                 {{ texts.DEFERRAL_PAGE.DATES.DATE3_LABEL }}
               </dt>
               <dd class="govuk-summary-list__value">
-                {{ displayDates['date3'] }}
+                {{ displayDates['date3'] | translateDate('DD/MM/YYYY', 'dddd D MMMM YYYY', texts.INTERFACE.HTML_LANG) }}
               </dd>
             </div>
           </dl>
