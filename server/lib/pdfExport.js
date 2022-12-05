@@ -439,7 +439,7 @@ var moment = require('moment');
             style: 'smallDull'
           },
           {
-            text: moment(juror.dateOfBirth).format('DD/MM/YYYY'),
+            text: filters.translateDate(moment(juror.dateOfBirth).format('DD/MM/YYYY'), 'DD/MM/YYYY', 'D MMMM YYYY', texts.sharedText.lang),
             width: '*'
           }
           ],
@@ -887,7 +887,7 @@ var moment = require('moment');
           marginBottom: juror.deferral ? 10 : 0
         },
         {
-          text: juror.deferral ? texts.jurorPDF.deferralDate1Label + '\n' + juror.deferral.displayDates['date1'] + '\n\n' + texts.jurorPDF.deferralDate2Label + '\n' + juror.deferral.displayDates['date2'] + '\n\n' + texts.jurorPDF.deferralDate3Label + '\n' + juror.deferral.displayDates['date3']  : '',
+          text: juror.deferral ? texts.jurorPDF.deferralDate1Label + '\n' + filters.translateDate(juror.deferral.displayDates['date1'], 'DD/MM/YYYY', 'dddd D MMMM YYYY', texts.sharedText.lang) + '\n\n' + texts.jurorPDF.deferralDate2Label + '\n' + filters.translateDate(juror.deferral.displayDates['date2'], 'DD/MM/YYYY', 'dddd D MMMM YYYY', texts.sharedText.lang) + '\n\n' + texts.jurorPDF.deferralDate3Label + '\n' + filters.translateDate(juror.deferral.displayDates['date3'], 'DD/MM/YYYY', 'dddd D MMMM YYYY', texts.sharedText.lang)  : '',
           style: 'textReg',
           marginBottom: juror.deferral ? 5 : 0
         },
@@ -1059,17 +1059,34 @@ var moment = require('moment');
           marginBottom: 10
         },
         {
-          text: texts.sharedText.contactingInfoOne
+          text: texts.sharedText.contactingInfoOne,
+          marginBottom: 10
         },
         {
-          text: texts.sharedText.contactingInfoTwo
+          text: texts.sharedText.contactingInfoSummoningBureau
         },
         {
-          text: texts.sharedText.contactingInfoThree
+          text: texts.sharedText.contactingInfoEmailText,
+          link: texts.sharedText.contactingInfoEmailLink,
+          color: 'blue'
         },
         {
-          text: texts.sharedText.contactingInfoFour
-        }
+          text: texts.sharedText.contactingInfoTelOne
+        },
+        {
+          text: texts.sharedText.contactingInfoTelTwo ? texts.sharedText.contactingInfoTelTwo : ''
+        },
+        {
+          text: texts.sharedText.contactingInfoDaysOne
+        },
+        {
+          text: texts.sharedText.contactingInfoDaysTwo
+        },
+        {
+          text: texts.sharedText.contactingInfoCallChargesText,
+          link: texts.sharedText.contactingInfoCallChargesLink,
+          color: 'blue'
+        },
       ],
       styles: {
         mainHeader: {
@@ -1530,13 +1547,12 @@ var moment = require('moment');
         },
         {
           columns: [{
-            // change to shared
             text: texts.jurorPDF.dobHeader,
             width: '20%',
             style: 'smallDull'
           },
           {
-            text: moment(juror.dateOfBirth).format('DD/MM/YYYY'),
+            text: filters.translateDate(moment(juror.dateOfBirth).format('DD/MM/YYYY'), 'DD/MM/YYYY', 'D MMMM YYYY', texts.sharedText.lang),
             width: '*'
           }
           ],
@@ -2155,7 +2171,7 @@ var moment = require('moment');
           marginBottom: juror.deferral ? 10 : 0
         },
         {
-          text: juror.deferral ? texts.jurorPDF.deferralDate1Label + '\n' + juror.deferral.displayDates['date1'] + '\n\n' + texts.jurorPDF.deferralDate2Label + '\n' + juror.deferral.displayDates['date2'] + '\n\n' + texts.jurorPDF.deferralDate3Label + '\n' + juror.deferral.displayDates['date3']  : '',
+          text: juror.deferral ? texts.jurorPDF.deferralDate1Label + '\n' + filters.translateDate(juror.deferral.displayDates['date1'], 'DD/MM/YYYY', 'dddd D MMMM YYYY', texts.sharedText.lang) + '\n\n' + texts.jurorPDF.deferralDate2Label + '\n' + filters.translateDate(juror.deferral.displayDates['date2'], 'DD/MM/YYYY', 'dddd D MMMM YYYY', texts.sharedText.lang) + '\n\n' + texts.jurorPDF.deferralDate3Label + '\n' + filters.translateDate(juror.deferral.displayDates['date3'], 'DD/MM/YYYY', 'dddd D MMMM YYYY', texts.sharedText.lang)  : '',
           style: 'textReg',
           marginBottom: juror.deferral ? 10 : 0
         },
@@ -2345,17 +2361,34 @@ var moment = require('moment');
           marginBottom: 10
         },
         {
-          text: texts.sharedText.contactingInfoOne
+          text: texts.sharedText.contactingInfoOne,
+          marginBottom: 10
         },
         {
-          text: texts.sharedText.contactingInfoTwo
+          text: texts.sharedText.contactingInfoSummoningBureau
         },
         {
-          text: texts.sharedText.contactingInfoThree
+          text: texts.sharedText.contactingInfoEmailText,
+          link: texts.sharedText.contactingInfoEmailLink,
+          color: 'blue'
         },
         {
-          text: texts.sharedText.contactingInfoFour
-        }
+          text: texts.sharedText.contactingInfoTelOne
+        },
+        {
+          text: texts.sharedText.contactingInfoTelTwo ? texts.sharedText.contactingInfoTelTwo : ''
+        },
+        {
+          text: texts.sharedText.contactingInfoDaysOne
+        },
+        {
+          text: texts.sharedText.contactingInfoDaysTwo
+        },
+        {
+          text: texts.sharedText.contactingInfoCallChargesText,
+          link: texts.sharedText.contactingInfoCallChargesLink,
+          color: 'blue'
+        },
       ],
       styles: {
         mainHeader: {
@@ -2571,17 +2604,34 @@ var moment = require('moment');
           marginBottom: 10
         },
         {
-          text: texts.deceasedPDF.contactDetailsOne
+          text: texts.deceasedPDF.contactDetailsOne,
+          marginBottom: 10
         },
         {
-          text: texts.deceasedPDF.contactDetailsTwo
+          text: texts.sharedText.contactingInfoSummoningBureau
         },
         {
-          text: texts.deceasedPDF.contactDetailsThree
+          text: texts.sharedText.contactingInfoEmailText,
+          link: texts.sharedText.contactingInfoEmailLink,
+          color: 'blue'
         },
         {
-          text: texts.deceasedPDF.contactDetailsFour
-        }
+          text: texts.sharedText.contactingInfoTelOne
+        },
+        {
+          text: texts.sharedText.contactingInfoTelTwo ? texts.sharedText.contactingInfoTelTwo : ''
+        },
+        {
+          text: texts.sharedText.contactingInfoDaysOne
+        },
+        {
+          text: texts.sharedText.contactingInfoDaysTwo
+        },
+        {
+          text: texts.sharedText.contactingInfoCallChargesText,
+          link: texts.sharedText.contactingInfoCallChargesLink,
+          color: 'blue'
+        },
       ],
       styles: {
         mainHeader: {
@@ -2884,7 +2934,7 @@ var moment = require('moment');
             style: 'smallDull'
           },
           {
-            text: moment(juror.dateOfBirth).format('DD/MM/YYYY'),
+            text: filters.translateDate(moment(juror.dateOfBirth).format('DD/MM/YYYY'), 'DD/MM/YYYY', 'D MMMM YYYY', texts.sharedText.lang),
             width: '*'
           }
           ],
@@ -3151,17 +3201,34 @@ var moment = require('moment');
           marginBottom: 10
         },
         {
-          text: texts.ageIneligiblePDF.anyQuestionsOne
+          text: texts.ageIneligiblePDF.anyQuestionsOne,
+          marginBottom: 10
         },
         {
-          text: texts.ageIneligiblePDF.anyQuestionsTwo
+          text: texts.sharedText.contactingInfoSummoningBureau
         },
         {
-          text: texts.ageIneligiblePDF.anyQuestionsThree
+          text: texts.sharedText.contactingInfoEmailText,
+          link: texts.sharedText.contactingInfoEmailLink,
+          color: 'blue'
         },
         {
-          text: texts.ageIneligiblePDF.anyQuestionsFour
-        }
+          text: texts.sharedText.contactingInfoTelOne
+        },
+        {
+          text: texts.sharedText.contactingInfoTelTwo ? texts.sharedText.contactingInfoTelTwo : ''
+        },
+        {
+          text: texts.sharedText.contactingInfoDaysOne
+        },
+        {
+          text: texts.sharedText.contactingInfoDaysTwo
+        },
+        {
+          text: texts.sharedText.contactingInfoCallChargesText,
+          link: texts.sharedText.contactingInfoCallChargesLink,
+          color: 'blue'
+        },
       ],
       styles: {
         mainHeader: {

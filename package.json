@@ -1,6 +1,6 @@
 {
   "name": "juror-public-front-end",
-  "version": "2.30.552-development",
+  "version": "3.1.85",
   "description": "A front-end for responding to jury summons",
   "main": "server/index.js",
   "scripts": {
@@ -40,7 +40,7 @@
     "express-session": "^1.14.0",
     "fibers": "^1.0.15",
     "fs-extra": "^4.0.3",
-    "govuk-frontend": "^4.0.1",
+    "govuk-frontend": "^4.3.1",
     "helmet": "^3.9.0",
     "i18n-express": "^1.0.4",
     "ip": "^1.1.5",

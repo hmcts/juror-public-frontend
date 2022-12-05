@@ -3,7 +3,7 @@
     "lang": "en",
     "mainHeader": "Copy of your jury summons reply",
     "logo": "./client/assets/images/pdflogo.jpg",
-    "logoAlt": "Logo for Her Majesty's Courts and Tribunals Service",
+    "logoAlt": "Logo for HM Courts and Tribunals Service",
     "pageNumber": " of ",
     "detailsHeader": "Your jury summons details",
     "court": "Court",
@@ -33,10 +33,16 @@
     "govPointFour": "How to claim expenses",
     "govPointFive": "Questions about jury service",
     "contactingHeader": "Contacting the Jury Central Summoning Bureau",
-    "contactingInfoOne": "If you have any questions about your jury service, call the Jury Central Summoning Bureau on 0300 456 1024 or email jurysummoning@justice.gov.uk",
-    "contactingInfoTwo": "",
-    "contactingInfoThree": "",
-    "contactingInfoFour": "",
+    "contactingInfoOne": "If you have any questions about your jury service, call the Jury Central Summoning Bureau.",
+    "contactingInfoSummoningBureau": "Jury Central Summoning Bureau",
+    "contactingInfoEmailText": "jurysummoning@justice.gov.uk",
+    "contactingInfoEmailLink": "mailto:jurysummoning@justice.gov.uk",
+    "contactingInfoTelOne": "Telephone: 0300 456 1024",
+    "contactingInfoTelTwo": "",
+    "contactingInfoDaysOne": "Monday to Thursday 9am to 5pm",
+    "contactingInfoDaysTwo": "Friday 9am to 3pm",
+    "contactingInfoCallChargesText": "Find out about call charges",
+    "contactingInfoCallChargesLink": "https://www.gov.uk/call-charges",
     "name": "Name:",
     "address": "Address:",
     "dob": "Date of Birth:",
@@ -148,10 +154,7 @@
     "distressTitle": "We're sorry for any distress",
     "distressApology": "Jurors are selected at random from the electoral roll. This is not always completely up to date. That's why we sent a jury summons to this person. We do apologise for this and hope it has not caused too much distress.",
     "summoningBureau": "Contacting the Jury Central Summoning Bureau",
-    "contactDetailsOne": "If you have any questions about this, call the Jury Central Summoning Bureau on 0300 456 1024 or email jurysummoning@justice.gov.uk",
-    "contactDetailsTwo": "",
-    "contactDetailsThree": "",
-    "contactDetailsFour": ""
+    "contactDetailsOne": "If you have any questions about this, call the Jury Central Summoning Bureau."
   },
   "ageIneligiblePDF": {
     "ageIneligibleInfo": "Your age makes you ineligible to do jury service.",
@@ -159,10 +162,7 @@
     "pointTwo": "We'll write to confirm that you do not have to do jury service. ",
     "pointThree": "You do not need to do anything else.",
     "summoningBureau": "Contacting the Jury Central Summoning Bureau",
-    "anyQuestionsOne": "If you have any questions about this, call the Jury Central Summoning Bureau on 0300 456 1024 or email jurysummoning@justice.gov.uk",
-    "anyQuestionsTwo": "",
-    "anyQuestionsThree": "",
-    "anyQuestionsFour": ""
+    "anyQuestionsOne": "If you have any questions about this, call the Jury Central Summoning Bureau."
   },
   "whatHappensNext": {
     "header": "What happens next?",

@@ -76,28 +76,22 @@
         {% endif %}
 
         <div class="govuk-form-group" id="deferralReasonGroup">
-
-          <div class="govuk-character-count">
-
-            {{ govukCharacterCount({   
-              name: "deferralReason",
-              id: "deferralReason",
-              label: {
-                text: reasonLabel,
-                classes: "govuk-label--xl",
-                isPageHeading: true
-              },
-              hint: {
-                html: reasonHint
-              },
-              maxlength: "1000",
-              rows: "4",
-              errorMessage: deferralReasonError,
-              value: user.deferral.reason
-            }) }}
-            
-          </div>
-
+          {{ govukCharacterCount({   
+            name: "deferralReason",
+            id: "deferralReason",
+            label: {
+              text: reasonLabel,
+              classes: "govuk-label--xl",
+              isPageHeading: true
+            },
+            hint: {
+              html: reasonHint
+            },
+            maxlength: "1000",
+            rows: "4",
+            errorMessage: deferralReasonError,
+            value: user.deferral.reason
+          }) }}
         </div>
 
       {# Submit form #}

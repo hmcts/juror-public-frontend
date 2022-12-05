@@ -112,8 +112,10 @@ var _ = require('lodash')
 
       printer = new pdfMake(fonts);
 
-
       if (req.session.user.ineligibleDeceased) {
+        if (!req.session.user.hearingDateShort){
+          req.session.user['hearingDateShort'] = convertHearingDate(req.session.user['hearingDateTimestamp']);
+        }
         docDef = pdfExport.getPdfDocumentDescriptionDeceased(req.session.user, (req.session.ulang === 'cy' ? welshLanguageText.PDF : englishLanguageText.PDF));
       } else if (req.session.user.ineligibleAge) {
         docDef = pdfExport.getPdfDocumentDescriptionIneligibleAge(req.session.user, (req.session.ulang === 'cy' ? welshLanguageText.PDF : englishLanguageText.PDF));
@@ -143,6 +145,9 @@ var _ = require('lodash')
 
       req.session.user.replyDate = moment().format('DD/MM/YYYY');
       req.session.user.dobFormatted = moment(req.session.user.dateOfBirth).format('DD/MM/YYYY');
+      if (!req.session.user.hearingDateShort){
+        req.session.user['hearingDateShort'] = convertHearingDate(req.session.user['hearingDateTimestamp']);
+      }
 
       return res.render('steps/08-confirmation/response-html/index.njk', {
         user: req.session.user
@@ -150,6 +155,21 @@ var _ = require('lodash')
 
 
     }
+  }
+
+  function convertHearingDate(hearingDateTimestampVal){
+    var returnDate = ''
+
+    if (hearingDateTimestampVal){
+      try {
+        returnDate = moment(hearingDateTimestampVal).format('DD/MM/YYYY');
+      } catch (err) {
+        returnDate = '';
+      }
+    }
+
+    return returnDate;
+
   }
 
 })();

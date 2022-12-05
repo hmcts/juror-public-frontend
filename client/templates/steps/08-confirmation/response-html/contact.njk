@@ -6,27 +6,30 @@
     {% if user.ineligibleDeceased === true %}
       <p class="govuk-body">
       {{ texts.PDF.deceasedPDF.contactDetailsOne }}<br/>
-      {{ texts.PDF.deceasedPDF.contactDetailsTwo }}<br/>
-      {{ texts.PDF.deceasedPDF.contactDetailsThree }}<br/>
-      {{ texts.PDF.deceasedPDF.contactDetailsFour }}
       </p>
     {% else %}
       {% if user.ineligibleAge === true %}
         <p class="govuk-body">
         {{ texts.PDF.ageIneligiblePDF.anyQuestionsOne }}<br/>
-        {{ texts.PDF.ageIneligiblePDF.anyQuestionsTwo }}<br/>
-        {{ texts.PDF.ageIneligiblePDF.anyQuestionsThree }}<br/>
-        {{ texts.PDF.ageIneligiblePDF.anyQuestionsFour }}
         </p>
       {% else %}
         <p class="govuk-body">
           {{ texts.PDF.sharedText.contactingInfoOne }}<br/>
-          {{ texts.PDF.sharedText.contactingInfoTwo }}<br/>
-          {{ texts.PDF.sharedText.contactingInfoThree }}<br/>
-          {{ texts.PDF.sharedText.contactingInfoFour }}
         </p>
       {% endif %}
     {% endif %}
+
+    <p class="govuk-body">
+      {{ texts.PDF.sharedText.contactingInfoSummoningBureau }}<br/>
+      <a href="{{texts.PDF.sharedText.contactingInfoEmailLink}}" class="govuk-link">{{ texts.PDF.sharedText.contactingInfoEmailText }}</a><br/>
+      {{ texts.PDF.sharedText.contactingInfoTelOne }}<br/>
+      {% if texts.INTERFACE.HTML_LANG == "cy"%}
+        {{ texts.PDF.sharedText.contactingInfoTelTwo }}<br/>
+      {% endif %}
+      {{ texts.PDF.sharedText.contactingInfoDaysOne }}<br/>
+      {{ texts.PDF.sharedText.contactingInfoDaysTwo }}<br/>
+      <a href="{{texts.PDF.sharedText.contactingInfoCallChargesLink}}" class="govuk-link">{{ texts.PDF.sharedText.contactingInfoCallChargesText }}</a>
+    </p>
     
   </div>
 </div>

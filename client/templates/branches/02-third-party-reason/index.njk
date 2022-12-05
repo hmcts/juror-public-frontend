@@ -70,7 +70,6 @@
 
         {# Set Other details HTML #}
         {% set otherDetailsHTML %}
-          <div class="govuk-character-count">
             {{ govukCharacterCount({
               name: "thirdPartyOtherReason",
               id: "thirdPartyOtherReason",
@@ -83,7 +82,6 @@
               errorMessage: otherReasonDetailsError,
               value: user.thirdPartyDetails.thirdPartyOtherReason
             }) }}
-          </div>
         {% endset %}
 
         <div class="govuk-form-group {% if errors.items['thirdPartyReason'] or errors.items['thirdPartyOtherReason'] %}govuk-form-group--error{% endif %}" id="thirdPartyReasonGroup">
