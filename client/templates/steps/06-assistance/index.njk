@@ -129,19 +129,17 @@
 
         {# Set Other details HTML #}
         {% set otherDetailsHTML %}
-          <div class="govuk-character-count">
-            {{ govukCharacterCount({
-              name: "assistanceTypeDetails",
-              id: "assistanceTypeDetails",
-              maxlength: "1000",
-              label: {
-                text: otherDetailsLabel
-              },
-              rows: "5",
-              errorMessage: otherDetailsError,
-              value: user.assistanceTypeDetails
-            }) }}
-          </div>
+          {{ govukCharacterCount({
+            name: "assistanceTypeDetails",
+            id: "assistanceTypeDetails",
+            maxlength: "1000",
+            label: {
+              text: otherDetailsLabel
+            },
+            rows: "5",
+            errorMessage: otherDetailsError,
+            value: user.assistanceTypeDetails
+          }) }}
         {% endset %}
 
         {# Set disabilities HTML #}
@@ -203,19 +201,17 @@
             ]
           }) }}
 
-          <div class="govuk-character-count">
-            {{ govukCharacterCount({
-              name: "assistanceSpecialArrangements",
-              id: "assistanceSpecialArrangements",
-              maxlength: "1000",
-              label: {
-                html: specialArrangementsLabel
-              },
-              rows: "5",
-              errorMessage: specialArrangementsError,
-              value: user.assistanceSpecialArrangements
-            }) }}
-          </div>
+          {{ govukCharacterCount({
+            name: "assistanceSpecialArrangements",
+            id: "assistanceSpecialArrangements",
+            maxlength: "1000",
+            label: {
+              html: specialArrangementsLabel
+            },
+            rows: "5",
+            errorMessage: specialArrangementsError,
+            value: user.assistanceSpecialArrangements
+          }) }}
 
         {% endset %}
 

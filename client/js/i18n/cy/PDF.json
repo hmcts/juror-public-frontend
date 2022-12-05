@@ -3,7 +3,7 @@
     "lang": "cy",
     "mainHeader": "Copi o’ch ymateb i wŷs rheithgor",
     "logo": "./client/assets/images/pdflogo-cy.jpg",
-    "logoAlt": "Logo for Her Majesty's Courts and Tribunals Service",
+    "logoAlt": "Logo ar gyfer Gwasanaeth Llysoedd a Thribiwnlysoedd EF",
     "pageNumber": " / ",
     "detailsHeader": "Manylion eich gwŷs rheithgor",
     "court": "Llys",
@@ -33,10 +33,16 @@
     "govPointFour": "Sut i hawlio treuliau",
     "govPointFive": "Cwestiynau am wasanaeth rheithgor",
     "contactingHeader": "Cysylltu gyda Swyddfa Ganolog Gwysio Rheithgor",
-    "contactingInfoOne": "Os oes gennych unrhyw gwestiynau am eich gwasanaeth rheithgor, ffoniwch Swyddfa Ganolog Gwysio Rheithgor ar:",
-    "contactingInfoTwo": "Rhif ffôn: 0300 456 1024",
-    "contactingInfoThree": "Llinell Gymraeg: 0300 303 5173",
-    "contactingInfoFour": "neu anfonwch e-bost i jurysummoning@justice.gov.uk",
+    "contactingInfoOne": "Os oes gennych unrhyw gwestiynau am eich gwasanaeth rheithgor, ffoniwch Swyddfa Ganolog Gwysio Rheithgor.",
+    "contactingInfoSummoningBureau": "Swyddfa Ganolog Gwysio Rheithgor",
+    "contactingInfoEmailText": "jurysummoning@justice.gov.uk",
+    "contactingInfoEmailLink": "mailto:jurysummoning@justice.gov.uk",
+    "contactingInfoTelOne": "Rhif ffôn: 0300 456 1024",
+    "contactingInfoTelTwo": "Llinell Gymraeg: 0300 303 5173",
+    "contactingInfoDaysOne": "Dydd Llun i ddydd Iau, 9am tan 5pm",
+    "contactingInfoDaysTwo": "Dydd Gwener, 9am tan 3pm",
+    "contactingInfoCallChargesText": "Canfod mwy am gostau galwadau",
+    "contactingInfoCallChargesLink": "https://www.gov.uk/costau-galwadau",
     "name": "Enw:",
     "address": "Cyfeiriad:",
     "dob": "Dyddiad geni:",
@@ -148,10 +154,7 @@
     "distressTitle": "Ymddiheurwn am achosi unrhyw drallod",
     "distressApology": "Mae rheithwyr yn cael eu dewis ar hap oddi ar y rhestr etholiadol. Nid yw'r rhestr hon yn hollol gyfredol bob amser. Dyna pam rydym wedi anfon gwŷs rheithgor at yr unigolyn hwn. Ymddiheurwn am hyn a gobeithiwn nid oedd wedi peri gormod o drallod.",
     "summoningBureau": "Cysylltu gyda Swyddfa Ganolog Gwysio Rheithgor",
-    "contactDetailsOne": "Os oes gennych unrhyw gwestiynau am eich gwasanaeth rheithgor, ffoniwch Swyddfa Ganolog Gwysio Rheithgor ar:",
-    "contactDetailsTwo": "Rhif ffôn: 0300 456 1024",
-    "contactDetailsThree": "Llinell Gymraeg: 0300 303 5173",
-    "contactDetailsFour": "neu anfonwch e-bost i jurysummoning@justice.gov.uk"
+    "contactDetailsOne": "Os oes gennych unrhyw gwestiynau am eich gwasanaeth rheithgor, ffoniwch Swyddfa Ganolog Gwysio Rheithgor ar."
   },
   "ageIneligiblePDF": {
     "ageIneligibleInfo": "Mae eich oedran yn eich gwneud yn anghymwys i wasanaethu ar reithgor.",
@@ -159,10 +162,7 @@
     "pointTwo": "Byddwn yn ysgrifennu atoch i gadarnhau nid oes rhaid ichi wasanaethu ar reithgor. ",
     "pointThree": "Nid oes rhaid ichi wneud unrhyw beth arall.",
     "summoningBureau": "Cysylltu gyda Swyddfa Ganolog Gwysio Rheithgor",
-    "anyQuestionsOne": "Os oes gennych unrhyw gwestiynau am eich gwasanaeth rheithgor, ffoniwch Swyddfa Ganolog Gwysio Rheithgor ar:",
-    "anyQuestionsTwo": "Rhif ffôn: 0300 456 1024",
-    "anyQuestionsThree": "Llinell Gymraeg: 0300 303 5173",
-    "anyQuestionsFour": "neu anfonwch e-bost i jurysummoning@justice.gov.uk"
+    "anyQuestionsOne": "Os oes gennych unrhyw gwestiynau am eich gwasanaeth rheithgor, ffoniwch Swyddfa Ganolog Gwysio Rheithgor ar."
   },
   "whatHappensNext": {
     "header": "Beth fydd yn digwydd nesaf?",

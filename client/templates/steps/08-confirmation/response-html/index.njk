@@ -43,7 +43,7 @@
           </tr>
           <tr class="govuk-table__row">
             <th scope="col" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.sharedText.dateOfReply }}</th>
-            <td class="govuk-table__cell">{{ user.replyDate }}</td>
+            <td class="govuk-table__cell">{{ user.replyDate | translateDate('DD/MM/YYYY', 'D MMMM YYYY', texts.INTERFACE.HTML_LANG)}}</td>
           </tr>
         </tbody>
       </table>

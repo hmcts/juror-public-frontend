@@ -109,19 +109,17 @@
 
         {# Set Police details HTML #}
         {% set policeDetailsHTML %}
-          <div class="govuk-character-count">
-            {{ govukCharacterCount({
-              name: "cjsPoliceDetails",
-              id: "cjsPoliceDetails",
-              maxlength: "1000",
-              label: {
-                text: texts.EMPLOYED_PAGE.WHICH_FORCE
-              },
-              rows: "2",
-              errorMessage: policeDetailsError,
-              value: user.cjsPoliceDetails
-            }) }}
-          </div>
+          {{ govukCharacterCount({
+            name: "cjsPoliceDetails",
+            id: "cjsPoliceDetails",
+            maxlength: "1000",
+            label: {
+              text: texts.EMPLOYED_PAGE.WHICH_FORCE
+            },
+            rows: "2",
+            errorMessage: policeDetailsError,
+            value: user.cjsPoliceDetails
+          }) }}
         {% endset %}
 
         {# Set Prison checked #}
@@ -139,19 +137,17 @@
 
         {# Set Prison details HTML #}
         {% set prisonDetailsHTML %}
-          <div class="govuk-character-count">
-            {{ govukCharacterCount({
-              name: "cjsPrisonDetails",
-              id: "cjsPrisonDetails",
-              maxlength: "1000",
-              label: {
-                text: texts.EMPLOYED_PAGE.WHICH_PRISON
-              },
-              rows: "2",
-              errorMessage: prisonDetailsError,
-              value: user.cjsPrisonDetails
-            }) }}
-          </div>
+          {{ govukCharacterCount({
+            name: "cjsPrisonDetails",
+            id: "cjsPrisonDetails",
+            maxlength: "1000",
+            label: {
+              text: texts.EMPLOYED_PAGE.WHICH_PRISON
+            },
+            rows: "2",
+            errorMessage: prisonDetailsError,
+            value: user.cjsPrisonDetails
+          }) }}
         {% endset %}
 
         {# Set NCA checked #}
@@ -190,19 +186,17 @@
 
         {# Set Other details HTML #}
         {% set otherDetailsHTML %}
-          <div class="govuk-character-count">
-            {{ govukCharacterCount({
-              name: "cjsEmployerDetails",
-              id: "cjsEmployerDetails",
-              maxlength: "1000",
-              label: {
-                text: texts.EMPLOYED_PAGE.DETAILS
-              },
-              rows: "2",
-              errorMessage: otherDetailsError,
-              value: user.cjsEmployerDetails
-            }) }}
-          </div>
+          {{ govukCharacterCount({
+            name: "cjsEmployerDetails",
+            id: "cjsEmployerDetails",
+            maxlength: "1000",
+            label: {
+              text: texts.EMPLOYED_PAGE.DETAILS
+            },
+            rows: "2",
+            errorMessage: otherDetailsError,
+            value: user.cjsEmployerDetails
+          }) }}
         {% endset %}
 
         {# Set organisations HTML #}

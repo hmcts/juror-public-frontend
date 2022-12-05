@@ -166,9 +166,9 @@
                   <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.thirdPartyPDF.deferralDates }}</th>
                   <td class="govuk-table__cell">
                     <table class="govuk-table">
-                    <tr><td class="govuk-!-font-weight-bold">{{ texts.PDF.jurorPDF.deferralDate1Label }}</td><td>{{ user.deferral.displayDates['date1'] }}</td></tr>
-                    <tr><td class="govuk-!-font-weight-bold">{{ texts.PDF.jurorPDF.deferralDate2Label }}</td><td>{{ user.deferral.displayDates['date2'] }}</td></tr>
-                    <tr><td class="govuk-!-font-weight-bold">{{ texts.PDF.jurorPDF.deferralDate3Label }}</td><td>{{ user.deferral.displayDates['date3'] }}</td></tr>
+                    <tr><td class="govuk-!-font-weight-bold">{{ texts.PDF.jurorPDF.deferralDate1Label }}</td><td>{{ user.deferral.displayDates['date1'] | translateDate('DD/MM/YYYY', 'dddd D MMMM YYYY', texts.INTERFACE.HTML_LANG) }}</td></tr>
+                    <tr><td class="govuk-!-font-weight-bold">{{ texts.PDF.jurorPDF.deferralDate2Label }}</td><td>{{ user.deferral.displayDates['date2'] | translateDate('DD/MM/YYYY', 'dddd D MMMM YYYY', texts.INTERFACE.HTML_LANG) }}</td></tr>
+                    <tr><td class="govuk-!-font-weight-bold">{{ texts.PDF.jurorPDF.deferralDate3Label }}</td><td>{{ user.deferral.displayDates['date3'] | translateDate('DD/MM/YYYY', 'dddd D MMMM YYYY', texts.INTERFACE.HTML_LANG) }}</td></tr>
                     </table>
                   </td>
                 </tr>
@@ -378,9 +378,9 @@
                   <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.threeDates }}</th>
                   <td class="govuk-table__cell">
                     <table class="govuk-table">
-                    <tr><td class="govuk-!-font-weight-bold">{{ texts.PDF.jurorPDF.deferralDate1Label }}</td><td>{{ user.deferral.displayDates['date1'] }}</td></tr>
-                    <tr><td class="govuk-!-font-weight-bold">{{ texts.PDF.jurorPDF.deferralDate2Label }}</td><td>{{ user.deferral.displayDates['date2'] }}</td></tr>
-                    <tr><td class="govuk-!-font-weight-bold">{{ texts.PDF.jurorPDF.deferralDate3Label }}</td><td>{{ user.deferral.displayDates['date3'] }}</td></tr>
+                    <tr><td class="govuk-!-font-weight-bold">{{ texts.PDF.jurorPDF.deferralDate1Label }}</td><td>{{ user.deferral.displayDates['date1'] | translateDate('DD/MM/YYYY', 'dddd D MMMM YYYY', texts.INTERFACE.HTML_LANG) }}</td></tr>
+                    <tr><td class="govuk-!-font-weight-bold">{{ texts.PDF.jurorPDF.deferralDate2Label }}</td><td>{{ user.deferral.displayDates['date2'] | translateDate('DD/MM/YYYY', 'dddd D MMMM YYYY', texts.INTERFACE.HTML_LANG) }}</td></tr>
+                    <tr><td class="govuk-!-font-weight-bold">{{ texts.PDF.jurorPDF.deferralDate3Label }}</td><td>{{ user.deferral.displayDates['date3'] | translateDate('DD/MM/YYYY', 'dddd D MMMM YYYY', texts.INTERFACE.HTML_LANG) }}</td></tr>
                     </table>
                   </td>
                 </tr>

@@ -18,7 +18,7 @@
             </tr>
             <tr class="govuk-table__row">
               <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.dobHeader }}</th>
-              <td class="govuk-table__cell">{{ user.dobFormatted }}</td>
+              <td class="govuk-table__cell">{{ user.dobFormatted | translateDate('DD/MM/YYYY', 'D MMMM YYYY', texts.INTERFACE.HTML_LANG) }}</td>
             </tr>
             <tr class="govuk-table__row">
               <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.mainPhoneHeader }}</th>
@@ -84,7 +84,7 @@
             </tr>
             <tr class="govuk-table__row">
               <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.dobHeader }}</th>
-              <td class="govuk-table__cell">{{ user.dobFormatted }}</td>
+              <td class="govuk-table__cell">{{ user.dobFormatted | translateDate('DD/MM/YYYY', 'D MMMM YYYY', texts.INTERFACE.HTML_LANG) }}</td>
             </tr>
             <tr class="govuk-table__row">
               <th scope="row" align="left" class="govuk-table__header govuk-!-width-one-half">{{ texts.PDF.jurorPDF.mainPhoneHeader }}</th>

@@ -21,7 +21,7 @@
 
       {# Loss of Earnings section #}
       <div class="govuk-body govuk-table__cell" >
-          <h3 class="govuk-heading-m">{{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EARNINGS_HEADING }}</h3>
+          <h2 class="govuk-heading-m">{{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EARNINGS_HEADING }}</h2>
       </div>
 
       <dl class="govuk-summary-list">
@@ -41,7 +41,7 @@
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             <a class="govuk-link" href="{{ changeLinks.earnings }}" id="changeEarnings" aria-describedby="questionEarnings">
               {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
-              <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.NAME_LABEL }}</span>
+              <span class="govuk-visually-hidden"> {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EARNINGS_1 }}</span>
             </a>
           </dd>
         </div>
@@ -63,7 +63,7 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="{{ changeLinks.earningsThreshold }}" id="changeEarningsThreshold" aria-describedby="questionEarningsThreshold">
                 {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
-                <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+                <span class="govuk-visually-hidden"> {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EARNINGS_2 }}</span>
               </a>
             </dd>
           </div>
@@ -80,7 +80,7 @@
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="{{ changeLinks.earningsAmount }}" id="changeEarningsAmount" aria-describedby="questionEarningsAmount" {% if trackingCode %}onclick="trackVirtualPageViews('Change Earnings amount')"{% endif %}>
                   {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
-                  <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+                  <span class="govuk-visually-hidden"> {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EARNINGS_3 }}</span>
                 </a>
               </dd>
             </div>
@@ -92,7 +92,7 @@
 
       {# Other Expenses section #}
       <div class="govuk-body govuk-table__cell" >
-          <h3 class="govuk-heading-m">{{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EXPENSES_HEADING }}</h3>
+          <h2 class="govuk-heading-m">{{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EXPENSES_HEADING }}</h2>
       </div>
 
       <dl class="govuk-summary-list">
@@ -112,7 +112,7 @@
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             <a class="govuk-link" href="{{ changeLinks.extraCosts }}" id="changeExtraCosts" aria-describedby="questionExtraCosts">
               {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
-              <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.NAME_LABEL }}</span>
+              <span class="govuk-visually-hidden"> {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EXPENSES_1 }}</span>
             </a>
           </dd>
         </div>
@@ -129,7 +129,7 @@
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="{{ changeLinks.extraCostsAmount }}" id="changeExtraCostsAmount" aria-describedby="questionExtraCostsAmount" {% if trackingCode %}onclick="trackVirtualPageViews('Change Extra Costs amount')"{% endif %}>
               {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
-              <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+              <span class="govuk-visually-hidden"> {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.EXPENSES_2 }}</span>
             </a>
           </dd>
         </div>
@@ -139,7 +139,7 @@
 
       {# Travel section #}
       <div class="govuk-body govuk-table__cell" >
-          <h3 class="govuk-heading-m">{{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_HEADING }}</h3>
+          <h2 class="govuk-heading-m">{{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_HEADING }}</h2>
       </div>
 
       <dl class="govuk-summary-list">
@@ -155,7 +155,7 @@
           <dd class="govuk-summary-list__actions govuk-summary-list__actions_jd">
             <a class="govuk-link" href="{{ changeLinks.travel }}" id="changeTravelType" aria-describedby="questionTravelType">
               {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
-              <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.NAME_LABEL }}</span>
+              <span class="govuk-visually-hidden"> {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_TYPE }}</span>
             </a>
           </dd>
         </div>
@@ -172,7 +172,7 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="{{ changeLinks.travelBicycle }}" id="changeTravelBicycle" aria-describedby="questionTravelBicycle" {% if trackingCode %}onclick="trackVirtualPageViews('Change Bicycle miles')"{% endif %}>
                 {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
-                <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+                <span class="govuk-visually-hidden"> {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_BICYCLE }}</span>
               </a>
             </dd>
           </div>
@@ -190,7 +190,7 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="{{ changeLinks.travelCar }}" id="changeTravelCar" aria-describedby="questionTravelCar" {% if trackingCode %}onclick="trackVirtualPageViews('Change Car miles')"{% endif %}>
                 {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
-                <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+                <span class="govuk-visually-hidden"> {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_CAR }}</span>
               </a>
             </dd>
           </div>
@@ -208,7 +208,7 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="{{ changeLinks.travelMotorcycle }}" id="changeTravelMotorcycle" aria-describedby="questionTravelMotorcycle" {% if trackingCode %}onclick="trackVirtualPageViews('Change Motorcycle miles')"{% endif %}>
                 {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
-                <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+                <span class="govuk-visually-hidden"> {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_MOTORCYCLE }}</span>
               </a>
             </dd>
           </div>
@@ -226,7 +226,7 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="{{ changeLinks.travelParking }}" id="changeTravelParking" aria-describedby="questionTravelParking">
                 {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
-                <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+                <span class="govuk-visually-hidden"> {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_PARKING }}</span>
               </a>
             </dd>
           </div>
@@ -244,7 +244,7 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="{{ changeLinks.travelPublicTransport }}" id="changeTravelPublicTransport" aria-describedby="questionTravelPublicTransport" {% if trackingCode %}onclick="trackVirtualPageViews('Change Public Transport amount')"{% endif %}>
                 {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.CHANGE_LINK }}
-                <span class="govuk-visually-hidden"> {{ texts.CHECK_ANSWERS_PAGE.ADDRESS_LABEL }}</span>
+                <span class="govuk-visually-hidden"> {{ texts.EXPENSE_CALCULATOR.CHECK_ANSWERS.TRAVEL_PUBLIC_TRANSPORT }}</span>
               </a>
             </dd>
           </div>

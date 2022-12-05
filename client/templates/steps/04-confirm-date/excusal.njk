@@ -55,24 +55,22 @@
         {% endif %}
 
         <div class="govuk-form-group" id="excusalReasonGroup">
-          <div class="govuk-character-count">
-            {{ govukCharacterCount({
-              name: "excusalReason",
-              id: "excusalReason",
-              maxlength: "1000",
-              label: {
-                text: labelText,
-                classes: "govuk-label--xl",
-                isPageHeading: true
-              },
-              hint: {
-                html: reasonHintHTML
-              },
-              rows: "4",
-              errorMessage: excusalReasonError,
-              value: user.excusal.reason
-            }) }}
-          </div>
+          {{ govukCharacterCount({
+            name: "excusalReason",
+            id: "excusalReason",
+            maxlength: "1000",
+            label: {
+              text: labelText,
+              classes: "govuk-label--xl",
+              isPageHeading: true
+            },
+            hint: {
+              html: reasonHintHTML
+            },
+            rows: "4",
+            errorMessage: excusalReasonError,
+            value: user.excusal.reason
+          }) }}
         </div>
 
         <details class="govuk-details" data-module="govuk-details">
