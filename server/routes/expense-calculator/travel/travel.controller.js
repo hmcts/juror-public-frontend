@@ -611,12 +611,8 @@
 
       var backLinkUrl;
 
-      // Set back link URL
-      if (req.session.change === true){
-        backLinkUrl = 'expense.calculator.travel.parking.get';
-      } else {
-        backLinkUrl = 'expense.calculator.travel.parking.get';
-      }
+      // Set back link URL - not dependent on req.session.change
+      backLinkUrl = 'expense.calculator.travel.parking.get';
 
       return res.render('expense-calculator/travel/parking-amount.njk', {
         errors: {
@@ -660,12 +656,8 @@
 
       var backLinkUrl;
 
-      // Set back link URL
-      if (req.session.change === true){
-        backLinkUrl = 'expense.calculator.travel.parking.get';
-      } else {
-        backLinkUrl = 'expense.calculator.travel.parking.get';
-      }
+      // Set back link URL - not dependent on req.session.change
+      backLinkUrl = 'expense.calculator.travel.parking.get';
 
       return res.render('expense-calculator/travel/parking-info.njk', {
         backLinkUrl: backLinkUrl
