@@ -56,7 +56,6 @@
         , cjsTmpArr
         , tmpArr
         , assistanceTmp
-        , deferralDate
         , deferralDisplayDates={}
         // , personalDetailsChangeLink
         , personalDetailsChangeNameLink
@@ -73,9 +72,6 @@
           , other: filters.translate('ON_BEHALF.THIRD_PARTY_REASON.REASONS.OTHER', (req.session.ulang === 'cy' ? texts_cy : texts_en))
         },
         jurorObj = require('../../../objects/juror').object
-        , getDetailsSuccess
-        , deferralDates
-        , getDetailsError
         , qualifyDetailsExist = function(objQualify){
           var boolDetalsExist = false;
 
@@ -85,6 +81,84 @@
             }
           }
           return boolDetalsExist;
+        }
+        , getDetailsError = function(err) {
+          app.logger.crit('Failed to fetch and parse details required for pdf download: ' + err.statusCode, {
+            jurorNumber: req.session.user.jurorNumber,
+            jwt: req.session.authToken,
+            error: (typeof err.error !== 'undefined') ? err.error : err
+          });
+        }
+        , getDetailsSuccess = function(response) {
+          req.session.user['courtName'] = response['locCourtName'];
+          req.session.user['courtAddress'] = [
+            response['locCourtName'],
+            response['courtAddress1'],
+            response['courtAddress2'],
+            response['courtAddress3'],
+            response['courtAddress4'],
+            response['courtAddress5'],
+            response['courtAddress6'],
+            response['courtPostcode']
+          ].filter(function(val) {
+            return val;
+          }).join('<br>');
+          req.session.user['hearingDateTimestamp'] = response['hearingDate'];
+  
+          if (req.session.user.ineligibleDeceased) {
+            req.session.user['nameRender'] = [
+              response['title'],
+              response['firstName'],
+              response['lastName']
+            ].filter(function(val){
+              return val;
+            }).join(' ');
+          }
+  
+          //Try and parse date for hearing
+          try {
+            if (!moment(response['hearingDate']).isValid()) {
+              throw 'Invalid hearing date format. MomentJS could not parse: "' + response['hearingDate'] + '"';
+            }
+            req.session.user['hearingDate'] = moment(response['hearingDate']).format('dddd Do MMMM YYYY');
+          } catch (err) {
+            app.logger.debug('Hearing date could not be parsed by momentjs', err);
+            req.session.user['hearingDate'] = '';
+          }
+  
+          if (!req.session.user['hearingTime']) {
+            if (moment(response['courtAttendTime']).isValid()) {
+              req.session.user['hearingTime'] = moment(response['courtAttendTime']).format('HH:mm a');
+            } else if (moment(response['courtAttendTime'], 'HH:mm').isValid()) {
+              req.session.user['hearingTime'] = moment(response['courtAttendTime'], 'HH:mm').format('HH:mm a');
+            }
+          }
+  
+          // merge updated user into session
+          mergedUser = _.merge(_.cloneDeep(req.session.user), _.cloneDeep(req.session.formFields));
+  
+          app.logger.info('Fetched and parsed summoned details required for pdf download', {
+            jurorNumber: req.session.user.jurorNumber,
+            jwt: req.session.authToken,
+            response: response
+          });
+  
+          return res.render('steps/07-confirm-information/index.njk', {
+            user: mergedUser,
+            //personalDetailsChangeLink: personalDetailsChangeLink,
+            personalDetailsChangeNameLink: personalDetailsChangeNameLink,
+            personalDetailsChangeAddressLink: personalDetailsChangeAddressLink,
+            personalDetailsChangeDateOfBirthLink: personalDetailsChangeDateOfBirthLink,
+            // contactDetailsChangeLink: contactDetailsChangeLink,
+            contactDetailsChangePhoneLink: contactDetailsChangePhoneLink,
+            contactDetailsChangeEmailLink: contactDetailsChangeEmailLink,
+            errors: {
+              title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
+              message: '',
+              count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
+              items: tmpErrors,
+            },
+          });
         }
 
       //reset value for conventional route vs edit route
@@ -200,88 +274,6 @@
         delete mergedUser.informationConfirmed;
       }
 
-      getDetailsSuccess = function(response) {
-        req.session.user['courtName'] = response['locCourtName'];
-        req.session.user['courtAddress'] = [
-          response['locCourtName'],
-          response['courtAddress1'],
-          response['courtAddress2'],
-          response['courtAddress3'],
-          response['courtAddress4'],
-          response['courtAddress5'],
-          response['courtAddress6'],
-          response['courtPostcode']
-        ].filter(function(val) {
-          return val;
-        }).join('<br>');
-        req.session.user['hearingDateTimestamp'] = response['hearingDate'];
-
-        if (req.session.user.ineligibleDeceased) {
-          req.session.user['nameRender'] = [
-            response['title'],
-            response['firstName'],
-            response['lastName']
-          ].filter(function(val){
-            return val;
-          }).join(' ');
-        }
-
-        //Try and parse date for hearing
-        try {
-          if (!moment(response['hearingDate']).isValid()) {
-            throw 'Invalid hearing date format. MomentJS could not parse: "' + response['hearingDate'] + '"';
-          }
-          req.session.user['hearingDate'] = moment(response['hearingDate']).format('dddd Do MMMM YYYY');
-        } catch (err) {
-          app.logger.debug('Hearing date could not be parsed by momentjs', err);
-          req.session.user['hearingDate'] = '';
-        }
-
-        if (!req.session.user['hearingTime']) {
-          if (moment(response['courtAttendTime']).isValid()) {
-            req.session.user['hearingTime'] = moment(response['courtAttendTime']).format('HH:mm a');
-          } else if (moment(response['courtAttendTime'], 'HH:mm').isValid()) {
-            req.session.user['hearingTime'] = moment(response['courtAttendTime'], 'HH:mm').format('HH:mm a');
-          }
-        }
-
-        // merge updated user into session
-        mergedUser = _.merge(_.cloneDeep(req.session.user), _.cloneDeep(req.session.formFields));
-
-        app.logger.info('Fetched and parsed summoned details required for pdf download', {
-          jurorNumber: req.session.user.jurorNumber,
-          jwt: req.session.authToken,
-          response: response
-        });
-
-        return res.render('steps/07-confirm-information/index.njk', {
-          user: mergedUser,
-          //personalDetailsChangeLink: personalDetailsChangeLink,
-          personalDetailsChangeNameLink: personalDetailsChangeNameLink,
-          personalDetailsChangeAddressLink: personalDetailsChangeAddressLink,
-          personalDetailsChangeDateOfBirthLink: personalDetailsChangeDateOfBirthLink,
-          // contactDetailsChangeLink: contactDetailsChangeLink,
-          contactDetailsChangePhoneLink: contactDetailsChangePhoneLink,
-          contactDetailsChangeEmailLink: contactDetailsChangeEmailLink,
-          errors: {
-            title: filters.translate('VALIDATION.ERROR_TITLE', (req.session.ulang === 'cy' ? texts_cy : texts_en)),
-            message: '',
-            count: typeof tmpErrors !== 'undefined' ? Object.keys(tmpErrors).length : 0,
-            items: tmpErrors,
-          },
-        });
-      }
-
-
-      , getDetailsError = function(err) {
-
-        app.logger.crit('Failed to fetch and parse details required for pdf download: ' + err.statusCode, {
-          jurorNumber: req.session.user.jurorNumber,
-          jwt: req.session.authToken,
-          error: (typeof err.error !== 'undefined') ? err.error : err
-        });
-      }
-
       /*
       if (req.session.user.ineligibleDeceased || req.session.user.ineligibleAge) {
         //adds court details to session
@@ -290,7 +282,6 @@
           .catch(getDetailsError);
       }
       */
-      
 
       // Get correct link for changing personal details
       // of summoned juror

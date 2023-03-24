@@ -52,34 +52,31 @@ var moment = require('moment');
           layout: 'noBorders',
           table: {
             headerRows: 0,
-            widths: ['50%', '30%', '*'],
             body: [
               [{
                 text: texts.jurorPDF.nameHeader,
-                style: 'textReg'
-              },
-              {
-                text: texts.sharedText.jurorNumberHeader,
-                style: 'textReg'
-              },
-              {
-                text: texts.jurorPDF.replyDateHeader,
-                style: 'textReg'
-              }
-              ],
+                style: 'courtHeadings'
+              }],
               [{
                 text: juror.nameRender,
-                style: 'bigBold'
-              },
-              {
+                marginBottom: 3
+              }],
+              [{
+                text: texts.sharedText.jurorNumberHeader,
+                style: 'courtHeadings'
+              }],
+              [{
                 text: juror.jurorNumber,
-                style: 'bigBold'
-              },
-              {
-                text: moment().format('DD/MM/YYYY'),
-                style: 'bigBold'
-              }
-              ]
+                marginBottom: 3
+              }],
+              [{
+                text: texts.jurorPDF.replyDateHeader,
+                style: 'courtHeadings'
+              }],
+              [{
+                text: filters.translateDate(moment().format('DD/MM/YYYY'), 'DD/MM/YYYY', 'D MMMM YYYY', texts.sharedText.lang),
+                marginBottom: 3
+              }]
             ]
           }
         },
@@ -1163,34 +1160,31 @@ var moment = require('moment');
           layout: 'noBorders',
           table: {
             headerRows: 0,
-            widths: ['50%', '30%', '*'],
             body: [
               [{
-                text: texts.sharedText.nameHeader,
-                style: 'textReg'
-              },
-              {
-                text: texts.sharedText.jurorNumberHeader,
-                style: 'textReg'
-              },
-              {
-                text: texts.sharedText.dateOfReply,
-                style: 'textReg'
-              }
-              ],
+                text: texts.jurorPDF.nameHeader,
+                style: 'courtHeadings'
+              }],
               [{
                 text: juror.nameRender,
-                style: 'bigBold'
-              },
-              {
+                marginBottom: 3
+              }],
+              [{
+                text: texts.sharedText.jurorNumberHeader,
+                style: 'courtHeadings'
+              }],
+              [{
                 text: juror.jurorNumber,
-                style: 'bigBold'
-              },
-              {
-                text: moment().format('DD/MM/YYYY'),
-                style: 'bigBold'
-              }
-              ]
+                marginBottom: 3
+              }],
+              [{
+                text: texts.jurorPDF.replyDateHeader,
+                style: 'courtHeadings'
+              }],
+              [{
+                text: filters.translateDate(moment().format('DD/MM/YYYY'), 'DD/MM/YYYY', 'D MMMM YYYY', texts.sharedText.lang),
+                marginBottom: 3
+              }]
             ]
           }
         },
@@ -2465,34 +2459,31 @@ var moment = require('moment');
           layout: 'noBorders',
           table: {
             headerRows: 0,
-            widths: ['50%', '30%', '*'],
             body: [
               [{
-                text: texts.sharedText.nameHeader,
-                style: 'textReg'
-              },
-              {
-                text: texts.sharedText.jurorNumberHeader,
-                style: 'textReg'
-              },
-              {
-                text: texts.sharedText.dateOfReply,
-                style: 'textReg'
-              }
-              ],
+                text: texts.jurorPDF.nameHeader,
+                style: 'courtHeadings'
+              }],
               [{
                 text: juror.nameRender,
-                style: 'bigBold'
-              },
-              {
+                marginBottom: 3
+              }],
+              [{
+                text: texts.sharedText.jurorNumberHeader,
+                style: 'courtHeadings'
+              }],
+              [{
                 text: juror.jurorNumber,
-                style: 'bigBold'
-              },
-              {
-                text: moment().format('DD/MM/YYYY'),
-                style: 'bigBold'
-              }
-              ]
+                marginBottom: 3
+              }],
+              [{
+                text: texts.jurorPDF.replyDateHeader,
+                style: 'courtHeadings'
+              }],
+              [{
+                text: filters.translateDate(moment().format('DD/MM/YYYY'), 'DD/MM/YYYY', 'D MMMM YYYY', texts.sharedText.lang),
+                marginBottom: 3
+              }]
             ]
           }
         },
@@ -2708,34 +2699,31 @@ var moment = require('moment');
           layout: 'noBorders',
           table: {
             headerRows: 0,
-            widths: ['50%', '30%', '*'],
             body: [
               [{
-                text: texts.sharedText.nameHeader,
-                style: 'textReg'
-              },
-              {
-                text: texts.sharedText.jurorNumberHeader,
-                style: 'textReg'
-              },
-              {
-                text: texts.sharedText.dateOfReply,
-                style: 'textReg'
-              }
-              ],
+                text: texts.jurorPDF.nameHeader,
+                style: 'courtHeadings'
+              }],
               [{
                 text: juror.nameRender,
-                style: 'bigBold'
-              },
-              {
+                marginBottom: 3
+              }],
+              [{
+                text: texts.sharedText.jurorNumberHeader,
+                style: 'courtHeadings'
+              }],
+              [{
                 text: juror.jurorNumber,
-                style: 'bigBold'
-              },
-              {
-                text: moment().format('DD/MM/YYYY'),
-                style: 'bigBold'
-              }
-              ]
+                marginBottom: 3
+              }],
+              [{
+                text: texts.jurorPDF.replyDateHeader,
+                style: 'courtHeadings'
+              }],
+              [{
+                text: filters.translateDate(moment().format('DD/MM/YYYY'), 'DD/MM/YYYY', 'D MMMM YYYY', texts.sharedText.lang),
+                marginBottom: 3
+              }]
             ]
           }
         },
