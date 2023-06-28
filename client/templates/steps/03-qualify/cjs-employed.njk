@@ -32,6 +32,21 @@
 
       <form action="{{ url('steps.qualify.cjs.employed.post') }}" method="post">
 
+        {# set legend HTML #}
+        {% set legendHTML %}
+          {% if user.thirdParty == 'Yes' %}
+            <h1 class="govuk-fieldset__heading">
+              <span class="govuk-caption-l">{{- texts.QUALIFY_PAGE.CAPTION_OB -}}</span>
+              {{- texts.EMPLOYED_PAGE.HEADER_OB -}}
+            </h1>
+          {% else %}
+            <h1 class="govuk-fieldset__heading">
+              <span class="govuk-caption-l">{{- texts.QUALIFY_PAGE.CAPTION -}}</span>
+              {{- texts.EMPLOYED_PAGE.HEADER -}}
+            </h1>
+          {% endif %}
+        {% endset %}
+
         {# Set heading text #}
         {% if user.thirdParty == 'Yes' %}
           {% set pageHeadingText = texts.EMPLOYED_PAGE.HEADER_OB %}
@@ -267,22 +282,15 @@
 
         <div class="govuk-form-group {% if errors.items['cjsEmployed'] or errors.items['cjsEmployer'] or policeDetailsError or prisonDetailsError or otherDetailsError %}govuk-form-group--error{% endif %}" id="cjsEmployedGroup">
           
-          <span class="govuk-caption-xl">
-            {% if user.thirdParty == 'Yes' %}
-              {{ texts.QUALIFY_PAGE.CAPTION_OB }}
-            {% else %}
-              {{ texts.QUALIFY_PAGE.CAPTION }}
-            {% endif %}
-          </span>
 
           {{ govukRadios({
             id: "cjsEmployed",
             name: "cjsEmployed",
             fieldset: {
               legend: {
-                text: pageHeadingText,
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--xl"
+                html: legendHTML,
+                classes: "govuk-fieldset__legend--l",
+                isPageHeading: false
               }
             },
             hint: {

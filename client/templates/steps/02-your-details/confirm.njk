@@ -50,11 +50,15 @@
         {# Set legend HTML #}
         {% set legendHTML %}
           {% if user.thirdParty == 'Yes' %}
-            <span class="govuk-caption-xl">{{- texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION_OB -}}</span>
-            <h1 class="govuk-fieldset__heading">{{- texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING_OB -}}</h1>
+            <h1 class="govuk-fieldset__heading">
+              <span class="govuk-caption-l">{{- texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION_OB -}}</span>
+              {{- texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING_OB -}}
+            </h1>
           {% else %}
-            <span class="govuk-caption-xl">{{- texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION -}}</span>
-            <h1 class="govuk-fieldset__heading">{{- texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING -}}</h1>
+            <h1 class="govuk-fieldset__heading">
+              <span class="govuk-caption-l">{{- texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION -}}</span>
+              {{- texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING -}}
+            </h1>
           {% endif %}
         {% endset %}
 
@@ -64,7 +68,7 @@
           fieldset: {
             legend: {
               html: legendHTML,
-              classes: "govuk-fieldset__legend--xl",
+              classes: "govuk-fieldset__legend--l",
               isPageHeading: true
             }
           },

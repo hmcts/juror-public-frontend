@@ -24,11 +24,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       
-      <h1 class="govuk-heading-xl">
+      <h1 class="govuk-heading-l">
         {% if user.thirdParty == 'Yes' %}
-          {{ texts.QUALIFY_PAGE.HEADING_OB }}
+          {{- texts.QUALIFY_PAGE.HEADING_OB -}}
         {% else %}
-          {{ texts.QUALIFY_PAGE.HEADING }}
+          {{- texts.QUALIFY_PAGE.HEADING -}}
         {% endif %}
       </h1>
       

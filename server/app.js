@@ -19,7 +19,10 @@
     , releaseVersion = require(path.resolve(__dirname, '../', 'package.json')).version
     , versionStr = appTitle + ' v' + releaseVersion
     , upperAgeLimit
-    , lowerAgeLimit;
+    , lowerAgeLimit
+    , pcqServiceEnabled = null
+    , pcqServiceUrl = ''
+    , pcqServiceReturnUrl = ''
 
   // Attach logger to app
   app.logger = logger;
@@ -47,10 +50,14 @@
         // upperAgeLimit = 76;
         // lowerAgeLimit = 18;
         response.forEach(function(res) {
-          if (res.setting === '100') {
-            upperAgeLimit = res.value;
-          } else if (res.setting === '101') {
+
+          switch (res.setting){
+          case '100':
+            upperAgeLimit = res.value
+            break;
+          case '101':
             lowerAgeLimit = res.value;
+            break;
           }
         });
         app.ageSettings = {
@@ -64,6 +71,13 @@
           lowerAgeLimit: 18
         };
       });
+
+    app.pcqSettings = {
+      serviceEnabled: null,
+      serviceUrl: null,
+      serviceReturnUrl: null
+    };
+
 
     app.server = server.listen(config.port, config.ip, function() {
       if (config.logConsole !== false) {

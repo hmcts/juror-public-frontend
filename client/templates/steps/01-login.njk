@@ -77,13 +77,13 @@
 
           <fieldset class="govuk-fieldset">
 
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
                 <span>
                   {% if user.thirdParty == 'Yes' %}
-                    {{ texts.LOGIN_PAGE.HEADING_OB }}
+                    {{- texts.LOGIN_PAGE.HEADING_OB -}}
                   {% else %}
-                    {{ texts.LOGIN_PAGE.HEADING }}
+                    {{- texts.LOGIN_PAGE.HEADING -}}
                   {% endif %}
                 </span>
               </h1>
@@ -141,7 +141,7 @@
                 </p>
 
                 <p>
-                  <strong class="bold-small">{{ texts.LOGIN_PAGE.GUIDANCE_COMPANY_NAME }}</strong><br>
+                  <strong>{{ texts.LOGIN_PAGE.GUIDANCE_COMPANY_NAME }}</strong><br>
                   <a class="govuk-link" href="mailto:{{ texts.INTERFACE.CONTACT_EMAIL }}">{{ texts.INTERFACE.CONTACT_EMAIL }}</a><br>
 
                   {% if texts.INTERFACE.HTML_LANG === "cy" %}
@@ -237,7 +237,7 @@
             </p>
 
             <p>
-              <strong class="bold-small">{{ texts.LOGIN_PAGE.GUIDANCE_COMPANY_NAME }}</strong><br>
+              <strong>{{ texts.LOGIN_PAGE.GUIDANCE_COMPANY_NAME }}</strong><br>
               <a class="govuk-link" href="mailto:{{ texts.INTERFACE.CONTACT_EMAIL }}">{{ texts.INTERFACE.CONTACT_EMAIL }}</a><br>
 
               {% if texts.INTERFACE.HTML_LANG === "cy" %}

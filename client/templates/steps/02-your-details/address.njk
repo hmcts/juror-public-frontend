@@ -34,8 +34,10 @@
 
         {# set legend HTML #}
         {% set legendHTML %}
-          <span class="govuk-caption-xl">{{- texts.YOUR_DETAILS_PAGE.CAPTION -}}</span>
-          <h1 class="govuk-fieldset__heading">{{- texts.YOUR_DETAILS_PAGE.HEADING_ADDRESS_CONFIRM -}}</h1>
+          <h1 class="govuk-fieldset__heading">
+            <span class="govuk-caption-l">{{- texts.YOUR_DETAILS_PAGE.CAPTION -}}</span>
+            {{- texts.YOUR_DETAILS_PAGE.HEADING_ADDRESS_CONFIRM -}}
+          </h1>
         {% endset %}
 
         {{ govukRadios({
@@ -43,7 +45,7 @@
           fieldset: {
             legend: {
               html: legendHTML,
-              classes: "govuk-fieldset__legend--xl",
+              classes: "govuk-fieldset__legend--l",
               isPageHeading: false
             }
           },

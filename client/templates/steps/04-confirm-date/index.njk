@@ -80,11 +80,11 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
 
-        <h1 class="govuk-heading-xl">
+        <h1 class="govuk-heading-l">
           {% if user.thirdParty == 'Yes' %}
-            {{ texts.CONFIRM_DATE_PAGE.HEADING_OB }}
+            {{- texts.CONFIRM_DATE_PAGE.HEADING_OB -}}
           {% else %}
-            {{ texts.CONFIRM_DATE_PAGE.HEADING }}
+            {{- texts.CONFIRM_DATE_PAGE.HEADING -}}
           {% endif %}
         </h1>
 
