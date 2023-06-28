@@ -19,40 +19,25 @@
     return function(req, res) {
       var tmpErrors
         , tmpDates = {}
-        , tmpDays = {}
-        , tmpMonths = {}
-        , tmpYears = {}
         , datepickerDefaults = {}
         , mergedUser
         , backLinkUrl
         , deferralDateRange
-        , datepickerDefault
         , iLoop;
 
 
       // initialise dates
       deferralDateRange = utils.getDeferralDateRange(req.session.user.hearingDateTimestamp);
       req.session.user.deferral['dateRange'] = deferralDateRange;
-      datepickerDefault = deferralDateRange.earliestDateMed; // value must be string format e.g. '20 September 2021'
 
       if (req.session.user.deferral.dates) {
         req.session.user.deferral.dates.split(',')
           .forEach(function(dateStr, index) {
-            tmpDates['date' + (index + 1)] = dateStr;
-
-            tmpDays['date' + (index + 1) + 'Day'] = dateStr.split('/')[0];
-            tmpMonths['date' + (index + 1) + 'Month'] = dateStr.split('/')[1];
-            tmpYears['date' + (index + 1) + 'Year'] = dateStr.split('/')[2];
-
-            datepickerDefaults['date' + (index + 1)] = moment(dateStr, 'DD/MM/YYYY').format('D MMMM YYYY');
+            tmpDates['deferDate' + (index + 1)] = dateStr;
           });
-      } else {
-        for (iLoop = 0; iLoop < 3; iLoop++) {
-          datepickerDefaults['date' + (iLoop + 1)] = datepickerDefault;
-        }
       }
 
-      mergedUser = _.merge(_.cloneDeep(req.session.user), tmpDates, tmpDays, tmpMonths, tmpYears, _.cloneDeep(req.session.formFields));
+      mergedUser = _.merge(_.cloneDeep(req.session.user), tmpDates, _.cloneDeep(req.session.formFields));
       tmpErrors = _.cloneDeep(req.session.errors);
 
       delete req.session.errors;
@@ -100,41 +85,35 @@
       delete req.session.errors;
       delete req.session.formFields;
 
-      deferDate1 = req.body['date1Day'].trim() + '/' + req.body['date1Month'].trim() + '/' + req.body['date1Year'];
-      deferDate2 = req.body['date2Day'].trim() + '/' + req.body['date2Month'].trim() + '/' + req.body['date2Year'];
-      deferDate3 = req.body['date3Day'].trim() + '/' + req.body['date3Month'].trim() + '/' + req.body['date3Year'];
+      deferDate1 = req.body['deferDate1'].trim();
+      deferDate2 = req.body['deferDate2'].trim();
+      deferDate3 = req.body['deferDate3'].trim();
 
       moments = [deferDate1, deferDate2, deferDate3];
-      //moments = [req.body['date1'], req.body['date2'], req.body['date3']];
 
       // Store new info
-      req.session.user.deferral['date1Day'] = req.body['date1Day'].trim();
-      req.session.user.deferral['date1Month'] = req.body['date1Month'].trim();
-      req.session.user.deferral['date1Year'] = req.body['date1Year'].trim();
-      
-      req.session.user.deferral['date2Day'] = req.body['date2Day'].trim();
-      req.session.user.deferral['date2Month'] = req.body['date2Month'].trim();
-      req.session.user.deferral['date2Year'] = req.body['date2Year'].trim();
-
-      req.session.user.deferral['date3Day'] = req.body['date3Day'].trim();
-      req.session.user.deferral['date3Month'] = req.body['date3Month'].trim();
-      req.session.user.deferral['date3Year'] = req.body['date3Year'].trim();
+      req.session.user.deferral['date1Value'] = deferDate1;
+      req.session.user.deferral['date2Value'] = deferDate2;
+      req.session.user.deferral['date3Value'] = deferDate3;
 
       validateParams = {
-        'date1Day': req.body['date1Day'],
-        'date1Month': req.body['date1Month'],
-        'date1Year': req.body['date1Year'],
+        //'date1Day': req.body['date1Day'],
+        //'date1Month': req.body['date1Month'],
+        //'date1Year': req.body['date1Year'],
         'date1': deferDate1,
+        'date1FieldId': 'deferDate1',
 
-        'date2Day': req.body['date2Day'],
-        'date2Month': req.body['date2Month'],
-        'date2Year': req.body['date2Year'],
+        //'date2Day': req.body['date2Day'],
+        //'date2Month': req.body['date2Month'],
+        //'date2Year': req.body['date2Year'],
         'date2': deferDate2,
+        'date2FieldId': 'deferDate2',
 
-        'date3Day': req.body['date3Day'],
-        'date3Month': req.body['date3Month'],
-        'date3Year': req.body['date3Year'],
+        //'date3Day': req.body['date3Day'],
+        //'date3Month': req.body['date3Month'],
+        //'date3Year': req.body['date3Year'],
         'date3': deferDate3,
+        'date3FieldId': 'deferDate3',
 
         'earliestDate': req.session.user.deferral.dateRange.earliestMoment,
         'latestDate': req.session.user.deferral.dateRange.latestMoment,

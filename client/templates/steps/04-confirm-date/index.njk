@@ -1,6 +1,6 @@
 {% extends "../../layouts/default-gds.njk" %}
 
-{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{#{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}#}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
@@ -26,9 +26,7 @@
 
   {# Set radio labels #}
   {% if user.thirdParty == 'Yes' %}
-    {% set radioHint %}
-      <h2>{{ texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HINT_OB }}</h2>
-    {% endset %}
+    {% set radioLegendText = texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_QUESTION_OB %}
 
     {% set radioYesLabel %}
       {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES_1_OB | safe }}
@@ -41,9 +39,7 @@
     {% set radioExcusalLabel = texts.CONFIRM_DATE_PAGE.ANSWER_EXCUSAL_OB | safe %}
 
   {% else %}
-    {% set radioHint %}
-      <h2>{{texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_HINT }}</h2>
-    {% endset %}
+    {% set radioLegendText = texts.CONFIRM_DATE_PAGE.DATE_CONFIRMATION_QUESTION %}
 
     {% set radioYesLabel %}
       {{ texts.CONFIRM_DATE_PAGE.ANSWER_YES_1  | safe }}
@@ -90,7 +86,7 @@
 
         <div class="govuk-body">
           {# summons info panel #}
-          <div class="govuk-panel confirm-date-panel">
+          <div class="govuk-panel confirm-date-panel govuk-!-margin-bottom-6">
             <p class="govuk-panel__body govuk-!-font-size-24">
               {% if user.thirdParty == 'Yes' %}
                 {{ texts.CONFIRM_DATE_PAGE.PANEL_INTRO_OB }}
@@ -98,9 +94,9 @@
                 {{ texts.CONFIRM_DATE_PAGE.PANEL_INTRO }}
               {% endif %}
             </p>
-            <h1 class="govuk-panel__title govuk-!-font-size-36">
+            <h2 class="govuk-panel__title govuk-!-font-size-36">
               {{ user.hearingDateShort | translateDate("DD/MM/YYYY", "dddd D MMMM YYYY", texts.INTERFACE.HTML_LANG) }}
-            </h1>
+            </h2>
             <div class="govuk-panel__body govuk-!-font-size-24">
               {{ user.hearingTime }}<br>
               {{ texts.CONFIRM_DATE_PAGE.AT }}<br>
@@ -114,9 +110,14 @@
             {{ govukRadios({
               id: "confirmedDate",
               name: "confirmedDate",
-              hint: {
-                html: radioHint
+              fieldset: {
+                legend: {
+                  text: radioLegendText,
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--m"
+                }
               },
+
               errorMessage: radioAnswerError,
               items: [
                 {

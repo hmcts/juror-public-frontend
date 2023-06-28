@@ -5,8 +5,8 @@
   "PANEL_INTRO": "Rydych wedi cael gwŷs i ddechrau gwasanaeth rheithgor ar",
   "PANEL_INTRO_OB": "Mae'r unigolyn yr ydych chi'n ateb ar ei ran wedi cael gwŷs i ddechrau gwasanaeth rheithgor ar",
   "AT": "yn",
-  "DATE_CONFIRMATION_HINT": "Ydych chi'n gallu dechrau gwasanaeth rheithgor ar y dyddiad hwn?",
-  "DATE_CONFIRMATION_HINT_OB": "Ydi'r unigolyn yn gallu dechrau gwasanaeth rheithgor ar y dyddiad hwn?",
+  "DATE_CONFIRMATION_QUESTION": "Ydych chi'n gallu dechrau gwasanaeth rheithgor ar y dyddiad hwn?",
+  "DATE_CONFIRMATION_QUESTION_OB": "Ydi'r unigolyn yn gallu dechrau gwasanaeth rheithgor ar y dyddiad hwn?",
 
   "ANSWER_YES_1": "Ydw, rydw i'n gallu dechrau ar ",
   "ANSWER_YES_2": " a gwasanaethu am o leiaf pythefnos",

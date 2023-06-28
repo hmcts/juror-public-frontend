@@ -127,7 +127,7 @@
     "MENTAL_HEALTH_CAPACITY": "Select yes if it's been decided that you 'lack mental capacity'",
     "MENTAL_HEALTH_CAPACITY_OB": "Select yes if it's been decided that the person you're replying for 'lacks mental capacity'",
     "MENTAL_HEALTH_CAPACITY_DETAILS": "Provide brief details about why it was decided you lack mental capacity",
-    "MENTAL_HEALTH_CAPACITY_DETAILS_OB": "Provide more details about why it was decided they lack mental capacity",
+    "MENTAL_HEALTH_CAPACITY_DETAILS_OB": "Provide brief details about why it was decided they lack mental capacity",
     "MENTAL_HEALTH_CAPACITY_LENGTH": "Details about why it was decided you lack mental capacity must be fewer characters",
     "MENTAL_HEALTH_CAPACITY_LENGTH_OB": "Details about why it was decided they lack mental capacity must be fewer characters",
 

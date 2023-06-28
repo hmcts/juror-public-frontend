@@ -23,57 +23,53 @@
 
   {% include "../../includes/errors-gds.njk" %}
 
+  {# Set radio button error #}
+  {% set radioButtonError = undefined %}
+  {% if errors.items['dobConfirm']%}
+    {% set radioButtonError = {"text": errors.items['dobConfirm'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+  {% endif %}
+
+  {# Set legend text #}
+  {% if user.thirdParty == 'Yes' %}
+    {% set legendText = texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE_OB %}
+  {% else %}
+    {% set legendText = texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE %}
+  {% endif %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="{{ url('steps.your.details.confirm.post') }}" method="post" id="confirmDOBForm" {% if not IS_PRODUCTION %}novalidate{% endif %}>
-
-        {# Set radio button error #}
-        {% set radioButtonError = undefined %}
-        {% if errors.items['dobConfirm']%}
-          {% set radioButtonError = {"text": errors.items['dobConfirm'][0].details, visuallyHiddenText: texts.ERRORS.HIDDEN_ERROR} %}
+      <h1 class="govuk-heading-l">
+        {% if user.thirdParty == 'Yes' %}
+          <span class="govuk-caption-l">{{- texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION_OB -}}</span>
+          {{- texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING_OB -}}
+        {% else %}
+          <span class="govuk-caption-l">{{- texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION -}}</span>
+          {{- texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING -}}
         {% endif %}
+      </h1>
 
-        {# Set hint HTML #}
-        {% set hintHTML %}
-          {% if user.thirdParty == 'Yes' %}
-              <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE_OB' | translate(texts, { formattedDob: formattedDob }) }}</p>
-              <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE_OB' | translate(texts, { currentAge: currentAge }) }}</p>
-              <p class="govuk-heading-m">{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE_OB }}</p>
-            {% else %}
-              <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE' | translate(texts, { formattedDob: formattedDob }) }}</p>
-              <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE' | translate(texts, { currentAge: currentAge }) }}</p>
-              <p class="govuk-heading-m">{{ texts.YOUR_DETAILS_CONFIRM_PAGE.DOB_CONFIRM_MESSAGE }}</p>
-            {% endif %}
-        {% endset %}
+      {% set translatedDate = formattedDob | translateDate('', 'DD MMMM YYYY', texts.INTERFACE.HTML_LANG) %}
 
-        {# Set legend HTML #}
-        {% set legendHTML %}
-          {% if user.thirdParty == 'Yes' %}
-            <h1 class="govuk-fieldset__heading">
-              <span class="govuk-caption-l">{{- texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION_OB -}}</span>
-              {{- texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING_OB -}}
-            </h1>
-          {% else %}
-            <h1 class="govuk-fieldset__heading">
-              <span class="govuk-caption-l">{{- texts.YOUR_DETAILS_CONFIRM_PAGE.CAPTION -}}</span>
-              {{- texts.YOUR_DETAILS_CONFIRM_PAGE.HEADING -}}
-            </h1>
-          {% endif %}
-        {% endset %}
+      {% if user.thirdParty == 'Yes' %}
+        <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE_OB' | translate(texts, { formattedDob: translatedDate }) }}</p>
+        <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE_OB' | translate(texts, { currentAge: currentAge }) }}</p>
+      {% else %}
+        <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_VALUE' | translate(texts, { formattedDob: translatedDate }) }}</p>
+        <p class="govuk-body">{{ 'YOUR_DETAILS_CONFIRM_PAGE.DOB_CURRENT_AGE' | translate(texts, { currentAge: currentAge }) }}</p>
+      {% endif %}
+
+      <form action="{{ url('steps.your.details.confirm.post') }}" method="post" id="confirmDOBForm" {% if not IS_PRODUCTION %}novalidate{% endif %}>
 
         {{ govukRadios({
           name: "dobConfirm",
           classes: "govuk-radios--inline",
           fieldset: {
             legend: {
-              html: legendHTML,
-              classes: "govuk-fieldset__legend--l",
-              isPageHeading: true
+              text: legendText,
+              classes: "govuk-fieldset__legend--m",
+              isPageHeading: false
             }
-          },
-          hint: {
-            html: hintHTML
           },
           errorMessage: radioButtonError,
           items: [

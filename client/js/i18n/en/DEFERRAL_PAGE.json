@@ -28,7 +28,7 @@
     "DATE1_LABEL": "First choice",
     "DATE2_LABEL": "Second choice",
     "DATE3_LABEL": "Third choice",
-    "DATE_EXAMPLE_HINT": "For example, "
+    "DATE_EXAMPLE_HINT": "Use dd/mm/yyyy format.  For example, "
   },
 
   "CHECK_DATES": {
@@ -91,6 +91,8 @@
   "DATEPICKER_ALT_2": "open second choice calendar",
   "DATEPICKER_ALT_3": "open third choice calendar",
 
+  "DATEPICKER_GUIDANCE": "You can use the arrow keys to select a date",
+
   "MONDAY": "Monday",
   "TUESDAY": "Tuesday",
   "WEDNESDAY": "Wednesday",
@@ -106,5 +108,5 @@
   "FR": "FR",
   "SA": "SA",
   "SU": "SU"
-  
+
 }

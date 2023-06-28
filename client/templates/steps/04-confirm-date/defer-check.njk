@@ -43,13 +43,13 @@
           </h1>
 
           <div class="govuk-summary-list__row">
-            <span class="govuk-heading-m">
+            <h2 class="govuk-heading-m">
               {% if user.thirdParty == 'Yes' %}
                 {{ texts.DEFERRAL_PAGE.CHECK_DATES.SUMMARY_HEADING_OB }}
               {% else %}
                 {{ texts.DEFERRAL_PAGE.CHECK_DATES.SUMMARY_HEADING }}
               {% endif %}
-            </span>
+            </h2>
           </div>
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
@@ -108,7 +108,7 @@
         fieldset: {
           legend: {
             text: texts.DEFERRAL_PAGE.CHECK_DATES.QUESTION,
-            isPageHeading: true,
+            isPageHeading: false,
             classes: "govuk-fieldset__legend--m"
           }
         },

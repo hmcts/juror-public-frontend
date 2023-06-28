@@ -138,16 +138,16 @@
               params = {
                 serviceId: 'JurorDigital',
                 actor: 'CITIZEN',
+                ccdCaseId: null,
                 pcqId,
-                partyId: null,
+                partyId: 'anonymous',
                 returnUrl: null,
                 language: req.i18n_lang
               };
 
+              //JDB-5363 pass JurorNumber as ccdCaseId
               if (req.session.user['jurorNumber']){
-                params.partyId = req.session.user['jurorNumber'];
-              } else {
-                params.partyId = 'anonymous';
+                params.ccdCaseId = req.session.user['jurorNumber'];
               }
 
               if (app.pcqSettings.serviceReturnUrl){

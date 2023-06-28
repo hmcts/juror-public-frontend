@@ -1,0 +1,20 @@
+{{ texts.LOGIN_PAGE.GUIDANCE_COMPANY_NAME }}<br>
+<a class="govuk-link" href="mailto:{{ texts.INTERFACE.CONTACT_EMAIL }}">{{ texts.INTERFACE.CONTACT_EMAIL }}</a><br>
+
+{% if texts.INTERFACE.HTML_LANG === "cy" %}
+  {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+    {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+  {% endif %}
+  <br>
+  {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+    {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+  {% endif %}
+  <br>
+{% else %}
+  {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+  <br>
+{% endif %}
+
+{{ texts.LOGIN_PAGE.GUIDANCE_OPENING_TIMES }}<br>
+{{ texts.LOGIN_PAGE.GUIDANCE_OPENING_TIMES_FRIDAY }}<br>
+<a class="govuk-link" href="{{ texts.LOGIN_PAGE.GUIDANCE_CALL_CHARGE_LINK }}">{{ texts.LOGIN_PAGE.GUIDANCE_CALL_CHARGE_LABEL }}</a>

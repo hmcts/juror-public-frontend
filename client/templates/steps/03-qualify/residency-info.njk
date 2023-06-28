@@ -61,24 +61,10 @@
 
       {% endif %}
         {# contact details #}
-        <span class="govuk-body govuk-!-font-size-19 govuk-!-font-weight-bold">{{ texts.INFO_PAGE.RESIDENCY.CONTACT_HEADING }}</span><br/>
-        <a class="govuk-link" href="{{ "mailto:" + texts.INTERFACE.CONTACT_EMAIL }}" id="emailLink">{{ texts.INTERFACE.CONTACT_EMAIL }}</a><br/>
-        {% if texts.INTERFACE.HTML_LANG === "cy" %}
-          {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
-            {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
-          {% endif %}
-          <br>
-          {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
-            {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
-          {% endif %}
-          <br>
-        {% else %}
-          {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
-        <br>
-        {% endif %}
-        {{ texts.INFO_PAGE.RESIDENCY.CONTACT_1 }}<br/>
-        {{ texts.INFO_PAGE.RESIDENCY.CONTACT_2 }}
-
+        <p>
+          {% include "../../includes/contact-details.njk" %}
+        </p>
+        
     </div>
 
   </div>

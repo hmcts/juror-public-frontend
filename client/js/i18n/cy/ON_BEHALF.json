@@ -85,15 +85,6 @@
     "HELPER_CONFIRM_ADDRESS_PARAGRAPH_2": "Ar ôl iddo/iddi symud, cysylltwch â'r swyddfa wysio rheithgorau ganolog trwy ffonio 0300 456 1024, a rhoi ei cyfeiriad/chyfeiriad newydd iddynt.",
     "HELPER_CONFIRM_ADDRESS_PARAGRAPH_3": "Os ydyw yn symud o'r ardal lle mae'n byw ar hyn o bryd, mae'n bosibl y byddwn yn newid lleoliad ei wasanaeth rheithgor.",
 
-    "FORM_ADDRESS_LABEL": "Cyfeiriad",
-    "FORM_ADDRESS_LINE_ONE_LABEL": "Adeilad a'r stryd",
-    "FORM_ADDRESS_LINE_1_OF_3": "llinell 1 o 3",
-    "FORM_ADDRESS_LINE_TWO_LABEL": "Adeilad a’r stryd llinell 2 o 3",
-    "FORM_ADDRESS_LINE_THREE_LABEL": "Adeilad a’r stryd llinell 3 o 3",
-    "FORM_ADDRESS_TOWN_LABEL": "Tref neu ddinas",
-    "FORM_ADDRESS_COUNTY_LABEL": "Sir (dewisol)",
-    "FORM_ADDRESS_POSTCODE_LABEL": "Cod post",
-
     "HELPER_CHANGE_ADDRESS_TITLE": "Beth fydd yn digwydd os ydyw wedi newid ei gyfeiriad?",
     "HELPER_CHANGE_ADDRESS_PARAGRAPH_1": "Os yw ei gyfeiriad wedi newid, efallai y byddwn yn gallu symud ei wasanaeth rheithgor i Lys yn nes at ei gyfeiriad newydd.",
     "HELPER_CHANGE_ADDRESS_PARAGRAPH_2": "Byddwn yn cysylltu ag ef yn ddiweddarach ynglŷn â hyn. Parhewch i ddefnyddio'r ffurflen ar-lein ar hyn o bryd.",

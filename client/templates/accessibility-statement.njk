@@ -114,9 +114,8 @@
     <p>{{ texts.ACCESSIBILITY_STATEMENT.SECTION_8.GUIDANCE_2 }}</p>
 
     <p>
-      {{ texts.ACCESSIBILITY_STATEMENT.SECTION_8.REPORT_GUIDANCE }}
-      {#<a class="govuk-link" href="{{ url('accessibility-statement-report.get') }}" id="accessibilityReportLink">{{ texts.ACCESSIBILITY_STATEMENT.SECTION_8.REPORT_PDF_LINK }}</a>.#}
-      <a class="govuk-link" href="{{ texts.ACCESSIBILITY_STATEMENT.SECTION_8.REPORT_URL }}" id="accessibilityReportLink">{{ texts.ACCESSIBILITY_STATEMENT.SECTION_8.REPORT_LINK }}</a>.
+      {{- texts.ACCESSIBILITY_STATEMENT.SECTION_8.REPORT_GUIDANCE }}
+      <a class="govuk-link" href="{{- texts.ACCESSIBILITY_STATEMENT.SECTION_8.REPORT_URL -}}" id="accessibilityReportLink">{{ texts.ACCESSIBILITY_STATEMENT.SECTION_8.REPORT_LINK -}}</a>.
     </p>
 
   </div>
