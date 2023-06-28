@@ -275,9 +275,9 @@
 
       <div class="govuk-body govuk-table__cell" >
         {% if user.thirdParty == 'Yes' %}
-          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION }}</h3>
+          <h2 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_QUALIFY_QUESTION }}</h2>
         {% else %}
-          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION }}</h3>
+          <h2 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_QUALIFY_QUESTION }}</h2>
         {% endif %}
       </div>
 
@@ -559,9 +559,9 @@
 
       <div class="govuk-body govuk-table__cell" >
         {% if user.thirdParty == 'Yes' %}
-          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_CONFIRM_DATE_HEADER }}</h3>
+          <h2 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_CONFIRM_DATE_HEADER }}</h2>
         {% else %}
-          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_CONFIRM_DATE_HEADER }}</h3>
+          <h2 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_CONFIRM_DATE_HEADER }}</h2>
         {% endif %}
       </div>
 
@@ -620,9 +620,9 @@
 
         <div class="govuk-body govuk-table__cell" >
           {% if user.thirdParty == 'Yes' %}
-            <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_CHANGE_DATE_HEADER }}</h3>
+            <h2 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_CHANGE_DATE_HEADER }}</h2>
           {% else %}
-            <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_CHANGE_DATE_HEADER }}</h3>
+            <h2 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_CHANGE_DATE_HEADER }}</h2>
           {% endif %}
         </div>
 
@@ -719,9 +719,9 @@
 
         <div class="govuk-body govuk-table__cell" >
           {% if user.thirdParty == 'Yes' %}
-            <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_EXCUSAL_HEADER }}</h3>
+            <h2 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_EXCUSAL_HEADER }}</h2>
           {% else %}
-            <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_EXCUSAL_HEADER }}</h3>
+            <h2 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_EXCUSAL_HEADER }}</h2>
           {% endif %}
         </div>
 
@@ -763,9 +763,9 @@
       {# Assistance in Court (Reasonable Adustments) #}
       <div class="govuk-body govuk-table__cell" >
         {% if user.thirdParty == 'Yes' %}
-          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_ASSISTANCE_HEADER }}</h3>
+          <h2 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.OB_ASSISTANCE_HEADER }}</h2>
         {% else %}
-          <h3 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_ASSISTANCE_HEADER }}</h3>
+          <h2 class="govuk-heading-m">{{ texts.CHECK_ANSWERS_PAGE.JUROR_ASSISTANCE_HEADER }}</h2>
         {% endif %}
       </div>
 
@@ -846,7 +846,7 @@
 
       <div class="govuk-form-group {% if errors.items['informationConfirmed'] %}govuk-form-group--error{% endif %}">
 
-        <h2 class="govuk-heading-s">
+        <h2 class="govuk-heading-m">
           {{ texts.VALIDATION.CONFIRM_INFO.CONFIRM_CORRECT }}
         </h2>
 

@@ -179,60 +179,21 @@
               </h1>
             </legend>
 
-            <strong class="govuk-body-l govuk-!-font-weight-bold">
+            <h2 class="govuk-heading-m">
               {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT }}
-            </strong>
+            </h2>
             <p class="govuk-body">
               {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.CONTACT_PARAGRAPH }}
             </p>
 
+
             {# Phone options #}
-            <strong class="govuk-body govuk-!-font-weight-bold">
+            <h3 class="govuk-heading-s">
               {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE }}
-            </strong>
+            </h3>
             <p class="govuk-body">
               {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_PARAGRAPH }}
             </p>
-
-            {#            
-            <div class="govuk-form-group">
-              <div class="govuk-radios govuk-radios--conditional" data-module="radios">
-    
-                <div class="govuk-radios__item">
-                  <input class="selection-button-radio-gds store-updated-information govuk-radios__input" id="phoneNumber_existing" name="useJurorPhoneDetails" autocomplete="off" type="radio" value="No" data-aria-controls="conditional-phoneNumber_new" {{radioPhoneExisitingChecked}}}>
-                  <label class="govuk-label govuk-radios__label" for="phoneNumber_existing">
-                    {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_USE_PREVIOUS}}
-                  </label>
-                </div>
-    
-                <div class="govuk-radios__item">
-                  <input class="selection-button-radio-gds store-updated-information govuk-radios__input" id="phoneNumber_new" name="useJurorPhoneDetails" type="radio" autocomplete="off" value="Yes" data-aria-controls="conditional-phoneNumber_new" {{radioPhoneNewChecked}}>
-                  <label class="govuk-label govuk-radios__label" for="phoneNumber_new">
-                    {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.PHONE_GIVE_NEW}}
-                  </label>
-                </div>
-    
-                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-phoneNumber_new">
-          
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="primaryPhone">
-                      {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.MAIN_PHONE}}
-                    </label>
-                    <input class="govuk-input govuk-!-width-two-thirds" id="primaryPhone" name="primaryPhone" type="text" autocomplete="off" inputmode="numeric" value="{{user.primaryPhone}}">
-                  </div>
-
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="secondaryPhone">
-                      {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.OTHER_PHONE}}
-                    </label>
-                    <input class="govuk-input govuk-!-width-two-thirds" id="secondaryPhone" name="secondaryPhone" type="text" autocomplete="off" inputmode="numeric" value="{{ user.secondaryPhone }}">
-                  </div>
-          
-                </div>
-
-              </div>
-            </div>
-            #}
             
             {{ govukRadios({
               id: "useJurorPhoneDetails",
@@ -261,52 +222,13 @@
             
 
             {# Email options #}
-            <strong class="govuk-body govuk-!-font-weight-bold">
+            <h3 class="govuk-heading-s">
               {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL }}
-            </strong>
+            </h3>
             <p class="govuk-body">
               {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_PARAGRAPH }}
             </p>
 
-            {#
-            <div class="govuk-form-group">
-              <div class="govuk-radios govuk-radios--conditional" data-module="radios">
-    
-                <div class="govuk-radios__item">
-                  <input class="selection-button-radio-gds store-updated-information govuk-radios__input" id="emailAddress_existing" name="useJurorEmailDetails" type="radio" value="No" {{radioEmailExisitingChecked}}>
-                  <label class="govuk-label govuk-radios__label" for="phoneNumber_existing">
-                    {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_USE_PREVIOUS}}
-                  </label>
-                </div>
-    
-                <div class="govuk-radios__item">
-                  <input class="selection-button-radio-gds store-updated-information govuk-radios__input" id="emailAddress_new" name="useJurorEmailDetails" type="radio" value="Yes" data-aria-controls="conditional-emailAddress_new" {{radioEmailNewChecked}}>
-                  <label class="govuk-label govuk-radios__label" for="phoneNumber_new">
-                    {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_GIVE_NEW}}
-                  </label>
-                </div>
-    
-                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-emailAddress_new">
-          
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="emailAddress">
-                      {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_ENTER}}
-                    </label>
-                    <input class="govuk-input govuk-!-width-two-thirds" id="emailAddress" name="emailAddress" type="text" autocomplete="off" maxlength="254" value="{{ user.emailAddress }}">
-                  </div>
-
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="emailAddressConfirmation">
-                      {{texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_ENTER_CONFIRM}}
-                    </label>
-                    <input class="govuk-input govuk-!-width-two-thirds" id="emailAddressConfirmation" name="emailAddressConfirmation" type="text" autocomplete="off" maxlength="254" value="{{ user.emailAddressConfirmation }}">
-                  </div>
-          
-                </div>
-
-              </div>
-            </div>
-            #}
 
             
             {{ govukRadios({
@@ -339,10 +261,18 @@
         
         </div>
 
-        {{ govukDetails({
-          summaryText: texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_HELPER_TITLE,
-          text: texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_HELPER_TEXT
-        }) }}
+        <details class="govuk-details ga-problems-with-details" data-module="govuk-details">
+          <summary class="govuk-details__summary ga-third-party-contact-details">
+            <span class="govuk-details__summary-text ga-third-party-contact-details">
+                {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_HELPER_TITLE }}
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p>
+              {{ texts.ON_BEHALF.THIRD_PARTY_CONTACT_DETAILS.EMAIL_HELPER_TEXT }}
+            </p>
+          </div>
+        </details>
 
         {# Submit form #}
         {{ govukButton({

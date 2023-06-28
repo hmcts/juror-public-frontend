@@ -25,7 +25,8 @@
   "RESIDENCY_YES_OB": "Yes",
   "RESIDENCY_NO": "No",
   "RESIDENCY_NO_OB": "No",
-  "ERROR_MISSING": "Please answer this question",
+  "RESIDENCY_DETAILS_LABEL": "Provide details about where you have lived since your 13th birthday",
+  "RESIDENCY_DETAILS_LABEL_OB": "Provide details about where the person you are answering for has lived since their 13th birthday",
   
   "MENTAL_HEALTH_SECTIONED_TITLE": "Are you being detained, looked after or treated under the Mental Health Act?",
   "MENTAL_HEALTH_SECTIONED_TITLE_OB": "Is the person you're replying for being detained, looked after or treated under the Mental Health Act?",
@@ -38,6 +39,8 @@
   "MENTAL_HEALTH_YES_OB": "Yes",
   "MENTAL_HEALTH_NO": "No",
   "MENTAL_HEALTH_NO_OB": "No",
+  "MENTAL_HEALTH_SECTIONED_DETAILS_LABEL": "Provide details about how you're being detained, looked after or treated under the Mental Health Act",
+  "MENTAL_HEALTH_SECTIONED_DETAILS_LABEL_OB": "Provide details about how they're being detained, looked after or treated under the Mental Health Act",
 
   "MENTAL_HEALTH_CAPACITY_TITLE": "Has it been decided that you 'lack mental capacity'?",
   "MENTAL_HEALTH_CAPACITY_TITLE_OB": "Has it been decided that the person you're replying for 'lacks mental capacity'?",
@@ -47,13 +50,9 @@
   "MENTAL_HEALTH_CAPACITY_YES_OB": "Yes",
   "MENTAL_HEALTH_CAPACITY_NO": "No",
   "MENTAL_HEALTH_CAPACITY_NO_OB": "No",
+  "MENTAL_HEALTH_CAPACITY_DETAILS_LABEL": "Provide brief details about why it was decided you lack mental capacity",
+  "MENTAL_HEALTH_CAPACITY_DETAILS_LABEL_OB": "Provide brief details about why it was decided they lack mental capacity",
 
-  "QUESTION_2": "Are you detained (sectioned) or likely to be detained under the Mental Health Act 1983 or do you lack capacity as stated in the Mental Capacity Act 2005?",
-  "QUESTION_2_SECTIONED": "Are you detained (sectioned) or likely to be detained under the Mental Health Act 1983?",
-  "QUESTION_2_SECTIONED_OB": "Is the person detained (sectioned) or likely to be detained under the Mental Health Act 1983?",
-  "QUESTION_2_CAPACITY": "Do you lack capacity as stated in the Mental Capacity Act 2005?",
-  "QUESTION_2_CAPACITY_OB": "Does the person lack capacity as stated in the Mental Capacity Act 2005?",
-  
   "BAIL_TITLE": "Are you currently on bail for a criminal offence?",
   "BAIL_TITLE_OB": "Is the person currently on bail for a criminal offence?",
   "BAIL_YES": "Yes",
@@ -62,6 +61,8 @@
   "BAIL_NO_OB": "No",
   "BAIL_HINT": "If you're on bail in criminal proceedings, you cannot do jury service.",
   "BAIL_HINT_OB": "If the person you're answering for is on bail in criminal proceedings, they cannot do jury service.",
+  "BAIL_DETAILS_LABEL": "Provide details about your bail and criminal offence",
+  "BAIL_DETAILS_LABEL_OB": "Provide details about the person's bail and criminal offence",
   
   "CONVICTIONS_TITLE": "Have you been found guilty of a criminal offence?",
   "CONVICTIONS_TITLE_OB": "Has the person been found guilty of a criminal offence?",
@@ -81,6 +82,8 @@
   "CONVICTIONS_DETAILS_HINT_LIST_3_OB": "where they were convicted",
   "CONVICTIONS_DETAILS_HINT_LIST_4": "length of sentence",
   "CONVICTIONS_DETAILS_HINT_LIST_4_OB": "length of sentence",
+  "CONVICTIONS_DETAILS_LABEL": "Provide details about your criminal offence",
+  "CONVICTIONS_DETAILS_LABEL_OB": "Provide details about the person's criminal offence",
 
   "UNSURE_PROMPT": "Not sure?",
   "MORE_INFO_LINK": "Find out more",

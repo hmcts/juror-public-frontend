@@ -2,7 +2,7 @@
 
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "./deferral-date-macro.njk" import deferralDate %}
+{% from "./date-picker-macro.njk" import datePicker %}
 
 {% block pageTitle %}
   {% include "../../includes/title-error.njk" %}
@@ -31,7 +31,6 @@
 
     <form action="{{ url('steps.confirm.date.deferral-dates.post') }}" method="post" {% if not IS_PRODUCTION %}novalidate{% endif %}>
       
-      {# {% if errors.items['dates'] or errors.items['date1'] or errors.items['date1Error'] or errors.items['date2'] or errors.items['date2Error'] or errors.items['date3'] or errors.items['date3Error']%}govuk-form-group--error{% endif %} #}
       <div class="govuk-form-group ">
         
         <h1 class="govuk-heading-l">
@@ -44,7 +43,7 @@
 
         <p class="govuk-body">{{ texts.DEFERRAL_PAGE.DATES.GUIDANCE_P1 }} {{deferralDateRange.earliestDateShort | translateDate("D MM YYYY", "D MMMM YYYY", texts.INTERFACE.HTML_LANG)}} {{ texts.DEFERRAL_PAGE.DATES.GUIDANCE_AND }} {{deferralDateRange.latestDateShort | translateDate("D MM YYYY", "D MMMM YYYY", texts.INTERFACE.HTML_LANG)}}</p>
 
-        <p class="govuk-body">
+        <p class="govuk-body govuk-!-margin-bottom-6">
           {% if user.thirdParty == 'Yes' %}
             {{ texts.DEFERRAL_PAGE.DATES.GUIDANCE_P2_OB }}
           {% else %}
@@ -54,80 +53,62 @@
       
         <div class="{% if errors.items['dates'] %}govuk-error{% endif %}" id="datesGroup">
 
-          {% set dateError1 = undefined %}
+          {% set date1Error = undefined %}
           {% if errors.items['date1'] %}
-            {% set dateError1 = errors.items['date1'][0].summary %}
+            {% set date1Error = errors.items['date1'][0].summary %}
           {% endif %}
 
-          {% set dateError2 = undefined %}
+          {% set date2Error = undefined %}
           {% if errors.items['date2'] %}
-            {% set dateError2 = errors.items['date2'][0].summary %}
+            {% set date2Error = errors.items['date2'][0].summary %}
           {% endif %}
 
-          {% set dateError3 = undefined %}
+          {% set date3Error = undefined %}
           {% if errors.items['date3'] %}
-            {% set dateError3 = errors.items['date3'][0].summary %}
+            {% set date3Error = errors.items['date3'][0].summary %}
           {% endif %}
-
+      
           <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full deferral-datepicker">
-              {{ deferralDate({
-                id: "firstChoice",
-                heading: texts.DEFERRAL_PAGE.DATES.DATE1_LABEL,
+            <div class="govuk-grid-column-full">
+              {{ datePicker({
+                id: "deferDate1",
+                lang: texts.INTERFACE.HTML_LANG,
+                label: texts.DEFERRAL_PAGE.DATES.DATE1_LABEL,
                 hint: texts.DEFERRAL_PAGE.DATES.DATE_EXAMPLE_HINT + deferralDateRange.earliestDateShort,
-                buttonAlt: texts.DEFERRAL_PAGE.DATEPICKER_ALT_1,
-                texts: texts.DEFERRAL_PAGE,
-                datepickerId: "datepicker1",
-                dateFieldId: "date1",
-                dateFieldDefault: datepickerDefaults['date1'],
-                buttonId: "btn_date1",
-                buttonClasses: "ga-defer-datepicker-1",
-                dayValue: user.date1Day,
-                monthValue: user.date1Month,
-                yearValue: user.date1Year,
-                dateError: dateError1
+                dateMin: deferralDateRange.earliestDateShort,
+                dateMax: deferralDateRange.latestDateShort,
+                dateValue: user["deferDate1"],
+                dateError: date1Error
               }) }}
             </div>
           </div>
 
           <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full deferral-datepicker">
-              {{ deferralDate({
-                id: "secondChoice",
-                heading: texts.DEFERRAL_PAGE.DATES.DATE2_LABEL,
+            <div class="govuk-grid-column-full">
+              {{ datePicker({
+                id: "deferDate2",
+                lang: texts.INTERFACE.HTML_LANG,
+                label: texts.DEFERRAL_PAGE.DATES.DATE2_LABEL,
                 hint: texts.DEFERRAL_PAGE.DATES.DATE_EXAMPLE_HINT + deferralDateRange.earliestDateShort,
-                buttonAlt: texts.DEFERRAL_PAGE.DATEPICKER_ALT_2,
-                texts: texts.DEFERRAL_PAGE,
-                datepickerId: "datepicker2",
-                dateFieldId: "date2",
-                dateFieldDefault: datepickerDefaults['date2'],
-                buttonId: "btn_date2",
-                buttonClasses: "ga-defer-datepicker-2",
-                dayValue: user.date2Day,
-                monthValue: user.date2Month,
-                yearValue: user.date2Year,
-                dateError: dateError2
+                dateMin: deferralDateRange.earliestDateShort,
+                dateMax: deferralDateRange.latestDateShort,
+                dateValue: user["deferDate2"],
+                dateError: date2Error
               }) }}
             </div>
           </div>
 
           <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full deferral-datepicker">
-              {{ deferralDate({
-                id: "thirdChoice",
-                heading: texts.DEFERRAL_PAGE.DATES.DATE3_LABEL,
+            <div class="govuk-grid-column-full">
+              {{ datePicker({
+                id: "deferDate3",
+                lang: texts.INTERFACE.HTML_LANG,
+                label: texts.DEFERRAL_PAGE.DATES.DATE3_LABEL,
                 hint: texts.DEFERRAL_PAGE.DATES.DATE_EXAMPLE_HINT + deferralDateRange.earliestDateShort,
-                buttonAlt: texts.DEFERRAL_PAGE.DATEPICKER_ALT_3,
-                texts: texts.DEFERRAL_PAGE,
-                datepickerId: "datepicker3",
-                dateFieldId: "date3",
-                dateFieldDefault: datepickerDefaults['date3'],
-                buttonId: "btn_date3",
-                buttonClasses: "ga-defer-datepicker-3",
-                dayValue: user.date3Day,
-                monthValue: user.date3Month,
-                yearValue: user.date3Year,
-                dateError: dateError3
+                dateMin: deferralDateRange.earliestDateShort,
+                dateMax: deferralDateRange.latestDateShort,
+                dateValue: user["deferDate3"],
+                dateError: date3Error
               }) }}
             </div>
           </div>
@@ -146,7 +127,6 @@
           text: texts.INTERFACE.BUTTON_TEXT_CONTINUE
       }) }}
 
-      
       <input type="hidden" name="_csrf" value="{{ csrftoken }}">
 
     </form>
@@ -159,43 +139,20 @@
 
 {% block bodyEnd %}
   {{ super() }}
-  {#<script src="{{ assetPath }}js/govuk-template.js?0.17.3"></script>#}
-  <script src="{{ assetPath }}js/datepicker.js"></script>
-  
+
+  <script type="text/javascript" src="{{ assetPath }}js/svgxuse.min.js"></script>
+
+  <script type="text/javascript" src="{{ assetPath }}js/ds-datepicker.js"></script>
+
   <script type="text/javascript">
     $(document).ready(function(){
-      var dp1 = new calendar.datepicker('datepicker1', 'date1', true);
-      var dp2 = new calendar.datepicker('datepicker2', 'date2', true);
-      var dp3 = new calendar.datepicker('datepicker3', 'date3', true);
 
-      $('#btn_date1').removeClass('noscript').click(function(e) {
-        dp1.showDlg();
-        e.stopPropagation();
-        return false;
-      });
-
-      $('#btn_date2').removeClass('noscript').click(function(e) {
-        dp2.showDlg();
-        e.stopPropagation();
-        return false;
-      });
-
-      $('#btn_date3').removeClass('noscript').click(function(e) {
-        dp3.showDlg();
-        e.stopPropagation();
-        return false;
-      });
-
-      // close date pickers on click outside
-      $('#datesGroup').click(function(e){
-        //Check for click in the container div and hide the date-picker dialogs
-        $(document).unbind('click mousedown mouseup mousemove mouseover');
-        $('#datepicker1').attr('aria-hidden', 'true');
-        $('#datepicker2').attr('aria-hidden', 'true');
-        $('#datepicker3').attr('aria-hidden', 'true');
-      });
+      const datePickers = [].slice.call(document.querySelectorAll('[data-module="ds-datepicker"]'));
+      datePickers.forEach(datePicker => new DSDatePicker(datePicker, 
+        {imagePath: '{{ assetPath }}assets/images/icons/'
+        }).init());
 
     });
-
   </script>
+
 {% endblock %}

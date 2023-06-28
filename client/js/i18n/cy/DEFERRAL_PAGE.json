@@ -28,7 +28,7 @@
     "DATE1_LABEL": "Dewis cyntaf",
     "DATE2_LABEL": "Ail ddewis",
     "DATE3_LABEL": "Trydydd dewis",
-    "DATE_EXAMPLE_HINT": "Er enghraifft, "
+    "DATE_EXAMPLE_HINT": "Defnyddiwch fformat dd/mm/bbbb.  Er enghraifft, "
   },
 
   "CHECK_DATES": {
@@ -91,6 +91,8 @@
   "DATEPICKER_ALT_2": "",
   "DATEPICKER_ALT_3": "",
   
+  "DATEPICKER_GUIDANCE": "Gallwch ddefnyddio'r saethau i ddewis dyddiad",
+
   "MONDAY": "Dydd Llun",
   "TUESDAY": "Dydd Mawrth",
   "WEDNESDAY": "Dydd Mercher",

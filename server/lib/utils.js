@@ -807,8 +807,8 @@
     dates={
       "earliestMoment": firstMoment,
       "latestMoment": lastMoment,
-      "earliestDateShort": firstMoment.format('D MM YYYY'),
-      "latestDateShort": lastMoment.format('D MM YYYY'),
+      "earliestDateShort": firstMoment.format('DD/MM/YYYY'),
+      "latestDateShort": lastMoment.format('DD/MM/YYYY'),
       "earliestDateMed": firstMoment.format('D MMMM YYYY'),
       "latestDateMed": lastMoment.format('D MMMM YYYY'),
     }

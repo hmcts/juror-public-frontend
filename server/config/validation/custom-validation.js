@@ -670,9 +670,7 @@
       , ageUnit = 'years'
       , ageLimit = attributes['ageLimit']
       , ageDateLimit
-      , dayKey = key + 'Day'
-      , monthKey = key + 'Month'
-      , yearKey = key + 'Year'
+      , fieldId = attributes[key + 'FieldId']
       , compDate1
       , compDate2
       , compDate3
@@ -685,51 +683,12 @@
         details: [],
       }
 
-    // Check DAY value
-    if (attributes[dayKey].length === 0) {
-      errMessage = options.message['invalidDay'];
-    } else if ((attributes[dayKey] > 31 || attributes[dayKey] < 1) || !dayMonthRegex.test(attributes[dayKey])) {
-      errMessage =options.message['invalidDay'];
-    }
-    if (errMessage){
-      message.details.push(errMessage);
-      message.summary = errMessage;
-      message.summaryLink = dayKey;
-      return message;
-    }
-
-    // Check MONTH value
-    if (attributes[monthKey].length === 0) {
-      errMessage = options.message['invalidMonth'];
-    } else if ((attributes[monthKey] > 12 || attributes[monthKey] < 1) || !dayMonthRegex.test(attributes[monthKey])) {
-      errMessage = options.message['invalidMonth'];
-    }
-    if (errMessage){
-      message.details.push(errMessage);
-      message.summary = errMessage;
-      message.summaryLink = monthKey;
-      return message;
-    }
-
-    // Check YEAR value
-    if (attributes[yearKey].length === 0) {
-      errMessage = options.message['invalidYear'];
-    } else if (attributes[yearKey].length !== 4 || !yearRegex.test(attributes[yearKey])) {
-      errMessage = options.message['invalidYear'];
-    }
-    if (errMessage){
-      message.details.push(errMessage);
-      message.summary = errMessage;
-      message.summaryLink = yearKey;
-      return message;
-    }
-
     // Check DATE value
     if (!(dateRegex.test(value) && deferMoment.isValid())){
       errMessage = options.message['invalidDate'];
       message.details.push(errMessage);
       message.summary = errMessage;
-      message.summaryLink = dayKey;
+      message.summaryLink = fieldId;
       return message;
     }
 
@@ -739,7 +698,7 @@
         errMessage = options.message['dateLowerLimit'];
         message.details.push(errMessage);
         message.summary = errMessage;
-        message.summaryLink = dayKey;
+        message.summaryLink = fieldId;
         return message;
       }
     }
@@ -750,7 +709,7 @@
         errMessage = options.message['dateUpperLimit'];
         message.details.push(errMessage);
         message.summary = errMessage;
-        message.summaryLink = dayKey;
+        message.summaryLink = fieldId;
         return message;
       }
     }
@@ -761,7 +720,7 @@
         errMessage = options.message['invalidDate'];
         message.details.push(errMessage);
         message.summary = errMessage;
-        message.summaryLink = dayKey;
+        message.summaryLink = fieldId;
         return message;
       }
     }
@@ -774,7 +733,7 @@
       errMessage = options.message['dateAgeLimit'];
       message.details.push(errMessage);
       message.summary = errMessage;
-      message.summaryLink = dayKey;
+      message.summaryLink = fieldId;
       return message;
     }
 
@@ -788,7 +747,7 @@
         errMessage = options.message['dateUnique'];
         message.details.push(errMessage);
         message.summary = errMessage;
-        message.summaryLink = 'date2Day';
+        message.summaryLink = fieldId;
         return message;
       }
     }
@@ -798,7 +757,7 @@
         errMessage = options.message['dateUnique'];
         message.details.push(errMessage);
         message.summary = errMessage;
-        message.summaryLink = 'date3Day';
+        message.summaryLink = fieldId;
         return message;
       }
     }

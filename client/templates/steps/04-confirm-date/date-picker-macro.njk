@@ -1,0 +1,44 @@
+{% macro datePicker(params) %}
+
+  {# Date input with Digital Scotland datepicker #}
+
+  {% if params.lang %}
+    {% set lang = params.lang %} 
+  {% else %}
+    {% set lang = 'en' %}
+  {% endif %}
+
+  {% if lang ==='cy' %}
+    {% set hiddenErrorPrefix = "Gwall:" %}
+  {% else %}
+    {% set hiddenErrorPrefix = "Error:" %}
+  {% endif %}
+
+  <div class="govuk-form-group ds_datepicker {%if params.dateError%}govuk-form-group--error{% endif %}">
+    <h2 class="govuk-label-wrapper">
+      <label id="{{params.id}}Label" class="govuk-label govuk-label--m" for="{{params.id}}">
+        {{- params.label -}}
+      </label>
+    </h2>
+
+    {% if params.hint %}
+      <div id="{{params.id}}Hint" class="govuk-hint">
+        {{- params.hint -}}
+      </div>
+    {% endif %}
+
+    {% if params.dateError %}
+      <p id="{{params.id}}Error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">{{hiddenErrorPrefix}}</span> {{ params.dateError }}
+      </p>
+    {% endif %}
+
+    <div id="{{params.id}}Datepicker" data-module="ds-datepicker" class="govuk-body">
+      <div class="ds_input__wrapper">
+        <input id="{{params.id}}" name="{{params.id}}" type="text" value="{{params.dateValue}}" class="govuk-input ds_input ds_input--fixed-10 {%if params.dateError%}ds_input--error{% endif %}" data-mindate="{{params.dateMin}}" data-maxdate="{{params.dateMax}}" data-lang="{{lang}}" />
+      </div>
+    </div>
+
+  </div>
+
+{% endmacro %}

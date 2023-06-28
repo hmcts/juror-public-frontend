@@ -1,8 +1,8 @@
 ;(function(){
   'use strict';
-  var path = require('path');
-  var fs = require('fs-extra');
-  var exec = require('child_process').exec
+  var path = require('path')
+    , fs = require('fs-extra')
+    , exec = require('child_process').exec
     , readline = require('readline')
     , config = {
       EXPRESS_PORT: 3000,
@@ -16,7 +16,7 @@
       'scsslint': 'grunt-scss-lint',
       'express': 'grunt-express-server',
       'istanbul_check_coverage': 'grunt-mocha-istanbul',
-      'protractor': 'grunt-protractor-runner',
+      'protractor': 'grunt-protractor-runner'
     });
 
     // Output the build times after tasks have run
@@ -26,7 +26,6 @@
     grunt.initConfig({
 
       config: config,
-
 
       // Empties folders to start fresh
       clean: {
@@ -69,7 +68,7 @@
             {expand: true, src: ['client/**/*.html', 'client/**/*.njk'], dest: 'dist'},
             {expand: true, src: ['server/**/*.js'], dest: 'dist'},
             {expand: true, src: ['package.json', 'Dockerfile', 'run.sh'], dest: 'dist'},
-            {expand: true, cwd: 'client/js/', src: ['jquery.min.js', 'html5shiv.min.js', 'respond.min.js', 'datepicker.js', 'cookies.js'], dest: 'dist/client/js'},
+            {expand: true, cwd: 'client/js/', src: ['jquery.min.js', 'html5shiv.min.js', 'respond.min.js', 'svgxuse.min.js', 'ds-datepicker.js', 'cookies.js'], dest: 'dist/client/js'},
             {expand: true, cwd: 'client/assets/fonts/', src: ['*.ttf'], dest: 'dist/client/assets/fonts' },
             {expand: true, cwd: 'client/assets/documents/', src: ['*.pdf'], dest: 'dist/client/assets/documents'},
             
@@ -84,7 +83,7 @@
             {expand: true, src: ['client/**/*.html', 'client/**/*.njk'], dest: 'dev'},
             {expand: true, src: ['server/**/*.js'], dest: 'dev'},
             {expand: true, src: ['package.json', 'Dockerfile', 'run.sh'], dest: 'dev'},
-            {expand: true, cwd: 'client/js/', src: ['jquery.min.js', 'html5shiv.min.js', 'respond.min.js', 'datepicker.js', 'cookies.js'], dest: 'dev/client/js'},
+            {expand: true, cwd: 'client/js/', src: ['jquery.min.js', 'html5shiv.min.js', 'respond.min.js', 'svgxuse.min.js', 'ds-datepicker.js', 'cookies.js'], dest: 'dev/client/js'},
             {expand: true, cwd: 'client/assets/fonts/', src: ['*.ttf'], dest: 'dev/client/assets/fonts' },
             {expand: true, cwd: 'client/assets/documents/', src: ['*.pdf'], dest: 'dev/client/assets/documents'},
             
@@ -99,7 +98,7 @@
             {expand: true, src: ['client/**/*.html', 'client/**/*.njk'], dest: 'test'},
             {expand: true, src: ['server/**/*.js'], dest: 'test'},
             {expand: true, src: ['package.json', 'Dockerfile', 'run.sh'], dest: 'test'},
-            {expand: true, cwd: 'client/js/', src: ['jquery.min.js', 'html5shiv.min.js', 'respond.min.js', 'datepicker.js', 'cookies.js'], dest: 'test/client/js'},
+            {expand: true, cwd: 'client/js/', src: ['jquery.min.js', 'html5shiv.min.js', 'respond.min.js', 'svgxuse.min.js', 'ds-datepicker.js', 'cookies.js'], dest: 'test/client/js'},
             {expand: true, cwd: 'client/assets/fonts/', src: ['*.ttf'], dest: 'test/client/assets/fonts' },
             {expand: true, cwd: 'client/assets/documents/', src: ['*.pdf'], dest: 'test/client/assets/documents'},
             
@@ -156,26 +155,29 @@
       sass: {
         options: {
           includePaths: [
-            //'node_modules/govuk-frontend'
+            'node_modules/@scottish-government'
           ]
         },
         dist: {
           options: { sourceMaps: true },
-          files: { 
+          files: {
             'client/css/style.css': 'client/scss/main.scss',
+            'client/css/ds-style.css': 'node_modules/@scottish-government/pattern-library/src/pattern-library.scss',
           }
         },
         dev: {
           options: { sourceMaps: true },
-          files: { 
+          files: {
             'client/css/style.css': 'client/scss/main.scss',
+            'client/css/ds-style.css': 'node_modules/@scottish-government/pattern-library/src/pattern-library.scss',
           }
         },
         test: {
           options: { sourceMaps: true },
-          files: { 
+          files: {
             'client/css/style.css': 'client/scss/main.scss',
-           }
+            'client/css/ds-style.css': 'node_modules/@scottish-government/pattern-library/src/pattern-library.scss',
+          }
         },
       },
 
@@ -246,48 +248,66 @@
         }
       },
 
+      /*
+      babel: {
+        options: {
+          sourceMap: false,
+          presets: ['@babel/preset-env']
+        },
+        dev: {
+          files: {
+            'dev/client/js/ds/new-ds-date-picker.js': 'client/js/ds-date-picker.js'
+          },
+        },
+      },
+      */
+
+
 
       // Check code against SonarQube
       sonarRunner: {
-      	analysis: {
-      		options: {
-      			debug: true,
-      			separator: '\n',
-      			dryRun: false,
+        analysis: {
+          options: {
+            debug: true,
+            separator: '\n',
+            dryRun: false,
             projectHome: './',
-      			sonar: {}
-      		}
-      	}
+            sonar: {}
+          }
+        }
       },
 
 
       // Images
       imagemin: {
         dist: {
-          options: { 
+          options: {
             svgoPlugins: ['gifsicle', 'jpegtran', 'optipng', 'svgo']
           },
           files: [
             { expand: true, cwd: 'client/assets/images/', src: '**/*.{png,jpg,jpeg,gif,svg}', dest: 'dist/client/assets/images' },
-            { expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images/', src: ['**/**.*'], dest: 'dist/client/assets/images' }
+            { expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images/', src: ['**/**.*'], dest: 'dist/client/assets/images' },
+            { expand: true, cwd: 'node_modules/@scottish-government/pattern-library/dist/images/icons/', src: ['**/**.*'], dest: 'dist/client/assets/images/icons' }
           ]
         },
         dev: {
-          options: { 
+          options: {
             svgoPlugins: ['gifsicle', 'jpegtran', 'optipng', 'svgo']
           },
           files: [
             { expand: true, cwd: 'client/assets/images/', src: '**/*.{png,jpg,jpeg,gif,svg}', dest: 'dev/client/assets/images' },
-            { expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images/', src: ['**/**.*'], dest: 'dev/client/assets/images' }
+            { expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images/', src: ['**/**.*'], dest: 'dev/client/assets/images' },
+            { expand: true, cwd: 'node_modules/@scottish-government/pattern-library/dist/images/icons/', src: ['**/**.*'], dest: 'dev/client/assets/images/icons' }
           ]
         },
         test: {
-          options: { 
+          options: {
             svgoPlugins: ['gifsicle', 'jpegtran', 'optipng', 'svgo']
           },
           files: [
             { expand: true, cwd: 'client/assets/images/', src: '**/*.{png,jpg,jpeg,gif,svg}', dest: 'test/client/assets/images' },
-            { expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images/', src: ['**/**.*'], dest: 'test/client/assets/images' }
+            { expand: true, cwd: 'node_modules/govuk-frontend/govuk/assets/images/', src: ['**/**.*'], dest: 'test/client/assets/images' },
+            { expand: true, cwd: 'node_modules/@scottish-government/pattern-library/dist/images/icons/', src: ['**/**.*'], dest: 'test/client/assets/images/icons' }
           ]
         }
       },
@@ -526,13 +546,12 @@
       ]);
     });
 
-
-
-
     // Package app
     grunt.registerTask('build-translations', 'Compile individual translations entry files into single [langname].json', function(env) {
       return grunt.task.run(['shell:translations-'+env]);
     });
+
+    //grunt.registerTask('do-babel', ['babel']);
 
     grunt.registerTask('build-files', 'Copy application files to output folder using either; :dev or :dist', function(env) {
       //return grunt.task.run(['sync:govuk', 'sync:'+env]);
@@ -575,6 +594,7 @@
 
       return grunt.task.run([
         'clean:dev',
+        //'do-babel:dev',
         'build-files:dev',
         'build-styles:dev',
         'build-scripts:dev',

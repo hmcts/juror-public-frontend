@@ -85,15 +85,6 @@
     "HELPER_CONFIRM_ADDRESS_PARAGRAPH_2": "After they've moved, contact the jury central summoning bureau by calling 0300 456 1024, and give them their new address.",
     "HELPER_CONFIRM_ADDRESS_PARAGRAPH_3": "If they are moving away from the area where they currently live, we may change the location of their jury service.",
 
-    "FORM_ADDRESS_LABEL": "Address",
-    "FORM_ADDRESS_LINE_ONE_LABEL": "Building and street",
-    "FORM_ADDRESS_LINE_1_OF_3": "line 1 of 3",
-    "FORM_ADDRESS_LINE_TWO_LABEL": "Building and street line 2 of 3",
-    "FORM_ADDRESS_LINE_THREE_LABEL": "Building and street line 3 of 3",
-    "FORM_ADDRESS_TOWN_LABEL": "Town or city",
-    "FORM_ADDRESS_COUNTY_LABEL": "County (optional)",
-    "FORM_ADDRESS_POSTCODE_LABEL": "Postcode",
-
     "HELPER_CHANGE_ADDRESS_TITLE": "What happens if they have changed their address?",
     "HELPER_CHANGE_ADDRESS_PARAGRAPH_1": "If their address has changed, we might be able to move their jury service to a court nearer to their new address.",
     "HELPER_CHANGE_ADDRESS_PARAGRAPH_2": "We'll get in touch with them later about this. Please carry on with the online form now.",

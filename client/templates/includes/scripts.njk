@@ -6,31 +6,3 @@
 <script src="{{ assetPath }}js/show-hide-content.js"></script>
 
 <script src="{{ assetPath }}js/bundle.js"></script>
-
-{#
-{% if trackingCode %}
-
-<script>
-  var trackOutboundLink = function(url) {
-    ga('send', 'event', 'outbound', 'click', url, {
-      'transport': 'beacon'
-    });
-  }
-
-  var trackVirtualPageViews = function(page) {
-    ga('set', 'page', page);
-    ga('send', 'pageview');
-  }
-
-  var trackEvent = function(eventCategory, eventAction, eventLabel) {
-    ga('send', 'event', {
-      eventCategory: eventCategory,
-      eventAction: eventAction,
-      eventLabel: eventLabel,
-    });
-
-  }
-
-</script>
-{% endif %}
-#}

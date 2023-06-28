@@ -69,7 +69,7 @@
 
         <div class="govuk-form-group {% if errors.addressError %}govuk-form-group--error{% endif %}" id="addressGroup">
 
-          <fieldset class="inline-edit govuk-fieldset" id="addressFieldset">
+          <fieldset class="govuk-fieldset" id="addressFieldset">
 
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
@@ -85,7 +85,7 @@
               {# Address Line 1 #}
               {{ govukInput({
                 label: {
-                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_ONE_LABEL + '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_1_OF_3 + '</span>'
+                  text: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_ONE_LABEL
                 },
                 id: "addressLineOne",
                 name: "addressLineOne",
@@ -100,7 +100,7 @@
               {# Address Line 2 #}
               {{ govukInput({
                 label: {
-                  html: '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_TWO_LABEL + '</span>'
+                  text: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_TWO_LABEL
                 },
                 id: "addressLineTwo",
                 name: "addressLineTwo",
@@ -115,7 +115,7 @@
               {# Address Line 3 #}
               {{ govukInput({
                 label: {
-                  html: '<span class="govuk-visually-hidden">' + texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_THREE_LABEL + '</span>'
+                  text: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LINE_THREE_LABEL
                 },
                 id: "addressLineThree",
                 name: "addressLineThree",
@@ -130,10 +130,11 @@
               {# Town or City #}
               {{ govukInput({
                 label: {
-                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_TOWN_LABEL
+                  text: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_TOWN_LABEL
                 },
                 id: "addressTown",
                 name: "addressTown",
+                classes: "govuk-!-width-two-thirds",
                 errorMessage: townError,
                 attributes: {
                   maxlength: "35"
@@ -145,10 +146,11 @@
               {# County #}
               {{ govukInput({
                 label: {
-                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_COUNTY_LABEL
+                  text: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_COUNTY_LABEL
                 },
                 id: "addressCounty",
                 name: "addressCounty",
+                classes: "govuk-!-width-two-thirds",
                 errorMessage: countyError,
                 attributes: {
                   maxlength: "35"
@@ -160,10 +162,11 @@
               {# Postcode #}
               {{ govukInput({
                 label: {
-                  html: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_POSTCODE_LABEL
+                  text: texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_POSTCODE_LABEL
                 },
                 id: "addressPostcode",
                 name: "addressPostcode",
+                classes: "govuk-input--width-10",
                 errorMessage: postcodeError,
                 attributes: {
                   maxlength: "8"

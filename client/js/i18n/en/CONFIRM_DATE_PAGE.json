@@ -5,8 +5,8 @@
   "PANEL_INTRO": "You are summoned to start jury service on",
   "PANEL_INTRO_OB": "The person you're replying for is summoned to start jury service on",
   "AT": "at",
-  "DATE_CONFIRMATION_HINT": "Can you start jury service on this date?",
-  "DATE_CONFIRMATION_HINT_OB": "Can they start jury service on this date?",
+  "DATE_CONFIRMATION_QUESTION": "Can you start jury service on this date?",
+  "DATE_CONFIRMATION_QUESTION_OB": "Can they start jury service on this date?",
 
   "ANSWER_YES_1": "Yes, I can start on ",
   "ANSWER_YES_2": " and serve for at least 2 weeks",
