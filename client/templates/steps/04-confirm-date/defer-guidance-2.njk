@@ -18,7 +18,13 @@
   {% endset %}
 {% endif %}
 
-{{ govukDetails({
-  summaryText: guidanceSummary,
-  html: guidanceText
-}) }}
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary ga-details-confirm-date-2">
+    <span class="govuk-details__summary-text ga-details-confirm-date-2">
+      {{ guidanceSummary | safe }}
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    {{ guidanceText | safe }}
+  </div>
+</details>

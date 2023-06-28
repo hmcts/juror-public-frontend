@@ -5,7 +5,8 @@
       "public-jwtKey": "[super-secret-key]",
       "public-jwtNoAuthKey": "[super-secret-key-login]",
       "public-jwtKeyBureau": "[super-secret-key-bureau]",
-      "public-jwtTTL": "8h"
+      "public-jwtTTL": "8h",
+      "public-pcqTokenKey": "NOTcBUkMKbu4Ts8LPLjml1M1WuFuLwyYcpC5TlnPbzQ2Tw5tDzrh9TTKPshyeQz"
     }
   }
  }

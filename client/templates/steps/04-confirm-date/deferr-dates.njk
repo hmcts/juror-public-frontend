@@ -34,11 +34,11 @@
       {# {% if errors.items['dates'] or errors.items['date1'] or errors.items['date1Error'] or errors.items['date2'] or errors.items['date2Error'] or errors.items['date3'] or errors.items['date3Error']%}govuk-form-group--error{% endif %} #}
       <div class="govuk-form-group ">
         
-        <h1 class="govuk-heading-xl">
+        <h1 class="govuk-heading-l">
           {% if user.thirdParty == 'Yes' %}
-            {{ texts.DEFERRAL_PAGE.DATES.HEADING_OB }}
+            {{- texts.DEFERRAL_PAGE.DATES.HEADING_OB -}}
           {% else %}
-            {{ texts.DEFERRAL_PAGE.DATES.HEADING }}
+            {{- texts.DEFERRAL_PAGE.DATES.HEADING -}}
           {% endif %}
         </h1>
 
@@ -81,6 +81,7 @@
                 dateFieldId: "date1",
                 dateFieldDefault: datepickerDefaults['date1'],
                 buttonId: "btn_date1",
+                buttonClasses: "ga-defer-datepicker-1",
                 dayValue: user.date1Day,
                 monthValue: user.date1Month,
                 yearValue: user.date1Year,
@@ -101,6 +102,7 @@
                 dateFieldId: "date2",
                 dateFieldDefault: datepickerDefaults['date2'],
                 buttonId: "btn_date2",
+                buttonClasses: "ga-defer-datepicker-2",
                 dayValue: user.date2Day,
                 monthValue: user.date2Month,
                 yearValue: user.date2Year,
@@ -121,6 +123,7 @@
                 dateFieldId: "date3",
                 dateFieldDefault: datepickerDefaults['date3'],
                 buttonId: "btn_date3",
+                buttonClasses: "ga-defer-datepicker-3",
                 dayValue: user.date3Day,
                 monthValue: user.date3Month,
                 yearValue: user.date3Year,

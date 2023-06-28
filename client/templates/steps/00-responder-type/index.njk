@@ -32,7 +32,7 @@
             legend: {
               text: texts.REPLY_TYPE.HEADER,
               isPageHeading: true,
-              classes: "govuk-fieldset__legend--xl"
+              classes: "govuk-fieldset__legend--l"
             }
           },
           errorMessage: radiosError,
@@ -53,30 +53,37 @@
                 text: texts.REPLY_TYPE.REPLY_TP_INFO
               }
             }
-          ]}) }}
+          ]})
+        }}
 
-          {% if texts.INTERFACE.HTML_LANG === "cy" %}
-            {% set guidanceText %}
-              {{ texts.REPLY_TYPE.NEED_HELP_TEXT }}
-              <br>
-              {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
-                {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
-              {% endif %}
-              <br>
-              {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
-                {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
-              {% endif %}
-            {% endset %}
-          {% else %}
-            {% set guidanceText %}
-              {{ texts.REPLY_TYPE.NEED_HELP_TEXT }}
-            {% endset %}
-          {% endif %}
-
-        {{ govukDetails({
-          summaryText: texts.REPLY_TYPE.NEED_HELP,
-          html: guidanceText
-        }) }}
+        {% if texts.INTERFACE.HTML_LANG === "cy" %}
+          {% set guidanceText %}
+            {{ texts.REPLY_TYPE.NEED_HELP_TEXT }}
+            <br>
+            {% if texts.INTERFACE.CONTACT_TELEPHONE_1 %}
+              {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_1 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_1 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_1}}</a>
+            {% endif %}
+            <br>
+            {% if texts.INTERFACE.CONTACT_TELEPHONE_2 %}
+              {{ texts.INTERFACE.CONTACT_TELEPHONE_LABEL_2 }}<a class="govuk-link" href="{{ texts.INTERFACE.CONTACT_TELEPHONE_LINK_2 }}">{{ texts.INTERFACE.CONTACT_TELEPHONE_2}}</a>
+            {% endif %}
+          {% endset %}
+        {% else %}
+          {% set guidanceText %}
+            {{ texts.REPLY_TYPE.NEED_HELP_TEXT }}
+          {% endset %}
+        {% endif %}
+  
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary ga-details-help-replying">
+            <span class="govuk-details__summary-text ga-details-help-replying">
+              {{ texts.REPLY_TYPE.NEED_HELP }}
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            {{ guidanceText | safe }}
+          </div>
+        </details>
 
         {# Submit form #}
         {{ govukButton({

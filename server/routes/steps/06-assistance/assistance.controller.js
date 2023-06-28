@@ -11,7 +11,8 @@
     , filters = require('../../../components/filters')
     , texts_en = require('../../../../client/js/i18n/en.json')
     , texts_cy = require('../../../../client/js/i18n/cy.json')
-    , utils = require('../../../lib/utils');
+    , utils = require('../../../lib/utils')
+    , pcqService = require('../../../components/pcqService');
 
   module.exports.index = function() {
     return function(req, res) {
@@ -96,7 +97,22 @@
     return function(req, res) {
 
       // Validate form submission
-      var validatorResult;
+      var validatorResult
+
+        , checkPCQSuccess = function(proceedWithPCQ) {
+
+          if (proceedWithPCQ){
+            return pcqService.invokePCQ(req, app, res);
+          }
+
+          app.logger.info('Skip PCQ');
+          return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
+        }
+
+        , checkPCQFailure = function(resp) {
+          app.logger.info('Skip PCQ');
+          return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
+        };
 
       // Reset error and saved field sessions
       delete req.session.errors;
@@ -133,8 +149,8 @@
 
       req.session.user.assistanceSpecialArrangements = (req.session.user.assistanceNeeded === 'Yes' || req.session.user.assistanceNeeded === texts_cy.REASONABLE_ADJUSTMENT_PAGE.YES) ? req.body['assistanceSpecialArrangements'] : '';
 
-      // Redirect as appropriate
-      return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.confirm.information', req.session.user.thirdParty)));
+      // Verify if valid to proceed with PCQ step
+      pcqService.checkPCQ(req, app, checkPCQSuccess, checkPCQFailure);
 
     };
   };

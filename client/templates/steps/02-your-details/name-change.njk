@@ -50,23 +50,14 @@
 
           <fieldset class="inline-edit govuk-fieldset" id="nameFieldset">
 
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                <span class="govuk-caption-xl">
-                  {{ texts.YOUR_DETAILS_PAGE.CAPTION }}
+                <span class="govuk-caption-l">
+                  {{- texts.YOUR_DETAILS_PAGE.CAPTION -}}
                 </span>
-                {{ texts.YOUR_DETAILS_PAGE.HEADING_NAME_CHANGE }}
+                {{- texts.YOUR_DETAILS_PAGE.HEADING_NAME_CHANGE -}}
               </h1>
             </legend>
-
-            {#
-            <div class="govuk-grid-row inline-section primary {% if errors.nameError %}closed{% endif %}">
-              <div class="govuk-grid-column-one-half govuk-body">{{ user.nameRender }}</div>
-              <div class="govuk-grid-column-one-half govuk-body">
-                <a href="#nameGroup" class="govuk-link inline-edit-toggle" id="changeName" {% if trackingCode %}onclick="trackVirtualPageViews('Change - name')"{% endif %}>{{ texts.INTERFACE.FORM_CHANGE_LABEL }}<span class="govuk-visually-hidden">{{ texts.YOUR_DETAILS_PAGE.FORM_NAME_LABEL }}</span></a>
-              </div>
-            </div>
-            #}
 
             <div class="govuk-body">
 

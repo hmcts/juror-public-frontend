@@ -71,23 +71,14 @@
 
           <fieldset class="inline-edit govuk-fieldset" id="addressFieldset">
 
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                <span class="govuk-caption-xl">
+                <span class="govuk-caption-l">
                   {{- texts.YOUR_DETAILS_PAGE.CAPTION -}}
                 </span>
                 {{- texts.YOUR_DETAILS_PAGE.HEADING_ADDRESS_CHANGE -}}
               </h1>
             </legend>
-
-            {#
-            <div class="govuk-grid-row inline-section primary {% if errors.addressError %}closed{% endif %}">
-              <div class="govuk-grid-column-one-half govuk-body">{{ user.addressRender | safe }}</div>
-              <div class="govuk-grid-column-one-half govuk-body">
-                <a href="#addressGroup" class="govuk-link inline-edit-toggle" id="changeAddress" {% if trackingCode %}onclick="trackVirtualPageViews('Change - address')"{% endif %}>{{ texts.INTERFACE.FORM_CHANGE_LABEL }}<span class="govuk-visually-hidden">{{ texts.YOUR_DETAILS_PAGE.FORM_ADDRESS_LABEL }}</span></a>
-              </div>
-            </div>
-            #}
 
             <div class="govuk-body">
 

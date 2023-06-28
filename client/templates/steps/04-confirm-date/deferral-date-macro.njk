@@ -42,9 +42,7 @@
             <input class="govuk-input govuk-date-input__input govuk-input--width-4 {%if params.dateError%}govuk-input--error{% endif %}" id="{{params.dateFieldId}}Year" name="{{params.dateFieldId}}Year" type="text" pattern="[0-9]*" inputmode="numeric" value="{{params.yearValue}}"></div>
         </div>
 
-        <button id="{{params.buttonId}}" class="datepicker-button noscript" ><img class="" src="/assets/images/icons/icon-calendar.png" alt="{{-params.buttonAlt-}}" /></button>
-
-        
+        <button id="{{params.buttonId}}" class="datepicker-button {{params.buttonClasses}} noscript"><img class="{{params.buttonClasses}}" src="/assets/images/icons/icon-calendar.png" alt="{{-params.buttonAlt-}}" /></button>
 
         <div id="{{params.datepickerId}}" class="govuk-body datepicker" aria-hidden="true">
           <div id="month-wrap">
