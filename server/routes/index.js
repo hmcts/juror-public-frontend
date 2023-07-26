@@ -21,6 +21,7 @@
     require('./cookies')(app);
     require('./privacy')(app);
     require('./accessibility-statement')(app);
+    require('./contact')(app);
 
     require('./steps/00-responder-type')(app);
     require('./steps/01-login')(app);

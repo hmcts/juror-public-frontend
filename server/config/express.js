@@ -45,11 +45,11 @@
   function configureSecurity(app) {
     app.use(helmet.contentSecurityPolicy({
       directives: {
-        defaultSrc: ['\'self\''],
-        styleSrc: ['\'self\'', 'https://tagmanager.google.com', 'https://fonts.googleapis.com', '\'unsafe-inline\''],
-        scriptSrc: ['\'self\'', 'cdnjs.cloudflare.com', 'https://www.google-analytics.com', 'https://ssl.google-analytics.com', 'https://www.googletagmanager.com', 'http://tagmanager.google.com', '\'unsafe-inline\''],
+        defaultSrc: ['\'self\'', 'https://vcc-eu4.8x8.com'],
+        styleSrc: ['\'self\'', 'https://tagmanager.google.com', 'https://fonts.googleapis.com', 'https://vcc-eu4.8x8.com', '\'unsafe-inline\''],
+        scriptSrc: ['\'self\'', 'cdnjs.cloudflare.com', 'https://www.google-analytics.com', 'https://ssl.google-analytics.com', 'https://www.googletagmanager.com', 'http://tagmanager.google.com', 'https://vcc-eu4.8x8.com', '\'unsafe-inline\''],
         fontSrc: ['\'self\'', 'data:'],
-        imgSrc: ['\'self\'', 'https://www.google-analytics.com', 'http://www.google-analytics.com', 'https://ssl.gstatic.com', 'https://www.gstatic.com'],
+        imgSrc: ['\'self\'', 'https://www.google-analytics.com', 'http://www.google-analytics.com', 'https://ssl.gstatic.com', 'https://www.gstatic.com', 'https://vcc-eu4.8x8.com'],
         connectSrc: ['\'self\'', 'ws://localhost:*']
       }
     }));

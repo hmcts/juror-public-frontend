@@ -41,5 +41,9 @@
   "FURTHER_GUIDANCE_TITLE_OB": "Problemau wrth nodi eu manylion?",
 
   "FURTHER_GUIDANCE_INTRO": "Os ydych wedi gwirio'ch manylion a’ch bod dal methu parhau, gallwch gysylltu â ni.",
-  "FURTHER_GUIDANCE_INTRO_OB":"Os ydych wedi gwirio eu manylion a’ch bod dal methu parhau, gallwch gysylltu â ni."
+  "FURTHER_GUIDANCE_INTRO_OB":"Os ydych wedi gwirio eu manylion a’ch bod dal methu parhau, gallwch gysylltu â ni.",
+
+  "ALREADY_REPLIED_TITLE": "Mae ein cofnodion yn dangos eich bod eisoes wedi ymateb i'r wŷs rheithgor hon",
+  "ALREADY_REPLIED_GUIDANCE": "Os ydych eisiau dweud wrthym am newidiadau neu os ydym wedi gofyn am ragor o wybodaeth gennych, mae angen ichi gysylltu â ni ar e-bost, dros y ffôn neu lythyr.",
+  "ALREADY_REPLIED_INSET": "Ni allwch ddefnyddio'r gwasanaeth digidol hwn i roi gwybodaeth ychwanegol i ni."
 }

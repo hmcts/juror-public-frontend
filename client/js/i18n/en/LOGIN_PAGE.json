@@ -41,8 +41,9 @@
   "FURTHER_GUIDANCE_TITLE_OB": "Problems entering their details?",
 
   "FURTHER_GUIDANCE_INTRO": "If you've checked your details and still cannot continue, you can contact us.",
-  "FURTHER_GUIDANCE_INTRO_OB":"If you've checked their details and still cannot continue, you can contact us."
+  "FURTHER_GUIDANCE_INTRO_OB":"If you've checked their details and still cannot continue, you can contact us.",
 
-
-
+  "ALREADY_REPLIED_TITLE": "Our records show you've already replied to this jury summons",
+  "ALREADY_REPLIED_GUIDANCE": "If you want to tell us about changes or we've asked you for more information, you need to contact us by email, telephone or letter.",
+  "ALREADY_REPLIED_INSET": "You cannot tell us extra information through this digital service."
 }

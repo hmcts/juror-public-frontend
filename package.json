@@ -1,6 +1,6 @@
 {
   "name": "juror-public-front-end",
-  "version": "3.4.59",
+  "version": "3.5.61",
   "description": "A front-end for responding to jury summons",
   "main": "server/index.js",
   "scripts": {
@@ -50,7 +50,7 @@
     "method-override": "^2.3.6",
     "moment": "^2.29.4",
     "named-routes": "^2.0.6",
-    "nunjucks": "3.2.2",
+    "nunjucks": "3.2.4",
     "nunjucks-async-loader": "1.1.5",
     "pdfmake": "^0.1.72",
     "referrer-policy": "^1.0.0",
