@@ -131,6 +131,11 @@
             }];
           }
 
+          // Response already submitted - redirect to information page
+          if (err.statusCode === 409) {
+            return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.login.replied', req.session.user.thirdParty)));
+          }
+          // Other error - return to login page
           return res.redirect(app.namedRoutes.build(utils.getRedirectUrl('steps.login', req.session.user.thirdParty)));
         };
 
@@ -149,6 +154,21 @@
       // Send login to backend, callbacks will return as required
       authComponent.authenticate(req, app, authSuccess, authFailure);
 
+    };
+  };
+
+  module.exports.getReplied = function() {
+    return function(req, res) {
+
+      // Reset user session data
+      req.session.user = {
+        thirdParty: req.session.user.thirdParty,
+      }
+      delete req.session.errors;
+
+      return res.render('steps/01-login/replied.njk', {
+        user: req.session.user
+      });
     };
   };
 

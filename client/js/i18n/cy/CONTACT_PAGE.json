@@ -1,0 +1,33 @@
+{
+  "HEADING":"Contact us",
+
+  "WEBCHAT_HEADING":"Webchat",
+  "WEBCHAT_TEXT": "Webchat currently unavailable",
+  "WEBCHAT_OPENING_TIMES_LINE_1": "Monday to Thursday, 9am to 4:30pm",
+  "WEBCHAT_OPENING_TIMES_LINE_2": "Friday, 9am to 2:30pm",
+  "WEBCHAT_OPENING_TIMES_LINE_3": "Closed weekends and bank holidays",
+  
+  "EMAIL_HEADING":"Email",
+  "EMAIL_ADDRESS":"jurysummoning@justice.gov.uk",
+  "EMAIL_LINK": "mailto:jurysummoning@justice.gov.uk",
+  
+  "TELEPHONE_HEADING": "Telephone",
+  "TELEPHONE_NUMBER": "Telephone: 0300 456 1024",
+  "TELEPHONE_CALL_CHARGE_TEXT": "Find out about call charges",
+  "TELEPHONE_CALL_CHARGE_LINK": "https://www.gov.uk/call-charges",
+  "TELEPHONE_OPENING_TIMES_LINE_1": "Monday to Thursday, 9am to 5pm",
+  "TELEPHONE_OPENING_TIMES_LINE_2": "Friday, 9am to 3pm",
+  "TELEPHONE_OPENING_TIMES_LINE_3": "Closed weekends and bank holidays",
+  
+  "POST_HEADING":"By post",
+  "POST_ADDRESS_LINE_1": "Jury Central Summoning Bureau",
+  "POST_ADDRESS_LINE_2": "Phoenix House",
+  "POST_ADDRESS_LINE_3": "Rushton Avenue",
+  "POST_ADDRESS_LINE_4": "Bradford",
+  "POST_ADDRESS_LINE_5": "BD3 7BH",
+  
+  "OPENING_TIMES_HEADING": "Opening times (webchat and telephone)",
+  "OPENING_TIMES_LINE_1": "Monday to Thursday, 9am to 5pm",
+  "OPENING_TIMES_LINE_2": "Friday, 9am to 3pm",
+  "OPENING_TIMES_LINE_3": "Closed weekends and bank holidays"
+}

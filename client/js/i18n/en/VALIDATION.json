@@ -166,10 +166,10 @@
     "CHOOSE_ONE_OR_MORE": "Tick any organisations you worked for directly (not as a third party or subcontractor)",
     "CHOOSE_ONE_OR_MORE_OB": "Tick any organisations the person worked for directly (not as a third party or subcontractor)",
 
-    "POLICE": "Give details of where and when you have worked for the police",
-    "POLICE_OB": "Give details of where and when the person worked for the police",
-    "POLICE_DETAILS_LENGTH": "Details of where and when you have worked for the police must be fewer characters",
-    "POLICE_DETAILS_LENGTH_OB": "Details of where and when the person worked for the police must be fewer characters",
+    "POLICE": "Give details of where and when you have worked for the police service",
+    "POLICE_OB": "Give details of where and when the person worked for the police service",
+    "POLICE_DETAILS_LENGTH": "Details of where and when you have worked for the police service must be fewer characters",
+    "POLICE_DETAILS_LENGTH_OB": "Details of where and when the person worked for the police service must be fewer characters",
 
     "PRISON_SERVICE": "Give details of where and when you have worked for HM Prison Service",
     "PRISON_SERVICE_OB": "Give details of where and when the person worked for HM Prison Service",

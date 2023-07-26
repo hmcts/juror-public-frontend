@@ -5,7 +5,7 @@
   "HINT_OB": "Mae hyn yn cynnwys gweithio i'r heddlu, Gwasanaeth Carchardai EM, yr Asiantaeth Troseddu Cenedlaethol, y farnwriaeth, GLlTEM neu unrhyw ran arall o'r system cyfiawnder troseddol",
   "SELECT_PROMPT": "Dewiswch unrhyw sefydliadau rydych wedi gweithio iddynt.",
   "SELECT_PROMPT_OB": "Dewiswch unrhyw sefydliadau y mae'r unigolyn rydych yn ymateb ar ei ran wedi gweithio iddynt.",
-  "POLICE": "Heddlu",
+  "POLICE": "Yr heddlu",
   "HM": "Gwasanaeth Carchardai EM",
   "NCA": "Yr Asiantaeth Troseddu Cenedlaethol",
   "JUDICIARY": "Y Farnwriaeth",
@@ -19,6 +19,6 @@
   "NO": "Nac ydw",
   "NO_OB": "Nac ydy",
   "DETAILS": "Pa ran arall o’r System Cyfiawnder Troseddol?",
-  "WHICH_FORCE": "Pa Heddlu?",
+  "WHICH_POLICE": "Pa heddlu?",
   "WHICH_PRISON": "Pa ran o Wasanaeth Carchardai EM?"
 }

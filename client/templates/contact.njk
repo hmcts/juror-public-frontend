@@ -1,0 +1,87 @@
+{% extends "./layouts/default-gds.njk" %}
+
+{% block page_title %}
+  {{ texts.CONTACT_PAGE.HEADING }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Contact us{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds govuk-body">
+    <h1 class="govuk-heading-l">{{ texts.CONTACT_PAGE.HEADING }}</h1>
+
+    {# Webchat details #}
+    <h2 class="govuk-heading-m">{{ texts.CONTACT_PAGE.WEBCHAT_HEADING }}</h2>
+    <p>
+      <!-- 
+        Placeholder for webchat launch button / webchat status message.
+        If no button has been configured in the chat script, it will not show up nor take any space.
+      -->
+      <div id="__8x8-chat-button-container-script_30142320647759e09fcf50.58043359"></div>
+    </p>
+
+    {# Email details #}
+    <h2 class="govuk-heading-m">{{ texts.CONTACT_PAGE.EMAIL_HEADING }}</h3>
+    <p class="govuk-body">
+      <a class="govuk-link" href="mailto:{{ texts.CONTACT_PAGE.EMAIL_ADDRESS }}">{{ texts.CONTACT_PAGE.EMAIL_ADDRESS }}</a></li>
+    </p>
+
+    {# Telphone details #}
+    <h2 class="govuk-heading-m">{{ texts.CONTACT_PAGE.TELEPHONE_HEADING }}</h3>
+    <ul class="govuk-list">
+      <li>{{ texts.CONTACT_PAGE.TELEPHONE_NUMBER }}</li>
+      <li>{{ texts.CONTACT_PAGE.TELEPHONE_OPENING_TIMES_LINE_1 }}</li>
+      <li>{{ texts.CONTACT_PAGE.TELEPHONE_OPENING_TIMES_LINE_2 }}</li>
+      <li>{{ texts.CONTACT_PAGE.TELEPHONE_OPENING_TIMES_LINE_3 }}</li>
+    </ul>
+    <p class="govuk-body">
+      <a class="govuk-link" href="{{ texts.CONTACT_PAGE.TELEPHONE_CALL_CHARGE_LINK }}">{{ texts.CONTACT_PAGE.TELEPHONE_CALL_CHARGE_TEXT }}</a>
+    </p>
+
+    {# Post details #}
+    <h2 class="govuk-heading-m">{{ texts.CONTACT_PAGE.POST_HEADING }}</h2>
+    <p class="govuk-body">
+      {{ texts.CONTACT_PAGE.POST_ADDRESS_LINE_1 }}<br/>
+      {{ texts.CONTACT_PAGE.POST_ADDRESS_LINE_2 }}<br/>
+      {{ texts.CONTACT_PAGE.POST_ADDRESS_LINE_3 }}<br/>
+      {{ texts.CONTACT_PAGE.POST_ADDRESS_LINE_4 }}<br/>
+      {{ texts.CONTACT_PAGE.POST_ADDRESS_LINE_5 }}
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+
+  <script type="text/javascript">
+
+    window.__8x8Chat = {
+        uuid: "script_30142320647759e09fcf50.58043359",
+        tenant: "aG1jdHN4MTAx",
+        channel: "JCSB Webchat",
+        channelUuid: "-gQ6XyBuR02jGgGRk_Mazw",
+        domain: "https://vcc-eu4.8x8.com",
+        path: "/.",
+        buttonContainerId: "__8x8-chat-button-container-script_30142320647759e09fcf50.58043359",
+        align: "right",
+        draggable: true
+    };
+
+    (function() {
+        var se = document.createElement("script");
+        se.type = "text/javascript";
+        se.async = true;
+        se.src = window.__8x8Chat.domain + window.__8x8Chat.path + "/CHAT/common/js/chat.js";
+
+        var os = document.getElementsByTagName("script")[0];
+        os.parentNode.insertBefore(se, os);
+    })();
+
+  </script>
+
+{% endblock %}

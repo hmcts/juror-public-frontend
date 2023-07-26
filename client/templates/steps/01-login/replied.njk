@@ -1,0 +1,40 @@
+{% extends "../../layouts/default-gds.njk" %}
+
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% block pageTitle %}
+  {{ texts.LOGIN_PAGE.ALREADY_REPLIED_TITLE }} - {{ texts.INTERFACE.SERVICE_TITLE }} - {{ texts.INTERFACE.GOV }}
+{% endblock %}
+
+{% block page_identifier %}Already Replied{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{ texts.LOGIN_PAGE.ALREADY_REPLIED_TITLE }}
+      </h1>
+
+      <p class="govuk-body">
+        {{ texts.LOGIN_PAGE.ALREADY_REPLIED_GUIDANCE }}
+      </p>
+
+      <p class="govuk-body">
+        {% include "../../includes/contact-details.njk" %}
+      </p>
+      <p class="govuk-body">
+        {% include "../../includes/contact-address.njk" %}
+      </p>
+
+      {{ govukInsetText({
+        text: texts.LOGIN_PAGE.ALREADY_REPLIED_INSET
+      }) }}
+
+      <input type="hidden" name="_csrf" id="_csrf" value="{{ csrftoken }}">
+
+  </div>
+</div>
+
+{% endblock %}

@@ -5,7 +5,7 @@
   "HINT_OB": "This includes working for the police, HM Prison Service, the National Crime Agency, the judiciary, HMCTS or any other part of the criminal justice system",
   "SELECT_PROMPT": "Choose any organisations you have worked for",
   "SELECT_PROMPT_OB": "Choose any organisations the person you're replying for has worked for",
-  "POLICE": "Police Force",
+  "POLICE": "Police service",
   "HM": "HM Prison Service",
   "NCA": "the National Crime Agency",
   "JUDICIARY": "the Judiciary",
@@ -19,6 +19,6 @@
   "NO": "No",
   "NO_OB": "No",
   "DETAILS": "Which other part of the Criminal Justice System?",
-  "WHICH_FORCE": "Which Police Force?",
+  "WHICH_POLICE": "Which police service?",
   "WHICH_PRISON": "Which part of HM Prison Service?"
 }
